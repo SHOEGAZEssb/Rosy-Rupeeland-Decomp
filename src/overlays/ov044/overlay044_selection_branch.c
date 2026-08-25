@@ -11,7 +11,7 @@
 extern "C" u32 data_ov044_0220d2e8[2];
 extern "C" void *func_ov044_0220bd98(void *panel);
 extern "C" u32 func_ov044_0220bb48(void *record, u32 mask);
-extern "C" void func_02092260(void *object, s32 state);
+extern "C" void SceneSound_PlayPackedEffect(void *object, s32 state);
 extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
 
 /*
@@ -24,12 +24,12 @@ extern "C" void func_ov044_0220caa4(void *object)
 {
     void *record = func_ov044_0220bd98(FIELD(void *, object, 0x228));
     if (func_ov044_0220bb48(record, 1)) {
-        func_02092260(object, 9);
+        SceneSound_PlayPackedEffect(object, 9);
         FIELD(s32, object, 4) = 10;
         FIELD(s32, object, 8) = 0;
         return;
     }
-    func_02092260(object, 2);
+    SceneSound_PlayPackedEffect(object, 2);
     func_ov044_0220be38(object, data_ov044_0220d2e8[0],
                         data_ov044_0220d2e8[1]);
 }

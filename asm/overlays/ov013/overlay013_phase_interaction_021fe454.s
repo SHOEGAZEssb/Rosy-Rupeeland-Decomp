@@ -8,10 +8,10 @@
     .extern func_02091c7c
     .extern func_02091cf0
     .extern SceneInputBase_Update
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern GraphicsSpriteState_TestTouchPoint
     .extern SpriteMotionController_SetAnimation
-    .extern func_02095dd4
+    .extern ModalState_UpdateInput
     .extern func_ov013_021fce04
     .extern func_ov013_021fda9c
     .extern func_ov013_021fdb10
@@ -81,7 +81,7 @@ L_021fe4e4:
     bne L_021fe534
     mov r0, r4
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -93,14 +93,14 @@ L_021fe534:
     mov r0, r4
     mov r1, #0x2
     bne L_021fe55c
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1e
     str r0, [r4, #0x4]
     mov r0, #0x0
     str r0, [r4, #0x8]
     b L_021fe85c
 L_021fe55c:
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x4
     str r0, [r4, #0x984]
     ldr r1, L_021fe86c
@@ -115,7 +115,7 @@ L_021fe57c:
     mov r0, r4
     beq L_021fe5ac
     mov r1, #0x32
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0xa
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -127,7 +127,7 @@ L_021fe5ac:
     beq L_021fe5d8
     mov r0, r4
     mov r1, #0x32
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -145,7 +145,7 @@ L_021fe5d8:
     beq L_021fe85c
     mov r0, r4
     mov r1, #0x7c
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x4
     ldr r1, L_021fe870
     str r0, [r4, #0x984]
@@ -285,7 +285,7 @@ L_021fe800:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     movs r5, r0
     bmi L_021fe85c
     mov r0, r4

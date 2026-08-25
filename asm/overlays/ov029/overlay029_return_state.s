@@ -9,7 +9,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern PresentationScalar_TransitionTo
@@ -188,11 +188,11 @@ L_021fea98:
     mov r0, r4
     bne L_021feac8
     mov r1, #0x6d
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fead0
 L_021feac8:
     mov r1, #0x69
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021fead0:
     ldr r1, L_021feb04
     mov r0, r4

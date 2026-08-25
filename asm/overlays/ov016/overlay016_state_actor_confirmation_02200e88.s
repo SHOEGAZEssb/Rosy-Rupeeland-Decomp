@@ -4,7 +4,7 @@
     .extern data_ov016_02201420
     .extern data_ov016_02201448
     .extern data_ov016_02201458
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern func_ov000_021fc714
     .extern Overlay000_GetActiveMetadata
     .extern func_ov016_021fe390
@@ -35,7 +35,7 @@ L_02200ea8:
     mov r0, r4
     beq L_02200f10
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x44c]
     bl Overlay000_GetActiveMetadata
     ldr r1, [r0, #0x1c]
@@ -51,7 +51,7 @@ L_02200ea8:
     b L_02200fa8
 L_02200f10:
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_02200fd8
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -67,7 +67,7 @@ L_02200f2c:
     mov r0, r4
     beq L_02200f8c
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x44c]
     bl Overlay000_GetActiveMetadata
     ldr r2, [r0, #0x1c]
@@ -84,7 +84,7 @@ L_02200f2c:
     b L_02200fa8
 L_02200f8c:
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_02200fdc
     mov r0, r4
     ldmia r1, {r1, r2}

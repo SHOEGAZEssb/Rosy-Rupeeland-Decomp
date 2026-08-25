@@ -11,7 +11,7 @@
 .extern GraphicsSpriteRenderer_Resume
 .extern Graphics3DResourceOwner_Destroy
 .extern Graphics3DLightSet_Destroy
-.extern func_02092314
+.extern SceneSound_StopDirectSequence
 .extern GraphicsBankStateSnapshot_Destroy
 .extern GraphicsBankStateSnapshot_Restore
 .extern PresentationList_DeleteAll
@@ -30,7 +30,7 @@ func_ov026_022001bc:
     mov r1, #0x3d
     mov r2, #0x8
     str r3, [r4, #0x0]
-    bl func_02092314
+    bl SceneSound_StopDirectSequence
     ldr r0, L_02200304
     mov r1, #0x22
     ldr r0, [r0, #0x0]

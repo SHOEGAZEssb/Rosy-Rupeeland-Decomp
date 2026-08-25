@@ -4,7 +4,7 @@
 .extern data_ov026_0220434c
 .extern func_02091b98
 .extern func_02091c7c
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern Presentation_SetScript
 .extern Presentation_IsScriptComplete
 .extern func_ov026_022009dc
@@ -58,7 +58,7 @@ L_02202da0:
     beq L_02202e14
     ldr r1, L_02202e28
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     add r0, r4, #0x3a8
     add r0, r0, #0x400
     mov r1, #0xf0

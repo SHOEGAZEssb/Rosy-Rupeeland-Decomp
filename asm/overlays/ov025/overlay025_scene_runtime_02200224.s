@@ -4,7 +4,7 @@
 .extern data_ov025_022033ac
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern TitleScreenResourceCollection_Get
-.extern func_020959d4
+.extern ModalState_Init
 .extern ModalState_InitResources
 .extern ModalState_CopyAttachmentText
 .extern gHeapContext
@@ -32,7 +32,7 @@ func_ov025_02200224:
     beq L_02200274
     mov r1, #0x0
     mov r2, r1
-    bl func_020959d4
+    bl ModalState_Init
 L_02200274:
     str r0, [r6, #0x59c]
     cmp r4, #0x0

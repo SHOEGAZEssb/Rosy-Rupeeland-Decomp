@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_state_handlers.c. */
     .extern data_ov017_02201550
     .extern data_ov017_022016e0
-    .extern func_02092288
+    .extern SceneSound_StopPackedEffect
     .extern func_ov017_021fe71c
     .extern func_ov017_021fea8c
     .extern func_ov017_02200188
@@ -29,13 +29,13 @@ L_02200c5c:
     bl func_ov017_021fe71c
     ldr r1, L_02200cb4
     mov r0, r4
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
     ldr r0, [r4, #0x440]
     cmp r0, #0x0
     beq L_02200c88
     ldr r1, L_02200cb8
     mov r0, r4
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
 L_02200c88:
     ldr r1, L_02200cbc
     mov r0, r4

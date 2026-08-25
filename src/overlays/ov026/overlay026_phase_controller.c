@@ -21,8 +21,8 @@ extern const s32 data_ov026_02204748[];
 extern "C" {
 #endif
 extern void Sound_SetDirectSequenceTrackMask(void *, s32, s32);
-extern void func_020594ec(void *, s32);
-extern void func_020922f0(void *, s32);
+extern void SoundContext_PlayDefaultStream(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void func_ov026_021ff878(void *, s32, s32);
 extern void func_ov026_022009dc(void *);
 #ifdef __cplusplus
@@ -47,9 +47,9 @@ extern "C" s32 func_ov026_02201430(void *scene)
     s32 phase = FIELD(s32, scene, 4);
     if (phase == 0) {
         if (FIELD(s32, scene, 0x54) == 999)
-            func_020594ec(gSoundContext, 0x1b);
+            SoundContext_PlayDefaultStream(gSoundContext, 0x1b);
         else
-            func_020922f0(scene, 0x3d);
+            SceneSound_PlayDirectSequence(scene, 0x3d);
         FIELD(s32, scene, 4) = 1;
         FIELD(s32, scene, 8) = 0;
         phase = 1;

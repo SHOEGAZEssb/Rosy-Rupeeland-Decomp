@@ -70,7 +70,7 @@ s32 GamePhaseActorScriptVm_DispatchSoundCommand(GamePhaseActorScriptVm *self)
     case 5:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)Sound_IsDirectSequencePlaying(gSoundContext, (u16)soundValue));
         break;
-    case 6: func_020594ec(gSoundContext, (u16)soundValue); break;
+    case 6: SoundContext_PlayDefaultStream(gSoundContext, (u16)soundValue); break;
     case 7: Sound_StopStream(gSoundContext, soundValue); break;
     case 8: Sound_LoadGroup(gSoundContext, soundValue); break;
     case 9: Sound_ReleaseGroup(gSoundContext, soundValue); break;

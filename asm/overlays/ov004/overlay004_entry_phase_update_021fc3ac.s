@@ -1,5 +1,5 @@
     .text
-    .extern func_020922f0
+    .extern SceneSound_PlayDirectSequence
     .extern Sound_SetDirectSequenceTrackMask
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_ov004_021fb6e4
@@ -20,7 +20,7 @@ func_ov004_021fc3ac: ; 0x021fc3ac
     b L_021fc538
 L_021fc3cc:
     mov r1, #0xcc
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     ldr r0, [r4, #0x150]
     cmp r0, #0xa
     addls pc, pc, r0, lsl #0x2

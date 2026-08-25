@@ -16,8 +16,8 @@ extern "C" {
 #endif
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void InventoryScroll_SetSelectedRow(void *, s32);
@@ -108,11 +108,11 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                 if (InventoryScroll_TestUpperArrowPress(controller,
                                   (u8 *)state + 0x30) != 0) {
                     if (InventoryScroll_PageUp(controller) == 0)
-                        func_02092260(state, 0x16);
+                        SceneSound_PlayPackedEffect(state, 0x16);
                 } else if (InventoryScroll_TestLowerArrowPress(controller,
                                          (u8 *)state + 0x30) != 0) {
                     if (InventoryScroll_PageDown(controller) == 0)
-                        func_02092260(state, 0x16);
+                        SceneSound_PlayPackedEffect(state, 0x16);
                 } else if (InventoryScroll_TestMarkerHit(controller,
                                          (u8 *)state + 0x30) != 0) {
                     func_ov021_021fd7c0(state,
@@ -121,7 +121,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                     break;
                 } else if (selected >= 0) {
                     if (selected != FIELD(s32, controller, 0x14)) {
-                        func_02092260(state, 0);
+                        SceneSound_PlayPackedEffect(state, 0);
                         InventoryScroll_SetSelectedRow(controller, selected);
                         func_ov021_021fd490(list);
                         func_ov021_021fee54(state);
@@ -141,7 +141,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                     }
                     if (SpriteMotionController_BeginHitResponse((u8 *)state + 0xa0,
                                       (u8 *)state + 0x30, 0, 4) != 0) {
-                        func_02092260(state, 3);
+                        SceneSound_PlayPackedEffect(state, 3);
                         DisplayBrightness_StartMaskedTransitions(1, -16);
                         FIELD(s32, state, 4)++;
                         FIELD(s32, state, 8) = 0;
@@ -151,7 +151,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
             }
         }
         if (InventoryScroll_UpdateSelectionMovement(controller) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         }
@@ -216,7 +216,7 @@ extern "C" s32 func_ov021_022000f0(void *state)
         if (InventoryScroll_UpdateInterpolation(controller) != 0) {
             if (FIELD(s32, controller, 0xc) !=
                 FIELD(s32, controller, 0x10))
-                func_02092288(state, 8);
+                SceneSound_StopPackedEffect(state, 8);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else if (primary != 0) {
@@ -248,7 +248,7 @@ extern "C" s32 func_ov021_022000f0(void *state)
                                          (u8 *)state + 0x30);
             }
             if (accepted != 0) {
-                func_02092260(state, 8);
+                SceneSound_PlayPackedEffect(state, 8);
                 FIELD(s32, state, 4)--;
                 FIELD(s32, state, 8) = 0;
             }

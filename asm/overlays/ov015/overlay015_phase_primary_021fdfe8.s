@@ -3,7 +3,7 @@
     .extern data_ov015_021fec00
     .extern data_ov015_021fec08
     .extern data_ov015_021fec10
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern func_ov001_021fc0ac
     .extern func_ov001_021fc1f0
     .extern func_ov001_021fc214
@@ -115,7 +115,7 @@ L_021fe110:
     blt L_021fe158
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xdc]
     ldr r1, [r0, #0x1ac]
     cmp r5, r1
@@ -137,7 +137,7 @@ L_021fe158:
     beq L_021fe18c
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fe2a0
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -151,7 +151,7 @@ L_021fe18c:
     mov r0, r4
     beq L_021fe1d0
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_021fe2a4
     ldr r1, L_021fe2a8
     ldr r0, [r0, #0x0]
@@ -172,7 +172,7 @@ L_021fe1dc:
     beq L_021fe210
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1
@@ -186,7 +186,7 @@ L_021fe210:
     beq L_021fe28c
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

@@ -1,7 +1,7 @@
     .text
     .extern data_ov015_021febf8
-    .extern func_02092260
-    .extern func_02092288
+    .extern SceneSound_PlayPackedEffect
+    .extern SceneSound_StopPackedEffect
     .extern InventoryScroll_BeginMarkerDrag
     .extern InventoryScroll_EndMarkerDrag
     .extern func_ov001_021fc240
@@ -55,7 +55,7 @@ L_021fe300:
     bl func_ov015_021fdad4
     mov r0, r5
     mov r1, #0x8
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
 L_021fe348:
     ldr r1, [r5, #0x4]
     mov r0, #0x0
@@ -79,7 +79,7 @@ L_021fe36c:
     beq L_021fe3d0
     mov r0, r5
     mov r1, #0x8
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

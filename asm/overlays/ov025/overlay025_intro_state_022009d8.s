@@ -13,9 +13,9 @@
 .extern RetailSaveContext_BeginRecordDelete
 .extern func_02091b98
 .extern func_02091c7c
-.extern func_020922f0
+.extern SceneSound_PlayDirectSequence
 .extern TitleCharacterResourceCollection_Destroy
-.extern func_02095dd4
+.extern ModalState_UpdateInput
 .extern func_ov025_021fd5dc
 .extern func_ov025_021ff254
 .extern func_ov025_02200178
@@ -98,7 +98,7 @@ L_02200a94:
     orr r2, r1, #0x1
     mov r1, #0xe2
     str r2, [r4, #0x20]
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     add r0, r4, #0x1fc
     add r0, r0, #0x400
     mov r1, #0x89
@@ -198,7 +198,7 @@ L_02200c1c:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02200e2c
     mov r0, r4
@@ -302,7 +302,7 @@ L_02200da4:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02200e2c
     mov r0, r4

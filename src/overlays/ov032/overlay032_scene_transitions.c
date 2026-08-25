@@ -21,7 +21,7 @@ extern void Sound_SaveStreamPosition(void *);
 extern void Sound_StopStream(...);
 extern void Sound_ResumeStreamPosition(void *);
 extern void Sound_SetCaptureRoute0Enabled(...);
-extern void func_020594ec(...);
+extern void SoundContext_PlayDefaultStream(...);
 extern s32 GameWork_TestFlag(...);
 extern s32 DisplayBrightness_GetCurrent(void *);
 extern void DisplayBrightness_StartTransition(...);
@@ -66,7 +66,7 @@ extern "C" s32 func_ov032_021febec(void *scene)
         if (DisplayBrightness_IsSubTransitionComplete()) {
             Sound_SetCaptureRoute0Enabled(gSoundContext, 1, 0, 0x1e);
             Sound_SetCaptureRoute0Enabled(gSoundContext, 0, 0, 0x1e);
-            func_020594ec(gSoundContext, 0x12);
+            SoundContext_PlayDefaultStream(gSoundContext, 0x12);
             if (GameWork_TestFlag(gGameWork, 0x15a)) {
                 FIELD(s32, scene, 0xf28) = 1;
                 install_state_callback(scene, 0x30, 0);

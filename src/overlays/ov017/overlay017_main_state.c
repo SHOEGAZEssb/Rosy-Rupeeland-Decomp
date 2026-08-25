@@ -23,14 +23,14 @@ extern void ActorDescriptor_SetQuantity(void *, u16);
 extern s32 InventoryRecordCollection_FindIdAlternate(void *, s32);
 extern void func_0206fcec(void *);
 extern void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(void *, s32, void *);
-extern void func_02092260(void *, s32);
-extern void func_020922f0(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void Presentation_SetScript(void *, void *, s32);
 extern void SpritePresentation_SetAnimation(void *, s32);
 extern void SpritePresentation_Show(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void SpriteMotionController_Show(void *);
-extern s32 func_02095dd4(void *, void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern s32 func_020befec(s32, s32);
 extern void func_ov017_021fea8c(void *, s32, s32, s32);
 extern void func_ov017_021ffcc8(void *, s32, s32, void *);
@@ -61,7 +61,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
     case 0:
         if (++FIELD(s32, state, 8) > 0x10) {
             if (FIELD(s32, data_ov017_022016e0, 0x80) == 0) {
-                func_02092260(state, 0x4100);
+                SceneSound_PlayPackedEffect(state, 0x4100);
                 if (FIELD(s32, state, 0x3bc) != 0) {
                     SpritePresentation_SetAnimation(FIELD(void *, state, 0x260), 1);
                 } else {
@@ -70,7 +70,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                                   (u8 *)state + 0x74);
                 }
             } else {
-                func_02092260(state, 0x4103);
+                SceneSound_PlayPackedEffect(state, 0x4103);
             }
             SpritePresentation_Show(FIELD(void *, state, 0x260));
             Presentation_SetScript(FIELD(void *, state, 0x260),
@@ -89,7 +89,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
             if (FIELD(s32, state, 0x3bc) != 0 &&
                 FIELD(s32, data_ov017_022016e0, 0x80) == 0) {
                 FIELD(s32, state, 0x3b8) = 1;
-                func_020922f0(state, 7);
+                SceneSound_PlayDirectSequence(state, 7);
                 if (GameWork_TestFlag(gGameWork, 0x3ab)) {
                     GameWork_ClearFlag(gGameWork, 0x3ab);
                     func_0206fcec(data_021e9e1c);
@@ -110,7 +110,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                 void *record;
                 s32 amount;
 
-                func_020922f0(state, 8);
+                SceneSound_PlayDirectSequence(state, 8);
                 amount = func_020befec(
                     FIELD(s32, state, 0x3c0) * FIELD(s32, state, 0x3c4) + 4,
                     5);
@@ -159,7 +159,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
     case 10:
     case 30:
     case 35:
-        if (func_02095dd4(FIELD(void *, state, 0x400),
+        if (ModalState_UpdateInput(FIELD(void *, state, 0x400),
                            (u8 *)state + 0x30,
                            ((s32)(FIELD(u32, state, 0x20) << 26)) >> 31) >= 0) {
             func_ov017_021ffd74(state);
@@ -171,7 +171,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
         break;
 
     case 20:
-        if (func_02095dd4(FIELD(void *, state, 0x400),
+        if (ModalState_UpdateInput(FIELD(void *, state, 0x400),
                            (u8 *)state + 0x30,
                            ((s32)(FIELD(u32, state, 0x20) << 26)) >> 31) >= 0) {
             func_ov017_021ffd74(state);
@@ -200,13 +200,13 @@ extern "C" s32 func_ov017_02200cc0(void *state)
         if ((((s32)(FIELD(u32, state, 0x20) << 26)) >> 31) != 0) {
             if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x80, (u8 *)state + 0x30,
                               0, 4)) {
-                func_02092260(state, 2);
+                SceneSound_PlayPackedEffect(state, 2);
                 func_ov017_021fea8c(state, data_ov017_02201538[0],
                                     data_ov017_02201538[1], 4);
             } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x12c,
                                      (u8 *)state + 0x30, 0, 4)) {
                 u16 result;
-                func_02092260(state, 2);
+                SceneSound_PlayPackedEffect(state, 2);
                 GameWork_SetFlag(gGameWork, 0x3a6);
                 if (FIELD(s32, state, 0x3b8) == 0) {
                     result = 0xec;

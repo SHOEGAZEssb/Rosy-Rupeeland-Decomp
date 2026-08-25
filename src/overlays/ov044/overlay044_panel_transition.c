@@ -11,12 +11,12 @@
 extern "C" u32 data_ov044_0220d2b0[2];
 extern "C" void InventoryScroll_BeginMarkerDrag(void *child, s32 mode);
 extern "C" s32 InventoryScroll_UpdateInterpolation(void *child);
-extern "C" void func_02092288(void *object, s32 state);
+extern "C" void SceneSound_StopPackedEffect(void *object, s32 state);
 extern "C" s32 func_ov044_0220bdac(void *panel);
 extern "C" void func_ov044_0220c700(void *object);
 extern "C" void InventoryScroll_SaveOrigins(void *child);
 extern "C" s32 InventoryScroll_UpdateMarkerDrag(void *child, void *touch);
-extern "C" void func_02092260(void *object, s32 state);
+extern "C" void SceneSound_PlayPackedEffect(void *object, s32 state);
 extern "C" void InventoryScroll_EndMarkerDrag(void *child, s32 mode);
 extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
 extern "C" void func_ov044_0220c880(void *object);
@@ -50,7 +50,7 @@ extern "C" s32 func_ov044_0220ce28(void *object)
     if (state == 1) {
         if (InventoryScroll_UpdateInterpolation(child)) {
             if (FIELD(s32, child, 0xc) != FIELD(s32, child, 0x10))
-                func_02092288(object, 8);
+                SceneSound_StopPackedEffect(object, 8);
             advance_transition(object);
             state = 2;
         } else {
@@ -64,7 +64,7 @@ extern "C" s32 func_ov044_0220ce28(void *object)
         InventoryScroll_SaveOrigins(child);
         if (FIELD(u32, object, 0x20) & 0x10) {
             if (InventoryScroll_UpdateMarkerDrag(child, (u8 *)object + 0x30)) {
-                func_02092260(object, 8);
+                SceneSound_PlayPackedEffect(object, 8);
                 --FIELD(s32, object, 4);
                 FIELD(s32, object, 8) = 0;
             }

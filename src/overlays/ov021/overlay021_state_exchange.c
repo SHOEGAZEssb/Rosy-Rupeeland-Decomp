@@ -38,7 +38,7 @@ extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void RecordCategory_PublishById(void *, u16);
 extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordDescriptor_SetValue(void *, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void SpriteMotionController_Hide(void *);
@@ -99,7 +99,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
         if ((FIELD(u32, state, 0x20) & 0x20) != 0 &&
             func_ov002_021fbb68(FIELD(void *, state, 0x390),
                                 (u8 *)state + 0x30) >= 0) {
-            func_02092260(state, (genrand_int32() & 1) ? 0x3c80 : 0x3c81);
+            SceneSound_PlayPackedEffect(state, (genrand_int32() & 1) ? 0x3c80 : 0x3c81);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -121,7 +121,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
         s32 result = FIELD(s32, panel, 0x8c);
         if (result == 13) {
             if (FIELD(s32, panel, 0x90) == 0) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 FIELD(s32, state, 4) = 0;
                 FIELD(s32, state, 8) = 0;
                 break;
@@ -129,12 +129,12 @@ extern "C" s32 func_ov021_022009e0(void *state)
             FIELD(s32, state, 0x394) = FIELD(s32, panel, 0x88);
             if (FIELD(s32, state, 0x394) == 0 &&
                 func_ov021_021fd1b8(FIELD(void *, state, 0x2bc)) == 0) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 FIELD(s32, state, 4) = 0;
                 FIELD(s32, state, 8) = 0;
             } else if (func_ov021_021fd1b8(FIELD(void *, state, 0x2bc)) == 1 &&
                        GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) <= FIELD(s32, state, 0x394)) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 FIELD(s32, state, 4) = 10;
                 FIELD(s32, state, 8) = 0;
             } else {
@@ -144,7 +144,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
                 change_state(state, data_ov021_02202e90);
             }
         } else if (result == 12) {
-            func_02092260(state, 3);
+            SceneSound_PlayPackedEffect(state, 3);
             if (FIELD(s32, state, 0x3e0) != 0) {
                 DisplayBrightness_StartMaskedTransitions(1, -8);
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));

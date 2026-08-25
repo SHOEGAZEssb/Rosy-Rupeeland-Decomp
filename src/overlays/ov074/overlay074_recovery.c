@@ -50,7 +50,7 @@ extern void func_020b0808(...), func_020b0844(...), func_020b0880(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern void RuntimePresentationManager_DestroyAllEffects(...), RuntimePresentationManager_DispatchVBlankCallbacks(...);
 extern void Graphics3dPresentation_Clear(...), Graphics3dPresentation_Disable(...), Graphics3dPresentation_Enable(...);
-extern void func_02059880(...), DebugText_BeginFrame(...);
+extern void SoundContext_RequestPhaseTransition(...), DebugText_BeginFrame(...);
 extern void OS_WaitVBlankIntr(...);
 extern s32 RuntimePresentationManager_UpdatePresentations(...);
 extern void GamePhaseCurrencyHud_Update(...);
@@ -162,7 +162,7 @@ void *func_ov074_0220fda8(void *scene, s32 direction) {
   Graphics3dPresentation_Clear(actor);
   Graphics3dPresentation_Disable(actor, 1, 0);
   RuntimePresentationManager_DestroyAllEffects(presentationManager);
-  func_02059880(gSoundContext, 1);
+  SoundContext_RequestPhaseTransition(gSoundContext, 1);
   display = *display_control;
   *display_control = (display & ~0x1f00U) |
                      ((((display & 0x1f00U) >> 8) & ~1U) << 8);

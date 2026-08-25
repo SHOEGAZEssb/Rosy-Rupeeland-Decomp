@@ -14,7 +14,7 @@ extern "C" void *TitleScreenResourceCollection_Get(void *resource, s32 enabled);
 extern "C" void GraphicsBgMapResource_UploadToMainBg(void *resource, s32 destination, s32 offset);
 extern "C" void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                               void *heap);
-extern "C" void *func_020959d4(void *storage, s32 first, s32 second);
+extern "C" void *ModalState_Init(void *storage, s32 first, s32 second);
 extern "C" void ModalState_CopyAttachmentText(void *auxiliary, void *configuration);
 extern "C" void ModalState_InitResources(void *auxiliary, void *content);
 
@@ -34,7 +34,7 @@ extern "C" void func_ov044_0220c8d0(void *object, void *content,
     void *auxiliary = Heap_Alloc(0x2d0, data_ov044_0220d350, 4,
                                  gHeapContext);
     if (auxiliary)
-        auxiliary = func_020959d4(auxiliary, 0, 0);
+        auxiliary = ModalState_Init(auxiliary, 0, 0);
     FIELD(void *, object, 0x238) = auxiliary;
     if (configuration)
         ModalState_CopyAttachmentText(auxiliary, configuration);

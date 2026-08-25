@@ -13,7 +13,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void OS_Halt(void);
 extern void Sound_Reset(void *);
-extern void func_02092314(void *, s32, s32);
+extern void SceneSound_StopDirectSequence(void *, s32, s32);
 extern void TitleScrollValue_Advance(void *);
 extern void GraphicsAffineScanlineWave_Apply(void *, s32);
 extern void PresentationList_DeleteAll(void *);
@@ -52,7 +52,7 @@ extern "C" s32 func_ov025_02202b44(void *scene)
 {
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_02092314(scene, 0xe2, 0x10);
+        SceneSound_StopDirectSequence(scene, 0xe2, 0x10);
         FIELD(s32, scene, 4)++;
         FIELD(s32, scene, 8) = 0;
         break;

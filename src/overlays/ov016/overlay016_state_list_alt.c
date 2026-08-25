@@ -9,8 +9,8 @@ extern const u32 data_ov016_02201480[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void InventoryScroll_SaveOrigins(void *);
 extern s32 InventoryScroll_UpdateInterpolation(void *);
 extern void InventoryScroll_BeginMarkerDrag(void *, s32);
@@ -51,7 +51,7 @@ extern "C" s32 func_ov016_02200488(void *state)
             if (FIELD(s32, presentation, 0xc) !=
                 FIELD(s32, presentation, 0x10)) {
                 Overlay016_SyncSelectedPanel(state);
-                func_02092288(state, 8);
+                SceneSound_StopPackedEffect(state, 8);
             }
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -66,7 +66,7 @@ extern "C" s32 func_ov016_02200488(void *state)
         InventoryScroll_SaveOrigins(presentation);
         if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
             if (InventoryScroll_UpdateMarkerDrag(presentation, (u8 *)state + 0x30) != 0) {
-                func_02092260(state, 8);
+                SceneSound_PlayPackedEffect(state, 8);
                 FIELD(s32, state, 4)--;
                 FIELD(s32, state, 8) = 0;
             }

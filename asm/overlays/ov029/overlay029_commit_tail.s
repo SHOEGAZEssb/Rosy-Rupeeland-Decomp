@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov029/overlay029_lifecycle_tail.c. */
-.extern func_02092288
+.extern SceneSound_StopPackedEffect
 .extern func_ov029_021fd6fc
 .extern func_ov029_021fd850
 .extern gGameWork
@@ -27,11 +27,11 @@ L_021feb28:
     mov r0, r4
     bne L_021feb50
     mov r1, #0x6d
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
     b L_021feb58
 L_021feb50:
     mov r1, #0x69
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
 L_021feb58:
     ldr r1, L_021feba4
     ldr r3, [r4, #0x6c]

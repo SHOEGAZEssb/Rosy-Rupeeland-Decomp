@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov016/overlay016_final_handlers.c. */
     .extern data_ov016_022013f8
     .extern data_ov016_02201438
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern func_ov000_021fc714
     .extern func_ov016_021fe6f4
     .extern Overlay016ActorValue_Init
@@ -23,7 +23,7 @@ L_02201004:
     cmp r1, #0x1
     bne L_02201030
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -32,7 +32,7 @@ L_02201004:
     b L_02201054
 L_02201030:
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     ldr r1, L_022010b8
     str r0, [r4, #0x474]

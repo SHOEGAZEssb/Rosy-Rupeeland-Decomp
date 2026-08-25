@@ -15,7 +15,7 @@ extern void Sound_HostPlayDefaultStreamRequest(s32 stream);
 #endif
 
 /* Start the selected stream with the lower manager's retail defaults. */
-void func_020594ec(void *context, s32 stream)
+void SoundContext_PlayDefaultStream(void *context, s32 stream)
 {
     if ((*(u32 *)((u8 *)context + 0x9c) & 4) == 0) {
 #ifdef __MWERKS__

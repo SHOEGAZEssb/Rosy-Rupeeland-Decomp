@@ -4,7 +4,7 @@
     .extern data_ov013_021fec18
     .extern data_ov013_021fed30
     .extern SceneInputBase_Update
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern func_ov013_021fce04
     .extern func_ov013_021fdbb0
     .extern func_ov013_021fdf38
@@ -61,7 +61,7 @@ L_021fe2f4:
     blt L_021fe2f4
     mov r0, r4
     mov r1, #0x6
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

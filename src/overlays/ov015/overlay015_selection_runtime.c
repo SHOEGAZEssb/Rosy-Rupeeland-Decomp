@@ -20,10 +20,10 @@ extern void *Heap_Alloc(s32, const void *, s32, void *);
 extern s32 ActorDescriptor_GetSubtype(void *);
 extern void *InventoryRecord_GetMetadata(void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, u32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
-extern void *func_020959d4(void *, s32, s32);
-extern void func_02095bec(void *);
+extern void *ModalState_Init(void *, s32, s32);
+extern void ModalState_DrawFrame(void *);
 extern void ModalState_InitResources(void *, s32);
 extern void ModalState_CopyAttachmentText(void *, void *);
 extern void *func_ov001_021fc7e4(void *);
@@ -128,10 +128,10 @@ extern "C" s32 func_ov015_021fdd1c(void *state)
     }
     value = FIELD(s32, (u8 *)state + index * 0xac, 0x1a4);
     if (value == 0xd) {
-        func_02092260(state, 0x5d);
+        SceneSound_PlayPackedEffect(state, 0x5d);
         transition = data_ov015_021febe0;
     } else if (value == 0x11) {
-        func_02092260(state, 2);
+        SceneSound_PlayPackedEffect(state, 2);
         transition = data_ov015_021fec38;
     } else if (value == 0x2c) {
         transition = data_ov015_021fec30;
@@ -159,7 +159,7 @@ extern "C" void func_ov015_021fde00(void *state, s32 value, s32 alternate, void 
     GraphicsBgMapResource_UploadToMainBg(handle, 1, 0);
     object = Heap_Alloc(0x2d0, data_ov015_021fec98, 4, gHeapContext);
     if (object != 0) {
-        object = func_020959d4(object, 0, 0);
+        object = ModalState_Init(object, 0, 0);
     }
     FIELD(void *, state, 0xf8) = object;
     if (attachment != 0) {
@@ -179,7 +179,7 @@ extern "C" void func_ov015_021fdeac(void *state)
     typedef void (*DeleteFunction)(void *);
     void *object = FIELD(void *, state, 0xf8);
 
-    func_02095bec(object);
+    ModalState_DrawFrame(object);
     if (object != 0) {
         DeleteFunction *vtable = *(DeleteFunction **)object;
         vtable[1](object);

@@ -27,7 +27,7 @@ extern "C" s32 InventoryScroll_TestUpperArrowPress(void *child, void *touch);
 extern "C" s32 InventoryScroll_TestLowerArrowPress(void *child, void *touch);
 extern "C" s32 InventoryScroll_TestMarkerHit(void *child, void *touch);
 extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
-extern "C" void func_02092260(void *object, s32 state);
+extern "C" void SceneSound_PlayPackedEffect(void *object, s32 state);
 extern "C" void InventoryScroll_SetSelectedRow(void *child, s32 index);
 extern "C" void func_ov044_0220caa4(void *object);
 extern "C" s32 SpriteMotionController_BeginHitResponse(void *presentation, void *touch,
@@ -92,10 +92,10 @@ extern "C" s32 func_ov044_0220cb04(void *object)
             } else if (FIELD(u32, object, 0x20) & 0x20) {
                 if (InventoryScroll_TestUpperArrowPress(child, touch)) {
                     if (!InventoryScroll_PageUp(child))
-                        func_02092260(object, 0x16);
+                        SceneSound_PlayPackedEffect(object, 0x16);
                 } else if (InventoryScroll_TestLowerArrowPress(child, touch)) {
                     if (!InventoryScroll_PageDown(child))
-                        func_02092260(object, 0x16);
+                        SceneSound_PlayPackedEffect(object, 0x16);
                 } else if (InventoryScroll_TestMarkerHit(child, touch)) {
                     func_ov044_0220be38(object,
                                         data_ov044_0220d2b8[0],
@@ -104,7 +104,7 @@ extern "C" s32 func_ov044_0220cb04(void *object)
                     return 0;
                 } else if (hit >= 0) {
                     if (hit != FIELD(s32, child, 0x14)) {
-                        func_02092260(object, 0);
+                        SceneSound_PlayPackedEffect(object, 0);
                         InventoryScroll_SetSelectedRow(child, hit);
                         func_ov044_0220c700(object);
                         FIELD(s32, object, 4) = 0x14;
@@ -122,7 +122,7 @@ extern "C" s32 func_ov044_0220cb04(void *object)
                     return 0;
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)object + 0xd0,
                                          touch, 0, 4)) {
-                    func_02092260(object, 3);
+                    SceneSound_PlayPackedEffect(object, 3);
                     func_ov044_0220be38(object,
                                         data_ov044_0220d2d8[0],
                                         data_ov044_0220d2d8[1]);
@@ -132,7 +132,7 @@ extern "C" s32 func_ov044_0220cb04(void *object)
             }
         }
         if (InventoryScroll_UpdateSelectionMovement(child)) {
-            func_02092260(object, 0);
+            SceneSound_PlayPackedEffect(object, 0);
             --FIELD(s32, object, 4);
             FIELD(s32, object, 8) = 0;
         }

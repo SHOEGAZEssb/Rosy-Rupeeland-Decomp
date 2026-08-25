@@ -14,14 +14,14 @@
     .extern InventoryRecordCollection_FindIdAlternate
     .extern func_0206fcec
     .extern GraphicsSpriteGroup_ReplaceStateResourcesFromSource
-    .extern func_02092260
-    .extern func_020922f0
+    .extern SceneSound_PlayPackedEffect
+    .extern SceneSound_PlayDirectSequence
     .extern Presentation_SetScript
     .extern SpritePresentation_SetAnimation
     .extern SpritePresentation_Show
     .extern SpriteMotionController_BeginHitResponse
     .extern SpriteMotionController_Show
-    .extern func_02095dd4
+    .extern ModalState_UpdateInput
     .extern func_020befec
     .extern func_ov017_021fea8c
     .extern func_ov017_021ffcc8
@@ -76,7 +76,7 @@ L_02200d34:
     cmp r1, #0x0
     bne L_02200d94
     mov r1, #0x4100
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x3bc]
     cmp r0, #0x0
     beq L_02200d7c
@@ -93,7 +93,7 @@ L_02200d7c:
     b L_02200d9c
 L_02200d94:
     ldr r1, L_02201324
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_02200d9c:
     ldr r0, [r4, #0x260]
     bl SpritePresentation_Show
@@ -128,7 +128,7 @@ L_02200dcc:
     mov r0, r4
     mov r1, #0x7
     str r2, [r4, #0x3b8]
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     ldr r0, L_0220132c
     ldr r1, L_02201330
     ldr r0, [r0, #0x0]
@@ -171,7 +171,7 @@ L_02200e88:
 L_02200eb4:
     mov r0, r4
     mov r1, #0x8
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     ldr r2, [r4, #0x3c0]
     ldr r0, [r4, #0x3c4]
     mov r1, #0x5
@@ -300,7 +300,7 @@ L_02201098:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02201308
     mov r0, r4
@@ -320,7 +320,7 @@ L_022010e4:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02201308
     mov r0, r4
@@ -372,7 +372,7 @@ L_022011a8:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02201308
     mov r0, r4
@@ -392,7 +392,7 @@ L_022011f4:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02201308
     mov r0, r4
@@ -420,7 +420,7 @@ L_02201240:
     beq L_0220128c
     mov r0, r4
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_02201344
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -436,7 +436,7 @@ L_0220128c:
     beq L_02201308
     mov r0, r4
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_0220132c
     ldr r1, L_02201348
     ldr r0, [r0, #0x0]

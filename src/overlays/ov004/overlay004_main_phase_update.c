@@ -23,7 +23,7 @@ extern void *gDebugFont;
 extern const s32 data_ov004_021fcd50[2];
 extern void func_02091c7c(void *animation, s32 channel);
 extern void func_020afce8(volatile void *registers, s32 first, s32 second);
-extern void func_02092260(void *state, s32 soundId);
+extern void SceneSound_PlayPackedEffect(void *state, s32 soundId);
 extern s32 TitleInterpolatedValue_Evaluate(void *animation, s32 first, s32 second, s32 channel);
 extern void func_020afca0(volatile void *registers, s32 value);
 extern s32 func_02091cf0(void *animation);
@@ -92,7 +92,7 @@ s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
             func_020afce8((volatile void *)0x04001050, 4, -16);
             FIELD(u32, state, 0x048) |= 4;
             FIELD(u32, state, 0x04c) |= 4;
-            func_02092260(state, 0x7b81);
+            SceneSound_PlayPackedEffect(state, 0x7b81);
             overlay004_advance_phase(state);
         }
         break;
@@ -129,14 +129,14 @@ s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
         overlay004_step_object(FIELD(void *, state, 0x068));
         overlay004_step_object((u8 *)state + 0x6c);
         if (func_02091cf0(animationA) && func_02091cf0(animationB)) {
-            func_02092260(state, 0x7b82);
+            SceneSound_PlayPackedEffect(state, 0x7b82);
             overlay004_advance_phase(state);
         }
         break;
 
     case 3:
         if (++FIELD(s32, state, 0x008) > 60) {
-            func_02092260(state, FIELD(s32, state, 0x158));
+            SceneSound_PlayPackedEffect(state, FIELD(s32, state, 0x158));
             overlay004_advance_phase(state);
         } else {
             s32 value = Presentation_InterpolateQuadraticPulse(0x100, 0x200, 60);

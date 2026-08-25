@@ -26,7 +26,7 @@ extern void *RetailTextTable_FindRecordById(const void *, u16);
 extern void RecordDescriptor_BindById(void *, u16);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
-extern void func_020922f0(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_020befec(s32, s32);
 extern void GameWork_SetFlag(void *, u16);
@@ -140,7 +140,7 @@ extern "C" void func_ov022_021feb78(void *scene)
         FIELD(s32, scene, 0x2ac) = 1;
         GameWork_SetFlag(gGameWork, FIELD(u16, data_020d7828, table_offset));
         GameWork_SetFlag(gGameWork, FIELD(u16, data_020d782c, table_offset));
-        func_020922f0(scene, 0x9c);
+        SceneSound_PlayDirectSequence(scene, 0x9c);
         GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x310,
                       FIELD(u16, data_020d782e, table_offset),
                       0xff676980, 0);

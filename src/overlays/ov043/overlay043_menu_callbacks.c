@@ -17,7 +17,7 @@ extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void func_ov043_0220b744(void *object, u32 first, u32 second);
 extern "C" s32 SpriteMotionController_BeginHitResponse(void *canvas, const void *input,
                               s32 first, s32 second);
-extern "C" void func_02092260(void *object, s32 mode);
+extern "C" void SceneSound_PlayPackedEffect(void *object, s32 mode);
 extern "C" void Overlay043_UpdatePresentationResources(void *object);
 
 /*
@@ -54,19 +54,19 @@ extern "C" s32 func_ov043_0220bdb8(void *object)
     }
     if (state == 1 && (FIELD(u32, object, 0x20) & 0x20)) {
         if (SpriteMotionController_BeginHitResponse((u8 *)object + 0x13c, (u8 *)object + 0x30, 0, 4)) {
-            func_02092260(object, 2);
+            SceneSound_PlayPackedEffect(object, 2);
             FIELD(s32, object, 0x58) = 0;
             func_ov043_0220b744(object, data_ov043_0220c490[0],
                                  data_ov043_0220c490[1]);
         } else if (SpriteMotionController_BeginHitResponse((u8 *)object + 0x1e8,
                                   (u8 *)object + 0x30, 0, 4)) {
-            func_02092260(object, 2);
+            SceneSound_PlayPackedEffect(object, 2);
             FIELD(s32, object, 0x58) = 1;
             func_ov043_0220b744(object, data_ov043_0220c488[0],
                                  data_ov043_0220c488[1]);
         } else if (SpriteMotionController_BeginHitResponse((u8 *)object + 0x90,
                                   (u8 *)object + 0x30, 0, 4)) {
-            func_02092260(object, 3);
+            SceneSound_PlayPackedEffect(object, 3);
             func_ov043_0220b744(object, data_ov043_0220c458[0],
                                  data_ov043_0220c458[1]);
         }

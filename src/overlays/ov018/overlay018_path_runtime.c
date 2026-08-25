@@ -13,8 +13,8 @@ typedef struct Overlay018Point {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092260(void *, s32);
-extern void func_020922b0(void *, s32, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_SetPackedEffectValue(void *, s32, s32);
 extern u32 func_020ae024(s32, s32);
 extern void func_ov003_021fb8ac(void *, s32, s32, s32, s32, u32, u32);
 extern void func_ov018_021fdb7c(void *, s32);
@@ -71,7 +71,7 @@ extern "C" void func_ov018_021fdce4(void *state)
                                 x, y, x, y, 2, 1);
             func_ov018_021fe184((u8 *)state + 0x64, (u8 *)state + 0x30);
             func_ov018_021fdbfc(state);
-            func_02092260(state, 0x4b);
+            SceneSound_PlayPackedEffect(state, 0x4b);
             func_ov018_021ff434(buffer,
                 x + FIELD(s32, state, 0x5c),
                 y + FIELD(s32, state, 0x60));
@@ -91,10 +91,10 @@ extern "C" void func_ov018_021fdce4(void *state)
             func_ov018_021fe184((u8 *)state + 0x64, (u8 *)state + 0x30);
             func_ov018_021fdbfc(state);
             func_ov018_021fdb7c(state, 1);
-            func_020922b0(state, 0x4c, 0x7f);
+            SceneSound_SetPackedEffectValue(state, 0x4c, 0x7f);
         } else {
             func_ov018_021fdb7c(state, 0);
-            func_020922b0(state, 0x4c, 0);
+            SceneSound_SetPackedEffectValue(state, 0x4c, 0);
             if (!func_ov018_021ff420(buffer)) {
                 FIELD(s32, state, 0x404) = 0;
                 func_ov018_021ffbb0(buffer, 3);
@@ -102,7 +102,7 @@ extern "C" void func_ov018_021fdce4(void *state)
         }
     } else {
         func_ov018_021fdb7c(state, 0);
-        func_020922b0(state, 0x4c, 0);
+        SceneSound_SetPackedEffectValue(state, 0x4c, 0);
     }
 
     if (!func_ov018_021ff408(buffer) && INPUT_BIT(state, 9) &&
@@ -128,7 +128,7 @@ extern "C" void func_ov018_021fdce4(void *state)
                 angleDifference = (u16)(0x10000 - angleDifference);
             if (angleDifference > 0x6000 &&
                 newestDx * newestDx + newestDy * newestDy > 0x10)
-                func_02092260(state, 0x4d);
+                SceneSound_PlayPackedEffect(state, 0x4d);
         }
 
         if (FIELD(s32, buffer, 0x24) == 0 &&
@@ -138,14 +138,14 @@ extern "C" void func_ov018_021fdce4(void *state)
                 s32 brush = 3;
                 func_ov018_021ff964(buffer);
                 if (func_ov018_021fe214(state)) {
-                    func_02092260(state, 0x1e);
+                    SceneSound_PlayPackedEffect(state, 0x1e);
                     FIELD(s32, state, 0x3c8) = 1;
                     brush = 4;
                 } else if (FIELD(s32, state, 0x420) == 2) {
-                    func_02092260(state, 0x1e);
+                    SceneSound_PlayPackedEffect(state, 0x1e);
                     brush = 5;
                 } else {
-                    func_02092260(state, 0x77);
+                    SceneSound_PlayPackedEffect(state, 0x77);
                 }
 
                 points = FIELD(Overlay018Point *, buffer, 4);

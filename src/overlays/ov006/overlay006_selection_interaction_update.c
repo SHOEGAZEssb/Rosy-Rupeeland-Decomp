@@ -22,7 +22,7 @@ extern void IndexedSelectionController_SnapTransitionOrigin(void *controller);
 extern void IndexedSelectionController_Increment(void *controller);
 extern void IndexedSelectionController_Decrement(void *controller);
 extern s32 IndexedSelectionController_AdvanceTransition(void *controller);
-extern void func_02092260(void *state, s32 value);
+extern void SceneSound_PlayPackedEffect(void *state, s32 value);
 extern s32 func_ov006_021fb950(void *state);
 #ifdef __cplusplus
 }
@@ -42,7 +42,7 @@ static void overlay006_advance_selection(Overlay006SelectionState *state)
  * +0x64 differs from +0x68, advance to phase two, and process it immediately.
  * Phase two calls IndexedSelectionController_SnapTransitionOrigin, reads the input halfword through pointer +0x2C,
  * calls IndexedSelectionController_Increment for bit 0x40 or IndexedSelectionController_Decrement for bit 0x80, then polls
- * IndexedSelectionController_AdvanceTransition. When that poll succeeds, call func_02092260(state,0), decrement
+ * IndexedSelectionController_AdvanceTransition. When that poll succeeds, call SceneSound_PlayPackedEffect(state,0), decrement
  * phase back to one, and clear the timer. Always call func_ov006_021fb950 and
  * return zero. Controller/input meanings beyond these confirmed branches remain
  * unidentified; effects are delegated and there is no direct hardware access.
@@ -82,7 +82,7 @@ s32 func_ov006_021fbafc(Overlay006SelectionState *state)
                 IndexedSelectionController_Decrement(controller);
             }
             if (IndexedSelectionController_AdvanceTransition(controller)) {
-                func_02092260(state, 0);
+                SceneSound_PlayPackedEffect(state, 0);
                 FIELD(s32, state, 0x004)--;
                 FIELD(s32, state, 0x008) = 0;
             }

@@ -30,7 +30,7 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordCategory_PublishById(void *, u16);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void TitlePalette_SetMainBackdrop(s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
@@ -227,7 +227,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
             if (SpriteMotionController_BeginHitResponse((u8 *)state + 0xa0,
                               (u8 *)state + 0x30, 0, 4) != 0) {
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-                func_02092260(state, 3);
+                SceneSound_PlayPackedEffect(state, 3);
                 func_ov021_021fd7c0(state, data_ov021_02202f28[0],
                                     data_ov021_02202f28[1]);
                 break;
@@ -238,11 +238,11 @@ extern "C" s32 func_ov021_021ffa38(void *state)
                                   (u8 *)state + 0x30, 0, 4) == 0)
                     continue;
                 if (FIELD(void *, state, 0x2a4 + channel * 4) == 0) {
-                    func_02092260(state, 9);
+                    SceneSound_PlayPackedEffect(state, 9);
                     continue;
                 }
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-                func_02092260(state, 2);
+                SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, state, 0x2c4) = channel;
                 DisplayBrightness_StartMaskedTransitions(1, -16);
                 if (channel == 1) {

@@ -13,8 +13,8 @@
 .extern data_ov026_02204740
 .extern data_ov026_02204748
 .extern Sound_SetDirectSequenceTrackMask
-.extern func_020594ec
-.extern func_020922f0
+.extern SoundContext_PlayDefaultStream
+.extern SceneSound_PlayDirectSequence
 .extern func_ov026_021ff878
 .extern func_ov026_022009dc
 .extern gSoundContext
@@ -38,11 +38,11 @@ L_02201450:
     ldr r0, L_02201694
     mov r1, #0x1b
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
     b L_0220147c
 L_02201474:
     mov r1, #0x3d
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
 L_0220147c:
     ldr r1, [r4, #0x4]
     mov r0, #0x0

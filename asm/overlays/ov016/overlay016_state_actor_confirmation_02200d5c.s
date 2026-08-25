@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov016/overlay016_state_actor_confirmation.c. */
     .extern data_ov016_02201460
-    .extern func_02092260
-    .extern func_02092288
+    .extern SceneSound_PlayPackedEffect
+    .extern SceneSound_StopPackedEffect
     .extern InventoryScroll_BeginMarkerDrag
     .extern InventoryScroll_EndMarkerDrag
     .extern func_ov000_021fc450
@@ -51,7 +51,7 @@ L_02200dac:
     bl func_ov016_021ffc2c
     mov r0, r5
     mov r1, #0x8
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
 L_02200dec:
     ldr r1, [r5, #0x4]
     mov r0, #0x0
@@ -75,7 +75,7 @@ L_02200e10:
     beq L_02200e74
     mov r0, r5
     mov r1, #0x8
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

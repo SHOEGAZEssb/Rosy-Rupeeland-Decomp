@@ -1,0 +1,19 @@
+{
+  "func_020594ec": "SoundContext_PlayDefaultStream",
+  "func_02059880": "SoundContext_RequestPhaseTransition",
+  "func_02091080": "TitleDialog_ConfigureLayout",
+  "func_02091e20": "SceneInput_DefaultInactive",
+  "func_02091f70": "Scene_InvokeInputCallback",
+  "func_02092260": "SceneSound_PlayPackedEffect",
+  "func_02092288": "SceneSound_StopPackedEffect",
+  "func_020922b0": "SceneSound_SetPackedEffectValue",
+  "func_020922f0": "SceneSound_PlayDirectSequence",
+  "func_02092314": "SceneSound_StopDirectSequence",
+  "func_02092344": "SceneCallback_ReturnFalse",
+  "func_0209526c": "Presentation_HasScriptCapability",
+  "func_020959d4": "ModalState_Init",
+  "func_02095b1c": "ModalState_Destroy",
+  "func_02095bec": "ModalState_DrawFrame",
+  "func_02095dd4": "ModalState_UpdateInput",
+  "func_02095f30": "ModalChoice_IsMotionComplete"
+}

@@ -21,8 +21,8 @@ extern "C" {
 #endif
 extern s32 RetailSaveContext_PollOperation(void *);
 extern void RetailSaveContext_BeginRecordDelete(void *, s32, s32);
-extern void func_02092260(void *, s32);
-extern s32 func_02095dd4(void *, void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_02200178(void *);
 extern void func_ov025_022001f4(void *);
@@ -54,7 +54,7 @@ extern "C" s32 func_ov025_02201abc(void *scene)
         /* Modal creation intentionally falls through to polling. */
     case 1: {
         func_ov025_02200824(scene, 4);
-        s32 choice = func_02095dd4(
+        s32 choice = ModalState_UpdateInput(
             FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
             (s32)(FIELD(u32, scene, 0x20) << 26) >> 31);
         if (choice < 0)
@@ -100,14 +100,14 @@ extern "C" s32 func_ov025_02201abc(void *scene)
             func_ov025_022006c4(scene);
             func_ov025_02200438(scene, 0);
             func_ov025_02200224(scene, 0x16, 0);
-            func_02092260(scene, 0x2d03);
+            SceneSound_PlayPackedEffect(scene, 0x2d03);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
         break;
     case 4:
         func_ov025_02200824(scene, 4);
-        if (func_02095dd4(
+        if (ModalState_UpdateInput(
                 FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                 (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);
@@ -136,7 +136,7 @@ extern "C" s32 func_ov025_02201cfc(void *scene)
         FIELD(s32, scene, 8) = 0;
         /* State zero intentionally falls through to modal polling. */
     case 1:
-        if (func_02095dd4(
+        if (ModalState_UpdateInput(
                 FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                 (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);
@@ -169,13 +169,13 @@ extern "C" s32 func_ov025_02201cfc(void *scene)
             func_ov025_022006c4(scene);
             func_ov025_02200438(scene, 0);
             func_ov025_02200224(scene, 0x16, 0);
-            func_02092260(scene, 0x2d03);
+            SceneSound_PlayPackedEffect(scene, 0x2d03);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
         break;
     case 4:
-        if (func_02095dd4(
+        if (ModalState_UpdateInput(
                 FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                 (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);

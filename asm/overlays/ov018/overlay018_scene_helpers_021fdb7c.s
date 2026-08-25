@@ -4,8 +4,8 @@
     .extern data_ov018_021ffd08
     .extern GamePhaseMetadata_GetByIndex
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02092260
-    .extern func_02092288
+    .extern SceneSound_PlayPackedEffect
+    .extern SceneSound_StopPackedEffect
     .extern func_020ae024
     .extern func_020befec
 .global func_ov018_021fdb7c
@@ -32,7 +32,7 @@ func_ov018_021fdbac:
     cmp r1, #0x0
     ldmneia sp!, {r4, pc}
     mov r1, #0x4c
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     str r0, [r4, #0x40c]
     ldmia sp!, {r4, pc}
@@ -46,7 +46,7 @@ func_ov018_021fdbd4:
     cmp r1, #0x0
     ldmeqia sp!, {r4, pc}
     mov r1, #0x4c
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
     mov r0, #0x0
     str r0, [r4, #0x40c]
     ldmia sp!, {r4, pc}

@@ -21,7 +21,7 @@
     .extern Sound_PlayEffectWithParameters
     .extern Sound_StopEffect
     .extern Sound_IsEffectPlaying
-    .extern func_020594ec
+    .extern SoundContext_PlayDefaultStream
     .extern Sound_StopStream
     .extern Sound_FadeStreamVolume
     .extern GraphicsSpriteState_SetAnimationIndex
@@ -776,7 +776,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     ldr r0, .L_021ff13c
     mov r1, #0xa
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
     add r0, sp, #0x24
     bl VecFx32Object_Destroy
 .L_021fec80:
@@ -916,7 +916,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     ldr r0, .L_021ff13c
     mov r1, #0x8
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
     ldr r0, .L_021ff13c
     mov r1, #0x12c
     ldr r0, [r0, #0x0]

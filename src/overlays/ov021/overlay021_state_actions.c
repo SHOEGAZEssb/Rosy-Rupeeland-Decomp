@@ -25,7 +25,7 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordCategory_PublishById(void *, u16);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void TitlePalette_SetMainBackdrop(s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
@@ -300,7 +300,7 @@ extern "C" s32 func_ov021_02200840(void *state)
     case 3:
         if (func_ov002_021fbe08(FIELD(void *, state, 0x390)) != 0 &&
             DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_02092260(state, 0x3c84);
+            SceneSound_PlayPackedEffect(state, 0x3c84);
             FIELD(s32, state, 0x3fc) = 0;
             func_ov021_021fd7c0(state, data_ov021_02202e98[0],
                                 data_ov021_02202e98[1]);

@@ -29,8 +29,8 @@ extern void RecordCategory_PublishById(void *, u16);
 extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordDescriptor_SetValue(void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
@@ -123,7 +123,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
     case 1: {
         if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
-        func_02092260(state, 0x6c);
+        SceneSound_PlayPackedEffect(state, 0x6c);
         void *prompt = Heap_Alloc(0xb0, data_ov021_02202fb8, 4, gHeapContext);
         if (prompt != 0)
             func_ov045_0220bc40(prompt);
@@ -142,12 +142,12 @@ extern "C" s32 func_ov021_022023f0(void *state)
         break;
     case 3:
         if (func_ov021_021ff0c8(FIELD(void *, state, 0x384)) != 0) {
-            func_02092288(state, 0x6c);
+            SceneSound_StopPackedEffect(state, 0x6c);
             s32 action = FIELD(s32, state, 0x2c8);
             u8 *desc = FIELD(u8 *, state, 0x2bc);
             u8 *record = FIELD(u8 *, desc, 4);
             if (action == 1) {
-                func_02092260(state, 0x6a);
+                SceneSound_PlayPackedEffect(state, 0x6a);
                 if (FIELD(s32, state, 0x394) <= FIELD(s32, desc, 8) / 2)
                     func_ov045_0220bd90(FIELD(void *, state, 0x384));
                 else {
@@ -156,14 +156,14 @@ extern "C" s32 func_ov021_022023f0(void *state)
                 }
                 func_ov021_021ff0e0(state, 6);
             } else if (action == 2) {
-                func_02092260(state, 0x6b);
+                SceneSound_PlayPackedEffect(state, 0x6b);
                 func_ov045_0220bdb0(FIELD(void *, state, 0x384));
                 func_ov021_021ff3ac(state);
                 GraphicsSpriteText_FormatDecimal((u8 *)state + 0x3b8,
                               FIELD(s32, record, 0x14), 0xff676980, 0);
                 func_ov021_021ff0e0(state, 9);
             } else if (action == 3) {
-                func_02092260(state, 0x6a);
+                SceneSound_PlayPackedEffect(state, 0x6a);
                 if (FIELD(s32, state, 0x394) >= FIELD(s32, record, 0x10) * 2) {
                     func_ov045_0220bd90(FIELD(void *, state, 0x384));
                     FIELD(s32, state, 0x3e8) = 1;
@@ -174,7 +174,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
                     func_ov021_021ff1d0(state, RecordDescriptor_GetMessage(desc, 3));
                 }
             } else if (action == 4) {
-                func_02092260(state, 0x6b);
+                SceneSound_PlayPackedEffect(state, 0x6b);
                 func_ov045_0220bdb0(FIELD(void *, state, 0x384));
                 func_ov021_021ff3ac(state);
                 func_ov021_021ff1d0(

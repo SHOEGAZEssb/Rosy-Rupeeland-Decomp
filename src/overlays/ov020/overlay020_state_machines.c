@@ -11,8 +11,8 @@ extern const u32 data_ov020_021fe470[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void InventoryScroll_SetSelectedRow(void *, s32);
 extern void InventoryScroll_SaveOrigins(void *);
 extern void InventoryScroll_MoveSelectionUp(void *);
@@ -88,11 +88,11 @@ extern "C" s32 func_ov020_021fe024(void *state)
             } else if ((FIELD(u32, state, 0x20) & 0x20) != 0) {
                 if (InventoryScroll_TestUpperArrowPress(presentation, (u8 *)state + 0x30) != 0) {
                     if (InventoryScroll_PageUp(presentation) == 0)
-                        func_02092260(state, 0x16);
+                        SceneSound_PlayPackedEffect(state, 0x16);
                 } else if (InventoryScroll_TestLowerArrowPress(presentation,
                                           (u8 *)state + 0x30) != 0) {
                     if (InventoryScroll_PageDown(presentation) == 0)
-                        func_02092260(state, 0x16);
+                        SceneSound_PlayPackedEffect(state, 0x16);
                 } else if (InventoryScroll_TestMarkerHit(presentation,
                                           (u8 *)state + 0x30) != 0) {
                     func_ov020_021fd81c(state, data_ov020_021fe470[0],
@@ -100,14 +100,14 @@ extern "C" s32 func_ov020_021fe024(void *state)
                     break;
                 } else if (selected >= 0) {
                     if (selected != FIELD(s32, presentation, 0x14)) {
-                        func_02092260(state, 0);
+                        SceneSound_PlayPackedEffect(state, 0);
                         InventoryScroll_SetSelectedRow(presentation, selected);
                         func_ov020_021fde9c(state);
                         func_ov020_021fdee0(state);
                     }
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x70,
                                           (u8 *)state + 0x30, 0, 4) != 0) {
-                    func_02092260(state, 3);
+                    SceneSound_PlayPackedEffect(state, 3);
                     func_ov020_021fd81c(state, data_ov020_021fe468[0],
                                         data_ov020_021fe468[1], 0);
                     break;
@@ -115,7 +115,7 @@ extern "C" s32 func_ov020_021fe024(void *state)
             }
         }
         if (InventoryScroll_UpdateSelectionMovement(presentation) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         }
@@ -150,7 +150,7 @@ extern "C" s32 func_ov020_021fe2a4(void *state)
             if (FIELD(s32, presentation, 0xc) !=
                 FIELD(s32, presentation, 0x10)) {
                 func_ov020_021fdee0(state);
-                func_02092288(state, 8);
+                SceneSound_StopPackedEffect(state, 8);
             }
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -164,7 +164,7 @@ extern "C" s32 func_ov020_021fe2a4(void *state)
         InventoryScroll_SaveOrigins(presentation);
         if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
             if (InventoryScroll_UpdateMarkerDrag(presentation, (u8 *)state + 0x30) != 0) {
-                func_02092260(state, 8);
+                SceneSound_PlayPackedEffect(state, 8);
                 FIELD(s32, state, 4)--;
                 FIELD(s32, state, 8) = 0;
             }

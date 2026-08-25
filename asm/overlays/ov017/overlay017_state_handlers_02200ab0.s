@@ -6,9 +6,9 @@
     .extern data_ov017_02201540
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02092260
-    .extern func_020922f0
-    .extern func_02095dd4
+    .extern SceneSound_PlayPackedEffect
+    .extern SceneSound_PlayDirectSequence
+    .extern ModalState_UpdateInput
     .extern func_ov017_021fe6dc
     .extern func_ov017_021fea8c
     .extern func_ov017_021ffcc8
@@ -66,7 +66,7 @@ L_02200b54:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02200bd0
     mov r0, r4
@@ -85,10 +85,10 @@ L_02200b94:
     bl func_ov017_021fe6dc
     ldr r1, L_02200bf0
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, #0x5c
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     ldr r1, L_02200bf4
     mov r0, r4
     ldmia r1, {r1, r2}

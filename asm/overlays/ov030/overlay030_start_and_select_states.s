@@ -10,7 +10,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern SpriteMotionController_BeginHitResponse
@@ -135,7 +135,7 @@ L_021fecb4:
     bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fee60
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -154,7 +154,7 @@ L_021fed08:
     mov r0, r4
     beq L_021fed78
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     str r0, [r4, #0x390]
     ldr r1, [r4, #0x37c]
@@ -172,7 +172,7 @@ L_021fed08:
     b L_021fee50
 L_021fed78:
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -192,7 +192,7 @@ L_021fed98:
     mov r0, r4
     beq L_021fee0c
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x2
     str r0, [r4, #0x390]
     ldr r0, [r4, #0x37c]
@@ -211,7 +211,7 @@ L_021fed98:
     b L_021fee50
 L_021fee0c:
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

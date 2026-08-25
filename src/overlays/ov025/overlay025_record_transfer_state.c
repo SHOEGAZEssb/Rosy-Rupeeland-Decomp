@@ -25,13 +25,13 @@ extern void RetailSaveContext_BeginRecordCopy(void *, s32, s32, s32);
 extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_Hide(void *);
-extern s32 func_02095dd4(void *, void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void func_ov025_021fd9e4(void *, s32);
 extern void func_ov025_021fdb18(void *, s32);
 extern s32 func_ov025_021fdc4c(void *);
@@ -110,7 +110,7 @@ extern "C" s32 func_ov025_02201494(void *scene)
         if (!handled &&
             SpriteMotionController_BeginHitResponse((u8 *)scene + 0x19c,
                           (u8 *)scene + 0x30, 0, 4)) {
-            func_02092260(scene, 3);
+            SceneSound_PlayPackedEffect(scene, 3);
             FIELD(s32, scene, 4) = 20;
             FIELD(s32, scene, 8) = 0;
         }
@@ -145,7 +145,7 @@ extern "C" s32 func_ov025_02201494(void *scene)
     }
     case 4: {
         func_ov025_02200824(scene, 4);
-        s32 choice = func_02095dd4(FIELD(void *, scene, 0x59c),
+        s32 choice = ModalState_UpdateInput(FIELD(void *, scene, 0x59c),
                                    (u8 *)scene + 0x30,
                                    (s32)(FIELD(u32, scene, 0x20) << 26) >> 31);
         if (choice < 0)
@@ -216,14 +216,14 @@ extern "C" s32 func_ov025_02201494(void *scene)
             func_ov025_02200794(scene);
             func_ov025_02200438(scene, 0);
             func_ov025_02200224(scene, 0x14, 0);
-            func_02092260(scene, 0x2d03);
+            SceneSound_PlayPackedEffect(scene, 0x2d03);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
         break;
     case 13:
         func_ov025_02200824(scene, 4);
-        if (func_02095dd4(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
+        if (ModalState_UpdateInput(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                           (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);
             for (s32 i = 0; i < 3; ++i) {

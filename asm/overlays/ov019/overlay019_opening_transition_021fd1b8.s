@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov019/overlay019_opening_transition.c. */
     .extern data_ov019_021fd5e8
     .extern GamePhaseCurrencyHud_SetVisible
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern func_ov002_021fbdc0
     .extern func_ov002_021fbe08
     .extern func_ov002_021fbe60
@@ -43,7 +43,7 @@ L_021fd214:
     beq L_021fd24c
     ldr r1, L_021fd270
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     ldr r1, L_021fd274
     str r0, [r4, #0x60]

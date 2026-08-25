@@ -16,7 +16,7 @@
 .extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_020959d4
+.extern ModalState_Init
 .extern ModalState_InitResources
 .extern func_020b44e8
 .extern gDebugFont
@@ -117,7 +117,7 @@ L_02200e64:
     beq L_02200f08
     mov r1, #0x0
     mov r2, r1
-    bl func_020959d4
+    bl ModalState_Init
 L_02200f08:
     mov r1, #0x1f
     str r0, [r4, #0xf24]

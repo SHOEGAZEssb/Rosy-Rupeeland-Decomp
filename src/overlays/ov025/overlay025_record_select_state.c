@@ -25,7 +25,7 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void func_ov025_021fd9e4(void *, s32);
@@ -75,11 +75,11 @@ extern "C" s32 func_ov025_02200fe4(void *scene)
                 continue;
             handled = 1;
             if (i == FIELD(s32, scene, 0x54)) {
-                func_02092260(scene, 2);
+                SceneSound_PlayPackedEffect(scene, 2);
                 FIELD(s32, scene, 4) = 10;
                 FIELD(s32, scene, 8) = 0;
             } else {
-                func_02092260(scene, 0x2d02);
+                SceneSound_PlayPackedEffect(scene, 0x2d02);
                 func_ov025_02200648(scene, i);
                 func_ov025_022001f4(scene);
                 FIELD(s32, scene, 4) = 0;
@@ -92,7 +92,7 @@ extern "C" s32 func_ov025_02200fe4(void *scene)
                 void *controller = (u8 *)scene + 0x2f4 + i * 0xac;
                 if (SpriteMotionController_BeginHitResponse(controller, (u8 *)scene + 0x30, 0, 4)) {
                     FIELD(s32, scene, 0x5b8) = i;
-                    func_02092260(scene, 2);
+                    SceneSound_PlayPackedEffect(scene, 2);
                     ++FIELD(s32, scene, 4);
                     FIELD(s32, scene, 8) = 0;
                     handled = 1;

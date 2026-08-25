@@ -15,7 +15,7 @@
     .extern GraphicsAnimationInstanceManager_Update
     .extern func_0209189c
     .extern TitleRandom_NextBounded
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern PresentationScalar_TransitionTo
     .extern Presentation_SetPosition
     .extern PresentationList_Append
@@ -296,7 +296,7 @@ L_02200514:
     bne L_02200578
     ldr r1, L_02200868
     mov r0, r10
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     str r0, [r10, #0x440]
 L_02200578:
@@ -476,7 +476,7 @@ L_022007d0:
     beq L_0220082c
     mov r0, r10
     mov r1, #0x21
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_0220082c:
     ldr r0, L_02200878
     bl Overlay017Timer_Tick
@@ -484,7 +484,7 @@ L_0220082c:
     beq L_02200848
     mov r0, r10
     mov r1, #0x2a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_02200848:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

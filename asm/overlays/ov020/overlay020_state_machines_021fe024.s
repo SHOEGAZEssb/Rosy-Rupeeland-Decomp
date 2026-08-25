@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov020/overlay020_state_machines.c. */
     .extern data_ov020_021fe468
     .extern data_ov020_021fe470
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern InventoryScroll_SetSelectedRow
     .extern InventoryScroll_SaveOrigins
     .extern InventoryScroll_MoveSelectionUp
@@ -124,7 +124,7 @@ L_021fe14c:
     bne L_021fe25c
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fe25c
 L_021fe190:
     add r1, r5, #0x30
@@ -137,7 +137,7 @@ L_021fe190:
     bne L_021fe25c
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fe25c
 L_021fe1c0:
     add r1, r5, #0x30
@@ -157,7 +157,7 @@ L_021fe1e4:
     beq L_021fe25c
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, r6
     bl InventoryScroll_SetSelectedRow
@@ -176,7 +176,7 @@ L_021fe224:
     beq L_021fe25c
     mov r0, r5
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fe2a0
     mov r0, r5
     ldmia r1, {r1, r2}
@@ -188,7 +188,7 @@ L_021fe25c:
     beq L_021fe28c
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

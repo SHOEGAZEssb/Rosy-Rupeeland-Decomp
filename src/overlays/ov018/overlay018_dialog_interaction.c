@@ -12,7 +12,7 @@ extern "C" {
 extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_020922b0(void *, s32, s32);
+extern void SceneSound_SetPackedEffectValue(void *, s32, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov003_021fb7ec(void *);
@@ -68,7 +68,7 @@ extern "C" s32 func_ov018_021fef2c(void *state)
         u32 latch = FIELD(u32, FIELD(void *, state, 0x58), 0x24);
         if (latch >= 2 && latch <= 3) {
             func_ov018_021fdb7c(state, 0);
-            func_020922b0(state, 0x4c, 0);
+            SceneSound_SetPackedEffectValue(state, 0x4c, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }

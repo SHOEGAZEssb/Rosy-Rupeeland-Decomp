@@ -15,7 +15,7 @@ typedef struct SceneCallbackPrefix {
 } SceneCallbackPrefix;
 
 /* Invoke a direct or virtual member callback, including its this adjustment. */
-s32 func_02091f70(SceneCallbackPrefix *scene)
+s32 Scene_InvokeInputCallback(SceneCallbackPrefix *scene)
 {
     u8 *adjusted;
     SceneCallback callback;

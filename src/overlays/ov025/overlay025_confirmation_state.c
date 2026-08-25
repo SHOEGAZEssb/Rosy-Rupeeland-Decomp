@@ -19,7 +19,7 @@ extern "C" {
 #endif
 extern s32 RetailSaveContext_PollOperation(void *);
 extern void RetailSaveContext_BeginRecordLoad(void *, s32, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_02200178(void *);
 extern void func_ov025_02200224(void *, s32, void *);
@@ -72,7 +72,7 @@ extern "C" s32 func_ov025_02201348(void *scene)
     }
     case 2:
         if (func_ov025_02200480(scene)) {
-            func_02092260(scene, 0x2d03);
+            SceneSound_PlayPackedEffect(scene, 0x2d03);
             func_ov025_021ff254(scene,
                 *(const TransitionPair *)data_ov025_02202e80);
         }

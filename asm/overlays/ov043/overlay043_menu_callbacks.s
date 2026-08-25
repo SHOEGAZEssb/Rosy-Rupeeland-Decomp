@@ -2,7 +2,7 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov043_0220b744
 .extern SpriteMotionController_BeginHitResponse
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern Overlay043_UpdatePresentationResources
 .extern data_020f4e14
 .extern gDebugFont
@@ -69,7 +69,7 @@ func_ov043_0220bdb8:
     beq .L_0220be3c
     mov r0, r4
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     ldr r1, .L_0220bec8
     str r0, [r4, #0x58]
@@ -87,7 +87,7 @@ func_ov043_0220bdb8:
     beq .L_0220be80
     mov r0, r4
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     ldr r1, .L_0220becc
     str r0, [r4, #0x58]
@@ -105,7 +105,7 @@ func_ov043_0220bdb8:
     beq .L_0220beb8
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, .L_0220bed0
     mov r0, r4
     ldmia r1, {r1, r2}

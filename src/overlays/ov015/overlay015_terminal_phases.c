@@ -25,8 +25,8 @@ extern s32 ActorDescriptor_GetPrimaryLabel(void *);
 extern s32 func_02062a10(void *);
 extern void func_02062db0(void *);
 extern void *InventoryRecord_GetMetadata(void *);
-extern void func_02092260(void *, s32);
-extern s32 func_02095dd4(void *, void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void func_ov001_021fc39c(void *);
 extern void *func_ov001_021fc7e4(void *);
 extern void func_ov001_021fc7f4(void *);
@@ -59,7 +59,7 @@ static void overlay015_terminal_step(void *state, s32 delta)
 /* Poll the active transient object with the position at +0x30 and input bit 5. */
 static s32 overlay015_poll_transient(void *state)
 {
-    return func_02095dd4(FIELD(void *, state, 0xf8), (u8 *)state + 0x30,
+    return ModalState_UpdateInput(FIELD(void *, state, 0xf8), (u8 *)state + 0x30,
                          (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0);
 }
 
@@ -99,7 +99,7 @@ extern "C" s32 func_ov015_021fe588(void *state)
     case 2:
         result = overlay015_poll_transient(state);
         if (result == 1) {
-            func_02092260(state, 0x4102);
+            SceneSound_PlayPackedEffect(state, 0x4102);
             func_ov001_021fc88c(controller);
             func_ov001_021fc7f4(controller);
             overlay015_terminal_step(state, 2);
@@ -153,7 +153,7 @@ extern "C" s32 func_ov015_021fe828(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0:
         if (func_ov015_021fe548((u8 *)state + 0xfc + FIELD(s32, state, 0xf0) * 0xac)) {
-            func_02092260(state, 0x4104);
+            SceneSound_PlayPackedEffect(state, 0x4104);
             overlay015_terminal_step(state, 1);
         }
         break;

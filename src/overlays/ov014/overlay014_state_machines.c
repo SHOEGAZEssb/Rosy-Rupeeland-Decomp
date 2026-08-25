@@ -20,8 +20,8 @@ extern "C" {
 #endif
 extern void func_ov014_021fce14(void *, s32, s32, s32);
 extern void func_ov014_021fd2f8(void *, s32);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void GameWork_SetFlag(void *, s32);
 extern void InventoryScroll_BeginMarkerDrag(void *, s32);
 extern void InventoryScroll_EndMarkerDrag(void *, s32);
@@ -108,7 +108,7 @@ s32 func_ov014_021fd38c(void *state)
                     break;
                 }
                 if (selected >= 0) {
-                    func_02092260(state, 0);
+                    SceneSound_PlayPackedEffect(state, 0);
                     if (selected != FIELD(s32, subordinate, 0x25c)) {
                         func_ov000_021fca4c(subordinate, selected);
                         func_ov000_021fc9d4(subordinate);
@@ -117,17 +117,17 @@ s32 func_ov014_021fd38c(void *state)
                     break;
                 }
                 if (func_ov000_021fc5ac(subordinate, (u8 *)state + 0x30)) {
-                    func_02092260(state, 3);
+                    SceneSound_PlayPackedEffect(state, 3);
                     overlay014_set_callback(state, data_ov014_021fd938);
                     break;
                 }
                 if (func_ov000_021fc5d4(subordinate, (u8 *)state + 0x30)) {
-                    func_02092260(state, 2);
+                    SceneSound_PlayPackedEffect(state, 2);
                     overlay014_set_callback(state, data_ov014_021fd958);
                     break;
                 }
                 if (func_ov000_021fc5fc(subordinate, (u8 *)state + 0x30)) {
-                    func_02092260(state, 0x0b);
+                    SceneSound_PlayPackedEffect(state, 0x0b);
                     GameWork_SetFlag(gGameWork, 0x388);
                     overlay014_set_callback(state, data_ov014_021fd930);
                     break;
@@ -135,11 +135,11 @@ s32 func_ov014_021fd38c(void *state)
             }
         }
         if (func_ov000_021fc424(subordinate)) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             --FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
         } else if (func_ov000_021fc4fc(subordinate)) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
         }
@@ -188,7 +188,7 @@ s32 func_ov014_021fd67c(void *state)
         }
         if (FIELD(s32, member, 0x0c) != FIELD(s32, member, 0x10)) {
             func_ov014_021fd2f8(state, 0);
-            func_02092288(state, 8);
+            SceneSound_StopPackedEffect(state, 8);
         }
         ++FIELD(s32, state, 4);
         FIELD(s32, state, 8) = 0;
@@ -196,7 +196,7 @@ s32 func_ov014_021fd67c(void *state)
     case 2:
         if (FIELD(u32, state, 0x20) & 0x10) {
             if (func_ov000_021fc560(subordinate, (u8 *)state + 0x30)) {
-                func_02092260(state, 8);
+                SceneSound_PlayPackedEffect(state, 8);
                 --FIELD(s32, state, 4);
                 FIELD(s32, state, 8) = 0;
             }

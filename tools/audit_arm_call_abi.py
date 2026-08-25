@@ -4,7 +4,7 @@
 The audit follows direct ARM ``bl`` calls and propagates callee requirements
 back through registers that a wrapper leaves live. This catches matching C
 declarations that appear to take one argument while preserving additional ABI
-arguments for the callee, such as func_020594ec -> SoundManager_PlayDefaultStream in the stream
+arguments for the callee, such as SoundContext_PlayDefaultStream -> SoundManager_PlayDefaultStream in the stream
 manager. It reads extracted binaries and symbol metadata only.
 """
 

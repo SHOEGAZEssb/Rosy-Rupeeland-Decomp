@@ -26,7 +26,7 @@ extern void func_02091b98(void *, s32);
 extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_020922f0(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationList_Append(void *, void *);
@@ -82,7 +82,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
     FIELD(s32, state, 0x414) = 0;
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020922f0(state, 0x8f);
+        SceneSound_PlayDirectSequence(state, 0x8f);
         TitleInterpolatedValue_Configure((u8 *)state + 0x1a8, 1, 0x10, 0, 0x14);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;

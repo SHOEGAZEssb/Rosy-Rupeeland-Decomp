@@ -30,9 +30,9 @@ extern void RetailSaveContext_BeginDiscovery(void *, s32);
 extern void RetailSaveContext_BeginRecordDelete(void *, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
-extern void func_020922f0(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void TitleCharacterResourceCollection_Destroy(void *);
-extern s32 func_02095dd4(void *, void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void *func_ov025_021fd5dc(void *, s32);
 extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_02200178(void *);
@@ -77,7 +77,7 @@ extern "C" s32 func_ov025_022009d8(void *scene)
             FIELD(void *, entry, 0xe4) = row;
         }
         FIELD(u32, scene, 0x20) = (FIELD(u32, scene, 0x20) & ~1u) | 1u;
-        func_020922f0(scene, 0xe2);
+        SceneSound_PlayDirectSequence(scene, 0xe2);
         func_02091b98((u8 *)scene + 0x5fc, 0x89);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
@@ -121,7 +121,7 @@ extern "C" s32 func_ov025_022009d8(void *scene)
         break;
     }
     case 5:
-        if (func_02095dd4(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
+        if (ModalState_UpdateInput(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                           (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);
             func_ov025_02200398(scene, 5, 3);
@@ -172,7 +172,7 @@ extern "C" s32 func_ov025_022009d8(void *scene)
         }
         break;
     case 8:
-        if (func_02095dd4(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
+        if (ModalState_UpdateInput(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                           (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);
             if (++FIELD(s32, scene, 0x638) >= 3) {

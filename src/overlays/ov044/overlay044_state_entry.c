@@ -20,7 +20,7 @@ extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
 extern "C" void SpriteMotionController_Hide(void *presentation);
 extern "C" void func_ov044_0220c8d0(void *object, void *content,
                                      s32 enabled, void *configuration);
-extern "C" s32 func_02095dd4(void *auxiliary, void *position,
+extern "C" s32 ModalState_UpdateInput(void *auxiliary, void *position,
                                s32 direction);
 
 /*
@@ -62,7 +62,7 @@ extern "C" s32 func_ov044_0220c97c(void *object)
     }
     case 1: {
         s32 direction = (FIELD(u32, object, 0x20) & 0x20) ? -1 : 0;
-        if (func_02095dd4(FIELD(void *, object, 0x238),
+        if (ModalState_UpdateInput(FIELD(void *, object, 0x238),
                           (u8 *)object + 0x30, direction) >= 0) {
             func_ov044_0220be38(object, data_ov044_0220d2f0[0],
                                 data_ov044_0220d2f0[1]);

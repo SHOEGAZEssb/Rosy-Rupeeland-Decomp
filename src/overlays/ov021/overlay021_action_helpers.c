@@ -11,7 +11,7 @@ extern const u32 data_ov021_02202f08[];
 extern "C" {
 #endif
 extern s32 RecordDescriptor_IsDiscovered(const void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern u32 func_ov021_021fd1b8(const void *);
@@ -53,7 +53,7 @@ extern "C" s32 func_ov021_021ffa28(void *state)
 extern "C" void func_ov021_021ffcb4(void *state)
 {
     TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-    func_02092260(state, 2);
+    SceneSound_PlayPackedEffect(state, 2);
     void *row = func_ov021_021fd6e8(FIELD(void *, state, 0x2c0));
     const void *descriptor = FIELD(const void *, row, 0);
     FIELD(const void *, state, 0x2bc) = descriptor;

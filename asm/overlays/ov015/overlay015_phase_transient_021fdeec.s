@@ -2,7 +2,7 @@
     .extern data_ov015_021febd0
     .extern data_ov015_021fec18
     .extern InventoryRecordCollection_HasInactiveKind1Subtype1
-    .extern func_02095dd4
+    .extern ModalState_UpdateInput
     .extern func_ov001_021fc384
     .extern func_ov001_021fc39c
     .extern func_ov001_021fc3b4
@@ -68,7 +68,7 @@ L_021fdf98:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_021fdfd8
     mov r0, r4

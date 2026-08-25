@@ -7,7 +7,7 @@
     .extern func_ov049_0220c67c
     .extern func_020a63d0
     .extern Sound_StopDirectSequence
-    .extern func_020594ec
+    .extern SoundContext_PlayDefaultStream
     .extern Sound_StopEffect
     .extern Sound_Play
     .extern gSoundContext
@@ -112,7 +112,7 @@ L_021fef48:
     ldr r0, L_021fefec
     mov r1, #0x8
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
 L_021fef80:
     add r0, r4, #0x1c00
     mov r2, #0x0

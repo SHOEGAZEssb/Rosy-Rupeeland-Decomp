@@ -5,7 +5,7 @@
     .extern data_ov021_02202ef8
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern InventoryScroll_SetSelectedRow
@@ -140,7 +140,7 @@ L_021ffea0:
     bne L_02200010
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_02200010
 L_021ffee4:
     add r1, r5, #0x30
@@ -153,7 +153,7 @@ L_021ffee4:
     bne L_02200010
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_02200010
 L_021fff14:
     add r1, r5, #0x30
@@ -173,7 +173,7 @@ L_021fff38:
     mov r0, r5
     beq L_021fff88
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, r6
     bl InventoryScroll_SetSelectedRow
@@ -213,7 +213,7 @@ L_021fffc4:
     beq L_02200010
     mov r0, r5
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     sub r1, r0, #0x11
     bl DisplayBrightness_StartMaskedTransitions
@@ -230,7 +230,7 @@ L_02200010:
     beq L_022000d4
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

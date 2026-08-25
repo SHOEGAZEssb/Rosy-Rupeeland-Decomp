@@ -21,7 +21,7 @@ extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
 extern void func_ov002_021fbdc0(void *);
@@ -78,7 +78,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
             break;
         FIELD(s32, state, 0x70) = func_ov045_0220c9e8(
             FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
-        func_02092260(state, FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
+        SceneSound_PlayPackedEffect(state, FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
         if (FIELD(s32, state, 0x5c) == 4 &&
             GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) == 1) {
             FIELD(s32, state, 0x6c) = 0;
@@ -115,7 +115,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
     case 4:
         if (func_ov002_021fbe08(FIELD(void *, state, 0xa8)) != 0 &&
             DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_02092260(state, 0x3c84);
+            SceneSound_PlayPackedEffect(state, 0x3c84);
             FIELD(s32, state, 0xe0) = 0;
             func_ov029_021fce4c(state,
                                 data_ov029_021fec28[0],

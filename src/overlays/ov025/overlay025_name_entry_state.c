@@ -55,9 +55,9 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void *LanguageLookupDatabase_GetResourceById(const void *, s32);
 extern s32 RetailSaveContext_PollOperation(void *);
 extern void RetailSaveContext_BeginNamedRecordWrite(void *, s32, void *, s32);
-extern void func_02092260(void *, s32);
-extern void func_020922f0(void *, s32);
-extern void func_02092314(void *, s32, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
+extern void SceneSound_StopDirectSequence(void *, s32, s32);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
@@ -67,7 +67,7 @@ extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_Hide(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
-extern s32 func_02095dd4(void *, void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void func_ov094_022198e8(void *, s32);
 extern void *func_ov025_021fce00(void *);
 extern void func_ov025_021fd03c(void *, void *, s32);
@@ -125,14 +125,14 @@ extern "C" s32 func_ov025_02201f28(void *scene)
 
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_02092314(scene, 0xe2, 0x10);
+        SceneSound_StopDirectSequence(scene, 0xe2, 0x10);
         DisplayBrightness_StartMaskedTransitions(3, -0x10);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* Fade setup intentionally falls through to resource initialization. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete()) {
-            func_020922f0(scene, 0xe8);
+            SceneSound_PlayDirectSequence(scene, 0xe8);
             func_ov025_022000a4(scene);
             func_ov025_02200564(scene);
             func_ov025_022005e4(scene);
@@ -175,7 +175,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                 if (func_ov025_021fd488(
                         FIELD(void *, scene, 0x598),
                         (u8 *)scene + 0x510)) {
-                    func_02092260(scene, 9);
+                    SceneSound_PlayPackedEffect(scene, 9);
                     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
                     void *font = LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x28);
                     TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
@@ -184,29 +184,29 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                     FIELD(s32, scene, 8) = 0;
                     goto maintained_return;
                 } else {
-                    func_02092314(scene, 0xe8, 1);
-                    func_020922f0(scene, 0xe9);
+                    SceneSound_StopDirectSequence(scene, 0xe8, 1);
+                    SceneSound_PlayDirectSequence(scene, 0xe9);
                     FIELD(s32, scene, 4) = 10;
                     FIELD(s32, scene, 8) = 0;
                     goto maintained_return;
                 }
             } else {
-                func_02092260(scene, 9);
+                SceneSound_PlayPackedEffect(scene, 9);
                 goto maintained_return;
             }
         } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x248,
                                  (u8 *)scene + 0x30, 0, 4)) {
             FIELD(s32, FIELD(void *, scene, 0x598), 0x17c) = 0;
-            func_02092260(scene, 3);
+            SceneSound_PlayPackedEffect(scene, 3);
             DisplayBrightness_StartMaskedTransitions(3, -0x10);
-            func_02092314(scene, 0xe8, 0x10);
+            SceneSound_StopDirectSequence(scene, 0xe8, 0x10);
             FIELD(s32, scene, 4) = 20;
             FIELD(s32, scene, 8) = 0;
             goto maintained_return;
         } else if (GraphicsSpriteState_TestTouchPoint(
                        FIELD(void *, FIELD(void *, scene, 0x598), 0x34),
                        (u8 *)scene + 0x30)) {
-            func_02092260(scene, 0xb);
+            SceneSound_PlayPackedEffect(scene, 0xb);
             if (FIELD(u8, gSystemState, 0x5f)) {
                 FIELD(const u16 *, FIELD(void *, scene, 0x598), 0x178) =
                     data_ov025_02202fc0;
@@ -220,7 +220,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         } else if (GraphicsSpriteState_TestTouchPoint(
                        FIELD(void *, FIELD(void *, scene, 0x598), 0x38),
                        (u8 *)scene + 0x30)) {
-            func_02092260(scene, 0xb);
+            SceneSound_PlayPackedEffect(scene, 0xb);
             if (FIELD(u8, gSystemState, 0x5f)) {
                 FIELD(const u16 *, FIELD(void *, scene, 0x598), 0x178) =
                     data_ov025_0220305a;
@@ -234,7 +234,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         } else if (GraphicsSpriteState_TestTouchPoint(
                        FIELD(void *, FIELD(void *, scene, 0x598), 0x3c),
                        (u8 *)scene + 0x30)) {
-            func_02092260(scene, 0xb);
+            SceneSound_PlayPackedEffect(scene, 0xb);
             if (!FIELD(u8, gSystemState, 0x5f)) {
                 FIELD(const u16 *, FIELD(void *, scene, 0x598), 0x178) =
                     data_ov025_02202fc0;
@@ -246,19 +246,19 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                        FIELD(void *, FIELD(void *, scene, 0x598), 0x30),
                        (u8 *)scene + 0x30)) {
             if (FIELD(s32, FIELD(void *, scene, 0x598), 0x17c)) {
-                func_02092260(scene, 0);
+                SceneSound_PlayPackedEffect(scene, 0);
                 --FIELD(s32, FIELD(void *, scene, 0x598), 0x17c);
                 func_ov025_021fd03c(FIELD(void *, scene, 0x598),
                                     FIELD(void *, scene, 0x574), 1);
             } else {
-                func_02092260(scene, 9);
+                SceneSound_PlayPackedEffect(scene, 9);
             }
             func_ov025_021fd2e8(FIELD(void *, scene, 0x598), 0);
         } else {
             s32 command = func_ov025_021fd340(
                 FIELD(void *, scene, 0x598), (u8 *)scene + 0x30);
             if (command >= 0) {
-                func_02092260(scene, 0);
+                SceneSound_PlayPackedEffect(scene, 0);
                 func_ov025_021fd388(FIELD(void *, scene, 0x598), command);
                 func_ov025_021fd03c(FIELD(void *, scene, 0x598),
                                     FIELD(void *, scene, 0x574), 0);
@@ -372,9 +372,9 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                     if (changed) {
                         func_ov025_021fd03c(FIELD(void *, scene, 0x598),
                                             FIELD(void *, scene, 0x574), 1);
-                        func_02092260(scene, 0);
+                        SceneSound_PlayPackedEffect(scene, 0);
                     } else {
-                        func_02092260(scene, 9);
+                        SceneSound_PlayPackedEffect(scene, 9);
                     }
                     func_ov025_021fd314(FIELD(void *, scene, 0x598), i);
                     break;
@@ -445,7 +445,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         }
         break;
     case 13:
-        if (func_02095dd4(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
+        if (ModalState_UpdateInput(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                           (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             DisplayBrightness_StartMaskedTransitions(3, -0x10);
             FIELD(s32, scene, 4) = 20;
@@ -514,7 +514,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             SpriteMotionController_Hide((u8 *)scene + 0x248);
             func_ov025_02200014(scene);
             DisplayBrightness_StartMaskedTransitions(3, 0);
-            func_020922f0(scene, 0xe2);
+            SceneSound_PlayDirectSequence(scene, 0xe2);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }

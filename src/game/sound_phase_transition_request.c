@@ -10,7 +10,7 @@ extern void *data_021e9abc;
 extern void SoundPhaseManager_StopSequence(void *manager);
 
 /* Mark the context as transitioning and request the manager's retail state 16. */
-void func_02059880(void *sound_context, s32 unused)
+void SoundContext_RequestPhaseTransition(void *sound_context, s32 unused)
 {
     (void)unused;
     *(u32 *)((u8 *)sound_context + 0xbc) = 1;

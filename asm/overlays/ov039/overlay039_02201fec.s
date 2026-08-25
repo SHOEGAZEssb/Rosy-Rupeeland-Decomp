@@ -11,7 +11,7 @@
     .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     .extern Sound_Play
-    .extern func_020594ec
+    .extern SoundContext_PlayDefaultStream
     .extern Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
     .extern func_ov069_02210a24
     .extern func_ov007_021fc200
@@ -155,7 +155,7 @@ L_02202180:
     str r3, [r1, #0xcc0]
     ldr r0, [r2, #0x0]
     mov r1, #0x13
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
     b L_022029c0
 L_022021dc:
     cmp r0, #0x4

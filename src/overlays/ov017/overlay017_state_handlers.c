@@ -18,10 +18,10 @@ extern s32 GameWork_TestFlag(void *, u32);
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
-extern void func_020922f0(void *, s32);
-extern s32 func_02095dd4(void *, void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void func_ov017_021fe6dc(void *);
 extern void func_ov017_021fe71c(void *);
 extern void func_ov017_021fea8c(void *, s32, s32, s32);
@@ -60,7 +60,7 @@ extern "C" s32 func_ov017_02200ab0(void *state)
         }
         break;
     case 1:
-        if (func_02095dd4(FIELD(void *, state, 0x400),
+        if (ModalState_UpdateInput(FIELD(void *, state, 0x400),
                            (u8 *)state + 0x30,
                            (FIELD(u32, state, 0x20) & 0x20) != 0) >= 0) {
             func_ov017_021ffd74(state);
@@ -71,8 +71,8 @@ extern "C" s32 func_ov017_02200ab0(void *state)
     case 2:
         if (DisplayBrightness_IsMainTransitionComplete()) {
             func_ov017_021fe6dc(FIELD(void *, state, 0x254));
-            func_02092260(state, 0x4114);
-            func_020922f0(state, 0x5c);
+            SceneSound_PlayPackedEffect(state, 0x4114);
+            SceneSound_PlayDirectSequence(state, 0x5c);
             func_ov017_021fea8c(state, data_ov017_02201540[0],
                                 data_ov017_02201540[1], 0);
         }
@@ -97,9 +97,9 @@ extern "C" s32 func_ov017_02200c20(void *state)
         if (progress >= FIELD(s32, data_ov017_022016e0, 8) ||
             FIELD(s32, data_ov017_022016e0, 0x80) == 0) {
             func_ov017_021fe71c(FIELD(void *, state, 0x254));
-            func_02092288(state, 0x4114);
+            SceneSound_StopPackedEffect(state, 0x4114);
             if (FIELD(void *, state, 0x440) != 0) {
-                func_02092288(state, 0x4115);
+                SceneSound_StopPackedEffect(state, 0x4115);
             }
             func_ov017_021fea8c(state, data_ov017_02201550[0],
                                 data_ov017_02201550[1], 0);

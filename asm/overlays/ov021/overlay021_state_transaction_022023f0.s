@@ -16,8 +16,8 @@
     .extern RecordDescriptor_GetMessage
     .extern RecordDescriptor_SetValue
     .extern func_0209189c
-    .extern func_02092260
-    .extern func_02092288
+    .extern SceneSound_PlayPackedEffect
+    .extern SceneSound_StopPackedEffect
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern PresentationScalar_TransitionTo
@@ -110,7 +110,7 @@ L_0220249c:
     beq L_02202ba8
     mov r0, r4
     mov r1, #0x6c
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_02202bb8
     ldr r3, L_02202bbc
     mov r0, #0xb0
@@ -156,7 +156,7 @@ L_02202544:
     beq L_02202ba8
     mov r0, r4
     mov r1, #0x6c
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
     ldr r0, [r4, #0x2c8]
     cmp r0, #0x4
     addls pc, pc, r0, lsl #0x2
@@ -170,7 +170,7 @@ L_02202570: ; jump table
 L_02202584:
     mov r0, r4
     mov r1, #0x6a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x2bc]
     ldr r1, [r4, #0x394]
     ldr r0, [r0, #0x8]
@@ -192,7 +192,7 @@ L_022025c0:
 L_022025d0:
     mov r0, r4
     mov r1, #0x6b
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x384]
     bl func_ov045_0220bdb0
     mov r0, r4
@@ -211,7 +211,7 @@ L_022025d0:
 L_02202618:
     mov r0, r4
     mov r1, #0x6a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x2bc]
     ldr r0, [r4, #0x394]
     ldr r1, [r1, #0x4]
@@ -243,7 +243,7 @@ L_02202668:
 L_02202690:
     mov r0, r4
     mov r1, #0x6b
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x384]
     bl func_ov045_0220bdb0
     mov r0, r4

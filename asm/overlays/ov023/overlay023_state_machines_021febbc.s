@@ -4,7 +4,7 @@
 .extern data_ov023_021ffb80
 .extern data_ov023_021ffb88
 .extern data_ov023_021ffb90
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern InventoryScroll_SetSelectedRow
 .extern InventoryScroll_SaveOrigins
 .extern InventoryScroll_MoveSelectionUp
@@ -148,7 +148,7 @@ L_021fed18:
     bne L_021fee90
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fee90
 L_021fed5c:
     add r1, r5, #0x30
@@ -161,7 +161,7 @@ L_021fed5c:
     bne L_021fee90
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fee90
 L_021fed8c:
     add r1, r5, #0x30
@@ -181,7 +181,7 @@ L_021fedb0:
     mov r0, r5
     beq L_021fedf8
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, r6
     bl InventoryScroll_SetSelectedRow
@@ -216,7 +216,7 @@ L_021fee28:
     mov r0, r5
     beq L_021fee64
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fef4c
     mov r0, r5
     ldmia r1, {r1, r2}
@@ -229,7 +229,7 @@ L_021fee64:
     bne L_021fee90
     mov r0, r5
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0xa
     str r0, [r5, #0x4]
     mov r0, #0x0
@@ -241,7 +241,7 @@ L_021fee90:
     beq L_021fef38
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

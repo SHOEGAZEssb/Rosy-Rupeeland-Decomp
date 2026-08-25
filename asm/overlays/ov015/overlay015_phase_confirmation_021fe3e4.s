@@ -2,7 +2,7 @@
     .extern data_ov015_021febe8
     .extern data_ov015_021febf0
     .extern ActorDescriptor_GetPrimaryLabel
-    .extern func_02095dd4
+    .extern ModalState_UpdateInput
     .extern func_ov001_021fc7e4
     .extern func_ov001_021fc7f4
     .extern func_ov015_021fce30
@@ -64,7 +64,7 @@ L_021fe480:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_021fe530
     cmp r0, #0x1

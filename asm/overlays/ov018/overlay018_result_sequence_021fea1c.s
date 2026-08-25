@@ -14,7 +14,7 @@
     .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
-    .extern func_020922f0
+    .extern SceneSound_PlayDirectSequence
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern PresentationList_Append
@@ -62,7 +62,7 @@ L_021fea40: ; jump table
     b L_021feecc ; case 10
 L_021fea6c:
     mov r1, #0x8f
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     mov r0, #0x14
     str r0, [sp, #0x0]
     add r0, r4, #0x1a8

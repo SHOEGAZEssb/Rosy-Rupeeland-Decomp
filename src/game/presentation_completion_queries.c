@@ -25,7 +25,7 @@ s32 Presentation_IsScriptSuspended(const void *presentation)
 }
 
 /* Retail's unconditional presentation capability query. */
-s32 func_0209526c(void)
+s32 Presentation_HasScriptCapability(void)
 {
     return 1;
 }

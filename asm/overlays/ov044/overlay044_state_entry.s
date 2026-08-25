@@ -6,7 +6,7 @@
 .extern func_ov044_0220be38
 .extern SpriteMotionController_Hide
 .extern func_ov044_0220c8d0
-.extern func_02095dd4
+.extern ModalState_UpdateInput
 .extern data_020f4e14
 .extern gDebugFont
 .extern data_ov044_0220d2a8
@@ -79,7 +79,7 @@ func_ov044_0220c97c:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt .L_0220ca8c
     ldr r1, .L_0220caa0

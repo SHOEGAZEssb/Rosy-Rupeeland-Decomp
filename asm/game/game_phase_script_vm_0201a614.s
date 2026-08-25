@@ -8,7 +8,7 @@
 .extern Sound_IsEffectPlaying
 .extern Sound_StopAllDirectSequences
 .extern Sound_IsDirectSequencePlaying
-.extern func_020594ec
+.extern SoundContext_PlayDefaultStream
 .extern Sound_StopStream
 .extern Sound_LoadGroup
 .extern Sound_ReleaseGroup
@@ -132,7 +132,7 @@ L_0201a7a0:
     mov r1, r4, lsl #0x10
     ldr r0, [r0, #0x0]
     mov r1, r1, lsr #0x10
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
     b L_0201a928
 L_0201a7b8:
     ldr r0, L_0201a934

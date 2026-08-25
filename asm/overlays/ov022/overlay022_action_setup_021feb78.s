@@ -10,7 +10,7 @@
 .extern data_021f3ecc
 .extern GraphicsSpriteText_FormatDecimal
 .extern RetailTextTable_FindRecordById
-.extern func_020922f0
+.extern SceneSound_PlayDirectSequence
 .extern TitleDialog_ClearTextRect
 .extern func_020befec
 .extern func_ov022_021ff2c4
@@ -98,7 +98,7 @@ L_021fec34:
     bl GameWork_SetFlag
     mov r0, r6
     mov r1, #0x9c
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     ldr r2, [r6, #0x358]
     add r0, r6, #0x310
     mov r1, #0x34

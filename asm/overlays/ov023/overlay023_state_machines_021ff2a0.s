@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov023/overlay023_state_machines.c. */
 .extern data_ov023_021ffb68
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern func_ov023_021fd954
 .extern func_ov023_021fd9d0
 .extern func_ov045_0220c274
@@ -14,7 +14,7 @@ func_ov023_021ff2a0:
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x478]
     bl func_ov023_021fd954
     str r0, [r4, #0x47c]

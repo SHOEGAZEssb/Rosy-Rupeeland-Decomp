@@ -20,7 +20,7 @@ extern void *gSoundContext;
 extern void *data_020f4e14;
 extern void *gDebugFont;
 extern const s32 data_ov004_021fcd40[2];
-extern void func_020922f0(void *state, s32 value);
+extern void SceneSound_PlayDirectSequence(void *state, s32 value);
 extern void Sound_SetDirectSequenceTrackMask(void *context, s32 channel, s32 value);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *context);
 extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
@@ -46,7 +46,7 @@ static s32 overlay004_entry_sound_value(s32 variant)
 }
 
 /*
- * When phase_004 is zero, call func_020922f0(state,0xCC), submit the
+ * When phase_004 is zero, call SceneSound_PlayDirectSequence(state,0xCC), submit the
  * variant-selected value above to sound channel 0xCC, activate data_020f4e14
  * and gDebugFont through GraphicsSpriteRenderer_ClearTextBuffer, advance phase to one, and clear +0x08.
  * In phase one (including the fallthrough from phase zero), apply the two-word
@@ -60,7 +60,7 @@ extern "C"
 s32 func_ov004_021fc3ac(Overlay004EntryPhaseState *state)
 {
     if (state->phase_004 == 0) {
-        func_020922f0(state, 0xcc);
+        SceneSound_PlayDirectSequence(state, 0xcc);
         Sound_SetDirectSequenceTrackMask(gSoundContext, 0xcc,
                       overlay004_entry_sound_value(state->variant_150));
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);

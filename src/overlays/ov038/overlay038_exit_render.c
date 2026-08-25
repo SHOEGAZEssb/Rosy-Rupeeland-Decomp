@@ -17,10 +17,10 @@ extern "C" {
 extern void InventoryScroll_BeginMarkerDrag(void *model, s32 mode);
 extern s32 InventoryScroll_UpdateInterpolation(void *model);
 extern void func_ov038_021fd578(void *presentation);
-extern void func_02092288(void *presentation, s32 event);
+extern void SceneSound_StopPackedEffect(void *presentation, s32 event);
 extern void InventoryScroll_SaveOrigins(void *model);
 extern s32 InventoryScroll_UpdateMarkerDrag(void *model, void *input);
-extern void func_02092260(void *presentation, s32 event);
+extern void SceneSound_PlayPackedEffect(void *presentation, s32 event);
 extern void InventoryScroll_EndMarkerDrag(void *model, s32 mode);
 extern void func_ov038_021fce04(void *node, u32 first, u32 second);
 extern void func_ov038_021fd37c(void *presentation);
@@ -53,7 +53,7 @@ extern "C" s32 func_ov038_021fdacc(void *presentation)
             break;
         }
         if (FIELD(s32, model, 0x0c) != FIELD(s32, model, 0x10)) {
-            func_02092288(presentation, 8);
+            SceneSound_StopPackedEffect(presentation, 8);
         }
         FIELD(s32, presentation, 4)++;
         FIELD(s32, presentation, 8) = 0;
@@ -62,7 +62,7 @@ extern "C" s32 func_ov038_021fdacc(void *presentation)
         InventoryScroll_SaveOrigins(model);
         if ((FIELD(u32, presentation, 0x20) & 0x10) != 0) {
             if (InventoryScroll_UpdateMarkerDrag(model, (u8 *)presentation + 0x30)) {
-                func_02092260(presentation, 8);
+                SceneSound_PlayPackedEffect(presentation, 8);
                 FIELD(s32, presentation, 4)--;
                 FIELD(s32, presentation, 8) = 0;
             }

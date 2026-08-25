@@ -15,7 +15,7 @@ extern const u32 data_ov016_02201498[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern s32 func_ov000_021fc298(void *, void *);
 extern void func_ov000_021fc3f8(void *);
@@ -100,17 +100,17 @@ extern "C" s32 func_ov016_02200900(void *state)
                                                 data_ov016_02201490[0],
                                                 data_ov016_02201490[1]);
                         } else {
-                            func_02092260(state, 9);
+                            SceneSound_PlayPackedEffect(state, 9);
                         }
                     } else {
-                        func_02092260(state, 0);
+                        SceneSound_PlayPackedEffect(state, 0);
                         func_ov000_021fca4c(list, selected);
                         func_ov000_021fc9d4(list);
                         func_ov016_021ffc2c(state);
                     }
                 } else if (func_ov000_021fc5ac(list,
                                                (u8 *)state + 0x30) != 0) {
-                    func_02092260(state, 3);
+                    SceneSound_PlayPackedEffect(state, 3);
                     if (FIELD(s32, state, 0x54) == 1) {
                         Overlay016ActorValue_Init(state,
                                             data_ov016_02201488[0],
@@ -124,7 +124,7 @@ extern "C" s32 func_ov016_02200900(void *state)
                 } else if (SpriteMotionController_BeginHitResponse(
                                (u8 *)FIELD(void *, state, 0x470) + 0x20,
                                (u8 *)state + 0x30, 0, 4) != 0) {
-                    func_02092260(state, 2);
+                    SceneSound_PlayPackedEffect(state, 2);
                     if (FIELD(s32, state, 0x54) == 1) {
                         FIELD(s32, state, 0x478) = 1;
                         Overlay016ActorValue_Init(state,
@@ -137,15 +137,15 @@ extern "C" s32 func_ov016_02200900(void *state)
                     break;
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x2ec,
                                           (u8 *)state + 0x30, -4, 0) != 0) {
-                    func_02092260(state, 0xb);
+                    SceneSound_PlayPackedEffect(state, 0xb);
                     func_ov016_021ffe3c(state, -1);
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x398,
                                           (u8 *)state + 0x30, 4, 0) != 0) {
-                    func_02092260(state, 0xb);
+                    SceneSound_PlayPackedEffect(state, 0xb);
                     func_ov016_021ffe3c(state, 1);
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x240,
                                           (u8 *)state + 0x30, 0, -4) != 0) {
-                    func_02092260(state, 0xb);
+                    SceneSound_PlayPackedEffect(state, 0xb);
                     func_ov016_021ffd84(state);
                 } else {
                     FIELD(void *, state, 0x474) =
@@ -161,11 +161,11 @@ extern "C" s32 func_ov016_02200900(void *state)
             }
         }
         if (func_ov000_021fc424(list) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         } else if (func_ov000_021fc4fc(list) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }

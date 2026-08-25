@@ -7,8 +7,8 @@
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_02092260
-.extern func_020922f0
+.extern SceneSound_PlayPackedEffect
+.extern SceneSound_PlayDirectSequence
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern IndexedSelectionController_ResetTransition
@@ -85,7 +85,7 @@ L_021ffac0:
     beq L_021ffd70
     mov r0, r4
     mov r1, #0x30
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -106,7 +106,7 @@ L_021ffaf0:
     bl DisplayBrightness_StartMaskedTransitions
     mov r0, r4
     mov r1, #0x9d
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     mov r0, r4
     bl func_ov022_021feac8
     ldr r1, [r4, #0x4]

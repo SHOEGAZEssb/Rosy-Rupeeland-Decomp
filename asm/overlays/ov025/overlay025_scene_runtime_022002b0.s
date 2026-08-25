@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_scene_runtime.c. */
-.extern func_02095bec
+.extern ModalState_DrawFrame
 
 
     .global func_ov025_022002b0
@@ -11,7 +11,7 @@ func_ov025_022002b0:
     ldr r0, [r4, #0x59c]
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}
-    bl func_02095bec
+    bl ModalState_DrawFrame
     ldr r0, [r4, #0x59c]
     cmp r0, #0x0
     beq L_022002e0

@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov023/overlay023_state_machines.c. */
 .extern data_ov023_021ffb78
-.extern func_02092260
-.extern func_02092288
+.extern SceneSound_PlayPackedEffect
+.extern SceneSound_StopPackedEffect
 .extern InventoryScroll_SaveOrigins
 .extern InventoryScroll_UpdateInterpolation
 .extern InventoryScroll_BeginMarkerDrag
@@ -52,7 +52,7 @@ L_021fefbc:
     bne L_021feff4
     mov r0, r5
     mov r1, #0x8
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
 L_021feff4:
     ldr r1, [r5, #0x4]
     mov r0, #0x0
@@ -82,7 +82,7 @@ L_021ff028:
     beq L_021ff090
     mov r0, r5
     mov r1, #0x8
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

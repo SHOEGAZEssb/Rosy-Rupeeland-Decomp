@@ -15,7 +15,7 @@
 .extern InventoryScroll_TestLowerArrowPress
 .extern InventoryScroll_TestMarkerHit
 .extern func_ov044_0220be38
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern InventoryScroll_SetSelectedRow
 .extern func_ov044_0220caa4
 .extern SpriteMotionController_BeginHitResponse
@@ -132,7 +132,7 @@ func_ov044_0220cb04:
     bne .L_0220cd98
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b .L_0220cd98
 .L_0220cc90:
     add r1, r5, #0x30
@@ -145,7 +145,7 @@ func_ov044_0220cb04:
     bne .L_0220cd98
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b .L_0220cd98
 .L_0220ccc0:
     add r1, r5, #0x30
@@ -165,7 +165,7 @@ func_ov044_0220cb04:
     mov r0, r5
     beq .L_0220cd2c
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, r6
     bl InventoryScroll_SetSelectedRow
@@ -200,7 +200,7 @@ func_ov044_0220cb04:
     beq .L_0220cd98
     mov r0, r5
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, .L_0220ce24
     mov r0, r5
     ldmia r1, {r1, r2}
@@ -213,7 +213,7 @@ func_ov044_0220cb04:
     beq .L_0220ce10
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

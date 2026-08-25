@@ -1,7 +1,7 @@
 .text
 .extern func_ov044_0220bd98
 .extern func_ov044_0220bb48
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern func_ov044_0220be38
 .extern data_ov044_0220d2e8
 
@@ -17,7 +17,7 @@ func_ov044_0220caa4:
     mov r0, r4
     beq .L_0220cae4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0xa
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -25,7 +25,7 @@ func_ov044_0220caa4:
     ldmia sp!, {r4, pc}
 .L_0220cae4:
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, .L_0220cb00
     mov r0, r4
     ldmia r1, {r1, r2}

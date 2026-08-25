@@ -17,10 +17,10 @@ extern "C" {
 extern void GamePhaseRuntime_SetPlacementMode(void *, s32, s32);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
 extern void *func_ov006_021fb708(void *);
-extern void *func_020959d4(void *, s32, s32);
+extern void *ModalState_Init(void *, s32, s32);
 extern void ModalState_CopyAttachmentText(void *, void *);
 extern void ModalState_InitResources(void *, s32);
-extern void func_02095bec(void *);
+extern void ModalState_DrawFrame(void *);
 extern s32 SpriteMotionController_IsVisible(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
@@ -72,7 +72,7 @@ void func_ov013_021fda9c(void *state, s32 setting, void *optional)
     void *object = Heap_Alloc(0x2d0, data_ov013_021fed90, 4, gHeapContext);
 
     if (object != 0)
-        object = func_020959d4(object, 0, 0);
+        object = ModalState_Init(object, 0, 0);
     FIELD(void *, state, 0x9a4) = object;
     if (optional != 0)
         ModalState_CopyAttachmentText(object, optional);
@@ -92,7 +92,7 @@ void func_ov013_021fdb10(void *state)
 {
     void *object = FIELD(void *, state, 0x9a4);
 
-    func_02095bec(object);
+    ModalState_DrawFrame(object);
     if (object != 0) {
         void **vtable = FIELD(void **, object, 0);
         ((Overlay013VirtualMethod)vtable[1])(object);

@@ -22,11 +22,11 @@ extern void GameWork_SetFlag(void *, s32);
 extern s32 ActorDescriptor_GetPrimaryLabel(void *);
 extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
 extern s32 InventoryRecordCollection_HasInactiveKind1Subtype1(void *);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void InventoryScroll_BeginMarkerDrag(void *, s32);
 extern void InventoryScroll_EndMarkerDrag(void *, s32);
-extern s32 func_02095dd4(void *, void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern s32 func_ov001_021fc0ac(void *, void *);
 extern void func_ov001_021fc1f0(void *);
 extern s32 func_ov001_021fc214(void *);
@@ -100,7 +100,7 @@ extern "C" s32 Overlay015_UpdateTransientConfirmation(void *state)
             overlay015_transition(state, data_ov015_021febd0);
         }
     } else if (FIELD(s32, state, 4) == 1 &&
-               func_02095dd4(FIELD(void *, state, 0xf8), (u8 *)state + 0x30,
+               ModalState_UpdateInput(FIELD(void *, state, 0xf8), (u8 *)state + 0x30,
                              (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
         func_ov015_021fdeac(state);
         func_ov001_021fc384(FIELD(void *, state, 0xdc));
@@ -150,7 +150,7 @@ extern "C" s32 func_ov015_021fdfe8(void *state)
                     break;
                 }
                 if (selected >= 0) {
-                    func_02092260(state, 0);
+                    SceneSound_PlayPackedEffect(state, 0);
                     if (selected != FIELD(s32, controller, 0x1ac)) {
                         func_ov001_021fc758(controller, selected);
                         func_ov001_021fc644(controller);
@@ -160,12 +160,12 @@ extern "C" s32 func_ov015_021fdfe8(void *state)
                     break;
                 }
                 if (func_ov001_021fc3c4(controller, (u8 *)state + 0x30) != 0) {
-                    func_02092260(state, 3);
+                    SceneSound_PlayPackedEffect(state, 3);
                     overlay015_transition(state, data_ov015_021fec00);
                     break;
                 }
                 if (func_ov001_021fc3ec(controller, (u8 *)state + 0x30) != 0) {
-                    func_02092260(state, 0xb);
+                    SceneSound_PlayPackedEffect(state, 0xb);
                     GameWork_SetFlag(gGameWork, 0x387);
                     overlay015_transition(state, data_ov015_021fec08);
                     break;
@@ -176,10 +176,10 @@ extern "C" s32 func_ov015_021fdfe8(void *state)
             }
         }
         if (func_ov001_021fc214(controller) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             overlay015_step_phase(state, -1);
         } else if (func_ov001_021fc2e4(controller) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             overlay015_step_phase(state, 1);
         }
         break;
@@ -221,14 +221,14 @@ extern "C" s32 func_ov015_021fe2b0(void *state)
         if (FIELD(s32, auxiliary, 0xc) != FIELD(s32, auxiliary, 0x10)) {
             func_ov015_021fd6c8(state);
             func_ov015_021fdad4(state);
-            func_02092288(state, 8);
+            SceneSound_StopPackedEffect(state, 8);
         }
         overlay015_step_phase(state, 1);
         /* Intentional fallthrough into input handling. */
     case 2:
         if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
             if (func_ov001_021fc348(controller, (u8 *)state + 0x30) != 0) {
-                func_02092260(state, 8);
+                SceneSound_PlayPackedEffect(state, 8);
                 overlay015_step_phase(state, -1);
             }
         } else {
@@ -266,7 +266,7 @@ extern "C" s32 func_ov015_021fe3e4(void *state)
         overlay015_step_phase(state, 1);
         break;
     case 2: {
-        s32 result = func_02095dd4(FIELD(void *, state, 0xf8), (u8 *)state + 0x30,
+        s32 result = ModalState_UpdateInput(FIELD(void *, state, 0xf8), (u8 *)state + 0x30,
                                    (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0);
         if (result == 1) {
             func_ov001_021fc7f4(FIELD(void *, state, 0xdc));

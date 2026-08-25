@@ -1,5 +1,5 @@
     .text
-    .extern func_02095bec
+    .extern ModalState_DrawFrame
 
 /* Exact fallback for transient presentation teardown; see src/overlays/ov015/overlay015_selection_runtime.c. */
     .global func_ov015_021fdeac
@@ -8,7 +8,7 @@ func_ov015_021fdeac:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xf8]
-    bl func_02095bec
+    bl ModalState_DrawFrame
     ldr r0, [r4, #0xf8]
     cmp r0, #0x0
     beq L_021fded4

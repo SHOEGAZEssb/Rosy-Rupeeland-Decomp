@@ -5,7 +5,7 @@
     .extern func_02091c7c
     .extern func_02091cf0
     .extern SceneInputBase_Update
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern GraphicsSpriteState_TestTouchPoint
     .extern func_ov013_021fce04
     .extern func_ov013_021fdbb0
@@ -42,7 +42,7 @@ L_021fe8b8:
     beq L_021fe900
     mov r0, r4
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x4
     ldr r1, L_021fe9c0
     str r0, [r4, #0x984]
@@ -62,7 +62,7 @@ L_021fe900:
     beq L_021fe9ac
     mov r0, r4
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r1, #0x14
     add r0, r4, #0x188
     str r1, [sp, #0x0]

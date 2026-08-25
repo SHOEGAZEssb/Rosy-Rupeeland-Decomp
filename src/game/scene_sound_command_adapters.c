@@ -17,7 +17,7 @@ extern void Sound_SetEffectParameters(void *context, s32 archive, s32 member, s3
 extern void Sound_StopDirectSequence(void *context, u16 sequence, s32 fade_frames);
 
 /* Start one packed sequence-archive member with its default parameters. */
-void func_02092260(void *scene, s32 packed)
+void SceneSound_PlayPackedEffect(void *scene, s32 packed)
 {
     u16 value = (u16)packed;
     (void)scene;
@@ -25,7 +25,7 @@ void func_02092260(void *scene, s32 packed)
 }
 
 /* Stop one packed sequence-archive member immediately. */
-void func_02092288(void *scene, s32 packed)
+void SceneSound_StopPackedEffect(void *scene, s32 packed)
 {
     u16 value = (u16)packed;
     (void)scene;
@@ -33,7 +33,7 @@ void func_02092288(void *scene, s32 packed)
 }
 
 /* Apply an explicit volume/value to one packed sequence-archive member. */
-void func_020922b0(void *scene, s32 packed, s32 argument)
+void SceneSound_SetPackedEffectValue(void *scene, s32 packed, s32 argument)
 {
     u16 value = (u16)packed;
     (void)scene;
@@ -42,21 +42,21 @@ void func_020922b0(void *scene, s32 packed, s32 argument)
 }
 
 /* Start a direct sequence at full retail volume. */
-void func_020922f0(void *scene, s32 sequence)
+void SceneSound_PlayDirectSequence(void *scene, s32 sequence)
 {
     (void)scene;
     Sound_PlayDirectSequence(gSoundContext, (u16)sequence, 0x7f);
 }
 
 /* Stop or fade a direct sequence by ID. */
-void func_02092314(void *scene, s32 sequence, s32 fade_frames)
+void SceneSound_StopDirectSequence(void *scene, s32 sequence, s32 fade_frames)
 {
     (void)scene;
     Sound_StopDirectSequence(gSoundContext, (u16)sequence, fade_frames);
 }
 
 /* Return the fixed false/zero result used by shared scene callback tables. */
-s32 func_02092344(void)
+s32 SceneCallback_ReturnFalse(void)
 {
     return 0;
 }

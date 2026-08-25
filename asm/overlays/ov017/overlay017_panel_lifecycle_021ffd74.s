@@ -1,12 +1,12 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_panel_lifecycle.c. */
-    .extern func_02095bec
+    .extern ModalState_DrawFrame
 .global func_ov017_021ffd74
 func_ov017_021ffd74:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x400]
-    bl func_02095bec
+    bl ModalState_DrawFrame
     ldr r0, [r4, #0x400]
     cmp r0, #0x0
     beq L_021ffd9c

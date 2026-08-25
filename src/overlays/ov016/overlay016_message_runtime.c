@@ -22,8 +22,8 @@ extern s32 GraphicsSpriteRenderer_MeasureText(void *, const u16 *, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern const u16 *LanguageLookupDatabase_GetResourceById(void *, u16);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
-extern void *func_020959d4(void *, s32, s32);
-extern void func_02095bec(void *);
+extern void *ModalState_Init(void *, s32, s32);
+extern void ModalState_DrawFrame(void *);
 extern void ModalState_InitResources(void *, s32);
 extern void ModalState_CopyAttachmentText(void *, void *);
 extern void *func_02095f8c(void *, void *, s32, s32, s32, s32, s32);
@@ -72,7 +72,7 @@ extern "C" void func_ov016_021ff908(void *state, s32 setting, s32 variant,
     GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get((u8 *)state + 0x84, handleIndex), 1, 0);
     object = Heap_Alloc(0x2d0, data_ov016_022015b0, 4, gHeapContext);
     if (object != 0) {
-        object = func_020959d4(object, 0, 0);
+        object = ModalState_Init(object, 0, 0);
     }
     FIELD(void *, state, 0x460) = object;
     if (optional != 0) {
@@ -92,7 +92,7 @@ extern "C" void func_ov016_021ff9b8(void *state)
     typedef void (*DeleteFunction)(void *);
     void *object = FIELD(void *, state, 0x460);
 
-    func_02095bec(object);
+    ModalState_DrawFrame(object);
     if (object != 0) {
         DeleteFunction *vtable = *(DeleteFunction **)object;
         vtable[1](object);

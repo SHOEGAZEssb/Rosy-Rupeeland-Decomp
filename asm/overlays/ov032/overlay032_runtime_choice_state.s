@@ -11,7 +11,7 @@
 .extern data_021e9e00
 .extern data_021f5f18
 .extern data_ov032_02202220
-.extern func_020594ec
+.extern SoundContext_PlayDefaultStream
 .extern Sound_StopStream
 .extern RetailPhaseDatabase_UnlockById
 .extern GraphicsResource_GetFormat
@@ -229,7 +229,7 @@ L_022008e0:
     ldr r0, L_02200d90
     mov r1, #0x12
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]

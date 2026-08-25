@@ -20,8 +20,8 @@ extern void Heap_Free(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
@@ -176,7 +176,7 @@ extern "C" s32 func_ov029_021fe870(void *state)
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov002_021fbe68(FIELD(void *, state, 0xa8));
-            func_02092260(state,
+            SceneSound_PlayPackedEffect(state,
                           FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
             Overlay029_SetPair(state, data_ov029_021fec38);
         }
@@ -197,7 +197,7 @@ extern "C" s32 func_ov029_021feb08(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         if (func_ov029_021fd850(state) != 0) {
-            func_02092288(state,
+            SceneSound_StopPackedEffect(state,
                           FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
             FIELD(u16, gGameWork, 0x204) = (u16)FIELD(s32, state, 0x6c);
             FIELD(s32, gGameWork, 0x7cc) = FIELD(s32, state, 0xac);

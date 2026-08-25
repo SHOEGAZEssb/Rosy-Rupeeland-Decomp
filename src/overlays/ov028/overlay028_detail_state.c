@@ -17,7 +17,7 @@ extern const s32 data_ov028_021ff218[];
 extern "C" {
 #endif
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, const void *);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
@@ -147,7 +147,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
                         FIELD(s32, state, 0x1f8) = 1;
                     } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x144,
                                              point, 0, 4)) {
-                        func_02092260(state, 3);
+                        SceneSound_PlayPackedEffect(state, 3);
                         FIELD(s32, state, 4) = 10;
                         FIELD(s32, state, 8) = 0;
                     }
@@ -167,7 +167,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
             }
             FIELD(s32, child, 0x7c) = 4;
             FIELD(s32, child, 0x80) = 0;
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             Overlay028_NextPhase(state);
         }
         if (IndexedSelectionController_IsTransitionIdle(choice))

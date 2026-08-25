@@ -5,7 +5,7 @@
     .extern GamePhaseCurrencyHud_Update
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern Presentation_SetScript
     .extern Presentation_IsScriptComplete
     .extern Presentation_IsScriptSuspended
@@ -186,7 +186,7 @@ L_021fddb4:
     ldmeqia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
     mov r0, r5
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_021fde04:
@@ -224,7 +224,7 @@ L_021fde3c:
     beq L_021fde84
     mov r0, r7
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_021fde84:

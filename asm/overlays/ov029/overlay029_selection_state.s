@@ -7,7 +7,7 @@
 .extern data_ov029_021fecb8
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GraphicsSpriteText_FormatDecimal
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern func_ov002_021fbb68
@@ -73,12 +73,12 @@ L_021fdccc:
     beq L_021fdd0c
     mov r0, r4
     mov r1, #0x3c80
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fdd18
 L_021fdd0c:
     ldr r1, L_021fe0a8
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021fdd18:
     ldr r1, [r4, #0x4]
     mov r0, #0x0
@@ -144,7 +144,7 @@ L_021fdde4:
     bgt L_021fde1c
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -174,7 +174,7 @@ L_021fde60:
     bne L_021fde8c
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -196,7 +196,7 @@ L_021fde8c:
 L_021fdebc:
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -231,7 +231,7 @@ L_021fdf0c:
 L_021fdf38:
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     str r0, [r4, #0x4]
     str r0, [r4, #0x8]
@@ -250,7 +250,7 @@ L_021fdf70:
 L_021fdf78:
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r2, #0x0
     mov r0, #0x1
     str r2, [r4, #0xac]
@@ -267,7 +267,7 @@ L_021fdfb0:
     bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r1, #0x0
     str r1, [r4, #0xac]
     ldr r0, L_021fe0b0

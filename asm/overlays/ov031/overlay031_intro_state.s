@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov031/overlay031_scene_states.c for documented portable C. */
 .extern data_ov031_021fe6f8
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern func_ov031_021fce84
 .extern func_ov031_021fce98
 .extern func_ov031_021fd5c0
@@ -85,7 +85,7 @@ L_021fe354:
     beq L_021fe39c
     mov r0, r4
     mov r1, #0x6f
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     bl func_ov031_021fe1a8
     ldr r1, [r4, #0x4]

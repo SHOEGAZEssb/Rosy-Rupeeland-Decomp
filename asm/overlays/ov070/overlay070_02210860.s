@@ -13,7 +13,7 @@
 .extern VecFx32Object_Assign
 .extern Sound_StopAllDirectSequences
 .extern Sound_PlayEffectWithParameters
-.extern func_020594ec
+.extern SoundContext_PlayDefaultStream
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .extern Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
@@ -434,7 +434,7 @@ func_ov070_02210860:
     ldr r0, .L_0221183c
     mov r1, #0x4
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
 .L_02210e68:
     mov r2, #0xa4
     umull r0, ip, r5, r2

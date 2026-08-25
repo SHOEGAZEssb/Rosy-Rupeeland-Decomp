@@ -15,7 +15,7 @@ extern "C" {
 extern void GameWork_SetFlag(void *, u32);
 extern u32 genrand_int32(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern s32 func_ov002_021fbb68(void *, const void *);
 extern s32 func_ov002_021fbc54(void *);
 extern void func_ov002_021fbd64(void *);
@@ -53,7 +53,7 @@ extern "C" s32 func_ov019_021fd278(void *state)
         if ((FIELD(u32, state, 0x20) & 0x20) &&
             func_ov002_021fbb68(presentation,
                                 (u8 *)state + 0x30) >= 0) {
-            func_02092260(state,
+            SceneSound_PlayPackedEffect(state,
                           (genrand_int32() & 1) ? 0x3c80 : 0x3c81);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -80,11 +80,11 @@ extern "C" s32 func_ov019_021fd278(void *state)
             if (FIELD(s32, presentation, 0x90) == 0 ||
                 (FIELD(s32, state, 0x54) == 1 &&
                  value >= GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud))) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 FIELD(s32, state, 4) = 0;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_02092260(state, 0x3c82);
+                SceneSound_PlayPackedEffect(state, 0x3c82);
                 FIELD(s32, gGameWork, 0x7cc) = value;
                 GameWork_SetFlag(gGameWork, 0x390);
                 func_ov019_021fce00(state, data_ov019_021fd608[0],

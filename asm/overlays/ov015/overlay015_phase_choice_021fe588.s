@@ -4,8 +4,8 @@
     .extern data_ov015_021febc8
     .extern data_ov015_021febd8
     .extern ActorDescriptor_GetPrimaryLabel
-    .extern func_02092260
-    .extern func_02095dd4
+    .extern SceneSound_PlayPackedEffect
+    .extern ModalState_UpdateInput
     .extern func_ov001_021fc7e4
     .extern func_ov001_021fc7f4
     .extern func_ov001_021fc88c
@@ -96,7 +96,7 @@ L_021fe68c:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_021fe804
     cmp r0, #0x1
@@ -107,7 +107,7 @@ L_021fe68c:
 L_021fe6c0:
     ldr r1, L_021fe814
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xdc]
     bl func_ov001_021fc88c
     ldr r0, [r4, #0xdc]
@@ -151,7 +151,7 @@ L_021fe754:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_021fe804
     cmp r0, #0x1

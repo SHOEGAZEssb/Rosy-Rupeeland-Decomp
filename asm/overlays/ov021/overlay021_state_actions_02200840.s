@@ -4,7 +4,7 @@
     .extern data_ov021_02202e98
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern DisplayBrightness_StartMaskedTransitions
     .extern func_ov002_021fbdc0
     .extern func_ov002_021fbe08
@@ -119,7 +119,7 @@ L_02200970:
     beq L_022009b4
     ldr r1, L_022009d8
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     ldr r1, L_022009dc
     str r0, [r4, #0x3fc]

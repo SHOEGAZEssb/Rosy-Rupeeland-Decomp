@@ -20,9 +20,9 @@ extern void *gSystemState;
 extern "C" {
 #endif
 extern void AreaInfoPanelPresentation_ShowIndex(void *, s32);
-extern void func_02092260(void *, s32);
-extern void func_020922f0(void *, s32);
-extern void func_02092314(void *, s32, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
+extern void SceneSound_StopDirectSequence(void *, s32, s32);
 extern void IndexedSelectionController_SetValue(void *, s32);
 extern void IndexedSelectionController_ResetTransition(void *);
 extern void IndexedSelectionController_SnapTransitionOrigin(void *);
@@ -90,20 +90,20 @@ extern "C" s32 func_ov024_021fdcdc(void *scene)
         } else if (FIELD(u32, scene, 0x20) & 0x20) {
             if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x80,
                               (u8 *)scene + 0x30, 0, 4)) {
-                func_02092260(scene, 3);
+                SceneSound_PlayPackedEffect(scene, 3);
                 FIELD(s16, gGameWork, 0x1de) = -1;
-                func_02092314(scene, 0x3e, 0x10);
+                SceneSound_StopDirectSequence(scene, 0x3e, 0x10);
                 install_pair(scene, data_ov024_021fe2c8);
             } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x12c,
                                      (u8 *)scene + 0x30, 0, 4)) {
-                func_02092260(scene, 0x2e80);
+                SceneSound_PlayPackedEffect(scene, 0x2e80);
                 s32 current = FIELD(s32, scene, 0x290);
                 func_ov024_021fdab0(scene,
                     data_ov024_021fe250[current * 2], 30);
                 install_pair(scene, data_ov024_021fe308);
             } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x1d8,
                                      (u8 *)scene + 0x30, 0, 4)) {
-                func_02092260(scene, 0x2e80);
+                SceneSound_PlayPackedEffect(scene, 0x2e80);
                 s32 current = FIELD(s32, scene, 0x290);
                 func_ov024_021fdab0(scene,
                     data_ov024_021fe254[current * 2], 30);
@@ -113,13 +113,13 @@ extern "C" s32 func_ov024_021fdcdc(void *scene)
                 if (func_ov005_021fbdf8(FIELD(void *, scene, 0x2bc), current,
                                         (u8 *)scene + 0x30)) {
                     if (current > 0) {
-                        func_02092260(scene, 0x2e81);
-                        func_02092314(scene, 0x3e, 0x20);
-                        func_020922f0(scene, 0x39);
+                        SceneSound_PlayPackedEffect(scene, 0x2e81);
+                        SceneSound_StopDirectSequence(scene, 0x3e, 0x20);
+                        SceneSound_PlayDirectSequence(scene, 0x39);
                         FIELD(s16, gGameWork, 0x1de) = (s16)current;
                         install_pair(scene, data_ov024_021fe2f8);
                     } else {
-                        func_02092260(scene, 9);
+                        SceneSound_PlayPackedEffect(scene, 9);
                     }
                 } else {
                     for (s32 i = 0; i < 11; ++i) {
@@ -128,11 +128,11 @@ extern "C" s32 func_ov024_021fdcdc(void *scene)
                                                 i, (u8 *)scene + 0x30))
                             continue;
                         if (i <= FIELD(s32, scene, 0x60)) {
-                            func_02092260(scene, 0x2e80);
+                            SceneSound_PlayPackedEffect(scene, 0x2e80);
                             func_ov024_021fdab0(scene, i, 12);
                             install_pair(scene, data_ov024_021fe2d0);
                         } else {
-                            func_02092260(scene, 9);
+                            SceneSound_PlayPackedEffect(scene, 9);
                         }
                         break;
                     }
@@ -141,7 +141,7 @@ extern "C" s32 func_ov024_021fdcdc(void *scene)
         }
 
         if (IndexedSelectionController_AdvanceTransition((u8 *)scene + 0x284)) {
-            func_02092260(scene, 0x2e80);
+            SceneSound_PlayPackedEffect(scene, 0x2e80);
             --FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }

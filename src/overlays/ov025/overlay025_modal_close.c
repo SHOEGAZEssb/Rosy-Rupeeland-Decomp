@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095bec(void *);
+extern void ModalState_DrawFrame(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,7 @@ extern "C" void func_ov025_022002b0(void *scene)
     void *modal = FIELD(void *, scene, 0x59c);
     if (!modal)
         return;
-    func_02095bec(modal);
+    ModalState_DrawFrame(modal);
     modal = FIELD(void *, scene, 0x59c);
     if (modal) {
         typedef void (*Destructor)(void *);

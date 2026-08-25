@@ -31,7 +31,7 @@ extern const s32 data_ov004_021fcd58[2];
 extern s32 SceneInputBase_Update(void *object, s32 active);
 extern void DisplayBrightness_StartMaskedTransitions(s32 channel, s32 value);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_02092314(void *state, s32 callbackId, s32 value);
+extern void SceneSound_StopDirectSequence(void *state, s32 callbackId, s32 value);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
 extern void *func_ov004_021fb70c(void *memory, s32 variant,
@@ -101,7 +101,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
             break;
         }
         if (state->variant_058 < 1 || state->variant_058 > 10) {
-            func_02092314(state, 0x3d, 0x10);
+            SceneSound_StopDirectSequence(state, 0x3d, 0x10);
             func_ov004_021fb6e4(state, data_ov004_021fcd28[0],
                                 data_ov004_021fcd28[1]);
             break;
@@ -143,7 +143,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
     case 5:
         SceneInputBase_Update(state->helper_054, 0);
         if (DisplayBrightness_IsMainTransitionComplete()) {
-            func_02092314(state, 0x3d, 0x10);
+            SceneSound_StopDirectSequence(state, 0x3d, 0x10);
             func_ov004_021fb6e4(state, data_ov004_021fcd58[0],
                                 data_ov004_021fcd58[1]);
         }

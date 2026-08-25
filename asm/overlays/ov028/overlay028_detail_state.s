@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov028/overlay028_detail_state.c. */
 .extern data_ov028_021ff218
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern GraphicsSpriteState_TestTouchPoint
 .extern DisplayBrightness_StartMaskedTransitions
 .extern IndexedSelectionController_ConfigureRange
@@ -225,7 +225,7 @@ L_021fee54:
     beq L_021fee8c
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0xa
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -268,7 +268,7 @@ L_021fef00:
     str r0, [r1, #0x80]
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

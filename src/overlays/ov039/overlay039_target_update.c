@@ -34,7 +34,7 @@ extern void func_ov039_022012c4(void *scene);
 extern void func_ov039_022036cc(void *scene);
 extern void func_ov039_022040f4(void *scene);
 extern void Sound_StopAllDirectSequences(void *context, s32 mode);
-extern void func_020594ec(void *context, s32 value);
+extern void SoundContext_PlayDefaultStream(void *context, s32 value);
 extern void Sound_StopEffect(void *context, s32 soundId, s32 mode);
 extern void Sound_Play(void *context, s32 soundId, s32 mode);
 extern void func_ov039_022014f8(void *output, const void *first,
@@ -138,7 +138,7 @@ extern "C" s32 func_ov039_02201620(void *scene, void *input)
         FIELD(s32, owner, 0x44) = 30;
         FIELD(s32, owner, 0x48) = 5;
         Sound_StopAllDirectSequences(FIELD(void *, gSoundContext, 0), 0);
-        func_020594ec(FIELD(void *, gSoundContext, 0), 8);
+        SoundContext_PlayDefaultStream(FIELD(void *, gSoundContext, 0), 8);
         Sound_StopEffect(FIELD(void *, gSoundContext, 0), 0x1c5, 9);
     }
     FIELD(u16, scene, 0x1cbc) = 0;

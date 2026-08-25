@@ -33,7 +33,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void TitleInterpolatedValue_Init(void *);
 extern void func_02091b98(void *, s32);
 extern void SceneInputBase_Init(void *);
-extern void func_020922f0(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void IndexedSelectionController_Init(void *);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
 extern void SpriteMotionController_Init(void *);
@@ -115,7 +115,7 @@ extern "C" void *func_ov024_021fce2c(void *scene)
     void *panel = Heap_Alloc(0x118, data_ov024_021fe354, 4, gHeapContext);
     if (panel != 0) func_ov046_0220b7bc(panel, gDebugFont, 0);
     FIELD(void *, scene, 0x2c0) = panel;
-    func_020922f0(scene, 0x3e);
+    SceneSound_PlayDirectSequence(scene, 0x3e);
     func_ov046_0220bffc(panel, FIELD(s32, scene, 0x290), 0, 0);
     func_ov046_0220c478(panel, FIELD(s32, scene, 0x290));
 

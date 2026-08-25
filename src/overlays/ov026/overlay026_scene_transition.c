@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void Presentation_SetScript(void *, const void *, s32);
 extern s32 Presentation_IsScriptComplete(void *);
 extern void func_ov026_022009dc(void *);
@@ -46,7 +46,7 @@ extern "C" s32 func_ov026_02202d1c(void *scene)
         }
     } else if (state == 2) {
         if (func_02091c7c((u8 *)scene + 0x7a8, 2) != 0) {
-            func_02092260(scene, 0x7b80);
+            SceneSound_PlayPackedEffect(scene, 0x7b80);
             func_02091b98((u8 *)scene + 0x7a8, 0xf0);
             FIELD(s32, scene, 0x79c) = 3;
         }
@@ -87,7 +87,7 @@ extern "C" s32 func_ov026_02202e2c(void *scene)
         }
     } else if (state == 2) {
         if (func_02091c7c((u8 *)scene + 0x7a8, 2) != 0) {
-            func_02092260(scene, 0x7b80);
+            SceneSound_PlayPackedEffect(scene, 0x7b80);
             FIELD(s32, scene, 0x79c) = 3;
         }
     } else if (state == 3) {

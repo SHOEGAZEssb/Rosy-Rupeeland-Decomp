@@ -5,8 +5,8 @@
     .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
-    .extern func_02092260
-    .extern func_020922b0
+    .extern SceneSound_PlayPackedEffect
+    .extern SceneSound_SetPackedEffectValue
     .extern SpriteMotionController_BeginHitResponse
     .extern func_ov003_021fb7ec
     .extern func_ov018_021fcf40
@@ -57,7 +57,7 @@ L_021fe89c:
     beq L_021fe8f4
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fea14
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -81,7 +81,7 @@ L_021fe904:
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x0
-    bl func_020922b0
+    bl SceneSound_SetPackedEffectValue
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

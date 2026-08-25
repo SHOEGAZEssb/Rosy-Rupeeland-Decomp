@@ -17,7 +17,7 @@
 .extern TitleInterpolatedValue_Init
 .extern func_02091b98
 .extern SceneInputBase_Init
-.extern func_020922f0
+.extern SceneSound_PlayDirectSequence
 .extern IndexedSelectionController_Init
 .extern IndexedSelectionController_ConfigureRange
 .extern SpriteMotionController_Init
@@ -190,7 +190,7 @@ L_021fd070:
     str r0, [r4, #0x2c0]
     mov r0, r4
     mov r1, #0x3e
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     mov r2, #0x0
     ldr r0, [r4, #0x2c0]
     ldr r1, [r4, #0x290]

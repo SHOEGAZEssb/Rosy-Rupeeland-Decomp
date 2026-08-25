@@ -24,7 +24,7 @@ extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
 extern s32 func_0206fb18(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void PresentationList_DeleteAll(void *);
 extern s32 func_02096450(void *, void *, void *, s32, s32);
 extern void func_ov000_021fc714(void *);
@@ -56,11 +56,11 @@ extern "C" s32 func_ov016_02200fe4(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0:
         if (FIELD(s32, state, 0x54) == 1) {
-            func_02092260(state, 3);
+            SceneSound_PlayPackedEffect(state, 3);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else {
-            func_02092260(state, 9);
+            SceneSound_PlayPackedEffect(state, 9);
             FIELD(void *, state, 0x474) = 0;
             Overlay016ActorValue_Init(state, data_ov016_022013f8[0],
                                 data_ov016_022013f8[1]);

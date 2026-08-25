@@ -19,7 +19,7 @@
 .extern func_ov094_02219278
 .extern func_ov094_022192a8
 .extern func_ov094_022192e0
-.extern func_0209526c
+.extern Presentation_HasScriptCapability
 .extern func_ov094_02219bac
 .extern func_ov094_02218b14
 .extern func_ov094_02218b48
@@ -169,7 +169,7 @@ data_ov094_02219ed4:
     .word func_ov094_02219278
     .word func_ov094_022192a8
     .word func_ov094_022192e0
-    .word func_0209526c
+    .word Presentation_HasScriptCapability
     .word func_ov094_02219bac
     .byte 0x00, 0x00, 0x00, 0x00
     .word data_ov094_02219dc8

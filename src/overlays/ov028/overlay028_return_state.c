@@ -9,8 +9,8 @@ extern const s32 data_ov028_021ff240[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void InventoryScroll_SaveOrigins(void *);
 extern s32 InventoryScroll_UpdateInterpolation(void *);
 extern void InventoryScroll_BeginMarkerDrag(void *, s32);
@@ -47,7 +47,7 @@ extern "C" s32 func_ov028_021fea98(void *state)
     if (phase == 1) {
         if (InventoryScroll_UpdateInterpolation(controller) != 0) {
             if (FIELD(s32, controller, 0xc) != FIELD(s32, controller, 0x10))
-                func_02092288(state, 8);
+                SceneSound_StopPackedEffect(state, 8);
             FIELD(s32, state, 4) = 2;
             FIELD(s32, state, 8) = 0;
             phase = 2;
@@ -62,7 +62,7 @@ extern "C" s32 func_ov028_021fea98(void *state)
         if (FIELD(u32, state, 0x20) & 0x10) {
             InventoryScroll_SaveOrigins(controller);
             if (InventoryScroll_UpdateMarkerDrag(controller, (u8 *)state + 0x30) != 0) {
-                func_02092260(state, 8);
+                SceneSound_PlayPackedEffect(state, 8);
                 FIELD(s32, state, 4)--;
                 FIELD(s32, state, 8) = 0;
             }

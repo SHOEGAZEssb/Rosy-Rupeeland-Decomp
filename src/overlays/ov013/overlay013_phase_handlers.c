@@ -41,13 +41,13 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
-extern s32 func_02095dd4(void *, void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -140,7 +140,7 @@ s32 func_ov013_021fe28c(void *state)
                     FIELD(u16, target, 0x24) |= 4;
                 }
             }
-            func_02092260(state, 6);
+            SceneSound_PlayPackedEffect(state, 6);
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
         }
@@ -211,31 +211,31 @@ s32 func_ov013_021fe454(void *state)
         if (func_ov013_021fdd8c(state)) {
             index = FIELD(s32, state, 0x96c);
             if (index == 2) {
-                func_02092260(state, 0x0b);
+                SceneSound_PlayPackedEffect(state, 0x0b);
                 ++FIELD(s32, state, 4);
                 FIELD(s32, state, 8) = 0;
             } else if (index == 3) {
-                func_02092260(state, 2);
+                SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, state, 4) = 30;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_02092260(state, 2);
+                SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, state, 0x984) = 4;
                 overlay013_set_callback(state, data_ov013_021fed28);
             }
         } else if (func_ov013_021fde18(state)) {
-            func_02092260(state, 0x32);
+            SceneSound_PlayPackedEffect(state, 0x32);
             FIELD(s32, state, 4) = 10;
             FIELD(s32, state, 8) = 0;
         } else if (func_ov013_021fdee4(state)) {
-            func_02092260(state, 0x32);
+            SceneSound_PlayPackedEffect(state, 0x32);
             FIELD(s32, state, 4) = 20;
             FIELD(s32, state, 8) = 0;
         } else if (FIELD(s32, state, 0x984) == 1 &&
                    GraphicsSpriteState_TestTouchPoint(FIELD(void *,
                        FIELD(void *, state, 0x948), 0x9c),
                        (u8 *)state + 0x30)) {
-            func_02092260(state, 0x7c);
+            SceneSound_PlayPackedEffect(state, 0x7c);
             FIELD(s32, state, 0x984) = 4;
             overlay013_set_callback(state, data_ov013_021fed20);
         }
@@ -300,7 +300,7 @@ s32 func_ov013_021fe454(void *state)
         }
         break;
     case 31: {
-        s32 result = func_02095dd4(FIELD(void *, state, 0x9a4),
+        s32 result = ModalState_UpdateInput(FIELD(void *, state, 0x9a4),
                                     (u8 *)state + 0x30,
                                     (FIELD(u32, state, 0x20) & 0x20) ? -1 : 0);
         if (result >= 0) {
@@ -342,14 +342,14 @@ s32 func_ov013_021fe880(void *state)
     if (FIELD(s32, state, 4) == 0) {
         if (FIELD(u32, state, 0x20) & 0x20) {
             if (func_ov013_021fdd8c(state)) {
-                func_02092260(state, 2);
+                SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, state, 0x984) = 4;
                 overlay013_set_callback(state, data_ov013_021fed08);
             } else if (FIELD(s32, state, 0x984) == 1 &&
                        GraphicsSpriteState_TestTouchPoint(FIELD(void *,
                            FIELD(void *, state, 0x948), 0x9c),
                            (u8 *)state + 0x30)) {
-                func_02092260(state, 0x0b);
+                SceneSound_PlayPackedEffect(state, 0x0b);
                 TitleInterpolatedValue_Configure(timer, 2, -256, 0, 20);
                 ++FIELD(s32, state, 4);
                 FIELD(s32, state, 8) = 0;

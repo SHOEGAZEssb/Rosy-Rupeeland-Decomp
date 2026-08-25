@@ -16,7 +16,7 @@
 .extern ActorDerivedType1_ResetToBaseState
 .extern ActorDerivedType1_GetSingletonObject
 .extern GridEffectActorRegistry_BroadcastStateValue0
-.extern func_02059880
+.extern SoundContext_RequestPhaseTransition
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern Graphics3dPresentation_Clear
 .extern Graphics3dPresentation_Disable
@@ -92,7 +92,7 @@ func_ov074_0220fda8:
     ldr r0, .L_0220fff4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02059880
+    bl SoundContext_RequestPhaseTransition
     mov r2, #0x4000000
     ldr r1, [r2, #0x0]
     ldr r0, [r2, #0x0]

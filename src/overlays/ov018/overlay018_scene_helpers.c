@@ -12,8 +12,8 @@ extern "C" {
 #endif
 extern void *GamePhaseMetadata_GetByIndex(s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern u32 func_020ae024(s32, s32);
 extern s32 func_020befec(s32, s32);
 #ifdef __cplusplus
@@ -40,7 +40,7 @@ extern "C" void func_ov018_021fdb7c(void *state, s32 alternate)
 extern "C" void func_ov018_021fdbac(void *state)
 {
     if (FIELD(s32, state, 0x40c) == 0) {
-        func_02092260(state, 0x4c);
+        SceneSound_PlayPackedEffect(state, 0x4c);
         FIELD(s32, state, 0x40c) = 1;
     }
 }
@@ -52,7 +52,7 @@ extern "C" void func_ov018_021fdbac(void *state)
 extern "C" void func_ov018_021fdbd4(void *state)
 {
     if (FIELD(s32, state, 0x40c) != 0) {
-        func_02092288(state, 0x4c);
+        SceneSound_StopPackedEffect(state, 0x4c);
         FIELD(s32, state, 0x40c) = 0;
     }
 }

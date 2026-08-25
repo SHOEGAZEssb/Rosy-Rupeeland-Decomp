@@ -5,8 +5,8 @@
 .extern data_ov025_02202e78
 .extern RetailSaveContext_PollOperation
 .extern RetailSaveContext_BeginRecordDelete
-.extern func_02092260
-.extern func_02095dd4
+.extern SceneSound_PlayPackedEffect
+.extern ModalState_UpdateInput
 .extern func_ov025_021ff254
 .extern func_ov025_02200178
 .extern func_ov025_022001f4
@@ -45,7 +45,7 @@ L_02201d38:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02201eb0
     mov r0, r4
@@ -114,7 +114,7 @@ L_02201e1c:
     bl func_ov025_02200224
     ldr r1, L_02201ec8
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -127,7 +127,7 @@ L_02201e70:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02201eb0
     mov r0, r4

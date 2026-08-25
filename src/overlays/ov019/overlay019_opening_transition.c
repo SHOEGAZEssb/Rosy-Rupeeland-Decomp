@@ -11,7 +11,7 @@ extern void *gGamePhaseCurrencyHud;
 extern "C" {
 #endif
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void func_ov002_021fbdc0(void *);
 extern s32 func_ov002_021fbe08(void *);
 extern s32 func_ov002_021fbe60(void *);
@@ -43,7 +43,7 @@ extern "C" s32 func_ov019_021fd1b8(void *state)
         /* Confirmed fallthrough into the first animation update. */
     case 1:
         if (func_ov002_021fbe08(FIELD(void *, state, 0x5c))) {
-            func_02092260(state, 0x3c84);
+            SceneSound_PlayPackedEffect(state, 0x3c84);
             FIELD(s32, state, 0x60) = 0;
             func_ov019_021fce00(state, data_ov019_021fd5e8[0],
                                 data_ov019_021fd5e8[1], 0);

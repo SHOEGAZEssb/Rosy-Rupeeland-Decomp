@@ -4,7 +4,7 @@
     .extern data_ov019_021fd600
     .extern data_ov019_021fd608
     .extern GamePhaseCurrencyHud_GetCurrency
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern func_ov002_021fbb68
     .extern func_ov002_021fbc54
     .extern func_ov002_021fbd64
@@ -56,12 +56,12 @@ L_021fd2cc:
     beq L_021fd30c
     mov r0, r4
     mov r1, #0x3c80
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fd318
 L_021fd30c:
     ldr r1, L_021fd4b0
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021fd318:
     ldr r1, [r4, #0x4]
     mov r0, #0x0
@@ -114,7 +114,7 @@ L_021fd380:
     blt L_021fd3ec
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     str r0, [r4, #0x4]
     str r0, [r4, #0x8]
@@ -122,7 +122,7 @@ L_021fd380:
 L_021fd3ec:
     ldr r1, L_021fd4b8
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x5c]
     ldr r0, L_021fd4bc
     ldr r3, [r1, #0x88]
@@ -139,7 +139,7 @@ L_021fd3ec:
 L_021fd42c:
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     str r0, [r4, #0x4]
     str r0, [r4, #0x8]

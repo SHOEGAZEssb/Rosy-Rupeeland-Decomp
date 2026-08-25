@@ -7,8 +7,8 @@
 .extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_02091cf0
-.extern func_02092260
-.extern func_020922f0
+.extern SceneSound_PlayPackedEffect
+.extern SceneSound_PlayDirectSequence
 .extern TitleDialog_ClearTextRect
 .extern SpriteMotionController_BeginHitResponse
 .extern SpriteMotionController_Show
@@ -78,7 +78,7 @@ L_021ff0d0:
     beq L_021ff0f0
     mov r0, r4
     mov r1, #0x31
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021ff0f0:
     ldr r0, [r4, #0x2c4]
     add r0, r0, #0x1d8
@@ -87,7 +87,7 @@ L_021ff0f0:
     beq L_021ff110
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021ff110:
     ldr r0, [r4, #0x2c4]
     add r0, r0, #0x1e0
@@ -96,7 +96,7 @@ L_021ff110:
     beq L_021ff130
     mov r0, r4
     mov r1, #0x26
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021ff130:
     ldr r0, [r4, #0x2c4]
     ldr r0, [r0, #0x1b0]
@@ -130,7 +130,7 @@ L_021ff194:
 L_021ff1a0:
     mov r0, r4
     mov r1, #0xe5
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     b L_021ff248
 L_021ff1b0:
     ldr r0, [r4, #0x390]
@@ -149,7 +149,7 @@ L_021ff1d0:
 L_021ff1e0:
     mov r0, r4
     mov r1, #0xe6
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     b L_021ff248
 L_021ff1f0:
     ldr r0, [r4, #0x390]
@@ -168,7 +168,7 @@ L_021ff210:
 L_021ff220:
     mov r0, r4
     mov r1, #0xe6
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     b L_021ff248
 L_021ff230:
     ldr r1, L_021ff564
@@ -176,7 +176,7 @@ L_021ff230:
     bl func_ov030_021fe954
     mov r0, r4
     mov r1, #0xe7
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
 L_021ff248:
     cmp r5, #0x0
     beq L_021ff284
@@ -249,7 +249,7 @@ L_021ff330:
     beq L_021ff548
     mov r0, r4
     mov r1, #0x26
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021ff548
 L_021ff354:
     ldr r0, [r4, #0x20]
@@ -266,7 +266,7 @@ L_021ff354:
     beq L_021ff3d4
     mov r0, r4
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x2bc]
     bl TitleDialog_ClearTextRect
     ldr r1, L_021ff56c
@@ -295,7 +295,7 @@ L_021ff3d4:
     beq L_021ff410
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021ff570
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -321,7 +321,7 @@ L_021ff43c:
     beq L_021ff548
     mov r0, r4
     mov r1, #0x26
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021ff548
 L_021ff460:
     ldr r0, [r4, #0x2c8]

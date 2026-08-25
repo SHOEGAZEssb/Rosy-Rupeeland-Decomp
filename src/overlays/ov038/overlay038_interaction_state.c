@@ -28,7 +28,7 @@ extern s32 InventoryScroll_TestLowerArrowPress(void *model, void *input);
 extern s32 InventoryScroll_TestMarkerHit(void *model, void *input);
 extern s32 InventoryScroll_PageUp(void *model);
 extern s32 InventoryScroll_PageDown(void *model);
-extern void func_02092260(void *presentation, s32 soundOrEvent);
+extern void SceneSound_PlayPackedEffect(void *presentation, s32 soundOrEvent);
 extern void InventoryScroll_SetSelectedRow(void *model, s32 selection);
 extern s32 func_ov038_021fd508(void *presentation);
 extern u32 func_ov038_021fd540(void *presentation);
@@ -103,29 +103,29 @@ extern "C" s32 func_ov038_021fd7f8(void *presentation)
                 InventoryScroll_PageDown(model);
             } else if ((FIELD(u32, presentation, 0x20) & 0x20) != 0) {
                 if (InventoryScroll_TestUpperArrowPress(model, (u8 *)presentation + 0x30)) {
-                    if (!InventoryScroll_PageUp(model)) func_02092260(presentation, 0x16);
+                    if (!InventoryScroll_PageUp(model)) SceneSound_PlayPackedEffect(presentation, 0x16);
                 } else if (InventoryScroll_TestLowerArrowPress(model, (u8 *)presentation + 0x30)) {
-                    if (!InventoryScroll_PageDown(model)) func_02092260(presentation, 0x16);
+                    if (!InventoryScroll_PageDown(model)) SceneSound_PlayPackedEffect(presentation, 0x16);
                 } else if (InventoryScroll_TestMarkerHit(model, (u8 *)presentation + 0x30)) {
                     func_ov038_021fce04(presentation, data_ov038_021fdca8[0],
                                         data_ov038_021fdca8[1]);
                     break;
                 } else if (touched >= 0) {
                     if (touched != FIELD(s32, model, 0x14)) {
-                        func_02092260(presentation, 0);
+                        SceneSound_PlayPackedEffect(presentation, 0);
                         InventoryScroll_SetSelectedRow(model, touched);
                         applySelectedRecord(presentation);
                     }
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)presentation + 0x64,
                                           (u8 *)presentation + 0x30, 0, 4)) {
-                    func_02092260(presentation, 3);
+                    SceneSound_PlayPackedEffect(presentation, 3);
                     func_ov038_021fce04(presentation, data_ov038_021fdcb8[0],
                                         data_ov038_021fdcb8[1]);
                 }
             }
         }
         if (InventoryScroll_UpdateSelectionMovement(model)) {
-            func_02092260(presentation, 0);
+            SceneSound_PlayPackedEffect(presentation, 0);
             FIELD(s32, presentation, 4)--;
             FIELD(s32, presentation, 8) = 0;
         }

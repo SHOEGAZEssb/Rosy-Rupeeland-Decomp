@@ -12,8 +12,8 @@ extern const u32 data_ov016_02201460[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void InventoryScroll_BeginMarkerDrag(void *, s32);
 extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 func_ov000_021fc450(void *);
@@ -57,7 +57,7 @@ extern "C" s32 func_ov016_02200d5c(void *state)
             if (FIELD(s32, presentation, 0xc) !=
                 FIELD(s32, presentation, 0x10)) {
                 func_ov016_021ffc2c(state);
-                func_02092288(state, 8);
+                SceneSound_StopPackedEffect(state, 8);
             }
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -69,7 +69,7 @@ extern "C" s32 func_ov016_02200d5c(void *state)
     case 2:
         if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
             if (func_ov000_021fc560(list, (u8 *)state + 0x30) != 0) {
-                func_02092260(state, 8);
+                SceneSound_PlayPackedEffect(state, 8);
                 FIELD(s32, state, 4)--;
                 FIELD(s32, state, 8) = 0;
             }
@@ -102,13 +102,13 @@ extern "C" s32 func_ov016_02200e88(void *state)
         if (FIELD(s32, state, 0x54) == 1) {
             void *entry = Overlay000_GetActiveMetadata(list);
             if (func_ov016_021fe4d0(FIELD(void *, state, 0x470), entry) != 0) {
-                func_02092260(state, 2);
+                SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, entry, 0x1c)--;
                 func_ov000_021fc714(list);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 Overlay016ActorValue_Init(state, data_ov016_02201458[0],
                                     data_ov016_02201458[1]);
                 break;
@@ -119,13 +119,13 @@ extern "C" s32 func_ov016_02200e88(void *state)
                                                FIELD(void *, state, 0x468),
                                                entry);
             if (consumed != 0) {
-                func_02092260(state, 2);
+                SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, entry, 0x1c) -= (u16)consumed;
                 func_ov000_021fc714(list);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 Overlay016ActorValue_Init(state, data_ov016_02201420[0],
                                     data_ov016_02201420[1]);
                 break;

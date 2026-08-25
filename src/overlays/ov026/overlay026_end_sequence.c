@@ -21,7 +21,7 @@ extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void func_020b0300(u16, s32, s32, s32, s32);
 extern void func_020b0374(s32, s32, s32, s32);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
@@ -329,7 +329,7 @@ extern "C" s32 func_ov026_02203748(void *scene)
         break;
     case 2:
         if (func_02091c7c((u8 *)scene + 0x7a8, 2) != 0) {
-            func_02092260(scene, 0x7b80);
+            SceneSound_PlayPackedEffect(scene, 0x7b80);
             ++FIELD(s32, scene, 0x79c);
         }
         break;

@@ -20,7 +20,7 @@ extern void GameWork_SetFlag(void *, s32);
 extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_02200178(void *);
 extern void func_ov025_022001f4(void *);
@@ -66,7 +66,7 @@ extern "C" s32 func_ov025_02200e54(void *scene)
     case 2:
         func_ov025_02200824(scene, 4);
         if ((s32)(FIELD(u32, scene, 0x20) << 26) >> 31) {
-            func_02092260(scene, 0x2d01);
+            SceneSound_PlayPackedEffect(scene, 0x2d01);
             FIELD(u16, FIELD(void *, scene, 0xbc), 0x24) |= 4;
             for (s32 i = 0; i < 3; ++i) {
                 u8 *entry = (u8 *)scene + i * 4;

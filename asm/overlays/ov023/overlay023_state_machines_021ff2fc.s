@@ -4,7 +4,7 @@
 .extern data_ov023_021ffb30
 .extern data_ov023_021ffb38
 .extern data_ov023_021ffb58
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern IndexedSelectionController_SnapTransitionOrigin
 .extern IndexedSelectionController_IncrementWrap
 .extern IndexedSelectionController_DecrementWrap
@@ -179,7 +179,7 @@ L_021ff4a4:
     bne L_021ff61c
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021ff61c
 L_021ff4e8:
     add r1, r5, #0x30
@@ -192,7 +192,7 @@ L_021ff4e8:
     bne L_021ff61c
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021ff61c
 L_021ff518:
     add r1, r5, #0x30
@@ -212,7 +212,7 @@ L_021ff53c:
     mov r0, r5
     beq L_021ff584
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, r6
     bl InventoryScroll_SetSelectedRow
@@ -247,7 +247,7 @@ L_021ff5b4:
     mov r0, r5
     beq L_021ff5f0
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021ff7d0
     mov r0, r5
     ldmia r1, {r1, r2}
@@ -260,7 +260,7 @@ L_021ff5f0:
     bne L_021ff61c
     mov r0, r5
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0xa
     str r0, [r5, #0x4]
     mov r0, #0x0
@@ -272,7 +272,7 @@ L_021ff61c:
     beq L_021ff650
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1
@@ -286,7 +286,7 @@ L_021ff650:
     beq L_021ff7bc
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     add r0, r5, #0x480
     bl IndexedSelectionController_GetLastDirection
     cmp r0, #0x0

@@ -21,7 +21,7 @@
 .extern func_ov071_02210440
 .extern func_ov042_02201ea0
 .extern Sound_StopDirectSequence
-.extern func_020594ec
+.extern SoundContext_PlayDefaultStream
 .extern func_ov071_02210540
 .extern Sound_StopEffect
 .extern func_020a1794
@@ -593,7 +593,7 @@ func_ov042_02201f30:
     ldr r0, .L_02202dfc
     mov r1, #0x1d
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
 .L_02202754:
     ldr r0, [r4, #0x1bc]
     cmp r0, #0x12c

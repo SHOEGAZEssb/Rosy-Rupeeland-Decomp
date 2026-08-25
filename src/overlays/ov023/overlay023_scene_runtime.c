@@ -24,7 +24,7 @@ extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void SpriteMotionController_Update(void *);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void IndexedSelectionController_SetValue(void *, s32);
 extern void func_ov023_021fd9d0(void *, void *, void *);
 extern void *func_ov023_021fd398(void *);
@@ -226,7 +226,7 @@ extern "C" s32 func_ov023_021feaf0(void *scene)
  */
 extern "C" void func_ov023_021feb60(void *scene)
 {
-    func_02092260(scene, 2);
+    SceneSound_PlayPackedEffect(scene, 2);
     void *entry = func_ov023_021fd398(FIELD(void *, scene, 0x390));
     FIELD(void *, scene, 0x394) = entry;
     void *descriptor = FIELD(void *, FIELD(void *, entry, 0), 4);

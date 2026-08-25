@@ -8,9 +8,9 @@
 .extern data_ov024_021fe2d8
 .extern data_ov024_021fe2f8
 .extern data_ov024_021fe308
-.extern func_02092260
-.extern func_020922f0
-.extern func_02092314
+.extern SceneSound_PlayPackedEffect
+.extern SceneSound_PlayDirectSequence
+.extern SceneSound_StopDirectSequence
 .extern IndexedSelectionController_ResetTransition
 .extern IndexedSelectionController_SnapTransitionOrigin
 .extern IndexedSelectionController_Increment
@@ -105,7 +105,7 @@ L_021fddc0:
     beq L_021fde30
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fe01c
     mov r0, r4
     ldr r1, [r1, #0x0]
@@ -114,7 +114,7 @@ L_021fddc0:
     mov r1, #0x3e
     mov r2, #0x10
     strh ip, [r3, #0xde]
-    bl func_02092314
+    bl SceneSound_StopDirectSequence
     ldr r1, L_021fe020
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -130,7 +130,7 @@ L_021fde30:
     beq L_021fde84
     mov r0, r4
     mov r1, #0x2e80
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r2, [r4, #0x290]
     ldr r1, L_021fe024
     mov r0, r4
@@ -152,7 +152,7 @@ L_021fde84:
     beq L_021fded8
     mov r0, r4
     mov r1, #0x2e80
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r2, [r4, #0x290]
     ldr r1, L_021fe02c
     mov r0, r4
@@ -176,14 +176,14 @@ L_021fded8:
     ble L_021fdf4c
     ldr r1, L_021fe034
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, #0x3e
     mov r2, #0x20
-    bl func_02092314
+    bl SceneSound_StopDirectSequence
     mov r0, r4
     mov r1, #0x39
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     ldr r0, L_021fe01c
     ldr r2, [r4, #0x290]
     ldr r0, [r0, #0x0]
@@ -197,7 +197,7 @@ L_021fded8:
 L_021fdf4c:
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fe00c
 L_021fdf5c:
     mov r5, #0x0
@@ -217,7 +217,7 @@ L_021fdf64:
     mov r0, r4
     bgt L_021fdfc4
     mov r1, #0x2e80
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, r5
     mov r2, #0xc
@@ -229,7 +229,7 @@ L_021fdf64:
     b L_021fdfdc
 L_021fdfc4:
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fdfdc
 L_021fdfd0:
     add r5, r5, #0x1
@@ -243,7 +243,7 @@ L_021fdfdc:
     beq L_021fe00c
     mov r0, r4
     mov r1, #0x2e80
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

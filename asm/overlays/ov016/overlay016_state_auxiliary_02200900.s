@@ -8,7 +8,7 @@
     .extern data_ov016_02201488
     .extern data_ov016_02201490
     .extern data_ov016_02201498
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern SpriteMotionController_BeginHitResponse
     .extern func_ov000_021fc298
     .extern func_ov000_021fc3f8
@@ -146,12 +146,12 @@ L_02200a3c:
 L_02200a98:
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_02200c60
 L_02200aa8:
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x44c]
     mov r1, r5
     bl func_ov000_021fca4c
@@ -167,7 +167,7 @@ L_02200ad4:
     beq L_02200b24
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x54]
     cmp r0, #0x1
     bne L_02200b10
@@ -196,7 +196,7 @@ L_02200b24:
     cmp r0, #0x1
     mov r0, r4
     bne L_02200b78
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     str r0, [r4, #0x478]
     ldr r1, L_02200d50
@@ -205,7 +205,7 @@ L_02200b24:
     bl Overlay016ActorValue_Init
     b L_02200d30
 L_02200b78:
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0xa
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -221,7 +221,7 @@ L_02200b90:
     beq L_02200bc8
     mov r0, r4
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mvn r1, #0x0
     bl func_ov016_021ffe3c
@@ -236,7 +236,7 @@ L_02200bc8:
     beq L_02200c00
     mov r0, r4
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, #0x1
     bl func_ov016_021ffe3c
@@ -251,7 +251,7 @@ L_02200c00:
     beq L_02200c34
     mov r0, r4
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     bl func_ov016_021ffd84
     b L_02200c60
@@ -274,7 +274,7 @@ L_02200c60:
     beq L_02200c94
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1
@@ -288,7 +288,7 @@ L_02200c94:
     beq L_02200d30
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

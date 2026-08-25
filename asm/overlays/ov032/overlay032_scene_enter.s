@@ -8,7 +8,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern Sound_SetCaptureRoute0Enabled
-.extern func_020594ec
+.extern SoundContext_PlayDefaultStream
 .extern Sound_SaveStreamPosition
 .extern Overlay032Scene_SetupGraphics
 .extern gGameWork
@@ -79,7 +79,7 @@ L_021fec94:
     ldr r0, L_021fed7c
     mov r1, #0x12
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
     ldr r0, L_021fed80
     ldr r1, L_021fed84
     ldr r0, [r0, #0x0]

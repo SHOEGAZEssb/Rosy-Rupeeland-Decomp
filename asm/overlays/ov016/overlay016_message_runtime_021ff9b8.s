@@ -1,13 +1,13 @@
     .text
 
 /* Exact fallback; see src/overlays/ov016/overlay016_message_runtime.c. */
-    .extern func_02095bec
+    .extern ModalState_DrawFrame
 .global func_ov016_021ff9b8
 func_ov016_021ff9b8:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x460]
-    bl func_02095bec
+    bl ModalState_DrawFrame
     ldr r0, [r4, #0x460]
     cmp r0, #0x0
     beq L_021ff9e0

@@ -24,8 +24,8 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GameWork_SetFlag(void *, s32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_0209189c(void *, s32, s32);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void Presentation_SetScript(void *, const void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
@@ -97,8 +97,8 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
-        func_02092288(state, FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
-        func_02092260(state, 0x6c);
+        SceneSound_StopPackedEffect(state, FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
+        SceneSound_PlayPackedEffect(state, 0x6c);
         result = Heap_Alloc(0xb0, data_ov029_021fed28, 4, gHeapContext);
         if (result != 0)
             result = func_ov045_0220bc40(result);
@@ -116,18 +116,18 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
     case 3:
         if (func_ov029_021fe798(result) == 0)
             break;
-        func_02092288(state, 0x6c);
+        SceneSound_StopPackedEffect(state, 0x6c);
         mode = FIELD(s32, state, 0x5c);
         available = FIELD(s32, state, 0x64);
         amount = FIELD(s32, state, 0xac);
         if (mode == 7) {
-            func_02092260(state, 0x6b);
+            SceneSound_PlayPackedEffect(state, 0x6b);
             func_ov045_0220bdb0(result);
             Overlay029_SetSelection(state, 2, 1);
             Overlay029_SetPair(state, data_ov029_021fec48);
         } else if (mode <= 1) {
             if (available >= amount) {
-                func_02092260(state, 0x6a);
+                SceneSound_PlayPackedEffect(state, 0x6a);
                 GameWork_SetFlag(gGameWork, 0x38a);
                 if (amount <= available / 2) {
                     FIELD(s32, state, 0x74) = 1;
@@ -140,7 +140,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
                 }
                 Overlay029_SetPair(state, data_ov029_021fec98);
             } else {
-                func_02092260(state, 0x6b);
+                SceneSound_PlayPackedEffect(state, 0x6b);
                 func_ov045_0220bdb0(result);
                 func_ov029_021fd988(state);
                 if (amount >= available * 2)
@@ -154,7 +154,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
             }
         } else if (mode == 2 || mode == 3) {
             if (available <= amount) {
-                func_02092260(state, 0x6a);
+                SceneSound_PlayPackedEffect(state, 0x6a);
                 GameWork_SetFlag(gGameWork, 0x38a);
                 if (amount >= available * 2) {
                     func_ov045_0220bd90(result);
@@ -166,7 +166,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
                     Overlay029_SetSelection(state, 3, 3);
                 }
             } else {
-                func_02092260(state, 0x6b);
+                SceneSound_PlayPackedEffect(state, 0x6b);
                 func_ov045_0220bdb0(result);
                 func_ov029_021fd988(state);
                 if (amount <= available / 2)
@@ -177,13 +177,13 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
             Overlay029_SetPair(state, data_ov029_021fec88);
         } else if (mode == 4) {
             if (available <= amount) {
-                func_02092260(state, 0x6a);
+                SceneSound_PlayPackedEffect(state, 0x6a);
                 func_ov045_0220bdf0(result);
                 func_ov029_021fd95c(state);
                 GameWork_SetFlag(gGameWork, 0x38a);
                 Overlay029_SetSelection(state, 3, 3);
             } else {
-                func_02092260(state, 0x6b);
+                SceneSound_PlayPackedEffect(state, 0x6b);
                 func_ov045_0220bdb0(result);
                 func_ov029_021fd988(state);
                 Overlay029_SetSelection(state, 2, 4);
@@ -191,7 +191,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
             Overlay029_SetPair(state, data_ov029_021fec80);
         } else {
             if (available <= amount) {
-                func_02092260(state, 0x6a);
+                SceneSound_PlayPackedEffect(state, 0x6a);
                 GameWork_SetFlag(gGameWork, 0x38a);
                 if (func_020befec(available * 200, 100) <= amount) {
                     func_ov045_0220bd90(result);
@@ -207,7 +207,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
                 }
                 Overlay029_SetPair(state, data_ov029_021fec78);
             } else {
-                func_02092260(state, 0x6b);
+                SceneSound_PlayPackedEffect(state, 0x6b);
                 func_ov045_0220bdb0(result);
                 func_ov029_021fd988(state);
                 FIELD(s32, state, 0x6c) = 2;
@@ -243,7 +243,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
     case 6:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov002_021fbe68(FIELD(void *, state, 0xa8));
-            func_02092260(state, 0x69);
+            SceneSound_PlayPackedEffect(state, 0x69);
             Overlay029_SetPair(state, data_ov029_021fec68);
         }
         break;

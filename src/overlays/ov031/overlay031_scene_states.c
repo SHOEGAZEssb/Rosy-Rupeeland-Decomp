@@ -16,7 +16,7 @@ extern "C" {
 extern void func_ov031_021fe17c(void *);
 extern void func_ov031_021fce98(void *);
 extern void func_ov031_021fce84(void *, s32, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void func_ov031_021fe1a8(void *);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_SetFlag(void *, s32);
@@ -78,7 +78,7 @@ extern "C" s32 func_ov031_021fe28c(void *scene)
         break;
     case 3:
         if (FIELD(s32, scene, 0x544) >= FIELD(s32, scene, 0x540)) {
-            func_02092260(scene, 0x6f);
+            SceneSound_PlayPackedEffect(scene, 0x6f);
             func_ov031_021fe1a8(scene);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
@@ -135,7 +135,7 @@ extern "C" s32 func_ov031_021fe4ac(void *scene)
                 ++FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
             } else {
-                func_02092260(scene, 0x3a);
+                SceneSound_PlayPackedEffect(scene, 0x3a);
                 func_ov031_021fd934(scene, data_ov031_021fe700[0],
                                     data_ov031_021fe700[1]);
             }
@@ -151,7 +151,7 @@ extern "C" s32 func_ov031_021fe4ac(void *scene)
         break;
     case 2:
         if (func_ov031_021fddbc(scene) != 0) {
-            func_02092260(scene, 0x3a);
+            SceneSound_PlayPackedEffect(scene, 0x3a);
             func_ov031_021fd934(scene, data_ov031_021fe708[0],
                                 data_ov031_021fe708[1]);
         }

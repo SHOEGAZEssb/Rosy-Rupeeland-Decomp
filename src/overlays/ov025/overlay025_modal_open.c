@@ -13,7 +13,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
-extern void *func_020959d4(void *, s32, s32);
+extern void *ModalState_Init(void *, s32, s32);
 extern void ModalState_InitResources(void *, s32);
 extern void ModalState_CopyAttachmentText(void *, void *);
 #ifdef __cplusplus
@@ -31,7 +31,7 @@ extern "C" void func_ov025_02200224(void *scene, s32 selection, void *payload)
     GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get((u8 *)scene + 0x530, 0), 1, 0);
     void *modal = Heap_Alloc(0x2d0, data_ov025_022033ac, 4, gHeapContext);
     if (modal)
-        modal = func_020959d4(modal, 0, 0);
+        modal = ModalState_Init(modal, 0, 0);
     FIELD(void *, scene, 0x59c) = modal;
     if (payload)
         ModalState_CopyAttachmentText(FIELD(void *, scene, 0x59c), payload);

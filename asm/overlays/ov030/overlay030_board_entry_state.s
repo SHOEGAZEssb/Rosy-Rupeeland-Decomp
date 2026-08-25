@@ -7,7 +7,7 @@
 .extern data_ov030_021ff8dc
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
-.extern func_020922f0
+.extern SceneSound_PlayDirectSequence
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern func_ov030_021fcf20
@@ -41,7 +41,7 @@ L_021fee8c: ; jump table
 L_021fee9c:
     mov r0, r4
     mov r1, #0xe4
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

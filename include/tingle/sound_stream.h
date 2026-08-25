@@ -14,7 +14,7 @@ extern "C" {
 extern void *data_021e9aa8;
 
 s32 Sound_IsStreamPlaying(void *context, s32 streamId);
-void func_020594ec(void *context, s32 streamId);
+void SoundContext_PlayDefaultStream(void *context, s32 streamId);
 void Sound_PlayStream(void *context, s32 streamId, s32 startUnits, s32 volume,
                    s32 fadeFrames, s32 fadeIn);
 void Sound_StopStream(void *context, s32 fadeFrames);

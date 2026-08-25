@@ -23,7 +23,7 @@ extern "C" void Sound_PlayEffectWithParameters(void *sound, s32 sequence, s32 ch
 extern "C" void Sound_StopEffect(void *sound, s32 sequence, s32 value);
 extern "C" void Sound_SetEffectParameters(void *sound, s32 sequence, s32 channel,
                                s32 value, s32 arg0, s32 arg1);
-extern "C" void func_020594ec(void *sound, s32 value);
+extern "C" void SoundContext_PlayDefaultStream(void *sound, s32 value);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, s32 index);
 extern "C" void func_020a1794(void *owner, const void *position,
                                const void *display, s32 flags);
@@ -261,7 +261,7 @@ extern "C" void func_ov042_02201f30(void *scene)
             if (FIELD(s32, scene, 0x158) < -0x1000) FIELD(s32, scene, 0x158) += 0x1000;
             if (FIELD(s32, scene, 0x15c) > -0x71000) FIELD(s32, scene, 0x15c) -= 0x1333;
             if (FIELD(s32, scene, 0x15c) < -0x73000) FIELD(s32, scene, 0x15c) += 0x1333;
-            if (tick == 280) func_020594ec(gSoundContext, 29);
+            if (tick == 280) SoundContext_PlayDefaultStream(gSoundContext, 29);
             if (tick == 300) func_ov071_02210540(FIELD(void *, owner, 8));
             if (tick == 1410) FIELD(s32, owner, 0x1c8) = 8;
             FIELD(s32, scene, 0xa8) = FIELD(s32, scene, 0x158) +

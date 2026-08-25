@@ -6,7 +6,7 @@
     .extern IndexedSelectionController_Increment
     .extern IndexedSelectionController_Decrement
     .extern IndexedSelectionController_AdvanceTransition
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern func_ov006_021fb950
 
     /* Exact fallback; see the documented portable reconstruction in
@@ -75,7 +75,7 @@ L_021fbbc0:
     beq L_021fbbf0
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

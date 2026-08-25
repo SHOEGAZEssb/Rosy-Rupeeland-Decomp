@@ -6,8 +6,8 @@
     .extern GamePhaseRuntime_SetPlacementMode
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern SpriteMotionController_IsVisible
-    .extern func_020959d4
-    .extern func_02095bec
+    .extern ModalState_Init
+    .extern ModalState_DrawFrame
     .extern ModalState_InitResources
     .extern ModalState_CopyAttachmentText
     .extern func_ov006_021fb708
@@ -72,7 +72,7 @@ func_ov013_021fda9c:
     beq L_021fdad4
     mov r1, #0x0
     mov r2, r1
-    bl func_020959d4
+    bl ModalState_Init
 L_021fdad4:
     str r0, [r6, #0x9a4]
     cmp r4, #0x0
@@ -97,7 +97,7 @@ func_ov013_021fdb10:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x9a4]
-    bl func_02095bec
+    bl ModalState_DrawFrame
     ldr r0, [r4, #0x9a4]
     cmp r0, #0x0
     beq L_021fdb38

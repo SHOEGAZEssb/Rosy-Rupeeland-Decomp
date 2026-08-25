@@ -24,7 +24,7 @@ extern void SpriteMotionController_Update(void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern s32 func_ov013_021fdfbc(void *);
@@ -136,7 +136,7 @@ s32 func_ov013_021fdd8c(void *state)
                 FIELD(s32, state, 0x96c) = i;
                 return 1;
             }
-            func_02092260(state, 9);
+            SceneSound_PlayPackedEffect(state, 9);
             return 0;
         }
     }
@@ -163,7 +163,7 @@ s32 func_ov013_021fde18(void *state)
         if (SpriteMotionController_BeginHitResponse(record, (u8 *)state + 0x30, 0, 0)) {
             void *target;
             if (FIELD(u16, record, 0x98) & 2) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 return 0;
             }
             SpriteMotionController_SetAnimation(record, data_ov013_021febb4[i * 5] + 1);

@@ -13,8 +13,8 @@ extern "C" {
 #endif
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
-extern void *func_020959d4(void *, s32, s32);
-extern void func_02095bec(void *);
+extern void *ModalState_Init(void *, s32, s32);
+extern void ModalState_DrawFrame(void *);
 extern void ModalState_InitResources(void *, s32);
 extern void ModalState_CopyAttachmentText(void *, void *);
 #ifdef __cplusplus
@@ -37,7 +37,7 @@ extern "C" void func_ov017_021ffcc8(void *state, s32 setting, s32 alternate,
     GraphicsBgMapResource_UploadToMainBg(handle, 2, 0);
     object = Heap_Alloc(0x2d0, data_ov017_022016bc, 4, &gHeapContext);
     if (object != 0) {
-        object = func_020959d4(object, 0, 0);
+        object = ModalState_Init(object, 0, 0);
     }
     FIELD(void *, state, 0x400) = object;
     if (attachment != 0) {
@@ -55,7 +55,7 @@ extern "C" void func_ov017_021ffcc8(void *state, s32 setting, s32 alternate,
 extern "C" void func_ov017_021ffd74(void *state)
 {
     void *object = FIELD(void *, state, 0x400);
-    func_02095bec(object);
+    ModalState_DrawFrame(object);
     object = FIELD(void *, state, 0x400);
     if (object != 0) {
         typedef void (*Destructor)(void *);

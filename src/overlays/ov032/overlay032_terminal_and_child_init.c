@@ -31,7 +31,7 @@ extern void GraphicsBgCharacterResource_UploadToMainBg(...);
 extern s32 GraphicsResource_GetFormat(void *);
 extern void GraphicsBgPaletteResource_UploadToMainBg(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
-extern void *func_020959d4(...);
+extern void *ModalState_Init(...);
 extern void ModalState_InitResources(...);
 extern void Sound_Reset(void *);
 extern void OS_Halt(void);
@@ -85,7 +85,7 @@ extern "C" s32 func_ov032_02200da4(void *scene)
         REG16(0x05000000) = 0x24a3;
         void *object = Heap_Alloc(0x2d0, (const char *)data_ov032_02202348, 4,
                                   &gHeapContext);
-        if (object != 0) object = func_020959d4(object, 0, 0);
+        if (object != 0) object = ModalState_Init(object, 0, 0);
         FIELD(void *, scene, 0xf24) = object;
         ModalState_InitResources(object, 0x1f);
         FIELD(s32, scene, 0xb74) = 0;

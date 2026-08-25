@@ -7,7 +7,7 @@
 .extern data_ov022_02200550
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern Presentation_InterpolateScalar
@@ -104,7 +104,7 @@ L_021ff6bc:
     bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021ffa00
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -125,7 +125,7 @@ L_021ff710:
     bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r1, #0x0
     mov r0, #0x1
     str r1, [r4, #0x2c0]
@@ -140,7 +140,7 @@ L_021ff710:
 L_021ff778:
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021ff9f0
 L_021ff788:
     add r0, r4, #0x200
@@ -157,7 +157,7 @@ L_021ff788:
     bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     str r0, [r4, #0x2c0]
     sub r1, r0, #0x11
@@ -171,7 +171,7 @@ L_021ff788:
 L_021ff7ec:
     mov r0, r4
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021ff9f0
 L_021ff7fc:
     bl DisplayBrightness_IsMainTransitionComplete
@@ -274,7 +274,7 @@ L_021ff95c:
     beq L_021ff9f0
     mov r0, r4
     mov r1, #0x2e
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     add r0, r4, #0x200
     bl SpriteMotionController_Show
     mov r0, #0x1e

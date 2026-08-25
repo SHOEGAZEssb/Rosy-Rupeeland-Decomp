@@ -1,12 +1,12 @@
 .text
 .extern InventoryScroll_BeginMarkerDrag
 .extern InventoryScroll_UpdateInterpolation
-.extern func_02092288
+.extern SceneSound_StopPackedEffect
 .extern func_ov044_0220bdac
 .extern func_ov044_0220c700
 .extern InventoryScroll_SaveOrigins
 .extern InventoryScroll_UpdateMarkerDrag
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern InventoryScroll_EndMarkerDrag
 .extern func_ov044_0220be38
 .extern func_ov044_0220c880
@@ -49,7 +49,7 @@ func_ov044_0220ce28:
     bne .L_0220ceb0
     mov r0, r5
     mov r1, #0x8
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
 .L_0220ceb0:
     ldr r1, [r5, #0x4]
     mov r0, #0x0
@@ -79,7 +79,7 @@ func_ov044_0220ce28:
     beq .L_0220cf4c
     mov r0, r5
     mov r1, #0x8
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

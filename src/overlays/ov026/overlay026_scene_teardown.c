@@ -22,7 +22,7 @@ extern void GraphicsResourceSetVariant_Destroy(void *);
 extern void GraphicsSpriteRenderer_Resume(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
 extern void Graphics3DLightSet_Destroy(void *);
-extern void func_02092314(void *, s32, s32);
+extern void SceneSound_StopDirectSequence(void *, s32, s32);
 extern void GraphicsBankStateSnapshot_Destroy(void *);
 extern void GraphicsBankStateSnapshot_Restore(void *);
 extern void PresentationList_DeleteAll(void *);
@@ -40,7 +40,7 @@ extern void func_ov048_0220b7b4(void *);
  */
 static void teardown_scene(void *scene)
 {
-    func_02092314(scene, 0x3d, 8);
+    SceneSound_StopDirectSequence(scene, 0x3d, 8);
     Sound_StopEffect(gSoundContext, 0x22, 0);
     FIELD(u32, scene, 0x20) &= ~0x400;
     PresentationList_DeleteAll((u8 *)scene + 0x2f4);

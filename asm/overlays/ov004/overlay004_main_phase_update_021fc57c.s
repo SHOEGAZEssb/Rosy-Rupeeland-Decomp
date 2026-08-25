@@ -2,7 +2,7 @@
     .extern func_02091c7c
     .extern func_020befec
     .extern func_020afce8
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern TitleInterpolatedValue_Evaluate
     .extern func_020afca0
     .extern func_02091cf0
@@ -62,7 +62,7 @@ L_021fc5ac:
     mov r0, r4
     orr r2, r2, #0x4
     str r2, [r4, #0x4c]
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -170,7 +170,7 @@ L_021fc75c:
     beq L_021fc8a8
     ldr r1, L_021fc8d8
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -184,7 +184,7 @@ L_021fc7d8:
     cmp r3, #0x3c
     ble L_021fc80c
     ldr r1, [r4, #0x158]
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

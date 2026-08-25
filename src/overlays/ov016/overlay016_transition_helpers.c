@@ -14,8 +14,8 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092260(void *, s32);
-extern s32 func_02095dd4(void *, void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void SpriteMotionController_Hide(void *);
 extern void func_ov016_021fd3f8(void *);
 extern void *func_ov016_021fd628(void *);
@@ -65,7 +65,7 @@ extern "C" s32 func_ov016_021ffe90(void *state)
         FIELD(u32, state, 0x20) = (FIELD(u32, state, 0x20) & ~1u) | 1u;
         break;
     case 1:
-        if (func_02095dd4(FIELD(void *, state, 0x460), (u8 *)state + 0x30,
+        if (ModalState_UpdateInput(FIELD(void *, state, 0x460), (u8 *)state + 0x30,
                           (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
             Overlay016ActorValue_Init(state, data_ov016_02201440[0],
                                 data_ov016_02201440[1]);
@@ -94,18 +94,18 @@ extern "C" void func_ov016_021fffcc(void *state)
     }
     flags = FIELD(u16, descriptor, 0xc);
     if ((flags & 7) != 0) {
-        func_02092260(state, 9);
+        SceneSound_PlayPackedEffect(state, 9);
         FIELD(s32, state, 4) = 10;
         FIELD(s32, state, 8) = 0;
         return;
     }
     if ((flags & 2) != 0) {
-        func_02092260(state, 9);
+        SceneSound_PlayPackedEffect(state, 9);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         return;
     }
-    func_02092260(state, 2);
+    SceneSound_PlayPackedEffect(state, 2);
     FIELD(void *, state, 0x468) = FIELD(void *, descriptor, 0);
     Overlay016ActorValue_Init(state, data_ov016_022013d0[0],
                         data_ov016_022013d0[1]);

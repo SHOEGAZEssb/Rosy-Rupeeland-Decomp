@@ -38,7 +38,7 @@ extern void RetailPhaseDatabase_UnlockById(...);
 extern void RetailSelectionHistory_InsertUniqueId(...);
 extern void func_ov032_021fe0e8(void *);
 extern void Sound_StopStream(...);
-extern void func_020594ec(...);
+extern void SoundContext_PlayDefaultStream(...);
 extern void RetailSaveContext_BeginRecordOperation(...);
 extern s32 RetailSaveContext_PollOperation(void *);
 extern s32 Overlay032SpriteWrapper_HitTest(...);
@@ -155,7 +155,7 @@ extern "C" s32 func_ov032_02200618(void *scene)
         break;
     }
     case 10:
-        func_020594ec(gSoundContext, 0x12);
+        SoundContext_PlayDefaultStream(gSoundContext, 0x12);
         ++FIELD(s32, scene, 0xb64);
         break;
     case 11:

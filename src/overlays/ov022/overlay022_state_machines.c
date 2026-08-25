@@ -64,9 +64,9 @@ extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_Hide(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
-extern void func_020922f0(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void GameWork_ClearFlag(void *, u16);
 extern s32 func_ov022_021fcfd4(void *, s32, s32, s32);
 extern s32 func_ov022_021fd068(void *);
@@ -132,29 +132,29 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
             break;
         if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xa8, (u8 *)scene + 0x30, 0, 4)) {
             TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
-            func_02092260(scene, 3);
+            SceneSound_PlayPackedEffect(scene, 3);
             CALLBACK(scene, data_ov022_02200530);
         } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x154,
                                  (u8 *)scene + 0x30, 0, 4)) {
             if (FIELD(void *, scene, 0x2b4)) {
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
-                func_02092260(scene, 2);
+                SceneSound_PlayPackedEffect(scene, 2);
                 FIELD(s32, scene, 0x2c0) = 0;
                 DisplayBrightness_StartMaskedTransitions(1, -16);
                 ADVANCE(scene);
             } else {
-                func_02092260(scene, 9);
+                SceneSound_PlayPackedEffect(scene, 9);
             }
         } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x200,
                                  (u8 *)scene + 0x30, 0, 4)) {
             if (FIELD(void *, scene, 0x2b8)) {
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
-                func_02092260(scene, 2);
+                SceneSound_PlayPackedEffect(scene, 2);
                 FIELD(s32, scene, 0x2c0) = 1;
                 DisplayBrightness_StartMaskedTransitions(1, -16);
                 ADVANCE(scene);
             } else {
-                func_02092260(scene, 9);
+                SceneSound_PlayPackedEffect(scene, 9);
             }
         }
         break;
@@ -199,7 +199,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         break;
     case 11:
         if (func_ov022_021ff368(scene)) {
-            func_02092260(scene, 0x2e);
+            SceneSound_PlayPackedEffect(scene, 0x2e);
             SpriteMotionController_Show((u8 *)scene + 0x200);
             FIELD(s32, scene, 0x27c) = 30;
             FIELD(s32, scene, 0x280) = 0;
@@ -241,7 +241,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         /* fall through */
     case 1:
         if (DisplayBrightness_IsSubTransitionComplete()) {
-            func_02092260(scene, 0x30);
+            SceneSound_PlayPackedEffect(scene, 0x30);
             ADVANCE(scene);
         }
         break;
@@ -251,7 +251,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         } else {
             DisplayBrightness_StartMaskedTransitions(2, 0);
             DisplayBrightness_StartMaskedTransitions(1, -8);
-            func_020922f0(scene, 0x9d);
+            SceneSound_PlayDirectSequence(scene, 0x9d);
             func_ov022_021feac8(scene);
             ADVANCE(scene);
         }
@@ -372,15 +372,15 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
                 InventoryScroll_PageDown(ui);
             } else if (FIELD(u32, scene, 0x20) & 0x20) {
                 if (InventoryScroll_TestUpperArrowPress(ui, (u8 *)scene + 0x30)) {
-                    if (!InventoryScroll_PageUp(ui)) func_02092260(scene, 0x16);
+                    if (!InventoryScroll_PageUp(ui)) SceneSound_PlayPackedEffect(scene, 0x16);
                 } else if (InventoryScroll_TestLowerArrowPress(ui, (u8 *)scene + 0x30)) {
-                    if (!InventoryScroll_PageDown(ui)) func_02092260(scene, 0x16);
+                    if (!InventoryScroll_PageDown(ui)) SceneSound_PlayPackedEffect(scene, 0x16);
                 } else if (InventoryScroll_TestMarkerHit(ui, (u8 *)scene + 0x30)) {
                     CALLBACK(scene, data_ov022_02200548);
                     break;
                 } else if (hit >= 0) {
                     if (hit != FIELD(s32, ui, 0x14)) {
-                        func_02092260(scene, 0);
+                        SceneSound_PlayPackedEffect(scene, 0);
                         InventoryScroll_SetSelectedRow(ui, hit);
                         func_ov022_021fefe0(scene);
                         func_ov022_021ff048(scene);
@@ -390,10 +390,10 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
                     }
                     void *entry = func_ov022_021fdca0(menu);
                     if (FIELD(s32, entry, 4)) {
-                        func_02092260(scene, 9);
+                        SceneSound_PlayPackedEffect(scene, 9);
                     } else {
                         TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
-                        func_02092260(scene, 2);
+                        SceneSound_PlayPackedEffect(scene, 2);
                         CALLBACK(scene, data_ov022_022004e8);
                     }
                     break;
@@ -403,19 +403,19 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
         if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x200,
                           (u8 *)scene + 0x30, 0, 4)) {
             void *entry = func_ov022_021fdca0(menu);
-            if (FIELD(s32, entry, 4)) func_02092260(scene, 9);
+            if (FIELD(s32, entry, 4)) SceneSound_PlayPackedEffect(scene, 9);
             else {
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
-                func_02092260(scene, 2);
+                SceneSound_PlayPackedEffect(scene, 2);
                 CALLBACK(scene, data_ov022_02200560);
             }
         } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xa8,
                                  (u8 *)scene + 0x30, 0, 4)) {
-            func_02092260(scene, 3);
+            SceneSound_PlayPackedEffect(scene, 3);
             DisplayBrightness_StartMaskedTransitions(1, -16);
             ADVANCE(scene);
         } else if (InventoryScroll_UpdateSelectionMovement(ui)) {
-            func_02092260(scene, 0);
+            SceneSound_PlayPackedEffect(scene, 0);
             --FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
@@ -462,7 +462,7 @@ extern "C" s32 func_ov022_022001a0(void *scene)
     case 1:
         if (InventoryScroll_UpdateInterpolation(ui)) {
             if (FIELD(s32, ui, 0xc) != FIELD(s32, ui, 0x10))
-                func_02092288(scene, 8);
+                SceneSound_StopPackedEffect(scene, 8);
             ADVANCE(scene);
         } else if (func_ov022_021fdcb4(FIELD(void *, scene, 0x2b8))) {
             func_ov022_021fefe0(scene);
@@ -472,7 +472,7 @@ extern "C" s32 func_ov022_022001a0(void *scene)
         if (FIELD(u32, scene, 0x20) & 0x10) {
             InventoryScroll_SaveOrigins(ui);
             if (InventoryScroll_UpdateMarkerDrag(ui, (u8 *)scene + 0x30)) {
-                func_02092260(scene, 8);
+                SceneSound_PlayPackedEffect(scene, 8);
                 --FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
                 break;

@@ -4,7 +4,7 @@
 .extern data_ov026_022044b0
 .extern func_02091b98
 .extern func_02091c7c
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern PresentationScalar_SetImmediate
 .extern Presentation_SetPosition
 .extern Presentation_SetScript
@@ -108,7 +108,7 @@ L_02203874:
     beq L_022038d4
     ldr r1, L_022038f8
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x79c]
     add r0, r0, #0x1
     str r0, [r4, #0x79c]

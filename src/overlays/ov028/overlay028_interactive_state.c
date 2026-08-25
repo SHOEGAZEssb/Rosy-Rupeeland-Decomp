@@ -12,7 +12,7 @@ extern const s32 data_ov028_021ff248[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void InventoryScroll_SetSelectedRow(void *, s32);
 extern void InventoryScroll_SaveOrigins(void *);
 extern void InventoryScroll_MoveSelectionUp(void *);
@@ -95,38 +95,38 @@ extern "C" s32 func_ov028_021fe77c(void *state)
             } else if (FIELD(u32, state, 0x20) & 0x20) {
                 if (InventoryScroll_TestUpperArrowPress(controller, point) != 0) {
                     if (InventoryScroll_PageUp(controller) == 0)
-                        func_02092260(state, 0x16);
+                        SceneSound_PlayPackedEffect(state, 0x16);
                 } else if (InventoryScroll_TestLowerArrowPress(controller, point) != 0) {
                     if (InventoryScroll_PageDown(controller) == 0)
-                        func_02092260(state, 0x16);
+                        SceneSound_PlayPackedEffect(state, 0x16);
                 } else if (InventoryScroll_TestMarkerHit(controller, point) != 0) {
                     Overlay028_SetPair(state, data_ov028_021ff260);
                     func_ov028_021fe438(state);
                     return 0;
                 } else if (hit >= 0) {
                     if (hit != FIELD(s32, controller, 0x14)) {
-                        func_02092260(state, 0);
+                        SceneSound_PlayPackedEffect(state, 0);
                         InventoryScroll_SetSelectedRow(controller, hit);
                         func_ov028_021fe6bc(state);
                         FIELD(s32, state, 4) = 10;
                         FIELD(s32, state, 8) = 0;
                     } else {
-                        func_02092260(state, 2);
+                        SceneSound_PlayPackedEffect(state, 2);
                         Overlay028_SetPair(state, data_ov028_021ff258);
                     }
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x98,
                                          point, 0, 4) != 0) {
-                    func_02092260(state, 2);
+                    SceneSound_PlayPackedEffect(state, 2);
                     Overlay028_SetPair(state, data_ov028_021ff220);
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x144,
                                          point, 0, 4) != 0) {
-                    func_02092260(state, 3);
+                    SceneSound_PlayPackedEffect(state, 3);
                     Overlay028_SetPair(state, data_ov028_021ff248);
                 }
             }
         }
         if (InventoryScroll_UpdateSelectionMovement(controller) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         }

@@ -16,7 +16,7 @@ extern "C" {
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern s32 func_02095dd4(void *, void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void func_ov000_021fc9d4(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
@@ -67,7 +67,7 @@ extern "C" s32 func_ov016_02200778(void *state)
         }
         break;
     case 1:
-        if (func_02095dd4(FIELD(void *, state, 0x460),
+        if (ModalState_UpdateInput(FIELD(void *, state, 0x460),
                           (u8 *)state + 0x30,
                           (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
             func_ov016_021ff9b8(state);

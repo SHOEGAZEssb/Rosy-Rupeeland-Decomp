@@ -2,7 +2,7 @@
     .extern SceneInputBase_Update
     .extern DisplayBrightness_StartMaskedTransitions
     .extern DisplayBrightness_IsMainTransitionComplete
-    .extern func_02092314
+    .extern SceneSound_StopDirectSequence
     .extern func_ov004_021fb6e4
     .extern Heap_Alloc
     .extern func_ov004_021fb70c
@@ -81,7 +81,7 @@ L_021fcb94:
     mov r0, r4
     mov r1, #0x3d
     mov r2, #0x10
-    bl func_02092314
+    bl SceneSound_StopDirectSequence
     ldr r1, L_021fcce8
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -162,7 +162,7 @@ L_021fcca8:
     mov r0, r4
     mov r1, #0x3d
     mov r2, #0x10
-    bl func_02092314
+    bl SceneSound_StopDirectSequence
     ldr r1, L_021fccf4
     mov r0, r4
     ldmia r1, {r1, r2}

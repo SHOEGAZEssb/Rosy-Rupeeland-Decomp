@@ -54,7 +54,7 @@ extern void func_ov069_02210a44(void *system, s32 index, s32 x, s32 y,
                                 s32 ownerX, s32 ownerY);
 extern void func_ov007_021fc200(void);
 extern void func_ov049_0220c6cc(void *system, const void *position);
-extern void func_020594ec(void *context, s32 mode);
+extern void SoundContext_PlayDefaultStream(void *context, s32 mode);
 extern void Sound_StopEffect(void *context, s32 soundId, s32 mode);
 extern void Sound_Play(void *context, s32 soundId, s32 mode);
 #ifdef __cplusplus

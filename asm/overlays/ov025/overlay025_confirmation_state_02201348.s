@@ -6,7 +6,7 @@
 .extern data_ov025_02202ed0
 .extern RetailSaveContext_PollOperation
 .extern RetailSaveContext_BeginRecordLoad
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern func_ov025_021ff254
 .extern func_ov025_02200178
 .extern func_ov025_02200224
@@ -93,7 +93,7 @@ L_02201448:
     beq L_02201470
     ldr r1, L_0220148c
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_02201490
     mov r0, r4
     ldmia r1, {r1, r2}

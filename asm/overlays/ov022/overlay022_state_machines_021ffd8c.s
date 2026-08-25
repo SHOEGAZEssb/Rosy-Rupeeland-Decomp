@@ -9,7 +9,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern InventoryScroll_SetSelectedRow
@@ -146,7 +146,7 @@ L_021ffed8:
     bne L_022000c0
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_022000c0
 L_021fff1c:
     add r1, r5, #0x30
@@ -159,7 +159,7 @@ L_021fff1c:
     bne L_022000c0
     mov r0, r5
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_022000c0
 L_021fff4c:
     add r1, r5, #0x30
@@ -179,7 +179,7 @@ L_021fff70:
     beq L_021fffc0
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r4
     mov r1, r6
     bl InventoryScroll_SetSelectedRow
@@ -200,14 +200,14 @@ L_021fffc0:
     beq L_021fffe4
     mov r0, r5
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_0220017c
 L_021fffe4:
     ldr r0, [r5, #0x2cc]
     bl TitleDialog_ClearTextRect
     mov r0, r5
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_02200190
     mov r0, r5
     ldmia r1, {r1, r2}
@@ -228,14 +228,14 @@ L_0220000c:
     beq L_0220004c
     mov r0, r5
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_0220017c
 L_0220004c:
     ldr r0, [r5, #0x2cc]
     bl TitleDialog_ClearTextRect
     mov r0, r5
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_02200194
     mov r0, r5
     ldmia r1, {r1, r2}
@@ -251,7 +251,7 @@ L_02200074:
     beq L_022000c0
     mov r0, r5
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     sub r1, r0, #0x11
     bl DisplayBrightness_StartMaskedTransitions
@@ -268,7 +268,7 @@ L_022000c0:
     beq L_0220017c
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

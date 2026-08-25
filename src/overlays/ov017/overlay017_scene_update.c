@@ -25,7 +25,7 @@ extern void GraphicsAnimationInstanceManager_Update(void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void PresentationList_Append(void *, void *);
@@ -185,7 +185,7 @@ extern "C" void func_ov017_02200188(void *state)
     if (FIELD(s32, data_ov017_022016e0, 0) >=
         FIELD(s32, data_ov017_022016e0, 8) / 2) {
         if (FIELD(void *, state, 0x440) == 0) {
-            func_02092260(state, 0x4115);
+            SceneSound_PlayPackedEffect(state, 0x4115);
             FIELD(s32, state, 0x440) = 1;
         }
         if (++FIELD(s32, state, 0x3d4) > 8) {
@@ -256,7 +256,7 @@ extern "C" void func_ov017_02200188(void *state)
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));
     func_ov017_021fcf6c(FIELD(void *, state, 0x2c0));
     if (Overlay017Timer_Tick(data_ov017_022016f0))
-        func_02092260(state, 0x21);
+        SceneSound_PlayPackedEffect(state, 0x21);
     if (Overlay017Timer_Tick(data_ov017_022016f8))
-        func_02092260(state, 0x2a);
+        SceneSound_PlayPackedEffect(state, 0x2a);
 }

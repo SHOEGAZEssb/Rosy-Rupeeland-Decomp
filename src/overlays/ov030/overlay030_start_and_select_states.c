@@ -27,7 +27,7 @@ extern void func_ov030_021fe768(void *);
 extern s32 func_ov030_021fea00(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32, void *);
 #ifdef __cplusplus
 }
@@ -103,7 +103,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
         if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x210,
                           (u8 *)scene + 0x30, 0, 4) != 0) {
             TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2bc));
-            func_02092260(scene, 3);
+            SceneSound_PlayPackedEffect(scene, 3);
             func_ov030_021fda14(scene, data_ov030_021ff7a0[0],
                                 data_ov030_021ff7a0[1]);
             break;
@@ -111,7 +111,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
         if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xb8,
                           (u8 *)scene + 0x30, 0, 4) != 0) {
             if (FIELD(s32, scene, 0x384) != 0) {
-                func_02092260(scene, 2);
+                SceneSound_PlayPackedEffect(scene, 2);
                 FIELD(s32, scene, 0x390) = 1;
                 u8 *records = FIELD(u8 *, FIELD(void *, scene, 0x37c), 8);
                 void *record = records + FIELD(s32, scene, 0x380) * 0x24;
@@ -120,7 +120,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
                 func_ov030_021fda14(scene, data_ov030_021ff768[0],
                                     data_ov030_021ff768[1]);
             } else {
-                func_02092260(scene, 9);
+                SceneSound_PlayPackedEffect(scene, 9);
                 ++FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
             }
@@ -129,7 +129,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
         if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x164,
                           (u8 *)scene + 0x30, 0, 4) != 0) {
             if (FIELD(s32, scene, 0x38c) != 0) {
-                func_02092260(scene, 2);
+                SceneSound_PlayPackedEffect(scene, 2);
                 FIELD(s32, scene, 0x390) = 2;
                 u8 *records = FIELD(u8 *, FIELD(void *, scene, 0x37c), 8);
                 void *record = records + FIELD(s32, scene, 0x388) * 0x24;
@@ -138,7 +138,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
                 func_ov030_021fda14(scene, data_ov030_021ff7b8[0],
                                     data_ov030_021ff7b8[1]);
             } else {
-                func_02092260(scene, 9);
+                SceneSound_PlayPackedEffect(scene, 9);
                 ++FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
             }

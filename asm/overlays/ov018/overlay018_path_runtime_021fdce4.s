@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_path_runtime.c. */
-    .extern func_02092260
-    .extern func_020922b0
+    .extern SceneSound_PlayPackedEffect
+    .extern SceneSound_SetPackedEffectValue
     .extern func_020ae024
     .extern func_ov003_021fb8ac
     .extern func_ov018_021fdb7c
@@ -65,7 +65,7 @@ L_021fdd1c:
     bl func_ov018_021fdbfc
     mov r0, r4
     mov r1, #0x4b
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r2, [r4, #0x34]
     ldr r1, [r4, #0x5c]
     ldr r3, [r4, #0x38]
@@ -116,7 +116,7 @@ L_021fddf4:
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x7f
-    bl func_020922b0
+    bl SceneSound_SetPackedEffectValue
     b L_021fdeb0
 L_021fde54:
     mov r0, r4
@@ -125,7 +125,7 @@ L_021fde54:
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x0
-    bl func_020922b0
+    bl SceneSound_SetPackedEffectValue
     ldr r0, [r4, #0x58]
     bl func_ov018_021ff420
     cmp r0, #0x0
@@ -142,7 +142,7 @@ L_021fde98:
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x0
-    bl func_020922b0
+    bl SceneSound_SetPackedEffectValue
 L_021fdeb0:
     ldr r0, [r4, #0x58]
     bl func_ov018_021ff408
@@ -216,7 +216,7 @@ L_021fdeb0:
     ble L_021fdfd4
     mov r0, r4
     mov r1, #0x4d
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021fdfd4:
     ldr r0, [r4, #0x58]
     ldr r1, [r0, #0x24]
@@ -240,7 +240,7 @@ L_021fdfd4:
     beq L_021fe040
     mov r0, r4
     mov r1, #0x1e
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x1
     str r0, [r4, #0x3c8]
     mov r6, #0x4
@@ -251,12 +251,12 @@ L_021fe040:
     mov r0, r4
     bne L_021fe060
     mov r1, #0x1e
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r6, #0x5
     b L_021fe068
 L_021fe060:
     mov r1, #0x77
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021fe068:
     ldr r0, [r4, #0x58]
     mov r8, #0x1

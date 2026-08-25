@@ -14,10 +14,10 @@ extern void func_ov030_021fea00(void *);
 extern void func_ov030_021fd694(void *, const void *);
 extern void func_ov030_021fd720(void *, const void *);
 extern s32 func_ov030_021ff574(void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov030_021fe954(void *, u16);
-extern void func_020922f0(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern s32 func_ov045_0220b924(void *, s32, s32, s32);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
@@ -51,12 +51,12 @@ static void service_board_timers(void *scene, s32 includeSuccessTimers)
     void *board = FIELD(void *, scene, 0x2c4);
     if (includeSuccessTimers) {
         if (func_ov030_021ff574((u8 *)board + 0x1d0) != 0)
-            func_02092260(scene, 0x31);
+            SceneSound_PlayPackedEffect(scene, 0x31);
         if (func_ov030_021ff574((u8 *)board + 0x1d8) != 0)
-            func_02092260(scene, 9);
+            SceneSound_PlayPackedEffect(scene, 9);
     }
     if (func_ov030_021ff574((u8 *)board + 0x1e0) != 0)
-        func_02092260(scene, 0x26);
+        SceneSound_PlayPackedEffect(scene, 0x26);
 }
 
 /* Applies a nonzero recovered reward through the currency HUD and UI object. */
@@ -113,7 +113,7 @@ extern "C" s32 func_ov030_021ff038(void *scene)
                 func_ov030_021fe954(scene, 0x31c);
                 reward = 10000;
             }
-            func_020922f0(scene, 0xe5);
+            SceneSound_PlayDirectSequence(scene, 0xe5);
         } else if (successes == 2) {
             if (mode == 1) {
                 func_ov030_021fe954(scene, 0x1f3);
@@ -122,7 +122,7 @@ extern "C" s32 func_ov030_021ff038(void *scene)
                 func_ov030_021fe954(scene, 0x31b);
                 reward = 1000;
             }
-            func_020922f0(scene, 0xe6);
+            SceneSound_PlayDirectSequence(scene, 0xe6);
         } else if (successes == 1) {
             if (mode == 1) {
                 func_ov030_021fe954(scene, 0x1f2);
@@ -131,10 +131,10 @@ extern "C" s32 func_ov030_021ff038(void *scene)
                 func_ov030_021fe954(scene, 0x31a);
                 reward = 100;
             }
-            func_020922f0(scene, 0xe6);
+            SceneSound_PlayDirectSequence(scene, 0xe6);
         } else {
             func_ov030_021fe954(scene, 0x1f5);
-            func_020922f0(scene, 0xe7);
+            SceneSound_PlayDirectSequence(scene, 0xe7);
         }
         apply_reward(scene, reward);
         ++FIELD(s32, scene, 4);
@@ -157,7 +157,7 @@ extern "C" s32 func_ov030_021ff038(void *scene)
         if ((FIELD(u32, scene, 0x20) & 0x20) != 0) {
             if (SpriteMotionController_BeginHitResponse((u8 *)board + 0x58,
                               (u8 *)scene + 0x30, 0, 4) != 0) {
-                func_02092260(scene, 0xb);
+                SceneSound_PlayPackedEffect(scene, 0xb);
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2bc));
                 func_ov030_021fe954(scene, 0x1fa);
                 TitleInterpolatedValue_Configure((u8 *)scene + 0x340, 2, 0, 0xa8, 0x10);
@@ -165,7 +165,7 @@ extern "C" s32 func_ov030_021ff038(void *scene)
                 FIELD(s32, scene, 8) = 0;
             } else if (SpriteMotionController_BeginHitResponse((u8 *)board + 0x104,
                                      (u8 *)scene + 0x30, 0, 4) != 0) {
-                func_02092260(scene, 3);
+                SceneSound_PlayPackedEffect(scene, 3);
                 func_ov030_021fda14(scene, data_ov030_021ff778[0],
                                     data_ov030_021ff778[1]);
             }

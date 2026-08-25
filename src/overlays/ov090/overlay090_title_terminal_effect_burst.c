@@ -31,7 +31,7 @@ extern void *PresentationBackedActor_Spawn(
     s32 resource2, s32 animation, s32 kind, s32 enabled);
 extern void func_ov090_0221b7e0(TitleEffectBounds *bounds, s32 left, s32 top,
                                 s32 right, s32 bottom);
-extern void func_020594ec(void *sound, s32 value);
+extern void SoundContext_PlayDefaultStream(void *sound, s32 value);
 extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern u64 func_020befec(s32 dividend, s32 divisor);
 
@@ -175,7 +175,7 @@ void func_ov090_0221b428(void *self)
         i++;
     } while (i < 27);
 
-    func_020594ec(gSoundContext, 8);
+    SoundContext_PlayDefaultStream(gSoundContext, 8);
     Actor_PlayHorizontalSpatialSound(self, 0xa10c, 0);
     VecFx32Object_Destroy(&origin);
 }

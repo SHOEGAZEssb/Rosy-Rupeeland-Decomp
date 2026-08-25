@@ -3,7 +3,7 @@
     .extern data_ov021_02202f00
     .extern data_ov021_02202f08
 .extern RecordDescriptor_IsDiscovered
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern func_ov021_021fd1b8
@@ -18,7 +18,7 @@ func_ov021_021ffcb4:
     bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x2c0]
     bl func_ov021_021fd6e8
     ldr r0, [r0, #0x0]

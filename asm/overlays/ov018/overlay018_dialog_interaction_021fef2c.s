@@ -4,7 +4,7 @@
     .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
-    .extern func_020922b0
+    .extern SceneSound_SetPackedEffectValue
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern func_ov003_021fb7ec
@@ -85,7 +85,7 @@ L_021fefec:
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x0
-    bl func_020922b0
+    bl SceneSound_SetPackedEffectValue
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

@@ -29,8 +29,8 @@ extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 TitleInterpolatedValue_Evaluate(void *, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_02092260(void *, s32);
-extern void func_02092288(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_StopPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void IndexedSelectionController_SnapTransitionOrigin(void *);
 extern void IndexedSelectionController_IncrementWrap(void *);
@@ -93,7 +93,7 @@ extern void Overlay045Graphics_SetUniformValue(void *, s32);
 
 static void select_row(void *scene, void *ui, s32 row)
 {
-    func_02092260(scene, 0);
+    SceneSound_PlayPackedEffect(scene, 0);
     InventoryScroll_SetSelectedRow(ui, row);
     func_ov023_021fe6e4(scene);
     FIELD(s32, scene, 4) = 20;
@@ -148,18 +148,18 @@ extern "C" s32 func_ov023_021febbc(void *scene)
             func_ov023_021feb60(scene);
         } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x17c,
                                  (u8 *)scene + 0x30, 0, 4)) {
-            func_02092260(scene, 3);
+            SceneSound_PlayPackedEffect(scene, 3);
             CALLBACK(scene, data_ov023_021ffb88);
         } else {
             FIELD(s32, scene, 0x38c) = func_ov023_021fea34(scene);
             if (FIELD(s32, scene, 0x38c) == 1) {
-                func_02092260(scene, 11);
+                SceneSound_PlayPackedEffect(scene, 11);
                 FIELD(s32, scene, 4) = 10;
                 FIELD(s32, scene, 8) = 0;
             }
         }
         if (InventoryScroll_UpdateSelectionMovement(ui)) {
-            func_02092260(scene, 0);
+            SceneSound_PlayPackedEffect(scene, 0);
             --FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
@@ -206,7 +206,7 @@ static s32 recenter_machine(void *scene, void *collection, void **next)
     case 1:
         if (InventoryScroll_UpdateInterpolation(ui)) {
             if (FIELD(s32, ui, 0xc) != FIELD(s32, ui, 0x10))
-                func_02092288(scene, 8);
+                SceneSound_StopPackedEffect(scene, 8);
             ADVANCE(scene);
         } else {
             if (collection == FIELD(void *, scene, 0x390))
@@ -219,7 +219,7 @@ static s32 recenter_machine(void *scene, void *collection, void **next)
         InventoryScroll_SaveOrigins(ui);
         if (FIELD(u32, scene, 0x20) & 0x10) {
             if (InventoryScroll_UpdateMarkerDrag(ui, (u8 *)scene + 0x30)) {
-                func_02092260(scene, 8);
+                SceneSound_PlayPackedEffect(scene, 8);
                 --FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
             }
@@ -305,7 +305,7 @@ extern "C" s32 func_ov023_021ff0a4(void *scene)
  */
 extern "C" void func_ov023_021ff2a0(void *scene)
 {
-    func_02092260(scene, 2);
+    SceneSound_PlayPackedEffect(scene, 2);
     void *entry = func_ov023_021fd954(FIELD(void *, scene, 0x478));
     FIELD(void *, scene, 0x47c) = entry;
     void *record = FIELD(void *, entry, 0);
@@ -369,19 +369,19 @@ extern "C" s32 func_ov023_021ff2fc(void *scene)
             func_ov023_021ff2a0(scene);
         } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x17c,
                                  (u8 *)scene + 0x30, 0, 4)) {
-            func_02092260(scene, 3);
+            SceneSound_PlayPackedEffect(scene, 3);
             CALLBACK(scene, data_ov023_021ffb58);
         } else {
             FIELD(s32, scene, 0x38c) = func_ov023_021fea34(scene);
             if (FIELD(s32, scene, 0x38c) == 0) {
-                func_02092260(scene, 11);
+                SceneSound_PlayPackedEffect(scene, 11);
                 FIELD(s32, scene, 4) = 10;
                 FIELD(s32, scene, 8) = 0;
             }
         }
-        if (InventoryScroll_UpdateSelectionMovement(ui)) { func_02092260(scene, 0); --FIELD(s32, scene, 4); }
+        if (InventoryScroll_UpdateSelectionMovement(ui)) { SceneSound_PlayPackedEffect(scene, 0); --FIELD(s32, scene, 4); }
         if (IndexedSelectionController_AdvanceTransition((u8 *)scene + 0x480)) {
-            func_02092260(scene, 0);
+            SceneSound_PlayPackedEffect(scene, 0);
             void *effect = IndexedSelectionController_GetLastDirection((u8 *)scene + 0x480) ?
                 FIELD(void *, scene, 0x380) : FIELD(void *, scene, 0x384);
             PresentationScalar_SetImmediate((u8 *)effect + 0x1c,

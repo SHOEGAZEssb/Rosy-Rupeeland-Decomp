@@ -4,7 +4,7 @@
     .extern data_ov016_022013c8
     .extern data_ov016_02201450
     .extern ActorDescriptor_GetPrimaryLabel
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern InventoryScroll_SetSelectedRow
     .extern InventoryScroll_SaveOrigins
     .extern InventoryScroll_MoveSelectionUp
@@ -20,7 +20,7 @@
     .extern InventoryScroll_UpdateSelectionMovement
     .extern InventoryScroll_ResetPresentationState
     .extern SpriteMotionController_BeginHitResponse
-    .extern func_02095dd4
+    .extern ModalState_UpdateInput
     .extern func_ov016_021fd3f8
     .extern func_ov016_021fd5b8
     .extern func_ov016_021fd628
@@ -147,7 +147,7 @@ L_022001d8:
     bne L_0220033c
     mov r0, r6
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_0220033c
 L_0220021c:
     add r1, r6, #0x30
@@ -160,7 +160,7 @@ L_0220021c:
     bne L_0220033c
     mov r0, r6
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_0220033c
 L_0220024c:
     add r1, r6, #0x30
@@ -184,7 +184,7 @@ L_02200280:
     mov r0, r6
     beq L_022002d0
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r5
     mov r1, r4
     bl InventoryScroll_SetSelectedRow
@@ -221,7 +221,7 @@ L_02200300:
     beq L_0220033c
     mov r0, r6
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_02200484
     mov r0, r6
     ldmia r1, {r1, r2}
@@ -234,7 +234,7 @@ L_0220033c:
     beq L_02200470
     mov r0, r6
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r6, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1
@@ -282,7 +282,7 @@ L_022003f0:
     mov r2, r1, lsl #0x1a
     add r1, r6, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02200470
     mov r0, r6

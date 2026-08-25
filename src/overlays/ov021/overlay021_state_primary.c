@@ -29,7 +29,7 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern s32 ActorDescriptor_IsInvalid(void *);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
@@ -117,7 +117,7 @@ extern "C" s32 func_ov021_02201410(void *state)
                     break;
                 }
                 if (row >= 0) {
-                    func_02092260(state, 0);
+                    SceneSound_PlayPackedEffect(state, 0);
                     if (row != FIELD(s32, widget, 0x25c)) {
                         func_ov000_021fca4c(widget, row);
                         func_ov000_021fc9d4(widget);
@@ -127,17 +127,17 @@ extern "C" s32 func_ov021_02201410(void *state)
                 }
                 if (func_ov000_021fc5ac(widget, input) != 0) {
                     TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-                    func_02092260(state, 3);
+                    SceneSound_PlayPackedEffect(state, 3);
                     change_state(state, data_ov021_02202e08);
                     break;
                 }
                 if (func_ov000_021fc5fc(widget, input) != 0) {
                     if (Overlay021_IsAuxiliaryRecordAvailable(state) != 0) {
                         TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-                        func_02092260(state, 11);
+                        SceneSound_PlayPackedEffect(state, 11);
                         change_state(state, data_ov021_02202e00);
                     } else {
-                        func_02092260(state, 9);
+                        SceneSound_PlayPackedEffect(state, 9);
                     }
                     break;
                 }
@@ -150,7 +150,7 @@ extern "C" s32 func_ov021_02201410(void *state)
                         void *selected = FIELD(void *, state, 0x37c);
                         if (selected != 0 && FIELD(void *, selected, 0xc) != 0) {
                             TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-                            func_02092260(state, 2);
+                            SceneSound_PlayPackedEffect(state, 2);
                             FIELD(void *, state, 0x2bc) = FIELD(void *, selected, 0xc);
                             u32 category = Overlay021Descriptor_GetFlags16_19(
                                 FIELD(void *, state, 0x2bc));
@@ -167,17 +167,17 @@ extern "C" s32 func_ov021_02201410(void *state)
                             break;
                         }
                     }
-                    func_02092260(state, 9);
+                    SceneSound_PlayPackedEffect(state, 9);
                     break;
                 }
             }
         }
         if (func_ov000_021fc424(widget) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         } else if (func_ov000_021fc4fc(widget) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }

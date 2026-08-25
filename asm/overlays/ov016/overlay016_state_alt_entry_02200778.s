@@ -7,7 +7,7 @@
     .extern data_ov016_022014a0
     .extern data_ov016_022014a8
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02095dd4
+    .extern ModalState_UpdateInput
     .extern func_ov000_021fc9d4
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
@@ -103,7 +103,7 @@ L_022008a0:
     mov r2, r1, lsl #0x1a
     add r1, r4, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_022008d8
     mov r0, r4

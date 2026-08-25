@@ -15,7 +15,7 @@ extern const s32 data_ov030_021ff7a8[];
 extern "C" {
 #endif
 extern void func_ov030_021fea00(void *);
-extern void func_020922f0(void *, s32);
+extern void SceneSound_PlayDirectSequence(void *, s32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
@@ -49,7 +49,7 @@ extern "C" s32 func_ov030_021fee6c(void *scene)
     (void)func_ov030_021fea00(scene);
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_020922f0(scene, 0xe4);
+        SceneSound_PlayDirectSequence(scene, 0xe4);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* Recovered control flow intentionally continues into state 1. */

@@ -18,7 +18,7 @@ extern void TitleCharacterResourceCollection_Init(void *state);
 extern void TitleCharacterResourceCollection_Append(void *state, u32 value);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *TitleDialog_Init(void *storage, void *owner, void *value);
-extern void func_02091080(void *state, void *first, void *second,
+extern void TitleDialog_ConfigureLayout(void *state, void *first, void *second,
                           s32 third, s32 fourth);
 extern void func_02092f88(void *state, s32 value, void *destination);
 extern u8 data_021f3f54[];
@@ -32,7 +32,7 @@ extern void SpriteMotionController_BindSprite(void *state, void *sprite, s32 ani
                           s32 mode, s32 flags);
 extern void SpriteMotionController_SetPosition(void *state, s32 x, s32 y);
 extern void SpriteMotionController_Update(void *state);
-extern void func_02095bec(void *state);
+extern void ModalState_DrawFrame(void *state);
 extern void func_02075598(void *owner, void *resource);
 extern void GraphicsSpriteRenderer_DrawText(void *owner, void *text,
                                             s32 x, s32 y, s32 palette,
@@ -51,7 +51,7 @@ extern void AnimationResourceState_Destroy(void *state);
 extern void Presentation_DestroyNoOp(void *state);
 
 /* Exact field assignment helper selected at retail 0x02091080. */
-void func_02091080(void *state, void *first, void *second,
+void TitleDialog_ConfigureLayout(void *state, void *first, void *second,
                    s32 third, s32 fourth)
 {
     u8 *bytes = (u8 *)state;
@@ -62,7 +62,7 @@ void func_02091080(void *state, void *first, void *second,
 }
 
 /* Exact modal-frame rectangle submission selected at retail 0x02095BEC. */
-void func_02095bec(void *state)
+void ModalState_DrawFrame(void *state)
 {
     u8 *self = (u8 *)state;
     s32 x = *(s32 *)(self + 0x218);
@@ -98,7 +98,7 @@ void ModalState_InitResources(void *state, s32 message_id)
     }
     for (index = 0; index < 3; ++index)
         SpriteMotionController_Update(self + 0x14 + index * 0xac);
-    func_02095bec(self);
+    ModalState_DrawFrame(self);
     if (gSystemState[0x5f] == 3)
         func_02075598(data_020f4e14, *(void **)(self + 0x228));
     else
@@ -112,7 +112,7 @@ void ModalState_InitResources(void *state, s32 message_id)
 }
 
 /* Return whether one modal choice has completed its motion, retail 0x02095F30. */
-s32 func_02095f30(void *choice)
+s32 ModalChoice_IsMotionComplete(void *choice)
 {
     u8 *bytes = (u8 *)choice;
     return *(s32 *)(bytes + 0x80) >= *(s32 *)(bytes + 0x7c);
@@ -136,7 +136,7 @@ void ModalState_CopyAttachmentText(void *state, const u16 *attachment)
 }
 
 /* Exact three-choice modal input/update state machine at retail 0x02095DD4. */
-s32 func_02095dd4(void *state, void *input, s32 input_enabled)
+s32 ModalState_UpdateInput(void *state, void *input, s32 input_enabled)
 {
     u8 *self = (u8 *)state;
     s32 result = -1;
@@ -159,7 +159,7 @@ s32 func_02095dd4(void *state, void *input, s32 input_enabled)
         break;
     case 1: {
         u32 selected = *(u32 *)(self + 0x224);
-        if (func_02095f30(self + 0x14 + selected * 0xac) != 0)
+        if (ModalChoice_IsMotionComplete(self + 0x14 + selected * 0xac) != 0)
             ++*(u32 *)(self + 0x220);
         break;
     }
@@ -193,7 +193,7 @@ static void ModalDestroyOwnedState(u8 *self)
 }
 
 /* Retaining and freeing modal destructors at retail 0x02095B1C/0x02095B80. */
-void *func_02095b1c(void *state)
+void *ModalState_Destroy(void *state)
 {
     ModalDestroyOwnedState((u8 *)state);
     return state;
@@ -207,7 +207,7 @@ void *ModalState_Delete(void *state)
 }
 
 /* Retail 0x020959D4, including all three embedded choice rows and ownership. */
-void *func_020959d4(void *storage, s32 first, s32 second)
+void *ModalState_Init(void *storage, s32 first, s32 second)
 {
     u8 *self = (u8 *)storage;
     void *dialog;
@@ -236,7 +236,7 @@ void *func_020959d4(void *storage, s32 first, s32 second)
         dialog = TitleDialog_Init(dialog, data_020f4e14,
                                *(void **)(self + 0x228));
     *(void **)(self + 0x24c) = dialog;
-    func_02091080(dialog, (u8 *)(u32)first + 0x50,
+    TitleDialog_ConfigureLayout(dialog, (u8 *)(u32)first + 0x50,
                   (u8 *)(u32)second + 0x34, 0x78, 0x40);
     func_02092f88(dialog, 1, self + 0x250);
     return self;

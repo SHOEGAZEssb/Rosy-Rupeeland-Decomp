@@ -18,7 +18,7 @@ extern void GameWork_SetFlag(void *, s32);
 extern u32 genrand_int32(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_ov002_021fbb68(void *, const void *);
@@ -72,7 +72,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
     case 1:
         if ((FIELD(u32, state, 0x20) & 0x20) &&
             func_ov002_021fbb68(child, (u8 *)state + 0x30) >= 0) {
-            func_02092260(state,
+            SceneSound_PlayPackedEffect(state,
                           (genrand_int32() & 1) ? 0x3c80 : 0x3c81);
             Overlay029_ResetPhase(state, 2);
         }
@@ -89,7 +89,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
         func_ov002_021fbd64(child);
         if (FIELD(s32, child, 0x8c) == 13) {
             if (FIELD(s32, child, 0x90) == 0) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 Overlay029_ResetPhase(state, 20);
                 break;
             }
@@ -97,7 +97,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
             s32 mode = FIELD(s32, state, 0x5c);
             if (mode >= 2 && GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) <=
                              FIELD(s32, state, 0xac)) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 Overlay029_ResetPhase(state, 20);
                 break;
             }
@@ -107,7 +107,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
                 GameWork_SetFlag(gGameWork, 0x38a);
                 Overlay029_SetPair(state, data_ov029_021feca0);
             } else if (FIELD(s32, state, 0xac) == 0) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 Overlay029_ResetPhase(state, 20);
             } else {
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x9c));
@@ -122,11 +122,11 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
                 Overlay029_ResetPhase(state, 10);
                 DisplayBrightness_StartMaskedTransitions(1, -8);
             } else if (mode <= 1) {
-                func_02092260(state, 9);
+                SceneSound_PlayPackedEffect(state, 9);
                 Overlay029_ResetPhase(state, 0);
             } else if (mode == 7) {
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x9c));
-                func_02092260(state, 3);
+                SceneSound_PlayPackedEffect(state, 3);
                 FIELD(s32, state, 0xac) = 0;
                 FIELD(s32, state, 0x6c) = 0;
                 GameWork_SetFlag(gGameWork, 0x38a);
@@ -134,7 +134,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
             } else {
                 func_ov029_021fd7a8(state,
                                     (mode == 5 || mode == 6) ? 1 : 2);
-                func_02092260(state, 3);
+                SceneSound_PlayPackedEffect(state, 3);
                 FIELD(s32, state, 0xac) = 0;
                 FIELD(s32, state, 0x6c) = 0;
                 DisplayBrightness_StartMaskedTransitions(1, -8);

@@ -16,7 +16,7 @@
     .extern InventoryScroll_TestMarkerHit
     .extern InventoryScroll_PageUp
     .extern InventoryScroll_PageDown
-    .extern func_02092260
+    .extern SceneSound_PlayPackedEffect
     .extern InventoryScroll_SetSelectedRow
     .extern func_ov038_021fd508
     .extern AreaInfoPanelPresentation_ShowIndex
@@ -124,7 +124,7 @@ L_021fd900:
     bne L_021fda84
     mov r0, r4
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fda84
 L_021fd944:
     add r1, r4, #0x30
@@ -137,7 +137,7 @@ L_021fd944:
     bne L_021fda84
     mov r0, r4
     mov r1, #0x16
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fda84
 L_021fd974:
     add r1, r4, #0x30
@@ -158,7 +158,7 @@ L_021fd998:
     beq L_021fda84
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x314]
     mov r1, r5
     bl InventoryScroll_SetSelectedRow
@@ -205,7 +205,7 @@ L_021fda4c:
     beq L_021fda84
     mov r0, r4
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fdac8
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -217,7 +217,7 @@ L_021fda84:
     beq L_021fdab4
     mov r0, r4
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x1

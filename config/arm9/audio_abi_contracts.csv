@@ -18,7 +18,7 @@ Sound_FadeEffectVolume,5
 Sound_IsEffectPlaying,3
 Sound_SetEffectModulationDepth,4
 Sound_SetEffectModulationSpeed,4
-func_020594ec,2,include/tingle/sound_stream.h
+SoundContext_PlayDefaultStream,2,include/tingle/sound_stream.h
 Sound_IsStreamPlaying,2,include/tingle/sound_stream.h
 Sound_PlayStream,6,include/tingle/sound_stream.h
 Sound_StopStream,2,include/tingle/sound_stream.h

@@ -11,7 +11,7 @@ extern const u32 data_ov016_02201450[];
 extern "C" {
 #endif
 extern void *ActorDescriptor_GetPrimaryLabel(void *);
-extern void func_02092260(void *, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void InventoryScroll_SetSelectedRow(void *, s32);
 extern void InventoryScroll_SaveOrigins(void *);
 extern void InventoryScroll_MoveSelectionUp(void *);
@@ -27,7 +27,7 @@ extern s32 InventoryScroll_TestMarkerHit(void *, void *);
 extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
-extern s32 func_02095dd4(void *, void *, s32);
+extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void func_ov016_021fd3f8(void *);
 extern s32 func_ov016_021fd5b8(void *, void *);
 extern void *func_ov016_021fd628(void *);
@@ -95,12 +95,12 @@ extern "C" s32 func_ov016_0220007c(void *state)
             } else if ((FIELD(u32, state, 0x20) & 0x20) != 0) {
                 if (InventoryScroll_TestUpperArrowPress(presentation, (u8 *)state + 0x30) != 0) {
                     if (InventoryScroll_PageUp(presentation) == 0) {
-                        func_02092260(state, 0x16);
+                        SceneSound_PlayPackedEffect(state, 0x16);
                     }
                 } else if (InventoryScroll_TestLowerArrowPress(presentation,
                                           (u8 *)state + 0x30) != 0) {
                     if (InventoryScroll_PageDown(presentation) == 0) {
-                        func_02092260(state, 0x16);
+                        SceneSound_PlayPackedEffect(state, 0x16);
                     }
                 } else if (InventoryScroll_TestMarkerHit(presentation,
                                           (u8 *)state + 0x30) != 0 &&
@@ -110,7 +110,7 @@ extern "C" s32 func_ov016_0220007c(void *state)
                     break;
                 } else if (selected >= 0) {
                     if (selected != FIELD(s32, presentation, 0x14)) {
-                        func_02092260(state, 0);
+                        SceneSound_PlayPackedEffect(state, 0);
                         InventoryScroll_SetSelectedRow(presentation, selected);
                         func_ov016_021ffba4(state);
                         Overlay016_SyncSelectedPanel(state);
@@ -126,7 +126,7 @@ extern "C" s32 func_ov016_0220007c(void *state)
                     break;
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x194,
                                           (u8 *)state + 0x30, 0, 4) != 0) {
-                    func_02092260(state, 3);
+                    SceneSound_PlayPackedEffect(state, 3);
                     Overlay016ActorValue_Init(state, data_ov016_022013c8[0],
                                         data_ov016_022013c8[1]);
                     break;
@@ -134,7 +134,7 @@ extern "C" s32 func_ov016_0220007c(void *state)
             }
         }
         if (InventoryScroll_UpdateSelectionMovement(presentation) != 0) {
-            func_02092260(state, 0);
+            SceneSound_PlayPackedEffect(state, 0);
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         }
@@ -155,7 +155,7 @@ extern "C" s32 func_ov016_0220007c(void *state)
         }
         break;
     case 4:
-        if (func_02095dd4(FIELD(void *, state, 0x460),
+        if (ModalState_UpdateInput(FIELD(void *, state, 0x460),
                           (u8 *)state + 0x30,
                           (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
             func_ov016_021ff9b8(state);

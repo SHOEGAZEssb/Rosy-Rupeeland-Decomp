@@ -6,7 +6,7 @@
 .extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_02091cf0
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern func_ov025_021ff254
 .extern func_ov025_02200178
 .extern func_ov025_022001f4
@@ -74,7 +74,7 @@ L_02200f0c:
     beq L_02200f88
     ldr r1, L_02200fd0
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r4, #0xbc]
     mov r2, #0x0
     ldrh r0, [r1, #0x24]

@@ -14,8 +14,8 @@ extern "C" {
 extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_02092260(void *, s32);
-extern void func_020922b0(void *, s32, s32);
+extern void SceneSound_PlayPackedEffect(void *, s32);
+extern void SceneSound_SetPackedEffectValue(void *, s32, s32);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void func_ov003_021fb7ec(void *);
 extern void func_ov018_021fcf40(void *, s32, s32, s32);
@@ -55,7 +55,7 @@ extern "C" s32 func_ov018_021fe854(void *state)
             SpriteMotionController_BeginHitResponse((u8 *)state + 0xd8, (u8 *)state + 0x30,
                           0, 4)) {
             if (INPUT_BIT(state, 5)) {
-                func_02092260(state, 3);
+                SceneSound_PlayPackedEffect(state, 3);
                 func_ov018_021fcf40(state, data_ov018_021ffbc8[0],
                                     data_ov018_021ffbc8[1], 0);
             }
@@ -66,7 +66,7 @@ extern "C" s32 func_ov018_021fe854(void *state)
             u32 latch = FIELD(u32, FIELD(void *, state, 0x58), 0x24);
             if (latch >= 2 && latch <= 3) {
                 func_ov018_021fdb7c(state, 0);
-                func_020922b0(state, 0x4c, 0);
+                SceneSound_SetPackedEffectValue(state, 0x4c, 0);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             }

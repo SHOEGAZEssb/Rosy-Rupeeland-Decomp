@@ -2,7 +2,7 @@
 .extern TitleScreenResourceCollection_Get
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern Heap_Alloc
-.extern func_020959d4
+.extern ModalState_Init
 .extern ModalState_CopyAttachmentText
 .extern ModalState_InitResources
 .extern data_ov044_0220d350
@@ -39,7 +39,7 @@ func_ov044_0220c8d0:
     beq .L_0220c940
     mov r1, #0x0
     mov r2, r1
-    bl func_020959d4
+    bl ModalState_Init
 .L_0220c940:
     str r0, [r6, #0x238]
     cmp r4, #0x0

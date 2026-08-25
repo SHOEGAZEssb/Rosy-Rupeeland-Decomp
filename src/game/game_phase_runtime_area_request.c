@@ -8,7 +8,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059880(void *soundContext, s32 unused);
+extern void SoundContext_RequestPhaseTransition(void *soundContext, s32 unused);
 extern void *GamePhaseMetadata_GetByIndex(s32 areaId);
 #ifdef __cplusplus
 }
@@ -43,7 +43,7 @@ void GamePhaseRuntime_StageAreaRequest(GamePhaseRuntime *self, s32 areaNumber,
                    s32 value0, s32 value1, s32 value2, s32 mode)
 {
     u8 *b = (u8 *)self;
-    func_02059880(gSoundContext, 0);
+    SoundContext_RequestPhaseTransition(gSoundContext, 0);
     *(void **)(b + 0x30d0) = GamePhaseMetadata_GetByIndex(areaNumber - 1);
     *(s32 *)(b + 0x30d4) = value0;
     *(s32 *)(b + 0x30d8) = value1;

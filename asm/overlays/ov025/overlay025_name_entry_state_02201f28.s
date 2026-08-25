@@ -24,9 +24,9 @@
 .extern LanguageLookupDatabase_GetResourceById
 .extern RetailSaveContext_PollOperation
 .extern RetailSaveContext_BeginNamedRecordWrite
-.extern func_02092260
-.extern func_020922f0
-.extern func_02092314
+.extern SceneSound_PlayPackedEffect
+.extern SceneSound_PlayDirectSequence
+.extern SceneSound_StopDirectSequence
 .extern TitleCharacterResourceCollection_Destroy
 .extern GraphicsSpriteState_TestTouchPoint
 .extern DisplayBrightness_StartMaskedTransitions
@@ -36,7 +36,7 @@
 .extern SpriteMotionController_Show
 .extern SpriteMotionController_Hide
 .extern SpriteMotionController_SetAnimation
-.extern func_02095dd4
+.extern ModalState_UpdateInput
 .extern func_ov025_021fce00
 .extern func_ov025_021fd03c
 .extern func_ov025_021fd160
@@ -118,7 +118,7 @@ L_02201fa0:
 L_02201fac:
     mov r1, #0xe2
     mov r2, #0x10
-    bl func_02092314
+    bl SceneSound_StopDirectSequence
     mov r0, #0x3
     sub r1, r0, #0x13
     bl DisplayBrightness_StartMaskedTransitions
@@ -133,7 +133,7 @@ L_02201fd8:
     beq L_02202ad4
     mov r0, r5
     mov r1, #0xe8
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     mov r0, r5
     bl func_ov025_022000a4
     mov r0, r5
@@ -229,7 +229,7 @@ L_02202104:
     mov r0, r5
     beq L_022021a8
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_02202ae8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
@@ -251,10 +251,10 @@ L_02202104:
 L_022021a8:
     mov r1, #0xe8
     mov r2, #0x1
-    bl func_02092314
+    bl SceneSound_StopDirectSequence
     mov r0, r5
     mov r1, #0xe9
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     mov r0, #0xa
     str r0, [r5, #0x4]
     mov r0, #0x0
@@ -263,7 +263,7 @@ L_022021a8:
 L_022021d4:
     mov r0, r5
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_02202ad4
 L_022021e4:
     add r0, r5, #0x248
@@ -278,14 +278,14 @@ L_022021e4:
     mov r0, r5
     mov r1, #0x3
     str r3, [r2, #0x17c]
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x3
     sub r1, r0, #0x13
     bl DisplayBrightness_StartMaskedTransitions
     mov r0, r5
     mov r1, #0xe8
     mov r2, #0x10
-    bl func_02092314
+    bl SceneSound_StopDirectSequence
     mov r0, #0x14
     str r0, [r5, #0x4]
     mov r0, #0x0
@@ -300,7 +300,7 @@ L_02202248:
     beq L_022022a4
     mov r0, r5
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_02202af8
     ldrb r0, [r0, #0x5f]
     cmp r0, #0x0
@@ -324,7 +324,7 @@ L_022022a4:
     beq L_02202300
     mov r0, r5
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_02202af8
     ldrb r0, [r0, #0x5f]
     cmp r0, #0x0
@@ -348,7 +348,7 @@ L_02202300:
     beq L_02202358
     mov r0, r5
     mov r1, #0xb
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_02202af8
     ldrb r0, [r0, #0x5f]
     cmp r0, #0x0
@@ -375,7 +375,7 @@ L_02202358:
     mov r0, r5
     beq L_022023b0
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x598]
     mov r2, #0x1
     ldr r0, [r1, #0x17c]
@@ -387,7 +387,7 @@ L_02202358:
     b L_022023b8
 L_022023b0:
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_022023b8:
     ldr r0, [r5, #0x598]
     mov r1, #0x0
@@ -400,7 +400,7 @@ L_022023c8:
     bmi L_02202404
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r5, #0x598]
     mov r1, r4
     bl func_ov025_021fd388
@@ -564,12 +564,12 @@ L_02202614:
     bl func_ov025_021fd03c
     mov r0, r5
     mov r1, #0x0
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_02202648
 L_0220263c:
     mov r0, r5
     mov r1, #0x9
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_02202648:
     ldr r0, [r5, #0x598]
     mov r1, r4
@@ -715,7 +715,7 @@ L_02202848:
     mov r2, r1, lsl #0x1a
     add r1, r5, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02202ad4
     mov r0, #0x3
@@ -839,7 +839,7 @@ L_022029dc:
     bl DisplayBrightness_StartMaskedTransitions
     mov r0, r5
     mov r1, #0xe2
-    bl func_020922f0
+    bl SceneSound_PlayDirectSequence
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

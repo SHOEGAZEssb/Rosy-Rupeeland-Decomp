@@ -13,7 +13,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_PlayHorizontalSpatialSound
 .extern PresentationBackedActor_Spawn
-.extern func_020594ec
+.extern SoundContext_PlayDefaultStream
 .extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
 .extern func_020befec
 .extern func_ov077_02216960
@@ -260,7 +260,7 @@ func_ov090_0221b428:
     ldr r0, .L_0221b7d8
     mov r1, #0x8
     ldr r0, [r0, #0x0]
-    bl func_020594ec
+    bl SoundContext_PlayDefaultStream
     ldr r1, .L_0221b7dc
     mov r0, r4
     mov r2, #0x0

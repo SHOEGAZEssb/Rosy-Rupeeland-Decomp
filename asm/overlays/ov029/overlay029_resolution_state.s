@@ -13,8 +13,8 @@
 .extern data_ov029_021fed28
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_0209189c
-.extern func_02092260
-.extern func_02092288
+.extern SceneSound_PlayPackedEffect
+.extern SceneSound_StopPackedEffect
 .extern DisplayBrightness_StartMaskedTransitions
 .extern PresentationScalar_TransitionTo
 .extern Presentation_SetScript
@@ -74,15 +74,15 @@ L_021fe120:
     mov r0, r4
     bne L_021fe148
     mov r1, #0x6d
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
     b L_021fe150
 L_021fe148:
     mov r1, #0x69
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
 L_021fe150:
     mov r0, r4
     mov r1, #0x6c
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fe74c
     ldr r3, L_021fe750
     mov r0, #0xb0
@@ -127,7 +127,7 @@ L_021fe1e8:
     beq L_021fe73c
     mov r0, r4
     mov r1, #0x6c
-    bl func_02092288
+    bl SceneSound_StopPackedEffect
     ldr r0, [r4, #0x5c]
     cmp r0, #0x7
     addls pc, pc, r0, lsl #0x2
@@ -144,7 +144,7 @@ L_021fe214: ; jump table
 L_021fe234:
     mov r0, r4
     mov r1, #0x6b
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xa0]
     bl func_ov045_0220bdb0
     mov r2, #0x2
@@ -164,7 +164,7 @@ L_021fe270:
     mov r0, r4
     blt L_021fe308
     mov r1, #0x6a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_021fe75c
     ldr r1, L_021fe760
     ldr r0, [r0, #0x0]
@@ -200,7 +200,7 @@ L_021fe2f4:
     b L_021fe73c
 L_021fe308:
     mov r1, #0x6b
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xa0]
     bl func_ov045_0220bdb0
     mov r0, r4
@@ -246,7 +246,7 @@ L_021fe39c:
     mov r0, r4
     bgt L_021fe41c
     mov r1, #0x6a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_021fe75c
     ldr r1, L_021fe760
     ldr r0, [r0, #0x0]
@@ -275,7 +275,7 @@ L_021fe3fc:
     b L_021fe474
 L_021fe41c:
     mov r1, #0x6b
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xa0]
     bl func_ov045_0220bdb0
     mov r0, r4
@@ -310,7 +310,7 @@ L_021fe488:
     mov r0, r4
     bgt L_021fe4d8
     mov r1, #0x6a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xa0]
     bl func_ov045_0220bdf0
     mov r0, r4
@@ -326,7 +326,7 @@ L_021fe488:
     b L_021fe504
 L_021fe4d8:
     mov r1, #0x6b
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xa0]
     bl func_ov045_0220bdb0
     mov r0, r4
@@ -349,7 +349,7 @@ L_021fe518:
     mov r0, r4
     bgt L_021fe5f8
     mov r1, #0x6a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, L_021fe75c
     ldr r1, L_021fe760
     ldr r0, [r0, #0x0]
@@ -404,7 +404,7 @@ L_021fe5e4:
     b L_021fe73c
 L_021fe5f8:
     mov r1, #0x6b
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xa0]
     bl func_ov045_0220bdb0
     mov r0, r4
@@ -485,7 +485,7 @@ L_021fe70c:
     bl func_ov002_021fbe68
     mov r0, r4
     mov r1, #0x69
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fe77c
     mov r0, r4
     ldmia r1, {r1, r2}

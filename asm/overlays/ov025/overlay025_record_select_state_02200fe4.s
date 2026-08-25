@@ -13,7 +13,7 @@
 .extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_02091cf0
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern GraphicsSpriteState_TestTouchPoint
 .extern SpriteMotionController_BeginHitResponse
 .extern func_ov025_021fd9e4
@@ -89,7 +89,7 @@ L_0220108c:
     bne L_022010d8
     mov r0, r5
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0xa
     str r0, [r5, #0x4]
     mov r0, #0x0
@@ -98,7 +98,7 @@ L_0220108c:
 L_022010d8:
     ldr r1, L_02201328
     mov r0, r5
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, r5
     mov r1, r6
     bl func_ov025_02200648
@@ -133,7 +133,7 @@ L_02201134:
     mov r0, r5
     str r10, [r5, #0x5b8]
     mov r1, #0x2
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

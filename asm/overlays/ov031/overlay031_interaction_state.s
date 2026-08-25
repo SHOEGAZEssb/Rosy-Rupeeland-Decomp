@@ -5,7 +5,7 @@
 .extern data_ov031_021fe708
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern func_ov031_021fd5c0
 .extern func_ov031_021fd7fc
 .extern func_ov031_021fd934
@@ -49,7 +49,7 @@ L_021fe4d4:
 L_021fe51c:
     mov r0, r4
     mov r1, #0x3a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fe5cc
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -78,7 +78,7 @@ L_021fe57c:
     beq L_021fe5a4
     mov r0, r4
     mov r1, #0x3a
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, L_021fe5d0
     mov r0, r4
     ldmia r1, {r1, r2}

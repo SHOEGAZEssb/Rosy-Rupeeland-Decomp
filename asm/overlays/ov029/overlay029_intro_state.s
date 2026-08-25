@@ -10,7 +10,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov000_021fb6e0
 .extern func_ov002_021fbdc0
@@ -89,11 +89,11 @@ L_021fda8c:
     mov r0, r4
     bne L_021fdac4
     mov r1, #0x6d
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     b L_021fdacc
 L_021fdac4:
     mov r1, #0x69
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
 L_021fdacc:
     ldr r0, [r4, #0x5c]
     cmp r0, #0x4
@@ -176,7 +176,7 @@ L_021fdbd8:
     beq L_021fdc1c
     ldr r1, L_021fdc54
     mov r0, r4
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x0
     ldr r1, L_021fdc58
     str r0, [r4, #0xe0]

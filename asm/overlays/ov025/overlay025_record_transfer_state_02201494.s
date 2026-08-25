@@ -12,13 +12,13 @@
 .extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_02091cf0
-.extern func_02092260
+.extern SceneSound_PlayPackedEffect
 .extern GraphicsSpriteState_TestTouchPoint
 .extern SpriteMotionController_SetPosition
 .extern SpriteMotionController_BeginHitResponse
 .extern SpriteMotionController_Show
 .extern SpriteMotionController_Hide
-.extern func_02095dd4
+.extern ModalState_UpdateInput
 .extern func_ov025_021fd9e4
 .extern func_ov025_021fdb18
 .extern func_ov025_021fdc4c
@@ -161,7 +161,7 @@ L_02201614:
     beq L_02201a8c
     mov r0, r5
     mov r1, #0x3
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     mov r0, #0x14
     str r0, [r5, #0x4]
     mov r0, #0x0
@@ -230,7 +230,7 @@ L_02201728:
     mov r2, r1, lsl #0x1a
     add r1, r5, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     movs r4, r0
     bmi L_02201a8c
     mov r0, r5
@@ -373,7 +373,7 @@ L_02201910:
     bl func_ov025_02200224
     ldr r1, L_02201ab0
     mov r0, r5
-    bl func_02092260
+    bl SceneSound_PlayPackedEffect
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -388,7 +388,7 @@ L_02201970:
     mov r2, r1, lsl #0x1a
     add r1, r5, #0x30
     mov r2, r2, asr #0x1f
-    bl func_02095dd4
+    bl ModalState_UpdateInput
     cmp r0, #0x0
     blt L_02201a8c
     mov r0, r5
