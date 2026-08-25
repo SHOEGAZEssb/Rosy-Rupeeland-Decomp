@@ -1,0 +1,8 @@
+{
+  "func_0201e9d8": "OrbitTimedSprite_InitBase",
+  "func_0201ea20": "OrbitTimedSprite_Init",
+  "func_0201ea68": "OrbitTimedSprite_Destroy",
+  "func_0201ea7c": "OrbitTimedSprite_DestroyAndFree",
+  "OrbitTimedSprite_Update": "OrbitTimedSprite_Update",
+  "func_0201eb18": "OrbitTimedSprite_ApplyOrbitalPosition"
+}

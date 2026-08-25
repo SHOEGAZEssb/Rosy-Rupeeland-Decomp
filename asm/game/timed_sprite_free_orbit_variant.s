@@ -8,7 +8,7 @@
 .extern VecFx32Object_Add
 .extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e9d8
+.extern OrbitTimedSprite_InitBase
 
 .global func_0201ebac
 .type func_0201ebac, @function
@@ -22,7 +22,7 @@ func_0201ebac: ; 0x0201ebac
     mov r1, #0x0
     mov r5, r0
     str ip, [sp, #0x4]
-    bl func_0201e9d8
+    bl OrbitTimedSprite_InitBase
     ldr r2, .L_0201ebf4
     mov r1, r4
     add r0, r5, #0x40

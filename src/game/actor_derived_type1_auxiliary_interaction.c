@@ -122,7 +122,7 @@ extern void *func_02022cb0(void *allocation, const void *camera, void *owner,
 extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *entry);
 extern void AuxiliaryCore_ApplyScale(void *core, s32 value, s32 index);
 extern void *TimedSpriteConfig_InitTracks(void *config);
-extern void *func_0201ea20(void *allocation, void *owner, void *config,
+extern void *OrbitTimedSprite_Init(void *allocation, void *owner, void *config,
                            s32 spriteValue, s16 offset, s16 spriteByte);
 extern void *func_0201ecbc(void *allocation, void *owner, void *config,
                            s32 spriteValue, s16 offset, s16 spriteByte);
@@ -2280,7 +2280,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
             animation = (*(s32 (**)(void *))(*(u8 **)actor + 0x1cc))(actor);
             effect = Heap_Alloc(0x40, data_020e5830, 4, &gHeapContext);
             if (effect != 0)
-                effect = func_0201ea20(effect, owner, &config, animation, 0, 1);
+                effect = OrbitTimedSprite_Init(effect, owner, &config, animation, 0, 1);
             *(void **)(self + 0x28 + freeSlot * 4) = effect;
             if ((genrand_int32() & 0x20) != 0)
                 *(u16 *)(*(u8 **)((u8 *)effect + 4) + 0x24) |= 0x80;
@@ -2309,7 +2309,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
         random = genrand_int32();
         effect = Heap_Alloc(0x40, data_020e5830, 4, &gHeapContext);
         if (effect != 0)
-            effect = func_0201ea20(
+            effect = OrbitTimedSprite_Init(
                 effect, owner, &config,
                 (s32)func_020ada8c(genrand_int32() & 0x7fffffff, 3) + 0x1b,
                 0, 1);
@@ -2366,7 +2366,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
                 effect = func_0201ecbc(effect, owner, &config, spriteValue,
                                        (s16)offset, 1);
             else
-                effect = func_0201ea20(effect, owner, &config, spriteValue,
+                effect = OrbitTimedSprite_Init(effect, owner, &config, spriteValue,
                                       (s16)offset, 1);
         }
         *(void **)(self + 0x38) = effect;

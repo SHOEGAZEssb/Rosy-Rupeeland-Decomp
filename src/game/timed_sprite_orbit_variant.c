@@ -56,9 +56,9 @@ extern u32 genrand_int32(void);
  * random starting angle, choose step +0x800 for odd RNG output or -0x800 for
  * even output, and return self.
  */
-OrbitTimedSprite *func_0201e9d8(OrbitTimedSprite *self, u8 *owner, u8 *config,
-                                s32 spriteValue, s16 spriteOffset,
-                                s16 spriteByte)
+OrbitTimedSprite *OrbitTimedSprite_InitBase(
+    OrbitTimedSprite *self, u8 *owner, u8 *config, s32 spriteValue,
+    s16 spriteOffset, s16 spriteByte)
 {
     u32 random;
     AttachedTimedSprite_Init(self, owner, config, spriteValue);
@@ -72,9 +72,9 @@ OrbitTimedSprite *func_0201e9d8(OrbitTimedSprite *self, u8 *owner, u8 *config,
 }
 
 /* Duplicate constructor retained for its distinct retail entry point. */
-OrbitTimedSprite *func_0201ea20(OrbitTimedSprite *self, u8 *owner, u8 *config,
-                                s32 spriteValue, s16 spriteOffset,
-                                s16 spriteByte)
+OrbitTimedSprite *OrbitTimedSprite_Init(
+    OrbitTimedSprite *self, u8 *owner, u8 *config, s32 spriteValue,
+    s16 spriteOffset, s16 spriteByte)
 {
     u32 random;
     AttachedTimedSprite_Init(self, owner, config, spriteValue);
@@ -88,14 +88,14 @@ OrbitTimedSprite *func_0201ea20(OrbitTimedSprite *self, u8 *owner, u8 *config,
 }
 
 /* Run the shared non-freeing teardown and return self. */
-OrbitTimedSprite *func_0201ea68(OrbitTimedSprite *self)
+OrbitTimedSprite *OrbitTimedSprite_Destroy(OrbitTimedSprite *self)
 {
     TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
-OrbitTimedSprite *func_0201ea7c(OrbitTimedSprite *self)
+OrbitTimedSprite *OrbitTimedSprite_DestroyAndFree(OrbitTimedSprite *self)
 {
     TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
@@ -130,8 +130,9 @@ s32 OrbitTimedSprite_Update(OrbitTimedSprite *self)
  * to the sprite.  Then add spriteOffset3c to sprite halfword 0x28 and, when
  * spriteByte3e is nonnegative, store its low byte at sprite offset 0x3a.
  */
-void func_0201eb18(OrbitTimedSprite *self, const void *ownerPosition,
-                   const CPoint2DS16 *unusedCenter)
+void OrbitTimedSprite_ApplyOrbitalPosition(
+    OrbitTimedSprite *self, const void *ownerPosition,
+    const CPoint2DS16 *unusedCenter)
 {
     s32 tableIndex = (self->angle38 >> 4) * 2;
     s32 x = *(s32 *)&self->first08.bytes[4]

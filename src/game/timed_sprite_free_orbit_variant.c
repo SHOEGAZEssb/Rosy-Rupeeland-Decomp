@@ -37,7 +37,7 @@ struct FreeOrbitTimedSprite {
 extern "C" {
 #endif
 extern void *data_020d60f8;
-extern FreeOrbitTimedSprite *func_0201e9d8(FreeOrbitTimedSprite *self,
+extern FreeOrbitTimedSprite *OrbitTimedSprite_InitBase(FreeOrbitTimedSprite *self,
                                            u8 *owner, u8 *config,
                                            s32 spriteValue,
                                            s16 spriteOffset, s16 spriteByte);
@@ -61,7 +61,8 @@ FreeOrbitTimedSprite *func_0201ebac(FreeOrbitTimedSprite *self,
                                     s32 spriteValue, s16 spriteOffset,
                                     s16 spriteByte)
 {
-    func_0201e9d8(self, 0, config, spriteValue, spriteOffset, spriteByte);
+    OrbitTimedSprite_InitBase(
+        self, 0, config, spriteValue, spriteOffset, spriteByte);
     self->vtable = (void **)data_020d60f8;
     VecFx32Object_InitCopy(&self->position40, positionSource);
     return self;

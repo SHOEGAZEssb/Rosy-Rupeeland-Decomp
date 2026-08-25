@@ -11,9 +11,9 @@
 .extern AttachedTimedSprite_Init
 .extern genrand_int32
 
-.global func_0201e9d8
-.type func_0201e9d8, @function
-func_0201e9d8: ; 0x0201e9d8
+.global OrbitTimedSprite_InitBase
+.type OrbitTimedSprite_InitBase, @function
+OrbitTimedSprite_InitBase: ; 0x0201e9d8
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl AttachedTimedSprite_Init
@@ -32,11 +32,11 @@ func_0201e9d8: ; 0x0201e9d8
     strh r1, [r4, #0x3a]
     ldmia sp!, {r4, pc}
 .L_0201ea1c: .word data_020d6118
-    .size func_0201e9d8, .-func_0201e9d8
+    .size OrbitTimedSprite_InitBase, .-OrbitTimedSprite_InitBase
 
-.global func_0201ea20
-.type func_0201ea20, @function
-func_0201ea20: ; 0x0201ea20
+.global OrbitTimedSprite_Init
+.type OrbitTimedSprite_Init, @function
+OrbitTimedSprite_Init: ; 0x0201ea20
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl AttachedTimedSprite_Init
@@ -55,21 +55,21 @@ func_0201ea20: ; 0x0201ea20
     strh r1, [r4, #0x3a]
     ldmia sp!, {r4, pc}
 .L_0201ea64: .word data_020d6118
-    .size func_0201ea20, .-func_0201ea20
+    .size OrbitTimedSprite_Init, .-OrbitTimedSprite_Init
 
-.global func_0201ea68
-.type func_0201ea68, @function
-func_0201ea68: ; 0x0201ea68
+.global OrbitTimedSprite_Destroy
+.type OrbitTimedSprite_Destroy, @function
+OrbitTimedSprite_Destroy: ; 0x0201ea68
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201ea68, .-func_0201ea68
+    .size OrbitTimedSprite_Destroy, .-OrbitTimedSprite_Destroy
 
-.global func_0201ea7c
-.type func_0201ea7c, @function
-func_0201ea7c: ; 0x0201ea7c
+.global OrbitTimedSprite_DestroyAndFree
+.type OrbitTimedSprite_DestroyAndFree, @function
+OrbitTimedSprite_DestroyAndFree: ; 0x0201ea7c
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
@@ -77,7 +77,7 @@ func_0201ea7c: ; 0x0201ea7c
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201ea7c, .-func_0201ea7c
+    .size OrbitTimedSprite_DestroyAndFree, .-OrbitTimedSprite_DestroyAndFree
 
 .global OrbitTimedSprite_Update
 .type OrbitTimedSprite_Update, @function
@@ -118,9 +118,9 @@ OrbitTimedSprite_Update: ; 0x0201ea98
     ldmia sp!, {r4, pc}
     .size OrbitTimedSprite_Update, .-OrbitTimedSprite_Update
 
-.global func_0201eb18
-.type func_0201eb18, @function
-func_0201eb18: ; 0x0201eb18
+.global OrbitTimedSprite_ApplyOrbitalPosition
+.type OrbitTimedSprite_ApplyOrbitalPosition, @function
+OrbitTimedSprite_ApplyOrbitalPosition: ; 0x0201eb18
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -158,4 +158,4 @@ func_0201eb18: ; 0x0201eb18
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 .L_0201eba8: .word gFx32CosSinTable
-    .size func_0201eb18, .-func_0201eb18
+    .size OrbitTimedSprite_ApplyOrbitalPosition, .-OrbitTimedSprite_ApplyOrbitalPosition
