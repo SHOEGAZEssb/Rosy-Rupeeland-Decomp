@@ -20,15 +20,15 @@
 .extern Sound_Play
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern GamePhaseState_UpdateRenderHelpers
-.extern data_020d5d24
-.extern data_020d5d84
+.extern gOverlay52SceneVTable
+.extern gOverlay52ChildAllocationTag
 .extern gDisplayBrightnessPair
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
 .extern gGamePhaseRuntime
-.global func_0201d220
-func_0201d220: ; 0x0201d220
+.global GamePhaseRuntime_UpdateStateRenderHelpers
+GamePhaseRuntime_UpdateStateRenderHelpers: ; 0x0201d220
     stmdb sp!, {r3, lr}
     ldr r0, L_0201d23c
     ldr r0, [r0, #0x0]
@@ -39,4 +39,4 @@ func_0201d220: ; 0x0201d220
 L_0201d23c: .word gGamePhaseRuntime
 
 
-.size func_0201d220, . - func_0201d220
+.size GamePhaseRuntime_UpdateStateRenderHelpers, . - GamePhaseRuntime_UpdateStateRenderHelpers

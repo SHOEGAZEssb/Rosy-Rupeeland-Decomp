@@ -20,15 +20,15 @@
 .extern Sound_Play
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern GamePhaseState_UpdateRenderHelpers
-.extern data_020d5d24
-.extern data_020d5d84
+.extern gOverlay52SceneVTable
+.extern gOverlay52ChildAllocationTag
 .extern gDisplayBrightnessPair
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
 .extern gGamePhaseRuntime
-.global func_0201d0f4
-func_0201d0f4: ; 0x0201d0f4
+.global Overlay52Scene_Update
+Overlay52Scene_Update: ; 0x0201d0f4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x28]
@@ -105,10 +105,10 @@ L_0201d1f0:
     ldmia sp!, {r4, pc}
 L_0201d208: .word gDisplayBrightnessPair
 L_0201d20c: .word gDebugFont
-L_0201d210: .word data_020d5d84
+L_0201d210: .word gOverlay52ChildAllocationTag
 L_0201d214: .word gHeapContext
 L_0201d218: .word gSoundContext
 L_0201d21c: .word gGamePhaseRuntime
 
 
-.size func_0201d0f4, . - func_0201d0f4
+.size Overlay52Scene_Update, . - Overlay52Scene_Update

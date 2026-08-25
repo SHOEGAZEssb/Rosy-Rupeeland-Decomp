@@ -20,15 +20,15 @@
 .extern Sound_Play
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern GamePhaseState_UpdateRenderHelpers
-.extern data_020d5d24
-.extern data_020d5d84
+.extern gOverlay52SceneVTable
+.extern gOverlay52ChildAllocationTag
 .extern gDisplayBrightnessPair
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
 .extern gGamePhaseRuntime
-.global func_0201d03c
-func_0201d03c: ; 0x0201d03c
+.global Overlay52Scene_Destroy
+Overlay52Scene_Destroy: ; 0x0201d03c
     stmdb sp!, {r4, lr}
     ldr r1, L_0201d090
     mov r4, r0
@@ -51,7 +51,7 @@ L_0201d068:
     bl Scene_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0201d090: .word data_020d5d24
+L_0201d090: .word gOverlay52SceneVTable
 
 
-.size func_0201d03c, . - func_0201d03c
+.size Overlay52Scene_Destroy, . - Overlay52Scene_Destroy

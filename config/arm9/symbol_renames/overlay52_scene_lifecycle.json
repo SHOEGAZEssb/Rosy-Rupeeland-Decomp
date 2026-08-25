@@ -1,0 +1,9 @@
+{
+  "func_0201cfd0": "Overlay52Scene_Init",
+  "func_0201d03c": "Overlay52Scene_Destroy",
+  "func_0201d094": "Overlay52Scene_DestroyAndFree",
+  "func_0201d0f4": "Overlay52Scene_Update",
+  "func_0201d220": "GamePhaseRuntime_UpdateStateRenderHelpers",
+  "data_020d5d24": "gOverlay52SceneVTable",
+  "data_020d5d84": "gOverlay52ChildAllocationTag"
+}

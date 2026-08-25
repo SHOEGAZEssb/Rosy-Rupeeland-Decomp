@@ -24,7 +24,7 @@ extern void *func_0209f2f8(...);
 extern void *func_0209fd50(...);
 extern void *func_020a042c(...);
 extern void *func_020200bc(...);
-extern void *func_0201cfd0(...);
+extern void *Overlay52Scene_Init(...);
 extern void *func_0206ec68(...);
 extern void RuntimePresentationManager_AppendFirstListEffect(...);
 extern u8 *RuntimeRecordTable_FindByKey(...);
@@ -131,7 +131,7 @@ s32 GamePhaseActorScriptVm_DispatchRuntimeCommand(GamePhaseActorScriptVm *self)
     case 15:
         commandObject = allocCommandObject(0x2c, data_020d5b7c);
         if (commandObject != 0)
-            func_0201cfd0(commandObject, parameter);
+            Overlay52Scene_Init(commandObject, parameter);
         return 0;
     case 26:
         *(u16 *)((u8 *)*(void **)((u8 *)self->actor + 0x54) + 0x24)

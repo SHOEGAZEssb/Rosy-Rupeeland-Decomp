@@ -21,7 +21,7 @@
 .extern GamePhaseLoadScene_Init
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern func_0201cfd0
+.extern Overlay52Scene_Init
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_020200bc
 .extern ActorCollection_FindActorByRuntimeId
@@ -300,7 +300,7 @@ L_020165d0:
     cmp r0, #0
     beq L_020165f4
     mov r1, r4
-    bl func_0201cfd0
+    bl Overlay52Scene_Init
 L_020165f4:
     mov r0, #0
     b L_020167d4

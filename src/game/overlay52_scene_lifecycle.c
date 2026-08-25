@@ -19,8 +19,8 @@ typedef struct Overlay52Scene {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d5d24;
-extern char data_020d5d84[];
+extern SceneVTable gOverlay52SceneVTable;
+extern char gOverlay52ChildAllocationTag[];
 extern DisplayBrightnessPair gDisplayBrightnessPair;
 extern void *gDebugFont;
 extern void *gSoundContext;
@@ -45,13 +45,13 @@ extern void GamePhaseState_UpdateRenderHelpers(void *value);
  * and clear the child.  Start a sub-screen fade from 0 to -16, load overlay 52
  * in slot 0, set scene flags 0/1, and return self.
  */
-Overlay52Scene *func_0201cfd0(Overlay52Scene *self, u32 parameter)
+Overlay52Scene *Overlay52Scene_Init(Overlay52Scene *self, u32 messageId)
 {
     DisplayBrightness *brightness;
 
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d5d24;
-    self->parameter24 = parameter;
+    self->base.vtable = &gOverlay52SceneVTable;
+    self->parameter24 = messageId;
     self->child28 = 0;
     brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
     DisplayBrightness_StartTransition(brightness, 0, -16, 8);
@@ -64,9 +64,9 @@ Overlay52Scene *func_0201cfd0(Overlay52Scene *self, u32 parameter)
  * Clear scene flags, destroy an optional child through its deleting virtual,
  * unload overlay slots 0 and 2, destroy the base Scene, and return self.
  */
-Overlay52Scene *func_0201d03c(Overlay52Scene *self)
+Overlay52Scene *Overlay52Scene_Destroy(Overlay52Scene *self)
 {
-    self->base.vtable = &data_020d5d24;
+    self->base.vtable = &gOverlay52SceneVTable;
     Scene_ClearFlags03(&self->base);
     if (self->child28 != 0)
         self->child28->vtable->destroyAndFree((Scene *)self->child28);
@@ -76,10 +76,10 @@ Overlay52Scene *func_0201d03c(Overlay52Scene *self)
     return self;
 }
 
-/* Perform func_0201d03c's teardown, free the scene, and return its old address. */
-Overlay52Scene *func_0201d094(Overlay52Scene *self)
+/* Perform Overlay52Scene_Destroy's teardown, free the scene, and return its old address. */
+Overlay52Scene *Overlay52Scene_DestroyAndFree(Overlay52Scene *self)
 {
-    self->base.vtable = &data_020d5d24;
+    self->base.vtable = &gOverlay52SceneVTable;
     Scene_ClearFlags03(&self->base);
     if (self->child28 != 0)
         self->child28->vtable->destroyAndFree((Scene *)self->child28);
@@ -97,7 +97,7 @@ Overlay52Scene *func_0201d094(Overlay52Scene *self)
  * reports completion.  Runtime mode 2 is applied on non-completing frames;
  * returns one only when the scene was destroyed, otherwise zero.
  */
-s32 func_0201d0f4(Overlay52Scene *self)
+s32 Overlay52Scene_Update(Overlay52Scene *self)
 {
     DisplayBrightness *brightness;
     Overlay52Child *child;
@@ -107,7 +107,7 @@ s32 func_0201d0f4(Overlay52Scene *self)
         if (DisplayBrightness_GetCurrent(brightness) == -16) {
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             child = (Overlay52Child *)Heap_Alloc(
-                0x34, data_020d5d84, 4, &gHeapContext);
+                0x34, gOverlay52ChildAllocationTag, 4, &gHeapContext);
             if (child != 0)
                 child = Overlay052Scene_Init(child, 1, 1);
             self->child28 = child;
@@ -130,7 +130,7 @@ s32 func_0201d0f4(Overlay52Scene *self)
 }
 
 /* Forward the runtime object's field at offset 0x24 and return zero. */
-s32 func_0201d220(void)
+s32 GamePhaseRuntime_UpdateStateRenderHelpers(void)
 {
     GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
     return 0;
