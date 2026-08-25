@@ -71,8 +71,8 @@
 .extern gHeapContext
 .extern genrand_int32
 
-    .global func_020143a8
-func_020143a8: ; 0x020143a8
+    .global GamePhaseActorScriptVm_DispatchEffectCommand
+GamePhaseActorScriptVm_DispatchEffectCommand: ; 0x020143a8
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc0
     mov r11, r0
@@ -1297,4 +1297,4 @@ L_0201553c:
     mov r0, #0x1
     add sp, sp, #0xc0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_020143a8, . - func_020143a8
+    .size GamePhaseActorScriptVm_DispatchEffectCommand, . - GamePhaseActorScriptVm_DispatchEffectCommand

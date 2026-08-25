@@ -1,0 +1,7 @@
+{
+  "func_020143a8": "GamePhaseActorScriptVm_DispatchEffectCommand",
+  "RectS32_Set": "RectS32_Set",
+  "GamePhaseActorScriptVm_SetMotionProbeScale": "GamePhaseActorScriptVm_SetMotionProbeScale",
+  "GamePhaseActorScriptVm_SetAttachmentFrameIndex": "GamePhaseActorScriptVm_SetAttachmentFrameIndex",
+  "GamePhaseActorScriptVm_CalculateDistanceToCoordinates": "GamePhaseActorScriptVm_CalculateDistanceToCoordinates"
+}

@@ -13,13 +13,13 @@ extern s32 func_020adc40(s32 value);
 #endif
 
 /* Store left, top, right, and bottom words in order and return the result pointer. */
-u32 *RectS32_Set(u32 *result, s32 left, s32 top, s32 right, s32 bottom)
+u32 *RectS32_Set(u32 *rectangle, s32 left, s32 top, s32 right, s32 bottom)
 {
-    result[0] = (u32)left;
-    result[1] = (u32)top;
-    result[2] = (u32)right;
-    result[3] = (u32)bottom;
-    return result;
+    rectangle[0] = (u32)left;
+    rectangle[1] = (u32)top;
+    rectangle[2] = (u32)right;
+    rectangle[3] = (u32)bottom;
+    return rectangle;
 }
 
 /*
@@ -28,17 +28,17 @@ u32 *RectS32_Set(u32 *result, s32 left, s32 top, s32 right, s32 bottom)
  */
 s32 GamePhaseActorScriptVm_SetMotionProbeScale(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    ActorMotionProbe_SetScale(self->actor, value << 4);
+    s32 scale = (s32)GamePhaseScriptVm_Pop(&self->base);
+    ActorMotionProbe_SetScale(self->actor, scale << 4);
     return 0;
 }
 
 /* Pop a byte and pass it to GraphicsSpriteState_SetFrameIndex on actor->0x54, then return zero. */
 s32 GamePhaseActorScriptVm_SetAttachmentFrameIndex(GamePhaseActorScriptVm *self)
 {
-    u8 value = (u8)GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)self->actor + 0x54);
-    GraphicsSpriteState_SetFrameIndex(object, value);
+    u8 frameIndex = (u8)GamePhaseScriptVm_Pop(&self->base);
+    void *attachment = *(void **)((u8 *)self->actor + 0x54);
+    GraphicsSpriteState_SetFrameIndex(attachment, frameIndex);
     return 0;
 }
 
@@ -54,10 +54,11 @@ s32 GamePhaseActorScriptVm_CalculateDistanceToCoordinates(GamePhaseActorScriptVm
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
-    s32 dx = x - (*(s32 *)(actor + 0x1c) >> 12);
-    s32 dy = y - (*(s32 *)(actor + 0x20) >> 12);
-    s32 dz = z - (*(s32 *)(actor + 0x24) >> 12);
-    s32 distance = func_020adc40(dx * dx + dy * dy + dz * dz);
+    s32 deltaX = x - (*(s32 *)(actor + 0x1c) >> 12);
+    s32 deltaY = y - (*(s32 *)(actor + 0x20) >> 12);
+    s32 deltaZ = z - (*(s32 *)(actor + 0x24) >> 12);
+    s32 distance = func_020adc40(
+        deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, distance / 64);
     return 0;
 }

@@ -110,7 +110,7 @@ static void addScriptFieldEffect(void *effect)
  * and numeric selectors are preserved because semantic command names are not
  * yet proven.
  */
-s32 func_020143a8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
 {
     u32 a6 = GamePhaseScriptVm_Pop(&self->base);
     u32 a5 = GamePhaseScriptVm_Pop(&self->base);
