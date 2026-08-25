@@ -39,11 +39,11 @@ extern void SceneDisplayResources_Setup(s32 sceneIndex);
 extern void *DualArrayBlendPresentation_Init(void *object, s32 value);
 extern void *OverlayPromptPresentation_Init(void *object);
 extern void *PaletteCyclePresentation_Init(void *object);
-extern void *func_02023fa0(void *object);
-extern void *func_020240cc(void *object, s32 value);
-extern void *func_02024200(void *object);
-extern void *func_0202432c(void *object, s32 value, s32 parameter);
-extern void *func_02024468(void *object);
+extern void *Overlay2cComponentPresentation_Init(void *object);
+extern void *Overlay50ComponentPresentation_Init(void *object, s32 value);
+extern void *Overlay4cComponentPresentation_Init(void *object);
+extern void *Overlay4cParameterizedPresentation_Init(void *object, s32 value, s32 parameter);
+extern void *Overlay18ComponentPresentation_Init(void *object);
 extern void *FourSlot3DPresentation_Init(void *object, s32 value);
 extern void *IndexedSpriteOverlayPresentation_Init(void *object, s32 value);
 extern void *ReversedFrameSpriteOverlayPresentation_Init(void *object, s32 value);
@@ -87,7 +87,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 20:
         createdObject = allocateObject(0x18, data_020d5b94);
         if (createdObject)
-            createdObject = func_02024468(createdObject);
+            createdObject = Overlay18ComponentPresentation_Init(createdObject);
         RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 19:
@@ -103,7 +103,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 17:
         createdObject = allocateObject(0x18, data_020d5b9c);
         if (createdObject)
-            createdObject = func_0202432c(createdObject, value, parameter);
+            createdObject = Overlay4cParameterizedPresentation_Init(createdObject, value, parameter);
         RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 16: {
@@ -115,7 +115,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 15:
         createdObject = allocateObject(0x18, data_020d5ba4);
         if (createdObject)
-            createdObject = func_02024200(createdObject);
+            createdObject = Overlay4cComponentPresentation_Init(createdObject);
         RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 14:
@@ -127,7 +127,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 13:
         createdObject = allocateObject(0x18, data_020d5bb4);
         if (createdObject)
-            createdObject = func_020240cc(createdObject, value);
+            createdObject = Overlay50ComponentPresentation_Init(createdObject, value);
         RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 12:
@@ -166,7 +166,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 6:
         createdObject = allocateObject(0x18, data_020d5bb4);
         if (createdObject)
-            createdObject = func_02023fa0(createdObject);
+            createdObject = Overlay2cComponentPresentation_Init(createdObject);
         RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 5:

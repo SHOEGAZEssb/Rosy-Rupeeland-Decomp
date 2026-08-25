@@ -7,9 +7,9 @@
 .extern FieldEffect_DestroyBase
 .extern func_ov094_02217d20
 
-    .global func_02024054
-    .type func_02024054, @function
-func_02024054: ; 0x02024054
+    .global Overlay2cComponentPresentation_DestroyAndFree
+    .type Overlay2cComponentPresentation_DestroyAndFree, @function
+Overlay2cComponentPresentation_DestroyAndFree: ; 0x02024054
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_020240a8
     mov r5, r0
@@ -33,4 +33,4 @@ func_02024054: ; 0x02024054
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_020240a8: .word data_020d695c
-    .size func_02024054, . - func_02024054
+    .size Overlay2cComponentPresentation_DestroyAndFree, . - Overlay2cComponentPresentation_DestroyAndFree

@@ -9,9 +9,9 @@
 .extern func_ov094_022185e4
 .extern gHeapContext
 
-    .global func_020240cc
-    .type func_020240cc, @function
-func_020240cc: ; 0x020240cc
+    .global Overlay50ComponentPresentation_Init
+    .type Overlay50ComponentPresentation_Init, @function
+Overlay50ComponentPresentation_Init: ; 0x020240cc
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -40,4 +40,4 @@ func_020240cc: ; 0x020240cc
 .L_0202412c: .word 0x5e
 .L_02024130: .word gOverlay50ComponentAllocationTag
 .L_02024134: .word gHeapContext
-    .size func_020240cc, . - func_020240cc
+    .size Overlay50ComponentPresentation_Init, . - Overlay50ComponentPresentation_Init

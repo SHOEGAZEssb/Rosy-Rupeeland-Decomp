@@ -36,7 +36,7 @@ extern s32 data_ov089_022198e8(void *);
  * Initialize base/helper, set helper ID 0x5e, allocate the component, pass its
  * two recovered pointer arguments to the overlay constructor, and return self.
  */
-Overlay4cParameterizedPresentation *func_0202432c(
+Overlay4cParameterizedPresentation *Overlay4cParameterizedPresentation_Init(
     Overlay4cParameterizedPresentation *self, void *first, void *second)
 {
     FieldEffect_Init(self);self->vtable00=(void **)data_020d68bc;
@@ -47,7 +47,7 @@ Overlay4cParameterizedPresentation *func_0202432c(
 }
 
 /* Destroy/free the component, tear down its helper and FieldEffect base, and return self. */
-Overlay4cParameterizedPresentation *func_020243a0(
+Overlay4cParameterizedPresentation *Overlay4cParameterizedPresentation_Destroy(
     Overlay4cParameterizedPresentation *self)
 {
     self->vtable00=(void **)data_020d68bc;
@@ -56,18 +56,18 @@ Overlay4cParameterizedPresentation *func_020243a0(
     return self;
 }
 
-/* Perform func_020243a0 teardown, free self, and return its old address. */
-Overlay4cParameterizedPresentation *func_020243f0(
+/* Perform Overlay4cParameterizedPresentation_Destroy teardown, free self, and return its old address. */
+Overlay4cParameterizedPresentation *Overlay4cParameterizedPresentation_DestroyAndFree(
     Overlay4cParameterizedPresentation *self)
-{func_020243a0(self);Heap_Free(self);return self;}
+{Overlay4cParameterizedPresentation_Destroy(self);Heap_Free(self);return self;}
 
 /* Tail-forward the first operation to the owned overlay component. */
-s32 func_02024448(Overlay4cParameterizedPresentation *self)
+s32 Overlay4cParameterizedPresentation_InvokeComponentOperation0(Overlay4cParameterizedPresentation *self)
 {return func_ov094_022196e8(self->component08);}
 
 /*
  * Tail-forward the second operation.  The address-derived symbol is labeled as
  * data because overlays share its address; this call behavior is confirmed.
  */
-s32 func_02024458(Overlay4cParameterizedPresentation *self)
+s32 Overlay4cParameterizedPresentation_InvokeComponentOperation1(Overlay4cParameterizedPresentation *self)
 {return data_ov089_022198e8(self->component08);}

@@ -29,11 +29,11 @@
 .extern DualArrayBlendPresentation_Init
 .extern OverlayPromptPresentation_Init
 .extern PaletteCyclePresentation_Init
-.extern func_02023fa0
-.extern func_020240cc
-.extern func_02024200
-.extern func_0202432c
-.extern func_02024468
+.extern Overlay2cComponentPresentation_Init
+.extern Overlay50ComponentPresentation_Init
+.extern Overlay4cComponentPresentation_Init
+.extern Overlay4cParameterizedPresentation_Init
+.extern Overlay18ComponentPresentation_Init
 .extern FourSlot3DPresentation_Init
 .extern IndexedSpriteOverlayPresentation_Init
 .extern ReversedFrameSpriteOverlayPresentation_Init
@@ -88,7 +88,7 @@ L_02017da8:
     bl Heap_Alloc
     movs r1, r0
     beq L_02017dcc
-    bl func_02024468
+    bl Overlay18ComponentPresentation_Init
     mov r1, r0
 L_02017dcc:
     ldr r0, L_020181c4
@@ -129,7 +129,7 @@ L_02017e34:
     beq L_02017e60
     mov r1, r6
     mov r2, r5
-    bl func_0202432c
+    bl Overlay4cParameterizedPresentation_Init
     mov r1, r0
 L_02017e60:
     ldr r0, L_020181c4
@@ -153,7 +153,7 @@ L_02017e90:
     bl Heap_Alloc
     movs r1, r0
     beq L_02017eb4
-    bl func_02024200
+    bl Overlay4cComponentPresentation_Init
     mov r1, r0
 L_02017eb4:
     ldr r0, L_020181c4
@@ -189,7 +189,7 @@ L_02017f0c:
     movs r1, r0
     beq L_02017f34
     mov r1, r6
-    bl func_020240cc
+    bl Overlay50ComponentPresentation_Init
     mov r1, r0
 L_02017f34:
     ldr r0, L_020181c4
@@ -291,7 +291,7 @@ L_0201807c:
     bl Heap_Alloc
     movs r1, r0
     beq L_020180a0
-    bl func_02023fa0
+    bl Overlay2cComponentPresentation_Init
     mov r1, r0
 L_020180a0:
     ldr r0, L_020181c4

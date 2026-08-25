@@ -2,11 +2,11 @@
 .text
 .extern func_ov094_02217e94
 
-    .global func_020240bc
-    .type func_020240bc, @function
-func_020240bc: ; 0x020240bc
+    .global Overlay2cComponentPresentation_InvokeComponentOperation1
+    .type Overlay2cComponentPresentation_InvokeComponentOperation1, @function
+Overlay2cComponentPresentation_InvokeComponentOperation1: ; 0x020240bc
     ldr ip, .L_020240c8
     ldr r0, [r0, #0x8]
     bx ip
 .L_020240c8: .word func_ov094_02217e94
-    .size func_020240bc, . - func_020240bc
+    .size Overlay2cComponentPresentation_InvokeComponentOperation1, . - Overlay2cComponentPresentation_InvokeComponentOperation1

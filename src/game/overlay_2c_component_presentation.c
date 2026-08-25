@@ -38,7 +38,7 @@ extern s32 func_ov094_02217e94(void *component);
  * 0x5e, allocate the overlay component with 4-byte alignment, construct it
  * when allocation succeeds, store it at offset 8, and return self.
  */
-Overlay2cComponentPresentation *func_02023fa0(
+Overlay2cComponentPresentation *Overlay2cComponentPresentation_Init(
     Overlay2cComponentPresentation *self)
 {
     FieldEffect_Init(self);
@@ -56,7 +56,7 @@ Overlay2cComponentPresentation *func_02023fa0(
  * Destroy and free the owned overlay component when present, perform both
  * helper teardown stages, tear down the FieldEffect base, and return self.
  */
-Overlay2cComponentPresentation *func_02024004(
+Overlay2cComponentPresentation *Overlay2cComponentPresentation_Destroy(
     Overlay2cComponentPresentation *self)
 {
     self->vtable00 = (void **)data_020d695c;
@@ -70,23 +70,23 @@ Overlay2cComponentPresentation *func_02024004(
     return self;
 }
 
-/* Perform func_02024004 teardown, free self, and return its old address. */
-Overlay2cComponentPresentation *func_02024054(
+/* Perform Overlay2cComponentPresentation_Destroy teardown, free self, and return its old address. */
+Overlay2cComponentPresentation *Overlay2cComponentPresentation_DestroyAndFree(
     Overlay2cComponentPresentation *self)
 {
-    func_02024004(self);
+    Overlay2cComponentPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
 
 /* Forward the first presentation operation to the owned overlay component. */
-s32 func_020240ac(Overlay2cComponentPresentation *self)
+s32 Overlay2cComponentPresentation_InvokeComponentOperation0(Overlay2cComponentPresentation *self)
 {
     return func_ov094_02217d64(self->component08);
 }
 
 /* Forward the second presentation operation to the owned overlay component. */
-s32 func_020240bc(Overlay2cComponentPresentation *self)
+s32 Overlay2cComponentPresentation_InvokeComponentOperation1(Overlay2cComponentPresentation *self)
 {
     return func_ov094_02217e94(self->component08);
 }

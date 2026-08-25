@@ -38,7 +38,7 @@ extern s32 data_ov087_022189f8(void *component);
  * overlay component, construct it with argument when allocation succeeds,
  * store the result at offset 8, and return self.
  */
-Overlay50ComponentPresentation *func_020240cc(
+Overlay50ComponentPresentation *Overlay50ComponentPresentation_Init(
     Overlay50ComponentPresentation *self, void *argument)
 {
     FieldEffect_Init(self);
@@ -53,7 +53,7 @@ Overlay50ComponentPresentation *func_020240cc(
 }
 
 /* Destroy/free the component, tear down its helper and FieldEffect base, and return self. */
-Overlay50ComponentPresentation *func_02024138(
+Overlay50ComponentPresentation *Overlay50ComponentPresentation_Destroy(
     Overlay50ComponentPresentation *self)
 {
     self->vtable00 = (void **)data_020d69ac;
@@ -67,11 +67,11 @@ Overlay50ComponentPresentation *func_02024138(
     return self;
 }
 
-/* Perform func_02024138 teardown, free self, and return its old address. */
-Overlay50ComponentPresentation *func_02024188(
+/* Perform Overlay50ComponentPresentation_Destroy teardown, free self, and return its old address. */
+Overlay50ComponentPresentation *Overlay50ComponentPresentation_DestroyAndFree(
     Overlay50ComponentPresentation *self)
 {
-    func_02024138(self);
+    Overlay50ComponentPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -81,7 +81,7 @@ Overlay50ComponentPresentation *func_02024188(
  * to the overlay-94 implementation even though the base symbol has an ov089
  * address-derived name in the recovered symbol set.
  */
-s32 func_020241e0(Overlay50ComponentPresentation *self)
+s32 Overlay50ComponentPresentation_InvokeComponentOperation0(Overlay50ComponentPresentation *self)
 {
     return func_ov089_02218720(self->component08);
 }
@@ -91,7 +91,7 @@ s32 func_020241e0(Overlay50ComponentPresentation *self)
  * typed as data because several overlays share that address; its call behavior
  * here is confirmed by the indirect branch sequence.
  */
-s32 func_020241f0(Overlay50ComponentPresentation *self)
+s32 Overlay50ComponentPresentation_InvokeComponentOperation1(Overlay50ComponentPresentation *self)
 {
     return data_ov087_022189f8(self->component08);
 }

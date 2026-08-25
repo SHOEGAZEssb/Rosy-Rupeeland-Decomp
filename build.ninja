@@ -9038,155 +9038,155 @@ build build/reports/overlay_2c_component_presentation_02023fa0.json: objdiff bui
   base_object = build/decomp/asm/game/overlay_2c_component_presentation_02023fa0.o
 build build/reports/overlay_2c_component_presentation_02023fa0.txt: match_report build/reports/overlay_2c_component_presentation_02023fa0.json | tools/report_objdiff.py
   report_json = build/reports/overlay_2c_component_presentation_02023fa0.json
-  report_args = --section .text --function func_02023fa0 --require-exact
+  report_args = --section .text --function Overlay2cComponentPresentation_Init --require-exact
 build build/reports/overlay_2c_component_presentation_02024004.json: objdiff build/decomp/delinks/asm/game/overlay_2c_component_presentation_02024004.o | build/decomp/asm/game/overlay_2c_component_presentation_02024004.o
   target_object = build/decomp/delinks/asm/game/overlay_2c_component_presentation_02024004.o
   base_object = build/decomp/asm/game/overlay_2c_component_presentation_02024004.o
 build build/reports/overlay_2c_component_presentation_02024004.txt: match_report build/reports/overlay_2c_component_presentation_02024004.json | tools/report_objdiff.py
   report_json = build/reports/overlay_2c_component_presentation_02024004.json
-  report_args = --section .text --function func_02024004 --require-exact
+  report_args = --section .text --function Overlay2cComponentPresentation_Destroy --require-exact
 build build/reports/overlay_2c_component_presentation_02024054.json: objdiff build/decomp/delinks/asm/game/overlay_2c_component_presentation_02024054.o | build/decomp/asm/game/overlay_2c_component_presentation_02024054.o
   target_object = build/decomp/delinks/asm/game/overlay_2c_component_presentation_02024054.o
   base_object = build/decomp/asm/game/overlay_2c_component_presentation_02024054.o
 build build/reports/overlay_2c_component_presentation_02024054.txt: match_report build/reports/overlay_2c_component_presentation_02024054.json | tools/report_objdiff.py
   report_json = build/reports/overlay_2c_component_presentation_02024054.json
-  report_args = --section .text --function func_02024054 --require-exact
+  report_args = --section .text --function Overlay2cComponentPresentation_DestroyAndFree --require-exact
 build build/reports/overlay_2c_component_presentation_020240ac.json: objdiff build/decomp/delinks/asm/game/overlay_2c_component_presentation_020240ac.o | build/decomp/asm/game/overlay_2c_component_presentation_020240ac.o
   target_object = build/decomp/delinks/asm/game/overlay_2c_component_presentation_020240ac.o
   base_object = build/decomp/asm/game/overlay_2c_component_presentation_020240ac.o
 build build/reports/overlay_2c_component_presentation_020240ac.txt: match_report build/reports/overlay_2c_component_presentation_020240ac.json | tools/report_objdiff.py
   report_json = build/reports/overlay_2c_component_presentation_020240ac.json
-  report_args = --section .text --function func_020240ac --require-exact
+  report_args = --section .text --function Overlay2cComponentPresentation_InvokeComponentOperation0 --require-exact
 build build/reports/overlay_2c_component_presentation_020240bc.json: objdiff build/decomp/delinks/asm/game/overlay_2c_component_presentation_020240bc.o | build/decomp/asm/game/overlay_2c_component_presentation_020240bc.o
   target_object = build/decomp/delinks/asm/game/overlay_2c_component_presentation_020240bc.o
   base_object = build/decomp/asm/game/overlay_2c_component_presentation_020240bc.o
 build build/reports/overlay_2c_component_presentation_020240bc.txt: match_report build/reports/overlay_2c_component_presentation_020240bc.json | tools/report_objdiff.py
   report_json = build/reports/overlay_2c_component_presentation_020240bc.json
-  report_args = --section .text --function func_020240bc --require-exact
+  report_args = --section .text --function Overlay2cComponentPresentation_InvokeComponentOperation1 --require-exact
 build build/reports/overlay_2c_component_presentation.txt: phony build/reports/overlay_2c_component_presentation_02023fa0.txt build/reports/overlay_2c_component_presentation_02024004.txt build/reports/overlay_2c_component_presentation_02024054.txt build/reports/overlay_2c_component_presentation_020240ac.txt build/reports/overlay_2c_component_presentation_020240bc.txt
 build build/reports/overlay_50_component_presentation_020240cc.json: objdiff build/decomp/delinks/asm/game/overlay_50_component_presentation_020240cc.o | build/decomp/asm/game/overlay_50_component_presentation_020240cc.o
   target_object = build/decomp/delinks/asm/game/overlay_50_component_presentation_020240cc.o
   base_object = build/decomp/asm/game/overlay_50_component_presentation_020240cc.o
 build build/reports/overlay_50_component_presentation_020240cc.txt: match_report build/reports/overlay_50_component_presentation_020240cc.json | tools/report_objdiff.py
   report_json = build/reports/overlay_50_component_presentation_020240cc.json
-  report_args = --section .text --function func_020240cc --require-exact
+  report_args = --section .text --function Overlay50ComponentPresentation_Init --require-exact
 build build/reports/overlay_50_component_presentation_02024138.json: objdiff build/decomp/delinks/asm/game/overlay_50_component_presentation_02024138.o | build/decomp/asm/game/overlay_50_component_presentation_02024138.o
   target_object = build/decomp/delinks/asm/game/overlay_50_component_presentation_02024138.o
   base_object = build/decomp/asm/game/overlay_50_component_presentation_02024138.o
 build build/reports/overlay_50_component_presentation_02024138.txt: match_report build/reports/overlay_50_component_presentation_02024138.json | tools/report_objdiff.py
   report_json = build/reports/overlay_50_component_presentation_02024138.json
-  report_args = --section .text --function func_02024138 --require-exact
+  report_args = --section .text --function Overlay50ComponentPresentation_Destroy --require-exact
 build build/reports/overlay_50_component_presentation_02024188.json: objdiff build/decomp/delinks/asm/game/overlay_50_component_presentation_02024188.o | build/decomp/asm/game/overlay_50_component_presentation_02024188.o
   target_object = build/decomp/delinks/asm/game/overlay_50_component_presentation_02024188.o
   base_object = build/decomp/asm/game/overlay_50_component_presentation_02024188.o
 build build/reports/overlay_50_component_presentation_02024188.txt: match_report build/reports/overlay_50_component_presentation_02024188.json | tools/report_objdiff.py
   report_json = build/reports/overlay_50_component_presentation_02024188.json
-  report_args = --section .text --function func_02024188 --require-exact
+  report_args = --section .text --function Overlay50ComponentPresentation_DestroyAndFree --require-exact
 build build/reports/overlay_50_component_presentation_020241e0.json: objdiff build/decomp/delinks/asm/game/overlay_50_component_presentation_020241e0.o | build/decomp/asm/game/overlay_50_component_presentation_020241e0.o
   target_object = build/decomp/delinks/asm/game/overlay_50_component_presentation_020241e0.o
   base_object = build/decomp/asm/game/overlay_50_component_presentation_020241e0.o
 build build/reports/overlay_50_component_presentation_020241e0.txt: match_report build/reports/overlay_50_component_presentation_020241e0.json | tools/report_objdiff.py
   report_json = build/reports/overlay_50_component_presentation_020241e0.json
-  report_args = --section .text --function func_020241e0 --require-exact
+  report_args = --section .text --function Overlay50ComponentPresentation_InvokeComponentOperation0 --require-exact
 build build/reports/overlay_50_component_presentation_020241f0.json: objdiff build/decomp/delinks/asm/game/overlay_50_component_presentation_020241f0.o | build/decomp/asm/game/overlay_50_component_presentation_020241f0.o
   target_object = build/decomp/delinks/asm/game/overlay_50_component_presentation_020241f0.o
   base_object = build/decomp/asm/game/overlay_50_component_presentation_020241f0.o
 build build/reports/overlay_50_component_presentation_020241f0.txt: match_report build/reports/overlay_50_component_presentation_020241f0.json | tools/report_objdiff.py
   report_json = build/reports/overlay_50_component_presentation_020241f0.json
-  report_args = --section .text --function func_020241f0 --require-exact
+  report_args = --section .text --function Overlay50ComponentPresentation_InvokeComponentOperation1 --require-exact
 build build/reports/overlay_50_component_presentation.txt: phony build/reports/overlay_50_component_presentation_020240cc.txt build/reports/overlay_50_component_presentation_02024138.txt build/reports/overlay_50_component_presentation_02024188.txt build/reports/overlay_50_component_presentation_020241e0.txt build/reports/overlay_50_component_presentation_020241f0.txt
 build build/reports/overlay_4c_component_presentation_02024200.json: objdiff build/decomp/delinks/asm/game/overlay_4c_component_presentation_02024200.o | build/decomp/asm/game/overlay_4c_component_presentation_02024200.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_component_presentation_02024200.o
   base_object = build/decomp/asm/game/overlay_4c_component_presentation_02024200.o
 build build/reports/overlay_4c_component_presentation_02024200.txt: match_report build/reports/overlay_4c_component_presentation_02024200.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_component_presentation_02024200.json
-  report_args = --section .text --function func_02024200 --require-exact
+  report_args = --section .text --function Overlay4cComponentPresentation_Init --require-exact
 build build/reports/overlay_4c_component_presentation_02024264.json: objdiff build/decomp/delinks/asm/game/overlay_4c_component_presentation_02024264.o | build/decomp/asm/game/overlay_4c_component_presentation_02024264.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_component_presentation_02024264.o
   base_object = build/decomp/asm/game/overlay_4c_component_presentation_02024264.o
 build build/reports/overlay_4c_component_presentation_02024264.txt: match_report build/reports/overlay_4c_component_presentation_02024264.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_component_presentation_02024264.json
-  report_args = --section .text --function func_02024264 --require-exact
+  report_args = --section .text --function Overlay4cComponentPresentation_Destroy --require-exact
 build build/reports/overlay_4c_component_presentation_020242b4.json: objdiff build/decomp/delinks/asm/game/overlay_4c_component_presentation_020242b4.o | build/decomp/asm/game/overlay_4c_component_presentation_020242b4.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_component_presentation_020242b4.o
   base_object = build/decomp/asm/game/overlay_4c_component_presentation_020242b4.o
 build build/reports/overlay_4c_component_presentation_020242b4.txt: match_report build/reports/overlay_4c_component_presentation_020242b4.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_component_presentation_020242b4.json
-  report_args = --section .text --function func_020242b4 --require-exact
+  report_args = --section .text --function Overlay4cComponentPresentation_DestroyAndFree --require-exact
 build build/reports/overlay_4c_component_presentation_0202430c.json: objdiff build/decomp/delinks/asm/game/overlay_4c_component_presentation_0202430c.o | build/decomp/asm/game/overlay_4c_component_presentation_0202430c.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_component_presentation_0202430c.o
   base_object = build/decomp/asm/game/overlay_4c_component_presentation_0202430c.o
 build build/reports/overlay_4c_component_presentation_0202430c.txt: match_report build/reports/overlay_4c_component_presentation_0202430c.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_component_presentation_0202430c.json
-  report_args = --section .text --function func_0202430c --require-exact
+  report_args = --section .text --function Overlay4cComponentPresentation_InvokeComponentOperation0 --require-exact
 build build/reports/overlay_4c_component_presentation_0202431c.json: objdiff build/decomp/delinks/asm/game/overlay_4c_component_presentation_0202431c.o | build/decomp/asm/game/overlay_4c_component_presentation_0202431c.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_component_presentation_0202431c.o
   base_object = build/decomp/asm/game/overlay_4c_component_presentation_0202431c.o
 build build/reports/overlay_4c_component_presentation_0202431c.txt: match_report build/reports/overlay_4c_component_presentation_0202431c.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_component_presentation_0202431c.json
-  report_args = --section .text --function func_0202431c --require-exact
+  report_args = --section .text --function Overlay4cComponentPresentation_InvokeComponentOperation1 --require-exact
 build build/reports/overlay_4c_component_presentation.txt: phony build/reports/overlay_4c_component_presentation_02024200.txt build/reports/overlay_4c_component_presentation_02024264.txt build/reports/overlay_4c_component_presentation_020242b4.txt build/reports/overlay_4c_component_presentation_0202430c.txt build/reports/overlay_4c_component_presentation_0202431c.txt
 build build/reports/overlay_4c_parameterized_presentation_0202432c.json: objdiff build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_0202432c.o | build/decomp/asm/game/overlay_4c_parameterized_presentation_0202432c.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_0202432c.o
   base_object = build/decomp/asm/game/overlay_4c_parameterized_presentation_0202432c.o
 build build/reports/overlay_4c_parameterized_presentation_0202432c.txt: match_report build/reports/overlay_4c_parameterized_presentation_0202432c.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_parameterized_presentation_0202432c.json
-  report_args = --section .text --function func_0202432c --require-exact
+  report_args = --section .text --function Overlay4cParameterizedPresentation_Init --require-exact
 build build/reports/overlay_4c_parameterized_presentation_020243a0.json: objdiff build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_020243a0.o | build/decomp/asm/game/overlay_4c_parameterized_presentation_020243a0.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_020243a0.o
   base_object = build/decomp/asm/game/overlay_4c_parameterized_presentation_020243a0.o
 build build/reports/overlay_4c_parameterized_presentation_020243a0.txt: match_report build/reports/overlay_4c_parameterized_presentation_020243a0.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_parameterized_presentation_020243a0.json
-  report_args = --section .text --function func_020243a0 --require-exact
+  report_args = --section .text --function Overlay4cParameterizedPresentation_Destroy --require-exact
 build build/reports/overlay_4c_parameterized_presentation_020243f0.json: objdiff build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_020243f0.o | build/decomp/asm/game/overlay_4c_parameterized_presentation_020243f0.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_020243f0.o
   base_object = build/decomp/asm/game/overlay_4c_parameterized_presentation_020243f0.o
 build build/reports/overlay_4c_parameterized_presentation_020243f0.txt: match_report build/reports/overlay_4c_parameterized_presentation_020243f0.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_parameterized_presentation_020243f0.json
-  report_args = --section .text --function func_020243f0 --require-exact
+  report_args = --section .text --function Overlay4cParameterizedPresentation_DestroyAndFree --require-exact
 build build/reports/overlay_4c_parameterized_presentation_02024448.json: objdiff build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_02024448.o | build/decomp/asm/game/overlay_4c_parameterized_presentation_02024448.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_02024448.o
   base_object = build/decomp/asm/game/overlay_4c_parameterized_presentation_02024448.o
 build build/reports/overlay_4c_parameterized_presentation_02024448.txt: match_report build/reports/overlay_4c_parameterized_presentation_02024448.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_parameterized_presentation_02024448.json
-  report_args = --section .text --function func_02024448 --require-exact
+  report_args = --section .text --function Overlay4cParameterizedPresentation_InvokeComponentOperation0 --require-exact
 build build/reports/overlay_4c_parameterized_presentation_02024458.json: objdiff build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_02024458.o | build/decomp/asm/game/overlay_4c_parameterized_presentation_02024458.o
   target_object = build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_02024458.o
   base_object = build/decomp/asm/game/overlay_4c_parameterized_presentation_02024458.o
 build build/reports/overlay_4c_parameterized_presentation_02024458.txt: match_report build/reports/overlay_4c_parameterized_presentation_02024458.json | tools/report_objdiff.py
   report_json = build/reports/overlay_4c_parameterized_presentation_02024458.json
-  report_args = --section .text --function func_02024458 --require-exact
+  report_args = --section .text --function Overlay4cParameterizedPresentation_InvokeComponentOperation1 --require-exact
 build build/reports/overlay_4c_parameterized_presentation.txt: phony build/reports/overlay_4c_parameterized_presentation_0202432c.txt build/reports/overlay_4c_parameterized_presentation_020243a0.txt build/reports/overlay_4c_parameterized_presentation_020243f0.txt build/reports/overlay_4c_parameterized_presentation_02024448.txt build/reports/overlay_4c_parameterized_presentation_02024458.txt
 build build/reports/overlay_18_component_presentation_02024468.json: objdiff build/decomp/delinks/asm/game/overlay_18_component_presentation_02024468.o | build/decomp/asm/game/overlay_18_component_presentation_02024468.o
   target_object = build/decomp/delinks/asm/game/overlay_18_component_presentation_02024468.o
   base_object = build/decomp/asm/game/overlay_18_component_presentation_02024468.o
 build build/reports/overlay_18_component_presentation_02024468.txt: match_report build/reports/overlay_18_component_presentation_02024468.json | tools/report_objdiff.py
   report_json = build/reports/overlay_18_component_presentation_02024468.json
-  report_args = --section .text --function func_02024468 --require-exact
+  report_args = --section .text --function Overlay18ComponentPresentation_Init --require-exact
 build build/reports/overlay_18_component_presentation_020244cc.json: objdiff build/decomp/delinks/asm/game/overlay_18_component_presentation_020244cc.o | build/decomp/asm/game/overlay_18_component_presentation_020244cc.o
   target_object = build/decomp/delinks/asm/game/overlay_18_component_presentation_020244cc.o
   base_object = build/decomp/asm/game/overlay_18_component_presentation_020244cc.o
 build build/reports/overlay_18_component_presentation_020244cc.txt: match_report build/reports/overlay_18_component_presentation_020244cc.json | tools/report_objdiff.py
   report_json = build/reports/overlay_18_component_presentation_020244cc.json
-  report_args = --section .text --function func_020244cc --require-exact
+  report_args = --section .text --function Overlay18ComponentPresentation_Destroy --require-exact
 build build/reports/overlay_18_component_presentation_0202451c.json: objdiff build/decomp/delinks/asm/game/overlay_18_component_presentation_0202451c.o | build/decomp/asm/game/overlay_18_component_presentation_0202451c.o
   target_object = build/decomp/delinks/asm/game/overlay_18_component_presentation_0202451c.o
   base_object = build/decomp/asm/game/overlay_18_component_presentation_0202451c.o
 build build/reports/overlay_18_component_presentation_0202451c.txt: match_report build/reports/overlay_18_component_presentation_0202451c.json | tools/report_objdiff.py
   report_json = build/reports/overlay_18_component_presentation_0202451c.json
-  report_args = --section .text --function func_0202451c --require-exact
+  report_args = --section .text --function Overlay18ComponentPresentation_DestroyAndFree --require-exact
 build build/reports/overlay_18_component_presentation_02024574.json: objdiff build/decomp/delinks/asm/game/overlay_18_component_presentation_02024574.o | build/decomp/asm/game/overlay_18_component_presentation_02024574.o
   target_object = build/decomp/delinks/asm/game/overlay_18_component_presentation_02024574.o
   base_object = build/decomp/asm/game/overlay_18_component_presentation_02024574.o
 build build/reports/overlay_18_component_presentation_02024574.txt: match_report build/reports/overlay_18_component_presentation_02024574.json | tools/report_objdiff.py
   report_json = build/reports/overlay_18_component_presentation_02024574.json
-  report_args = --section .text --function func_02024574 --require-exact
+  report_args = --section .text --function Overlay18ComponentPresentation_InvokeComponentOperation0 --require-exact
 build build/reports/overlay_18_component_presentation_02024584.json: objdiff build/decomp/delinks/asm/game/overlay_18_component_presentation_02024584.o | build/decomp/asm/game/overlay_18_component_presentation_02024584.o
   target_object = build/decomp/delinks/asm/game/overlay_18_component_presentation_02024584.o
   base_object = build/decomp/asm/game/overlay_18_component_presentation_02024584.o
 build build/reports/overlay_18_component_presentation_02024584.txt: match_report build/reports/overlay_18_component_presentation_02024584.json | tools/report_objdiff.py
   report_json = build/reports/overlay_18_component_presentation_02024584.json
-  report_args = --section .text --function func_02024584 --require-exact
+  report_args = --section .text --function Overlay18ComponentPresentation_InvokeComponentOperation1 --require-exact
 build build/reports/overlay_18_component_presentation.txt: phony build/reports/overlay_18_component_presentation_02024468.txt build/reports/overlay_18_component_presentation_020244cc.txt build/reports/overlay_18_component_presentation_0202451c.txt build/reports/overlay_18_component_presentation_02024574.txt build/reports/overlay_18_component_presentation_02024584.txt
 build build/reports/four_slot_3d_presentation_02024594.json: objdiff build/decomp/delinks/asm/game/four_slot_3d_presentation_02024594.o | build/decomp/asm/game/four_slot_3d_presentation_02024594.o
   target_object = build/decomp/delinks/asm/game/four_slot_3d_presentation_02024594.o

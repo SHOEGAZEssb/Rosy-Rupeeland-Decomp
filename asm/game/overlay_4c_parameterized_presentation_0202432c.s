@@ -9,9 +9,9 @@
 .extern func_ov094_02219568
 .extern gHeapContext
 
-    .global func_0202432c
-    .type func_0202432c, @function
-func_0202432c: ; 0x0202432c
+    .global Overlay4cParameterizedPresentation_Init
+    .type Overlay4cParameterizedPresentation_Init, @function
+Overlay4cParameterizedPresentation_Init: ; 0x0202432c
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -42,4 +42,4 @@ func_0202432c: ; 0x0202432c
 .L_02024394: .word 0x5e
 .L_02024398: .word gOverlay4cParameterizedComponentAllocationTag
 .L_0202439c: .word gHeapContext
-    .size func_0202432c, . - func_0202432c
+    .size Overlay4cParameterizedPresentation_Init, . - Overlay4cParameterizedPresentation_Init

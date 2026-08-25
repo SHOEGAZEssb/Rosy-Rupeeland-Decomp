@@ -9,9 +9,9 @@
 .extern func_ov094_0221991c
 .extern gHeapContext
 
-    .global func_02024468
-    .type func_02024468, @function
-func_02024468: ; 0x02024468
+    .global Overlay18ComponentPresentation_Init
+    .type Overlay18ComponentPresentation_Init, @function
+Overlay18ComponentPresentation_Init: ; 0x02024468
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl FieldEffect_Init
@@ -38,4 +38,4 @@ func_02024468: ; 0x02024468
 .L_020244c0: .word 0x5e
 .L_020244c4: .word gOverlay18ComponentAllocationTag
 .L_020244c8: .word gHeapContext
-    .size func_02024468, . - func_02024468
+    .size Overlay18ComponentPresentation_Init, . - Overlay18ComponentPresentation_Init

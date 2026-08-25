@@ -36,7 +36,7 @@ extern s32 data_ov089_02219b78(void *);
  * Initialize the FieldEffect base and helper, select helper ID 0x5e, allocate and
  * construct the 0x18-byte overlay component, store it, and return self.
  */
-Overlay18ComponentPresentation *func_02024468(
+Overlay18ComponentPresentation *Overlay18ComponentPresentation_Init(
     Overlay18ComponentPresentation *self)
 {
     FieldEffect_Init(self);
@@ -51,7 +51,7 @@ Overlay18ComponentPresentation *func_02024468(
 }
 
 /* Destroy/free the component, tear down its helper and FieldEffect base, and return self. */
-Overlay18ComponentPresentation *func_020244cc(
+Overlay18ComponentPresentation *Overlay18ComponentPresentation_Destroy(
     Overlay18ComponentPresentation *self)
 {
     self->vtable00 = (void **)data_020d6984;
@@ -65,11 +65,11 @@ Overlay18ComponentPresentation *func_020244cc(
     return self;
 }
 
-/* Perform func_020244cc teardown, free self, and return its old address. */
-Overlay18ComponentPresentation *func_0202451c(
+/* Perform Overlay18ComponentPresentation_Destroy teardown, free self, and return its old address. */
+Overlay18ComponentPresentation *Overlay18ComponentPresentation_DestroyAndFree(
     Overlay18ComponentPresentation *self)
 {
-    func_020244cc(self);
+    Overlay18ComponentPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -78,13 +78,13 @@ Overlay18ComponentPresentation *func_0202451c(
  * Tail-forward the first operation.  The address-derived symbol is labeled as
  * data because multiple overlays share its address; call behavior is confirmed.
  */
-s32 func_02024574(Overlay18ComponentPresentation *self)
+s32 Overlay18ComponentPresentation_InvokeComponentOperation0(Overlay18ComponentPresentation *self)
 {
     return data_ov089_02219ad4(self->component08);
 }
 
 /* Tail-forward the second operation under the same shared-address condition. */
-s32 func_02024584(Overlay18ComponentPresentation *self)
+s32 Overlay18ComponentPresentation_InvokeComponentOperation1(Overlay18ComponentPresentation *self)
 {
     return data_ov089_02219b78(self->component08);
 }

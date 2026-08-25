@@ -33,7 +33,7 @@ extern s32 func_ov094_022191fc(void *);
 #endif
 
 /* Initialize the FieldEffect base/helper, allocate and construct the component, and return self. */
-Overlay4cComponentPresentation *func_02024200(Overlay4cComponentPresentation *self)
+Overlay4cComponentPresentation *Overlay4cComponentPresentation_Init(Overlay4cComponentPresentation *self)
 {
     FieldEffect_Init(self); self->vtable00=(void **)data_020d690c;
     OverlaySlot_Init(self->helper0c); OverlaySlot_LoadOverlay(self->helper0c,0x5e);
@@ -43,7 +43,7 @@ Overlay4cComponentPresentation *func_02024200(Overlay4cComponentPresentation *se
 }
 
 /* Destroy/free the component, tear down its helper and FieldEffect base, and return self. */
-Overlay4cComponentPresentation *func_02024264(Overlay4cComponentPresentation *self)
+Overlay4cComponentPresentation *Overlay4cComponentPresentation_Destroy(Overlay4cComponentPresentation *self)
 {
     self->vtable00=(void **)data_020d690c;
     if(self->component08){func_ov094_0221900c(self->component08);Heap_Free(self->component08);}
@@ -51,14 +51,14 @@ Overlay4cComponentPresentation *func_02024264(Overlay4cComponentPresentation *se
     return self;
 }
 
-/* Perform func_02024264 teardown, free self, and return its old address. */
-Overlay4cComponentPresentation *func_020242b4(Overlay4cComponentPresentation *self)
-{func_02024264(self);Heap_Free(self);return self;}
+/* Perform Overlay4cComponentPresentation_Destroy teardown, free self, and return its old address. */
+Overlay4cComponentPresentation *Overlay4cComponentPresentation_DestroyAndFree(Overlay4cComponentPresentation *self)
+{Overlay4cComponentPresentation_Destroy(self);Heap_Free(self);return self;}
 
 /* Tail-forward the first operation to the owned overlay component. */
-s32 func_0202430c(Overlay4cComponentPresentation *self)
+s32 Overlay4cComponentPresentation_InvokeComponentOperation0(Overlay4cComponentPresentation *self)
 {return func_ov094_02219050(self->component08);}
 
 /* Tail-forward the second operation to the owned overlay component. */
-s32 func_0202431c(Overlay4cComponentPresentation *self)
+s32 Overlay4cComponentPresentation_InvokeComponentOperation1(Overlay4cComponentPresentation *self)
 {return func_ov094_022191fc(self->component08);}
