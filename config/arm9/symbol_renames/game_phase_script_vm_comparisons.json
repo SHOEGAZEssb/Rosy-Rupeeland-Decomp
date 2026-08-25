@@ -1,0 +1,14 @@
+{
+  "GamePhaseScriptVm_CompareGreaterRegisters": "GamePhaseScriptVm_CompareGreaterRegisters",
+  "GamePhaseScriptVm_CompareGreaterEqualRegisters": "GamePhaseScriptVm_CompareGreaterEqualRegisters",
+  "GamePhaseScriptVm_CompareEqualRegisters": "GamePhaseScriptVm_CompareEqualRegisters",
+  "GamePhaseScriptVm_CompareLessEqualRegisters": "GamePhaseScriptVm_CompareLessEqualRegisters",
+  "GamePhaseScriptVm_CompareLessRegisters": "GamePhaseScriptVm_CompareLessRegisters",
+  "GamePhaseScriptVm_CompareNotEqualRegisters": "GamePhaseScriptVm_CompareNotEqualRegisters",
+  "GamePhaseScriptVm_CompareGreaterImmediate": "GamePhaseScriptVm_CompareGreaterImmediate",
+  "GamePhaseScriptVm_CompareGreaterEqualImmediate": "GamePhaseScriptVm_CompareGreaterEqualImmediate",
+  "GamePhaseScriptVm_CompareEqualImmediate": "GamePhaseScriptVm_CompareEqualImmediate",
+  "GamePhaseScriptVm_CompareLessEqualImmediate": "GamePhaseScriptVm_CompareLessEqualImmediate",
+  "GamePhaseScriptVm_CompareLessImmediate": "GamePhaseScriptVm_CompareLessImmediate",
+  "GamePhaseScriptVm_CompareNotEqualImmediate": "GamePhaseScriptVm_CompareNotEqualImmediate"
+}
