@@ -8,9 +8,9 @@
 .extern TimedSpritePresentation_SetVisible
 .extern AttachedTimedSprite_Init
 
-.global func_0201ecbc
-.type func_0201ecbc, @function
-func_0201ecbc: ; 0x0201ecbc
+.global OwnerPositionTimedSprite_Init
+.type OwnerPositionTimedSprite_Init, @function
+OwnerPositionTimedSprite_Init: ; 0x0201ecbc
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl AttachedTimedSprite_Init
@@ -23,21 +23,21 @@ func_0201ecbc: ; 0x0201ecbc
     strh r1, [r4, #0x3a]
     ldmia sp!, {r4, pc}
 .L_0201ece8: .word data_020d60d8
-    .size func_0201ecbc, .-func_0201ecbc
+    .size OwnerPositionTimedSprite_Init, .-OwnerPositionTimedSprite_Init
 
-.global func_0201ecec
-.type func_0201ecec, @function
-func_0201ecec: ; 0x0201ecec
+.global OwnerPositionTimedSprite_Destroy
+.type OwnerPositionTimedSprite_Destroy, @function
+OwnerPositionTimedSprite_Destroy: ; 0x0201ecec
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201ecec, .-func_0201ecec
+    .size OwnerPositionTimedSprite_Destroy, .-OwnerPositionTimedSprite_Destroy
 
-.global func_0201ed00
-.type func_0201ed00, @function
-func_0201ed00: ; 0x0201ed00
+.global OwnerPositionTimedSprite_DestroyAndFree
+.type OwnerPositionTimedSprite_DestroyAndFree, @function
+OwnerPositionTimedSprite_DestroyAndFree: ; 0x0201ed00
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
@@ -45,11 +45,11 @@ func_0201ed00: ; 0x0201ed00
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201ed00, .-func_0201ed00
+    .size OwnerPositionTimedSprite_DestroyAndFree, .-OwnerPositionTimedSprite_DestroyAndFree
 
-.global func_0201ed1c
-.type func_0201ed1c, @function
-func_0201ed1c: ; 0x0201ed1c
+.global OwnerPositionTimedSprite_Update
+.type OwnerPositionTimedSprite_Update, @function
+OwnerPositionTimedSprite_Update: ; 0x0201ed1c
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x28]
     subs r1, r1, #0x1
@@ -73,11 +73,11 @@ func_0201ed1c: ; 0x0201ed1c
     bl VecFx32Object_Assign
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_0201ed1c, .-func_0201ed1c
+    .size OwnerPositionTimedSprite_Update, .-OwnerPositionTimedSprite_Update
 
-.global func_0201ed70
-.type func_0201ed70, @function
-func_0201ed70: ; 0x0201ed70
+.global OwnerPositionTimedSprite_ApplyPositionAndSpriteOffsets
+.type OwnerPositionTimedSprite_ApplyPositionAndSpriteOffsets, @function
+OwnerPositionTimedSprite_ApplyPositionAndSpriteOffsets: ; 0x0201ed70
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -102,4 +102,4 @@ func_0201ed70: ; 0x0201ed70
     strgeb r1, [r0, #0x3a]
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-    .size func_0201ed70, .-func_0201ed70
+    .size OwnerPositionTimedSprite_ApplyPositionAndSpriteOffsets, .-OwnerPositionTimedSprite_ApplyPositionAndSpriteOffsets

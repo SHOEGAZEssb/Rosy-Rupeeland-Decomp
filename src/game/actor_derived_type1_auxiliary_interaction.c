@@ -124,8 +124,9 @@ extern void AuxiliaryCore_ApplyScale(void *core, s32 value, s32 index);
 extern void *TimedSpriteConfig_InitTracks(void *config);
 extern void *OrbitTimedSprite_Init(void *allocation, void *owner, void *config,
                            s32 spriteValue, s16 offset, s16 spriteByte);
-extern void *func_0201ecbc(void *allocation, void *owner, void *config,
-                           s32 spriteValue, s16 offset, s16 spriteByte);
+extern void *OwnerPositionTimedSprite_Init(void *allocation, void *owner,
+                                           void *config, s32 spriteValue,
+                                           s16 offset, s16 spriteByte);
 extern void TimedSpritePresentation_SetVisible(void *effect, s32 enabled);
 extern void *AuxiliaryTimedSpritePresentation_Init(
     void *allocation, const void *position, void *group, s32 first,
@@ -2363,8 +2364,8 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
         effect = Heap_Alloc(0x40, data_020e5830, 4, &gHeapContext);
         if (effect != 0) {
             if (special)
-                effect = func_0201ecbc(effect, owner, &config, spriteValue,
-                                       (s16)offset, 1);
+                effect = OwnerPositionTimedSprite_Init(
+                    effect, owner, &config, spriteValue, (s16)offset, 1);
             else
                 effect = OrbitTimedSprite_Init(effect, owner, &config, spriteValue,
                                       (s16)offset, 1);

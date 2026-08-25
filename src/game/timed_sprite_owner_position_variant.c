@@ -44,10 +44,9 @@ extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *spr
  * this vtable, copy the two signed stack parameters to offsets 0x38/0x3a, and
  * return self.
  */
-OwnerPositionTimedSprite *func_0201ecbc(OwnerPositionTimedSprite *self,
-                                        u8 *owner, u8 *config,
-                                        s32 spriteValue, s16 spriteOffset,
-                                        s16 spriteByte)
+OwnerPositionTimedSprite *OwnerPositionTimedSprite_Init(
+    OwnerPositionTimedSprite *self, u8 *owner, u8 *config, s32 spriteValue,
+    s16 spriteOffset, s16 spriteByte)
 {
     AttachedTimedSprite_Init(self, owner, config, spriteValue);
     self->vtable = (void **)data_020d60d8;
@@ -57,14 +56,16 @@ OwnerPositionTimedSprite *func_0201ecbc(OwnerPositionTimedSprite *self,
 }
 
 /* Run the shared non-freeing teardown and return self. */
-OwnerPositionTimedSprite *func_0201ecec(OwnerPositionTimedSprite *self)
+OwnerPositionTimedSprite *OwnerPositionTimedSprite_Destroy(
+    OwnerPositionTimedSprite *self)
 {
     TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
-OwnerPositionTimedSprite *func_0201ed00(OwnerPositionTimedSprite *self)
+OwnerPositionTimedSprite *OwnerPositionTimedSprite_DestroyAndFree(
+    OwnerPositionTimedSprite *self)
 {
     TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
@@ -75,7 +76,7 @@ OwnerPositionTimedSprite *func_0201ed00(OwnerPositionTimedSprite *self)
  * Decrement lifetime and hide/finish if it becomes negative or sprite status
  * bit 1 is set.  Otherwise copy owner field 0x18 into first08 and return zero.
  */
-s32 func_0201ed1c(OwnerPositionTimedSprite *self)
+s32 OwnerPositionTimedSprite_Update(OwnerPositionTimedSprite *self)
 {
     self->remaining28--;
     if (self->remaining28 < 0 || (*(u16 *)(self->sprite + 0x24) & 1) != 0) {
@@ -91,8 +92,9 @@ s32 func_0201ed1c(OwnerPositionTimedSprite *self)
  * recovered constant 8.  Then add spriteOffset38 to sprite halfword 0x28 and,
  * when spriteByte3a is nonnegative, store its low byte at sprite offset 0x3a.
  */
-void func_0201ed70(OwnerPositionTimedSprite *self,
-                   const void *ownerPosition, const void *unusedCenter)
+void OwnerPositionTimedSprite_ApplyPositionAndSpriteOffsets(
+    OwnerPositionTimedSprite *self, const void *ownerPosition,
+    const void *unusedCenter)
 {
     (void)unusedCenter;
     GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(self->sprite, ownerPosition,

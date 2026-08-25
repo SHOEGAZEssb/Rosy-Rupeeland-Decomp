@@ -8163,7 +8163,7 @@ build build/reports/timed_sprite_owner_position_variant.json: objdiff build/deco
   base_object = build/decomp/asm/game/timed_sprite_owner_position_variant.o
 build build/reports/timed_sprite_owner_position_variant.txt: match_report build/reports/timed_sprite_owner_position_variant.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_owner_position_variant.json
-  report_args = --section .text --function func_0201ecbc --function func_0201ecec --function func_0201ed00 --function func_0201ed1c --function func_0201ed70 --require-exact
+  report_args = --section .text --function OwnerPositionTimedSprite_Init --function OwnerPositionTimedSprite_Destroy --function OwnerPositionTimedSprite_DestroyAndFree --function OwnerPositionTimedSprite_Update --function OwnerPositionTimedSprite_ApplyPositionAndSpriteOffsets --require-exact
 build build/reports/timed_sprite_sampled_arc_variant.json: objdiff build/decomp/delinks/asm/game/timed_sprite_sampled_arc_variant.o | build/decomp/asm/game/timed_sprite_sampled_arc_variant.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_sampled_arc_variant.o
   base_object = build/decomp/asm/game/timed_sprite_sampled_arc_variant.o
