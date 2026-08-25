@@ -1,0 +1,14 @@
+{
+  "GamePhaseScriptVm_ReadS16Le": "GamePhaseScriptVm_ReadS16Le",
+  "GamePhaseScriptVm_ReadU32Le": "GamePhaseScriptVm_ReadU32Le",
+  "GamePhaseScriptVm_Halt": "GamePhaseScriptVm_Halt",
+  "GamePhaseScriptVm_JumpAndYield": "GamePhaseScriptVm_JumpAndYield",
+  "GamePhaseScriptVm_Jump": "GamePhaseScriptVm_Jump",
+  "GamePhaseScriptVm_NotRegister": "GamePhaseScriptVm_NotRegister",
+  "GamePhaseScriptVm_JumpIfConditionSet": "GamePhaseScriptVm_JumpIfConditionSet",
+  "GamePhaseScriptVm_JumpIfConditionClear": "GamePhaseScriptVm_JumpIfConditionClear",
+  "GamePhaseScriptVm_InvokeByteMethod": "GamePhaseScriptVm_InvokeByteMethod",
+  "func_0201b9a8": "GamePhaseScriptVm_LoadImmediateU32Alternate",
+  "GamePhaseScriptVm_Call": "GamePhaseScriptVm_Call",
+  "GamePhaseScriptVm_Return": "GamePhaseScriptVm_Return"
+}

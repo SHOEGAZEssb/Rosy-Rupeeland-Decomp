@@ -17,7 +17,7 @@ s32 GamePhaseScriptVm_NotRegister(GamePhaseScriptVm *self)
 /* Jump to the encoded absolute address when condition flag bit one is set; otherwise skip it. */
 s32 GamePhaseScriptVm_JumpIfConditionSet(GamePhaseScriptVm *self)
 {
-    if (self->stateFlags & 2)
+    if (self->stateFlags & GAME_PHASE_SCRIPT_VM_CONDITION_TRUE)
         self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
     else
         self->cursor += 4;
@@ -27,7 +27,7 @@ s32 GamePhaseScriptVm_JumpIfConditionSet(GamePhaseScriptVm *self)
 /* Jump to the encoded absolute address when condition flag bit one is clear; otherwise skip it. */
 s32 GamePhaseScriptVm_JumpIfConditionClear(GamePhaseScriptVm *self)
 {
-    if (!(self->stateFlags & 2))
+    if (!(self->stateFlags & GAME_PHASE_SCRIPT_VM_CONDITION_TRUE))
         self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
     else
         self->cursor += 4;
@@ -42,8 +42,8 @@ s32 GamePhaseScriptVm_InvokeByteMethod(GamePhaseScriptVm *self)
     return ((GamePhaseScriptVmByteMethod)vtable[0x08 / 4])(self, value);
 }
 
-/* Consume a register index and four raw little-endian bytes, store the value, return zero. */
-s32 func_0201b9a8(GamePhaseScriptVm *self)
+/* Alternate encoding of the immediate-U32 load opcode; consume five bytes. */
+s32 GamePhaseScriptVm_LoadImmediateU32Alternate(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
     self->registers[destination] = GamePhaseScriptVm_ReadU32Le(self->cursor);

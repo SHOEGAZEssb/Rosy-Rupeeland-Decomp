@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_branch_misc_opcodes.c.
 .text
-.global func_0201b9a8
-func_0201b9a8: ; 0x0201b9a8
+.global GamePhaseScriptVm_LoadImmediateU32Alternate
+GamePhaseScriptVm_LoadImmediateU32Alternate: ; 0x0201b9a8
     stmdb sp!, {r3}
     sub sp, sp, #0x4
     ldr r2, [r0, #0x4]
@@ -34,4 +34,4 @@ func_0201b9a8: ; 0x0201b9a8
     add sp, sp, #0x4
     ldmia sp!, {r3}
     bx lr
-.size func_0201b9a8, . - func_0201b9a8
+.size GamePhaseScriptVm_LoadImmediateU32Alternate, . - GamePhaseScriptVm_LoadImmediateU32Alternate

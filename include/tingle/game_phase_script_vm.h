@@ -360,7 +360,7 @@ s32 GamePhaseScriptVm_NotRegister(GamePhaseScriptVm *self);
 s32 GamePhaseScriptVm_JumpIfConditionSet(GamePhaseScriptVm *self);
 s32 GamePhaseScriptVm_JumpIfConditionClear(GamePhaseScriptVm *self);
 s32 GamePhaseScriptVm_InvokeByteMethod(GamePhaseScriptVm *self);
-s32 func_0201b9a8(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_LoadImmediateU32Alternate(GamePhaseScriptVm *self);
 s32 GamePhaseScriptVm_CompareGreaterRegisters(GamePhaseScriptVm *self);
 s32 GamePhaseScriptVm_CompareGreaterEqualRegisters(GamePhaseScriptVm *self);
 s32 GamePhaseScriptVm_CompareEqualRegisters(GamePhaseScriptVm *self);

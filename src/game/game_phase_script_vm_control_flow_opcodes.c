@@ -6,15 +6,15 @@
 void GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(GamePhaseScriptVm *self, s32 registerIndex)
 {
     if (self->registers[registerIndex] != 0)
-        self->stateFlags &= (u8)~2;
+        self->stateFlags &= (u8)~GAME_PHASE_SCRIPT_VM_CONDITION_TRUE;
     else
-        self->stateFlags |= 2;
+        self->stateFlags |= GAME_PHASE_SCRIPT_VM_CONDITION_TRUE;
 }
 
 /* Set stateFlags bit zero and return one to the interpreter. */
 s32 GamePhaseScriptVm_Halt(GamePhaseScriptVm *self)
 {
-    self->stateFlags |= 1;
+    self->stateFlags |= GAME_PHASE_SCRIPT_VM_HALTED;
     return 1;
 }
 

@@ -7360,7 +7360,7 @@ build build/reports/game_phase_script_vm_0201b9a8.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b9a8.o
 build build/reports/game_phase_script_vm_0201b9a8.txt: match_report build/reports/game_phase_script_vm_0201b9a8.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b9a8.json
-  report_args = --section .text --function func_0201b9a8 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_LoadImmediateU32Alternate --require-exact
 
 build build/reports/game_phase_script_vm_branch_misc_opcodes.txt: phony build/reports/game_phase_script_vm_0201b8fc.txt build/reports/game_phase_script_vm_0201b92c.txt build/reports/game_phase_script_vm_0201b958.txt build/reports/game_phase_script_vm_0201b984.txt build/reports/game_phase_script_vm_0201b9a8.txt
 build build/reports/game_phase_script_vm_0201ba28.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201ba28.o | build/decomp/asm/game/game_phase_script_vm_0201ba28.o
