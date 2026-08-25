@@ -9,5 +9,7 @@
   "func_0201e054": "RuntimePresentationManager_SetEnabled",
   "func_0201e0e8": "FieldEffect_SetEnabledNoOp",
   "func_0201e0f4": "RuntimePresentationManager_DisableGraphics3dForActivePhase",
+  "RuntimePresentationManager_BroadcastSlot1C": "RuntimePresentationManager_BroadcastSlot1C",
+  "func_0201e1ac": "FieldEffect_Slot1CCallbackNoOp",
   "func_0201e1b0": "RuntimePresentationManager_DetachEffectsByKey"
 }

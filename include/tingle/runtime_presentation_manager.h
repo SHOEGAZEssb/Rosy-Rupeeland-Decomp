@@ -61,7 +61,7 @@ RuntimePresentationManager *RuntimePresentationManager_Destroy(
 void RuntimePresentationManager_DestroyAllEffects(
     RuntimePresentationManager *self);
 s32 RuntimePresentationManager_UpdatePresentations(
-    RuntimePresentationManager *self, s32 graphicsUpdateArgument);
+    RuntimePresentationManager *self, s32 swapBuffers);
 void RuntimePresentationManager_DispatchVBlankCallbacks(
     RuntimePresentationManager *self);
 void RuntimePresentationManager_DispatchHBlankCallbacks(

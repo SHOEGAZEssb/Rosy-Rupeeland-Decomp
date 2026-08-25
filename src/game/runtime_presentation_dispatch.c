@@ -80,17 +80,20 @@ void RuntimePresentationManager_DisableGraphics3dForActivePhase(RuntimePresentat
 }
 
 /* Broadcast argument through virtual 0x1c to every field effect in both lists. */
-void RuntimePresentationManager_BroadcastSlot1C(RuntimePresentationManager *self, s32 argument)
+void RuntimePresentationManager_BroadcastSlot1C(
+    RuntimePresentationManager *self, s32 argument)
 {
     FieldEffectListNode *node;
-    for (node=self->firstEffects.head; node; node=node->next)
-        ((void (*)(void *,s32))node->effect->vtable[7])(node->effect,argument);
-    for (node=self->secondEffects.head; node; node=node->next)
-        ((void (*)(void *,s32))node->effect->vtable[7])(node->effect,argument);
+    for (node = self->firstEffects.head; node; node = node->next)
+        ((void (*)(void *, s32))node->effect->vtable[7])(
+            node->effect, argument);
+    for (node = self->secondEffects.head; node; node = node->next)
+        ((void (*)(void *, s32))node->effect->vtable[7])(
+            node->effect, argument);
 }
 
-/* Unresolved virtual 0x1c default; all identified FieldEffect vtables use it. */
-void func_0201e1ac(void) {}
+/* Default virtual 0x1c implementation; all identified effect vtables use it. */
+void FieldEffect_Slot1CCallbackNoOp(void) {}
 
 /*
  * Detach nodes whose effects contain effectKey in signed dispatch-state bits

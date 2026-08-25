@@ -81,7 +81,7 @@ RuntimePresentationManager *RuntimePresentationManager_Destroy(RuntimePresentati
  * buffer-swap request. Returns zero.
  */
 s32 RuntimePresentationManager_UpdatePresentations(
-    RuntimePresentationManager *self, s32 graphicsUpdateArgument)
+    RuntimePresentationManager *self, s32 swapBuffers)
 {
     FieldEffectListNode *node;
     FieldEffectListNode *next;
@@ -113,7 +113,7 @@ s32 RuntimePresentationManager_UpdatePresentations(
             (u8 *)gGamePhaseRuntime + 0x2fbc);
         Graphics3dPresentation_UpdateFrame(self->graphics3dPresentation,
                                             worldPosition,
-                                            graphicsUpdateArgument);
+                                            swapBuffers);
     }
     return 0;
 }

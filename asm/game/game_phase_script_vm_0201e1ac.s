@@ -9,9 +9,9 @@
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern gGamePhaseRuntime
-.global func_0201e1ac
-func_0201e1ac: ; 0x0201e1ac
+.global FieldEffect_Slot1CCallbackNoOp
+FieldEffect_Slot1CCallbackNoOp: ; 0x0201e1ac
     bx lr
 
 
-.size func_0201e1ac, . - func_0201e1ac
+.size FieldEffect_Slot1CCallbackNoOp, . - FieldEffect_Slot1CCallbackNoOp

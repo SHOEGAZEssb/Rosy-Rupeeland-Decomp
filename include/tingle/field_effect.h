@@ -30,6 +30,7 @@ void FieldEffect_HBlankCallbackNoOp(FieldEffect *self, s32 vcount);
 void FieldEffect_ScreenModeChangedCallbackNoOp(FieldEffect *self,
                                                 s32 screenMode);
 void FieldEffect_SetEnabledNoOp(FieldEffect *self, s32 enabled);
+void FieldEffect_Slot1CCallbackNoOp(void);
 
 #ifdef __cplusplus
 }
