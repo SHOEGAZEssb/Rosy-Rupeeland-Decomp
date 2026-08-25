@@ -13,13 +13,13 @@ extern void GraphicsSpriteGroup_Destroy(void *);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void SpriteMotionController_Update(void *);
-extern s32 func_ov020_021fd44c(void *, void *, void *);
+extern s32 Overlay020_DetailPanel_RenderSelection(void *, void *, void *);
 #ifdef __cplusplus
 }
 #endif
 
 /* Clear words +0/+4 and halfwords +8/+A. Returns void; only caller memory changes. */
-extern "C" void func_ov020_021fce00(void *record)
+extern "C" void Overlay020_Row_Init(void *record)
 {
     FIELD(s32, record, 0) = 0;
     FIELD(s32, record, 4) = 0;
@@ -28,7 +28,7 @@ extern "C" void func_ov020_021fce00(void *record)
 }
 
 /* No-op virtual hook: accepts state and returns void without state, SDK, or hardware effects. */
-extern "C" void func_ov020_021fd034(void *state)
+extern "C" void Overlay020_Row_NoOp(void *state)
 {
     (void)state;
 }
@@ -37,7 +37,7 @@ extern "C" void func_ov020_021fd034(void *state)
  * Store four caller layout words at object +0xA4/+0xA8/+0xAC/+0xB0. Returns
  * void; only caller memory changes and no SDK or hardware effects occur.
  */
-extern "C" void func_ov020_021fd308(void *object, s32 valueA4, s32 valueA8,
+extern "C" void Overlay020_DetailDialog_SetLayout(void *object, s32 valueA4, s32 valueA8,
                                      s32 valueAC, s32 valueB0)
 {
     FIELD(s32, object, 0xa4) = valueA4;
@@ -61,7 +61,7 @@ static void destroyVirtual(void *object)
  * +0x10. Return state without freeing it. UI/resource/SDK ownership changes;
  * no direct hardware access occurs.
  */
-extern "C" void *func_ov020_021fd404(void *state)
+extern "C" void *Overlay020_DetailPanel_Deinit(void *state)
 {
     destroyVirtual(FIELD(void *, state, 0x4c));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xc));
@@ -72,7 +72,7 @@ extern "C" void *func_ov020_021fd404(void *state)
 }
 
 /* No-op scene callback: accepts state and returns void without state, SDK, or hardware effects. */
-extern "C" void func_ov020_021fd818(void *state)
+extern "C" void Overlay020_SceneCallback_NoOp(void *state)
 {
     (void)state;
 }
@@ -97,7 +97,7 @@ extern "C" void func_ov020_021fd81c(void *state, s32 value24, s32 value28,
  * then update renderer +0x6C. Returns void. UI/renderer SDK state may change;
  * no direct hardware access occurs.
  */
-extern "C" void func_ov020_021fde6c(void *state)
+extern "C" void Overlay020_UpdateSceneUi(void *state)
 {
     SpriteMotionController_Update((u8 *)state + 0x70);
     if (FIELD(void *, state, 0x1dc) != 0)
@@ -131,16 +131,16 @@ extern "C" s32 func_ov020_021fdee0(void *state)
 {
     void *selected = FIELD(void *, FIELD(void *, state, 0x1dc), 0x44);
     void *entry = FIELD(void *, state, 0x124 + FIELD(s32, selected, 0x14) * 4);
-    return func_ov020_021fd44c(FIELD(void *, state, 0x1e0), entry, state);
+    return Overlay020_DetailPanel_RenderSelection(FIELD(void *, state, 0x1e0), entry, state);
 }
 
 /*
  * Run scene/UI update 0x021FDE6C and return one. UI/renderer SDK state may
  * change; no direct hardware access occurs.
  */
-extern "C" s32 func_ov020_021fe3e4(void *state)
+extern "C" s32 Overlay020_UpdateAndComplete(void *state)
 {
-    func_ov020_021fde6c(state);
+    Overlay020_UpdateSceneUi(state);
     return 1;
 }
 
@@ -150,7 +150,7 @@ extern "C" s32 func_ov020_021fe3e4(void *state)
  * writes Nintendo DS DISPCNT/DISPCNT_SUB; caller memory and SDK state are read
  * only.
  */
-extern "C" s32 func_ov020_021fe3f4(void *state)
+extern "C" s32 Overlay020_UpdateDisplay(void *state)
 {
     if (FIELD(u32, state, 0x20) & 0x400) {
         volatile u32 *mainDisplay = (volatile u32 *)0x04000000;

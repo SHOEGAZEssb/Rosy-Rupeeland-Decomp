@@ -31,12 +31,12 @@ extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
-extern s32 func_ov020_021fd280(void *);
+extern s32 Overlay020_List_UpdateVisibleRows(void *);
 extern void func_ov020_021fd81c(void *, u32, u32, s32);
-extern void func_ov020_021fde6c(void *);
+extern void Overlay020_UpdateSceneUi(void *);
 extern void func_ov020_021fde9c(void *);
 extern s32 func_ov020_021fdee0(void *);
-extern s32 func_ov020_021fdf08(void *);
+extern s32 Overlay020_HitTestListRow(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -50,7 +50,7 @@ extern s32 func_ov020_021fdf08(void *);
  * return zero. UI, action/audio, list selection, detail, and transition state
  * may change; no direct MMIO occurs.
  */
-extern "C" s32 func_ov020_021fe024(void *state)
+extern "C" s32 Overlay020_UpdatePrimaryList(void *state)
 {
     void *list = FIELD(void *, state, 0x1dc);
     void *presentation = FIELD(void *, list, 0x44);
@@ -68,7 +68,7 @@ extern "C" s32 func_ov020_021fe024(void *state)
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else {
-            if (func_ov020_021fd280(list) != 0)
+            if (Overlay020_List_UpdateVisibleRows(list) != 0)
                 func_ov020_021fde9c(state);
             break;
         }
@@ -80,7 +80,7 @@ extern "C" s32 func_ov020_021fe024(void *state)
         } else if ((FIELD(u16, FIELD(void *, state, 0x2c), 0) & 0x80) != 0) {
             InventoryScroll_MoveSelectionDown(presentation);
         } else if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
-            selected = func_ov020_021fdf08(state);
+            selected = Overlay020_HitTestListRow(state);
             if (InventoryScroll_TestUpperArrowHold(presentation, (u8 *)state + 0x30) != 0) {
                 InventoryScroll_PageUp(presentation);
             } else if (InventoryScroll_TestLowerArrowHold(presentation, (u8 *)state + 0x30) != 0) {
@@ -121,7 +121,7 @@ extern "C" s32 func_ov020_021fe024(void *state)
         }
         break;
     }
-    func_ov020_021fde6c(state);
+    Overlay020_UpdateSceneUi(state);
     return 0;
 }
 
@@ -134,7 +134,7 @@ extern "C" s32 func_ov020_021fe024(void *state)
  * components and return zero. UI/action/list and transition state may change;
  * no direct MMIO occurs.
  */
-extern "C" s32 func_ov020_021fe2a4(void *state)
+extern "C" s32 Overlay020_UpdateAlternateList(void *state)
 {
     void *list = FIELD(void *, state, 0x1dc);
     void *presentation = FIELD(void *, list, 0x44);
@@ -155,7 +155,7 @@ extern "C" s32 func_ov020_021fe2a4(void *state)
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else {
-            if (func_ov020_021fd280(list) != 0)
+            if (Overlay020_List_UpdateVisibleRows(list) != 0)
                 func_ov020_021fde9c(state);
             break;
         }
@@ -175,6 +175,6 @@ extern "C" s32 func_ov020_021fe2a4(void *state)
         }
         break;
     }
-    func_ov020_021fde6c(state);
+    Overlay020_UpdateSceneUi(state);
     return 0;
 }

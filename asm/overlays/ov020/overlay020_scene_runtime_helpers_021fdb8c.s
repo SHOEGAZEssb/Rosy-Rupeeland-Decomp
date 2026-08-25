@@ -5,12 +5,12 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern TitleCharacterResourceCollection_Destroy
-    .extern func_ov020_021fcfd4
-    .extern func_ov020_021fd404
-    .extern func_ov020_021fd818
+    .extern Overlay020_List_Deinit
+    .extern Overlay020_DetailPanel_Deinit
+    .extern Overlay020_SceneCallback_NoOp
 
-.global func_ov020_021fdb8c
-func_ov020_021fdb8c:
+.global Overlay020_Scene_Deinit
+Overlay020_Scene_Deinit:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021fdc10
     mov r5, r0
@@ -24,7 +24,7 @@ func_ov020_021fdb8c:
     cmp r4, #0x0
     beq L_021fdbcc
     mov r0, r4
-    bl func_ov020_021fd404
+    bl Overlay020_DetailPanel_Deinit
     mov r0, r4
     bl Heap_Free
 L_021fdbcc:
@@ -32,14 +32,14 @@ L_021fdbcc:
     cmp r4, #0x0
     beq L_021fdbe8
     mov r0, r4
-    bl func_ov020_021fcfd4
+    bl Overlay020_List_Deinit
     mov r0, r4
     bl Heap_Free
 L_021fdbe8:
     add r0, r5, #0x1b8
     bl TitleCharacterResourceCollection_Destroy
     add r0, r5, #0x70
-    bl func_ov020_021fd818
+    bl Overlay020_SceneCallback_NoOp
     add r0, r5, #0x60
     bl AnimationResourceState_Destroy
     add r0, r5, #0x54
@@ -47,5 +47,5 @@ L_021fdbe8:
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdc10: .word data_ov020_021fe504
-    .size func_ov020_021fdb8c, . - func_ov020_021fdb8c
+    .size Overlay020_Scene_Deinit, . - Overlay020_Scene_Deinit
 

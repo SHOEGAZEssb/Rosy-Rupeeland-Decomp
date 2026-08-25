@@ -18,15 +18,15 @@
     .extern InventoryScroll_UpdateSelectionMovement
     .extern InventoryScroll_ResetPresentationState
     .extern SpriteMotionController_BeginHitResponse
-    .extern func_ov020_021fd280
+    .extern Overlay020_List_UpdateVisibleRows
     .extern func_ov020_021fd81c
-    .extern func_ov020_021fde6c
+    .extern Overlay020_UpdateSceneUi
     .extern func_ov020_021fde9c
     .extern func_ov020_021fdee0
-    .extern func_ov020_021fdf08
+    .extern Overlay020_HitTestListRow
 
-.global func_ov020_021fe024
-func_ov020_021fe024:
+.global Overlay020_UpdatePrimaryList
+Overlay020_UpdatePrimaryList:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     ldr r1, [r5, #0x1dc]
@@ -62,7 +62,7 @@ L_021fe070:
     b L_021fe0bc
 L_021fe0a0:
     ldr r0, [r5, #0x1dc]
-    bl func_ov020_021fd280
+    bl Overlay020_List_UpdateVisibleRows
     cmp r0, #0x0
     beq L_021fe28c
     mov r0, r5
@@ -90,7 +90,7 @@ L_021fe0f4:
     movs r0, r0, asr #0x1f
     beq L_021fe25c
     mov r0, r5
-    bl func_ov020_021fdf08
+    bl Overlay020_HitTestListRow
     mov r6, r0
     mov r0, r4
     add r1, r5, #0x30
@@ -196,10 +196,10 @@ L_021fe25c:
     str r0, [r5, #0x8]
 L_021fe28c:
     mov r0, r5
-    bl func_ov020_021fde6c
+    bl Overlay020_UpdateSceneUi
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_021fe29c: .word data_ov020_021fe470
 L_021fe2a0: .word data_ov020_021fe468
-    .size func_ov020_021fe024, . - func_ov020_021fe024
+    .size Overlay020_UpdatePrimaryList, . - Overlay020_UpdatePrimaryList
 

@@ -9,8 +9,8 @@
     .extern GraphicsResourceSet_ApplyToMainBg
     .extern func_020b44e8
 
-.global func_ov020_021fdd88
-func_ov020_021fdd88:
+.global Overlay020_LoadGraphicsResources
+Overlay020_LoadGraphicsResources:
     stmdb sp!, {r3, lr}
     sub sp, sp, #0x10
     add r0, sp, #0x4
@@ -68,5 +68,5 @@ L_021fde5c: .word 0x803f
 L_021fde60: .word data_020f4e18
 L_021fde64: .word 0x802f
 L_021fde68: .word 0x802d
-    .size func_ov020_021fdd88, . - func_ov020_021fdd88
+    .size Overlay020_LoadGraphicsResources, . - Overlay020_LoadGraphicsResources
 

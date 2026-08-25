@@ -20,19 +20,19 @@
     .extern SpriteMotionController_Init
     .extern SpriteMotionController_BindSprite
     .extern SpriteMotionController_SetPosition
-    .extern func_ov020_021fce18
-    .extern func_ov020_021fd038
-    .extern func_ov020_021fd0a0
-    .extern func_ov020_021fd320
+    .extern Overlay020_List_Init
+    .extern Overlay020_List_AppendRow
+    .extern Overlay020_List_CreateVisibleRows
+    .extern Overlay020_DetailPanel_Init
     .extern func_ov020_021fd81c
-    .extern func_ov020_021fdca4
-    .extern func_ov020_021fdd88
+    .extern Overlay020_SetupDisplay
+    .extern Overlay020_LoadGraphicsResources
     .extern gDebugFont
     .extern gGameWork
     .extern gHeapContext
 
-.global func_ov020_021fd844
-func_ov020_021fd844:
+.global Overlay020_Scene_Init
+Overlay020_Scene_Init:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -194,7 +194,7 @@ L_021fda6c:
     ldr r1, L_021fdb64
     ldr r2, [r4, #0x120]
     ldr r1, [r1, #0x0]
-    bl func_ov020_021fce18
+    bl Overlay020_List_Init
 L_021fdaa4:
     mov r7, #0x0
     mov r8, #0x18
@@ -208,7 +208,7 @@ L_021fdac0:
     ldr r2, [r0, #0x124]
     ldr r0, [r4, #0x1dc]
     mla r1, r2, r8, r6
-    bl func_ov020_021fd038
+    bl Overlay020_List_AppendRow
     mul r1, r7, r9
     strh r5, [r0, #0x8]
     strh r1, [r0, #0xa]
@@ -218,7 +218,7 @@ L_021fdae4:
     cmp r7, r0
     blt L_021fdac0
     ldr r0, [r4, #0x1dc]
-    bl func_ov020_021fd0a0
+    bl Overlay020_List_CreateVisibleRows
     ldr r1, L_021fdb80
     ldr r3, L_021fdb7c
     mov r0, #0x50
@@ -228,13 +228,13 @@ L_021fdae4:
     beq L_021fdb20
     ldr r1, L_021fdb84
     ldr r1, [r1, #0x0]
-    bl func_ov020_021fd320
+    bl Overlay020_DetailPanel_Init
 L_021fdb20:
     str r0, [r4, #0x1e0]
     mov r0, r4
-    bl func_ov020_021fdca4
+    bl Overlay020_SetupDisplay
     mov r0, r4
-    bl func_ov020_021fdd88
+    bl Overlay020_LoadGraphicsResources
     ldr r0, [r4, #0x20]
     ldr r1, L_021fdb88
     orr r0, r0, #0x400
@@ -257,5 +257,5 @@ L_021fdb7c: .word gHeapContext
 L_021fdb80: .word data_ov020_021fe538
 L_021fdb84: .word data_020f4e14
 L_021fdb88: .word data_ov020_021fe460
-    .size func_ov020_021fd844, . - func_ov020_021fd844
+    .size Overlay020_Scene_Init, . - Overlay020_Scene_Init
 

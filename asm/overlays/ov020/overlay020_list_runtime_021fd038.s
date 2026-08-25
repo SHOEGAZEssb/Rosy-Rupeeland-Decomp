@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_list_runtime.c. */
 
-.global func_ov020_021fd038
-func_ov020_021fd038:
+.global Overlay020_List_AppendRow
+Overlay020_List_AppendRow:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r5, [r0, #0x38]
     mov r2, #0x0
@@ -30,4 +30,4 @@ func_ov020_021fd038:
 L_021fd098:
     mov r0, r2
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov020_021fd038, . - func_ov020_021fd038
+    .size Overlay020_List_AppendRow, . - Overlay020_List_AppendRow

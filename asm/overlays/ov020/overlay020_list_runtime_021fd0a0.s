@@ -1,9 +1,9 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_list_runtime.c. */
-    .extern func_ov020_021fd100
+    .extern Overlay020_List_CreateRowSprite
 
-.global func_ov020_021fd0a0
-func_ov020_021fd0a0:
+.global Overlay020_List_CreateVisibleRows
+Overlay020_List_CreateVisibleRows:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x44]
@@ -19,7 +19,7 @@ func_ov020_021fd0a0:
 L_021fd0d0:
     mov r0, r4
     mov r1, r5
-    bl func_ov020_021fd100
+    bl Overlay020_List_CreateRowSprite
     add r5, r5, #0x1
 L_021fd0e0:
     ldr r0, [r4, #0x44]
@@ -30,4 +30,4 @@ L_021fd0e0:
     cmp r5, r0
     ble L_021fd0d0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov020_021fd0a0, . - func_ov020_021fd0a0
+    .size Overlay020_List_CreateVisibleRows, . - Overlay020_List_CreateVisibleRows

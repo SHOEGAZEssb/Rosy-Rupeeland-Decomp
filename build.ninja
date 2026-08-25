@@ -27437,25 +27437,25 @@ build build/reports/overlay020_scene_helpers_021fe3f4.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fe3f4.o
 build build/reports/overlay020_scene_helpers_021fce00.txt: match_report build/reports/overlay020_scene_helpers_021fce00.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fce00.json
-  report_args = --section .text --function func_ov020_021fce00 --require-exact
+  report_args = --section .text --function Overlay020_Row_Init --require-exact
 build build/reports/overlay020_scene_helpers_021fd034.txt: match_report build/reports/overlay020_scene_helpers_021fd034.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fd034.json
-  report_args = --section .text --function func_ov020_021fd034 --require-exact
+  report_args = --section .text --function Overlay020_Row_NoOp --require-exact
 build build/reports/overlay020_scene_helpers_021fd308.txt: match_report build/reports/overlay020_scene_helpers_021fd308.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fd308.json
-  report_args = --section .text --function func_ov020_021fd308 --require-exact
+  report_args = --section .text --function Overlay020_DetailDialog_SetLayout --require-exact
 build build/reports/overlay020_scene_helpers_021fd404.txt: match_report build/reports/overlay020_scene_helpers_021fd404.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fd404.json
-  report_args = --section .text --function func_ov020_021fd404 --require-exact
+  report_args = --section .text --function Overlay020_DetailPanel_Deinit --require-exact
 build build/reports/overlay020_scene_helpers_021fd818.txt: match_report build/reports/overlay020_scene_helpers_021fd818.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fd818.json
-  report_args = --section .text --function func_ov020_021fd818 --require-exact
+  report_args = --section .text --function Overlay020_SceneCallback_NoOp --require-exact
 build build/reports/overlay020_scene_helpers_021fd81c.txt: match_report build/reports/overlay020_scene_helpers_021fd818.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fd818.json
   report_args = --section .text --function func_ov020_021fd81c --require-exact
 build build/reports/overlay020_scene_helpers_021fde6c.txt: match_report build/reports/overlay020_scene_helpers_021fde6c.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fde6c.json
-  report_args = --section .text --function func_ov020_021fde6c --require-exact
+  report_args = --section .text --function Overlay020_UpdateSceneUi --require-exact
 build build/reports/overlay020_scene_helpers_021fde9c.txt: match_report build/reports/overlay020_scene_helpers_021fde6c.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fde6c.json
   report_args = --section .text --function func_ov020_021fde9c --require-exact
@@ -27464,10 +27464,10 @@ build build/reports/overlay020_scene_helpers_021fdee0.txt: match_report build/re
   report_args = --section .text --function func_ov020_021fdee0 --require-exact
 build build/reports/overlay020_scene_helpers_021fe3e4.txt: match_report build/reports/overlay020_scene_helpers_021fe3e4.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fe3e4.json
-  report_args = --section .text --function func_ov020_021fe3e4 --require-exact
+  report_args = --section .text --function Overlay020_UpdateAndComplete --require-exact
 build build/reports/overlay020_scene_helpers_021fe3f4.txt: match_report build/reports/overlay020_scene_helpers_021fe3f4.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_helpers_021fe3f4.json
-  report_args = --section .text --function func_ov020_021fe3f4 --require-exact
+  report_args = --section .text --function Overlay020_UpdateDisplay --require-exact
 build overlay020_scene_helpers: phony build/decomp/src/overlays/ov020/overlay020_scene_helpers.o build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fce00.o build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fd034.o build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fd308.o build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fd404.o build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fd818.o build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fde6c.o build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fe3e4.o build/decomp/asm/overlays/ov020/overlay020_scene_helpers_021fe3f4.o build/reports/overlay020_scene_helpers_021fce00.txt build/reports/overlay020_scene_helpers_021fd034.txt build/reports/overlay020_scene_helpers_021fd308.txt build/reports/overlay020_scene_helpers_021fd404.txt build/reports/overlay020_scene_helpers_021fd818.txt build/reports/overlay020_scene_helpers_021fd81c.txt build/reports/overlay020_scene_helpers_021fde6c.txt build/reports/overlay020_scene_helpers_021fde9c.txt build/reports/overlay020_scene_helpers_021fdee0.txt build/reports/overlay020_scene_helpers_021fe3e4.txt build/reports/overlay020_scene_helpers_021fe3f4.txt
 
 overlay020_list_runtime_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27516,28 +27516,28 @@ build build/reports/overlay020_list_runtime_021fd280.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fd280.o
 build build/reports/overlay020_list_runtime_021fce18.txt: match_report build/reports/overlay020_list_runtime_021fce18.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_list_runtime_021fce18.json
-  report_args = --section .text --function func_ov020_021fce18 --require-exact
+  report_args = --section .text --function Overlay020_List_Init --require-exact
 build build/reports/overlay020_list_runtime_021fcfd4.txt: match_report build/reports/overlay020_list_runtime_021fcfd4.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_list_runtime_021fcfd4.json
-  report_args = --section .text --function func_ov020_021fcfd4 --require-exact
+  report_args = --section .text --function Overlay020_List_Deinit --require-exact
 build build/reports/overlay020_list_runtime_021fd038.txt: match_report build/reports/overlay020_list_runtime_021fd038.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_list_runtime_021fd038.json
-  report_args = --section .text --function func_ov020_021fd038 --require-exact
+  report_args = --section .text --function Overlay020_List_AppendRow --require-exact
 build build/reports/overlay020_list_runtime_021fd0a0.txt: match_report build/reports/overlay020_list_runtime_021fd0a0.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_list_runtime_021fd0a0.json
-  report_args = --section .text --function func_ov020_021fd0a0 --require-exact
+  report_args = --section .text --function Overlay020_List_CreateVisibleRows --require-exact
 build build/reports/overlay020_list_runtime_021fd100.txt: match_report build/reports/overlay020_list_runtime_021fd100.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_list_runtime_021fd100.json
-  report_args = --section .text --function func_ov020_021fd100 --require-exact
+  report_args = --section .text --function Overlay020_List_CreateRowSprite --require-exact
 build build/reports/overlay020_list_runtime_021fd184.txt: match_report build/reports/overlay020_list_runtime_021fd184.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_list_runtime_021fd184.json
-  report_args = --section .text --function func_ov020_021fd184 --require-exact
+  report_args = --section .text --function Overlay020_List_DestroyRowSprite --require-exact
 build build/reports/overlay020_list_runtime_021fd1cc.txt: match_report build/reports/overlay020_list_runtime_021fd1cc.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_list_runtime_021fd1cc.json
-  report_args = --section .text --function func_ov020_021fd1cc --require-exact
+  report_args = --section .text --function Overlay020_List_RenderLabels --require-exact
 build build/reports/overlay020_list_runtime_021fd280.txt: match_report build/reports/overlay020_list_runtime_021fd280.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_list_runtime_021fd280.json
-  report_args = --section .text --function func_ov020_021fd280 --require-exact
+  report_args = --section .text --function Overlay020_List_UpdateVisibleRows --require-exact
 build overlay020_list_runtime: phony build/decomp/src/overlays/ov020/overlay020_list_runtime.o build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fce18.o build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fcfd4.o build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fd038.o build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fd0a0.o build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fd100.o build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fd184.o build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fd1cc.o build/decomp/asm/overlays/ov020/overlay020_list_runtime_021fd280.o build/reports/overlay020_list_runtime_021fce18.txt build/reports/overlay020_list_runtime_021fcfd4.txt build/reports/overlay020_list_runtime_021fd038.txt build/reports/overlay020_list_runtime_021fd0a0.txt build/reports/overlay020_list_runtime_021fd100.txt build/reports/overlay020_list_runtime_021fd184.txt build/reports/overlay020_list_runtime_021fd1cc.txt build/reports/overlay020_list_runtime_021fd280.txt
 
 overlay020_detail_dialog_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27556,10 +27556,10 @@ build build/reports/overlay020_detail_dialog_021fd44c.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov020/overlay020_detail_dialog_021fd44c.o
 build build/reports/overlay020_detail_dialog_021fd320.txt: match_report build/reports/overlay020_detail_dialog_021fd320.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_detail_dialog_021fd320.json
-  report_args = --section .text --function func_ov020_021fd320 --require-exact
+  report_args = --section .text --function Overlay020_DetailPanel_Init --require-exact
 build build/reports/overlay020_detail_dialog_021fd44c.txt: match_report build/reports/overlay020_detail_dialog_021fd44c.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_detail_dialog_021fd44c.json
-  report_args = --section .text --function func_ov020_021fd44c --require-exact
+  report_args = --section .text --function Overlay020_DetailPanel_RenderSelection --require-exact
 build overlay020_detail_dialog: phony build/decomp/src/overlays/ov020/overlay020_detail_dialog.o build/decomp/asm/overlays/ov020/overlay020_detail_dialog_021fd320.o build/decomp/asm/overlays/ov020/overlay020_detail_dialog_021fd44c.o build/reports/overlay020_detail_dialog_021fd320.txt build/reports/overlay020_detail_dialog_021fd44c.txt
 
 overlay020_scene_runtime_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27598,22 +27598,22 @@ build build/reports/overlay020_scene_runtime_helpers_021fdf7c.json: objdiff buil
   base_object = build/decomp/asm/overlays/ov020/overlay020_scene_runtime_helpers_021fdf7c.o
 build build/reports/overlay020_scene_runtime_helpers_021fdb8c.txt: match_report build/reports/overlay020_scene_runtime_helpers_021fdb8c.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_runtime_helpers_021fdb8c.json
-  report_args = --section .text --function func_ov020_021fdb8c --require-exact
+  report_args = --section .text --function Overlay020_Scene_Deinit --require-exact
 build build/reports/overlay020_scene_runtime_helpers_021fdc14.txt: match_report build/reports/overlay020_scene_runtime_helpers_021fdc14.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_runtime_helpers_021fdc14.json
-  report_args = --section .text --function func_ov020_021fdc14 --require-exact
+  report_args = --section .text --function Overlay020_Scene_Delete --require-exact
 build build/reports/overlay020_scene_runtime_helpers_021fdca4.txt: match_report build/reports/overlay020_scene_runtime_helpers_021fdca4.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_runtime_helpers_021fdca4.json
-  report_args = --section .text --function func_ov020_021fdca4 --require-exact
+  report_args = --section .text --function Overlay020_SetupDisplay --require-exact
 build build/reports/overlay020_scene_runtime_helpers_021fdd88.txt: match_report build/reports/overlay020_scene_runtime_helpers_021fdd88.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_runtime_helpers_021fdd88.json
-  report_args = --section .text --function func_ov020_021fdd88 --require-exact
+  report_args = --section .text --function Overlay020_LoadGraphicsResources --require-exact
 build build/reports/overlay020_scene_runtime_helpers_021fdf08.txt: match_report build/reports/overlay020_scene_runtime_helpers_021fdf08.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_runtime_helpers_021fdf08.json
-  report_args = --section .text --function func_ov020_021fdf08 --require-exact
+  report_args = --section .text --function Overlay020_HitTestListRow --require-exact
 build build/reports/overlay020_scene_runtime_helpers_021fdf7c.txt: match_report build/reports/overlay020_scene_runtime_helpers_021fdf7c.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_runtime_helpers_021fdf7c.json
-  report_args = --section .text --function func_ov020_021fdf7c --require-exact
+  report_args = --section .text --function Overlay020_UpdateStartup --require-exact
 build overlay020_scene_runtime_helpers: phony build/decomp/src/overlays/ov020/overlay020_scene_runtime_helpers.o build/decomp/asm/overlays/ov020/overlay020_scene_runtime_helpers_021fdb8c.o build/decomp/asm/overlays/ov020/overlay020_scene_runtime_helpers_021fdc14.o build/decomp/asm/overlays/ov020/overlay020_scene_runtime_helpers_021fdca4.o build/decomp/asm/overlays/ov020/overlay020_scene_runtime_helpers_021fdd88.o build/decomp/asm/overlays/ov020/overlay020_scene_runtime_helpers_021fdf08.o build/decomp/asm/overlays/ov020/overlay020_scene_runtime_helpers_021fdf7c.o build/reports/overlay020_scene_runtime_helpers_021fdb8c.txt build/reports/overlay020_scene_runtime_helpers_021fdc14.txt build/reports/overlay020_scene_runtime_helpers_021fdca4.txt build/reports/overlay020_scene_runtime_helpers_021fdd88.txt build/reports/overlay020_scene_runtime_helpers_021fdf08.txt build/reports/overlay020_scene_runtime_helpers_021fdf7c.txt
 
 
@@ -27628,7 +27628,7 @@ build build/reports/overlay020_scene_construct_021fd844.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov020/overlay020_scene_construct_021fd844.o
 build build/reports/overlay020_scene_construct_021fd844.txt: match_report build/reports/overlay020_scene_construct_021fd844.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_scene_construct_021fd844.json
-  report_args = --section .text --function func_ov020_021fd844 --require-exact
+  report_args = --section .text --function Overlay020_Scene_Init --require-exact
 build overlay020_scene_construct: phony build/decomp/src/overlays/ov020/overlay020_scene_construct.o build/decomp/asm/overlays/ov020/overlay020_scene_construct_021fd844.o build/reports/overlay020_scene_construct_021fd844.txt
 
 overlay020_state_machines_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27647,10 +27647,10 @@ build build/reports/overlay020_state_machines_021fe2a4.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov020/overlay020_state_machines_021fe2a4.o
 build build/reports/overlay020_state_machines_021fe024.txt: match_report build/reports/overlay020_state_machines_021fe024.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_state_machines_021fe024.json
-  report_args = --section .text --function func_ov020_021fe024 --require-exact
+  report_args = --section .text --function Overlay020_UpdatePrimaryList --require-exact
 build build/reports/overlay020_state_machines_021fe2a4.txt: match_report build/reports/overlay020_state_machines_021fe2a4.json | tools/report_objdiff.py
   report_json = build/reports/overlay020_state_machines_021fe2a4.json
-  report_args = --section .text --function func_ov020_021fe2a4 --require-exact
+  report_args = --section .text --function Overlay020_UpdateAlternateList --require-exact
 build overlay020_state_machines: phony build/decomp/src/overlays/ov020/overlay020_state_machines.o build/decomp/asm/overlays/ov020/overlay020_state_machines_021fe024.o build/decomp/asm/overlays/ov020/overlay020_state_machines_021fe2a4.o build/reports/overlay020_state_machines_021fe024.txt build/reports/overlay020_state_machines_021fe2a4.txt
 
 

@@ -6,8 +6,8 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern RetailTextTable_FindRecordById
 
-.global func_ov020_021fd1cc
-func_ov020_021fd1cc:
+.global Overlay020_List_RenderLabels
+Overlay020_List_RenderLabels:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -56,4 +56,4 @@ L_021fd274:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fd27c: .word data_021f3ecc
-    .size func_ov020_021fd1cc, . - func_ov020_021fd1cc
+    .size Overlay020_List_RenderLabels, . - Overlay020_List_RenderLabels

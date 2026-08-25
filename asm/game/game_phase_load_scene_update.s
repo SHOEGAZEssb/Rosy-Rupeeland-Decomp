@@ -65,7 +65,7 @@
 .extern Overlay018_Scene_Init
 .extern Overlay018_SetDialogLayout
 .extern Overlay019_Scene_Init
-.extern func_ov020_021fd844
+.extern Overlay020_Scene_Init
 .extern func_ov021_021fd7e8
 .extern func_ov022_021fdd44
 .extern func_ov025_021ff27c
@@ -530,7 +530,7 @@ L_0200d6bc:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d6e8
-    bl func_ov020_021fd844
+    bl Overlay020_Scene_Init
 L_0200d6e8:
     str r0, [r5, #0x24]
     b L_0200dbd4

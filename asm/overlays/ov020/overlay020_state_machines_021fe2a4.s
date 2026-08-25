@@ -8,14 +8,14 @@
     .extern InventoryScroll_BeginMarkerDrag
     .extern InventoryScroll_UpdateMarkerDrag
     .extern InventoryScroll_EndMarkerDrag
-    .extern func_ov020_021fd280
+    .extern Overlay020_List_UpdateVisibleRows
     .extern func_ov020_021fd81c
-    .extern func_ov020_021fde6c
+    .extern Overlay020_UpdateSceneUi
     .extern func_ov020_021fde9c
     .extern func_ov020_021fdee0
 
-.global func_ov020_021fe2a4
-func_ov020_021fe2a4:
+.global Overlay020_UpdateAlternateList
+Overlay020_UpdateAlternateList:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r1, [r5, #0x1dc]
@@ -63,7 +63,7 @@ L_021fe334:
     b L_021fe368
 L_021fe34c:
     ldr r0, [r5, #0x1dc]
-    bl func_ov020_021fd280
+    bl Overlay020_List_UpdateVisibleRows
     cmp r0, #0x0
     beq L_021fe3d0
     mov r0, r5
@@ -99,9 +99,9 @@ L_021fe3b8:
     bl func_ov020_021fd81c
 L_021fe3d0:
     mov r0, r5
-    bl func_ov020_021fde6c
+    bl Overlay020_UpdateSceneUi
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe3e0: .word data_ov020_021fe450
-    .size func_ov020_021fe2a4, . - func_ov020_021fe2a4
+    .size Overlay020_UpdateAlternateList, . - Overlay020_UpdateAlternateList
 

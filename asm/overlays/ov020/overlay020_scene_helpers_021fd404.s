@@ -4,8 +4,8 @@
     .extern GraphicsSpriteGroup_Destroy
     .extern TitleCharacterResourceCollection_Destroy
 
-.global func_ov020_021fd404
-func_ov020_021fd404:
+.global Overlay020_DetailPanel_Deinit
+Overlay020_DetailPanel_Deinit:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4c]
@@ -25,4 +25,4 @@ L_021fd424:
     bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_ov020_021fd404, . - func_ov020_021fd404
+    .size Overlay020_DetailPanel_Deinit, . - Overlay020_DetailPanel_Deinit

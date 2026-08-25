@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_helpers.c. */
 
-.global func_ov020_021fe3f4
-func_ov020_021fe3f4:
+.global Overlay020_UpdateDisplay
+Overlay020_UpdateDisplay:
     ldr r1, [r0, #0x20]
     mov r1, r1, lsl #0x15
     movs r1, r1, asr #0x1f
@@ -22,4 +22,4 @@ func_ov020_021fe3f4:
 L_021fe434:
     mov r0, #0x0
     bx lr
-    .size func_ov020_021fe3f4, . - func_ov020_021fe3f4
+    .size Overlay020_UpdateDisplay, . - Overlay020_UpdateDisplay

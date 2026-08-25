@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov020/overlay020_list_runtime.c. */
     .extern GraphicsSpriteState_ReleaseFromGroup
 
-.global func_ov020_021fd184
-func_ov020_021fd184:
+.global Overlay020_List_DestroyRowSprite
+Overlay020_List_DestroyRowSprite:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x40]
@@ -22,4 +22,4 @@ func_ov020_021fd184:
     add r0, r0, r4
     str r1, [r0, #0x4]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov020_021fd184, . - func_ov020_021fd184
+    .size Overlay020_List_DestroyRowSprite, . - Overlay020_List_DestroyRowSprite

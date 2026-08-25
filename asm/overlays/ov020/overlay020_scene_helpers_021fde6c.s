@@ -3,12 +3,12 @@
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern InventoryScroll_UpdatePresentation
     .extern SpriteMotionController_Update
-    .extern func_ov020_021fd44c
+    .extern Overlay020_DetailPanel_RenderSelection
 
-.global func_ov020_021fde6c
+.global Overlay020_UpdateSceneUi
 .global func_ov020_021fde9c
 .global func_ov020_021fdee0
-func_ov020_021fde6c:
+Overlay020_UpdateSceneUi:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x70
@@ -22,7 +22,7 @@ L_021fde90:
     ldr r0, [r4, #0x6c]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
-    .size func_ov020_021fde6c, . - func_ov020_021fde6c
+    .size Overlay020_UpdateSceneUi, . - Overlay020_UpdateSceneUi
 func_ov020_021fde9c:
     ldr ip, [r0, #0x11c]
     mov r1, #0x18
@@ -52,5 +52,5 @@ func_ov020_021fdee0:
     add r1, r2, r1, lsl #0x2
     ldr r1, [r1, #0x124]
     bx ip
-L_021fdf04: .word func_ov020_021fd44c
+L_021fdf04: .word Overlay020_DetailPanel_RenderSelection
     .size func_ov020_021fdee0, . - func_ov020_021fdee0

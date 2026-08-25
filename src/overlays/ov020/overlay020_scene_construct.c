@@ -31,13 +31,13 @@ extern void TitleCharacterResourceCollection_Init(void *);
 extern void SpriteMotionController_Init(void *);
 extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
-extern void *func_ov020_021fce18(void *, void *, s32);
-extern void *func_ov020_021fd038(void *, const void *);
-extern void func_ov020_021fd0a0(void *);
-extern void *func_ov020_021fd320(void *, void *);
+extern void *Overlay020_List_Init(void *, void *, s32);
+extern void *Overlay020_List_AppendRow(void *, const void *);
+extern void Overlay020_List_CreateVisibleRows(void *);
+extern void *Overlay020_DetailPanel_Init(void *, void *);
 extern void func_ov020_021fd81c(void *, u32, u32, s32);
-extern void func_ov020_021fdca4(void *);
-extern void func_ov020_021fdd88(void);
+extern void Overlay020_SetupDisplay(void *);
+extern void Overlay020_LoadGraphicsResources(void);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ extern void func_ov020_021fdd88(void);
  * and select data_ov020_021FE460. Returns state. Heap, game-work, UI, graphics,
  * input, and transition SDK state change; graphics helpers access DS hardware.
  */
-extern "C" void *func_ov020_021fd844(void *state)
+extern "C" void *Overlay020_Scene_Init(void *state)
 {
     s32 i;
     s32 count;
@@ -114,22 +114,22 @@ extern "C" void *func_ov020_021fd844(void *state)
 
     void *list = Heap_Alloc(0x4c, data_ov020_021fe530, 4, gHeapContext);
     if (list != 0)
-        list = func_ov020_021fce18(list, gDebugFont, count);
+        list = Overlay020_List_Init(list, gDebugFont, count);
     FIELD(void *, state, 0x1dc) = list;
     for (i = 0; i < count; i++) {
         s32 entry = FIELD(s32, state, 0x124 + i * 4);
-        void *row = func_ov020_021fd038(list, data_020ea650 + entry * 0x18);
+        void *row = Overlay020_List_AppendRow(list, data_020ea650 + entry * 0x18);
         FIELD(s16, row, 8) = 0;
         FIELD(s16, row, 0xa) = i * 0x18;
     }
-    func_ov020_021fd0a0(list);
+    Overlay020_List_CreateVisibleRows(list);
 
     void *detail = Heap_Alloc(0x50, data_ov020_021fe538, 4, gHeapContext);
     if (detail != 0)
-        detail = func_ov020_021fd320(detail, data_020f4e14);
+        detail = Overlay020_DetailPanel_Init(detail, data_020f4e14);
     FIELD(void *, state, 0x1e0) = detail;
-    func_ov020_021fdca4(state);
-    func_ov020_021fdd88();
+    Overlay020_SetupDisplay(state);
+    Overlay020_LoadGraphicsResources();
     FIELD(u32, state, 0x20) |= 0x400;
     func_ov020_021fd81c(state, data_ov020_021fe460[0],
                         data_ov020_021fe460[1], 0);

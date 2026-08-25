@@ -33,10 +33,10 @@ extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_020b44e8(void);
-extern void func_ov020_021fcfd4(void *);
-extern void func_ov020_021fd1cc(void *);
-extern void func_ov020_021fd404(void *);
-extern void func_ov020_021fd818(void *);
+extern void Overlay020_List_Deinit(void *);
+extern void Overlay020_List_RenderLabels(void *);
+extern void Overlay020_DetailPanel_Deinit(void *);
+extern void Overlay020_SceneCallback_NoOp(void *);
 extern void func_ov020_021fd81c(void *, s32, s32, s32);
 extern void func_ov020_021fde9c(void *);
 extern s32 func_ov020_021fdee0(void *);
@@ -52,16 +52,16 @@ static void destroySceneContents(void *state)
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x6c));
     void *detail = FIELD(void *, state, 0x1e0);
     if (detail != 0) {
-        func_ov020_021fd404(detail);
+        Overlay020_DetailPanel_Deinit(detail);
         Heap_Free(detail);
     }
     void *list = FIELD(void *, state, 0x1dc);
     if (list != 0) {
-        func_ov020_021fcfd4(list);
+        Overlay020_List_Deinit(list);
         Heap_Free(list);
     }
     TitleCharacterResourceCollection_Destroy((u8 *)state + 0x1b8);
-    func_ov020_021fd818((u8 *)state + 0x70);
+    Overlay020_SceneCallback_NoOp((u8 *)state + 0x70);
     AnimationResourceState_Destroy((u8 *)state + 0x60);
     AnimationResourceState_Destroy((u8 *)state + 0x54);
 }
@@ -72,14 +72,14 @@ static void destroySceneContents(void *state)
  * manager +0x1B8, callback +0x70, and resources +0x60/+0x54. Return state
  * without freeing it. Heap/resource/UI ownership changes; no direct MMIO.
  */
-extern "C" void *func_ov020_021fdb8c(void *state)
+extern "C" void *Overlay020_Scene_Deinit(void *state)
 {
     destroySceneContents(state);
     return state;
 }
 
 /* Perform 0x021FDB8C teardown, free the scene, and return its invalid former address. */
-extern "C" void *func_ov020_021fdc14(void *state)
+extern "C" void *Overlay020_Scene_Delete(void *state)
 {
     destroySceneContents(state);
     Heap_Free(state);
@@ -92,7 +92,7 @@ extern "C" void *func_ov020_021fdc14(void *state)
  * 0x1A/+0x4C; then invoke main/sub setup and 0/1/2/3 layer ordering. Returns
  * void. Graphics SDK state and Nintendo DS POWCNT1/BG control MMIO change.
  */
-extern "C" void func_ov020_021fdca4(void *state)
+extern "C" void Overlay020_SetupDisplay(void *state)
 {
     volatile u16 *mainBg = (volatile u16 *)0x0400000c;
     volatile u16 *subBg = (volatile u16 *)0x04001008;
@@ -118,7 +118,7 @@ extern "C" void func_ov020_021fdca4(void *state)
  * layer 2. Destroy the temporary set. Graphics/resource SDK state changes;
  * returns void with no direct hardware access.
  */
-extern "C" void func_ov020_021fdd88(void)
+extern "C" void Overlay020_LoadGraphicsResources(void)
 {
     u8 resources[12];
     GraphicsResourceSet_Init(resources);
@@ -141,7 +141,7 @@ extern "C" void func_ov020_021fdd88(void)
  * when below total +0x120; otherwise return -1. State is read only; division
  * uses 0x020BEFEC and no hardware is accessed.
  */
-extern "C" s32 func_ov020_021fdf08(void *state)
+extern "C" s32 Overlay020_HitTestListRow(void *state)
 {
     s32 y = FIELD(s32, state, 0x38) - 0x10;
     s32 x = FIELD(s32, state, 0x34) - 0x20;
@@ -161,14 +161,14 @@ extern "C" s32 func_ov020_021fdf08(void *state)
  * select transition 0x021FE458; otherwise select empty-list transition
  * 0x021FE478. Always return zero. UI/transition state may change; no MMIO.
  */
-extern "C" s32 func_ov020_021fdf7c(void *state)
+extern "C" s32 Overlay020_UpdateStartup(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         FIELD(u32, state, 0x20) |= 1;
         if (FIELD(s32, state, 0x120) != 0) {
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-            func_ov020_021fd1cc(FIELD(void *, state, 0x1dc));
+            Overlay020_List_RenderLabels(FIELD(void *, state, 0x1dc));
             func_ov020_021fde9c(state);
             func_ov020_021fdee0(state);
             func_ov020_021fd81c(state, data_ov020_021fe458[0],

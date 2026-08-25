@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_runtime_helpers.c. */
     .extern func_020befec
 
-.global func_ov020_021fdf08
-func_ov020_021fdf08:
+.global Overlay020_HitTestListRow
+Overlay020_HitTestListRow:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x38]
@@ -33,5 +33,5 @@ func_ov020_021fdf08:
     cmp r0, r1
     mvnge r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_ov020_021fdf08, . - func_ov020_021fdf08
+    .size Overlay020_HitTestListRow, . - Overlay020_HitTestListRow
 

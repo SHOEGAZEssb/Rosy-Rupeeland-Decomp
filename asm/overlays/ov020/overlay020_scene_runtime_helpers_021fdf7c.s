@@ -4,14 +4,14 @@
     .extern data_ov020_021fe458
     .extern data_ov020_021fe478
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_ov020_021fd1cc
+    .extern Overlay020_List_RenderLabels
     .extern func_ov020_021fd81c
     .extern func_ov020_021fde9c
     .extern func_ov020_021fdee0
     .extern gDebugFont
 
-.global func_ov020_021fdf7c
-func_ov020_021fdf7c:
+.global Overlay020_UpdateStartup
+Overlay020_UpdateStartup:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -27,7 +27,7 @@ func_ov020_021fdf7c:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r4, #0x1dc]
-    bl func_ov020_021fd1cc
+    bl Overlay020_List_RenderLabels
     mov r0, r4
     bl func_ov020_021fde9c
     mov r0, r4
@@ -56,5 +56,5 @@ L_021fe014: .word data_020f4e14
 L_021fe018: .word gDebugFont
 L_021fe01c: .word data_ov020_021fe458
 L_021fe020: .word data_ov020_021fe478
-    .size func_ov020_021fdf7c, . - func_ov020_021fdf7c
+    .size Overlay020_UpdateStartup, . - Overlay020_UpdateStartup
 

@@ -35,7 +35,7 @@ extern void GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, 
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void TitleDialog_SetText(void *, const void *, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
-extern void func_ov020_021fd308(void *, s32, s32, s32, s32);
+extern void Overlay020_DetailDialog_SetLayout(void *, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -48,7 +48,7 @@ extern void func_ov020_021fd308(void *, s32, s32, s32, s32);
  * 0x4C..0x4E into +0x1C. Return state. Heap, dialog, font, graphics, and resource
  * SDK state change; no direct hardware access occurs.
  */
-extern "C" void *func_ov020_021fd320(void *state, void *font)
+extern "C" void *Overlay020_DetailPanel_Init(void *state, void *font)
 {
     AnimationResourceState_InitEmbedded((u8 *)state + 0x10);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x1c);
@@ -64,7 +64,7 @@ extern "C" void *func_ov020_021fd320(void *state, void *font)
     if (dialog != 0)
         dialog = TitleDialog_Init(dialog, font, FIELD(void *, state, 0x28));
     FIELD(void *, state, 0x4c) = dialog;
-    func_ov020_021fd308(dialog, 0x22, 0x87, 0xc0, 0x30);
+    Overlay020_DetailDialog_SetLayout(dialog, 0x22, 0x87, 0xc0, 0x30);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x1c, data_020f4e18[0],
                   0x4c, 0x4d, 0x4e);
     return state;
@@ -91,7 +91,7 @@ static void createQuantitySprite(void *state, s32 animation, s32 x, s32 y)
  * may change; no direct hardware access occurs. Styling constants are retained
  * without speculative semantic names.
  */
-extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
+extern "C" s32 Overlay020_DetailPanel_RenderSelection(void *state, s32 selection, void *unused)
 {
     (void)unused;
     GraphicsSpriteRenderer_ClearTextBuffer(FIELD(void *, state, 8));

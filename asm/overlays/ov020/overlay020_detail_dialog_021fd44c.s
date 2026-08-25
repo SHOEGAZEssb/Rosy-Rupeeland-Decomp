@@ -20,8 +20,8 @@
     .extern TitleDialog_UpdateTextPage
     .extern gSystemState
 
-.global func_ov020_021fd44c
-func_ov020_021fd44c:
+.global Overlay020_DetailPanel_RenderSelection
+Overlay020_DetailPanel_RenderSelection:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x1c
     mov r6, r0
@@ -274,4 +274,4 @@ L_021fd808: .word data_020f4e18
 L_021fd80c: .word gSystemState
 L_021fd810: .word data_021f3ecc
 L_021fd814: .word data_ov020_021fe48c
-    .size func_ov020_021fd44c, . - func_ov020_021fd44c
+    .size Overlay020_DetailPanel_RenderSelection, . - Overlay020_DetailPanel_RenderSelection

@@ -9,11 +9,11 @@
     .extern TitleCharacterResourceCollection_Init
     .extern TitleCharacterResourceCollection_Append
     .extern TitleDialog_Init
-    .extern func_ov020_021fd308
+    .extern Overlay020_DetailDialog_SetLayout
     .extern gHeapContext
 
-.global func_ov020_021fd320
-func_ov020_021fd320:
+.global Overlay020_DetailPanel_Init
+Overlay020_DetailPanel_Init:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0x10
@@ -56,7 +56,7 @@ L_021fd3a8:
     mov r1, #0x22
     mov r2, #0x87
     mov r3, #0xc0
-    bl func_ov020_021fd308
+    bl Overlay020_DetailDialog_SetLayout
     mov r1, #0x4e
     ldr r0, L_021fd400
     str r1, [sp, #0x0]
@@ -72,4 +72,4 @@ L_021fd3f4: .word 0x7007
 L_021fd3f8: .word data_ov020_021fe528
 L_021fd3fc: .word gHeapContext
 L_021fd400: .word data_020f4e18
-    .size func_ov020_021fd320, . - func_ov020_021fd320
+    .size Overlay020_DetailPanel_Init, . - Overlay020_DetailPanel_Init

@@ -4,10 +4,10 @@
     .extern GraphicsSpriteGroup_Destroy
     .extern TitleCharacterResourceCollection_Destroy
     .extern CxxArray_DestroyAndFree
-    .extern func_ov020_021fd034
+    .extern Overlay020_Row_NoOp
 
-.global func_ov020_021fcfd4
-func_ov020_021fcfd4:
+.global Overlay020_List_Deinit
+Overlay020_List_Deinit:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -33,5 +33,5 @@ L_021fd018:
     bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_021fd030: .word func_ov020_021fd034
-    .size func_ov020_021fcfd4, . - func_ov020_021fcfd4
+L_021fd030: .word Overlay020_Row_NoOp
+    .size Overlay020_List_Deinit, . - Overlay020_List_Deinit

@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_helpers.c. */
 
-.global func_ov020_021fd034
-func_ov020_021fd034:
+.global Overlay020_Row_NoOp
+Overlay020_Row_NoOp:
     bx lr
-    .size func_ov020_021fd034, . - func_ov020_021fd034
+    .size Overlay020_Row_NoOp, . - Overlay020_Row_NoOp

@@ -42,11 +42,11 @@ extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), s32);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
-extern void func_ov020_021fce00(void *);
-extern void func_ov020_021fd034(void *);
-extern void func_ov020_021fd100(void *, s32);
-extern void func_ov020_021fd184(void *, s32);
-extern void func_ov020_021fd1cc(void *);
+extern void Overlay020_Row_Init(void *);
+extern void Overlay020_Row_NoOp(void *);
+extern void Overlay020_List_CreateRowSprite(void *, s32);
+extern void Overlay020_List_DestroyRowSprite(void *, s32);
+extern void Overlay020_List_RenderLabels(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -61,7 +61,7 @@ extern void func_ov020_021fd1cc(void *);
  * manager IDs 0x7000/0x7006/0x7005 and return state. Heap, graphics, resource,
  * list-controller, and font SDK state change; no direct hardware access occurs.
  */
-extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
+extern "C" void *Overlay020_List_Init(void *state, void *font, s32 capacity)
 {
     AnimationResourceState_InitEmbedded((u8 *)state + 8);
     TitleCharacterResourceCollection_Init((u8 *)state + 0x14);
@@ -79,7 +79,7 @@ extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
                                    data_ov020_021fe518, 4, gHeapContext);
         if (rows != 0)
             rows = CxxArray_ConstructWithCookie(rows, capacity, 12, 8,
-                                 func_ov020_021fce00, 0);
+                                 Overlay020_Row_Init, 0);
         FIELD(void *, state, 0x38) = rows;
     } else {
         FIELD(void *, state, 0x38) = 0;
@@ -106,7 +106,7 @@ extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
  * destructor 0x021FD034, then tear down manager +0x14 and resources +8. Return
  * state without freeing it. Heap/resource/UI ownership changes; no MMIO.
  */
-extern "C" void *func_ov020_021fcfd4(void *state)
+extern "C" void *Overlay020_List_Deinit(void *state)
 {
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
     void *controller = FIELD(void *, state, 0x44);
@@ -116,7 +116,7 @@ extern "C" void *func_ov020_021fcfd4(void *state)
     }
     if (FIELD(void *, state, 0x38) != 0)
         CxxArray_DestroyAndFree(FIELD(void *, state, 0x38), 12, 8,
-                      func_ov020_021fd034);
+                      Overlay020_Row_NoOp);
     TitleCharacterResourceCollection_Destroy((u8 *)state + 0x14);
     AnimationResourceState_Destroy((u8 *)state + 8);
     return state;
@@ -128,7 +128,7 @@ extern "C" void *func_ov020_021fcfd4(void *state)
  * index*24, increment count, and return the row pointer. Return null on failure.
  * Only list memory changes; no SDK or hardware effects occur.
  */
-extern "C" Overlay020Row *func_ov020_021fd038(void *state,
+extern "C" Overlay020Row *Overlay020_List_AppendRow(void *state,
                                                const void *descriptor)
 {
     Overlay020Row *rows = FIELD(Overlay020Row *, state, 0x38);
@@ -149,14 +149,14 @@ extern "C" Overlay020Row *func_ov020_021fd038(void *state,
  * visible-count +8 inclusive endpoint. Returns void. Sprite/renderer SDK and
  * list state may change; no direct hardware access occurs.
  */
-extern "C" void func_ov020_021fd0a0(void *state)
+extern "C" void Overlay020_List_CreateVisibleRows(void *state)
 {
     void *controller = FIELD(void *, state, 0x44);
     s32 first = FIELD(s32, controller, 0xc);
     FIELD(s32, FIELD(void *, state, 4), 0x1c) = 0x1c - first * 0x18;
     s32 last = first + FIELD(s32, controller, 8) - 1;
     for (s32 index = first; index <= last; index++)
-        func_ov020_021fd100(state, index);
+        Overlay020_List_CreateRowSprite(state, index);
 }
 
 /*
@@ -165,7 +165,7 @@ extern "C" void func_ov020_021fd0a0(void *state)
  * halfwords, and use zero trailing values. Returns void. Row and sprite SDK
  * state may change; no direct hardware access occurs.
  */
-extern "C" void func_ov020_021fd100(void *state, s32 index)
+extern "C" void Overlay020_List_CreateRowSprite(void *state, s32 index)
 {
     if (index < FIELD(s32, state, 0x40)) {
         Overlay020Row *row = &FIELD(Overlay020Row *, state, 0x38)[index];
@@ -182,7 +182,7 @@ extern "C" void func_ov020_021fd100(void *state, s32 index)
  * Destroy and clear the sprite for an in-range populated row when present.
  * Returns void. Sprite SDK and row state may change; no hardware effects.
  */
-extern "C" void func_ov020_021fd184(void *state, s32 index)
+extern "C" void Overlay020_List_DestroyRowSprite(void *state, s32 index)
 {
     if (index < FIELD(s32, state, 0x40)) {
         Overlay020Row *row = &FIELD(Overlay020Row *, state, 0x38)[index];
@@ -200,7 +200,7 @@ extern "C" void func_ov020_021fd184(void *state, s32 index)
  * style constants 14/8/0 and target +0x18. Returns void. Font/render SDK state
  * changes; no direct hardware access occurs.
  */
-extern "C" void func_ov020_021fd1cc(void *state)
+extern "C" void Overlay020_List_RenderLabels(void *state)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(FIELD(void *, state, 0));
     if (FIELD(s32, state, 0x40) == 0)
@@ -227,7 +227,7 @@ extern "C" void func_ov020_021fd1cc(void *state)
  * +0x70, and rerender labels; return one regardless of whether a swap was
  * needed. List, sprite, renderer, and font SDK state may change; no MMIO.
  */
-extern "C" s32 func_ov020_021fd280(void *state)
+extern "C" s32 Overlay020_List_UpdateVisibleRows(void *state)
 {
     void *controller = FIELD(void *, state, 0x44);
     if (FIELD(s32, controller, 0x30) != FIELD(s32, controller, 0x2c) / 2)
@@ -235,9 +235,9 @@ extern "C" s32 func_ov020_021fd280(void *state)
     s32 first = FIELD(s32, controller, 0xc);
     if (first != FIELD(s32, controller, 0x10)) {
         FIELD(s32, FIELD(void *, state, 4), 0x1c) = 0x1c - first * 0x18;
-        func_ov020_021fd184(state, FIELD(s32, controller, 0x74));
-        func_ov020_021fd100(state, FIELD(s32, controller, 0x70));
-        func_ov020_021fd1cc(state);
+        Overlay020_List_DestroyRowSprite(state, FIELD(s32, controller, 0x74));
+        Overlay020_List_CreateRowSprite(state, FIELD(s32, controller, 0x70));
+        Overlay020_List_RenderLabels(state);
     }
     return 1;
 }

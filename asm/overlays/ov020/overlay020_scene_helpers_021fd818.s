@@ -1,11 +1,11 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_helpers.c. */
 
-.global func_ov020_021fd818
+.global Overlay020_SceneCallback_NoOp
 .global func_ov020_021fd81c
-func_ov020_021fd818:
+Overlay020_SceneCallback_NoOp:
     bx lr
-    .size func_ov020_021fd818, . - func_ov020_021fd818
+    .size Overlay020_SceneCallback_NoOp, . - Overlay020_SceneCallback_NoOp
 func_ov020_021fd81c:
     stmdb sp!, {r0, r1, r2, r3}
     ldr r2, [sp, #0x4]
