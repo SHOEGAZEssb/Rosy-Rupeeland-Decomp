@@ -41,7 +41,7 @@ extern void Overlay016_RefreshSelectionPresentation(void *);
  * mode 6 and transition through data_ov016_02201460. Update the scene and return
  * zero. UI/action/transition state changes; no direct MMIO occurs.
  */
-extern "C" s32 func_ov016_02200d5c(void *state)
+extern "C" s32 Overlay016_UpdateActorSelectionState(void *state)
 {
     void *list = FIELD(void *, state, 0x44c);
     void *presentation = FIELD(void *, list, 0x26c);
@@ -93,7 +93,7 @@ extern "C" s32 func_ov016_02200d5c(void *state)
  * State 1 waits for actor-group completion then transitions through 0x221448.
  * Update the scene and return zero. Actor/list/action/transition state changes.
  */
-extern "C" s32 func_ov016_02200e88(void *state)
+extern "C" s32 Overlay016_UpdateActorConfirmationState(void *state)
 {
     void *list = FIELD(void *, state, 0x44c);
 

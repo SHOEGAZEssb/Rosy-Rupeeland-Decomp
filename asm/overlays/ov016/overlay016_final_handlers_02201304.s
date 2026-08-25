@@ -4,8 +4,8 @@
     .extern GameWork_ClearFlag
     .extern Overlay016_UpdateScene
     .extern gGameWork
-.global func_ov016_02201304
-func_ov016_02201304:
+.global Overlay016_UpdateTerminalState
+Overlay016_UpdateTerminalState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -33,5 +33,5 @@ L_02201350:
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_02201360: .word gGameWork
-    .size func_ov016_02201304, . - func_ov016_02201304
+    .size Overlay016_UpdateTerminalState, . - Overlay016_UpdateTerminalState
 

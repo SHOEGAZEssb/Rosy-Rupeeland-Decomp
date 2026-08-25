@@ -37,7 +37,7 @@ extern void Overlay016_RefreshSelectionPresentation(void *);
  * message, closes it, and transitions via pair 0x2214A0. Update all scene
  * components and return zero. Persistent flags and UI/transition state change.
  */
-extern "C" s32 func_ov016_02200778(void *state)
+extern "C" s32 Overlay016_UpdateAlternateEntryState(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:

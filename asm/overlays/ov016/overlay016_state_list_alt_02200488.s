@@ -14,8 +14,8 @@
     .extern Overlay016_UpdateScene
     .extern Overlay016_UpdateCursorPosition
     .extern Overlay016_SyncSelectedPanel
-.global func_ov016_02200488
-func_ov016_02200488:
+.global Overlay016_UpdateAlternateListState
+Overlay016_UpdateAlternateListState:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r1, [r5, #0x444]
@@ -103,5 +103,5 @@ L_022005b4:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_022005c4: .word data_ov016_02201480
-    .size func_ov016_02200488, . - func_ov016_02200488
+    .size Overlay016_UpdateAlternateListState, . - Overlay016_UpdateAlternateListState
 

@@ -12,8 +12,8 @@
     .extern Overlay016_UpdateScene
     .extern Overlay016_CreatePanelMessage
     .extern Overlay016_DestroyPanelMessage
-.global func_ov016_022011c0
-func_ov016_022011c0:
+.global Overlay016_UpdateQuantityPromptState
+Overlay016_UpdateQuantityPromptState:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -101,5 +101,5 @@ L_022012e4:
 L_022012f8: .word data_021e9ac0
 L_022012fc: .word data_ov016_022013f0
 L_02201300: .word data_ov016_02201428
-    .size func_ov016_022011c0, . - func_ov016_022011c0
+    .size Overlay016_UpdateQuantityPromptState, . - Overlay016_UpdateQuantityPromptState
 

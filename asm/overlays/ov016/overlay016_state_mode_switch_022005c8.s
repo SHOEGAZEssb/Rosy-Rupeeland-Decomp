@@ -20,8 +20,8 @@
     .extern Overlay016_DestroyTransientMessage
     .extern Overlay016_RefreshSelectionPresentation
     .extern gGameWork
-.global func_ov016_022005c8
-func_ov016_022005c8:
+.global Overlay016_UpdateModeSwitchState
+Overlay016_UpdateModeSwitchState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -138,5 +138,5 @@ L_02200768: .word gGameWork
 L_0220076c: .word 0x3a7
 L_02200770: .word data_ov016_022014b8
 L_02200774: .word data_ov016_022014b0
-    .size func_ov016_022005c8, . - func_ov016_022005c8
+    .size Overlay016_UpdateModeSwitchState, . - Overlay016_UpdateModeSwitchState
 

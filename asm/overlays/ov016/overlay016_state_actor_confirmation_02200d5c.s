@@ -12,8 +12,8 @@
     .extern Overlay016ActorValue_Init
     .extern Overlay016_UpdateScene
     .extern Overlay016_RefreshSelectionPresentation
-.global func_ov016_02200d5c
-func_ov016_02200d5c:
+.global Overlay016_UpdateActorSelectionState
+Overlay016_UpdateActorSelectionState:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r1, [r5, #0x44c]
@@ -96,5 +96,5 @@ L_02200e74:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02200e84: .word data_ov016_02201460
-    .size func_ov016_02200d5c, . - func_ov016_02200d5c
+    .size Overlay016_UpdateActorSelectionState, . - Overlay016_UpdateActorSelectionState
 

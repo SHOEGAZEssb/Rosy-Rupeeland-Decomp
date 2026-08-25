@@ -4,8 +4,8 @@
     .extern Heap_Free
     .extern data_ov016_02201520
     .extern PresentationList_DeleteAll
-.global func_ov016_02201364
-func_ov016_02201364:
+.global Overlay016_EmbeddedBase_Delete
+Overlay016_EmbeddedBase_Delete:
     stmdb sp!, {r4, lr}
     ldr r1, L_02201388
     mov r4, r0
@@ -16,5 +16,5 @@ func_ov016_02201364:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_02201388: .word data_ov016_02201520
-    .size func_ov016_02201364, . - func_ov016_02201364
+    .size Overlay016_EmbeddedBase_Delete, . - Overlay016_EmbeddedBase_Delete
 

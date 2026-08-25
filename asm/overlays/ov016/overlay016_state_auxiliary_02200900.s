@@ -33,8 +33,8 @@
     .extern Overlay016_RefreshSelectionPresentation
     .extern Overlay016_ToggleDetailPanel
     .extern Overlay016_MoveDetailSelection
-.global func_ov016_02200900
-func_ov016_02200900:
+.global Overlay016_UpdateAuxiliaryState
+Overlay016_UpdateAuxiliaryState:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -336,5 +336,5 @@ L_02200d4c: .word data_ov016_02201418
 L_02200d50: .word data_ov016_02201478
 L_02200d54: .word data_ov016_02201470
 L_02200d58: .word data_ov016_02201468
-    .size func_ov016_02200900, . - func_ov016_02200900
+    .size Overlay016_UpdateAuxiliaryState, . - Overlay016_UpdateAuxiliaryState
 

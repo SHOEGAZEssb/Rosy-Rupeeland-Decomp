@@ -56,7 +56,7 @@ extern void Overlay016_MoveDetailSelection(void *, s32);
  * all scene components and returns zero. UI/action/transition state changes;
  * no direct hardware registers are accessed by this handler.
  */
-extern "C" s32 func_ov016_02200900(void *state)
+extern "C" s32 Overlay016_UpdateAuxiliaryState(void *state)
 {
     void *list = FIELD(void *, state, 0x44c);
     s32 selected;

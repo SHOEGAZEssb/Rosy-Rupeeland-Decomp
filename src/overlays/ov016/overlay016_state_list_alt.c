@@ -35,7 +35,7 @@ extern void Overlay016_SyncSelectedPanel(void *);
  * transitions through data_ov016_02201480. Update all scene components every
  * call and return zero. UI/action/transition state changes; no direct MMIO.
  */
-extern "C" s32 func_ov016_02200488(void *state)
+extern "C" s32 Overlay016_UpdateAlternateListState(void *state)
 {
     void *list = FIELD(void *, state, 0x444);
     void *presentation = FIELD(void *, list, 0x58);

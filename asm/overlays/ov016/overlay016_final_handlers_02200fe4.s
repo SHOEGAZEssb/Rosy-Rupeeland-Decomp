@@ -8,8 +8,8 @@
     .extern Overlay016_HasActorGroupCompleted
     .extern Overlay016ActorValue_Init
     .extern Overlay016_UpdateScene
-.global func_ov016_02200fe4
-func_ov016_02200fe4:
+.global Overlay016_UpdateActorCommitState
+Overlay016_UpdateActorCommitState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -69,5 +69,5 @@ L_022010a8:
     ldmia sp!, {r4, pc}
 L_022010b8: .word data_ov016_022013f8
 L_022010bc: .word data_ov016_02201438
-    .size func_ov016_02200fe4, . - func_ov016_02200fe4
+    .size Overlay016_UpdateActorCommitState, . - Overlay016_UpdateActorCommitState
 

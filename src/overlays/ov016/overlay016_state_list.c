@@ -56,7 +56,7 @@ extern void Overlay016_DispatchPendingTransition(void *);
  * scene components through 0x021FF7BC and return zero. UI, audio/action, and
  * transition state change; no direct MMIO occurs in this handler.
  */
-extern "C" s32 func_ov016_0220007c(void *state)
+extern "C" s32 Overlay016_UpdatePrimaryListState(void *state)
 {
     void *list = FIELD(void *, state, 0x444);
     void *presentation = FIELD(void *, list, 0x58);

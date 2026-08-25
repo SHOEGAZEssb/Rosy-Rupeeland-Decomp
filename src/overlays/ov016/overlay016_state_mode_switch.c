@@ -43,7 +43,7 @@ extern void Overlay016_RefreshSelectionPresentation(void *);
  * Update all scene components and return zero. Game-work, UI, and fade state
  * change; no direct MMIO occurs in this handler.
  */
-extern "C" s32 func_ov016_022005c8(void *state)
+extern "C" s32 Overlay016_UpdateModeSwitchState(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:

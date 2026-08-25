@@ -16,8 +16,8 @@
     .extern Overlay016_RefreshSelectionPresentation
     .extern gDebugFont
     .extern gGameWork
-.global func_ov016_02200778
-func_ov016_02200778:
+.global Overlay016_UpdateAlternateEntryState
+Overlay016_UpdateAlternateEntryState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -123,5 +123,5 @@ L_022008f0: .word gGameWork
 L_022008f4: .word 0x3a7
 L_022008f8: .word data_ov016_022014a8
 L_022008fc: .word data_ov016_022014a0
-    .size func_ov016_02200778, . - func_ov016_02200778
+    .size Overlay016_UpdateAlternateEntryState, . - Overlay016_UpdateAlternateEntryState
 

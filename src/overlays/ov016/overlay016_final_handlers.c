@@ -51,7 +51,7 @@ extern void Overlay016_UpdateCursorPosition(void *);
  * +0x474, refresh auxiliary list +0x44C, advance/reset the substate, and
  * transition through data_ov016_02201438. Update the scene and return zero.
  */
-extern "C" s32 func_ov016_02200fe4(void *state)
+extern "C" s32 Overlay016_UpdateActorCommitState(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -92,7 +92,7 @@ extern "C" s32 func_ov016_02200fe4(void *state)
  * advances. State 2 waits for completion, transitions via pair 0x221430, then
  * advances once more. Update the scene and return zero. UI/fade state changes.
  */
-extern "C" s32 func_ov016_022010c0(void *state)
+extern "C" s32 Overlay016_UpdateReturnToPrimaryState(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -137,7 +137,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
  * 0x2213F0. Otherwise close the prompt, refresh list +0x44C, and transition via
  * 0x221428. Update the scene and return zero. Quantity/UI state changes.
  */
-extern "C" s32 func_ov016_022011c0(void *state)
+extern "C" s32 Overlay016_UpdateQuantityPromptState(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0: {
@@ -189,7 +189,7 @@ extern "C" s32 func_ov016_022011c0(void *state)
  * one, signalling this terminal handler's completion. Persistent flag state may
  * change; no direct hardware access occurs.
  */
-extern "C" s32 func_ov016_02201304(void *state)
+extern "C" s32 Overlay016_UpdateTerminalState(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         if (FIELD(s32, state, 0x478) != 0) {
@@ -208,7 +208,7 @@ extern "C" s32 func_ov016_02201304(void *state)
  * The returned address no longer owns valid storage. Heap state changes; no
  * direct hardware access occurs.
  */
-extern "C" void *func_ov016_02201364(void *state)
+extern "C" void *Overlay016_EmbeddedBase_Delete(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov016_02201520;
     PresentationList_DeleteAll(state);

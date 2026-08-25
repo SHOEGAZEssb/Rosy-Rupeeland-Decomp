@@ -33,8 +33,8 @@
     .extern Overlay016_UpdateCursorPosition
     .extern Overlay016_SyncSelectedPanel
     .extern Overlay016_DispatchPendingTransition
-.global func_ov016_0220007c
-func_ov016_0220007c:
+.global Overlay016_UpdatePrimaryListState
+Overlay016_UpdatePrimaryListState:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     ldr r1, [r6, #0x444]
@@ -318,5 +318,5 @@ L_02200470:
     ldmia sp!, {r4, r5, r6, pc}
 L_02200480: .word data_ov016_02201450
 L_02200484: .word data_ov016_022013c8
-    .size func_ov016_0220007c, . - func_ov016_0220007c
+    .size Overlay016_UpdatePrimaryListState, . - Overlay016_UpdatePrimaryListState
 

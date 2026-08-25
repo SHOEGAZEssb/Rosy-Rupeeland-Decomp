@@ -12,8 +12,8 @@
     .extern Overlay016_HasActorGroupCompleted
     .extern Overlay016ActorValue_Init
     .extern Overlay016_UpdateScene
-.global func_ov016_02200e88
-func_ov016_02200e88:
+.global Overlay016_UpdateActorConfirmationState
+Overlay016_UpdateActorConfirmationState:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -107,5 +107,5 @@ L_02200fc8:
 L_02200fd8: .word data_ov016_02201458
 L_02200fdc: .word data_ov016_02201420
 L_02200fe0: .word data_ov016_02201448
-    .size func_ov016_02200e88, . - func_ov016_02200e88
+    .size Overlay016_UpdateActorConfirmationState, . - Overlay016_UpdateActorConfirmationState
 

@@ -25983,7 +25983,7 @@ build build/reports/overlay016_state_list.json: objdiff build/decomp/delinks/asm
   base_object = build/decomp/asm/overlays/ov016/overlay016_state_list_0220007c.o
 build build/reports/overlay016_state_list.txt: match_report build/reports/overlay016_state_list.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_state_list.json
-  report_args = --section .text --function func_ov016_0220007c --require-exact
+  report_args = --section .text --function Overlay016_UpdatePrimaryListState --require-exact
 build overlay016_state_list: phony build/decomp/src/overlays/ov016/overlay016_state_list.o build/decomp/asm/overlays/ov016/overlay016_state_list_0220007c.o build/reports/overlay016_state_list.txt
 
 overlay016_state_list_alt_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -25997,7 +25997,7 @@ build build/reports/overlay016_state_list_alt.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov016/overlay016_state_list_alt_02200488.o
 build build/reports/overlay016_state_list_alt.txt: match_report build/reports/overlay016_state_list_alt.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_state_list_alt.json
-  report_args = --section .text --function func_ov016_02200488 --require-exact
+  report_args = --section .text --function Overlay016_UpdateAlternateListState --require-exact
 build overlay016_state_list_alt: phony build/decomp/src/overlays/ov016/overlay016_state_list_alt.o build/decomp/asm/overlays/ov016/overlay016_state_list_alt_02200488.o build/reports/overlay016_state_list_alt.txt
 
 overlay016_state_mode_switch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26011,7 +26011,7 @@ build build/reports/overlay016_state_mode_switch.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/overlays/ov016/overlay016_state_mode_switch_022005c8.o
 build build/reports/overlay016_state_mode_switch.txt: match_report build/reports/overlay016_state_mode_switch.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_state_mode_switch.json
-  report_args = --section .text --function func_ov016_022005c8 --require-exact
+  report_args = --section .text --function Overlay016_UpdateModeSwitchState --require-exact
 build overlay016_state_mode_switch: phony build/decomp/src/overlays/ov016/overlay016_state_mode_switch.o build/decomp/asm/overlays/ov016/overlay016_state_mode_switch_022005c8.o build/reports/overlay016_state_mode_switch.txt
 
 overlay016_state_alt_entry_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26025,7 +26025,7 @@ build build/reports/overlay016_state_alt_entry.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/overlays/ov016/overlay016_state_alt_entry_02200778.o
 build build/reports/overlay016_state_alt_entry.txt: match_report build/reports/overlay016_state_alt_entry.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_state_alt_entry.json
-  report_args = --section .text --function func_ov016_02200778 --require-exact
+  report_args = --section .text --function Overlay016_UpdateAlternateEntryState --require-exact
 build overlay016_state_alt_entry: phony build/decomp/src/overlays/ov016/overlay016_state_alt_entry.o build/decomp/asm/overlays/ov016/overlay016_state_alt_entry_02200778.o build/reports/overlay016_state_alt_entry.txt
 
 overlay016_state_auxiliary_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26039,7 +26039,7 @@ build build/reports/overlay016_state_auxiliary.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/overlays/ov016/overlay016_state_auxiliary_02200900.o
 build build/reports/overlay016_state_auxiliary.txt: match_report build/reports/overlay016_state_auxiliary.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_state_auxiliary.json
-  report_args = --section .text --function func_ov016_02200900 --require-exact
+  report_args = --section .text --function Overlay016_UpdateAuxiliaryState --require-exact
 build overlay016_state_auxiliary: phony build/decomp/src/overlays/ov016/overlay016_state_auxiliary.o build/decomp/asm/overlays/ov016/overlay016_state_auxiliary_02200900.o build/reports/overlay016_state_auxiliary.txt
 
 overlay016_state_actor_confirmation_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26055,13 +26055,13 @@ build build/reports/overlay016_state_actor_confirm.json: objdiff build/decomp/de
   base_object = build/decomp/asm/overlays/ov016/overlay016_state_actor_confirmation_02200d5c.o
 build build/reports/overlay016_state_actor_confirm.txt: match_report build/reports/overlay016_state_actor_confirm.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_state_actor_confirm.json
-  report_args = --section .text --function func_ov016_02200d5c --require-exact
+  report_args = --section .text --function Overlay016_UpdateActorSelectionState --require-exact
 build build/reports/overlay016_state_actor_apply.json: objdiff build/decomp/delinks/asm/overlays/ov016/overlay016_state_actor_confirmation_02200e88.o | build/decomp/asm/overlays/ov016/overlay016_state_actor_confirmation_02200e88.o
   target_object = build/decomp/delinks/asm/overlays/ov016/overlay016_state_actor_confirmation_02200e88.o
   base_object = build/decomp/asm/overlays/ov016/overlay016_state_actor_confirmation_02200e88.o
 build build/reports/overlay016_state_actor_apply.txt: match_report build/reports/overlay016_state_actor_apply.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_state_actor_apply.json
-  report_args = --section .text --function func_ov016_02200e88 --require-exact
+  report_args = --section .text --function Overlay016_UpdateActorConfirmationState --require-exact
 build overlay016_state_actor_confirmation: phony build/decomp/src/overlays/ov016/overlay016_state_actor_confirmation.o build/decomp/asm/overlays/ov016/overlay016_state_actor_confirmation_02200d5c.o build/decomp/asm/overlays/ov016/overlay016_state_actor_confirmation_02200e88.o build/reports/overlay016_state_actor_confirm.txt build/reports/overlay016_state_actor_apply.txt
 
 overlay016_final_handlers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26075,7 +26075,7 @@ build build/reports/overlay016_final_handlers_02200fe4.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov016/overlay016_final_handlers_02200fe4.o
 build build/reports/overlay016_final_handlers_02200fe4.txt: match_report build/reports/overlay016_final_handlers_02200fe4.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_final_handlers_02200fe4.json
-  report_args = --section .text --function func_ov016_02200fe4 --require-exact
+  report_args = --section .text --function Overlay016_UpdateActorCommitState --require-exact
 build build/decomp/asm/overlays/ov016/overlay016_final_handlers_022010c0.o: mwasmarm asm/overlays/ov016/overlay016_final_handlers_022010c0.s
 build build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_022010c0.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov016/delinks.txt config/arm9/overlays/ov016/symbols.txt config/arm9/overlays/ov016/relocs.txt
 build build/reports/overlay016_final_handlers_022010c0.json: objdiff build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_022010c0.o | build/decomp/asm/overlays/ov016/overlay016_final_handlers_022010c0.o
@@ -26083,7 +26083,7 @@ build build/reports/overlay016_final_handlers_022010c0.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov016/overlay016_final_handlers_022010c0.o
 build build/reports/overlay016_final_handlers_022010c0.txt: match_report build/reports/overlay016_final_handlers_022010c0.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_final_handlers_022010c0.json
-  report_args = --section .text --function func_ov016_022010c0 --require-exact
+  report_args = --section .text --function Overlay016_UpdateReturnToPrimaryState --require-exact
 build build/decomp/asm/overlays/ov016/overlay016_final_handlers_022011c0.o: mwasmarm asm/overlays/ov016/overlay016_final_handlers_022011c0.s
 build build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_022011c0.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov016/delinks.txt config/arm9/overlays/ov016/symbols.txt config/arm9/overlays/ov016/relocs.txt
 build build/reports/overlay016_final_handlers_022011c0.json: objdiff build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_022011c0.o | build/decomp/asm/overlays/ov016/overlay016_final_handlers_022011c0.o
@@ -26091,7 +26091,7 @@ build build/reports/overlay016_final_handlers_022011c0.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov016/overlay016_final_handlers_022011c0.o
 build build/reports/overlay016_final_handlers_022011c0.txt: match_report build/reports/overlay016_final_handlers_022011c0.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_final_handlers_022011c0.json
-  report_args = --section .text --function func_ov016_022011c0 --require-exact
+  report_args = --section .text --function Overlay016_UpdateQuantityPromptState --require-exact
 build build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201304.o: mwasmarm asm/overlays/ov016/overlay016_final_handlers_02201304.s
 build build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_02201304.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov016/delinks.txt config/arm9/overlays/ov016/symbols.txt config/arm9/overlays/ov016/relocs.txt
 build build/reports/overlay016_final_handlers_02201304.json: objdiff build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_02201304.o | build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201304.o
@@ -26099,7 +26099,7 @@ build build/reports/overlay016_final_handlers_02201304.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201304.o
 build build/reports/overlay016_final_handlers_02201304.txt: match_report build/reports/overlay016_final_handlers_02201304.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_final_handlers_02201304.json
-  report_args = --section .text --function func_ov016_02201304 --require-exact
+  report_args = --section .text --function Overlay016_UpdateTerminalState --require-exact
 build build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201364.o: mwasmarm asm/overlays/ov016/overlay016_final_handlers_02201364.s
 build build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_02201364.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov016/delinks.txt config/arm9/overlays/ov016/symbols.txt config/arm9/overlays/ov016/relocs.txt
 build build/reports/overlay016_final_handlers_02201364.json: objdiff build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_02201364.o | build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201364.o
@@ -26107,7 +26107,7 @@ build build/reports/overlay016_final_handlers_02201364.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201364.o
 build build/reports/overlay016_final_handlers_02201364.txt: match_report build/reports/overlay016_final_handlers_02201364.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_final_handlers_02201364.json
-  report_args = --section .text --function func_ov016_02201364 --require-exact
+  report_args = --section .text --function Overlay016_EmbeddedBase_Delete --require-exact
 build overlay016_final_handlers: phony build/decomp/src/overlays/ov016/overlay016_final_handlers.o build/decomp/asm/overlays/ov016/overlay016_final_handlers_02200fe4.o build/decomp/asm/overlays/ov016/overlay016_final_handlers_022010c0.o build/decomp/asm/overlays/ov016/overlay016_final_handlers_022011c0.o build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201304.o build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201364.o build/reports/overlay016_final_handlers_02200fe4.txt build/reports/overlay016_final_handlers_022010c0.txt build/reports/overlay016_final_handlers_022011c0.txt build/reports/overlay016_final_handlers_02201304.txt build/reports/overlay016_final_handlers_02201364.txt
 
 build overlay016_partial: phony overlay016_list_helpers overlay016_list_lifecycle overlay016_list_runtime overlay016_list_render overlay016_list_input overlay016_panel_lifecycle overlay016_panel_helpers overlay016_panel_populate overlay016_panel_animation overlay016_sprite_wrapper overlay016_actor_group overlay016_actor_spawn overlay016_actor_runtime overlay016_scene_construct overlay016_scene_destroy overlay016_display_helpers overlay016_graphics_setup overlay016_mode_graphics overlay016_scene_populate overlay016_scene_sprites overlay016_scene_auxiliary overlay016_scene_update overlay016_message_runtime overlay016_selection_helpers overlay016_transition_helpers overlay016_state_list overlay016_state_list_alt overlay016_state_mode_switch overlay016_state_alt_entry overlay016_state_auxiliary overlay016_state_actor_confirmation overlay016_final_handlers

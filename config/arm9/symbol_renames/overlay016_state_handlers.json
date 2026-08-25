@@ -1,0 +1,14 @@
+{
+  "func_ov016_0220007c": "Overlay016_UpdatePrimaryListState",
+  "func_ov016_02200488": "Overlay016_UpdateAlternateListState",
+  "func_ov016_022005c8": "Overlay016_UpdateModeSwitchState",
+  "func_ov016_02200778": "Overlay016_UpdateAlternateEntryState",
+  "func_ov016_02200900": "Overlay016_UpdateAuxiliaryState",
+  "func_ov016_02200d5c": "Overlay016_UpdateActorSelectionState",
+  "func_ov016_02200e88": "Overlay016_UpdateActorConfirmationState",
+  "func_ov016_02200fe4": "Overlay016_UpdateActorCommitState",
+  "func_ov016_022010c0": "Overlay016_UpdateReturnToPrimaryState",
+  "func_ov016_022011c0": "Overlay016_UpdateQuantityPromptState",
+  "func_ov016_02201304": "Overlay016_UpdateTerminalState",
+  "func_ov016_02201364": "Overlay016_EmbeddedBase_Delete"
+}

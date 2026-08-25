@@ -14,8 +14,8 @@
     .extern Overlay016_UpdateScene
     .extern Overlay016_DrawStatusMessage
     .extern Overlay016_UpdateCursorPosition
-.global func_ov016_022010c0
-func_ov016_022010c0:
+.global Overlay016_UpdateReturnToPrimaryState
+Overlay016_UpdateReturnToPrimaryState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -84,5 +84,5 @@ L_022011a8:
     ldmia sp!, {r4, pc}
 L_022011b8: .word data_020f4e14
 L_022011bc: .word data_ov016_02201430
-    .size func_ov016_022010c0, . - func_ov016_022010c0
+    .size Overlay016_UpdateReturnToPrimaryState, . - Overlay016_UpdateReturnToPrimaryState
 
