@@ -3,18 +3,18 @@
 /* Implement actor-script opcodes that arm and clear an effect-state request. */
 
 /*
- * Pop a value into VM byte 0x90, set VM flag 0x2 at offset 0x8c, and return
- * zero. The consumer and precise meaning of this queued value are unconfirmed.
+ * Pop an effect-state value, mark it pending, and return zero. The consumer
+ * and precise meaning of this queued value are unconfirmed.
  */
-s32 GamePhaseActorScriptVm_SetValue90AndFlag2(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_QueueEffectStateValue(GamePhaseActorScriptVm *self)
 {
     self->effectStateValue = (u8)GamePhaseScriptVm_Pop(&self->base);
     self->actorStateFlags |= GAME_PHASE_ACTOR_SCRIPT_VM_EFFECT_STATE_PENDING;
     return 0;
 }
 
-/* Clear VM flag 0x2 at offset 0x8c and return zero. */
-s32 GamePhaseActorScriptVm_ClearFlag2(GamePhaseActorScriptVm *self)
+/* Clear the pending effect-state flag and return zero. */
+s32 GamePhaseActorScriptVm_ClearPendingEffectState(GamePhaseActorScriptVm *self)
 {
     self->actorStateFlags &= ~GAME_PHASE_ACTOR_SCRIPT_VM_EFFECT_STATE_PENDING;
     return 0;

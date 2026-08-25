@@ -35,39 +35,41 @@ extern void func_ov062_02210674(void *allocation, void *actor,
  */
 s32 GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect(GamePhaseActorScriptVm *self)
 {
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    u32 leadingEffectOperand = GamePhaseScriptVm_Pop(&self->base);
+    u32 trailingEffectOperand = GamePhaseScriptVm_Pop(&self->base);
     s32 z = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 targetSelector = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *boundActor = (u8 *)self->actor;
 
-    if (selector == -1) {
+    if (targetSelector == -1) {
         *(s32 *)(boundActor + 0x44) = x << 4;
         *(u32 *)(boundActor + 0x10) |= 0x400;
     } else {
         VecFx32Object position;
         VecFx32Object_InitComponents(&position, x << 12, y << 12, z << 12);
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3e);
-        if (selector == 0) {
-            void *allocation = Heap_Alloc(0x48, data_020d5b2c, 4,
-                                          &gHeapContext);
-            if (allocation != 0) {
+        if (targetSelector == 0) {
+            void *effectObjectStorage = Heap_Alloc(0x48, data_020d5b2c, 4,
+                                                   &gHeapContext);
+            if (effectObjectStorage != 0) {
                 void *runtimeObject =
                     *(void **)((u8 *)gGamePhaseRuntime + 0x2ea4);
-                func_ov062_0220fe78(allocation, &position, second, first,
-                                    0, runtimeObject, 1);
+                func_ov062_0220fe78(effectObjectStorage, &position,
+                                    leadingEffectOperand,
+                                    trailingEffectOperand, 0, runtimeObject, 1);
             }
         } else {
-            u8 *target = (u8 *)ActorCollection_FindActorByRuntimeId(
-                Actor_GetOwningCollection(boundActor), selector);
-            void *allocation = Heap_Alloc(0x40, data_020d5b2c, 4,
-                                          &gHeapContext);
-            if (allocation != 0)
-                func_ov062_02210674(allocation, target, &position, second,
-                                    first, 0, 0);
-            *(u32 *)(target + 0x10) |= 0x400;
+            u8 *targetActor = (u8 *)ActorCollection_FindActorByRuntimeId(
+                Actor_GetOwningCollection(boundActor), targetSelector);
+            void *effectObjectStorage = Heap_Alloc(0x40, data_020d5b2c, 4,
+                                                   &gHeapContext);
+            if (effectObjectStorage != 0)
+                func_ov062_02210674(effectObjectStorage, targetActor,
+                                    &position, leadingEffectOperand,
+                                    trailingEffectOperand, 0, 0);
+            *(u32 *)(targetActor + 0x10) |= 0x400;
         }
         VecFx32Object_Destroy(&position);
     }

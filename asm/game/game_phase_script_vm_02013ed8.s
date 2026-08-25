@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global GamePhaseActorScriptVm_SetValue90AndFlag2
-GamePhaseActorScriptVm_SetValue90AndFlag2: ; 0x02013ed8
+    .global GamePhaseActorScriptVm_QueueEffectStateValue
+GamePhaseActorScriptVm_QueueEffectStateValue: ; 0x02013ed8
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -13,5 +13,4 @@ GamePhaseActorScriptVm_SetValue90AndFlag2: ; 0x02013ed8
     orr r1, r1, #0x2
     str r1, [r4, #0x8c]
     ldmia sp!, {r4, pc}
-    .size GamePhaseActorScriptVm_SetValue90AndFlag2, . - GamePhaseActorScriptVm_SetValue90AndFlag2
-
+    .size GamePhaseActorScriptVm_QueueEffectStateValue, . - GamePhaseActorScriptVm_QueueEffectStateValue

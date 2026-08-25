@@ -1,0 +1,5 @@
+{
+  "GamePhaseActorScriptVm_SetValue90AndFlag2": "GamePhaseActorScriptVm_QueueEffectStateValue",
+  "GamePhaseActorScriptVm_ClearFlag2": "GamePhaseActorScriptVm_ClearPendingEffectState",
+  "GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect": "GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect"
+}
