@@ -5,8 +5,8 @@
     .extern SceneSound_PlayPackedEffect
     .extern func_ov016_021fd628
     .extern Overlay016ActorValue_Init
-.global func_ov016_021fffcc
-func_ov016_021fffcc:
+.global Overlay016_DispatchPendingTransition
+Overlay016_DispatchPendingTransition:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x444]
@@ -53,5 +53,5 @@ L_02200054:
     bl Overlay016ActorValue_Init
     ldmia sp!, {r3, r4, r5, pc}
 L_02200078: .word data_ov016_022013d0
-    .size func_ov016_021fffcc, . - func_ov016_021fffcc
+    .size Overlay016_DispatchPendingTransition, . - Overlay016_DispatchPendingTransition
 

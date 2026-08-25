@@ -22,7 +22,7 @@ extern void *Overlay016_List_Init(void *, void *, s32);
 extern void func_ov016_021fd0e0(void *, void *, const u8 *, u32);
 extern void Overlay016_CreateVisibleListSprites(void *);
 extern void *Overlay016_Panel_Init(void *, void *);
-extern s32 func_ov016_021ffcb0(void *, void *, u8 *);
+extern s32 Overlay016_EvaluateRecordRequirements(void *, void *, u8 *);
 #ifdef __cplusplus
 }
 #endif
@@ -38,7 +38,7 @@ extern s32 func_ov016_021ffcb0(void *, void *, u8 *);
  * Append each descriptor and instantiate the initially visible rows. Return
  * void. Heap, list, panel, and sprite state changes; no direct MMIO occurs.
  */
-extern "C" void func_ov016_021ff288(void *state)
+extern "C" void Overlay016_PopulateScene(void *state)
 {
     void *object;
     s32 index;
@@ -66,7 +66,7 @@ extern "C" void func_ov016_021ff288(void *state)
             s32 sum = 0;
             s32 entry;
 
-            if (func_ov016_021ffcb0(state, slot, payload) == 0) {
+            if (Overlay016_EvaluateRecordRequirements(state, slot, payload) == 0) {
                 flags |= 1;
             }
             if (ActorDescriptorState_FindInactiveQuantity((u8 *)data_021e9ac0 + 0x1c,

@@ -51,7 +51,7 @@ extern "C" void Overlay016_CreateSceneSprite(void *state)
  * and the child pointers embedded at +0x184 and +0x230. Return void. The SDK
  * releases the owner and its dependent graphics state; no MMIO occurs.
  */
-extern "C" void func_ov016_021ff4ec(void *state)
+extern "C" void Overlay016_DestroySceneSprites(void *state)
 {
     GraphicsSpriteGroup_Clear(FIELD(void *, state, 0xe0));
     FIELD(void *, state, 0xe4) = 0;

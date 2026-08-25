@@ -17,7 +17,7 @@ extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020b44e8(void);
 extern void func_ov016_021fd188(void *);
 extern void func_ov016_021fd1e0(void *);
-extern void func_ov016_021ff04c(s32);
+extern void Overlay016_SetDisplayEngineAssignment(s32);
 extern void Overlay016_ConfigureMainBg3(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -31,11 +31,11 @@ extern void Overlay016_ConfigureMainBg3(s32, s32, s32, s32);
  * finalize the list at state +0x444 and release the temporary resource set.
  * Return void; display and graphics-resource state are changed globally.
  */
-extern "C" void func_ov016_021ff094(void *state)
+extern "C" void Overlay016_SetupPrimaryModeGraphics(void *state)
 {
     GraphicsResourceSet resources;
 
-    func_ov016_021ff04c(0);
+    Overlay016_SetDisplayEngineAssignment(0);
     FIELD(s32, state, 0x48) = 0x1c;
     Overlay016_ConfigureMainBg3(0, 0, 0x1e, 4);
     TitleDisplay_ResetMainBgScroll();
@@ -61,7 +61,7 @@ extern "C" void func_ov016_021ff094(void *state)
  * (0,12,4,12), finalize the list at state +0x444, and free temporary resources.
  * Return void; this performs direct display MMIO and global resource changes.
  */
-extern "C" void func_ov016_021ff17c(void *state)
+extern "C" void Overlay016_SetupAlternateModeGraphics(void *state)
 {
     GraphicsResourceSet resources;
 

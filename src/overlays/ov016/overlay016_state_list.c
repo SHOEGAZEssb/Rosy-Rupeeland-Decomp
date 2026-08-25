@@ -34,12 +34,12 @@ extern void *func_ov016_021fd628(void *);
 extern s32 func_ov016_021fd640(void *);
 extern s32 Overlay016_HasActorReachedLimit(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
-extern void func_ov016_021ff7bc(void *);
-extern void func_ov016_021ff908(void *, s32, s32, void *);
-extern void func_ov016_021ff9b8(void *);
-extern void func_ov016_021ffba4(void *);
+extern void Overlay016_UpdateScene(void *);
+extern void Overlay016_CreateTransientMessage(void *, s32, s32, void *);
+extern void Overlay016_DestroyTransientMessage(void *);
+extern void Overlay016_UpdateCursorPosition(void *);
 extern void Overlay016_SyncSelectedPanel(void *);
-extern void func_ov016_021fffcc(void *);
+extern void Overlay016_DispatchPendingTransition(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -75,7 +75,7 @@ extern "C" s32 func_ov016_0220007c(void *state)
             FIELD(s32, state, 8) = 0;
         } else {
             if (func_ov016_021fd640(list) != 0) {
-                func_ov016_021ffba4(state);
+                Overlay016_UpdateCursorPosition(state);
             }
             break;
         }
@@ -112,17 +112,17 @@ extern "C" s32 func_ov016_0220007c(void *state)
                     if (selected != FIELD(s32, presentation, 0x14)) {
                         SceneSound_PlayPackedEffect(state, 0);
                         InventoryScroll_SetSelectedRow(presentation, selected);
-                        func_ov016_021ffba4(state);
+                        Overlay016_UpdateCursorPosition(state);
                         Overlay016_SyncSelectedPanel(state);
                         FIELD(s32, state, 4) = 0x14;
                         FIELD(s32, state, 8) = 0;
                     } else {
-                        func_ov016_021fffcc(state);
+                        Overlay016_DispatchPendingTransition(state);
                     }
                     break;
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0xe8,
                                           (u8 *)state + 0x30, 0, 4) != 0) {
-                    func_ov016_021fffcc(state);
+                    Overlay016_DispatchPendingTransition(state);
                     break;
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x194,
                                           (u8 *)state + 0x30, 0, 4) != 0) {
@@ -143,11 +143,11 @@ extern "C" s32 func_ov016_0220007c(void *state)
         if (Overlay016_HasActorReachedLimit((u8 *)state + 0xe8) != 0) {
             void *descriptor = func_ov016_021fd628(list);
             if ((FIELD(u16, descriptor, 0xc) & 4) != 0) {
-                func_ov016_021ff908(state, 0x1c, 0, 0);
+                Overlay016_CreateTransientMessage(state, 0x1c, 0, 0);
             } else {
                 void *slot = FIELD(void *, descriptor, 0);
                 void *record = FIELD(void *, slot, 0);
-                func_ov016_021ff908(state, 0xe, 0,
+                Overlay016_CreateTransientMessage(state, 0xe, 0,
                                     ActorDescriptor_GetPrimaryLabel((u8 *)record + 4));
             }
             FIELD(s32, state, 4)++;
@@ -158,7 +158,7 @@ extern "C" s32 func_ov016_0220007c(void *state)
         if (ModalState_UpdateInput(FIELD(void *, state, 0x460),
                           (u8 *)state + 0x30,
                           (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
-            func_ov016_021ff9b8(state);
+            Overlay016_DestroyTransientMessage(state);
             Overlay016_RenderList(list);
             FIELD(s32, state, 4) -= 2;
             FIELD(s32, state, 8) = 0;
@@ -178,6 +178,6 @@ extern "C" s32 func_ov016_0220007c(void *state)
         }
         break;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 0;
 }

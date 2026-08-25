@@ -8,8 +8,8 @@
     .extern func_ov016_021fd358
     .extern Overlay016_UpdatePanelAnimation
     .extern Overlay016_UpdateActors
-.global func_ov016_021ff7bc
-func_ov016_021ff7bc:
+.global Overlay016_UpdateScene
+Overlay016_UpdateScene:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xe8
@@ -49,5 +49,5 @@ L_021ff834:
     ldmeqia sp!, {r4, pc}
     bl func_02096304
     ldmia sp!, {r4, pc}
-    .size func_ov016_021ff7bc, . - func_ov016_021ff7bc
+    .size Overlay016_UpdateScene, . - Overlay016_UpdateScene
 

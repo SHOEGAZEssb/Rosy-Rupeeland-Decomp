@@ -11,7 +11,7 @@
     .extern Overlay016_AddActor
     .extern Overlay016_HasActorGroupCompleted
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff7bc
+    .extern Overlay016_UpdateScene
 .global func_ov016_02200e88
 func_ov016_02200e88:
     stmdb sp!, {r3, r4, r5, lr}
@@ -101,7 +101,7 @@ L_02200fa8:
     bl Overlay016ActorValue_Init
 L_02200fc8:
     mov r0, r4
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02200fd8: .word data_ov016_02201458

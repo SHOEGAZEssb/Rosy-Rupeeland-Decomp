@@ -32,7 +32,7 @@ extern void TitleScreenResourceCollection_Append(void *, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020b44e8(void);
-extern void func_ov016_021ff04c(s32);
+extern void Overlay016_SetDisplayEngineAssignment(s32);
 extern void Overlay016_ConfigureMainBg3(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -49,7 +49,7 @@ extern void Overlay016_ConfigureMainBg3(s32, s32, s32, s32);
  * Destroy temporary resources and return void. This performs direct Nintendo DS
  * BG/power/blend MMIO and extensive SDK graphics-resource changes.
  */
-extern "C" void func_ov016_021fedc4(void *state)
+extern "C" void Overlay016_SetupGraphics(void *state)
 {
     Overlay016ResourceSet resources;
     Overlay016GraphicsManager manager;
@@ -59,7 +59,7 @@ extern "C" void func_ov016_021fedc4(void *state)
     void *debugFont;
     void *handle;
 
-    func_ov016_021ff04c(0);
+    Overlay016_SetDisplayEngineAssignment(0);
     FIELD(s32, state, 0x48) = 0x10;
     TitleDisplay_ConfigureMain2dEngine(0);
     mainBg[0] = (mainBg[0] & 0x43) | 0x3800;

@@ -1,8 +1,8 @@
     .text
 
 /* Exact fallback; see src/overlays/ov016/overlay016_selection_helpers.c. */
-.global func_ov016_021ffba4
-func_ov016_021ffba4:
+.global Overlay016_UpdateCursorPosition
+Overlay016_UpdateCursorPosition:
     ldr r3, [r0, #0xe4]
     cmp r3, #0x0
     bxeq lr
@@ -16,5 +16,5 @@ func_ov016_021ffba4:
     add r0, r0, #0x20
     strh r0, [r3, #0x2e]
     bx lr
-    .size func_ov016_021ffba4, . - func_ov016_021ffba4
+    .size Overlay016_UpdateCursorPosition, . - Overlay016_UpdateCursorPosition
 

@@ -13,11 +13,11 @@
     .extern func_ov016_021fd0e0
     .extern Overlay016_CreateVisibleListSprites
     .extern Overlay016_Panel_Init
-    .extern func_ov016_021ffcb0
+    .extern Overlay016_EvaluateRecordRequirements
     .extern gDebugFont
     .extern gHeapContext
-.global func_ov016_021ff288
-func_ov016_021ff288:
+.global Overlay016_PopulateScene
+Overlay016_PopulateScene:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     ldr r1, L_021ff3e8
@@ -62,7 +62,7 @@ L_021ff2f8:
     add r6, r1, r4, lsl #0x2
     mov r1, r6
     mov r5, #0x0
-    bl func_ov016_021ffcb0
+    bl Overlay016_EvaluateRecordRequirements
     cmp r0, #0x0
     ldr r1, [r6, #0x0]
     ldr r0, L_021ff400
@@ -121,5 +121,5 @@ L_021ff3f4: .word data_ov016_02201590
 L_021ff3f8: .word data_020f4e14
 L_021ff3fc: .word data_021e9e00
 L_021ff400: .word data_021e9ac0
-    .size func_ov016_021ff288, . - func_ov016_021ff288
+    .size Overlay016_PopulateScene, . - Overlay016_PopulateScene
 

@@ -4,9 +4,9 @@
     .extern func_ov000_021fb890
     .extern Overlay000_PopulatePresentation
     .extern Overlay000_GetActiveMetadata
-    .extern func_ov016_021ff848
-.global func_ov016_021ffc2c
-func_ov016_021ffc2c:
+    .extern Overlay016_DrawStatusMessage
+.global Overlay016_RefreshSelectionPresentation
+Overlay016_RefreshSelectionPresentation:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x54]
@@ -16,7 +16,7 @@ func_ov016_021ffc2c:
     cmp r1, #0x0
     beq L_021ffc58
     mov r1, #0x20
-    bl func_ov016_021ff848
+    bl Overlay016_DrawStatusMessage
     ldmia sp!, {r4, pc}
 L_021ffc58:
     ldr r0, [r4, #0x44c]
@@ -38,11 +38,11 @@ L_021ffc90:
     str r0, [r4, #0x4c]
     mov r0, r4
     mov r1, #0x20
-    bl func_ov016_021ff848
+    bl Overlay016_DrawStatusMessage
     ldmia sp!, {r4, pc}
 L_021ffca4:
     mov r1, #0x20
-    bl func_ov016_021ff848
+    bl Overlay016_DrawStatusMessage
     ldmia sp!, {r4, pc}
-    .size func_ov016_021ffc2c, . - func_ov016_021ffc2c
+    .size Overlay016_RefreshSelectionPresentation, . - Overlay016_RefreshSelectionPresentation
 

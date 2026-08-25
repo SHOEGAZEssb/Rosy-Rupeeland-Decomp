@@ -36,10 +36,10 @@ extern s32 func_ov000_021fccfc(void *, void *);
 extern void *Overlay016_RemoveActor(void *, void *, s32);
 extern s32 Overlay016_HasActorReachedLimit(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
-extern void func_ov016_021ff7bc(void *);
-extern void func_ov016_021ffc2c(void *);
-extern void func_ov016_021ffd84(void *);
-extern void func_ov016_021ffe3c(void *, s32);
+extern void Overlay016_UpdateScene(void *);
+extern void Overlay016_RefreshSelectionPresentation(void *);
+extern void Overlay016_ToggleDetailPanel(void *);
+extern void Overlay016_MoveDetailSelection(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -64,13 +64,13 @@ extern "C" s32 func_ov016_02200900(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0:
         func_ov000_021fc3f8(list);
-        func_ov016_021ffc2c(state);
+        Overlay016_RefreshSelectionPresentation(state);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         break;
     case 1:
         if (func_ov000_021fc450(list) != 0) {
-            func_ov016_021ffc2c(state);
+            Overlay016_RefreshSelectionPresentation(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else {
@@ -106,7 +106,7 @@ extern "C" s32 func_ov016_02200900(void *state)
                         SceneSound_PlayPackedEffect(state, 0);
                         Overlay000_SetSelection(list, selected);
                         Overlay000_SyncSelection(list);
-                        func_ov016_021ffc2c(state);
+                        Overlay016_RefreshSelectionPresentation(state);
                     }
                 } else if (func_ov000_021fc5ac(list,
                                                (u8 *)state + 0x30) != 0) {
@@ -138,15 +138,15 @@ extern "C" s32 func_ov016_02200900(void *state)
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x2ec,
                                           (u8 *)state + 0x30, -4, 0) != 0) {
                     SceneSound_PlayPackedEffect(state, 0xb);
-                    func_ov016_021ffe3c(state, -1);
+                    Overlay016_MoveDetailSelection(state, -1);
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x398,
                                           (u8 *)state + 0x30, 4, 0) != 0) {
                     SceneSound_PlayPackedEffect(state, 0xb);
-                    func_ov016_021ffe3c(state, 1);
+                    Overlay016_MoveDetailSelection(state, 1);
                 } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x240,
                                           (u8 *)state + 0x30, 0, -4) != 0) {
                     SceneSound_PlayPackedEffect(state, 0xb);
-                    func_ov016_021ffd84(state);
+                    Overlay016_ToggleDetailPanel(state);
                 } else {
                     FIELD(void *, state, 0x474) =
                         Overlay016_RemoveActor(FIELD(void *, state, 0x470),
@@ -175,7 +175,7 @@ extern "C" s32 func_ov016_02200900(void *state)
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         } else if (func_ov000_021fc538(list) != 0) {
-            func_ov016_021ffc2c(state);
+            Overlay016_RefreshSelectionPresentation(state);
         }
         break;
     case 10:
@@ -185,6 +185,6 @@ extern "C" s32 func_ov016_02200900(void *state)
         }
         break;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 0;
 }

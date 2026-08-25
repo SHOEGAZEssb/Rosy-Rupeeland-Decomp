@@ -1,9 +1,9 @@
     .text
 
 /* Exact fallbacks; see src/overlays/ov016/overlay016_display_helpers.c. */
-    .global func_ov016_021fed7c
+    .global Overlay016_ApplyDisplayModes
 
-func_ov016_021fed7c:
+Overlay016_ApplyDisplayModes:
     ldr r1, [r0, #0x20]
     mov r1, r1, lsl #0x15
     movs r1, r1, asr #0x1f
@@ -24,4 +24,4 @@ L_021fedbc:
     mov r0, #0x0
     bx lr
 
-    .size func_ov016_021fed7c, . - func_ov016_021fed7c
+    .size Overlay016_ApplyDisplayModes, . - Overlay016_ApplyDisplayModes

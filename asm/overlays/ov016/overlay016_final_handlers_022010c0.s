@@ -8,12 +8,12 @@
     .extern DisplayBrightness_StartMaskedTransitions
     .extern Overlay016_RenderList
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff094
+    .extern Overlay016_SetupPrimaryModeGraphics
     .extern Overlay016_CreateSceneSprite
-    .extern func_ov016_021ff71c
-    .extern func_ov016_021ff7bc
-    .extern func_ov016_021ff848
-    .extern func_ov016_021ffba4
+    .extern Overlay016_DestroyAuxiliaryObjects
+    .extern Overlay016_UpdateScene
+    .extern Overlay016_DrawStatusMessage
+    .extern Overlay016_UpdateCursorPosition
 .global func_ov016_022010c0
 func_ov016_022010c0:
     stmdb sp!, {r4, lr}
@@ -40,21 +40,21 @@ L_02201108:
     cmp r0, #0x0
     beq L_022011a8
     mov r0, r4
-    bl func_ov016_021ff71c
+    bl Overlay016_DestroyAuxiliaryObjects
     ldr r0, L_022011b8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     mov r1, #0x18
-    bl func_ov016_021ff848
+    bl Overlay016_DrawStatusMessage
     mov r0, r4
     bl Overlay016_CreateSceneSprite
     mov r0, r4
-    bl func_ov016_021ff094
+    bl Overlay016_SetupPrimaryModeGraphics
     ldr r0, [r4, #0x444]
     bl Overlay016_RenderList
     mov r0, r4
-    bl func_ov016_021ffba4
+    bl Overlay016_UpdateCursorPosition
     mov r0, #0x1
     mov r1, #0x0
     bl DisplayBrightness_StartMaskedTransitions
@@ -79,7 +79,7 @@ L_02201178:
     str r0, [r4, #0x8]
 L_022011a8:
     mov r0, r4
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_022011b8: .word data_020f4e14

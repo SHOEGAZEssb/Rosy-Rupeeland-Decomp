@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov016/overlay016_selection_helpers.c. */
     .extern data_021e9ac0
     .extern ActorDescriptor_IsInvalid
-.global func_ov016_021ffcb0
-func_ov016_021ffcb0:
+.global Overlay016_EvaluateRecordRequirements
+Overlay016_EvaluateRecordRequirements:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r0, L_021ffd80
     mov r4, #0x0
@@ -65,5 +65,5 @@ L_021ffd60:
     movne r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021ffd80: .word data_021e9ac0
-    .size func_ov016_021ffcb0, . - func_ov016_021ffcb0
+    .size Overlay016_EvaluateRecordRequirements, . - Overlay016_EvaluateRecordRequirements
 

@@ -20,9 +20,9 @@ extern void SpriteMotionController_Hide(void *);
 extern void Overlay016_RenderList(void *);
 extern void *func_ov016_021fd628(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
-extern void func_ov016_021ff848(void *, u16);
-extern void func_ov016_021ff908(void *, s32, s32, void *);
-extern void func_ov016_021ffba4(void *);
+extern void Overlay016_DrawStatusMessage(void *, u16);
+extern void Overlay016_CreateTransientMessage(void *, s32, s32, void *);
+extern void Overlay016_UpdateCursorPosition(void *);
 extern void Overlay016_SyncSelectedPanel(void *);
 #ifdef __cplusplus
 }
@@ -38,18 +38,18 @@ extern void Overlay016_SyncSelectedPanel(void *);
  * from scene flag bit 5; on nonnegative completion transition with pair 0x221440.
  * Return zero. Presentation state changes; no direct MMIO occurs here.
  */
-extern "C" s32 func_ov016_021ffe90(void *state)
+extern "C" s32 Overlay016_UpdateMessageTransition(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         if (FIELD(s32, state, 0x54) == 0) {
-            func_ov016_021ff848(state, 0x18);
+            Overlay016_DrawStatusMessage(state, 0x18);
         }
         if (FIELD(s32, FIELD(void *, state, 0x444), 0x50) != 0) {
             Overlay016_RenderList(FIELD(void *, state, 0x444));
-            func_ov016_021ffba4(state);
+            Overlay016_UpdateCursorPosition(state);
             Overlay016_SyncSelectedPanel(state);
             Overlay016ActorValue_Init(state, data_ov016_022013d8[0],
                                 data_ov016_022013d8[1]);
@@ -58,7 +58,7 @@ extern "C" s32 func_ov016_021ffe90(void *state)
             FIELD(u16, FIELD(void *, state, 0xe4), 0x24) |= 4;
             FIELD(u32, state, 0x48) &= ~4u;
             FIELD(u32, state, 0x4c) &= ~4u;
-            func_ov016_021ff908(state, 3, 1, 0);
+            Overlay016_CreateTransientMessage(state, 3, 1, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -84,7 +84,7 @@ extern "C" s32 func_ov016_021ffe90(void *state)
  * branch cannot be taken but remains visible in the exact assembly fallback.
  * Return void. Scene transition and sound/action state may change.
  */
-extern "C" void func_ov016_021fffcc(void *state)
+extern "C" void Overlay016_DispatchPendingTransition(void *state)
 {
     void *descriptor = func_ov016_021fd628(FIELD(void *, state, 0x444));
     u16 flags;

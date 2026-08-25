@@ -5,8 +5,8 @@
     .extern func_ov000_021fb848
     .extern Overlay000_CaptureViewState
     .extern Overlay016_ActorGroup_Destroy
-.global func_ov016_021ff71c
-func_ov016_021ff71c:
+.global Overlay016_DestroyAuxiliaryObjects
+Overlay016_DestroyAuxiliaryObjects:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -50,5 +50,5 @@ L_021ff7ac:
     str r0, [r4, #0x44c]
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
-    .size func_ov016_021ff71c, . - func_ov016_021ff71c
+    .size Overlay016_DestroyAuxiliaryObjects, . - Overlay016_DestroyAuxiliaryObjects
 

@@ -37,7 +37,7 @@ extern void *func_02095f8c(void *, void *, s32, s32, s32, s32, s32);
  * and draw it right-aligned to x=0xF8 at y=6 using style (14,4,0). Return void.
  * Debug-font canvas state changes; no direct hardware registers are accessed.
  */
-extern "C" void func_ov016_021ff848(void *state, u16 messageId)
+extern "C" void Overlay016_DrawStatusMessage(void *state, u16 messageId)
 {
     const u16 *text;
     s32 width;
@@ -58,7 +58,7 @@ extern "C" void func_ov016_021ff848(void *state, u16 messageId)
  * and set state flag bit 1 at +0x48. Return void. Heap and presentation state
  * change; no direct MMIO occurs.
  */
-extern "C" void func_ov016_021ff908(void *state, s32 setting, s32 variant,
+extern "C" void Overlay016_CreateTransientMessage(void *state, s32 setting, s32 variant,
                                       void *optional)
 {
     s32 handleIndex;
@@ -87,7 +87,7 @@ extern "C" void func_ov016_021ff908(void *state, s32 setting, s32 variant,
  * present, clear its pointer, and clear state flag bit 1 at +0x48. Return void.
  * Presentation resources are released; no direct hardware access occurs.
  */
-extern "C" void func_ov016_021ff9b8(void *state)
+extern "C" void Overlay016_DestroyTransientMessage(void *state)
 {
     typedef void (*DeleteFunction)(void *);
     void *object = FIELD(void *, state, 0x460);
@@ -108,7 +108,7 @@ extern "C" void func_ov016_021ff9b8(void *state)
  * message ID around x=0x80 at y=0x20, enable manager handle 4 at +0x84, and set
  * flag bit 1 at +0x48. Return void. Heap/font/presentation state changes.
  */
-extern "C" void func_ov016_021ff9f8(void *state, u16 messageId, s32 parameter)
+extern "C" void Overlay016_CreatePanelMessage(void *state, u16 messageId, s32 parameter)
 {
     const u16 *text;
     s32 width;
@@ -136,7 +136,7 @@ extern "C" void func_ov016_021ff9f8(void *state, u16 messageId, s32 parameter)
  * flag bit 1 at +0x48. Return void. Heap/font presentation state changes; no
  * direct hardware register is accessed.
  */
-extern "C" void func_ov016_021ffb3c(void *state)
+extern "C" void Overlay016_DestroyPanelMessage(void *state)
 {
     typedef void (*DeleteFunction)(void *);
     void *object = FIELD(void *, state, 0x464);

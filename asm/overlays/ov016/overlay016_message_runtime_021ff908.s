@@ -9,8 +9,8 @@
     .extern ModalState_InitResources
     .extern ModalState_CopyAttachmentText
     .extern gHeapContext
-.global func_ov016_021ff908
-func_ov016_021ff908:
+.global Overlay016_CreateTransientMessage
+Overlay016_CreateTransientMessage:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     ldr r0, [r6, #0x44c]
@@ -59,5 +59,5 @@ L_021ff994:
     ldmia sp!, {r4, r5, r6, pc}
 L_021ff9b0: .word data_ov016_022015b0
 L_021ff9b4: .word gHeapContext
-    .size func_ov016_021ff908, . - func_ov016_021ff908
+    .size Overlay016_CreateTransientMessage, . - Overlay016_CreateTransientMessage
 

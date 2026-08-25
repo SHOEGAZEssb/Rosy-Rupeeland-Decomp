@@ -18,8 +18,8 @@ extern s32 InventoryScroll_UpdateMarkerDrag(void *, void *);
 extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 func_ov016_021fd640(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
-extern void func_ov016_021ff7bc(void *);
-extern void func_ov016_021ffba4(void *);
+extern void Overlay016_UpdateScene(void *);
+extern void Overlay016_UpdateCursorPosition(void *);
 extern void Overlay016_SyncSelectedPanel(void *);
 #ifdef __cplusplus
 }
@@ -57,7 +57,7 @@ extern "C" s32 func_ov016_02200488(void *state)
             FIELD(s32, state, 8) = 0;
         } else {
             if (func_ov016_021fd640(list) != 0) {
-                func_ov016_021ffba4(state);
+                Overlay016_UpdateCursorPosition(state);
             }
             break;
         }
@@ -77,6 +77,6 @@ extern "C" s32 func_ov016_02200488(void *state)
         }
         break;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 0;
 }

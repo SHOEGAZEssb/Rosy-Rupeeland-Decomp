@@ -11,15 +11,15 @@
     .extern TitleDisplay_SetMainBgPriorities
     .extern func_020b44e8
     .extern func_ov016_021fd188
-    .extern func_ov016_021ff04c
+    .extern Overlay016_SetDisplayEngineAssignment
     .extern Overlay016_ConfigureMainBg3
-.global func_ov016_021ff094
-func_ov016_021ff094:
+.global Overlay016_SetupPrimaryModeGraphics
+Overlay016_SetupPrimaryModeGraphics:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
     mov r0, #0x0
-    bl func_ov016_021ff04c
+    bl Overlay016_SetDisplayEngineAssignment
     mov r0, #0x0
     mov ip, #0x1c
     mov r1, r0
@@ -74,4 +74,4 @@ L_021ff170: .word 0x8006
 L_021ff174: .word data_020f4e18
 L_021ff178: .word 0x8017
 
-    .size func_ov016_021ff094, . - func_ov016_021ff094
+    .size Overlay016_SetupPrimaryModeGraphics, . - Overlay016_SetupPrimaryModeGraphics

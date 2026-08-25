@@ -31,14 +31,14 @@ extern void Overlay000_Grid_Render(void *);
 extern void Overlay016_RenderList(void *);
 extern s32 Overlay016_HasActorGroupCompleted(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
-extern void func_ov016_021ff094(void *);
+extern void Overlay016_SetupPrimaryModeGraphics(void *);
 extern void Overlay016_CreateSceneSprite(void *);
-extern void func_ov016_021ff71c(void *);
-extern void func_ov016_021ff7bc(void *);
-extern void func_ov016_021ff848(void *, u16);
-extern void func_ov016_021ff9f8(void *, u16, s32);
-extern void func_ov016_021ffb3c(void *);
-extern void func_ov016_021ffba4(void *);
+extern void Overlay016_DestroyAuxiliaryObjects(void *);
+extern void Overlay016_UpdateScene(void *);
+extern void Overlay016_DrawStatusMessage(void *, u16);
+extern void Overlay016_CreatePanelMessage(void *, u16, s32);
+extern void Overlay016_DestroyPanelMessage(void *);
+extern void Overlay016_UpdateCursorPosition(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -80,7 +80,7 @@ extern "C" s32 func_ov016_02200fe4(void *state)
         }
         break;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 0;
 }
 
@@ -102,13 +102,13 @@ extern "C" s32 func_ov016_022010c0(void *state)
         /* Deliberate fall-through while fading out. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov016_021ff71c(state);
+            Overlay016_DestroyAuxiliaryObjects(state);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-            func_ov016_021ff848(state, 0x18);
+            Overlay016_DrawStatusMessage(state, 0x18);
             Overlay016_CreateSceneSprite(state);
-            func_ov016_021ff094(state);
+            Overlay016_SetupPrimaryModeGraphics(state);
             Overlay016_RenderList(FIELD(void *, state, 0x444));
-            func_ov016_021ffba4(state);
+            Overlay016_UpdateCursorPosition(state);
             DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -123,7 +123,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
         }
         break;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 0;
 }
 
@@ -151,9 +151,9 @@ extern "C" s32 func_ov016_022011c0(void *state)
             FIELD(s32, state, 0x484) = 99 - current;
         }
         if (FIELD(s32, state, 0x484) > 1) {
-            func_ov016_021ff9f8(state, 0x1d, FIELD(s32, state, 0x484));
+            Overlay016_CreatePanelMessage(state, 0x1d, FIELD(s32, state, 0x484));
         } else {
-            func_ov016_021ff9f8(state, 0x1f, FIELD(s32, state, 0x484));
+            Overlay016_CreatePanelMessage(state, 0x1f, FIELD(s32, state, 0x484));
         }
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
@@ -171,7 +171,7 @@ extern "C" s32 func_ov016_022011c0(void *state)
                 Overlay016ActorValue_Init(state, data_ov016_022013f0[0],
                                     data_ov016_022013f0[1]);
             } else {
-                func_ov016_021ffb3c(state);
+                Overlay016_DestroyPanelMessage(state);
                 Overlay000_Grid_Render(FIELD(void *, state, 0x44c));
                 Overlay016ActorValue_Init(state, data_ov016_02201428[0],
                                     data_ov016_02201428[1]);
@@ -179,7 +179,7 @@ extern "C" s32 func_ov016_022011c0(void *state)
         }
         break;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 0;
 }
 
@@ -198,7 +198,7 @@ extern "C" s32 func_ov016_02201304(void *state)
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 1;
 }
 

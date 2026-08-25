@@ -23,18 +23,18 @@
     .extern SpriteMotionController_Hide
     .extern func_ov016_021fe740
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021fedc4
-    .extern func_ov016_021ff094
-    .extern func_ov016_021ff17c
-    .extern func_ov016_021ff288
+    .extern Overlay016_SetupGraphics
+    .extern Overlay016_SetupPrimaryModeGraphics
+    .extern Overlay016_SetupAlternateModeGraphics
+    .extern Overlay016_PopulateScene
     .extern Overlay016_CreateSceneSprite
     .extern Overlay016_PopulateAuxiliaryList
     .extern gGameWork
 
 /* Exact fallback; see src/overlays/ov016/overlay016_scene_construct.c. */
-    .global func_ov016_021fe77c
+    .global Overlay016_Scene_Init
 
-func_ov016_021fe77c:
+Overlay016_Scene_Init:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -129,9 +129,9 @@ func_ov016_021fe77c:
     bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0xe0]
     mov r0, r4
-    bl func_ov016_021ff288
+    bl Overlay016_PopulateScene
     mov r0, r4
-    bl func_ov016_021fedc4
+    bl Overlay016_SetupGraphics
     ldr r0, [r4, #0x54]
     cmp r0, #0x0
     beq L_021fe91c
@@ -141,7 +141,7 @@ func_ov016_021fe77c:
     bne L_021fea3c
 L_021fe91c:
     mov r0, r4
-    bl func_ov016_021ff094
+    bl Overlay016_SetupPrimaryModeGraphics
     mov r0, r4
     bl Overlay016_CreateSceneSprite
     ldr r1, L_021fea90
@@ -151,7 +151,7 @@ L_021fe91c:
     b L_021fea3c
 L_021fe940:
     mov r0, r4
-    bl func_ov016_021ff17c
+    bl Overlay016_SetupAlternateModeGraphics
     mov r0, r4
     bl Overlay016_PopulateAuxiliaryList
     ldr r0, [r4, #0xe0]
@@ -242,4 +242,4 @@ L_021fea98: .word data_ov016_022013e8
 L_021fea9c: .word gGameWork
 L_021feaa0: .word 0x3a6
 
-    .size func_ov016_021fe77c, . - func_ov016_021fe77c
+    .size Overlay016_Scene_Init, . - Overlay016_Scene_Init

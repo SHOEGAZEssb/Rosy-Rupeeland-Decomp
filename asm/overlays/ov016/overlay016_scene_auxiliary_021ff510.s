@@ -14,8 +14,8 @@
     .extern func_ov000_021fcae8
     .extern Overlay000_GetViewRecordFromIndex
     .extern Overlay016_ActorGroup_Init
-    .extern func_ov016_021ff6e8
-    .extern func_ov016_021ff700
+    .extern Overlay016_SetAuxiliaryEntryFlags
+    .extern Overlay016_ClearAuxiliaryEntryFlags
     .extern gDebugFont
     .extern gHeapContext
 .global Overlay016_PopulateAuxiliaryList
@@ -73,7 +73,7 @@ L_021ff5ac:
     cmp r1, #0x0
     beq L_021ff644
     mov r1, #0x1
-    bl func_ov016_021ff6e8
+    bl Overlay016_SetAuxiliaryEntryFlags
     ldr r0, [r8, #0x468]
     mov r3, #0x0
     ldr lr, [r0, #0x0]
@@ -88,7 +88,7 @@ L_021ff5f0:
     bne L_021ff634
     mov r0, r6
     mov r1, #0x1
-    bl func_ov016_021ff700
+    bl Overlay016_ClearAuxiliaryEntryFlags
     cmp r4, #0x0
     beq L_021ff6a0
     add r1, r8, #0x54
@@ -115,7 +115,7 @@ L_021ff644:
     add r2, r1, #0x1
     mov r1, #0x1
     str r2, [r8, #0x46c]
-    bl func_ov016_021ff700
+    bl Overlay016_ClearAuxiliaryEntryFlags
     cmp r4, #0x0
     beq L_021ff6a0
     add r1, r8, #0x54
@@ -128,7 +128,7 @@ L_021ff644:
 L_021ff694:
     mov r0, r6
     mov r1, #0x1
-    bl func_ov016_021ff6e8
+    bl Overlay016_SetAuxiliaryEntryFlags
 L_021ff6a0:
     add r5, r5, #0x1
 L_021ff6a4:

@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov016/overlay016_message_runtime.c. */
     .extern data_020f4e14
     .extern GraphicsSpriteCanvas_FillRect
-.global func_ov016_021ffb3c
-func_ov016_021ffb3c:
+.global Overlay016_DestroyPanelMessage
+Overlay016_DestroyPanelMessage:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -32,5 +32,5 @@ L_021ffb60:
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 L_021ffba0: .word data_020f4e14
-    .size func_ov016_021ffb3c, . - func_ov016_021ffb3c
+    .size Overlay016_DestroyPanelMessage, . - Overlay016_DestroyPanelMessage
 

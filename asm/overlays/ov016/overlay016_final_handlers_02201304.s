@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov016/overlay016_final_handlers.c. */
     .extern GameWork_ClearFlag
-    .extern func_ov016_021ff7bc
+    .extern Overlay016_UpdateScene
     .extern gGameWork
 .global func_ov016_02201304
 func_ov016_02201304:
@@ -29,7 +29,7 @@ L_0220133c:
     str r0, [r4, #0x8]
 L_02201350:
     mov r0, r4
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_02201360: .word gGameWork

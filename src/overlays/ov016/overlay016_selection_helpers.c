@@ -19,8 +19,8 @@ extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void *func_ov016_021fd628(void *);
 extern void func_ov016_021fd9dc(void *, s32);
 extern void Overlay016_PopulatePanel(void *, void *, s32);
-extern void func_ov016_021ff848(void *, u16);
-extern void func_ov016_021ffc2c(void *);
+extern void Overlay016_DrawStatusMessage(void *, u16);
+extern void Overlay016_RefreshSelectionPresentation(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -30,7 +30,7 @@ extern void func_ov016_021ffc2c(void *);
  * 0x18 times the difference between the list presentation's indices +0x14 and
  * +0x0C. Input is the scene state; return void. Sprite state changes only.
  */
-extern "C" void func_ov016_021ffba4(void *state)
+extern "C" void Overlay016_UpdateCursorPosition(void *state)
 {
     void *sprite = FIELD(void *, state, 0xe4);
     if (sprite != 0) {
@@ -67,7 +67,7 @@ extern "C" void Overlay016_SyncSelectedPanel(void *state)
  * and clears that bit. In all modes draw message 0x20 through 0x021FF848.
  * Return void. UI and text state change; no direct MMIO occurs.
  */
-extern "C" void func_ov016_021ffc2c(void *state)
+extern "C" void Overlay016_RefreshSelectionPresentation(void *state)
 {
     if (FIELD(s32, state, 0x54) == 1 && FIELD(s32, state, 0x47c) == 0) {
         void *entry = Overlay000_GetActiveMetadata(FIELD(void *, state, 0x44c));
@@ -80,7 +80,7 @@ extern "C" void func_ov016_021ffc2c(void *state)
             FIELD(u32, state, 0x4c) &= ~2u;
         }
     }
-    func_ov016_021ff848(state, 0x20);
+    Overlay016_DrawStatusMessage(state, 0x20);
 }
 
 /*
@@ -91,7 +91,7 @@ extern "C" void func_ov016_021ffc2c(void *state)
  * remains 2 otherwise. Return one only when every record entry matched. The
  * scene argument is unused; only the six-byte output is modified.
  */
-extern "C" s32 func_ov016_021ffcb0(void *state, void *slot, u8 *result)
+extern "C" s32 Overlay016_EvaluateRecordRequirements(void *state, void *slot, u8 *result)
 {
     void *global = data_021e9ac0;
     void *record = FIELD(void *, slot, 0);
@@ -131,7 +131,7 @@ extern "C" s32 func_ov016_021ffcb0(void *state, void *slot, u8 *result)
  * both actors, selects auxiliary object state 1, clears bit 1/sets bit 2 at
  * +0x4C, and populates the panel from list descriptor index +0x480. Return void.
  */
-extern "C" void func_ov016_021ffd84(void *state)
+extern "C" void Overlay016_ToggleDetailPanel(void *state)
 {
     if (FIELD(s32, state, 0x47c) != 0) {
         FIELD(s32, state, 0x47c) = 0;
@@ -140,7 +140,7 @@ extern "C" void func_ov016_021ffd84(void *state)
         SpriteMotionController_Hide((u8 *)state + 0x398);
         func_ov016_021fd9dc(FIELD(void *, state, 0x448), 1);
         FIELD(u32, state, 0x4c) &= ~4u;
-        func_ov016_021ffc2c(state);
+        Overlay016_RefreshSelectionPresentation(state);
     } else {
         void *descriptor;
 
@@ -163,7 +163,7 @@ extern "C" void func_ov016_021ffd84(void *state)
  * and at/above that count to zero, then populate panel +0x448 from the matching
  * 0x14-byte descriptor in list storage +0x4C. Return void. UI state changes only.
  */
-extern "C" void func_ov016_021ffe3c(void *state, s32 delta)
+extern "C" void Overlay016_MoveDetailSelection(void *state, s32 delta)
 {
     void *list = FIELD(void *, state, 0x444);
     s32 index = FIELD(s32, state, 0x480) + delta;

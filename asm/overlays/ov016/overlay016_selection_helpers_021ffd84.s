@@ -7,9 +7,9 @@
     .extern func_ov000_021fb890
     .extern func_ov016_021fd9dc
     .extern Overlay016_PopulatePanel
-    .extern func_ov016_021ffc2c
-.global func_ov016_021ffd84
-func_ov016_021ffd84:
+    .extern Overlay016_RefreshSelectionPresentation
+.global Overlay016_ToggleDetailPanel
+Overlay016_ToggleDetailPanel:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x47c]
@@ -30,7 +30,7 @@ func_ov016_021ffd84:
     mov r0, r4
     bic r1, r1, #0x4
     str r1, [r4, #0x4c]
-    bl func_ov016_021ffc2c
+    bl Overlay016_RefreshSelectionPresentation
     ldmia sp!, {r4, pc}
 L_021ffddc:
     mov r2, #0x1
@@ -57,5 +57,5 @@ L_021ffddc:
     mla r1, r2, r1, r3
     bl Overlay016_PopulatePanel
     ldmia sp!, {r4, pc}
-    .size func_ov016_021ffd84, . - func_ov016_021ffd84
+    .size Overlay016_ToggleDetailPanel, . - Overlay016_ToggleDetailPanel
 

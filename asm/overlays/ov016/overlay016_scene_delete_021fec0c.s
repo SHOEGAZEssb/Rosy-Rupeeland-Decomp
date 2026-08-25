@@ -15,9 +15,9 @@
     .extern gDebugFont
 
 /* Exact fallback for scene deleting destruction; see src/overlays/ov016/overlay016_scene_destroy.c. */
-    .global func_ov016_021fec0c
+    .global Overlay016_Scene_Delete
 
-func_ov016_021fec0c:
+Overlay016_Scene_Delete:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021fed6c
     mov r4, r0
@@ -118,4 +118,4 @@ L_021fed70: .word 0x4000050
 L_021fed74: .word data_020f4e14
 L_021fed78: .word gDebugFont
 
-    .size func_ov016_021fec0c, . - func_ov016_021fec0c
+    .size Overlay016_Scene_Delete, . - Overlay016_Scene_Delete

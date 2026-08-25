@@ -8,8 +8,8 @@
     .extern GraphicsSpriteCanvas_FillRect
     .extern LanguageLookupDatabase_GetResourceById
     .extern gDebugFont
-.global func_ov016_021ff848
-func_ov016_021ff848:
+.global Overlay016_DrawStatusMessage
+Overlay016_DrawStatusMessage:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r2, #0x16
@@ -58,5 +58,5 @@ func_ov016_021ff848:
     ldmia sp!, {r4, r5, pc}
 L_021ff900: .word gDebugFont
 L_021ff904: .word data_021f3ecc
-    .size func_ov016_021ff848, . - func_ov016_021ff848
+    .size Overlay016_DrawStatusMessage, . - Overlay016_DrawStatusMessage
 

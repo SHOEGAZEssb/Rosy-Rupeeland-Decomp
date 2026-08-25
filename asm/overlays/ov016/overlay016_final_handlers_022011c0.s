@@ -9,9 +9,9 @@
     .extern func_02096450
     .extern Overlay000_Grid_Render
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff7bc
-    .extern func_ov016_021ff9f8
-    .extern func_ov016_021ffb3c
+    .extern Overlay016_UpdateScene
+    .extern Overlay016_CreatePanelMessage
+    .extern Overlay016_DestroyPanelMessage
 .global func_ov016_022011c0
 func_ov016_022011c0:
     stmdb sp!, {r3, r4, lr}
@@ -44,11 +44,11 @@ L_022011e4:
     cmp r2, #0x1
     ble L_0220123c
     mov r1, #0x1d
-    bl func_ov016_021ff9f8
+    bl Overlay016_CreatePanelMessage
     b L_02201244
 L_0220123c:
     mov r1, #0x1f
-    bl func_ov016_021ff9f8
+    bl Overlay016_CreatePanelMessage
 L_02201244:
     ldr r1, [r4, #0x4]
     mov r0, #0x0
@@ -85,7 +85,7 @@ L_0220125c:
     b L_022012e4
 L_022012c4:
     mov r0, r4
-    bl func_ov016_021ffb3c
+    bl Overlay016_DestroyPanelMessage
     ldr r0, [r4, #0x44c]
     bl Overlay000_Grid_Render
     ldr r1, L_02201300
@@ -94,7 +94,7 @@ L_022012c4:
     bl Overlay016ActorValue_Init
 L_022012e4:
     mov r0, r4
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x0
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}

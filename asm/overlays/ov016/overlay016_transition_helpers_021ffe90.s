@@ -9,13 +9,13 @@
     .extern ModalState_UpdateInput
     .extern Overlay016_RenderList
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff848
-    .extern func_ov016_021ff908
-    .extern func_ov016_021ffba4
+    .extern Overlay016_DrawStatusMessage
+    .extern Overlay016_CreateTransientMessage
+    .extern Overlay016_UpdateCursorPosition
     .extern Overlay016_SyncSelectedPanel
     .extern gDebugFont
-.global func_ov016_021ffe90
-func_ov016_021ffe90:
+.global Overlay016_UpdateMessageTransition
+Overlay016_UpdateMessageTransition:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -36,7 +36,7 @@ L_021ffeb0:
     bne L_021ffee0
     mov r0, r4
     mov r1, #0x18
-    bl func_ov016_021ff848
+    bl Overlay016_DrawStatusMessage
 L_021ffee0:
     ldr r0, [r4, #0x444]
     ldr r1, [r0, #0x50]
@@ -44,7 +44,7 @@ L_021ffee0:
     beq L_021fff18
     bl Overlay016_RenderList
     mov r0, r4
-    bl func_ov016_021ffba4
+    bl Overlay016_UpdateCursorPosition
     mov r0, r4
     bl Overlay016_SyncSelectedPanel
     ldr r1, L_021fffc4
@@ -69,7 +69,7 @@ L_021fff18:
     ldr ip, [r4, #0x4c]
     bic ip, ip, #0x4
     str ip, [r4, #0x4c]
-    bl func_ov016_021ff908
+    bl Overlay016_CreateTransientMessage
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -101,5 +101,5 @@ L_021fffbc: .word data_020f4e14
 L_021fffc0: .word gDebugFont
 L_021fffc4: .word data_ov016_022013d8
 L_021fffc8: .word data_ov016_02201440
-    .size func_ov016_021ffe90, . - func_ov016_021ffe90
+    .size Overlay016_UpdateMessageTransition, . - Overlay016_UpdateMessageTransition
 

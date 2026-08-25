@@ -5,7 +5,7 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern OverlaySlot_LoadOverlay
 .extern Heap_Alloc
-.extern func_ov016_021fe77c
+.extern Overlay016_Scene_Init
 .extern Overlay043_UpdatePresentationResources
 .extern SceneInputBase_Update
 .extern OverlaySlot_UnloadOverlay
@@ -78,7 +78,7 @@ func_ov043_0220bed4:
     beq .L_0220bf98
     ldr r1, [r4, #0x58]
     ldr r2, [r4, #0x54]
-    bl func_ov016_021fe77c ; func_ov023_021fe77c, func_ov028_021fe77c
+    bl Overlay016_Scene_Init ; func_ov023_021fe77c, func_ov028_021fe77c
 .L_0220bf98:
     str r0, [r4, #0x2f4]
     mov r0, #0x3

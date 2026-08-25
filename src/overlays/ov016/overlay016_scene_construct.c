@@ -33,10 +33,10 @@ extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void SpriteMotionController_Hide(void *);
 extern void func_ov016_021fe740(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
-extern void func_ov016_021fedc4(void *);
-extern void func_ov016_021ff094(void *);
-extern void func_ov016_021ff17c(void *);
-extern void func_ov016_021ff288(void *);
+extern void Overlay016_SetupGraphics(void *);
+extern void Overlay016_SetupPrimaryModeGraphics(void *);
+extern void Overlay016_SetupAlternateModeGraphics(void *);
+extern void Overlay016_PopulateScene(void *);
 extern void Overlay016_CreateSceneSprite(void *);
 extern void Overlay016_PopulateAuxiliaryList(void *);
 #ifdef __cplusplus
@@ -57,7 +57,7 @@ extern void Overlay016_PopulateAuxiliaryList(void *);
  * Finally clear game flag 0x3A6, set state bit 10 at +0x20, and return state.
  * Numerous SDK graphics/actor resources change; no direct MMIO occurs.
  */
-extern "C" void *func_ov016_021fe77c(void *state, s32 cookingMode,
+extern "C" void *Overlay016_Scene_Init(void *state, s32 cookingMode,
                                       s32 gameValue)
 {
     void *sprite;
@@ -104,16 +104,16 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 cookingMode,
     AnimationResourceState_ReplaceResources((u8 *)state + 0xd4, data_020f4e18, 0x1c, 0x1d, 0x1e);
     FIELD(void *, state, 0xe0) =
         GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
-    func_ov016_021ff288(state);
-    func_ov016_021fedc4(state);
+    Overlay016_PopulateScene(state);
+    Overlay016_SetupGraphics(state);
 
     if (cookingMode == 0 || cookingMode == 2) {
-        func_ov016_021ff094(state);
+        Overlay016_SetupPrimaryModeGraphics(state);
         Overlay016_CreateSceneSprite(state);
         Overlay016ActorValue_Init(state,
                             data_ov016_02201410[0], data_ov016_02201410[1]);
     } else if (cookingMode == 1) {
-        func_ov016_021ff17c(state);
+        Overlay016_SetupAlternateModeGraphics(state);
         Overlay016_PopulateAuxiliaryList(state);
 
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xd4, 1);

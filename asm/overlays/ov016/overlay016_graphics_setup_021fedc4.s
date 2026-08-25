@@ -22,16 +22,16 @@
     .extern TitleScreenResourceCollection_Get
     .extern func_020afd0c
     .extern func_020b44e8
-    .extern func_ov016_021ff04c
+    .extern Overlay016_SetDisplayEngineAssignment
     .extern Overlay016_ConfigureMainBg3
     .extern gDebugFont
-.global func_ov016_021fedc4
-func_ov016_021fedc4:
+.global Overlay016_SetupGraphics
+Overlay016_SetupGraphics:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x54
     mov r4, r0
     mov r0, #0x0
-    bl func_ov016_021ff04c
+    bl Overlay016_SetDisplayEngineAssignment
     mov r1, #0x10
     mov r0, #0x0
     str r1, [r4, #0x48]
@@ -191,4 +191,4 @@ L_021ff03c: .word data_020f4e14
 L_021ff040: .word gDebugFont
 L_021ff044: .word 0x4210
 L_021ff048: .word 0x4001050
-    .size func_ov016_021fedc4, . - func_ov016_021fedc4
+    .size Overlay016_SetupGraphics, . - Overlay016_SetupGraphics

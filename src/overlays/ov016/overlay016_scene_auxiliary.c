@@ -27,8 +27,8 @@ extern void Overlay000_CaptureViewState(void *, void *);
 extern void Overlay000_GetViewRecordFromIndex(void *, void *, s32);
 extern void *Overlay016_ActorGroup_Init(void *, s32);
 extern void *Overlay016_ActorGroup_Destroy(void *);
-extern void func_ov016_021ff6e8(void *, u32);
-extern void func_ov016_021ff700(void *, u32);
+extern void Overlay016_SetAuxiliaryEntryFlags(void *, u32);
+extern void Overlay016_ClearAuxiliaryEntryFlags(void *, u32);
 #ifdef __cplusplus
 }
 #endif
@@ -81,12 +81,12 @@ extern "C" void Overlay016_PopulateAuxiliaryList(void *state)
             void *record = FIELD(void *, FIELD(void *, state, 0x468), 0);
             s32 recordIndex;
 
-            func_ov016_021ff6e8(entry, 1);
+            Overlay016_SetAuxiliaryEntryFlags(entry, 1);
             for (recordIndex = 0; recordIndex < FIELD(s32, record, 0x100);
                  recordIndex++) {
                 if (FIELD(u16, (u8 *)record + recordIndex * 0x24, 0x28) ==
                     FIELD(u16, child, 0)) {
-                    func_ov016_021ff700(entry, 1);
+                    Overlay016_ClearAuxiliaryEntryFlags(entry, 1);
                     if (chooseFirst != 0) {
                         Overlay000_GetViewRecordFromIndex(object, (u8 *)state + 0x454,
                                            index);
@@ -97,13 +97,13 @@ extern "C" void Overlay016_PopulateAuxiliaryList(void *state)
             }
         } else if (FIELD(u8, InventoryRecord_GetMetadata(child), 2) == 0) {
             FIELD(s32, state, 0x46c)++;
-            func_ov016_021ff700(entry, 1);
+            Overlay016_ClearAuxiliaryEntryFlags(entry, 1);
             if (chooseFirst != 0) {
                 Overlay000_GetViewRecordFromIndex(object, (u8 *)state + 0x454, index);
                 chooseFirst = 0;
             }
         } else {
-            func_ov016_021ff6e8(entry, 1);
+            Overlay016_SetAuxiliaryEntryFlags(entry, 1);
         }
     }
     func_ov000_021fcae8(object, (u8 *)state + 0x454, 0x18);
@@ -115,7 +115,7 @@ extern "C" void Overlay016_PopulateAuxiliaryList(void *state)
  * the entry and mask; the child flag word may change. Return void, with no SDK
  * calls or hardware effects.
  */
-extern "C" void func_ov016_021ff6e8(void *entry, u32 mask)
+extern "C" void Overlay016_SetAuxiliaryEntryFlags(void *entry, u32 mask)
 {
     void *child = FIELD(void *, entry, 0xc);
     if (child != 0) {
@@ -128,7 +128,7 @@ extern "C" void func_ov016_021ff6e8(void *entry, u32 mask)
  * are the entry and mask; the child flag word may change. Return void, with no
  * SDK calls or hardware effects.
  */
-extern "C" void func_ov016_021ff700(void *entry, u32 mask)
+extern "C" void Overlay016_ClearAuxiliaryEntryFlags(void *entry, u32 mask)
 {
     void *child = FIELD(void *, entry, 0xc);
     if (child != 0) {
@@ -142,7 +142,7 @@ extern "C" void func_ov016_021ff700(void *entry, u32 mask)
  * object through vtable slot +4 when present, and clear all three owned pointers.
  * Return void. Heap and UI/actor resources are released; no MMIO occurs.
  */
-extern "C" void func_ov016_021ff71c(void *state)
+extern "C" void Overlay016_DestroyAuxiliaryObjects(void *state)
 {
     typedef void (*DeleteFunction)(void *);
     u32 saved[3];

@@ -25,8 +25,8 @@ extern u32 Overlay016_SpawnMatchingActors(void *, void *, void *);
 extern s32 Overlay016_AddActor(void *, void *);
 extern s32 Overlay016_HasActorGroupCompleted(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
-extern void func_ov016_021ff7bc(void *);
-extern void func_ov016_021ffc2c(void *);
+extern void Overlay016_UpdateScene(void *);
+extern void Overlay016_RefreshSelectionPresentation(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -56,7 +56,7 @@ extern "C" s32 func_ov016_02200d5c(void *state)
         if (func_ov000_021fc450(list) != 0) {
             if (FIELD(s32, presentation, 0xc) !=
                 FIELD(s32, presentation, 0x10)) {
-                func_ov016_021ffc2c(state);
+                Overlay016_RefreshSelectionPresentation(state);
                 SceneSound_StopPackedEffect(state, 8);
             }
             FIELD(s32, state, 4)++;
@@ -80,7 +80,7 @@ extern "C" s32 func_ov016_02200d5c(void *state)
         }
         break;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 0;
 }
 
@@ -139,6 +139,6 @@ extern "C" s32 func_ov016_02200e88(void *state)
         }
         break;
     }
-    func_ov016_021ff7bc(state);
+    Overlay016_UpdateScene(state);
     return 0;
 }

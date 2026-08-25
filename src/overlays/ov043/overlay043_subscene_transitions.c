@@ -25,7 +25,7 @@ extern "C" void Overlay043_UpdatePresentationResources(void *object);
 extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void OverlaySlot_LoadOverlay(void *object, s32 value);
 extern "C" void OverlaySlot_UnloadOverlay(void *object);
-extern "C" void *func_ov016_021fe77c(void *storage, s32 page, s32 gameValue);
+extern "C" void *Overlay016_Scene_Init(void *storage, s32 page, s32 gameValue);
 extern "C" void *func_ov017_021feab4(void *storage, s32 count,
                                       const u32 *values, s32 selected,
                                       s32 gameValue);
@@ -96,7 +96,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
             void *child = Heap_Alloc(0x488, (const char *)data_ov043_0220c4d0,
                                      4, &gHeapContext);
             if (child)
-                child = func_ov016_021fe77c(child,
+                child = Overlay016_Scene_Init(child,
                                             FIELD(s32, object, 0x58),
                                             FIELD(s32, object, 0x54));
             FIELD(void *, object, 0x2f4) = child;

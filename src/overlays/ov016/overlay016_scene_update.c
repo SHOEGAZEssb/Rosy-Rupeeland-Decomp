@@ -25,7 +25,7 @@ extern void Overlay016_UpdateActors(void *);
  * object +0x464 when their pointers are non-null. Return void. The called SDK
  * and overlay routines update presentation state; no direct MMIO occurs here.
  */
-extern "C" void func_ov016_021ff7bc(void *state)
+extern "C" void Overlay016_UpdateScene(void *state)
 {
     SpriteMotionController_Update((u8 *)state + 0xe8);
     SpriteMotionController_Update((u8 *)state + 0x194);

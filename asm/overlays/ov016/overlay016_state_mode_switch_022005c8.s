@@ -12,13 +12,13 @@
     .extern ModalState_UpdateInput
     .extern Overlay000_SyncSelection
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff17c
-    .extern func_ov016_021ff4ec
+    .extern Overlay016_SetupAlternateModeGraphics
+    .extern Overlay016_DestroySceneSprites
     .extern Overlay016_PopulateAuxiliaryList
-    .extern func_ov016_021ff7bc
-    .extern func_ov016_021ff908
-    .extern func_ov016_021ff9b8
-    .extern func_ov016_021ffc2c
+    .extern Overlay016_UpdateScene
+    .extern Overlay016_CreateTransientMessage
+    .extern Overlay016_DestroyTransientMessage
+    .extern Overlay016_RefreshSelectionPresentation
     .extern gGameWork
 .global func_ov016_022005c8
 func_ov016_022005c8:
@@ -54,16 +54,16 @@ L_0220062c:
     cmp r0, #0x0
     beq L_02200754
     mov r0, r4
-    bl func_ov016_021ff4ec
+    bl Overlay016_DestroySceneSprites
     ldr r0, L_02200764
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     bl Overlay016_PopulateAuxiliaryList
     mov r0, r4
-    bl func_ov016_021ff17c
+    bl Overlay016_SetupAlternateModeGraphics
     mov r0, r4
-    bl func_ov016_021ffc2c
+    bl Overlay016_RefreshSelectionPresentation
     ldr r0, [r4, #0x44c]
     bl Overlay000_SyncSelection
     ldr r0, L_02200768
@@ -83,7 +83,7 @@ L_0220062c:
     mov r1, #0x2
     mov r2, #0x1
     mov r3, #0x0
-    bl func_ov016_021ff908
+    bl Overlay016_CreateTransientMessage
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -114,7 +114,7 @@ L_022006fc:
     cmp r0, #0x0
     blt L_02200754
     mov r0, r4
-    bl func_ov016_021ff9b8
+    bl Overlay016_DestroyTransientMessage
     ldr r1, L_02200770
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -130,7 +130,7 @@ L_02200738:
     bl Overlay016ActorValue_Init
 L_02200754:
     mov r0, r4
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02200764: .word data_020f4e14

@@ -27,12 +27,12 @@
     .extern func_ov016_021fd640
     .extern Overlay016_HasActorReachedLimit
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff7bc
-    .extern func_ov016_021ff908
-    .extern func_ov016_021ff9b8
-    .extern func_ov016_021ffba4
+    .extern Overlay016_UpdateScene
+    .extern Overlay016_CreateTransientMessage
+    .extern Overlay016_DestroyTransientMessage
+    .extern Overlay016_UpdateCursorPosition
     .extern Overlay016_SyncSelectedPanel
-    .extern func_ov016_021fffcc
+    .extern Overlay016_DispatchPendingTransition
 .global func_ov016_0220007c
 func_ov016_0220007c:
     stmdb sp!, {r4, r5, r6, lr}
@@ -88,7 +88,7 @@ L_02200128:
     cmp r0, #0x0
     beq L_02200470
     mov r0, r6
-    bl func_ov016_021ffba4
+    bl Overlay016_UpdateCursorPosition
     b L_02200470
 L_02200144:
     mov r0, r5
@@ -189,7 +189,7 @@ L_02200280:
     mov r1, r4
     bl InventoryScroll_SetSelectedRow
     mov r0, r6
-    bl func_ov016_021ffba4
+    bl Overlay016_UpdateCursorPosition
     mov r0, r6
     bl Overlay016_SyncSelectedPanel
     mov r0, #0x14
@@ -198,7 +198,7 @@ L_02200280:
     str r0, [r6, #0x8]
     b L_02200470
 L_022002d0:
-    bl func_ov016_021fffcc
+    bl Overlay016_DispatchPendingTransition
     b L_02200470
 L_022002d8:
     add r0, r6, #0xe8
@@ -209,7 +209,7 @@ L_022002d8:
     cmp r0, #0x0
     beq L_02200300
     mov r0, r6
-    bl func_ov016_021fffcc
+    bl Overlay016_DispatchPendingTransition
     b L_02200470
 L_02200300:
     add r0, r6, #0x194
@@ -257,7 +257,7 @@ L_02200370:
     mov r0, r6
     mov r3, r2
     mov r1, #0x1c
-    bl func_ov016_021ff908
+    bl Overlay016_CreateTransientMessage
     b L_022003d8
 L_022003b4:
     ldr r0, [r0, #0x0]
@@ -268,7 +268,7 @@ L_022003b4:
     mov r0, r6
     mov r1, #0xe
     mov r2, #0x0
-    bl func_ov016_021ff908
+    bl Overlay016_CreateTransientMessage
 L_022003d8:
     ldr r1, [r6, #0x4]
     mov r0, #0x0
@@ -286,7 +286,7 @@ L_022003f0:
     cmp r0, #0x0
     blt L_02200470
     mov r0, r6
-    bl func_ov016_021ff9b8
+    bl Overlay016_DestroyTransientMessage
     ldr r0, [r6, #0x444]
     bl Overlay016_RenderList
     ldr r1, [r6, #0x4]
@@ -313,7 +313,7 @@ L_02200454:
     strgt r0, [r6, #0x8]
 L_02200470:
     mov r0, r6
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02200480: .word data_ov016_02201450

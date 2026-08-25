@@ -14,8 +14,8 @@
     .extern TitleScreenResourceCollection_Get
     .extern func_02095f8c
     .extern gHeapContext
-.global func_ov016_021ff9f8
-func_ov016_021ff9f8:
+.global Overlay016_CreatePanelMessage
+Overlay016_CreatePanelMessage:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0xc
     mov r4, r1
@@ -98,5 +98,5 @@ L_021ffb2c: .word data_ov016_022015b8
 L_021ffb30: .word gHeapContext
 L_021ffb34: .word data_020f4e14
 L_021ffb38: .word data_021f3ecc
-    .size func_ov016_021ff9f8, . - func_ov016_021ff9f8
+    .size Overlay016_CreatePanelMessage, . - Overlay016_CreatePanelMessage
 

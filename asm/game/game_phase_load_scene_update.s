@@ -60,7 +60,7 @@
 .extern Overlay004_VariantController_Init
 .extern Overlay009_InitSceneFields
 .extern Overlay013_Scene_Init
-.extern func_ov016_021fe77c
+.extern Overlay016_Scene_Init
 .extern func_ov017_021fda3c
 .extern func_ov018_021fcf68
 .extern func_ov018_021fd9f8
@@ -589,7 +589,7 @@ L_0200d77c:
     ldr r2, [r2, #0x0]
     add r2, r2, #0x200
     ldrsh r2, [r2, #0x6]
-    bl func_ov016_021fe77c ; func_ov023_021fe77c, func_ov028_021fe77c
+    bl Overlay016_Scene_Init ; func_ov023_021fe77c, func_ov028_021fe77c
 L_0200d7bc:
     str r0, [r5, #0x24]
     b L_0200dbd4

@@ -10,7 +10,7 @@
  * Return zero. The volatile writes at 0x04000000/0x04001000 directly change
  * Nintendo DS display-layer enables.
  */
-extern "C" s32 func_ov016_021fed7c(void *state)
+extern "C" s32 Overlay016_ApplyDisplayModes(void *state)
 {
     if ((FIELD(u32, state, 0x20) & 0x400) != 0) {
         volatile u32 *mainDisplay = (volatile u32 *)0x04000000;
@@ -26,7 +26,7 @@ extern "C" s32 func_ov016_021fed7c(void *state)
  * preserving all other bits. Return void; this directly toggles the Nintendo DS
  * display-engine power assignment.
  */
-extern "C" void func_ov016_021ff04c(s32 enabled)
+extern "C" void Overlay016_SetDisplayEngineAssignment(s32 enabled)
 {
     volatile u16 *power = (volatile u16 *)0x04000304;
     *power = (u16)((*power & ~0x8000u) | (enabled << 15));

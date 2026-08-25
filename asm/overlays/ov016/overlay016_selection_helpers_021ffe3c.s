@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov016/overlay016_selection_helpers.c. */
     .extern Overlay016_PopulatePanel
-.global func_ov016_021ffe3c
-func_ov016_021ffe3c:
+.global Overlay016_MoveDetailSelection
+Overlay016_MoveDetailSelection:
     ldr r2, [r0, #0x480]
     adds r2, r2, r1
     str r2, [r0, #0x480]
@@ -26,5 +26,5 @@ L_021ffe6c:
     ldr r0, [r0, #0x448]
     bx ip
 L_021ffe8c: .word Overlay016_PopulatePanel
-    .size func_ov016_021ffe3c, . - func_ov016_021ffe3c
+    .size Overlay016_MoveDetailSelection, . - Overlay016_MoveDetailSelection
 

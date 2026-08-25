@@ -10,8 +10,8 @@
     .extern Overlay000_Grid_UpdateTransition
     .extern func_ov000_021fc560
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff7bc
-    .extern func_ov016_021ffc2c
+    .extern Overlay016_UpdateScene
+    .extern Overlay016_RefreshSelectionPresentation
 .global func_ov016_02200d5c
 func_ov016_02200d5c:
     stmdb sp!, {r3, r4, r5, lr}
@@ -48,7 +48,7 @@ L_02200dac:
     cmp r0, #0x0
     bne L_02200dec
     mov r0, r5
-    bl func_ov016_021ffc2c
+    bl Overlay016_RefreshSelectionPresentation
     mov r0, r5
     mov r1, #0x8
     bl SceneSound_StopPackedEffect
@@ -92,7 +92,7 @@ L_02200e58:
     bl Overlay016ActorValue_Init
 L_02200e74:
     mov r0, r5
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02200e84: .word data_ov016_02201460

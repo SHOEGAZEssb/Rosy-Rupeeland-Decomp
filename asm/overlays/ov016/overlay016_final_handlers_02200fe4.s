@@ -7,7 +7,7 @@
     .extern Overlay000_Grid_Render
     .extern Overlay016_HasActorGroupCompleted
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff7bc
+    .extern Overlay016_UpdateScene
 .global func_ov016_02200fe4
 func_ov016_02200fe4:
     stmdb sp!, {r4, lr}
@@ -64,7 +64,7 @@ L_02201054:
     bl Overlay016ActorValue_Init
 L_022010a8:
     mov r0, r4
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_022010b8: .word data_ov016_022013f8

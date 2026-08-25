@@ -11,8 +11,8 @@
     .extern InventoryScroll_EndMarkerDrag
     .extern func_ov016_021fd640
     .extern Overlay016ActorValue_Init
-    .extern func_ov016_021ff7bc
-    .extern func_ov016_021ffba4
+    .extern Overlay016_UpdateScene
+    .extern Overlay016_UpdateCursorPosition
     .extern Overlay016_SyncSelectedPanel
 .global func_ov016_02200488
 func_ov016_02200488:
@@ -67,7 +67,7 @@ L_02200530:
     cmp r0, #0x0
     beq L_022005b4
     mov r0, r5
-    bl func_ov016_021ffba4
+    bl Overlay016_UpdateCursorPosition
     b L_022005b4
 L_0220054c:
     mov r0, r4
@@ -99,7 +99,7 @@ L_0220059c:
     bl Overlay016ActorValue_Init
 L_022005b4:
     mov r0, r5
-    bl func_ov016_021ff7bc
+    bl Overlay016_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_022005c4: .word data_ov016_02201480

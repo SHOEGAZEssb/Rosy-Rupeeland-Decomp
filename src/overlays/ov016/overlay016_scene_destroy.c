@@ -90,7 +90,7 @@ static void overlay016_release_scene(void *state)
  * debug font managers, and return state without freeing it. Heap/SDK graphics
  * resources are released and the two volatile MMIO writes disable blending.
  */
-extern "C" void *func_ov016_021feaa4(void *state)
+extern "C" void *Overlay016_Scene_Destroy(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov016_02201540;
     overlay016_release_scene(state);
@@ -102,7 +102,7 @@ extern "C" void *func_ov016_021feaa4(void *state)
  * allocation and return its former pointer. Heap/SDK resources are released and
  * main/sub blend-control registers are cleared through direct MMIO writes.
  */
-extern "C" void *func_ov016_021fec0c(void *state)
+extern "C" void *Overlay016_Scene_Delete(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov016_02201540;
     overlay016_release_scene(state);

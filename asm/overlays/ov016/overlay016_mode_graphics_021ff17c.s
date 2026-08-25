@@ -13,8 +13,8 @@
     .extern func_020b44e8
     .extern func_ov016_021fd1e0
     .extern Overlay016_ConfigureMainBg3
-.global func_ov016_021ff17c
-func_ov016_021ff17c:
+.global Overlay016_SetupAlternateModeGraphics
+Overlay016_SetupAlternateModeGraphics:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -82,5 +82,5 @@ L_021ff278: .word 0x800a
 L_021ff27c: .word data_020f4e18
 L_021ff280: .word 0x801d
 L_021ff284: .word 0x4000050
-    .size func_ov016_021ff17c, . - func_ov016_021ff17c
+    .size Overlay016_SetupAlternateModeGraphics, . - Overlay016_SetupAlternateModeGraphics
 

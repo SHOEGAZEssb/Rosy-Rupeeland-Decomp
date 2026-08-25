@@ -1,10 +1,10 @@
     .text
 
 /* Exact fallbacks; see src/overlays/ov016/overlay016_display_helpers.c. */
-    .global func_ov016_021ff04c
+    .global Overlay016_SetDisplayEngineAssignment
     .global Overlay016_ConfigureMainBg3
 
-func_ov016_021ff04c:
+Overlay016_SetDisplayEngineAssignment:
     ldr r2, L_021ff064
     ldrh r1, [r2, #0x0]
     bic r1, r1, #0x8000
@@ -27,5 +27,5 @@ Overlay016_ConfigureMainBg3:
     ldmia sp!, {r3, pc}
 L_021ff090: .word 0x400000e
 
-    .size func_ov016_021ff04c, Overlay016_ConfigureMainBg3 - func_ov016_021ff04c
+    .size Overlay016_SetDisplayEngineAssignment, Overlay016_ConfigureMainBg3 - Overlay016_SetDisplayEngineAssignment
     .size Overlay016_ConfigureMainBg3, . - Overlay016_ConfigureMainBg3
