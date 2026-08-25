@@ -37,9 +37,9 @@ s32 GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9(GamePhaseActorScriptVm *se
 {
     typedef void (*Method)(void *, s32);
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
-    Method method = *(Method *)((u8 *)*(void **)object + 0x24);
-    method(object, value);
+    void *tileRenderer = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
+    Method method = *(Method *)((u8 *)*(void **)tileRenderer + 0x24);
+    method(tileRenderer, value);
     return 0;
 }
 

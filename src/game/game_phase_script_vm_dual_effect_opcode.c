@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern void Position_AdjustForTerrainHeight(VecFx32Object *position);
-extern void func_0204eb18(s32 kind, s16 first, const VecFx32Object *position,
+extern void func_0204eb18(s32 kind, s16 leadingOperand, const VecFx32Object *position,
                           s32 resource0, s32 resource1, s32 resource2,
                           s32 firstSize, s32 secondSize);
 extern void OS_Halt(void);
@@ -25,21 +25,21 @@ extern void OS_Halt(void);
 s32 GamePhaseActorScriptVm_SpawnDualVariantEffect(GamePhaseActorScriptVm *self)
 {
     VecFx32Object position;
-    s32 first;
+    s32 leadingOperand;
     s32 variant;
     VecFx32Object_Init(&position);
-    first = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    leadingOperand = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     position.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     position.value.x = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     variant = (s32)GamePhaseScriptVm_Pop(&self->base);
     Position_AdjustForTerrainHeight(&position);
     switch (variant) {
     case 0:
-        func_0204eb18(14, (s16)first, &position,
+        func_0204eb18(14, (s16)leadingOperand, &position,
                       0x1693, 0x1694, 0x1695, 16, 16);
         break;
     case 1:
-        func_0204eb18(15, (s16)first, &position,
+        func_0204eb18(15, (s16)leadingOperand, &position,
                       0x169a, 0x169b, 0x169c, 16, 16);
         break;
     default:

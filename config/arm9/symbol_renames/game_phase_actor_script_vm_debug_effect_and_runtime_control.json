@@ -1,0 +1,14 @@
+{
+  "GamePhaseActorScriptVm_DebugHudNoOp": "GamePhaseActorScriptVm_DebugHudNoOp",
+  "GamePhaseActorScriptVm_SetDebugHudNumberRow": "GamePhaseActorScriptVm_SetDebugHudNumberRow",
+  "GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode": "GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode",
+  "GamePhaseActorScriptVm_SetDebugHudRectangle": "GamePhaseActorScriptVm_SetDebugHudRectangle",
+  "GamePhaseActorScriptVm_SpawnDualVariantEffect": "GamePhaseActorScriptVm_SpawnDualVariantEffect",
+  "GamePhaseActorScriptVm_DispatchActiveType7ActorCommand": "GamePhaseActorScriptVm_DispatchActiveType7ActorCommand",
+  "GamePhaseActorScriptVm_SetRuntimeCollection2Enabled": "GamePhaseActorScriptVm_SetRuntimeCollection2Enabled",
+  "GamePhaseActorScriptVm_SetAreaSceneEnabled": "GamePhaseActorScriptVm_SetAreaSceneEnabled",
+  "GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9": "GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9",
+  "GamePhaseActorScriptVm_SelectRuntimeScreenMode1": "GamePhaseActorScriptVm_SelectRuntimeScreenMode1",
+  "GamePhaseActorScriptVm_SelectRuntimeScreenMode0": "GamePhaseActorScriptVm_SelectRuntimeScreenMode0",
+  "GamePhaseActorScriptVm_RuntimeControlNoOp": "GamePhaseActorScriptVm_RuntimeControlNoOp"
+}

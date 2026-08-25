@@ -24,8 +24,8 @@ extern void Type7Actor_SetFlag40StateEnabled(void *entity, s32 value);
 extern void Type7Actor_SetActorEnabled(void *entity, s32 value);
 extern void Type7Actor_ConfigureAttachmentController(void *entity, s32 value);
 extern void Type7Actor_StartAnimation19Interaction(void *entity, u16 value, s32 enabled);
-extern void Type7Actor_SpawnFromRecord(s32 first, void *owner, s32 second, s32 third,
-                          s32 fourth);
+extern void Type7Actor_SpawnFromRecord(s32 operandA, void *owner, s32 operandB,
+                          s32 operandC, s32 operandD);
 #ifdef __cplusplus
 }
 #endif
@@ -54,18 +54,18 @@ s32 GamePhaseActorScriptVm_SetInteractionIconDirection(GamePhaseActorScriptVm *s
  */
 s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptVm *self)
 {
-    s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandD = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandC = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandB = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandA = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
 
     switch (command) {
     case 0:
-        Type7Actor_SpawnFromRecord(first, **(void ***)(runtime + 0x30bc),
-                      second, third, fourth);
+        Type7Actor_SpawnFromRecord(operandA, **(void ***)(runtime + 0x30bc),
+                      operandB, operandC, operandD);
         break;
     case 1:
         if (entity)
@@ -75,32 +75,32 @@ s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptV
         break;
     case 3:
         if (entity)
-            Type7Actor_SetFlag40StateEnabled(entity, first);
+            Type7Actor_SetFlag40StateEnabled(entity, operandA);
         break;
     case 4:
         if (entity)
-            Type7Actor_StartAnimation19Interaction(entity, (u16)first, second != 0);
+            Type7Actor_StartAnimation19Interaction(entity, (u16)operandA, operandB != 0);
         break;
     case 5:
         if (entity) {
             VecFx32Object position;
-            VecFx32Object_InitComponents(&position, first << 12, second << 12, third << 12);
+            VecFx32Object_InitComponents(&position, operandA << 12, operandB << 12, operandC << 12);
             Type7Actor_SetMotionTargetWithTimer(entity, &position, 0xb4);
             VecFx32Object_Destroy(&position);
         }
         break;
     case 6:
         if (entity)
-            Type7Actor_SetActorEnabled(entity, first);
+            Type7Actor_SetActorEnabled(entity, operandA);
         break;
     case 7:
         if (entity)
-            Type7Actor_ConfigureAttachmentController(entity, first);
+            Type7Actor_ConfigureAttachmentController(entity, operandA);
         break;
     case 8:
         if (entity) {
             u32 *flags = (u32 *)(entity + 0x268);
-            if (first)
+            if (operandA)
                 *flags &= ~0x4000;
             else
                 *flags |= 0x4000;
@@ -111,7 +111,7 @@ s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptV
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)-1);
         for (index = 0; index < 36; index++) {
             const u8 *record = data_020ea9b0 + index * 0x68;
-            if (*(const s16 *)record == first) {
+            if (*(const s16 *)record == operandA) {
                 GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)*(const s16 *)(record + 0x2e));
                 break;
             }
@@ -130,11 +130,11 @@ s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptV
         break;
     case 12:
         if (entity)
-            *(u16 *)(entity + 0x2a6) = (u16)first;
+            *(u16 *)(entity + 0x2a6) = (u16)operandA;
         break;
     case 13:
         if (entity) {
-            if (first) {
+            if (operandA) {
                 *(u32 *)(entity + 0x14) |= 0x400;
                 *(u32 *)(entity + 0xd0) |= 4;
             } else {
@@ -145,7 +145,7 @@ s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptV
         break;
     case 14:
         if (entity)
-            *(s32 *)(entity + 0x1fc) = first;
+            *(s32 *)(entity + 0x1fc) = operandA;
         break;
     case 15:
         if (entity && (*(u32 *)(entity + 0x268) & 0x10))
