@@ -201,9 +201,18 @@ extern "C" void *Overlay021_Scene_Init(void *state, s32 mode)
     }
 
     void *dialog = Heap_Alloc(0xec, data_ov021_02202f88, 4, gHeapContext);
-    if (dialog != 0)
+    if (dialog != 0) {
+#ifndef MATCHING
+        /* The native stacked-display boundary retains the established host
+         * engine order. Bind this upper-screen NPC text surface to the host
+         * upper renderer without changing the retail-matching ARM call. */
+        TitleDialog_Init(dialog, gDebugFont,
+                      FIELD(void *, state, 0x58));
+#else
         TitleDialog_Init(dialog, data_020f4e14,
                       FIELD(void *, state, 0x58));
+#endif
+    }
     FIELD(void *, state, 0x388) = dialog;
     Overlay021_Dialog_SetLayout(dialog, 0x50, 0x28, 0xa8, 0x84);
     FIELD(s32, dialog, 0xbc) = -2;
