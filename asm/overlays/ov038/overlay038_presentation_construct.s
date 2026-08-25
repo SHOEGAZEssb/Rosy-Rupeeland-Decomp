@@ -24,7 +24,7 @@
     .extern func_ov038_021fd508
     .extern func_ov046_0220bffc
     .extern func_ov046_0220c478
-    .extern func_02027fe8
+    .extern AreaInfoPanelPresentation_Init
     .extern func_02091b98
     .extern func_ov038_021fce04
     .extern data_ov038_021fdd28
@@ -189,7 +189,7 @@ L_021fd004:
     beq L_021fd060
     ldr r1, L_021fd0cc
     ldr r1, [r1, #0x0]
-    bl func_02027fe8
+    bl AreaInfoPanelPresentation_Init
 L_021fd060:
     str r0, [r7, #0x344]
     add r0, r7, #0x348

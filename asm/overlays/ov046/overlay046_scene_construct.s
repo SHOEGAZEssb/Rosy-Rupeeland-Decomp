@@ -7,7 +7,7 @@
 .extern data_ov046_0220cf28
 .extern data_ov046_0220cf3c
 .extern data_ov046_0220cf44
-.extern func_02027fe8
+.extern AreaInfoPanelPresentation_Init
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_ApplyRenderConfig
@@ -162,7 +162,7 @@ func_ov046_0220c7d8:
     beq .L_0220c9e0
     ldr r1, .L_0220ca2c
     ldr r1, [r1, #0x0]
-    bl func_02027fe8
+    bl AreaInfoPanelPresentation_Init
 .L_0220c9e0:
     str r0, [r5, #0x74]
     ldr r0, [r5, #0x20]

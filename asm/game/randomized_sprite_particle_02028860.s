@@ -9,9 +9,9 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern genrand_int32
 
-    .global func_02028860
-    .type func_02028860, @function
-func_02028860: ; 0x02028860
+    .global RandomizedSpriteParticle_Init
+    .type RandomizedSpriteParticle_Init, @function
+RandomizedSpriteParticle_Init: ; 0x02028860
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r6, r1
@@ -75,5 +75,5 @@ func_02028860: ; 0x02028860
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_02028958: .word 0x7ff
-    .size func_02028860, . - func_02028860
+    .size RandomizedSpriteParticle_Init, . - RandomizedSpriteParticle_Init
 

@@ -9,7 +9,7 @@
 .extern data_ov024_021fe34c
 .extern data_ov024_021fe354
 .extern data_ov024_021fe35c
-.extern func_02027fe8
+.extern AreaInfoPanelPresentation_Init
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -208,7 +208,7 @@ L_021fd070:
     beq L_021fd0c8
     ldr r1, L_021fd12c
     ldr r1, [r1, #0x0]
-    bl func_02027fe8
+    bl AreaInfoPanelPresentation_Init
 L_021fd0c8:
     str r0, [r4, #0x2c4]
     add r0, r4, #0x2c8

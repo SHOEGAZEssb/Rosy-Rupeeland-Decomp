@@ -2,9 +2,9 @@
 .text
 .extern Heap_Free
 
-    .global func_02028cd4
-    .type func_02028cd4, @function
-func_02028cd4: ; 0x02028cd4
+    .global RandomizedSpriteParticleList_Clear
+    .type RandomizedSpriteParticleList_Clear, @function
+RandomizedSpriteParticleList_Clear: ; 0x02028cd4
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x4]
@@ -24,5 +24,5 @@ func_02028cd4: ; 0x02028cd4
     str r0, [r5, #0x8]
     str r0, [r5, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02028cd4, . - func_02028cd4
+    .size RandomizedSpriteParticleList_Clear, . - RandomizedSpriteParticleList_Clear
 

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov046/overlay046_scene_state.c.
 .extern GameWork_SetFlag
 .extern data_ov046_0220cce8
-.extern func_02028100
+.extern AreaInfoPanelPresentation_ShowIndex
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov046_0220bffc
 .extern func_ov046_0220c478
@@ -24,7 +24,7 @@ func_ov046_0220cb88:
     bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r4, #0x74]
     ldr r1, [r4, #0x6c]
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     ldr r0, [r4, #0x70]
     bl func_ov046_0220c4a0
     mov r2, #0x0

@@ -22,8 +22,8 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern void __construct_array(void *, s32, s32, void *);
 extern void __destroy_arr(void *, s32, s32, void *);
-extern void *func_02027fe8(void *, void *);
-extern void func_020280d8(void *);
+extern void *AreaInfoPanelPresentation_Init(void *, void *);
+extern void AreaInfoPanelPresentation_Destroy(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
@@ -120,7 +120,7 @@ extern "C" void *func_ov024_021fce2c(void *scene)
     func_ov046_0220c478(panel, FIELD(s32, scene, 0x290));
 
     void *debug = Heap_Alloc(0x3c, data_ov024_021fe35c, 4, gHeapContext);
-    if (debug != 0) func_02027fe8(debug, gDebugFont);
+    if (debug != 0) AreaInfoPanelPresentation_Init(debug, gDebugFont);
     FIELD(void *, scene, 0x2c4) = debug;
     func_02091b98((u8 *)scene + 0x2c8, 120);
     FIELD(s32, scene, 0x2e4) = 1;
@@ -136,7 +136,7 @@ static void cleanup_scene(void *scene)
     FIELD(u32, scene, 0x20) &= ~0x400u;
 
     void *object = FIELD(void *, scene, 0x2c4);
-    if (object != 0) { func_020280d8(object); Heap_Free(object); }
+    if (object != 0) { AreaInfoPanelPresentation_Destroy(object); Heap_Free(object); }
     object = FIELD(void *, scene, 0x2c0);
     if (object != 0) { func_ov046_0220ba80(object); Heap_Free(object); }
     object = FIELD(void *, scene, 0x2bc);

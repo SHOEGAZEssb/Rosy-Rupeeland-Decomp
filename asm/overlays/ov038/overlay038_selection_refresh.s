@@ -7,7 +7,7 @@
     .extern func_ov046_0220c46c
     .extern func_ov038_021fd540
     .extern func_ov046_0220bffc
-    .extern func_02028100
+    .extern AreaInfoPanelPresentation_ShowIndex
     .extern func_ov038_021fd624
     .global func_ov038_021fd578
 func_ov038_021fd578:
@@ -51,7 +51,7 @@ L_021fd5c4:
     bl func_ov046_0220bffc
     mov r1, r4
     ldr r0, [r5, #0x344]
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     mov r0, r5
     bl func_ov038_021fd624
     ldmia sp!, {r4, r5, r6, pc}

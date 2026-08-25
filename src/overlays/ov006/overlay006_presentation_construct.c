@@ -32,7 +32,7 @@ extern void IndexedSelectionController_SetValue(void *controller, s32 value);
 extern void func_ov046_0220bffc(void *helper, s32 controllerMember,
                                s32 first, s32 second);
 extern void func_ov046_0220c478(void *helper, s32 controllerMember);
-extern void *func_02027fe8(void *memory, void *owner);
+extern void *AreaInfoPanelPresentation_Init(void *memory, void *owner);
 extern void func_02091b98(void *animation, s32 value);
 extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
 #ifdef __cplusplus
@@ -48,7 +48,7 @@ extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
  * func_ov046_0220b7bc with gDebugFont/mode 0; store +0x90. Obtain the shared
  * overlay-46 value, bind it to controller +0x58, then call the two overlay-46
  * setup helpers with +0x90 and controller member +0x64. Allocate a 0x3C-byte
- * auxiliary tagged by data_ov006_021fbca4, construct func_02027fe8 with
+ * auxiliary tagged by data_ov006_021fbca4, construct AreaInfoPanelPresentation_Init with
  * gDebugFont, and store +0x94. Submit 0x78 to animation +0x98, set +0xB4 to
  * one, set +0x20 bit 10, initialize the transition from data_ov006_021fbc58,
  * and return state. Allocator and helper ownership are delegated; offsets and
@@ -88,7 +88,7 @@ Overlay006Presentation *func_ov006_021fb708(Overlay006Presentation *state)
     auxiliary = Heap_Alloc(0x3c, (const char *)data_ov006_021fbca4, 4,
                            &gHeapContext);
     if (auxiliary != 0) {
-        auxiliary = func_02027fe8(auxiliary, gDebugFont);
+        auxiliary = AreaInfoPanelPresentation_Init(auxiliary, gDebugFont);
     }
     FIELD(void *, state, 0x094) = auxiliary;
     func_02091b98((u8 *)state + 0x98, 0x78);

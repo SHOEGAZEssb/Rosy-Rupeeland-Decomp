@@ -9,12 +9,12 @@
 .extern AnimationResource_Assign
 .extern AnimationResource_InitEmpty
 .extern FieldEffect_Init
-.extern func_02028c94
+.extern RandomizedSpriteParticleList_Init
 .extern GraphicsSpriteGroupOwner_CreateGroup
 
-    .global func_02028b98
-    .type func_02028b98, @function
-func_02028b98: ; 0x02028b98
+    .global RandomizedSpriteParticleEmitter_Init
+    .type RandomizedSpriteParticleEmitter_Init, @function
+RandomizedSpriteParticleEmitter_Init: ; 0x02028b98
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x24
     mov r4, r0
@@ -43,7 +43,7 @@ func_02028b98: ; 0x02028b98
     ldr r1, [sp, #0x38]
     add r0, r4, #0x5c
     str r1, [r4, #0x58]
-    bl func_02028c94
+    bl RandomizedSpriteParticleList_Init
     ldr r1, .L_02028c84
     ldr r2, .L_02028c88
     add r0, sp, #0x14
@@ -78,5 +78,5 @@ func_02028b98: ; 0x02028b98
 .L_02028c88: .word 0x1078
 .L_02028c8c: .word 0x168b
 .L_02028c90: .word data_020f4e14
-    .size func_02028b98, . - func_02028b98
+    .size RandomizedSpriteParticleEmitter_Init, . - RandomizedSpriteParticleEmitter_Init
 

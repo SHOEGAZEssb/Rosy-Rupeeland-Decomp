@@ -1,6 +1,6 @@
     .text
     .extern GraphicsSpriteGroup_Destroy
-    .extern func_020280d8
+    .extern AreaInfoPanelPresentation_Destroy
     .extern Heap_Free
     .extern func_ov005_021fbb78
     .extern func_020925dc
@@ -31,7 +31,7 @@ L_021fc144:
     cmp r5, #0x0
     beq L_021fc168
     mov r0, r5
-    bl func_020280d8
+    bl AreaInfoPanelPresentation_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fc168:

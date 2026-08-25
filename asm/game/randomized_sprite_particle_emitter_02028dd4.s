@@ -8,15 +8,15 @@
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Destroy
 .extern FieldEffect_DestroyBase
-.extern func_0202895c
-.extern func_02028cd4
-.extern func_02028e9c
+.extern RandomizedSpriteParticle_Destroy
+.extern RandomizedSpriteParticleList_Clear
+.extern RandomizedSpriteParticleList_RemoveNode
 .extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 
-    .global func_02028dd4
-    .type func_02028dd4, @function
-func_02028dd4: ; 0x02028dd4
+    .global RandomizedSpriteParticleEmitter_DestroyAndFree
+    .type RandomizedSpriteParticleEmitter_DestroyAndFree, @function
+RandomizedSpriteParticleEmitter_DestroyAndFree: ; 0x02028dd4
     stmdb sp!, {r4, r5, r6, lr}
     ldr r1, .L_02028e8c
     mov r6, r0
@@ -27,11 +27,11 @@ func_02028dd4: ; 0x02028dd4
     ldr r5, [r4, #0x8]
     mov r1, r4
     add r0, r6, #0x5c
-    bl func_02028e9c
+    bl RandomizedSpriteParticleList_RemoveNode
     cmp r5, #0x0
     beq .L_02028e14
     mov r0, r5
-    bl func_0202895c
+    bl RandomizedSpriteParticle_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02028e14:
@@ -50,7 +50,7 @@ func_02028dd4: ; 0x02028dd4
     ldr r1, .L_02028e94
     add r0, r6, #0x5c
     str r1, [r6, #0x5c]
-    bl func_02028cd4
+    bl RandomizedSpriteParticleList_Clear
     add r0, r6, #0x2c
     mov r1, #0x2
     mov r2, #0x10
@@ -70,5 +70,5 @@ func_02028dd4: ; 0x02028dd4
 .L_02028e90: .word data_020f4e14
 .L_02028e94: .word data_020de89c
 .L_02028e98: .word AnimationResource_Destroy
-    .size func_02028dd4, . - func_02028dd4
+    .size RandomizedSpriteParticleEmitter_DestroyAndFree, . - RandomizedSpriteParticleEmitter_DestroyAndFree
 

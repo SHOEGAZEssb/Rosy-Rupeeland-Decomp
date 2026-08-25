@@ -11,7 +11,7 @@ extern const u8 data_ov038_021fdd28[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020280d8(void *label);
+extern void AreaInfoPanelPresentation_Destroy(void *label);
 extern void func_ov046_0220ba80(void *panel);
 extern void GraphicsSpriteGroup_Destroy(void *resourceOwner);
 extern void func_020927b8(void *transform);
@@ -27,7 +27,7 @@ static void releasePresentationContents(void *presentation)
     FIELD(u32, presentation, 0x20) &= ~0x400u;
     void *label = FIELD(void *, presentation, 0x344);
     if (label != 0) {
-        func_020280d8(label);
+        AreaInfoPanelPresentation_Destroy(label);
         Heap_Free(label);
     }
     void *panel = FIELD(void *, presentation, 0x340);

@@ -17,7 +17,7 @@ extern "C" {
 extern void *gGameWork;
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
 extern void func_ov005_021fbe1c(void *scene);
-extern void func_02028100(void *auxiliary, s32 index);
+extern void AreaInfoPanelPresentation_ShowIndex(void *auxiliary, s32 index);
 extern void Presentation_SetScript(void *controller, const void *data, s32 mode);
 extern void PresentationScalar_TransitionTo(void *object, s32 mode, s32 value);
 extern s32 Presentation_InterpolateScalar(void *controller, s32 mode, s32 first, s32 second);
@@ -37,7 +37,7 @@ static void overlay005_advance_entry(Overlay005EntryTransitionState *state)
  * Execute one phase and return zero after always calling
  * func_ov005_021fc5e4(state). Phase zero advances immediately into phase one.
  * Phase one waits for gGameWork flag 0x3D3, clears controller +0x64 field
- * +0x90, sets the group flag on scene +0x74, calls func_02028100 on auxiliary
+ * +0x90, sets the group flag on scene +0x74, calls AreaInfoPanelPresentation_ShowIndex on auxiliary
  * +0x78 with index +0x68, then advances. Phase two waits for flag 0x3D4,
  * applies null/mode 0 through Presentation_SetScript, configures controller members +0x0C
  * and +0x1C in modes 1 and 5 toward cached +0x7C/+0x80, sets controller
@@ -63,7 +63,7 @@ s32 func_ov005_021fc638(Overlay005EntryTransitionState *state)
             controller = FIELD(void *, state, 0x064);
             FIELD(s32, controller, 0x090) = 0;
             func_ov005_021fbe1c(FIELD(void *, state, 0x074));
-            func_02028100(FIELD(void *, state, 0x078),
+            AreaInfoPanelPresentation_ShowIndex(FIELD(void *, state, 0x078),
                           FIELD(s32, state, 0x068));
             overlay005_advance_entry(state);
         }

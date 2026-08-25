@@ -7,19 +7,19 @@
 .extern gRandomizedSpriteParticleAllocationTag
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
-.extern func_02028860
-.extern func_0202895c
-.extern func_02028998
-.extern func_02028e9c
+.extern RandomizedSpriteParticle_Init
+.extern RandomizedSpriteParticle_Destroy
+.extern RandomizedSpriteParticle_Update
+.extern RandomizedSpriteParticleList_RemoveNode
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020bf1f8
 .extern gGameWork
 .extern gHeapContext
 .extern genrand_int32
 
-    .global func_02028f04
-    .type func_02028f04, @function
-func_02028f04: ; 0x02028f04
+    .global RandomizedSpriteParticleEmitter_Update
+    .type RandomizedSpriteParticleEmitter_Update, @function
+RandomizedSpriteParticleEmitter_Update: ; 0x02028f04
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x18
     ldr r1, .L_02029058
@@ -53,7 +53,7 @@ func_02028f04: ; 0x02028f04
     str r1, [sp, #0x4]
     ldr r1, [r4, #0x4c]
     add r3, r4, #0xc
-    bl func_02028860
+    bl RandomizedSpriteParticle_Init
     mov r5, r0
 .L_02028f90:
     ldr r1, .L_02029068
@@ -82,16 +82,16 @@ func_02028f04: ; 0x02028f04
     ldr r6, [r5, #0x8]
     ldr r1, [r4, #0x8]
     mov r0, r6
-    bl func_02028998
+    bl RandomizedSpriteParticle_Update
     cmp r0, #0x0
     beq .L_02029020
     mov r1, r5
     add r0, r4, #0x5c
-    bl func_02028e9c
+    bl RandomizedSpriteParticleList_RemoveNode
     cmp r6, #0x0
     beq .L_02029020
     mov r0, r6
-    bl func_0202895c
+    bl RandomizedSpriteParticle_Destroy
     mov r0, r6
     bl Heap_Free
 .L_02029020:
@@ -116,5 +116,5 @@ func_02028f04: ; 0x02028f04
 .L_02029060: .word gRandomizedSpriteParticleAllocationTag
 .L_02029064: .word gHeapContext
 .L_02029068: .word gRandomizedSpriteParticleListNodeAllocationTag
-    .size func_02028f04, . - func_02028f04
+    .size RandomizedSpriteParticleEmitter_Update, . - RandomizedSpriteParticleEmitter_Update
 

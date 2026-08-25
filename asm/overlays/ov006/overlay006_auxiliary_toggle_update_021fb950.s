@@ -2,8 +2,8 @@
     .extern func_ov046_0220c1a4
     .extern func_02091c7c
     .extern func_02091b98
-    .extern func_02028100
-    .extern func_0202836c
+    .extern AreaInfoPanelPresentation_ShowIndex
+    .extern AreaInfoPanelPresentation_Hide
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov006/overlay006_auxiliary_toggle_update.c. */
@@ -30,10 +30,10 @@ func_ov006_021fb950: ; 0x021fb950
     ldr r0, [r4, #0x94]
     beq L_021fb9ac
     ldr r1, [r4, #0x64]
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     ldmia sp!, {r4, pc}
 L_021fb9ac:
-    bl func_0202836c
+    bl AreaInfoPanelPresentation_Hide
     ldmia sp!, {r4, pc}
 
     .size func_ov006_021fb950, .-func_ov006_021fb950

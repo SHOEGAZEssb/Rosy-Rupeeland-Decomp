@@ -1,0 +1,5 @@
+{
+  "func_02028860": "RandomizedSpriteParticle_Init",
+  "func_0202895c": "RandomizedSpriteParticle_Destroy",
+  "func_02028998": "RandomizedSpriteParticle_Update"
+}

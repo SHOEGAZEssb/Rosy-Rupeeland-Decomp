@@ -47,7 +47,7 @@ extern void GraphicsSpriteGroup_ReleaseState(void *, void *);
  * -16..15 pixels, create a sprite from resource subobject +4, set its frame and
  * affine/visibility bits, seed randomized negative Y velocity, and live 400 ticks.
  */
-RandomizedSpriteParticle *func_02028860(RandomizedSpriteParticle *self,
+RandomizedSpriteParticle *RandomizedSpriteParticle_Init(RandomizedSpriteParticle *self,
                                         void *owner, u8 *resources,
                                         const ParticleVector *position,
                                         const ParticleVector *target,
@@ -74,7 +74,7 @@ RandomizedSpriteParticle *func_02028860(RandomizedSpriteParticle *self,
 }
 
 /* Release the sprite and destroy the four embedded vector temporaries. */
-RandomizedSpriteParticle *func_0202895c(RandomizedSpriteParticle *self)
+RandomizedSpriteParticle *RandomizedSpriteParticle_Destroy(RandomizedSpriteParticle *self)
 {
     GraphicsSpriteGroup_ReleaseState(self->owner_44, self->sprite_40);
     VecFx32Object_Destroy(&self->steering_30);
@@ -89,7 +89,7 @@ RandomizedSpriteParticle *func_0202895c(RandomizedSpriteParticle *self)
  * and project the particle, write sprite coordinates, hide it outside the
  * recovered vertical bounds, decrement lifetime, and return one on expiry.
  */
-s32 func_02028998(RandomizedSpriteParticle *self, const void *projection)
+s32 RandomizedSpriteParticle_Update(RandomizedSpriteParticle *self, const void *projection)
 {
     ParticleVector difference;
     ParticleVector damping;

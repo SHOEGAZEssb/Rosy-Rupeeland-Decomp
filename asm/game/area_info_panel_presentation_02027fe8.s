@@ -10,9 +10,9 @@
 .extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 
-    .global func_02027fe8
-    .type func_02027fe8, @function
-func_02027fe8: ; 0x02027fe8
+    .global AreaInfoPanelPresentation_Init
+    .type AreaInfoPanelPresentation_Init, @function
+AreaInfoPanelPresentation_Init: ; 0x02027fe8
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r5, r0
@@ -73,5 +73,5 @@ func_02027fe8: ; 0x02027fe8
 .L_020280cc: .word 0x7007
 .L_020280d0: .word 0x3328
 .L_020280d4: .word data_020f4e18
-    .size func_02027fe8, . - func_02027fe8
+    .size AreaInfoPanelPresentation_Init, . - AreaInfoPanelPresentation_Init
 

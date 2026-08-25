@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov038/overlay038_presentation_lifecycle.c for documented portable C. */
 
-    .extern func_020280d8
+    .extern AreaInfoPanelPresentation_Destroy
     .extern Heap_Free
     .extern func_ov046_0220ba80
     .extern GraphicsSpriteGroup_Destroy
@@ -24,7 +24,7 @@ func_ov038_021fd0d8:
     cmp r4, #0x0
     beq L_021fd110
     mov r0, r4
-    bl func_020280d8
+    bl AreaInfoPanelPresentation_Destroy
     mov r0, r4
     bl Heap_Free
 L_021fd110:
@@ -69,7 +69,7 @@ func_ov038_021fd170:
     cmp r4, #0x0
     beq L_021fd1a8
     mov r0, r4
-    bl func_020280d8
+    bl AreaInfoPanelPresentation_Destroy
     mov r0, r4
     bl Heap_Free
 L_021fd1a8:

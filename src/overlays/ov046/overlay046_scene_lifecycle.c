@@ -10,7 +10,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" u8 data_ov046_0220cf28[];
-extern "C" void func_020280d8(void *object);
+extern "C" void AreaInfoPanelPresentation_Destroy(void *object);
 extern "C" void Heap_Free(void *allocation);
 extern "C" void *func_ov046_0220ba80(void *panel);
 extern "C" void GraphicsSpriteGroup_Destroy(void *fontState);
@@ -28,7 +28,7 @@ extern "C" void *func_ov046_0220ca40(void *scene)
     FIELD(u32, scene, 0x20) &= ~0x400;
     void *allocation = FIELD(void *, scene, 0x74);
     if (allocation != 0) {
-        func_020280d8(allocation);
+        AreaInfoPanelPresentation_Destroy(allocation);
         Heap_Free(allocation);
     }
     void *panel = FIELD(void *, scene, 0x70);
@@ -52,7 +52,7 @@ extern "C" void *func_ov046_0220cab0(void *scene)
     FIELD(u32, scene, 0x20) &= ~0x400;
     void *allocation = FIELD(void *, scene, 0x74);
     if (allocation != 0) {
-        func_020280d8(allocation);
+        AreaInfoPanelPresentation_Destroy(allocation);
         Heap_Free(allocation);
     }
     void *panel = FIELD(void *, scene, 0x70);

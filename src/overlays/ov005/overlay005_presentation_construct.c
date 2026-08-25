@@ -44,7 +44,7 @@ extern void *func_ov005_021fb86c(void *memory, void *owner,
                                 s32 createMarkers);
 extern void func_ov005_021fbd74(void *scene, s32 index);
 extern void func_ov005_021fbd64(void *scene, s32 first, s32 second);
-extern void *func_02027fe8(void *memory, void *owner);
+extern void *AreaInfoPanelPresentation_Init(void *memory, void *owner);
 extern void func_ov005_021fbe44(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 }
@@ -76,7 +76,7 @@ static s16 overlay005_presentation_coordinate(s32 index, s32 offset)
  * data_ov005_021fcb14, constructing it with gDebugFont and markers disabled;
  * store +0x74, select index +0x68, set its context pair to 0 and the negated
  * data_ov005_021fc8f0 entry, and set scene +0x158 to one. Allocate a 0x3C-byte
- * helper tagged by data_ov005_021fcb1c, construct func_02027fe8 with gDebugFont,
+ * helper tagged by data_ov005_021fcb1c, construct AreaInfoPanelPresentation_Init with gDebugFont,
  * and store +0x78. Derive +0x7C/+0x80 as 20.12 coordinates from record +0x18
  * and record +0x1A minus the same table entry. Set +0x20 bit 10, initialize
  * transition state from data_ov005_021fc9e8 through func_ov005_021fbe44, and
@@ -139,7 +139,7 @@ Overlay005Presentation *func_ov005_021fbe6c(Overlay005Presentation *state)
 
     auxiliary = Heap_Alloc(0x3c, data_ov005_021fcb1c, 4, gHeapContext);
     if (auxiliary != 0) {
-        auxiliary = func_02027fe8(auxiliary, gDebugFont);
+        auxiliary = AreaInfoPanelPresentation_Init(auxiliary, gDebugFont);
     }
     FIELD(void *, state, 0x078) = auxiliary;
     FIELD(s32, state, 0x07c) =

@@ -1,0 +1,6 @@
+{
+  "func_02027fe8": "AreaInfoPanelPresentation_Init",
+  "func_020280d8": "AreaInfoPanelPresentation_Destroy",
+  "func_02028100": "AreaInfoPanelPresentation_ShowIndex",
+  "func_0202836c": "AreaInfoPanelPresentation_Hide"
+}

@@ -18,7 +18,7 @@ typedef struct Overlay006Presentation {
 extern "C" {
 #endif
 extern const u8 data_ov006_021fbc88[];
-extern void func_020280d8(void *object);
+extern void AreaInfoPanelPresentation_Destroy(void *object);
 extern void func_ov046_0220ba80(void *object);
 extern void Heap_Free(void *memory);
 #ifdef __cplusplus
@@ -42,7 +42,7 @@ Overlay006Presentation *func_ov006_021fb8c8(Overlay006Presentation *state)
     state->flags_020 &= ~0x400;
     object = state->auxiliary_094;
     if (object != 0) {
-        func_020280d8(object);
+        AreaInfoPanelPresentation_Destroy(object);
         Heap_Free(object);
     }
     object = state->overlay46Helper_090;

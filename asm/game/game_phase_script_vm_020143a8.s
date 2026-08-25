@@ -33,9 +33,9 @@
 .extern BallisticSpriteEmitter_SpawnAndRegister
 .extern LaunchedSpritePairPresentation_Init
 .extern RotatingCoreEffectController_Init
-.extern func_02028630
-.extern func_02028814
-.extern func_0202906c
+.extern MainBg1FollowPresentation_CreateAndRegister
+.extern MainWindowMaskPresentation_CreateAndRegister
+.extern RandomizedSpriteParticleEmitter_CreateAndRegister
 .extern ActorCollection_GetSpriteGroup
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
@@ -1139,7 +1139,7 @@ L_020152f0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02028630
+    bl MainBg1FollowPresentation_CreateAndRegister
     b L_0201553c
 L_02015308:
     str r6, [sp, #0x0]
@@ -1260,7 +1260,7 @@ L_020154a0:
     bl func_ov053_0220da0c
     b L_0201553c
 L_020154c0:
-    bl func_02028814
+    bl MainWindowMaskPresentation_CreateAndRegister
     b L_0201553c
 L_020154c8: .word data_020d5b34
 L_020154cc: .word gHeapContext
@@ -1289,7 +1289,7 @@ L_02015508:
     mov r2, r8
     mov r3, r7
     str r5, [sp, #0x4]
-    bl func_0202906c
+    bl RandomizedSpriteParticleEmitter_CreateAndRegister
     b L_0201553c
 L_02015538:
     bl OS_Halt

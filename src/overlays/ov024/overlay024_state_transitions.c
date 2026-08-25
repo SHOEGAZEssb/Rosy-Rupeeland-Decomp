@@ -12,7 +12,7 @@ extern const u32 data_ov024_021fe300[];
 extern "C" {
 #endif
 extern s32 Presentation_InterpolateSmoothStep(s32, s32, s32, s32);
-extern void func_02028100(void *, s32);
+extern void AreaInfoPanelPresentation_ShowIndex(void *, s32);
 extern void func_02091b98(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_ov005_021fbd64(void *, s32, s32);
@@ -81,7 +81,7 @@ extern "C" s32 func_ov024_021fdac4(void *scene)
         FIELD(u32, scene, 0x48) &= ~1u;
 
     if (elapsed == ((duration + (s32)((u32)duration >> 31)) >> 1)) {
-        func_02028100(FIELD(void *, scene, 0x2c4), target);
+        AreaInfoPanelPresentation_ShowIndex(FIELD(void *, scene, 0x2c4), target);
         func_ov046_0220bffc(panel, target, 0, 0);
         func_ov005_021fbd74(FIELD(void *, scene, 0x2bc), target);
         func_02091b98((u8 *)scene + 0x2c8, 120);

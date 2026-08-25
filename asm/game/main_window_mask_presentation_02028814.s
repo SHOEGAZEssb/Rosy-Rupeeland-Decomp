@@ -4,12 +4,12 @@
 .extern data_020de858
 .extern gGamePhaseRuntime
 .extern RuntimePresentationManager_AppendSecondListEffect
-.extern func_02028778
+.extern MainWindowMaskPresentation_Init
 .extern gHeapContext
 
-    .global func_02028814
-    .type func_02028814, @function
-func_02028814: ; 0x02028814
+    .global MainWindowMaskPresentation_CreateAndRegister
+    .type MainWindowMaskPresentation_CreateAndRegister, @function
+MainWindowMaskPresentation_CreateAndRegister: ; 0x02028814
     stmdb sp!, {r4, lr}
     ldr r0, .L_02028854
     ldr r1, .L_02028858
@@ -21,7 +21,7 @@ func_02028814: ; 0x02028814
     bl Heap_Alloc
     movs r1, r0
     beq .L_02028848
-    bl func_02028778
+    bl MainWindowMaskPresentation_Init
     mov r1, r0
 .L_02028848:
     add r0, r4, #0x2c00
@@ -30,5 +30,5 @@ func_02028814: ; 0x02028814
 .L_02028854: .word gGamePhaseRuntime
 .L_02028858: .word data_020de858
 .L_0202885c: .word gHeapContext
-    .size func_02028814, . - func_02028814
+    .size MainWindowMaskPresentation_CreateAndRegister, . - MainWindowMaskPresentation_CreateAndRegister
 

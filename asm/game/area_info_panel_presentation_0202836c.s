@@ -3,9 +3,9 @@
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 
-    .global func_0202836c
-    .type func_0202836c, @function
-func_0202836c: ; 0x0202836c
+    .global AreaInfoPanelPresentation_Hide
+    .type AreaInfoPanelPresentation_Hide, @function
+AreaInfoPanelPresentation_Hide: ; 0x0202836c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x30]
@@ -13,5 +13,5 @@ func_0202836c: ; 0x0202836c
     ldr r0, [r4, #0x34]
     bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r4, pc}
-    .size func_0202836c, . - func_0202836c
+    .size AreaInfoPanelPresentation_Hide, . - AreaInfoPanelPresentation_Hide
 

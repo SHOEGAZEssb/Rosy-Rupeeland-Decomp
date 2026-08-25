@@ -4,9 +4,9 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern func_020927b8
 
-    .global func_020280d8
-    .type func_020280d8, @function
-func_020280d8: ; 0x020280d8
+    .global AreaInfoPanelPresentation_Destroy
+    .type AreaInfoPanelPresentation_Destroy, @function
+AreaInfoPanelPresentation_Destroy: ; 0x020280d8
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x34]
@@ -17,5 +17,5 @@ func_020280d8: ; 0x020280d8
     bl func_020927b8
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_020280d8, . - func_020280d8
+    .size AreaInfoPanelPresentation_Destroy, . - AreaInfoPanelPresentation_Destroy
 

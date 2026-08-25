@@ -72,17 +72,17 @@ extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
-extern void *func_02028860(void *, void *, void *, const void *,
+extern void *RandomizedSpriteParticle_Init(void *, void *, void *, const void *,
                            const void *, s32);
-extern void *func_0202895c(void *);
-extern s32 func_02028998(void *, const void *);
-void func_02028c94(ParticleList *);
-void func_02028cd4(ParticleList *);
-void func_02028e9c(ParticleList *, ParticleListNode *);
-RandomizedSpriteParticleEmitter *func_02028b98(
+extern void *RandomizedSpriteParticle_Destroy(void *);
+extern s32 RandomizedSpriteParticle_Update(void *, const void *);
+void RandomizedSpriteParticleList_Init(ParticleList *);
+void RandomizedSpriteParticleList_Clear(ParticleList *);
+void RandomizedSpriteParticleList_RemoveNode(ParticleList *, ParticleListNode *);
+RandomizedSpriteParticleEmitter *RandomizedSpriteParticleEmitter_Init(
     RandomizedSpriteParticleEmitter *, const void *, const EmitterVector *,
     const EmitterVector *, s32);
-RandomizedSpriteParticleEmitter *func_02028d14(
+RandomizedSpriteParticleEmitter *RandomizedSpriteParticleEmitter_Destroy(
     RandomizedSpriteParticleEmitter *);
 
 /*
@@ -91,7 +91,7 @@ RandomizedSpriteParticleEmitter *func_02028d14(
  * 0x168b..0x168d, create an empty particle list, acquire the global sprite
  * owner, and return self. The projection pointer is borrowed.
  */
-RandomizedSpriteParticleEmitter *func_02028b98(
+RandomizedSpriteParticleEmitter *RandomizedSpriteParticleEmitter_Init(
     RandomizedSpriteParticleEmitter *self, const void *projection,
     const EmitterVector *position, const EmitterVector *target, s32 frame)
 {
@@ -105,7 +105,7 @@ RandomizedSpriteParticleEmitter *func_02028b98(
                       (void (*)(void *))AnimationResource_InitEmpty, AnimationResource_Destroy);
     self->spawnTimer_54 = 0;
     self->frame_58 = frame;
-    func_02028c94(&self->particles_5c);
+    RandomizedSpriteParticleList_Init(&self->particles_5c);
     AnimationResource_Init(temporary, 0x138e, 0x1078, 0x138f);
     AnimationResource_Assign(self->resources_2c, temporary);
     AnimationResource_Destroy(temporary);
@@ -117,7 +117,7 @@ RandomizedSpriteParticleEmitter *func_02028b98(
 }
 
 /* Initialize an empty intrusive particle-node list with its recovered vtable. */
-void func_02028c94(ParticleList *self)
+void RandomizedSpriteParticleList_Init(ParticleList *self)
 {
     self->vtable_00 = (void **)data_020de89c;
     self->head_04 = 0;
@@ -126,15 +126,15 @@ void func_02028c94(ParticleList *self)
 }
 
 /* Destroy all list nodes, clear links/count, and return the list. */
-ParticleList *func_02028cb4(ParticleList *self)
+ParticleList *RandomizedSpriteParticleList_Destroy(ParticleList *self)
 {
     self->vtable_00 = (void **)data_020de89c;
-    func_02028cd4(self);
+    RandomizedSpriteParticleList_Clear(self);
     return self;
 }
 
 /* Free every node without touching its payload, then reset the empty list. */
-void func_02028cd4(ParticleList *self)
+void RandomizedSpriteParticleList_Clear(ParticleList *self)
 {
     ParticleListNode *node = self->head_04;
     while (node) {
@@ -149,7 +149,7 @@ void func_02028cd4(ParticleList *self)
 }
 
 /* Release all particles/nodes and owned graphics/vector/FieldEffect state; return self. */
-RandomizedSpriteParticleEmitter *func_02028d14(
+RandomizedSpriteParticleEmitter *RandomizedSpriteParticleEmitter_Destroy(
     RandomizedSpriteParticleEmitter *self)
 {
     ParticleListNode *node = self->particles_5c.head_04;
@@ -157,9 +157,9 @@ RandomizedSpriteParticleEmitter *func_02028d14(
     while (node) {
         ParticleListNode *next = node->next_00;
         void *particle = node->particle_08;
-        func_02028e9c(&self->particles_5c, node);
+        RandomizedSpriteParticleList_RemoveNode(&self->particles_5c, node);
         if (particle) {
-            func_0202895c(particle);
+            RandomizedSpriteParticle_Destroy(particle);
             Heap_Free(particle);
         }
         node = next;
@@ -168,7 +168,7 @@ RandomizedSpriteParticleEmitter *func_02028d14(
     AnimationResourceState_ReleaseResources(self->resources_2c + 4);
     AnimationResourceState_ReleaseResources(self->resources_2c + 0x14);
     self->particles_5c.vtable_00 = (void **)data_020de89c;
-    func_02028cd4(&self->particles_5c);
+    RandomizedSpriteParticleList_Clear(&self->particles_5c);
     __destroy_arr(self->resources_2c, 2, 0x10, AnimationResource_Destroy);
     VecFx32Object_Destroy(&self->target_1c);
     VecFx32Object_Destroy(&self->position_0c);
@@ -177,19 +177,19 @@ RandomizedSpriteParticleEmitter *func_02028d14(
 }
 
 /* Perform full emitter teardown, free self, and return its old address. */
-RandomizedSpriteParticleEmitter *func_02028dd4(
+RandomizedSpriteParticleEmitter *RandomizedSpriteParticleEmitter_DestroyAndFree(
     RandomizedSpriteParticleEmitter *self)
 {
-    func_02028d14(self);
+    RandomizedSpriteParticleEmitter_Destroy(self);
     Heap_Free(self);
     return self;
 }
 
 /*
  * Unlink and free one node, decrement count, and normalize the list through
- * func_02028cd4 when its last node is removed. The payload is not destroyed.
+ * RandomizedSpriteParticleList_Clear when its last node is removed. The payload is not destroyed.
  */
-void func_02028e9c(ParticleList *self, ParticleListNode *node)
+void RandomizedSpriteParticleList_RemoveNode(ParticleList *self, ParticleListNode *node)
 {
     if (node == self->head_04)
         self->head_04 = node->next_00;
@@ -203,7 +203,7 @@ void func_02028e9c(ParticleList *self, ParticleListNode *node)
         Heap_Free(node);
     self->count_0c--;
     if (self->count_0c == 0)
-        func_02028cd4(self);
+        RandomizedSpriteParticleList_Clear(self);
 }
 
 /*
@@ -211,7 +211,7 @@ void func_02028e9c(ParticleList *self, ParticleListNode *node)
  * 30..34 updates, append it, update/remove expired particles, publish the
  * projected endpoint to the sprite owner, and return zero.
  */
-s32 func_02028f04(RandomizedSpriteParticleEmitter *self)
+s32 RandomizedSpriteParticleEmitter_Update(RandomizedSpriteParticleEmitter *self)
 {
     ParticleListNode *node;
     EmitterVector projected;
@@ -225,7 +225,7 @@ s32 func_02028f04(RandomizedSpriteParticleEmitter *self)
         self->spawnTimer_54 = 30 + (s32)(genrand_int32() % 5);
         particle = Heap_Alloc(0x4c, gRandomizedSpriteParticleAllocationTag, 4, &gHeapContext);
         if (particle)
-            particle = func_02028860(particle, self->spriteOwner_4c,
+            particle = RandomizedSpriteParticle_Init(particle, self->spriteOwner_4c,
                                      self->resources_2c + 0x10,
                                      &self->position_0c, &self->target_1c,
                                      self->frame_58);
@@ -250,10 +250,10 @@ s32 func_02028f04(RandomizedSpriteParticleEmitter *self)
     while (node) {
         ParticleListNode *next = node->next_00;
         void *particle = node->particle_08;
-        if (func_02028998(particle, self->projection_08)) {
-            func_02028e9c(&self->particles_5c, node);
+        if (RandomizedSpriteParticle_Update(particle, self->projection_08)) {
+            RandomizedSpriteParticleList_RemoveNode(&self->particles_5c, node);
             if (particle) {
-                func_0202895c(particle);
+                RandomizedSpriteParticle_Destroy(particle);
                 Heap_Free(particle);
             }
         }
@@ -270,7 +270,7 @@ s32 func_02028f04(RandomizedSpriteParticleEmitter *self)
  * emitter, enqueue it at global offset 0x2f7c, destroy temporaries, and return
  * the enqueue result.
  */
-void *func_0202906c(const void *projection, s32 x0, s32 y0, s32 x1,
+void *RandomizedSpriteParticleEmitter_CreateAndRegister(const void *projection, s32 x0, s32 y0, s32 x1,
                     s32 y1, s32 frame)
 {
     EmitterVector position;
@@ -283,7 +283,7 @@ void *func_0202906c(const void *projection, s32 x0, s32 y0, s32 x1,
         sizeof(RandomizedSpriteParticleEmitter), gRandomizedSpriteParticleEmitterAllocationTag, 4,
         &gHeapContext);
     if (self)
-        self = func_02028b98(self, projection, &position, &target, frame);
+        self = RandomizedSpriteParticleEmitter_Init(self, projection, &position, &target, frame);
     result = RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, self);
     VecFx32Object_Destroy(&target);
     VecFx32Object_Destroy(&position);
@@ -291,7 +291,7 @@ void *func_0202906c(const void *projection, s32 x0, s32 y0, s32 x1,
 }
 
 /* Enable the sprite owner through offset 0x20, or hide it through the owner API. */
-void func_02029170(RandomizedSpriteParticleEmitter *self, s32 enabled)
+void RandomizedSpriteParticleEmitter_SetVisible(RandomizedSpriteParticleEmitter *self, s32 enabled)
 {
     if (enabled)
         *(u32 *)(self->spriteOwner_4c + 0x20) = 1;
@@ -300,10 +300,10 @@ void func_02029170(RandomizedSpriteParticleEmitter *self, s32 enabled)
 }
 
 /* Destroy an independently allocated particle list, free it, and return its old address. */
-ParticleList *func_02029190(ParticleList *self)
+ParticleList *RandomizedSpriteParticleList_DestroyAndFree(ParticleList *self)
 {
     self->vtable_00 = (void **)data_020de89c;
-    func_02028cd4(self);
+    RandomizedSpriteParticleList_Clear(self);
     Heap_Free(self);
     return self;
 }

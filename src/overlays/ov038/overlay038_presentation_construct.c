@@ -46,7 +46,7 @@ extern const void *func_ov038_021fd508(void *presentation);
 extern void func_ov046_0220bffc(void *object, const void *text,
                                 s32 x, s32 y);
 extern void func_ov046_0220c478(void *object, const void *text);
-extern void *func_02027fe8(void *object, void *font);
+extern void *AreaInfoPanelPresentation_Init(void *object, void *font);
 extern void func_02091b98(void *timer, s32 delay);
 extern void func_ov038_021fce04(void *node, void *value24, void *value28);
 #ifdef __cplusplus
@@ -121,7 +121,7 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
 
     void *label = Heap_Alloc(0x3c, data_ov038_021fdd4c, 4, gHeapContext);
     if (label != 0)
-        label = func_02027fe8(label, gDebugFont[0]);
+        label = AreaInfoPanelPresentation_Init(label, gDebugFont[0]);
     FIELD(void *, presentation, 0x344) = label;
     func_02091b98((u8 *)presentation + 0x348, 0x78);
     FIELD(s32, presentation, 0x364) = 1;

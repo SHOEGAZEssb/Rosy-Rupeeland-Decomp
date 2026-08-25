@@ -21,7 +21,7 @@ extern "C" Overlay046CallbackBinding data_ov046_0220cd00;
 extern "C" void *gDebugFont;
 extern "C" void *gGameWork;
 extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
-extern "C" void func_02028100(void *object, s32 selection);
+extern "C" void AreaInfoPanelPresentation_ShowIndex(void *object, s32 selection);
 extern "C" void func_ov046_0220c4a0(void *panel);
 extern "C" void func_ov046_0220bffc(void *panel, s32 index, s32 enabled,
                                      s32 selectedFlag);
@@ -43,7 +43,7 @@ extern "C" s32 func_ov046_0220cb88(void *scene)
 {
     if (FIELD(s32, scene, 0x04) == 0) {
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-        func_02028100(FIELD(void *, scene, 0x74), FIELD(s32, scene, 0x6c));
+        AreaInfoPanelPresentation_ShowIndex(FIELD(void *, scene, 0x74), FIELD(s32, scene, 0x6c));
         func_ov046_0220c4a0(FIELD(void *, scene, 0x70));
         func_ov046_0220bffc(FIELD(void *, scene, 0x70),
                             FIELD(s32, scene, 0x6c), 0, 0);

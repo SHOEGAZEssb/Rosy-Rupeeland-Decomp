@@ -3,9 +3,9 @@
 .extern data_020de838
 .extern FieldEffect_Init
 
-    .global func_02028778
-    .type func_02028778, @function
-func_02028778: ; 0x02028778
+    .global MainWindowMaskPresentation_Init
+    .type MainWindowMaskPresentation_Init, @function
+MainWindowMaskPresentation_Init: ; 0x02028778
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl FieldEffect_Init
@@ -17,5 +17,5 @@ func_02028778: ; 0x02028778
     str r1, [r4, #0x4]
     ldmia sp!, {r4, pc}
 .L_020287a0: .word data_020de838
-    .size func_02028778, . - func_02028778
+    .size MainWindowMaskPresentation_Init, . - MainWindowMaskPresentation_Init
 

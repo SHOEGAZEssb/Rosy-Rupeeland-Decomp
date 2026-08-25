@@ -9,7 +9,7 @@
     .extern IndexedSelectionController_SetValue
     .extern func_ov046_0220bffc
     .extern func_ov046_0220c478
-    .extern func_02027fe8
+    .extern AreaInfoPanelPresentation_Init
     .extern func_02091b98
     .extern func_ov006_021fb6e0
     .extern data_ov006_021fbc88
@@ -82,7 +82,7 @@ L_021fb794:
     beq L_021fb7f0
     ldr r1, L_021fb83c
     ldr r1, [r1, #0x0]
-    bl func_02027fe8
+    bl AreaInfoPanelPresentation_Init
 L_021fb7f0:
     str r0, [r4, #0x94]
     add r0, r4, #0x98

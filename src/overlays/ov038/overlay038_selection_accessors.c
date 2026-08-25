@@ -21,7 +21,7 @@ extern s32 func_ov046_0220c410(void *panel, s32 recordValue);
 extern void func_ov046_0220c46c(void *panel, s32 first, s32 second);
 extern void func_ov046_0220bffc(void *panel, s32 recordValue, s32 enabled,
                                 u16 secondaryValue);
-extern void func_02028100(void *label, s32 value);
+extern void AreaInfoPanelPresentation_ShowIndex(void *label, s32 value);
 extern void func_02091b98(void *timer, s32 ticks);
 #ifdef __cplusplus
 }
@@ -89,7 +89,7 @@ extern "C" void func_ov038_021fd578(void *presentation)
     func_ov046_0220c46c(panel, first, second);
     func_ov046_0220bffc(panel, primary, 1,
                         (u16)func_ov038_021fd540(presentation));
-    func_02028100(FIELD(void *, presentation, 0x344), primary);
+    AreaInfoPanelPresentation_ShowIndex(FIELD(void *, presentation, 0x344), primary);
     func_ov038_021fd624(presentation);
 }
 

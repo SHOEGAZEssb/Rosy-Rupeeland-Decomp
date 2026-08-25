@@ -4,12 +4,12 @@
 .extern data_020de804
 .extern gGamePhaseRuntime
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_02028544
+.extern MainBg1FollowPresentation_Init
 .extern gHeapContext
 
-    .global func_02028630
-    .type func_02028630, @function
-func_02028630: ; 0x02028630
+    .global MainBg1FollowPresentation_CreateAndRegister
+    .type MainBg1FollowPresentation_CreateAndRegister, @function
+MainBg1FollowPresentation_CreateAndRegister: ; 0x02028630
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_02028678
     mov r5, r0
@@ -23,7 +23,7 @@ func_02028630: ; 0x02028630
     movs r1, r0
     beq .L_0202866c
     mov r1, r5
-    bl func_02028544
+    bl MainBg1FollowPresentation_Init
     mov r1, r0
 .L_0202866c:
     add r0, r4, #0x2c00
@@ -32,5 +32,5 @@ func_02028630: ; 0x02028630
 .L_02028678: .word gGamePhaseRuntime
 .L_0202867c: .word data_020de804
 .L_02028680: .word gHeapContext
-    .size func_02028630, . - func_02028630
+    .size MainBg1FollowPresentation_CreateAndRegister, . - MainBg1FollowPresentation_CreateAndRegister
 

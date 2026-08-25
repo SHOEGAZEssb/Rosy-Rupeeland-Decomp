@@ -1,0 +1,8 @@
+{
+  "func_02028778": "MainWindowMaskPresentation_Init",
+  "func_020287a4": "MainWindowMaskPresentation_Destroy",
+  "func_020287b8": "MainWindowMaskPresentation_DestroyAndFree",
+  "func_020287d4": "MainWindowMaskPresentation_Update",
+  "func_020287dc": "MainWindowMaskPresentation_ApplyHardwareState",
+  "func_02028814": "MainWindowMaskPresentation_CreateAndRegister"
+}

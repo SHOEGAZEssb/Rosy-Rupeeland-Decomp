@@ -19,7 +19,7 @@ extern void *gSystemState;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02028100(void *, s32);
+extern void AreaInfoPanelPresentation_ShowIndex(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_020922f0(void *, s32);
 extern void func_02092314(void *, s32, s32);

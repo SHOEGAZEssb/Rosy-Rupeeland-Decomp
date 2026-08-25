@@ -6,7 +6,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_ov038_021fd40c
     .extern func_ov038_021fd508
-    .extern func_02028100
+    .extern AreaInfoPanelPresentation_ShowIndex
     .extern func_ov046_0220c3bc
     .extern func_ov046_0220c410
     .extern func_ov046_0220c46c
@@ -73,7 +73,7 @@ func_ov038_021fd6e0:
     bl func_ov038_021fd508
     mov r1, r0
     ldr r0, [r4, #0x344]
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     mov r0, r4
     bl func_ov038_021fd508
     mov r1, r0

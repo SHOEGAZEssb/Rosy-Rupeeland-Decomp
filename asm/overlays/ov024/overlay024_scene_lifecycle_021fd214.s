@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov024/overlay024_scene_lifecycle.c. */
 .extern __destroy_arr
 .extern data_ov024_021fe338
-.extern func_020280d8
+.extern AreaInfoPanelPresentation_Destroy
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_ov005_021fbb78
@@ -25,7 +25,7 @@ func_ov024_021fd214:
     cmp r5, #0x0
     beq L_021fd24c
     mov r0, r5
-    bl func_020280d8
+    bl AreaInfoPanelPresentation_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fd24c:

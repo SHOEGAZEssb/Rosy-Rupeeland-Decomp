@@ -9,8 +9,8 @@
     .extern func_02091c7c
     .extern func_02091b98
     .extern func_ov038_021fd508
-    .extern func_02028100
-    .extern func_0202836c
+    .extern AreaInfoPanelPresentation_ShowIndex
+    .extern AreaInfoPanelPresentation_Hide
     .extern GraphicsSpriteCanvas_FillRect
     .extern RecordDescriptor_BindById
     .extern GraphicsSpriteRenderer_SetFontResource
@@ -53,11 +53,11 @@ L_021fd39c:
     bl func_ov038_021fd508
     mov r1, r0
     ldr r0, [r4, #0x344]
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     ldmia sp!, {r4, pc}
 L_021fd400:
     ldr r0, [r4, #0x344]
-    bl func_0202836c
+    bl AreaInfoPanelPresentation_Hide
     ldmia sp!, {r4, pc}
     .size func_ov038_021fd37c, .-func_ov038_021fd37c
 

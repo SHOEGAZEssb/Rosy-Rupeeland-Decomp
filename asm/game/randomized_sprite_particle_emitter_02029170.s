@@ -2,9 +2,9 @@
 .text
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
-    .global func_02029170
-    .type func_02029170, @function
-func_02029170: ; 0x02029170
+    .global RandomizedSpriteParticleEmitter_SetVisible
+    .type RandomizedSpriteParticleEmitter_SetVisible, @function
+RandomizedSpriteParticleEmitter_SetVisible: ; 0x02029170
     stmdb sp!, {r3, lr}
     ldr r0, [r0, #0x4c]
     cmp r1, #0x0
@@ -13,5 +13,5 @@ func_02029170: ; 0x02029170
     ldmneia sp!, {r3, pc}
     bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r3, pc}
-    .size func_02029170, . - func_02029170
+    .size RandomizedSpriteParticleEmitter_SetVisible, . - RandomizedSpriteParticleEmitter_SetVisible
 

@@ -9,9 +9,9 @@
 .extern func_020adcac
 .extern func_020ae024
 
-    .global func_02028998
-    .type func_02028998, @function
-func_02028998: ; 0x02028998
+    .global RandomizedSpriteParticle_Update
+    .type RandomizedSpriteParticle_Update, @function
+RandomizedSpriteParticle_Update: ; 0x02028998
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x30
     mov r7, r0
@@ -144,5 +144,5 @@ func_02028998: ; 0x02028998
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02028b94: .word gFx32CosSinTable
-    .size func_02028998, . - func_02028998
+    .size RandomizedSpriteParticle_Update, . - RandomizedSpriteParticle_Update
 

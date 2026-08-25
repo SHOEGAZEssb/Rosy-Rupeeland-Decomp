@@ -3,9 +3,9 @@
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteGroup_ReleaseState
 
-    .global func_0202895c
-    .type func_0202895c, @function
-func_0202895c: ; 0x0202895c
+    .global RandomizedSpriteParticle_Destroy
+    .type RandomizedSpriteParticle_Destroy, @function
+RandomizedSpriteParticle_Destroy: ; 0x0202895c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x44]
@@ -21,5 +21,5 @@ func_0202895c: ; 0x0202895c
     bl VecFx32Object_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202895c, . - func_0202895c
+    .size RandomizedSpriteParticle_Destroy, . - RandomizedSpriteParticle_Destroy
 

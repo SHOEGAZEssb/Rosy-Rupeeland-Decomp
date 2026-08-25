@@ -28,8 +28,8 @@ extern void func_ov046_0220c1a4(void *panel);
 extern s32 func_02091c7c(void *timer, s32 event);
 extern void func_02091b98(void *timer, s32 ticks);
 extern const void *func_ov038_021fd508(void *presentation);
-extern void func_02028100(void *label, const void *text);
-extern void func_0202836c(void *label);
+extern void AreaInfoPanelPresentation_ShowIndex(void *label, const void *text);
+extern void AreaInfoPanelPresentation_Hide(void *label);
 extern void GraphicsSpriteCanvas_FillRect(void *renderer, s32 x, s32 y, s32 width,
                           s32 height, s32 value);
 extern void RecordDescriptor_BindById(Overlay038TextDescriptor *descriptor, u16 textId);
@@ -63,10 +63,10 @@ extern "C" void func_ov038_021fd37c(void *presentation)
     func_02091b98((u8 *)presentation + 0x348, 60);
     FIELD(s32, presentation, 0x364) = !FIELD(s32, presentation, 0x364);
     if (FIELD(s32, presentation, 0x364)) {
-        func_02028100(FIELD(void *, presentation, 0x344),
+        AreaInfoPanelPresentation_ShowIndex(FIELD(void *, presentation, 0x344),
                       func_ov038_021fd508(presentation));
     } else {
-        func_0202836c(FIELD(void *, presentation, 0x344));
+        AreaInfoPanelPresentation_Hide(FIELD(void *, presentation, 0x344));
     }
 }
 

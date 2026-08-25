@@ -20,9 +20,9 @@
 .extern gGameWork
 .extern gSystemState
 
-    .global func_02028100
-    .type func_02028100, @function
-func_02028100: ; 0x02028100
+    .global AreaInfoPanelPresentation_ShowIndex
+    .type AreaInfoPanelPresentation_ShowIndex, @function
+AreaInfoPanelPresentation_ShowIndex: ; 0x02028100
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -184,5 +184,5 @@ func_02028100: ; 0x02028100
 .L_02028360: .word data_020d7828
 .L_02028364: .word data_020c37e4
 .L_02028368: .word data_020d7a48
-    .size func_02028100, . - func_02028100
+    .size AreaInfoPanelPresentation_ShowIndex, . - AreaInfoPanelPresentation_ShowIndex
 

@@ -41,7 +41,7 @@ extern "C" void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
 extern "C" s32 func_ov046_0220b740(s32 selector);
 extern "C" s32 func_ov046_0220b77c(s32 selector);
 extern "C" void *func_ov046_0220b7bc(void *panel, void *font, s32 mode);
-extern "C" void *func_02027fe8(void *object, void *font);
+extern "C" void *AreaInfoPanelPresentation_Init(void *object, void *font);
 
 /*
  * Install callback `callback` and argument `argument` at scene +0x24/+0x28,
@@ -130,7 +130,7 @@ extern "C" void *func_ov046_0220c7d8(void *scene, s32 selection)
 
     auxiliary = Heap_Alloc(0x3c, data_ov046_0220cf44, 4, gHeapContext);
     if (auxiliary != 0) {
-        auxiliary = func_02027fe8(auxiliary, gDebugFont);
+        auxiliary = AreaInfoPanelPresentation_Init(auxiliary, gDebugFont);
     }
     FIELD(void *, scene, 0x74) = auxiliary;
     FIELD(u32, scene, 0x20) |= 0x400;

@@ -18,7 +18,7 @@ extern s32 func_ov046_0220c3bc(void *helper, s32 key);
 extern s32 func_ov046_0220c410(void *helper, s32 key);
 extern s32 Presentation_InterpolateLinear(s32 first, s32 second, s32 progress, s32 duration);
 extern void func_ov046_0220c46c(void *helper, s32 first, s32 second);
-extern void func_02028100(void *auxiliary, void *controllerMember);
+extern void AreaInfoPanelPresentation_ShowIndex(void *auxiliary, void *controllerMember);
 extern void func_ov046_0220bffc(void *helper, s32 controllerMember,
                                s32 first, s32 second);
 extern void func_02091b98(void *animation, s32 value);
@@ -32,7 +32,7 @@ extern void func_02091b98(void *animation, s32 value);
  * and two second values through Presentation_InterpolateLinear using +0x7C/+0x80, then submit
  * them through func_ov046_0220c46c. If +0x80 is not equal to +0x7C divided by
  * two with truncation toward zero, return. At equality, bind auxiliary +0x94
- * to +0x64 through func_02028100, reset helper +0x90 against +0x64 with zero
+ * to +0x64 through AreaInfoPanelPresentation_ShowIndex, reset helper +0x90 against +0x64 with zero
  * trailing values, submit 0x78 to animation +0x98, and set +0xB4 to one.
  * Observable geometry/UI effects are delegated; key and coordinate semantics
  * remain inferred while the call graph and arithmetic are confirmed.
@@ -60,7 +60,7 @@ void func_ov006_021fb9b4(Overlay006GeometryState *state)
     if (FIELD(s32, state, 0x080) != FIELD(s32, state, 0x07c) / 2) {
         return;
     }
-    func_02028100(FIELD(void *, state, 0x094),
+    AreaInfoPanelPresentation_ShowIndex(FIELD(void *, state, 0x094),
                    FIELD(void *, state, 0x064));
     func_ov046_0220bffc(helper, FIELD(s32, state, 0x064), 0, 0);
     func_02091b98((u8 *)state + 0x98, 0x78);

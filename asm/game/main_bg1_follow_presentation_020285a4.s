@@ -7,9 +7,9 @@
 .extern ActorMotionState_BuildOscillationOffset
 .extern ActorMotionAreaFollower_GetPosition
 
-    .global func_020285a4
-    .type func_020285a4, @function
-func_020285a4: ; 0x020285a4
+    .global MainBg1FollowPresentation_Update
+    .type MainBg1FollowPresentation_Update, @function
+MainBg1FollowPresentation_Update: ; 0x020285a4
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x20
     mov r4, r0
@@ -45,5 +45,5 @@ func_020285a4: ; 0x020285a4
     mov r0, #0x0
     add sp, sp, #0x20
     ldmia sp!, {r4, pc}
-    .size func_020285a4, . - func_020285a4
+    .size MainBg1FollowPresentation_Update, . - MainBg1FollowPresentation_Update
 

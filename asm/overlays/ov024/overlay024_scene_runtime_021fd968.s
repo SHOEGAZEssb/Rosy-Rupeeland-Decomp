@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov024/overlay024_scene_runtime.c. */
 .extern data_ov024_021fe1e4
-.extern func_02028100
+.extern AreaInfoPanelPresentation_ShowIndex
 .extern Presentation_InterpolateLinear
 .extern func_02091b98
 .extern func_ov002_021fbd64
@@ -82,7 +82,7 @@ func_ov024_021fd968:
     bl func_ov024_021fd8f8
     ldr r0, [r6, #0x2c4]
     mov r1, r4
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     mov r2, #0x0
     ldr r0, [r6, #0x2c0]
     mov r1, r4

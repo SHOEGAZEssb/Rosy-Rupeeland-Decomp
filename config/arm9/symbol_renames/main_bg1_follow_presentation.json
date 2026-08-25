@@ -1,0 +1,9 @@
+{
+  "func_02028544": "MainBg1FollowPresentation_Init",
+  "func_02028574": "MainBg1FollowPresentation_Destroy",
+  "func_02028588": "MainBg1FollowPresentation_DestroyAndFree",
+  "func_020285a4": "MainBg1FollowPresentation_Update",
+  "func_02028630": "MainBg1FollowPresentation_CreateAndRegister",
+  "func_02028684": "MainBg1FollowPresentation_SetupBg1Resources",
+  "func_02028764": "MainBg1FollowPresentation_ResetBg1ResourcesIfNeeded"
+}

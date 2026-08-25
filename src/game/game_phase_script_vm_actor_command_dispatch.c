@@ -37,11 +37,11 @@ extern void *func_ov054_0220ef78(...);
 extern void *func_ov073_02210710(...);
 extern void RuntimePresentationManager_AppendFirstListEffect(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
-extern void func_02028630(...);
+extern void MainBg1FollowPresentation_CreateAndRegister(...);
 extern u32 DirectSpriteTrackPresentation_SpawnAndRegister(...);
 extern void BallisticSpriteEmitter_SpawnAndRegister(...);
-extern void func_02028814(...);
-extern void func_0202906c(...);
+extern void MainWindowMaskPresentation_CreateAndRegister(...);
+extern void RandomizedSpriteParticleEmitter_CreateAndRegister(...);
 extern u32 func_020beb18(s32 value);
 extern u32 func_020be8c0(u32 first, u32 second);
 extern u32 func_020beb6c(u32 first, u32 second);
@@ -333,7 +333,7 @@ s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
         Graphics3dPresentation_CreatePreset32CenteredAreaSpriteEffect(getScriptGraphics3dPresentation(), a1, a2, a3, a4, a5);
         break;
     case 26:
-        func_02028630(getScriptEffectContext());
+        MainBg1FollowPresentation_CreateAndRegister(getScriptEffectContext());
         break;
     case 27:
         Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
@@ -381,10 +381,10 @@ s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
         func_ov053_0220da0c((u16)a1);
         break;
     case 37:
-        func_02028814();
+        MainWindowMaskPresentation_CreateAndRegister();
         break;
     case 38:
-        func_0202906c(getScriptEffectContext(), a1, a2, a3, a4, a5);
+        RandomizedSpriteParticleEmitter_CreateAndRegister(getScriptEffectContext(), a1, a2, a3, a4, a5);
         break;
     case 0:
     case 2:

@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/randomized_sprite_particle_emitter.c.
 .text
 .extern Heap_Free
-.extern func_02028cd4
+.extern RandomizedSpriteParticleList_Clear
 
-    .global func_02028e9c
-    .type func_02028e9c, @function
-func_02028e9c: ; 0x02028e9c
+    .global RandomizedSpriteParticleList_RemoveNode
+    .type RandomizedSpriteParticleList_RemoveNode, @function
+RandomizedSpriteParticleList_RemoveNode: ; 0x02028e9c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -31,7 +31,7 @@ func_02028e9c: ; 0x02028e9c
     str r0, [r4, #0xc]
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_02028cd4
+    bl RandomizedSpriteParticleList_Clear
     ldmia sp!, {r4, pc}
-    .size func_02028e9c, . - func_02028e9c
+    .size RandomizedSpriteParticleList_RemoveNode, . - RandomizedSpriteParticleList_RemoveNode
 

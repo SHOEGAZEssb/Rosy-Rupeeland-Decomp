@@ -22,7 +22,7 @@ extern u8 *gGamePhaseRuntime;
 extern void RuntimePresentationManager_AppendSecondListEffect(void *, void *);
 
 /* Initialize the presentation, install its vtable, and set FieldEffect dispatch-state bit 1. */
-MainWindowMaskPresentation *func_02028778(MainWindowMaskPresentation *self)
+MainWindowMaskPresentation *MainWindowMaskPresentation_Init(MainWindowMaskPresentation *self)
 {
     FieldEffect_Init(self);
     self->vtable_00 = (void **)data_020de838;
@@ -31,14 +31,14 @@ MainWindowMaskPresentation *func_02028778(MainWindowMaskPresentation *self)
 }
 
 /* Tear down the FieldEffect base and return self. */
-MainWindowMaskPresentation *func_020287a4(MainWindowMaskPresentation *self)
+MainWindowMaskPresentation *MainWindowMaskPresentation_Destroy(MainWindowMaskPresentation *self)
 {
     FieldEffect_DestroyBase(self);
     return self;
 }
 
 /* Tear down, free the presentation, and return its old address. */
-MainWindowMaskPresentation *func_020287b8(MainWindowMaskPresentation *self)
+MainWindowMaskPresentation *MainWindowMaskPresentation_DestroyAndFree(MainWindowMaskPresentation *self)
 {
     FieldEffect_DestroyBase(self);
     Heap_Free(self);
@@ -46,7 +46,7 @@ MainWindowMaskPresentation *func_020287b8(MainWindowMaskPresentation *self)
 }
 
 /* Perform no per-frame state change and return zero to remain active. */
-s32 func_020287d4(MainWindowMaskPresentation *self)
+s32 MainWindowMaskPresentation_Update(MainWindowMaskPresentation *self)
 {
     (void)self;
     return 0;
@@ -56,7 +56,7 @@ s32 func_020287d4(MainWindowMaskPresentation *self)
  * Replace DISPCNT bits 13..15 with bit 15, then set WINOUT's outside-window
  * plane mask to 0x3f and OBJ-window plane mask to 0x1d.
  */
-void func_020287dc(void)
+void MainWindowMaskPresentation_ApplyHardwareState(void)
 {
     u32 display = *(volatile u32 *)0x04000000;
     u16 winout;
@@ -69,7 +69,7 @@ void func_020287dc(void)
 }
 
 /* Allocate an eight-byte instance and enqueue it at global offset 0x2f7c. */
-void func_02028814(void)
+void MainWindowMaskPresentation_CreateAndRegister(void)
 {
     void *manager = gGamePhaseRuntime + 0x2f7c;
     MainWindowMaskPresentation *self =
@@ -77,7 +77,7 @@ void func_02028814(void)
             sizeof(MainWindowMaskPresentation), data_020de858, 4,
             &gHeapContext);
     if (self)
-        self = func_02028778(self);
+        self = MainWindowMaskPresentation_Init(self);
     RuntimePresentationManager_AppendSecondListEffect(manager, self);
 }
 

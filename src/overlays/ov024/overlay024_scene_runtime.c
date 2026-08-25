@@ -11,8 +11,8 @@ extern const s32 data_ov024_021fe254[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02028100(void *, s32);
-extern void func_0202836c(void *);
+extern void AreaInfoPanelPresentation_ShowIndex(void *, s32);
+extern void AreaInfoPanelPresentation_Hide(void *);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
@@ -52,10 +52,10 @@ extern "C" void func_ov024_021fd86c(void *scene)
         func_02091b98((u8 *)scene + 0x2c8, 60);
         FIELD(s32, scene, 0x2e4) = !FIELD(s32, scene, 0x2e4);
         if (FIELD(s32, scene, 0x2e4))
-            func_02028100(FIELD(void *, scene, 0x2c4),
+            AreaInfoPanelPresentation_ShowIndex(FIELD(void *, scene, 0x2c4),
                           FIELD(s32, scene, 0x290));
         else
-            func_0202836c(FIELD(void *, scene, 0x2c4));
+            AreaInfoPanelPresentation_Hide(FIELD(void *, scene, 0x2c4));
     }
 }
 
@@ -117,7 +117,7 @@ extern "C" void func_ov024_021fd968(void *scene)
 
     if (progress == (duration + (u32)duration / 0x80000000u) / 2) {
         func_ov024_021fd8f8(scene, selection);
-        func_02028100(FIELD(void *, scene, 0x2c4), selection);
+        AreaInfoPanelPresentation_ShowIndex(FIELD(void *, scene, 0x2c4), selection);
         func_ov046_0220bffc(panel, selection, 0, 0);
         func_ov005_021fbd74(FIELD(void *, scene, 0x2bc), selection);
         func_02091b98((u8 *)scene + 0x2c8, 120);

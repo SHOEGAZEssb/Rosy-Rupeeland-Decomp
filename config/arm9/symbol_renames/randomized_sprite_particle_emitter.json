@@ -1,0 +1,13 @@
+{
+  "func_02028b98": "RandomizedSpriteParticleEmitter_Init",
+  "func_02028c94": "RandomizedSpriteParticleList_Init",
+  "func_02028cb4": "RandomizedSpriteParticleList_Destroy",
+  "func_02028cd4": "RandomizedSpriteParticleList_Clear",
+  "func_02028d14": "RandomizedSpriteParticleEmitter_Destroy",
+  "func_02028dd4": "RandomizedSpriteParticleEmitter_DestroyAndFree",
+  "func_02028e9c": "RandomizedSpriteParticleList_RemoveNode",
+  "func_02028f04": "RandomizedSpriteParticleEmitter_Update",
+  "func_0202906c": "RandomizedSpriteParticleEmitter_CreateAndRegister",
+  "func_02029170": "RandomizedSpriteParticleEmitter_SetVisible",
+  "func_02029190": "RandomizedSpriteParticleList_DestroyAndFree"
+}

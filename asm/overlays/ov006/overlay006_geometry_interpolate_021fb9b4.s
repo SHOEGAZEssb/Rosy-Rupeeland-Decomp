@@ -3,7 +3,7 @@
     .extern func_ov046_0220c410
     .extern Presentation_InterpolateLinear
     .extern func_ov046_0220c46c
-    .extern func_02028100
+    .extern AreaInfoPanelPresentation_ShowIndex
     .extern func_ov046_0220bffc
     .extern func_02091b98
 
@@ -53,7 +53,7 @@ func_ov006_021fb9b4: ; 0x021fb9b4
     ldmneia sp!, {r4, r5, r6, r7, r8, pc}
     ldr r0, [r5, #0x94]
     mov r1, r4
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     mov r2, #0x0
     ldr r0, [r5, #0x90]
     mov r1, r4

@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_020287dc
-    .type func_020287dc, @function
-func_020287dc: ; 0x020287dc
+    .global MainWindowMaskPresentation_ApplyHardwareState
+    .type MainWindowMaskPresentation_ApplyHardwareState, @function
+MainWindowMaskPresentation_ApplyHardwareState: ; 0x020287dc
     mov r1, #0x4000000
     ldr r0, [r1, #0x0]
     bic r0, r0, #0xe000
@@ -19,5 +19,5 @@ func_020287dc: ; 0x020287dc
     orr r0, r0, #0x3f
     strh r0, [r1, #0x4a]
     bx lr
-    .size func_020287dc, . - func_020287dc
+    .size MainWindowMaskPresentation_ApplyHardwareState, . - MainWindowMaskPresentation_ApplyHardwareState
 

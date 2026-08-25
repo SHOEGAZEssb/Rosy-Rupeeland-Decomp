@@ -1,6 +1,6 @@
     .text
     .extern func_ov006_021fb9b4
-    .extern func_02028100
+    .extern AreaInfoPanelPresentation_ShowIndex
     .extern func_ov006_021fb6e0
     .extern data_ov006_021fbc48
 
@@ -20,7 +20,7 @@ L_021fbaac:
     bl func_ov006_021fb9b4
     ldr r0, [r4, #0x94]
     ldr r1, [r4, #0x64]
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

@@ -18,7 +18,7 @@ typedef struct Overlay006Presentation {
 extern "C" {
 #endif
 extern const u8 data_ov006_021fbc88[];
-extern void func_020280d8(void *object);
+extern void AreaInfoPanelPresentation_Destroy(void *object);
 extern void func_ov046_0220ba80(void *object);
 extern void Heap_Free(void *memory);
 #ifdef __cplusplus
@@ -27,7 +27,7 @@ extern void Heap_Free(void *memory);
 
 /*
  * Restore data_ov006_021fbc88 as the vtable and clear +0x20 bit 10. For the
- * non-null auxiliary at +0x94, call func_020280d8 then Heap_Free; for the
+ * non-null auxiliary at +0x94, call AreaInfoPanelPresentation_Destroy then Heap_Free; for the
  * non-null overlay-46 helper at +0x90, call func_ov046_0220ba80 then Heap_Free.
  * Clear sub BLDCNT halfword 0x04001050 and bits 13..15 of main DISPCNT
  * 0x04000000, then return state without freeing it. Ownership and MMIO effects
@@ -44,7 +44,7 @@ Overlay006Presentation *func_ov006_021fb848(Overlay006Presentation *state)
     state->flags_020 &= ~0x400;
     object = state->auxiliary_094;
     if (object != 0) {
-        func_020280d8(object);
+        AreaInfoPanelPresentation_Destroy(object);
         Heap_Free(object);
     }
     object = state->overlay46Helper_090;

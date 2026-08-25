@@ -2,13 +2,13 @@
 .text
 .extern FieldEffect_DestroyBase
 
-    .global func_020287a4
-    .type func_020287a4, @function
-func_020287a4: ; 0x020287a4
+    .global MainWindowMaskPresentation_Destroy
+    .type MainWindowMaskPresentation_Destroy, @function
+MainWindowMaskPresentation_Destroy: ; 0x020287a4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl FieldEffect_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_020287a4, . - func_020287a4
+    .size MainWindowMaskPresentation_Destroy, . - MainWindowMaskPresentation_Destroy
 

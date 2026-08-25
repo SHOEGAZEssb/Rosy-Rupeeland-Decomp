@@ -1,7 +1,7 @@
     .text
     .extern GameWork_TestFlag
     .extern func_ov005_021fbe1c
-    .extern func_02028100
+    .extern AreaInfoPanelPresentation_ShowIndex
     .extern Presentation_SetScript
     .extern PresentationScalar_TransitionTo
     .extern Presentation_InterpolateScalar
@@ -42,7 +42,7 @@ L_021fc670:
     bl func_ov005_021fbe1c
     ldr r0, [r4, #0x78]
     ldr r1, [r4, #0x68]
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

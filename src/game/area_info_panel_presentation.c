@@ -58,7 +58,7 @@ extern s32 func_020befec(s32, s32);
  * IDs 0x3326..0x3328, create/configure two sprites, retain the primary sprite,
  * and leave the owner hidden. The supplied UI context is not owned.
  */
-AreaInfoPanelPresentation *func_02027fe8(AreaInfoPanelPresentation *self,
+AreaInfoPanelPresentation *AreaInfoPanelPresentation_Init(AreaInfoPanelPresentation *self,
                                          void *uiContext)
 {
     u8 *secondary;
@@ -80,7 +80,7 @@ AreaInfoPanelPresentation *func_02027fe8(AreaInfoPanelPresentation *self,
 }
 
 /* Destroy the sprite owner, resource triplet, and panel base; return self. */
-AreaInfoPanelPresentation *func_020280d8(AreaInfoPanelPresentation *self)
+AreaInfoPanelPresentation *AreaInfoPanelPresentation_Destroy(AreaInfoPanelPresentation *self)
 {
     GraphicsSpriteGroup_Destroy(self->spriteOwner_34);
     AnimationResourceState_Destroy(self->resources_24);
@@ -94,7 +94,7 @@ AreaInfoPanelPresentation *func_020280d8(AreaInfoPanelPresentation *self)
  * draws either a fixed flag-dependent notice or the percentage of matching
  * 0x24-byte records whose GameWork byte at 0x5e94 is set.
  */
-void func_02028100(AreaInfoPanelPresentation *self, s32 index)
+void AreaInfoPanelPresentation_ShowIndex(AreaInfoPanelPresentation *self, s32 index)
 {
     const u16 *text;
     s32 stride34 = index * 0x34;
@@ -143,7 +143,7 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
 }
 
 /* Clear the UI context and hide the panel's sprite owner. */
-void func_0202836c(AreaInfoPanelPresentation *self)
+void AreaInfoPanelPresentation_Hide(AreaInfoPanelPresentation *self)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(self->uiContext_30);
     GraphicsSpriteGroup_ReleaseIndexedEntries(self->spriteOwner_34);

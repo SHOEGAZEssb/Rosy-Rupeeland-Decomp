@@ -43,28 +43,28 @@ extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void func_020b44e8(void);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void PaletteBuffer_Write(void *, const void *, s32, s32);
-void func_02028684(MainBg1FollowPresentation *);
+void MainBg1FollowPresentation_SetupBg1Resources(MainBg1FollowPresentation *);
 
 /* Initialize the FieldEffect base, retain the target, install its vtable, and set up BG1. */
-MainBg1FollowPresentation *func_02028544(MainBg1FollowPresentation *self,
+MainBg1FollowPresentation *MainBg1FollowPresentation_Init(MainBg1FollowPresentation *self,
                                          void *target)
 {
     FieldEffect_Init(self);
     self->vtable_00 = (void **)data_020de7e4;
     self->target_08 = (u8 *)target;
-    func_02028684(self);
+    MainBg1FollowPresentation_SetupBg1Resources(self);
     return self;
 }
 
 /* Tear down the FieldEffect base and return self; the target is borrowed. */
-MainBg1FollowPresentation *func_02028574(MainBg1FollowPresentation *self)
+MainBg1FollowPresentation *MainBg1FollowPresentation_Destroy(MainBg1FollowPresentation *self)
 {
     FieldEffect_DestroyBase(self);
     return self;
 }
 
 /* Tear down, free the presentation, and return its old address. */
-MainBg1FollowPresentation *func_02028588(MainBg1FollowPresentation *self)
+MainBg1FollowPresentation *MainBg1FollowPresentation_DestroyAndFree(MainBg1FollowPresentation *self)
 {
     FieldEffect_DestroyBase(self);
     Heap_Free(self);
@@ -76,7 +76,7 @@ MainBg1FollowPresentation *func_02028588(MainBg1FollowPresentation *self)
  * offset-0x44 vector into the same space, subtract it, and publish integer
  * FX32 coordinates to main BG1 scroll. Return zero to keep the worker active.
  */
-s32 func_020285a4(MainBg1FollowPresentation *self)
+s32 MainBg1FollowPresentation_Update(MainBg1FollowPresentation *self)
 {
     s32 sampled[4];
     s32 transformed[4];
@@ -92,7 +92,7 @@ s32 func_020285a4(MainBg1FollowPresentation *self)
 }
 
 /* Allocate/construct a 0x0c-byte follower and enqueue it at global offset 0x2f7c. */
-void func_02028630(void *target)
+void MainBg1FollowPresentation_CreateAndRegister(void *target)
 {
     void *manager = gGamePhaseRuntime + 0x2f7c;
     MainBg1FollowPresentation *self =
@@ -100,7 +100,7 @@ void func_02028630(void *target)
             sizeof(MainBg1FollowPresentation), data_020de804, 4,
             &gHeapContext);
     if (self)
-        self = func_02028544(self, target);
+        self = MainBg1FollowPresentation_Init(self, target);
     RuntimePresentationManager_AppendFirstListEffect(manager, self);
 }
 
@@ -109,7 +109,7 @@ void func_02028630(void *target)
  * transfer its palette to offset 0x1e0, select BG1 character/screen settings
  * through REG_BG1CNT, force display BG mode two, and release the temporary set.
  */
-void func_02028684(MainBg1FollowPresentation *self)
+void MainBg1FollowPresentation_SetupBg1Resources(MainBg1FollowPresentation *self)
 {
     const BgResourceRecord *record =
         (const BgResourceRecord *)GamePhaseGraphicsMetadata_GetByIndex(10);
@@ -137,10 +137,10 @@ void func_02028684(MainBg1FollowPresentation *self)
 }
 
 /* Reinstall BG resources unless callback mode one indicates no reset is needed. */
-void func_02028764(MainBg1FollowPresentation *self, s32 mode)
+void MainBg1FollowPresentation_ResetBg1ResourcesIfNeeded(MainBg1FollowPresentation *self, s32 mode)
 {
     if (mode != 1)
-        func_02028684(self);
+        MainBg1FollowPresentation_SetupBg1Resources(self);
 }
 
 #ifdef __cplusplus

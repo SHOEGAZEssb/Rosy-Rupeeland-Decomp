@@ -22,7 +22,7 @@ extern "C" {
 #endif
 extern const s32 data_ov006_021fbc48[2];
 extern void func_ov006_021fb9b4(void *state);
-extern void func_02028100(void *auxiliary, void *controllerMember);
+extern void AreaInfoPanelPresentation_ShowIndex(void *auxiliary, void *controllerMember);
 extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 }
@@ -30,7 +30,7 @@ extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
 
 /*
  * In phase zero, call func_ov006_021fb9b4, bind auxiliary_094 to
- * controllerMember_064 through func_02028100, advance phase, clear timer_008,
+ * controllerMember_064 through AreaInfoPanelPresentation_ShowIndex, advance phase, clear timer_008,
  * and intentionally fall through. In phase one, force flags_020 bit 0 to one
  * and initialize the transition from data_ov006_021fbc48. Other phases do
  * nothing. Return zero. Geometry and auxiliary effects are delegated; the
@@ -44,7 +44,7 @@ s32 func_ov006_021fba8c(Overlay006TransitionPrepareState *state)
     switch (state->phase_004) {
     case 0:
         func_ov006_021fb9b4(state);
-        func_02028100(state->auxiliary_094, state->controllerMember_064);
+        AreaInfoPanelPresentation_ShowIndex(state->auxiliary_094, state->controllerMember_064);
         state->phase_004++;
         state->timer_008 = 0;
         /* Intentional same-frame fallthrough into phase one. */

@@ -1,8 +1,8 @@
 .text
 
 /* Exact fallback; see src/overlays/ov024/overlay024_scene_runtime.c. */
-.extern func_02028100
-.extern func_0202836c
+.extern AreaInfoPanelPresentation_ShowIndex
+.extern AreaInfoPanelPresentation_Hide
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_02091b98
 .extern func_02091c7c
@@ -44,10 +44,10 @@ func_ov024_021fd86c:
     ldr r0, [r4, #0x2c4]
     beq L_021fd8f0
     ldr r1, [r4, #0x290]
-    bl func_02028100
+    bl AreaInfoPanelPresentation_ShowIndex
     ldmia sp!, {r4, pc}
 L_021fd8f0:
-    bl func_0202836c
+    bl AreaInfoPanelPresentation_Hide
     ldmia sp!, {r4, pc}
 .size func_ov024_021fd86c, .-func_ov024_021fd86c
 

@@ -12,9 +12,9 @@
 .extern func_02072048
 .extern func_020b44e8
 
-    .global func_02028684
-    .type func_02028684, @function
-func_02028684: ; 0x02028684
+    .global MainBg1FollowPresentation_SetupBg1Resources
+    .type MainBg1FollowPresentation_SetupBg1Resources, @function
+MainBg1FollowPresentation_SetupBg1Resources: ; 0x02028684
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r0, #0xa
@@ -71,5 +71,5 @@ func_02028684: ; 0x02028684
 .L_02028758: .word data_020f4e18
 .L_0202875c: .word 0x400000a
 .L_02028760: .word gMainBgPaletteBuffer
-    .size func_02028684, . - func_02028684
+    .size MainBg1FollowPresentation_SetupBg1Resources, . - MainBg1FollowPresentation_SetupBg1Resources
 

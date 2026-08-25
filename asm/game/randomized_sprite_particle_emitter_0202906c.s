@@ -7,12 +7,12 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_02028b98
+.extern RandomizedSpriteParticleEmitter_Init
 .extern gHeapContext
 
-    .global func_0202906c
-    .type func_0202906c, @function
-func_0202906c: ; 0x0202906c
+    .global RandomizedSpriteParticleEmitter_CreateAndRegister
+    .type RandomizedSpriteParticleEmitter_CreateAndRegister, @function
+RandomizedSpriteParticleEmitter_CreateAndRegister: ; 0x0202906c
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x44
     mov r7, r0
@@ -51,7 +51,7 @@ func_0202906c: ; 0x0202906c
     mov r0, r4
     mov r1, r7
     mov r6, r5
-    bl func_02028b98
+    bl RandomizedSpriteParticleEmitter_Init
     mov r4, r0
 .L_0202910c:
     ldr r0, .L_0202916c
@@ -81,5 +81,5 @@ func_0202906c: ; 0x0202906c
 .L_02029164: .word gRandomizedSpriteParticleEmitterAllocationTag
 .L_02029168: .word gHeapContext
 .L_0202916c: .word gGamePhaseRuntime
-    .size func_0202906c, . - func_0202906c
+    .size RandomizedSpriteParticleEmitter_CreateAndRegister, . - RandomizedSpriteParticleEmitter_CreateAndRegister
 
