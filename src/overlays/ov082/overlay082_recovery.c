@@ -59,7 +59,7 @@ extern "C" void *ActorMotionAreaFollower_GetPosition(void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(void *);
-extern "C" void *func_02022cb0(void *, const void *, void *, s32, s32, s32);
+extern "C" void *SpriteNumberMotionPresentation_Init(void *, const void *, void *, s32, s32, s32);
 extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern "C" s32 Actor_GetGravityAcceleration(void *);
 extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
@@ -498,7 +498,7 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
                     void *p =
                         Heap_Alloc(0x44, data_ov082_02214aa4, 4, gHeapContext);
                     if (p)
-                        p = func_02022cb0(p,
+                        p = SpriteNumberMotionPresentation_Init(p,
                                           ActorMotionAreaFollower_GetPosition(
                                               (u8 *)gGamePhaseRuntime + 0x2fbc),
                                           other, -amount, 0x2000, -0xc0);

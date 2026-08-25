@@ -7,7 +7,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
 .extern ActorDerivedType1_StartRecord
@@ -70,7 +70,7 @@ ActorDerivedType1_DispatchInteractionAmount: ; 0x020398a4
     str ip, [sp, #0x0]
     sub r4, ip, #0x20c0
     str r4, [sp, #0x4]
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r5, r0
 .L_02039974:
     ldr r0, .L_02039a48

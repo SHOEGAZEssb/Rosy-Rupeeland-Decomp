@@ -22,9 +22,9 @@
 .extern VecFx32Object_InitPlanarProjection
 .extern gHeapContext
 
-.global func_02022cb0
-    .type func_02022cb0, @function
-func_02022cb0: ; 0x02022cb0
+.global SpriteNumberMotionPresentation_Init
+    .type SpriteNumberMotionPresentation_Init, @function
+SpriteNumberMotionPresentation_Init: ; 0x02022cb0
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x60
     mov r4, r0
@@ -141,4 +141,4 @@ func_02022cb0: ; 0x02022cb0
 .L_02022e64: .word data_020d6658
 .L_02022e68: .word gHeapContext
 .L_02022e6c: .word gSpriteNumberGroupAllocationTag
-    .size func_02022cb0, .-func_02022cb0
+    .size SpriteNumberMotionPresentation_Init, .-SpriteNumberMotionPresentation_Init

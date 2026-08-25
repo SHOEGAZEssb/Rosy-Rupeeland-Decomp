@@ -15,7 +15,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern VecFx32Object_DivideByScalar
@@ -326,7 +326,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldr r2, [r0, #0xea4]
     mov r0, r4
     mov r3, r5
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r4, r0
 .L_020386e4:
     ldr r0, .L_02038774

@@ -7,7 +7,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
 .extern gGamePhaseCurrencyHud
@@ -69,7 +69,7 @@ ActorDerivedType1_TryApplyInteractionAmount: ; 0x02039a54
     str ip, [sp, #0x0]
     sub r4, ip, #0x20c0
     str r4, [sp, #0x4]
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r5, r0
 .L_02039b2c:
     ldr r0, .L_02039b90

@@ -27,7 +27,7 @@
 .extern TimedSpriteBurstManager_Init
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern DirectSpriteTrackPresentation_SpawnAndRegister
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern func_02022ff4
 .extern func_02023434
 .extern func_02023ed4
@@ -212,7 +212,7 @@ L_02014570:
     ldr r2, [r0, #0xea4]
     mov r0, r4
     mov r3, r9
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r4, r0
 L_020145cc:
     ldr r0, L_020154d0

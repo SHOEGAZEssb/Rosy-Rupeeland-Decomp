@@ -47,7 +47,7 @@ extern void SpriteNumberGroup_SetVisible(void *,s32);
  * the two stack inputs, negating both when initial Y is at most 0x40; clear the
  * timer, destroy temporaries, and return self.
  */
-SpriteNumberMotionPresentation *func_02022cb0(
+SpriteNumberMotionPresentation *SpriteNumberMotionPresentation_Init(
     SpriteNumberMotionPresentation *self,s32 sampleArgument,const u8 *config,
     s32 value,s32 firstOffset,s32 secondOffset)
 {
@@ -82,11 +82,11 @@ static SpriteNumberMotionPresentation *teardown_number_motion(SpriteNumberMotion
 }
 
 /* Destroy/free the number group and all three tracks, tear down base, and return self. */
-SpriteNumberMotionPresentation *func_02022e70(SpriteNumberMotionPresentation *self)
+SpriteNumberMotionPresentation *SpriteNumberMotionPresentation_Destroy(SpriteNumberMotionPresentation *self)
 { return teardown_number_motion(self); }
 
-/* Perform func_02022e70 teardown, free self, and return its old address. */
-SpriteNumberMotionPresentation *func_02022ec8(SpriteNumberMotionPresentation *self)
+/* Perform SpriteNumberMotionPresentation_Destroy teardown, free self, and return its old address. */
+SpriteNumberMotionPresentation *SpriteNumberMotionPresentation_DestroyAndFree(SpriteNumberMotionPresentation *self)
 { teardown_number_motion(self);Heap_Free(self);return self; }
 
 /*
@@ -94,7 +94,7 @@ SpriteNumberMotionPresentation *func_02022ec8(SpriteNumberMotionPresentation *se
  * first offset into the base track and the second into the first offset, advance
  * timer, destroy the temporary, and return whether 60 frames have elapsed.
  */
-s32 func_02022f28(SpriteNumberMotionPresentation *self)
+s32 SpriteNumberMotionPresentation_Update(SpriteNumberMotionPresentation *self)
 {
     TrackValue sampled,position;
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);

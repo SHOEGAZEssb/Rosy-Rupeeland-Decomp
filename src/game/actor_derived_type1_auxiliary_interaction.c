@@ -117,7 +117,7 @@ extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
 extern s32 ActorAttachmentManager_Update(void *manager);
 extern void *ActorAttachmentManager_GetEventQueue(void *manager);
 extern void AuxiliaryInteraction_FinalizeResult(void *resource, s32 index);
-extern void *func_02022cb0(void *allocation, const void *camera, void *owner,
+extern void *SpriteNumberMotionPresentation_Init(void *allocation, const void *camera, void *owner,
                            s32 velocity, s32 scale, s32 offset);
 extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *entry);
 extern void AuxiliaryCore_ApplyScale(void *core, s32 value, s32 index);
@@ -2238,7 +2238,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
             if (event[0] == 1 && event[1] != 0) {
                 void *effect = Heap_Alloc(0x44, data_020e5828, 4, &gHeapContext);
                 if (effect != 0)
-                    effect = func_02022cb0(
+                    effect = SpriteNumberMotionPresentation_Init(
                         effect,
                         ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc),
                         owner, -event[1], 0x2000, -0xc0);

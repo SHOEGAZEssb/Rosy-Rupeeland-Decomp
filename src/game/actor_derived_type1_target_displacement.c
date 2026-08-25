@@ -29,7 +29,7 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Init(void *vector);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
-extern void *func_02022cb0(void *allocation, void *resource, void *owner,
+extern void *SpriteNumberMotionPresentation_Init(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
 extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *object);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
@@ -182,7 +182,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             if (object != 0) {
                 void *managerResource =
                     ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
-                object = func_02022cb0(object, managerResource,
+                object = SpriteNumberMotionPresentation_Init(object, managerResource,
                                       *(void **)(gGamePhaseRuntime + 0x2ea4),
                                       negative, 0x2000, -0xc0);
             }

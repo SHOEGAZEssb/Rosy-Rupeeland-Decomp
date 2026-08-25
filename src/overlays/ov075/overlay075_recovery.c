@@ -102,7 +102,7 @@ EXT(Actor_TurnTowardVector);
 EXT(Actor_TurnTowardTargetPosition);
 EXT(func_020064b8);
 EXT(func_0201f864);
-EXT(func_02022cb0);
+EXT(SpriteNumberMotionPresentation_Init);
 EXT(func_02033b38);
 EXT(func_02032a64);
 EXT(Actor_GetCachedTerrainHeight);
@@ -2195,7 +2195,7 @@ extern "C" void func_ov075_0221647c(void *actor, void *target, s32 dx,
         {
             void *position = (void *)ActorMotionAreaFollower_GetPosition(
                 F(void *, F(void *, gGamePhaseRuntime, 0), 0x2fbc));
-            func_02022cb0(effect, position, target, -currency, 0x2000, -192);
+            SpriteNumberMotionPresentation_Init(effect, position, target, -currency, 0x2000, -192);
         }
         RuntimePresentationManager_AppendFirstListEffect(
             F(void *, F(void *, gGamePhaseRuntime, 0), 0x2f7c), effect);

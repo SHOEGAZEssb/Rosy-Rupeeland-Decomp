@@ -58,7 +58,7 @@ extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(O64_ARGS);
 extern void func_020afce8(O64_ARGS);
 extern void DebugText_BeginFrame(O64_ARGS), Sound_Play(O64_ARGS);
 extern void GamePhaseCurrencyHud_AddCurrency(O64_ARGS);
-extern void *func_02022cb0(O64_ARGS);
+extern void *SpriteNumberMotionPresentation_Init(O64_ARGS);
 extern void Actor_RefreshCachedTerrainHeight(O64_ARGS);
 extern void GridEffectActorRegistry_BroadcastSlot1c(O64_ARGS);
 extern void ActorInteractionRegistry_UpdateAll(O64_ARGS);
@@ -517,7 +517,7 @@ s32 Overlay064Scene_UpdateMode0(void *scene)
             if (motion != 0) {
                 void *position = ActorMotionAreaFollower_GetPosition(
                     (u8 *)gGamePhaseRuntime + 0x2fbc);
-                motion = func_02022cb0(
+                motion = SpriteNumberMotionPresentation_Init(
                     motion, position, actor, -F(s32, scene, 0x80),
                     0x2000, -0xc0);
             }
@@ -605,7 +605,7 @@ s32 Overlay064Scene_UpdateMode1(void *scene)
             GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud,
                                              -F(s32, scene, 0x80), 0);
             if (effect != 0) {
-                effect = func_02022cb0(
+                effect = SpriteNumberMotionPresentation_Init(
                     effect,
                     ActorMotionAreaFollower_GetPosition(
                         (u8 *)gGamePhaseRuntime + 0x2fbc),
@@ -670,7 +670,7 @@ s32 Overlay064Scene_UpdateMode2(void *scene)
             GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud,
                                              -F(s32, scene, 0x80), 0);
             if (effect != 0) {
-                effect = func_02022cb0(
+                effect = SpriteNumberMotionPresentation_Init(
                     effect,
                     ActorMotionAreaFollower_GetPosition(
                         (u8 *)gGamePhaseRuntime + 0x2fbc),

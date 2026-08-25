@@ -17,7 +17,7 @@
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern Actor_TryInitializeHeightBandFromPoint
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_StartRecord
@@ -133,7 +133,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     str ip, [sp, #0x0]
     sub r5, ip, #0x20c0
     str r5, [sp, #0x4]
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r6, r0
 .L_0203744c:
     ldr r0, .L_02037a68

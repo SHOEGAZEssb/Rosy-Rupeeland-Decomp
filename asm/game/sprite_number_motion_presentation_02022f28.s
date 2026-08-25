@@ -22,9 +22,9 @@
 .extern VecFx32Object_InitPlanarProjection
 .extern gHeapContext
 
-.global func_02022f28
-    .type func_02022f28, @function
-func_02022f28: ; 0x02022f28
+.global SpriteNumberMotionPresentation_Update
+    .type SpriteNumberMotionPresentation_Update, @function
+SpriteNumberMotionPresentation_Update: ; 0x02022f28
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x20
     mov r4, r0
@@ -64,4 +64,4 @@ func_02022f28: ; 0x02022f28
 .L_02022fb4:
     add sp, sp, #0x20
     ldmia sp!, {r4, pc}
-    .size func_02022f28, .-func_02022f28
+    .size SpriteNumberMotionPresentation_Update, .-SpriteNumberMotionPresentation_Update

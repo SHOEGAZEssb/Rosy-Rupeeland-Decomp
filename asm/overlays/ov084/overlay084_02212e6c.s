@@ -15,7 +15,7 @@
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern func_020befec
 .extern func_ov084_02212cbc
 .extern func_ov084_02212d28
@@ -170,7 +170,7 @@ func_ov084_02212e6c:
     str ip, [sp, #0x0]
     sub r4, ip, #0x20c0
     str r4, [sp, #0x4]
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r4, r0
 .L_022130ac:
     ldr r0, .L_022131f0

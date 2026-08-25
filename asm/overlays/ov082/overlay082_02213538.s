@@ -14,7 +14,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern Actor_TurnTowardVector
 .extern ActorContactState_AddContact
 .extern ActorDerivedType1_StartRecord
@@ -210,7 +210,7 @@ func_ov082_02213538:
     str r0, [sp, #0x4]
     mov r0, r9
     mov r2, r4
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r9, r0
 .L_022137ec:
     ldr r0, .L_0221390c

@@ -11,7 +11,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern GridEffectActorRegistry_BroadcastSlot1c
 .extern ActorInteractionRegistry_UpdateAll
 .extern Sound_StopAllDirectSequences
@@ -96,7 +96,7 @@ Overlay064Scene_UpdateMode2:
     mov r0, r5
     mov r2, r4
     rsb r3, r3, #0x0
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r5, r0
 .L_0221149c:
     ldr r0, .L_02211544

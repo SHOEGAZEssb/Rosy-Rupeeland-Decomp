@@ -22,7 +22,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 mode);
 extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *effect);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
-extern void *func_02022cb0(void *storage, void *point, void *actor, s32 value,
+extern void *SpriteNumberMotionPresentation_Init(void *storage, void *point, void *actor, s32 value,
                            s32 scale, s32 vertical_offset);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetOwningCollection(void *actor);
@@ -84,7 +84,7 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
         void *effect = Heap_Alloc(0x44, gPresentationBackedActorCurrencyEffectAllocationTag, 4, &gHeapContext);
         if (effect != 0) {
             void *point = ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
-            effect = func_02022cb0(effect, point, actor,
+            effect = SpriteNumberMotionPresentation_Init(effect, point, actor,
                                    FIELD(s16, actor, 0x1f2), 0x2000, -0xc0);
         }
         RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, effect);

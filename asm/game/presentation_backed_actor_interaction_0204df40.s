@@ -11,7 +11,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetOwningCollection
 .extern ActorDerivedType1_TrySetStateVector
@@ -116,7 +116,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     ldrsh r3, [r0, #0xf2]
     mov r0, r4
     mov r2, r6
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r4, r0
 .L_0204e0b8:
     ldr r0, .L_0204e294

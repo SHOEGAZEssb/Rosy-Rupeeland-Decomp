@@ -63,7 +63,7 @@ extern "C" void Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(void *, 
 extern "C" void Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(void *, ...);
 extern "C" s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
-extern "C" void *func_02022cb0(void *, ...);
+extern "C" void *SpriteNumberMotionPresentation_Init(void *, ...);
 extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern "C" void Type1Actor_TryEnterFailureState(void *);
 extern "C" void func_ov060_0220fd54(void *, void *, s32);
@@ -546,7 +546,7 @@ extern "C" void func_ov091_02218aa0(void *actor, void *interaction) {
         const void *position =
             ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
         effect =
-            func_02022cb0(effect, position, primary, amount, 0x2000, -0xc0);
+            SpriteNumberMotionPresentation_Init(effect, position, primary, amount, 0x2000, -0xc0);
     }
     RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, effect);
     Type1Actor_TryEnterFailureState(primary);

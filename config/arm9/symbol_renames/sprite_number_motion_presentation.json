@@ -1,0 +1,6 @@
+{
+  "func_02022cb0": "SpriteNumberMotionPresentation_Init",
+  "func_02022e70": "SpriteNumberMotionPresentation_Destroy",
+  "func_02022ec8": "SpriteNumberMotionPresentation_DestroyAndFree",
+  "func_02022f28": "SpriteNumberMotionPresentation_Update"
+}

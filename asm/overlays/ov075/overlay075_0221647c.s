@@ -12,7 +12,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_02022cb0
+.extern SpriteNumberMotionPresentation_Init
 .extern Actor_TurnTowardVector
 .extern ActorDerivedType1_TeardownRecordAndApplyMotionImpulse
 .extern ActorDerivedType1_GetSingletonObject
@@ -188,7 +188,7 @@ func_ov075_0221647c:
     sub r3, r3, #0x20c0
     str r3, [sp, #0x4]
     rsb r3, r7, #0x0
-    bl func_02022cb0
+    bl SpriteNumberMotionPresentation_Init
     mov r8, r0
 .L_022166f4:
     ldr r0, .L_0221688c

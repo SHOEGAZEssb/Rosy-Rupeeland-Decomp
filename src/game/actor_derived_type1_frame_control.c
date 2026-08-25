@@ -21,7 +21,7 @@ extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
-extern void *func_02022cb0(void *allocation, void *resource, void *actor,
+extern void *SpriteNumberMotionPresentation_Init(void *allocation, void *resource, void *actor,
                            s32 value, s32 first, s32 second);
 extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *object);
 extern void Sound_Play(void *context, u32 sound, u32 variant);
@@ -141,7 +141,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             object = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
             if (object != 0) {
                 void *resource = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
-                object = func_02022cb0(object, resource, actor, value,
+                object = SpriteNumberMotionPresentation_Init(object, resource, actor, value,
                                       0x2000, -0xc0);
             }
             RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, object);
