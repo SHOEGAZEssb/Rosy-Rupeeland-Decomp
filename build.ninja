@@ -11712,7 +11712,7 @@ build build/reports/actor_rectangle_geometry.json: objdiff build/decomp/delinks/
   base_object = build/decomp/src/game/actor_rectangle_geometry.o
 build build/reports/actor_rectangle_geometry.txt: match_report build/reports/actor_rectangle_geometry.json | tools/report_objdiff.py
   report_json = build/reports/actor_rectangle_geometry.json
-  report_args = --section .text --function VecFx32Object_InitPlanarProjection --function func_02056f34 --require-exact
+  report_args = --section .text --function VecFx32Object_InitPlanarProjection --function RectS32_IntersectAndClassifyContact --require-exact
 
 build actor_rectangle_geometry: phony build/reports/actor_rectangle_geometry.txt
 build build/reports/graphics_bank_state_snapshot.json: objdiff build/decomp/delinks/src/graphics/graphics_bank_state_snapshot.o | build/decomp/src/graphics/graphics_bank_state_snapshot.o

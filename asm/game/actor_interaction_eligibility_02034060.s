@@ -6,7 +6,7 @@
 .extern Actor_BuildCollisionRect
 .extern Actor_GetOwningCollection
 .extern Actor_BuildWorldInteractionBounds
-.extern func_02056f34
+.extern RectS32_IntersectAndClassifyContact
 
     .global Actor_IsInteractionEligible
     .type Actor_IsInteractionEligible, @function
@@ -55,7 +55,7 @@ Actor_IsInteractionEligible: ; 0x02034060
     add r1, sp, #0x38
     add r2, sp, #0x28
     add r3, sp, #0x4
-    bl func_02056f34
+    bl RectS32_IntersectAndClassifyContact
     cmp r0, #0x0
     moveq r0, #0x0
     beq .L_02034140

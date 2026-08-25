@@ -13,7 +13,7 @@
 .extern ActorCollection_DispatchPairActive
 .extern ActorCollection_DispatchPairEnded
 .extern Actor_BuildCollisionRect
-.extern func_02056f34
+.extern RectS32_IntersectAndClassifyContact
 .extern ActorRuntimeFlags_Test
 .extern func_020adc90
 .extern SignedAbsoluteValue
@@ -132,7 +132,7 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     add r1, sp, #0x38
     add r2, sp, #0x48
     add r3, sp, #0x34
-    bl func_02056f34
+    bl RectS32_IntersectAndClassifyContact
     str r0, [sp, #0x8]
     cmp r0, #0x0
     beq .L_0202e338

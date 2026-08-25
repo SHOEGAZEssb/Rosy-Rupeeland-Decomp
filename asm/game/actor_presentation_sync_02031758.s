@@ -9,7 +9,7 @@
 .extern Actor_GetOwningCollection
 .extern Actor_BuildWorldInteractionBounds
 .extern Actor_QueryTerrainCell
-.extern func_02056f34
+.extern RectS32_IntersectAndClassifyContact
 .extern ActorInteractionIcon_UpdatePresentation
 .extern ActorInteractionIcon_UpdateEnabledState
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -230,7 +230,7 @@ Actor_UpdatePresentation: ; 0x02031758
     add r1, sp, #0x50
     add r2, sp, #0x40
     add r3, sp, #0xc
-    bl func_02056f34
+    bl RectS32_IntersectAndClassifyContact
     ldr r0, [sp, #0xc]
     cmp r0, #0x0
     beq .L_02031ac8

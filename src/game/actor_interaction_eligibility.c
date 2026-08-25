@@ -13,8 +13,9 @@ extern void Actor_BuildCollisionRect(void *output, void *actor,
                                      const void *position);
 extern void RectS32_Set(void *output, s32 first, s32 second, s32 third,
                           s32 fourth);
-extern s32 func_02056f34(void *state, const void *actorGeometry,
-                         const void *referenceGeometry, void *output);
+extern s32 RectS32_IntersectAndClassifyContact(
+    void *intersection, const void *actorGeometry,
+    const void *referenceGeometry, void *contactEdges);
 extern s32 ActorInteractionIcon_IsActive(const void *icon);
 #ifdef __cplusplus
 }
@@ -52,8 +53,8 @@ s32 Actor_IsInteractionEligible(void *self)
                                      referenceVector);
             VecFx32Object_Destroy(referenceVector);
             RectS32_Set(state, 0, 0, 0, 0);
-            if (func_02056f34(state, actorGeometry, referenceGeometry,
-                              &output) == 0) {
+            if (RectS32_IntersectAndClassifyContact(
+                    state, actorGeometry, referenceGeometry, &output) == 0) {
                 return 0;
             }
         }

@@ -58,8 +58,8 @@ extern void VecFx32Object_InitCopy(CollisionWords *, const void *);
 extern void VecFx32Object_Destroy(CollisionWords *);
 extern void Actor_BuildCollisionRect(CollisionWords *, ActorPairProcessingActor *,
                                      CollisionWords *);
-extern s32 func_02056f34(CollisionWords *, const CollisionWords *,
-                         const CollisionWords *, u32 *);
+extern s32 RectS32_IntersectAndClassifyContact(
+    CollisionWords *, const CollisionWords *, const CollisionWords *, u32 *);
 extern s32 func_020adc90(s32, s32);
 extern s32 SignedAbsoluteValue(s32);
 extern s32 ActorRuntimeFlags_Test(void *, s32);
@@ -141,7 +141,8 @@ static s32 testPair(ActorPairProcessingActor *actorA,
     VecFx32Object_InitCopy(&temporaryB, &actorB->positionState_18);
     Actor_BuildCollisionRect(&shapeB, actorB, &temporaryB);
     VecFx32Object_Destroy(&temporaryB);
-    result = func_02056f34(&intersection, &shapeA, &shapeB, contact);
+    result = RectS32_IntersectAndClassifyContact(
+        &intersection, &shapeA, &shapeB, contact);
     if (result) {
         actorA->contactEdges_49 = (u8)(*contact & 0x0f);
         actorB->contactEdges_49 = (u8)((*contact >> 8) & 0x0f);

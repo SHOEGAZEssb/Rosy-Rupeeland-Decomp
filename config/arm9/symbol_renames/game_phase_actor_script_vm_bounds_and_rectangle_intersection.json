@@ -1,0 +1,9 @@
+{
+  "GamePhaseActorScriptVm_DispatchActorBoundsCommand": "GamePhaseActorScriptVm_DispatchActorBoundsCommand",
+  "S16Bounds_GetHeight": "S16Bounds_GetHeight",
+  "S16Bounds_MoveTo": "S16Bounds_MoveTo",
+  "S16Bounds_GetWidth": "S16Bounds_GetWidth",
+  "S16Bounds_Expand": "S16Bounds_Expand",
+  "GamePhaseActorScriptVm_DispatchInteractionBoundsCommand": "GamePhaseActorScriptVm_DispatchInteractionBoundsCommand",
+  "func_02056f34": "RectS32_IntersectAndClassifyContact"
+}

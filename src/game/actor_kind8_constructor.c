@@ -88,8 +88,10 @@ extern void Actor_BuildCollisionRect(void *output, const void *actor,
                                      const void *position);
 extern void Actor_BuildWorldInteractionBounds(void *output, const void *actor,
                                                const void *position);
-extern s32 func_02056f34(void *intersection, const void *first,
-                         const void *second, void *contact);
+extern s32 RectS32_IntersectAndClassifyContact(void *intersection,
+                                               const void *firstBounds,
+                                               const void *secondBounds,
+                                               void *contactEdges);
 extern void Actor_SetActive(void *actor, s32 enabled);
 extern void ActorDescriptor_InitRange(void *descriptor, u16 id, u16 lastIndex);
 extern void *GridEffectActor_Spawn(const void *position, void *source,
@@ -659,7 +661,8 @@ s32 ActorKind8_HandlePlayerContact(void *self)
         VecFx32Object_Destroy(&position);
     }
     Actor_BuildWorldInteractionBounds(actorBounds, actor, actor + 0x18);
-    (void)func_02056f34(intersection, playerBounds, actorBounds, &contact);
+    (void)RectS32_IntersectAndClassifyContact(
+        intersection, playerBounds, actorBounds, &contact);
     if (contact == 0)
         return 0;
 

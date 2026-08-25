@@ -13,7 +13,7 @@
 .extern Actor_GetOwningCollection
 .extern Actor_BuildWorldInteractionBounds
 .extern Actor_SetInteractionBounds
-.extern func_02056f34
+.extern RectS32_IntersectAndClassifyContact
 .global GamePhaseActorScriptVm_DispatchActorBoundsCommand
 GamePhaseActorScriptVm_DispatchActorBoundsCommand:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
@@ -188,7 +188,7 @@ L_02018868:
     add r1, sp, #0x58
     add r2, sp, #0x48
     add r3, sp, #0x1c
-    bl func_02056f34
+    bl RectS32_IntersectAndClassifyContact
     cmp r0, #0x0
     movne r1, #0x1
     moveq r1, #0x0

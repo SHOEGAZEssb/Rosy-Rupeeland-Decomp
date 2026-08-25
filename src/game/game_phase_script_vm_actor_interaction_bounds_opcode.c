@@ -30,40 +30,41 @@ extern void S16Bounds_Expand(void *bounds, s32 horizontal, s32 vertical);
  */
 s32 GamePhaseActorScriptVm_DispatchInteractionBoundsCommand(GamePhaseActorScriptVm *self)
 {
-    s16 fourth = (s16)GamePhaseScriptVm_Pop(&self->base);
-    s16 third = (s16)GamePhaseScriptVm_Pop(&self->base);
-    s16 second = (s16)GamePhaseScriptVm_Pop(&self->base);
-    s16 first = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 boundsOperand3 = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 boundsOperand2 = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 boundsOperand1 = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 boundsOperand0 = (s16)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 *bounds = (RectS16 *)((u8 *)self->actor + 0x60);
 
     switch (command) {
     case 1: {
         RectS16 replacement;
-        RectS16_InitComponents(&replacement, first, second, third, fourth);
+        RectS16_InitComponents(&replacement, boundsOperand0, boundsOperand1,
+                               boundsOperand2, boundsOperand3);
         RectS16_Assign(bounds, &replacement);
         break;
     }
     case 2:
-        bounds->left = (s16)-first;
+        bounds->left = (s16)-boundsOperand0;
         break;
     case 3:
-        bounds->top = (s16)-first;
+        bounds->top = (s16)-boundsOperand0;
         break;
     case 4:
-        bounds->right = first;
+        bounds->right = boundsOperand0;
         break;
     case 5:
-        bounds->bottom = first;
+        bounds->bottom = boundsOperand0;
         break;
     case 6: {
         s16 height = (s16)S16Bounds_GetHeight(bounds);
         CPoint2DS16 center;
         RectS16 replacement;
         CPoint2DS16_InitFromRectangle(&center, bounds);
-        RectS16_InitComponents(&replacement, 0, 0, first, height);
+        RectS16_InitComponents(&replacement, 0, 0, boundsOperand0, height);
         RectS16_Assign(bounds, &replacement);
-        S16Bounds_MoveTo(bounds, (s16)(center.x - first / 2),
+        S16Bounds_MoveTo(bounds, (s16)(center.x - boundsOperand0 / 2),
                       (s16)(center.y - height / 2));
         break;
     }
@@ -72,17 +73,17 @@ s32 GamePhaseActorScriptVm_DispatchInteractionBoundsCommand(GamePhaseActorScript
         CPoint2DS16 center;
         RectS16 replacement;
         CPoint2DS16_InitFromRectangle(&center, bounds);
-        RectS16_InitComponents(&replacement, 0, 0, width, first);
+        RectS16_InitComponents(&replacement, 0, 0, width, boundsOperand0);
         RectS16_Assign(bounds, &replacement);
         S16Bounds_MoveTo(bounds, (s16)(center.x - width / 2),
-                      (s16)(center.y - first / 2));
+                      (s16)(center.y - boundsOperand0 / 2));
         break;
     }
     case 8:
-        RectS16_Translate(bounds, first, second);
+        RectS16_Translate(bounds, boundsOperand0, boundsOperand1);
         break;
     case 9:
-        S16Bounds_Expand(bounds, first, second);
+        S16Bounds_Expand(bounds, boundsOperand0, boundsOperand1);
         break;
     }
     return 0;

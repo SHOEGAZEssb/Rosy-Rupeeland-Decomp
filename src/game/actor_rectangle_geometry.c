@@ -33,78 +33,80 @@ void VecFx32Object_InitPlanarProjection(void *destination, const void *source)
  * overlap, one for edge-only contact, or two for area overlap. Invalid
  * non-overlapping input leaves the intersection storage unchanged.
  */
-s32 func_02056f34(s32 *intersection, const s32 *first, const s32 *second,
-                  u32 *contact)
+s32 RectS32_IntersectAndClassifyContact(s32 *intersection,
+                                       const s32 *firstBounds,
+                                       const s32 *secondBounds,
+                                       u32 *contactEdges)
 {
     s32 result;
     u32 edges = 0;
     s32 difference;
 
-    *contact = 0;
-    if (first[0] > second[2])
+    *contactEdges = 0;
+    if (firstBounds[0] > secondBounds[2])
         return 0;
-    if (first[2] < second[0])
+    if (firstBounds[2] < secondBounds[0])
         return 0;
-    if (first[1] > second[3])
+    if (firstBounds[1] > secondBounds[3])
         return 0;
-    if (first[3] < second[1])
+    if (firstBounds[3] < secondBounds[1])
         return 0;
-    if (first[0] == second[2])
+    if (firstBounds[0] == secondBounds[2])
         result = 1;
-    else if (first[2] == second[0])
+    else if (firstBounds[2] == secondBounds[0])
         result = 1;
-    else if (first[1] == second[3])
+    else if (firstBounds[1] == secondBounds[3])
         result = 1;
-    else if (first[3] == second[1])
+    else if (firstBounds[3] == secondBounds[1])
         result = 1;
     else
         result = 2;
 
-    difference = first[0] - second[0];
+    difference = firstBounds[0] - secondBounds[0];
     if (difference > 0) {
-        intersection[0] = first[0];
+        intersection[0] = firstBounds[0];
         edges |= 0x001;
     } else if (difference < 0) {
-        intersection[0] = second[0];
+        intersection[0] = secondBounds[0];
         edges |= 0x100;
     } else {
-        intersection[0] = first[0];
+        intersection[0] = firstBounds[0];
         edges |= 0x101;
     }
-    difference = first[2] - second[2];
+    difference = firstBounds[2] - secondBounds[2];
     if (difference < 0) {
-        intersection[2] = first[2];
+        intersection[2] = firstBounds[2];
         edges |= 0x002;
     } else if (difference > 0) {
-        intersection[2] = second[2];
+        intersection[2] = secondBounds[2];
         edges |= 0x200;
     } else {
-        intersection[2] = first[2];
+        intersection[2] = firstBounds[2];
         edges |= 0x202;
     }
-    difference = first[1] - second[1];
+    difference = firstBounds[1] - secondBounds[1];
     if (difference > 0) {
-        intersection[1] = first[1];
+        intersection[1] = firstBounds[1];
         edges |= 0x004;
     } else if (difference < 0) {
-        intersection[1] = second[1];
+        intersection[1] = secondBounds[1];
         edges |= 0x400;
     } else {
-        intersection[1] = first[1];
+        intersection[1] = firstBounds[1];
         edges |= 0x404;
     }
-    difference = first[3] - second[3];
+    difference = firstBounds[3] - secondBounds[3];
     if (difference < 0) {
-        intersection[3] = first[3];
+        intersection[3] = firstBounds[3];
         edges |= 0x008;
     } else if (difference > 0) {
-        intersection[3] = second[3];
+        intersection[3] = secondBounds[3];
         edges |= 0x800;
     } else {
-        intersection[3] = first[3];
+        intersection[3] = firstBounds[3];
         edges |= 0x808;
     }
-    *contact = edges;
+    *contactEdges = edges;
     return result;
 }
 #ifdef __cplusplus
