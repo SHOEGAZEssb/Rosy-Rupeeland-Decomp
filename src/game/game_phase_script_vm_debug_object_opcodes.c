@@ -29,17 +29,19 @@ extern void func_ov061_0220fd20(void *allocation, void *first,
  */
 s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *self)
 {
-    u32 third = GamePhaseScriptVm_Pop(&self->base);
-    u32 secondValue = GamePhaseScriptVm_Pop(&self->base);
-    u32 firstValue = GamePhaseScriptVm_Pop(&self->base);
+    u32 overlayArgument = GamePhaseScriptVm_Pop(&self->base);
+    u32 displayLookup = GamePhaseScriptVm_Pop(&self->base);
+    u32 collectionModeValue = GamePhaseScriptVm_Pop(&self->base);
     u8 *collection = (u8 *)Actor_GetOwningCollection(self->actor);
-    void *second = func_0201da20(*(u32 *)(collection + 0x2e84), firstValue);
-    void *first = DisplayRouting_MatchesRequest(secondValue);
-    void *allocation;
+    void *hudResource = func_0201da20(
+        *(u32 *)(collection + 0x2e84), collectionModeValue);
+    void *displayRoute = DisplayRouting_MatchesRequest(displayLookup);
+    void *debugObjectStorage;
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3d);
-    allocation = Heap_Alloc(0x3c, data_020d5b2c, 4, &gHeapContext);
-    if (allocation != 0)
-        func_ov061_0220fd20(allocation, first, second, third);
+    debugObjectStorage = Heap_Alloc(0x3c, data_020d5b2c, 4, &gHeapContext);
+    if (debugObjectStorage != 0)
+        func_ov061_0220fd20(debugObjectStorage, displayRoute, hudResource,
+                           overlayArgument);
     return 0;
 }
 
@@ -51,21 +53,22 @@ s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *se
  */
 s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *self)
 {
-    void *first;
-    void *second;
-    DebugHudState *state;
+    void *displayRoute;
+    void *hudResource;
+    DebugHudState *debugHud;
     (void)GamePhaseScriptVm_Pop(&self->base);
     (void)GamePhaseScriptVm_Pop(&self->base);
     {
         u32 lookup = GamePhaseScriptVm_Pop(&self->base);
         u32 tableValue = GamePhaseScriptVm_Pop(&self->base);
         func_0201da34(self);
-        second = LanguageLookupDatabase_GetResourceById(data_021f3ecc, (u16)tableValue);
-        first = DisplayRouting_MatchesRequest(lookup);
+        hudResource = LanguageLookupDatabase_GetResourceById(
+            data_021f3ecc, (u16)tableValue);
+        displayRoute = DisplayRouting_MatchesRequest(lookup);
     }
-    state = DebugHudState_GetGlobal();
-    DebugHudState_RefreshRectangle(state);
-    state = DebugHudState_GetGlobal();
-    DebugHudState_Open(state, (s32)first, second, 1);
+    debugHud = DebugHudState_GetGlobal();
+    DebugHudState_RefreshRectangle(debugHud);
+    debugHud = DebugHudState_GetGlobal();
+    DebugHudState_Open(debugHud, (s32)displayRoute, hudResource, 1);
     return 0;
 }

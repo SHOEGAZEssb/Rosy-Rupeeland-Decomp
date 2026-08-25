@@ -26,32 +26,32 @@ extern void GraphicsSpriteState_ResetFrame(void *object);
  */
 s32 GamePhaseActorScriptVm_WaitForDebugHudInput(GamePhaseActorScriptVm *self)
 {
-    void *uiState;
-    u32 state;
+    void *debugHud;
+    u32 inputBits;
     GameWork_ClearFlag(gGameWork, 0x40e);
-    uiState = DebugHudState_GetGlobal();
-    state = DebugHudState_PollInput(uiState, 0);
+    debugHud = DebugHudState_GetGlobal();
+    inputBits = DebugHudState_PollInput(debugHud, 0);
 
     if ((self->actorStateFlags &
          GAME_PHASE_ACTOR_SCRIPT_VM_EFFECT_STATE_PENDING) != 0) {
-        u8 *object = *(u8 **)((u8 *)self->actor + 0x54);
-        if (object != 0) {
-            u16 *flags = (u16 *)(object + 0x24);
-            if ((state & ((1u << 8) | (1u << 1))) != 0) {
-                *flags &= (u16)~2;
-                if ((state & (1u << 13)) != 0)
-                    GraphicsSpriteState_ResetFrame(object);
+        u8 *attachment = *(u8 **)((u8 *)self->actor + 0x54);
+        if (attachment != 0) {
+            u16 *presentationFlags = (u16 *)(attachment + 0x24);
+            if ((inputBits & ((1u << 8) | (1u << 1))) != 0) {
+                *presentationFlags &= (u16)~2;
+                if ((inputBits & (1u << 13)) != 0)
+                    GraphicsSpriteState_ResetFrame(attachment);
                 GameWork_SetFlag(gGameWork, 0x40e);
-            } else if ((state & 1) != 0) {
-                *flags &= (u16)~2;
-            } else if ((*flags & 2) == 0) {
-                *flags |= 2;
-                *flags &= (u16)~1;
+            } else if ((inputBits & 1) != 0) {
+                *presentationFlags &= (u16)~2;
+            } else if ((*presentationFlags & 2) == 0) {
+                *presentationFlags |= 2;
+                *presentationFlags &= (u16)~1;
             }
         }
     }
 
-    if ((state & 2) == 0 && (state & 1) != 0) {
+    if ((inputBits & 2) == 0 && (inputBits & 1) != 0) {
         DebugHudState_Close(DebugHudState_GetGlobal());
         return 0;
     }

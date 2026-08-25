@@ -26,9 +26,9 @@ extern void func_0201da9c(GamePhaseActorScriptVm *self,
  */
 s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm *self)
 {
-    void *first;
-    void *second;
-    DebugHudState *state;
+    void *displayRoute;
+    void *hudResource;
+    DebugHudState *debugHud;
     (void)GamePhaseScriptVm_Pop(&self->base);
     (void)GamePhaseScriptVm_Pop(&self->base);
     {
@@ -37,13 +37,14 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm
         u8 *collection;
         func_0201da34(self);
         collection = (u8 *)Actor_GetOwningCollection(self->actor);
-        second = func_0201da20(*(u32 *)(collection + 0x2e84), value);
-        first = DisplayRouting_MatchesRequest(lookup);
+        hudResource = func_0201da20(
+            *(u32 *)(collection + 0x2e84), value);
+        displayRoute = DisplayRouting_MatchesRequest(lookup);
     }
-    state = DebugHudState_GetGlobal();
-    DebugHudState_RefreshRectangle(state);
-    state = DebugHudState_GetGlobal();
-    DebugHudState_Open(state, (s32)first, second, 1);
+    debugHud = DebugHudState_GetGlobal();
+    DebugHudState_RefreshRectangle(debugHud);
+    debugHud = DebugHudState_GetGlobal();
+    DebugHudState_Open(debugHud, (s32)displayRoute, hudResource, 1);
     return 1;
 }
 
