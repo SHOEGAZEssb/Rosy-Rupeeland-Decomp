@@ -12,7 +12,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void OverlaySlot_UnloadOverlay(void *, s32);
 extern s32 ActorDescriptor_IsInvalid(void *);
-extern void func_02064d90(void *, s32);
+extern void InventoryRecordCollection_RebindPrimarySelectionDescriptors(void *, s32);
 extern void GraphicsSpriteGroup_Clear(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void func_ov000_021fcb4c(void *, void *);
@@ -129,7 +129,7 @@ extern "C" void func_ov021_021feac8(void *destination, const void *source)
 extern "C" s32 func_ov021_021feae4(void *state)
 {
     u8 *collection = (u8 *)data_021e9ac0;
-    func_02064d90(collection, FIELD(s32, state, 0x54));
+    InventoryRecordCollection_RebindPrimarySelectionDescriptors(collection, FIELD(s32, state, 0x54));
     s32 i;
     for (i = 0; i < FIELD(s32, collection, 0x10); i++) {
         void *record = FIELD(u8 *, collection, 8) + i * 0x24;

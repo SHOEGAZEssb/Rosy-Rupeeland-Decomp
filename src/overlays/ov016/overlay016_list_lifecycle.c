@@ -26,7 +26,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void TitleCharacterResourceCollection_Append(void *, s32);
-extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
+extern void *InventoryScroll_Init(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), s32);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
@@ -77,7 +77,7 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
         FIELD(void *, state, 0x4c) = object;
         object = Heap_Alloc(0x80, data_ov016_02201578, 4, gHeapContext);
         if (object != 0) {
-            object = func_02094154(object, owner, capacity, 5, 0xd6, 0x1c, 0xc);
+            object = InventoryScroll_Init(object, owner, capacity, 5, 0xd6, 0x1c, 0xc);
         }
         FIELD(void *, state, 0x58) = object;
         FIELD(void *, state, 0x24) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 8),
@@ -88,7 +88,7 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
         FIELD(void *, state, 0x4c) = 0;
         object = Heap_Alloc(0x80, data_ov016_02201578, 4, gHeapContext);
         if (object != 0) {
-            object = func_02094154(object, owner, 1, 1, 0xd6, 0x1c, 8);
+            object = InventoryScroll_Init(object, owner, 1, 1, 0xd6, 0x1c, 8);
         }
         FIELD(void *, state, 0x58) = object;
         FIELD(void *, state, 0x24) = 0;

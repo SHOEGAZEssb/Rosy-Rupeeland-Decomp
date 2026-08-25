@@ -23,7 +23,7 @@ extern "C" void *CxxArray_ConstructWithCookie(void *records, s32 count, s32 stri
                                 void (*destroy)(void *));
 extern "C" void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                               void *heap);
-extern "C" void *func_02094154(void *storage, void *font, s32 count,
+extern "C" void *InventoryScroll_Init(void *storage, void *font, s32 count,
                                 s32 mode, s32 x, s32 y, s32 spacing);
 extern "C" void InventoryScroll_UpdatePresentation(void *child);
 extern "C" void func_ov044_0220ba18(void *object);
@@ -65,7 +65,7 @@ extern "C" void *func_ov044_0220b740(void *object, void *font, s32 rowCount)
         void *child = Heap_Alloc(0x80, data_ov044_0220d338, 4,
                                  gHeapContext);
         if (child)
-            child = func_02094154(child, font, rowCount, 5,
+            child = InventoryScroll_Init(child, font, rowCount, 5,
                                   0xd6, 0x1c, 0xc);
         FIELD(void *, object, 0x44) = child;
     } else {
@@ -73,7 +73,7 @@ extern "C" void *func_ov044_0220b740(void *object, void *font, s32 rowCount)
         void *child = Heap_Alloc(0x80, data_ov044_0220d338, 4,
                                  gHeapContext);
         if (child)
-            child = func_02094154(child, font, 1, 1,
+            child = InventoryScroll_Init(child, font, 1, 1,
                                   0xd6, 0x1c, 8);
         FIELD(void *, object, 0x44) = child;
     }

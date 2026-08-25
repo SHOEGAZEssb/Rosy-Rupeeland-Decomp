@@ -30,7 +30,7 @@ extern s32 RecordMode_GetAnimationIndex(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void TitleCharacterResourceCollection_Append(void *, s32);
-extern void *func_02094154(void *, void *, s32, s32, ...);
+extern void *InventoryScroll_Init(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern s32 func_020befec(s32, s32);
@@ -74,7 +74,7 @@ extern "C" void *func_ov023_021fce44(void *collection, void *font, s32 capacity)
     FIELD(void *, collection, 0x2c) = entries;
     void *ui = Heap_Alloc(0x80, data_ov023_021ffbe0, 4, gHeapContext);
     if (ui != 0)
-        ui = func_02094154(ui, font, capacity ? capacity : 1,
+        ui = InventoryScroll_Init(ui, font, capacity ? capacity : 1,
                           capacity ? 4 : 1, 0xdc, 40, -4);
     FIELD(void *, collection, 0x38) = ui;
     InventoryScroll_SetSpritePriority(ui, 0);

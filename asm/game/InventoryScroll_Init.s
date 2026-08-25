@@ -18,8 +18,8 @@
 .extern SpritePresentation_SyncPosition
 .extern gHeapContext
 
-.global func_02094154
-func_02094154:
+.global InventoryScroll_Init
+InventoryScroll_Init:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -186,4 +186,4 @@ func_02094154:
 .L_020943c8: .word 0x4001
 .L_020943cc: .word data_020f2644
 .L_020943d0: .word gHeapContext
-.size func_02094154, . - func_02094154
+.size InventoryScroll_Init, . - InventoryScroll_Init

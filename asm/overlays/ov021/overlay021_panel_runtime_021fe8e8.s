@@ -5,7 +5,7 @@
     .extern data_021e9ac0
     .extern data_ov021_02202fa0
     .extern OverlaySlot_LoadOverlay
-    .extern func_02064d90
+    .extern InventoryRecordCollection_RebindPrimarySelectionDescriptors
     .extern func_ov000_021fbcc4
     .extern func_ov000_021fc59c
     .extern func_ov000_021fc5ec
@@ -25,7 +25,7 @@ func_ov021_021fe8e8:
     ldr r0, L_021fea3c
     ldr r1, [r10, #0x54]
     ldr r0, [r0, #0x0]
-    bl func_02064d90
+    bl InventoryRecordCollection_RebindPrimarySelectionDescriptors
     add r0, r10, #0x1c
     ldr r1, L_021fea40
     add r0, r0, #0x400

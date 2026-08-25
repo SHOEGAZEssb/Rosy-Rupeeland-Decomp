@@ -3,8 +3,8 @@
 .extern InventoryRecord_Assign
 .extern InventoryRecord_Copy
 
-.global func_020654ac
-func_020654ac:
+.global InventoryRecordCollection_SwapRecords
+InventoryRecordCollection_SwapRecords:
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x24
     mov r4, r2
@@ -30,4 +30,4 @@ func_020654ac:
 .L_02065504:
     add sp, sp, #0x24
     ldmia sp!, {r4, r5, r6, r7, pc}
-.size func_020654ac, . - func_020654ac
+.size InventoryRecordCollection_SwapRecords, . - InventoryRecordCollection_SwapRecords

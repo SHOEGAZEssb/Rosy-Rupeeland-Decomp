@@ -23,7 +23,7 @@ extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void TitleCharacterResourceCollection_Append(void *, s32);
-extern void *func_02094154(void *, void *, s32, s32, ...);
+extern void *InventoryScroll_Init(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), void *);
@@ -77,14 +77,14 @@ extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
         FIELD(void *, menu, 0x24) = entries;
         void *ui = Heap_Alloc(0x80, data_ov022_022006cc, 4, gHeapContext);
         if (ui != 0)
-            ui = func_02094154(ui, data_020f4e14, capacity, 4,
+            ui = InventoryScroll_Init(ui, data_020f4e14, capacity, 4,
                               0xda, 0x18, -12);
         FIELD(void *, menu, 0x30) = ui;
     } else {
         FIELD(void *, menu, 0x24) = 0;
         void *ui = Heap_Alloc(0x80, data_ov022_022006cc, 4, gHeapContext);
         if (ui != 0)
-            ui = func_02094154(ui, data_020f4e14, 1, 1,
+            ui = InventoryScroll_Init(ui, data_020f4e14, 1, 1,
                               0xda, 0x18, 12);
         FIELD(void *, menu, 0x30) = ui;
     }

@@ -20,7 +20,7 @@
 .extern TitleCharacterResourceCollection_Append
 .extern IndexedSelectionController_Init
 .extern IndexedSelectionController_ConfigureRange
-.extern func_02094154
+.extern InventoryScroll_Init
 .extern SpriteMotionController_Init
 .extern SpriteMotionController_BindSprite
 .extern SpriteMotionController_SetPosition
@@ -244,7 +244,7 @@ L_021fbfa4:
     ldr r1, [r10, #0x4]
     ldr r2, [r10, #0x258]
     mov r3, #0x3
-    bl func_02094154
+    bl InventoryScroll_Init
 L_021fc00c:
     mov r1, #0x0
     str r0, [r10, #0x26c]

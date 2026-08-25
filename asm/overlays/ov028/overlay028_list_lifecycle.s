@@ -14,7 +14,7 @@
 .extern TitleCharacterResourceCollection_Init
 .extern TitleCharacterResourceCollection_Destroy
 .extern TitleCharacterResourceCollection_Append
-.extern func_02094154
+.extern InventoryScroll_Init
 .extern InventoryScroll_SetSpritePriority
 .extern InventoryScroll_UpdatePresentation
 .extern CxxArray_ConstructWithCookie
@@ -92,7 +92,7 @@ L_021fd0cc:
     ldr r2, [r5, #0x3c]
     mov r1, r4
     mov r3, #0x5
-    bl func_02094154
+    bl InventoryScroll_Init
 L_021fd114:
     str r0, [r5, #0x44]
     b L_021fd164
@@ -113,7 +113,7 @@ L_021fd11c:
     str ip, [sp, #0x4]
     mov r4, #0xc
     str r4, [sp, #0x8]
-    bl func_02094154
+    bl InventoryScroll_Init
 L_021fd160:
     str r0, [r5, #0x44]
 L_021fd164:

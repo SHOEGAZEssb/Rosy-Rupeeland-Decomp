@@ -473,7 +473,7 @@ void InventoryScroll_ResetPresentationState(void *controller)
  * Coordinates and height are pixels; presentation offsets use 20.12 fixed
  * point. Allocation and sprite ownership pass through their engine services.
  */
-void *func_02094154(void *controller, void *owner, s32 total, s32 visible,
+void *InventoryScroll_Init(void *controller, void *owner, s32 total, s32 visible,
                     s32 x, s32 y, s32 height)
 {
     void *group;

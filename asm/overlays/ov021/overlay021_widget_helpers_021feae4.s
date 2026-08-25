@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_widget_helpers.c. */
     .extern data_021e9ac0
     .extern ActorDescriptor_IsInvalid
-    .extern func_02064d90
+    .extern InventoryRecordCollection_RebindPrimarySelectionDescriptors
 
 .global func_ov021_021feae4
 func_ov021_021feae4:
@@ -11,7 +11,7 @@ func_ov021_021feae4:
     ldr r5, [r1, #0x0]
     ldr r1, [r0, #0x54]
     mov r0, r5
-    bl func_02064d90
+    bl InventoryRecordCollection_RebindPrimarySelectionDescriptors
     mov r4, #0x0
     ldr r6, [r5, #0x10]
     mov r8, r4

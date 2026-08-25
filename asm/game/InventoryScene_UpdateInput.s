@@ -10,7 +10,7 @@
 .extern SceneInputBase_SetMemberCallback
 .extern InventoryScene_LoadPrimaryView
 .extern InventoryScene_LoadSecondaryView
-.extern func_02068938
+.extern InventoryViewState_Copy
 .extern SceneInputBase_Update
 .extern func_ov000_021fcb4c
 .extern func_ov001_021fca94
@@ -98,7 +98,7 @@ InventoryScene_UpdateInput:
     bl func_ov001_021fca94
     add r1, sp, #0xc
     add r0, r4, #0x7c
-    bl func_02068938
+    bl InventoryViewState_Copy
     b .L_0206884c
 .L_02068834:
     ldr r1, [r1, #0x78]
@@ -106,7 +106,7 @@ InventoryScene_UpdateInput:
     bl func_ov000_021fcb4c
     add r1, sp, #0x0
     add r0, r4, #0x70
-    bl func_02068938
+    bl InventoryViewState_Copy
 .L_0206884c:
     ldr r0, [r4, #0x20]
     bic r0, r0, #0x400

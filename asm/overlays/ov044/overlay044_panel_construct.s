@@ -6,7 +6,7 @@
 .extern Heap_AllocAlternateEntry
 .extern CxxArray_ConstructWithCookie
 .extern Heap_Alloc
-.extern func_02094154
+.extern InventoryScroll_Init
 .extern InventoryScroll_UpdatePresentation
 .extern func_ov044_0220ba18
 .extern TitleCharacterResourceCollection_Append
@@ -84,7 +84,7 @@ func_ov044_0220b740:
     ldr r2, [r5, #0x3c]
     mov r1, r4
     mov r3, #0x5
-    bl func_02094154
+    bl InventoryScroll_Init
 .L_0220b844:
     str r0, [r5, #0x44]
     b .L_0220b894
@@ -105,7 +105,7 @@ func_ov044_0220b740:
     str ip, [sp, #0x4]
     mov r4, #0x8
     str r4, [sp, #0x8]
-    bl func_02094154
+    bl InventoryScroll_Init
 .L_0220b890:
     str r0, [r5, #0x44]
 .L_0220b894:

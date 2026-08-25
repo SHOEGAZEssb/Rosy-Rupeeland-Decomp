@@ -14,7 +14,7 @@
     .extern SpriteMotionController_SetPosition
     .extern GameWork_TestFlag
     .extern Heap_Alloc
-    .extern func_02094154
+    .extern InventoryScroll_Init
     .extern InventoryScroll_SetSpritePriority
     .extern InventoryScroll_UpdatePresentation
     .extern TitleCharacterResourceCollection_Append
@@ -130,7 +130,7 @@ L_021fcf28:
     ldr r2, [r7, #0x110]
     ldr r1, [r1, #0x0]
     mov r3, #0x5
-    bl func_02094154
+    bl InventoryScroll_Init
 L_021fcf84:
     str r0, [r7, #0x314]
     mov r1, #0x1

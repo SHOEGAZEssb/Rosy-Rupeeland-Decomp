@@ -36,7 +36,7 @@ extern const void *LanguageLookupDatabase_GetResourceById(const void *, s32);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern s32 GraphicsSpriteRenderer_DrawDecimal(void *, s32, u32, s32, s32, s32, s32, s32);
-extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
+extern void *InventoryScroll_Init(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -97,7 +97,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
     void *controller = Heap_Alloc(0x80, data_ov021_02202f80,
                                   4, gHeapContext);
     if (controller != 0) {
-        controller = func_02094154(controller, font, capacity,
+        controller = InventoryScroll_Init(controller, font, capacity,
                                    capacity != 0 ? 4 : 1,
                                    0xda, 0x18, capacity != 0 ? -12 : 12);
     }

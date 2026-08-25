@@ -468,7 +468,7 @@ void InventoryRecordCollection_Sort(void *collection, s32 mode)
  * record. The collection and mode table are borrowed; only record link fields
  * change, and no allocation or hardware access occurs.
  */
-void func_02064d90(void *collection, s32 mode)
+void InventoryRecordCollection_RebindPrimarySelectionDescriptors(void *collection, s32 mode)
 {
     u8 *mode_record = (u8 *)data_021f5128[mode];
     u8 *records = FIELD(u8 *, collection, 8);
@@ -511,7 +511,7 @@ s32 InventoryRecordCollection_HasInactiveKind1Subtype1(InventoryRecordCollection
 }
 
 /* Swap the assignable fields of two indexed collection records in place. */
-void func_020654ac(InventoryRecordCollection *collection,
+void InventoryRecordCollection_SwapRecords(InventoryRecordCollection *collection,
                    s32 first, s32 second)
 {
     u8 temporary[0x24];
@@ -548,7 +548,7 @@ void InventoryRecordCollection_SortAlternate(InventoryRecordCollection *collecti
             for (inner = outer + 1; inner < collection->count0c; ++inner) {
                 if (ActorDescriptor_IsInvalid(
                         collection->records04 + inner * 0x24) == 0) {
-                    func_020654ac(collection, outer, inner);
+                    InventoryRecordCollection_SwapRecords(collection, outer, inner);
                     swapped = 1;
                     break;
                 }
@@ -566,7 +566,7 @@ void InventoryRecordCollection_SortAlternate(InventoryRecordCollection *collecti
                 u32 previous = InventoryRecord_GetSortKey(
                     collection->records04 + (inner - 1) * 0x24, 0);
                 if (current < previous)
-                    func_020654ac(collection, inner, inner - 1);
+                    InventoryRecordCollection_SwapRecords(collection, inner, inner - 1);
             }
         }
     }
@@ -578,7 +578,7 @@ void InventoryRecordCollection_SortAlternate(InventoryRecordCollection *collecti
  * same actor metadata subtype and a matching nested identifier. The borrowed
  * collection is updated in place without allocation or hardware access.
  */
-void func_0206563c(InventoryRecordCollection *collection, s32 mode)
+void InventoryRecordCollection_RebindSecondarySelectionDescriptors(InventoryRecordCollection *collection, s32 mode)
 {
     u8 *mode_record = (u8 *)data_021f5128[mode];
     s32 entry_count = FIELD(s32, mode_record, 0xc);

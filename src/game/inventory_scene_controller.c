@@ -68,7 +68,7 @@ void *InventoryViewState_Init(InventoryViewState *state)
 }
 
 /* Copy all three words of a saved inventory view state and return output. */
-InventoryViewState *func_02068938(InventoryViewState *output,
+InventoryViewState *InventoryViewState_Copy(InventoryViewState *output,
                                  const InventoryViewState *input)
 {
     *output = *input;
@@ -223,13 +223,13 @@ s32 InventoryScene_UpdateInput(void *scene)
                 InventoryViewState captured;
                 func_ov001_021fca94(&captured,
                                     FIELD(void *, child, 0xdc));
-                func_02068938(
+                InventoryViewState_Copy(
                     (InventoryViewState *)((u8 *)scene + 0x7c), &captured);
             } else {
                 InventoryViewState captured;
                 func_ov000_021fcb4c(&captured,
                                     FIELD(void *, child, 0x78));
-                func_02068938(
+                InventoryViewState_Copy(
                     (InventoryViewState *)((u8 *)scene + 0x70), &captured);
             }
 

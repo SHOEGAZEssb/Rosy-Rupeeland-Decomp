@@ -37,7 +37,7 @@ extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void TitleCharacterResourceCollection_Append(void *, s32);
-extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
+extern void *InventoryScroll_Init(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), s32);
@@ -88,7 +88,7 @@ extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
     void *controller = Heap_Alloc(0x80, data_ov020_021fe520,
                                   4, gHeapContext);
     if (controller != 0)
-        controller = func_02094154(controller, font, capacity,
+        controller = InventoryScroll_Init(controller, font, capacity,
                                    capacity != 0 ? 5 : 1,
                                    0xda, 0x18, 0x0c);
     FIELD(void *, state, 0x44) = controller;

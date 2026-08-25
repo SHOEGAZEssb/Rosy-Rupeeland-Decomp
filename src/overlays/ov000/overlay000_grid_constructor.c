@@ -55,7 +55,7 @@ extern void TitleCharacterResourceCollection_Init(void *state);
 extern void TitleCharacterResourceCollection_Append(void *state, s32 resourceId);
 extern void IndexedSelectionController_Init(void *state);
 extern void IndexedSelectionController_ConfigureRange(void *state, s32 first, s32 second, s32 third);
-extern void *func_02094154(void *object, void *owner, s32 rowCount,
+extern void *InventoryScroll_Init(void *object, void *owner, s32 rowCount,
                            s32 columns, s32 width, s32 y, s32 mode);
 extern void SpriteMotionController_Init(void *element);
 extern void SpriteMotionController_BindSprite(void *element, void *sprite, s32 animation,
@@ -166,7 +166,7 @@ Overlay000GridState *func_ov000_021fbcc4(Overlay000GridState *state,
     FIELD(s32, state->spriteGroup_008, 0x1c) = state->originY_268;
     controller = Heap_Alloc(0x80, data_ov000_021fcd5c, 4, &gHeapContext);
     if (controller != 0) {
-        controller = func_02094154(controller, state->owner_004,
+        controller = InventoryScroll_Init(controller, state->owner_004,
                                    state->rowCount_258, 3, 0xea,
                                    0x2a - state->scrollOffset_264, 0);
     }

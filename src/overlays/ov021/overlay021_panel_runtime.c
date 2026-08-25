@@ -18,8 +18,8 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
 extern void GamePhaseCurrencyHud_Update(void *);
-extern void func_02064d90(void *, s32);
-extern void func_0206563c(void *, s32);
+extern void InventoryRecordCollection_RebindPrimarySelectionDescriptors(void *, s32);
+extern void InventoryRecordCollection_RebindSecondarySelectionDescriptors(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
@@ -61,7 +61,7 @@ extern void func_ov045_0220c18c(void *);
 extern "C" void func_ov021_021fe8e8(void *state)
 {
     if (FIELD(void *, state, 0x354) == 0) {
-        func_02064d90(data_021e9ac0, FIELD(s32, state, 0x54));
+        InventoryRecordCollection_RebindPrimarySelectionDescriptors(data_021e9ac0, FIELD(s32, state, 0x54));
         OverlaySlot_LoadOverlay((u8 *)state + 0x41c, 0);
         void *panel = Heap_Alloc(0x2b0, data_ov021_02202fa0,
                                  4, gHeapContext);
@@ -115,7 +115,7 @@ extern "C" void func_ov021_021fe8e8(void *state)
 extern "C" void func_ov021_021feb60(void *state)
 {
     if (FIELD(void *, state, 0x358) == 0) {
-        func_0206563c((u8 *)data_021e9ac0 + 0x34,
+        InventoryRecordCollection_RebindSecondarySelectionDescriptors((u8 *)data_021e9ac0 + 0x34,
                      FIELD(s32, state, 0x54));
         OverlaySlot_LoadOverlay((u8 *)state + 0x41c, 1);
         void *panel = Heap_Alloc(0x210, data_ov021_02202fa8,

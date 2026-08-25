@@ -34,7 +34,7 @@ extern void SpriteMotionController_BindSprite(void *list, void *resource, s32 co
 extern void SpriteMotionController_SetPosition(void *list, s32 width, s32 height);
 extern s32 GameWork_TestFlag(void *gameWork, u16 flag);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_02094154(void *object, void *resource, s32 count, s32 mode,
+extern void *InventoryScroll_Init(void *object, void *resource, s32 count, s32 mode,
                            s32 width, s32 rowHeight, s32 columns);
 extern void InventoryScroll_SetSpritePriority(void *object, s32 enabled);
 extern void InventoryScroll_UpdatePresentation(void *object);
@@ -97,7 +97,7 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
     if (count != 0) {
         void *model = Heap_Alloc(0x80, data_ov038_021fdd3c, 4, gHeapContext);
         if (model != 0)
-            model = func_02094154(model, data_020f4e14[0], count, 5,
+            model = InventoryScroll_Init(model, data_020f4e14[0], count, 5,
                                   0xe8, 0x20, 4);
         FIELD(void *, presentation, 0x314) = model;
         InventoryScroll_SetSpritePriority(model, 1);

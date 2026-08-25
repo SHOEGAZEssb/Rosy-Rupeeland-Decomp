@@ -17,7 +17,7 @@ extern void Heap_Free(void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
 extern void OverlaySlot_UnloadOverlay(void *, s32);
 extern s32 ActorDescriptor_IsInvalid(void *);
-extern void func_0206563c(void *, s32);
+extern void InventoryRecordCollection_RebindSecondarySelectionDescriptors(void *, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
 extern void func_ov001_021fca94(void *, void *);
@@ -57,7 +57,7 @@ extern "C" void func_ov021_021fecd0(void *state)
 extern "C" s32 Overlay021_IsAuxiliaryRecordAvailable(void *state)
 {
     u8 *collection = (u8 *)data_021e9ac0;
-    func_0206563c(collection + 0x34, FIELD(s32, state, 0x54));
+    InventoryRecordCollection_RebindSecondarySelectionDescriptors(collection + 0x34, FIELD(s32, state, 0x54));
     s32 i;
     for (i = 0; i < FIELD(s32, collection, 0x40); i++) {
         void *record = FIELD(u8 *, collection, 0x38) + i * 0x24;

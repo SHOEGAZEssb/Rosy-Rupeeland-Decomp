@@ -45909,7 +45909,7 @@ build build/decomp/src/overlays/ov646/overlay646_recovery.o: mwccarm src/overlay
   source = src/overlays/ov646/overlay646_recovery.c
   cflags = $actor_registration_portable_cflags
 build overlay646: phony overlay646_matching build/decomp/src/overlays/ov646/overlay646_recovery.o
-build link_replacement_objects_624: phony build/decomp/asm/overlays/ov646/overlay646_02233c60.o build/decomp/asm/game/InventoryRecord_Assign.o build/decomp/asm/game/InventoryRecord_AssignPersistentFields.o build/decomp/asm/game/InventoryRecord_IsEmptyKind1Subtype1.o build/decomp/asm/game/InventoryRecord_GetSortKey.o build/decomp/asm/game/InventoryRecord_Copy.o build/decomp/asm/game/InventoryRecordCollection_HasInactiveKind1Subtype1.o build/decomp/asm/game/func_020654ac.o build/decomp/asm/game/InventoryRecordCollection_SortAlternate.o build/decomp/asm/game/InventoryCell_Init.o build/decomp/asm/game/InventoryCell_Destroy.o build/decomp/asm/game/InventoryViewState_Init.o build/decomp/asm/game/InventoryScene_Init.o build/decomp/asm/game/InventoryScene_Destroy.o build/decomp/asm/game/InventoryScene_Delete.o build/decomp/asm/game/InventoryScene_LoadPrimaryView.o build/decomp/asm/game/InventoryScene_LoadSecondaryView.o build/decomp/asm/game/InventoryScene_UpdateInput.o build/decomp/asm/game/func_02068938.o build/decomp/asm/game/InventoryScene_UpdateTerminal.o build/decomp/asm/game/InventoryScene_UpdateChild.o build/decomp/asm/game/InventoryScroll_InitBase.o build/decomp/asm/game/InventoryScroll_ConfigureRange.o build/decomp/asm/game/func_02094154.o build/decomp/asm/game/InventoryScroll_Destroy.o build/decomp/asm/game/InventoryScroll_Delete.o build/decomp/asm/game/InventoryScroll_UpdateArrowAnimations.o build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o build/decomp/src/graphics/animation_resource_state.o build/decomp/src/graphics/animation_resource_state_replace.o build/decomp/src/graphics/animation_resource_state_release.o build/decomp/src/graphics/graphics_bg_character_upload_sub.o build/decomp/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/src/graphics/graphics_bg_map_upload_sub.o build/decomp/src/math/signed_absolute.o $
+build link_replacement_objects_624: phony build/decomp/asm/overlays/ov646/overlay646_02233c60.o build/decomp/asm/game/InventoryRecord_Assign.o build/decomp/asm/game/InventoryRecord_AssignPersistentFields.o build/decomp/asm/game/InventoryRecord_IsEmptyKind1Subtype1.o build/decomp/asm/game/InventoryRecord_GetSortKey.o build/decomp/asm/game/InventoryRecord_Copy.o build/decomp/asm/game/InventoryRecordCollection_HasInactiveKind1Subtype1.o build/decomp/asm/game/InventoryRecordCollection_SwapRecords.o build/decomp/asm/game/InventoryRecordCollection_SortAlternate.o build/decomp/asm/game/InventoryCell_Init.o build/decomp/asm/game/InventoryCell_Destroy.o build/decomp/asm/game/InventoryViewState_Init.o build/decomp/asm/game/InventoryScene_Init.o build/decomp/asm/game/InventoryScene_Destroy.o build/decomp/asm/game/InventoryScene_Delete.o build/decomp/asm/game/InventoryScene_LoadPrimaryView.o build/decomp/asm/game/InventoryScene_LoadSecondaryView.o build/decomp/asm/game/InventoryScene_UpdateInput.o build/decomp/asm/game/InventoryViewState_Copy.o build/decomp/asm/game/InventoryScene_UpdateTerminal.o build/decomp/asm/game/InventoryScene_UpdateChild.o build/decomp/asm/game/InventoryScroll_InitBase.o build/decomp/asm/game/InventoryScroll_ConfigureRange.o build/decomp/asm/game/InventoryScroll_Init.o build/decomp/asm/game/InventoryScroll_Destroy.o build/decomp/asm/game/InventoryScroll_Delete.o build/decomp/asm/game/InventoryScroll_UpdateArrowAnimations.o build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o build/decomp/src/graphics/animation_resource_state.o build/decomp/src/graphics/animation_resource_state_replace.o build/decomp/src/graphics/animation_resource_state_release.o build/decomp/src/graphics/graphics_bg_character_upload_sub.o build/decomp/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/src/graphics/graphics_bg_map_upload_sub.o build/decomp/src/math/signed_absolute.o $
   build/decomp/src/game/title_random_value.o build/decomp/src/game/title_interpolated_value.o build/decomp/src/game/title_interpolated_value_advance.o build/decomp/src/game/title_interpolated_value_complete.o build/decomp/src/game/title_screen_resource_collection.o build/decomp/src/game/title_screen_resource_collection_destructor.o build/decomp/src/game/title_screen_resource_collection_ops.o build/decomp/src/game/title_character_resource_collection.o build/decomp/src/game/title_character_resource_collection_destructor.o build/decomp/src/game/title_character_resource_collection_ops.o build/decomp/src/graphics/title_palette_backdrop.o build/decomp/src/game/title_scroll_value.o build/decomp/src/game/actor_interaction_registry_update.o build/decomp/src/game/actor_direction_category.o
 build build/decomp/src/overlays/ov025/overlay025_effect_base_noop.o: mwccarm src/overlays/ov025/overlay025_effect_base_noop.c | include/tingle/types.h
   source = src/overlays/ov025/overlay025_effect_base_noop.c
@@ -46553,7 +46553,7 @@ build build/decomp/asm/game/InventoryRecord_IsEmptyKind1Subtype1.o: mwasmarm asm
 build build/decomp/asm/game/InventoryRecord_GetSortKey.o: mwasmarm asm/game/InventoryRecord_GetSortKey.s
 build build/decomp/asm/game/InventoryRecord_Copy.o: mwasmarm asm/game/InventoryRecord_Copy.s
 build build/decomp/asm/game/InventoryRecordCollection_HasInactiveKind1Subtype1.o: mwasmarm asm/game/InventoryRecordCollection_HasInactiveKind1Subtype1.s
-build build/decomp/asm/game/func_020654ac.o: mwasmarm asm/game/func_020654ac.s
+build build/decomp/asm/game/InventoryRecordCollection_SwapRecords.o: mwasmarm asm/game/InventoryRecordCollection_SwapRecords.s
 build build/decomp/asm/game/InventoryRecordCollection_SortAlternate.o: mwasmarm asm/game/InventoryRecordCollection_SortAlternate.s
 build build/decomp/asm/game/InventoryCell_Init.o: mwasmarm asm/game/InventoryCell_Init.s
 build build/decomp/asm/game/InventoryCell_Destroy.o: mwasmarm asm/game/InventoryCell_Destroy.s
@@ -46564,12 +46564,12 @@ build build/decomp/asm/game/InventoryScene_Delete.o: mwasmarm asm/game/Inventory
 build build/decomp/asm/game/InventoryScene_LoadPrimaryView.o: mwasmarm asm/game/InventoryScene_LoadPrimaryView.s
 build build/decomp/asm/game/InventoryScene_LoadSecondaryView.o: mwasmarm asm/game/InventoryScene_LoadSecondaryView.s
 build build/decomp/asm/game/InventoryScene_UpdateInput.o: mwasmarm asm/game/InventoryScene_UpdateInput.s
-build build/decomp/asm/game/func_02068938.o: mwasmarm asm/game/func_02068938.s
+build build/decomp/asm/game/InventoryViewState_Copy.o: mwasmarm asm/game/InventoryViewState_Copy.s
 build build/decomp/asm/game/InventoryScene_UpdateTerminal.o: mwasmarm asm/game/InventoryScene_UpdateTerminal.s
 build build/decomp/asm/game/InventoryScene_UpdateChild.o: mwasmarm asm/game/InventoryScene_UpdateChild.s
 build build/decomp/asm/game/InventoryScroll_InitBase.o: mwasmarm asm/game/InventoryScroll_InitBase.s
 build build/decomp/asm/game/InventoryScroll_ConfigureRange.o: mwasmarm asm/game/InventoryScroll_ConfigureRange.s
-build build/decomp/asm/game/func_02094154.o: mwasmarm asm/game/func_02094154.s
+build build/decomp/asm/game/InventoryScroll_Init.o: mwasmarm asm/game/InventoryScroll_Init.s
 build build/decomp/asm/game/InventoryScroll_Destroy.o: mwasmarm asm/game/InventoryScroll_Destroy.s
 build build/decomp/asm/game/InventoryScroll_Delete.o: mwasmarm asm/game/InventoryScroll_Delete.s
 build build/decomp/asm/game/InventoryScroll_UpdateArrowAnimations.o: mwasmarm asm/game/InventoryScroll_UpdateArrowAnimations.s
@@ -46634,13 +46634,13 @@ build build/reports/inventory_scene_update_input.txt: match_report build/reports
   report_json = build/reports/inventory_scene_update_input.json
   report_args = --section .text --function InventoryScene_UpdateInput --require-exact
 
-build build/decomp/delinks/asm/game/func_02068938.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/reports/inventory_scene_view_state_copy.json: objdiff build/decomp/delinks/asm/game/func_02068938.o | build/decomp/asm/game/func_02068938.o
-  target_object = build/decomp/delinks/asm/game/func_02068938.o
-  base_object = build/decomp/asm/game/func_02068938.o
+build build/decomp/delinks/asm/game/InventoryViewState_Copy.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_view_state_copy.json: objdiff build/decomp/delinks/asm/game/InventoryViewState_Copy.o | build/decomp/asm/game/InventoryViewState_Copy.o
+  target_object = build/decomp/delinks/asm/game/InventoryViewState_Copy.o
+  base_object = build/decomp/asm/game/InventoryViewState_Copy.o
 build build/reports/inventory_scene_view_state_copy.txt: match_report build/reports/inventory_scene_view_state_copy.json | tools/report_objdiff.py
   report_json = build/reports/inventory_scene_view_state_copy.json
-  report_args = --section .text --function func_02068938 --require-exact
+  report_args = --section .text --function InventoryViewState_Copy --require-exact
 
 build build/decomp/delinks/asm/game/InventoryScene_UpdateTerminal.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/inventory_scene_update_terminal.json: objdiff build/decomp/delinks/asm/game/InventoryScene_UpdateTerminal.o | build/decomp/asm/game/InventoryScene_UpdateTerminal.o
@@ -46667,7 +46667,7 @@ build build/decomp/delinks/asm/game/InventoryRecord_IsEmptyKind1Subtype1.o: phon
 build build/decomp/delinks/asm/game/InventoryRecord_GetSortKey.o: phony build/decomp/delinks/asm/game/InventoryRecord_Assign.o
 build build/decomp/delinks/asm/game/InventoryRecord_Copy.o: phony build/decomp/delinks/asm/game/InventoryRecord_Assign.o
 build build/decomp/delinks/asm/game/InventoryRecordCollection_HasInactiveKind1Subtype1.o: phony build/decomp/delinks/asm/game/InventoryRecord_Assign.o
-build build/decomp/delinks/asm/game/func_020654ac.o: phony build/decomp/delinks/asm/game/InventoryRecord_Assign.o
+build build/decomp/delinks/asm/game/InventoryRecordCollection_SwapRecords.o: phony build/decomp/delinks/asm/game/InventoryRecord_Assign.o
 build build/decomp/delinks/asm/game/InventoryRecordCollection_SortAlternate.o: phony build/decomp/delinks/asm/game/InventoryRecord_Assign.o
 
 build build/reports/inventory_record_assign.json: objdiff build/decomp/delinks/asm/game/InventoryRecord_Assign.o | build/decomp/asm/game/InventoryRecord_Assign.o
@@ -46712,12 +46712,12 @@ build build/reports/inventory_record_collection_has_inactive_kind1_subtype1.txt:
   report_json = build/reports/inventory_record_collection_has_inactive_kind1_subtype1.json
   report_args = --section .text --function InventoryRecordCollection_HasInactiveKind1Subtype1 --require-exact
 
-build build/reports/inventory_record_collection_swap_alternate.json: objdiff build/decomp/delinks/asm/game/func_020654ac.o | build/decomp/asm/game/func_020654ac.o
-  target_object = build/decomp/delinks/asm/game/func_020654ac.o
-  base_object = build/decomp/asm/game/func_020654ac.o
+build build/reports/inventory_record_collection_swap_alternate.json: objdiff build/decomp/delinks/asm/game/InventoryRecordCollection_SwapRecords.o | build/decomp/asm/game/InventoryRecordCollection_SwapRecords.o
+  target_object = build/decomp/delinks/asm/game/InventoryRecordCollection_SwapRecords.o
+  base_object = build/decomp/asm/game/InventoryRecordCollection_SwapRecords.o
 build build/reports/inventory_record_collection_swap_alternate.txt: match_report build/reports/inventory_record_collection_swap_alternate.json | tools/report_objdiff.py
   report_json = build/reports/inventory_record_collection_swap_alternate.json
-  report_args = --section .text --function func_020654ac --require-exact
+  report_args = --section .text --function InventoryRecordCollection_SwapRecords --require-exact
 
 build build/reports/inventory_record_collection_sort_alternate.json: objdiff build/decomp/delinks/asm/game/InventoryRecordCollection_SortAlternate.o | build/decomp/asm/game/InventoryRecordCollection_SortAlternate.o
   target_object = build/decomp/delinks/asm/game/InventoryRecordCollection_SortAlternate.o
@@ -46733,7 +46733,7 @@ build build/decomp/delinks/asm/game/InventoryCell_Init.o: dsd_delink config/arm9
 build build/decomp/delinks/asm/game/InventoryCell_Destroy.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
 build build/decomp/delinks/asm/game/InventoryScroll_InitBase.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
 build build/decomp/delinks/asm/game/InventoryScroll_ConfigureRange.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
-build build/decomp/delinks/asm/game/func_02094154.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
+build build/decomp/delinks/asm/game/InventoryScroll_Init.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
 build build/decomp/delinks/asm/game/InventoryScroll_Destroy.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
 build build/decomp/delinks/asm/game/InventoryScroll_Delete.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
 build build/decomp/delinks/asm/game/InventoryScroll_UpdateArrowAnimations.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
@@ -46766,12 +46766,12 @@ build build/reports/inventory_scroll_configure_range.txt: match_report build/rep
   report_json = build/reports/inventory_scroll_configure_range.json
   report_args = --section .text --function InventoryScroll_ConfigureRange --require-exact
 
-build build/reports/inventory_scroll_construct.json: objdiff build/decomp/delinks/asm/game/func_02094154.o | build/decomp/asm/game/func_02094154.o
-  target_object = build/decomp/delinks/asm/game/func_02094154.o
-  base_object = build/decomp/asm/game/func_02094154.o
+build build/reports/inventory_scroll_construct.json: objdiff build/decomp/delinks/asm/game/InventoryScroll_Init.o | build/decomp/asm/game/InventoryScroll_Init.o
+  target_object = build/decomp/delinks/asm/game/InventoryScroll_Init.o
+  base_object = build/decomp/asm/game/InventoryScroll_Init.o
 build build/reports/inventory_scroll_construct.txt: match_report build/reports/inventory_scroll_construct.json | tools/report_objdiff.py
   report_json = build/reports/inventory_scroll_construct.json
-  report_args = --section .text --function func_02094154 --require-exact
+  report_args = --section .text --function InventoryScroll_Init --require-exact
 
 build build/reports/inventory_scroll_destroy.json: objdiff build/decomp/delinks/asm/game/InventoryScroll_Destroy.o | build/decomp/asm/game/InventoryScroll_Destroy.o
   target_object = build/decomp/delinks/asm/game/InventoryScroll_Destroy.o

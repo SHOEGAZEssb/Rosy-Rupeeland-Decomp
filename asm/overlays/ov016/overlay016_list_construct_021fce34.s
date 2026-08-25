@@ -13,7 +13,7 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern TitleCharacterResourceCollection_Init
     .extern TitleCharacterResourceCollection_Append
-    .extern func_02094154
+    .extern InventoryScroll_Init
     .extern InventoryScroll_UpdatePresentation
     .extern CxxArray_ConstructWithCookie
     .extern func_ov016_021fce00
@@ -108,7 +108,7 @@ L_021fcf3c:
     ldr r2, [r5, #0x50]
     mov r1, r4
     mov r3, #0x5
-    bl func_02094154
+    bl InventoryScroll_Init
 L_021fcf84:
     str r0, [r5, #0x58]
     ldr r0, [r5, #0x8]
@@ -144,7 +144,7 @@ L_021fcfc8:
     str ip, [sp, #0x4]
     mov r4, #0x8
     str r4, [sp, #0x8]
-    bl func_02094154
+    bl InventoryScroll_Init
 L_021fd00c:
     str r0, [r5, #0x58]
     mov r0, #0x0

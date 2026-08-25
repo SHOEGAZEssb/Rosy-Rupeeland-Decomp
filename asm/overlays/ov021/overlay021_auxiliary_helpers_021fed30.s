@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_auxiliary_helpers.c. */
     .extern data_021e9ac0
     .extern ActorDescriptor_IsInvalid
-    .extern func_0206563c
+    .extern InventoryRecordCollection_RebindSecondarySelectionDescriptors
 
 .global Overlay021_IsAuxiliaryRecordAvailable
 Overlay021_IsAuxiliaryRecordAvailable:
@@ -11,7 +11,7 @@ Overlay021_IsAuxiliaryRecordAvailable:
     ldr r4, [r1, #0x0]
     ldr r1, [r0, #0x54]
     add r0, r4, #0x34
-    bl func_0206563c
+    bl InventoryRecordCollection_RebindSecondarySelectionDescriptors
     mov r5, #0x0
     ldr r6, [r4, #0x40]
     mov r8, r5

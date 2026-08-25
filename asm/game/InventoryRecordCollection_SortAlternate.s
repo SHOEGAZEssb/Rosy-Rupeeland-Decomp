@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/game/inventory_record_sort.c.
 .extern ActorDescriptor_IsInvalid
 .extern InventoryRecord_GetSortKey
-.extern func_020654ac
+.extern InventoryRecordCollection_SwapRecords
 
 .global InventoryRecordCollection_SortAlternate
 InventoryRecordCollection_SortAlternate:
@@ -37,7 +37,7 @@ InventoryRecordCollection_SortAlternate:
     mov r0, r10
     mov r1, r7
     mov r2, r9
-    bl func_020654ac
+    bl InventoryRecordCollection_SwapRecords
     mov r8, r11
     b .L_0206559c
 .L_0206558c:
@@ -83,7 +83,7 @@ InventoryRecordCollection_SortAlternate:
     mov r0, r10
     mov r1, r8
     sub r2, r8, #0x1
-    bl func_020654ac
+    bl InventoryRecordCollection_SwapRecords
 .L_0206561c:
     sub r8, r8, #0x1
 .L_02065620:
