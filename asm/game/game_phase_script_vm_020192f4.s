@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern Scenario_GetStatus
-.global func_020192f4
-func_020192f4:
+.global GamePhaseActorScriptVm_DispatchScenarioAction
+GamePhaseActorScriptVm_DispatchScenarioAction:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -54,4 +54,4 @@ L_02019390:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02019398: .word gScenarioActionTables
-.size func_020192f4, . - func_020192f4
+.size GamePhaseActorScriptVm_DispatchScenarioAction, . - GamePhaseActorScriptVm_DispatchScenarioAction

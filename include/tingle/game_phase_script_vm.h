@@ -268,8 +268,8 @@ s32 GamePhaseActorScriptVm_GetCurrencyIncreaseAccumulator(GamePhaseActorScriptVm
 s32 GamePhaseActorScriptVm_GetNegatedCurrencyDecreaseAccumulator(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ClearCurrencyChangeAccumulators(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_RuntimeUtilityNoOp(GamePhaseActorScriptVm *self);
-s32 func_020192f4(GamePhaseActorScriptVm *self);
-s32 func_0201939c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchScenarioAction(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchActorEffectCommand(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ConfigureAndStartPackedTimer(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_MarkPackedTimerComplete(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetPackedTimerRepeatCount(GamePhaseActorScriptVm *self);

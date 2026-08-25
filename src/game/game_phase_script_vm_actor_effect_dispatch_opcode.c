@@ -40,7 +40,7 @@ extern void ActorDescriptor_InitRange(void *descriptor, u16 type, s32 enabled);
 }
 #endif
 
-void *func_02019890(void *descriptor, u16 type, s32 enabled);
+void *ActorEffectDescriptor_Init(void *descriptor, u16 type, s32 enabled);
 
 /* Store a signed halfword through the retail signed-byte truncation. */
 static s16 truncateSignedByte(s16 value)
@@ -130,29 +130,32 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
  * entry, remove an indexed entry, or run the two-vector descriptor effect.
  * Unsupported modes and an unavailable manager do nothing.  Return zero.
  */
-s32 func_0201939c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchActorEffectCommand(GamePhaseActorScriptVm *self)
 {
-    s32 p0 = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 p1 = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 p2 = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 p3 = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 p4 = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 p5 = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 p6 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 effectOperand0 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 effectOperand1 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 effectOperand2 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 effectOperand3 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 effectOperand4 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 effectOperand5 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 effectOperand6 = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (mode) {
     case 0:
-        spawnActorSnapshot(self, p6, p5, p4);
+        spawnActorSnapshot(self, effectOperand6, effectOperand5, effectOperand4);
         break;
     case 1: {
         VecFx32Object position;
-        VecFx32Object_InitComponents(&position, p5 << 12, p4 << 12, p3 << 12);
-        if (p6 >= 0xe4 && p6 <= 0xea) {
+        VecFx32Object_InitComponents(&position, effectOperand5 << 12,
+                                     effectOperand4 << 12,
+                                     effectOperand3 << 12);
+        if (effectOperand6 >= 0xe4 && effectOperand6 <= 0xea) {
             static const s16 amounts[7] = {1, 5, 10, 20, 50, 100, 200};
-            PresentationBackedActor_SpawnSplitAmount(300, amounts[p6 - 0xe4], &position);
+            PresentationBackedActor_SpawnSplitAmount(
+                300, amounts[effectOperand6 - 0xe4], &position);
         } else {
             u8 descriptor[0x24];
-            func_02019890(descriptor, (u16)p6, 1);
+            ActorEffectDescriptor_Init(descriptor, (u16)effectOperand6, 1);
             GridEffectActor_SpawnWithRandomVelocity(&position, descriptor, 300);
         }
         VecFx32Object_Destroy(&position);
@@ -161,7 +164,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
     case 2: {
         void *manager = *(void **)((u8 *)gGamePhaseRuntime + 0x2ea4);
         if (ActorDerivedType1_IsIdleEligible(manager))
-            ActorDerivedType1_StartRecord(manager, p6);
+            ActorDerivedType1_StartRecord(manager, effectOperand6);
         break;
     }
     case 3: {
@@ -169,8 +172,11 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         VecFx32Object offset;
         VecFx32Object_InitCopy(&actorPosition,
                       (const VecFx32Object *)((u8 *)self->actor + 0x18));
-        VecFx32Object_InitComponents(&offset, p5 << 12, p4 << 12, p3 << 12);
-        TrackedResourceActor_SpawnFromKey(p6, &actorPosition, &offset);
+        VecFx32Object_InitComponents(&offset, effectOperand5 << 12,
+                                     effectOperand4 << 12,
+                                     effectOperand3 << 12);
+        TrackedResourceActor_SpawnFromKey(effectOperand6, &actorPosition,
+                                          &offset);
         VecFx32Object_Destroy(&offset);
         VecFx32Object_Destroy(&actorPosition);
         break;
@@ -179,18 +185,24 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         s32 selection = (*(u32 *)((u8 *)self->actor + 0x14) & 0x04000000)
                             ? gActorCategory2DescriptorTable : gActorCategory1DescriptorTable;
         ActorCollection_SpawnDescriptorsBySelector(
-            Actor_GetOwningCollection(self->actor), (void *)selection, p6);
+            Actor_GetOwningCollection(self->actor), (void *)selection,
+            effectOperand6);
         break;
     }
     case 5:
-        ActorCollection_QueueGroupForRemoval(Actor_GetOwningCollection(self->actor), p6);
+        ActorCollection_QueueGroupForRemoval(
+            Actor_GetOwningCollection(self->actor), effectOperand6);
         break;
     case 6: {
         VecFx32Object first;
         VecFx32Object second;
-        VecFx32Object_InitComponents(&first, p2 << 12, p1 << 12, p0 << 12);
-        VecFx32Object_InitComponents(&second, p5 << 12, p4 << 12, p3 << 12);
-        TrackedResourceActor_SpawnFromKey(p6, &first, &second);
+        VecFx32Object_InitComponents(&first, effectOperand2 << 12,
+                                     effectOperand1 << 12,
+                                     effectOperand0 << 12);
+        VecFx32Object_InitComponents(&second, effectOperand5 << 12,
+                                     effectOperand4 << 12,
+                                     effectOperand3 << 12);
+        TrackedResourceActor_SpawnFromKey(effectOperand6, &first, &second);
         VecFx32Object_Destroy(&second);
         VecFx32Object_Destroy(&first);
         break;
@@ -199,9 +211,12 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         u8 descriptor[0x24];
         VecFx32Object first;
         VecFx32Object second;
-        func_02019890(descriptor, (u16)p6, 1);
-        VecFx32Object_InitComponents(&first, p5 << 12, p4 << 12, p3 << 12);
-        VecFx32Object_InitComponents(&second, p2, p1, p0);
+        ActorEffectDescriptor_Init(descriptor, (u16)effectOperand6, 1);
+        VecFx32Object_InitComponents(&first, effectOperand5 << 12,
+                                     effectOperand4 << 12,
+                                     effectOperand3 << 12);
+        VecFx32Object_InitComponents(&second, effectOperand2, effectOperand1,
+                                     effectOperand0);
         GridEffectActor_SpawnWithVelocity(&first, &second, descriptor, 300);
         VecFx32Object_Destroy(&second);
         VecFx32Object_Destroy(&first);
@@ -216,7 +231,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
  * establish its self-linked nodes, call the external type initializer with
  * type/enabled, and return descriptor.
  */
-void *func_02019890(void *descriptor, u16 type, s32 enabled)
+void *ActorEffectDescriptor_Init(void *descriptor, u16 type, s32 enabled)
 {
     u8 *raw = (u8 *)descriptor;
     *(u16 *)(raw + 2) = 0;

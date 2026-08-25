@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_effect_dispatch_opcode.c.
 .text
 .extern ActorDescriptor_InitRange
-.global func_02019890
-func_02019890:
+.global ActorEffectDescriptor_Init
+ActorEffectDescriptor_Init:
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov ip, #0x0
@@ -19,4 +19,4 @@ func_02019890:
     bl ActorDescriptor_InitRange
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_02019890, . - func_02019890
+.size ActorEffectDescriptor_Init, . - ActorEffectDescriptor_Init

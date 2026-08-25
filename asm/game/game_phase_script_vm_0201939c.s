@@ -11,7 +11,7 @@
 .extern ActorBounds_GetHeight
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern func_02019890
+.extern ActorEffectDescriptor_Init
 .extern ActorCollection_QueueGroupForRemoval
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorCollection_SpawnDescriptorsBySelector
@@ -24,8 +24,8 @@
 .extern GridEffectActor_SpawnWithRandomVelocity
 .extern GridEffectActor_SpawnWithVelocity
 .extern TrackedResourceActor_SpawnFromKey
-.global func_0201939c
-func_0201939c:
+.global GamePhaseActorScriptVm_DispatchActorEffectCommand
+GamePhaseActorScriptVm_DispatchActorEffectCommand:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x150
     mov r9, r0
@@ -246,7 +246,7 @@ L_020196c4:
     add r0, sp, #0xa8
     mov r1, r1, lsr #0x10
     mov r2, #0x1
-    bl func_02019890
+    bl ActorEffectDescriptor_Init
     add r0, sp, #0x98
     mov r1, r7, lsl #0xc
     mov r2, r5, lsl #0xc
@@ -337,7 +337,7 @@ L_02019818:
     add r0, sp, #0x34
     mov r1, r1, lsr #0x10
     mov r2, #0x1
-    bl func_02019890
+    bl ActorEffectDescriptor_Init
     add r0, sp, #0x24
     mov r1, r7, lsl #0xc
     mov r2, r5, lsl #0xc
@@ -364,4 +364,4 @@ L_02019878:
 L_02019884: .word gGamePhaseRuntime
 L_02019888: .word gActorCategory2DescriptorTable
 L_0201988c: .word gActorCategory1DescriptorTable
-.size func_0201939c, . - func_0201939c
+.size GamePhaseActorScriptVm_DispatchActorEffectCommand, . - GamePhaseActorScriptVm_DispatchActorEffectCommand

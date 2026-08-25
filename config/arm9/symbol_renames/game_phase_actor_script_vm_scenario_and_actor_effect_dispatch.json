@@ -1,0 +1,5 @@
+{
+  "func_020192f4": "GamePhaseActorScriptVm_DispatchScenarioAction",
+  "func_0201939c": "GamePhaseActorScriptVm_DispatchActorEffectCommand",
+  "func_02019890": "ActorEffectDescriptor_Init"
+}
