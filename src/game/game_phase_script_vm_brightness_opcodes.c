@@ -8,39 +8,39 @@ extern DisplayBrightnessPair gDisplayBrightnessPair;
 /* Start a 16-step main-screen transition from its current brightness to zero. */
 s32 GamePhaseActorScriptVm_StartMainBrightnessToZero(GamePhaseActorScriptVm *self)
 {
-    DisplayBrightness *state;
+    DisplayBrightness *brightness;
     (void)self;
-    state = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
-    DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), 0, 16);
+    brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
+    DisplayBrightness_StartTransition(brightness, DisplayBrightness_GetCurrent(brightness), 0, 16);
     return 0;
 }
 
 /* Start a 16-step main-screen transition from its current brightness to -8. */
 s32 GamePhaseActorScriptVm_StartMainBrightnessToMinus8(GamePhaseActorScriptVm *self)
 {
-    DisplayBrightness *state;
+    DisplayBrightness *brightness;
     (void)self;
-    state = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
-    DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), -8, 16);
+    brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
+    DisplayBrightness_StartTransition(brightness, DisplayBrightness_GetCurrent(brightness), -8, 16);
     return 0;
 }
 
 /* Start a 16-step sub-screen transition from its current brightness to zero. */
 s32 GamePhaseActorScriptVm_StartSubBrightnessToZero(GamePhaseActorScriptVm *self)
 {
-    DisplayBrightness *state;
+    DisplayBrightness *brightness;
     (void)self;
-    state = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
-    DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), 0, 16);
+    brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
+    DisplayBrightness_StartTransition(brightness, DisplayBrightness_GetCurrent(brightness), 0, 16);
     return 0;
 }
 
 /* Start a 16-step sub-screen transition from its current brightness to -8. */
 s32 GamePhaseActorScriptVm_StartSubBrightnessToMinus8(GamePhaseActorScriptVm *self)
 {
-    DisplayBrightness *state;
+    DisplayBrightness *brightness;
     (void)self;
-    state = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
-    DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), -8, 16);
+    brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
+    DisplayBrightness_StartTransition(brightness, DisplayBrightness_GetCurrent(brightness), -8, 16);
     return 0;
 }

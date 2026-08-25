@@ -33,12 +33,12 @@ s32 GamePhaseActorScriptVm_SetCurrency(GamePhaseActorScriptVm *self)
  */
 s32 GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition(GamePhaseActorScriptVm *self)
 {
-    s32 height = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 width = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 baseY = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 baseX = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 visible = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, visible);
-    gGamePhaseCurrencyHud->baseX = (s16)width;
-    gGamePhaseCurrencyHud->baseY = (s16)height;
+    gGamePhaseCurrencyHud->baseX = (s16)baseX;
+    gGamePhaseCurrencyHud->baseY = (s16)baseY;
     return 0;
 }
 

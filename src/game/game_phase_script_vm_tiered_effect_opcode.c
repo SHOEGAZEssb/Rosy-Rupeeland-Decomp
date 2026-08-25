@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void PresentationBackedActor_Spawn(s32 kind, s16 first, s16 tierSource,
+extern void PresentationBackedActor_Spawn(s32 kind, s16 leadingOperand, s16 tierSource,
                           const VecFx32Object *position,
                           const VecFx32Object *secondary,
                           s32 resource0, s32 resource1, s32 resource2,
@@ -28,17 +28,17 @@ extern void PresentationBackedActor_Spawn(s32 kind, s16 first, s16 tierSource,
 s32 GamePhaseActorScriptVm_SpawnTieredEffect(GamePhaseActorScriptVm *self)
 {
     VecFx32Object position;
-    VecFx32Object secondary;
-    s32 first;
+    VecFx32Object scaledVector;
+    s32 leadingOperand;
     s32 tierSource;
     s32 tier;
 
     VecFx32Object_Init(&position);
-    VecFx32Object_Init(&secondary);
-    first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    secondary.value.z = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
-    secondary.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
-    secondary.value.x = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    VecFx32Object_Init(&scaledVector);
+    leadingOperand = (s32)GamePhaseScriptVm_Pop(&self->base);
+    scaledVector.value.z = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    scaledVector.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    scaledVector.value.x = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
     position.value.z = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     position.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     position.value.x = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
@@ -59,9 +59,9 @@ s32 GamePhaseActorScriptVm_SpawnTieredEffect(GamePhaseActorScriptVm *self)
     else
         tier = 0;
 
-    PresentationBackedActor_Spawn(10, (s16)first, (s16)tierSource, &position, &secondary,
+    PresentationBackedActor_Spawn(10, (s16)leadingOperand, (s16)tierSource, &position, &scaledVector,
                   0x300d, 0x300e, 0x300f, tier, 7, 0);
-    VecFx32Object_Destroy(&secondary);
+    VecFx32Object_Destroy(&scaledVector);
     VecFx32Object_Destroy(&position);
     return 0;
 }

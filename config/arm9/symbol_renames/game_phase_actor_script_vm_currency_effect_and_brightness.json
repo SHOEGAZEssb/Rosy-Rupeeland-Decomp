@@ -1,0 +1,11 @@
+{
+  "GamePhaseActorScriptVm_AddCurrency": "GamePhaseActorScriptVm_AddCurrency",
+  "GamePhaseActorScriptVm_SetCurrency": "GamePhaseActorScriptVm_SetCurrency",
+  "GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition": "GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition",
+  "GamePhaseActorScriptVm_GetCurrency": "GamePhaseActorScriptVm_GetCurrency",
+  "GamePhaseActorScriptVm_SpawnTieredEffect": "GamePhaseActorScriptVm_SpawnTieredEffect",
+  "GamePhaseActorScriptVm_StartMainBrightnessToZero": "GamePhaseActorScriptVm_StartMainBrightnessToZero",
+  "GamePhaseActorScriptVm_StartMainBrightnessToMinus8": "GamePhaseActorScriptVm_StartMainBrightnessToMinus8",
+  "GamePhaseActorScriptVm_StartSubBrightnessToZero": "GamePhaseActorScriptVm_StartSubBrightnessToZero",
+  "GamePhaseActorScriptVm_StartSubBrightnessToMinus8": "GamePhaseActorScriptVm_StartSubBrightnessToMinus8"
+}
