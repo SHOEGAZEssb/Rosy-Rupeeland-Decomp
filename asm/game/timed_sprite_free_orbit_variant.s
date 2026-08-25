@@ -10,9 +10,9 @@
 .extern TimedSpritePresentation_SetVisible
 .extern OrbitTimedSprite_InitBase
 
-.global func_0201ebac
-.type func_0201ebac, @function
-func_0201ebac: ; 0x0201ebac
+.global FreeOrbitTimedSprite_Init
+.type FreeOrbitTimedSprite_Init, @function
+FreeOrbitTimedSprite_Init: ; 0x0201ebac
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     ldrsh lr, [sp, #0x18]
@@ -32,11 +32,11 @@ func_0201ebac: ; 0x0201ebac
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
 .L_0201ebf4: .word data_020d60f8
-    .size func_0201ebac, .-func_0201ebac
+    .size FreeOrbitTimedSprite_Init, .-FreeOrbitTimedSprite_Init
 
-.global func_0201ebf8
-.type func_0201ebf8, @function
-func_0201ebf8: ; 0x0201ebf8
+.global FreeOrbitTimedSprite_Destroy
+.type FreeOrbitTimedSprite_Destroy, @function
+FreeOrbitTimedSprite_Destroy: ; 0x0201ebf8
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x40
@@ -45,11 +45,11 @@ func_0201ebf8: ; 0x0201ebf8
     bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201ebf8, .-func_0201ebf8
+    .size FreeOrbitTimedSprite_Destroy, .-FreeOrbitTimedSprite_Destroy
 
-.global func_0201ec18
-.type func_0201ec18, @function
-func_0201ec18: ; 0x0201ec18
+.global FreeOrbitTimedSprite_DestroyAndFree
+.type FreeOrbitTimedSprite_DestroyAndFree, @function
+FreeOrbitTimedSprite_DestroyAndFree: ; 0x0201ec18
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x40
@@ -60,11 +60,11 @@ func_0201ec18: ; 0x0201ec18
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201ec18, .-func_0201ec18
+    .size FreeOrbitTimedSprite_DestroyAndFree, .-FreeOrbitTimedSprite_DestroyAndFree
 
-.global func_0201ec40
-.type func_0201ec40, @function
-func_0201ec40: ; 0x0201ec40
+.global FreeOrbitTimedSprite_Update
+.type FreeOrbitTimedSprite_Update, @function
+FreeOrbitTimedSprite_Update: ; 0x0201ec40
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -98,4 +98,4 @@ func_0201ec40: ; 0x0201ec40
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 .L_0201ecb8: .word gCPoint2DS16VTable
-    .size func_0201ec40, .-func_0201ec40
+    .size FreeOrbitTimedSprite_Update, .-FreeOrbitTimedSprite_Update

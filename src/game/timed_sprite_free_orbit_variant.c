@@ -56,10 +56,9 @@ extern void VecFx32Object_Add(PresentationTrack *first,
  * construct position40 from positionSource, and return self.  The two signed
  * trailing values remain the orbit base's sprite offset and optional byte.
  */
-FreeOrbitTimedSprite *func_0201ebac(FreeOrbitTimedSprite *self,
-                                    const void *positionSource, u8 *config,
-                                    s32 spriteValue, s16 spriteOffset,
-                                    s16 spriteByte)
+FreeOrbitTimedSprite *FreeOrbitTimedSprite_Init(
+    FreeOrbitTimedSprite *self, const void *positionSource, u8 *config,
+    s32 spriteValue, s16 spriteOffset, s16 spriteByte)
 {
     OrbitTimedSprite_InitBase(
         self, 0, config, spriteValue, spriteOffset, spriteByte);
@@ -69,7 +68,7 @@ FreeOrbitTimedSprite *func_0201ebac(FreeOrbitTimedSprite *self,
 }
 
 /* Destroy position40, run shared non-freeing teardown, and return self. */
-FreeOrbitTimedSprite *func_0201ebf8(FreeOrbitTimedSprite *self)
+FreeOrbitTimedSprite *FreeOrbitTimedSprite_Destroy(FreeOrbitTimedSprite *self)
 {
     VecFx32Object_Destroy(&self->position40);
     TimedSpritePresentation_DestroyBase(self);
@@ -77,7 +76,8 @@ FreeOrbitTimedSprite *func_0201ebf8(FreeOrbitTimedSprite *self)
 }
 
 /* Destroy position40 and the shared base, free self, and return its old address. */
-FreeOrbitTimedSprite *func_0201ec18(FreeOrbitTimedSprite *self)
+FreeOrbitTimedSprite *FreeOrbitTimedSprite_DestroyAndFree(
+    FreeOrbitTimedSprite *self)
 {
     VecFx32Object_Destroy(&self->position40);
     TimedSpritePresentation_DestroyBase(self);
@@ -91,7 +91,7 @@ FreeOrbitTimedSprite *func_0201ec18(FreeOrbitTimedSprite *self)
  * gCPoint2DS16VTable and whose X/Y are zero, advance both tracks, advance the
  * wrapping orbit angle, and return zero.
  */
-s32 func_0201ec40(FreeOrbitTimedSprite *self)
+s32 FreeOrbitTimedSprite_Update(FreeOrbitTimedSprite *self)
 {
     CPoint2DS16 zeroCenter;
 

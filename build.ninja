@@ -8157,7 +8157,7 @@ build build/reports/timed_sprite_free_orbit_variant.json: objdiff build/decomp/d
   base_object = build/decomp/asm/game/timed_sprite_free_orbit_variant.o
 build build/reports/timed_sprite_free_orbit_variant.txt: match_report build/reports/timed_sprite_free_orbit_variant.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_free_orbit_variant.json
-  report_args = --section .text --function func_0201ebac --function func_0201ebf8 --function func_0201ec18 --function func_0201ec40 --require-exact
+  report_args = --section .text --function FreeOrbitTimedSprite_Init --function FreeOrbitTimedSprite_Destroy --function FreeOrbitTimedSprite_DestroyAndFree --function FreeOrbitTimedSprite_Update --require-exact
 build build/reports/timed_sprite_owner_position_variant.json: objdiff build/decomp/delinks/asm/game/timed_sprite_owner_position_variant.o | build/decomp/asm/game/timed_sprite_owner_position_variant.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_owner_position_variant.o
   base_object = build/decomp/asm/game/timed_sprite_owner_position_variant.o

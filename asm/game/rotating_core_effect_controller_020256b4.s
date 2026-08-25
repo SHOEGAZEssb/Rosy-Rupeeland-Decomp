@@ -12,7 +12,7 @@
 .extern VecFx32Object_InitSum
 .extern ActorMotionAreaFollower_GetPosition
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201ebac
+.extern FreeOrbitTimedSprite_Init
 .extern AuxiliaryCore_UpdateMotion
 .extern AuxiliaryCore_ApplyScale
 .extern func_020bf1f8
@@ -122,7 +122,7 @@ func_020256b4: ; 0x020256b4
     add r2, sp, #0x38
     mov r0, r6
     and r3, ip, #0xff
-    bl func_0201ebac
+    bl FreeOrbitTimedSprite_Init
     mov r6, r0
 .L_02025848:
     str r6, [r5, #0x28]

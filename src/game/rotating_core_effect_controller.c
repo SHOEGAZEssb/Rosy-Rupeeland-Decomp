@@ -74,7 +74,8 @@ extern void AuxiliaryCore_Destroy(void *);
 extern void AuxiliaryCoreSprite_SetVisible(void *, s32);
 extern void AuxiliaryCore_ApplyScale(void *, s32, s32);
 extern void AuxiliaryCore_UpdateMotion(void *, const ControllerVector *);
-extern void *func_0201ebac(void *, const void *, u8 *, s32, s16, s16);
+extern void *FreeOrbitTimedSprite_Init(
+    void *, const void *, u8 *, s32, s16, s16);
 extern void TimedSpritePresentation_SetVisible(void *, s32);
 extern const void *ActorMotionAreaFollower_GetPosition(void *);
 extern u32 genrand_int32(void);
@@ -251,7 +252,7 @@ s32 func_020256b4(RotatingCoreEffectController *self)
                     0x50, data_020d6aa0, 4, &gHeapContext);
                 if (self->effect28) {
                     division = func_020bf1f8(genrand_int32(), 5);
-                    self->effect28 = (TransientOrbitEffect *)func_0201ebac(
+                    self->effect28 = (TransientOrbitEffect *)FreeOrbitTimedSprite_Init(
                         self->effect28, &combined, (u8 *)config,
                         (u8)(division >> 32), -64, resourceRecord[0x3a]);
                 }

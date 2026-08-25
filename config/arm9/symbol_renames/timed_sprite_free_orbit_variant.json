@@ -1,0 +1,6 @@
+{
+  "func_0201ebac": "FreeOrbitTimedSprite_Init",
+  "func_0201ebf8": "FreeOrbitTimedSprite_Destroy",
+  "func_0201ec18": "FreeOrbitTimedSprite_DestroyAndFree",
+  "func_0201ec40": "FreeOrbitTimedSprite_Update"
+}
