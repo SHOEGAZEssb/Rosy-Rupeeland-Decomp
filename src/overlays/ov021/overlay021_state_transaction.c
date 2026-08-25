@@ -42,8 +42,8 @@ extern void Overlay021_List_RenderVisibleRows(void *);
 extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern void Overlay021_SetTransition(void *, u32, u32);
 extern void Overlay021_SetupMainBackground(void *);
-extern void func_ov021_021fe6b0(void *);
-extern void func_ov021_021feea4(void *);
+extern void Overlay021_SetupSceneSprites(void *);
+extern void Overlay021_UpdateScene(void *);
 extern void Overlay021_DestroyAuxiliaryPanel(void *);
 extern void func_ov021_021fee54(void *);
 extern void func_ov021_021ff050(void *, s32);
@@ -243,7 +243,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
     case 30:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             Overlay021_DestroyAuxiliaryPanel(state);
-            func_ov021_021fe6b0(state);
+            Overlay021_SetupSceneSprites(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             if (FIELD(void *, state, 0x37c) != 0) {
                 if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
@@ -295,7 +295,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -331,6 +331,6 @@ extern "C" s32 func_ov021_02202be0(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }

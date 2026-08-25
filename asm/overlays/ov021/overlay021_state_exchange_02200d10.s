@@ -24,10 +24,10 @@
     .extern Overlay021_List_UpdateSelectionDisplay
     .extern Overlay021_SetTransition
     .extern Overlay021_SetupMainBackground
-    .extern func_ov021_021fe6b0
+    .extern Overlay021_SetupSceneSprites
     .extern Overlay021_DestroyAuxiliaryPanel
     .extern func_ov021_021fee54
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff050
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
@@ -258,7 +258,7 @@ L_02201024:
     mov r0, r4
     bl Overlay021_DestroyAuxiliaryPanel
     mov r0, r4
-    bl func_ov021_021fe6b0
+    bl Overlay021_SetupSceneSprites
     ldr r1, [r4, #0x2c4]
     mov r0, r4
     bl func_ov021_021ff050
@@ -338,7 +338,7 @@ L_02201124:
     bl Overlay021_SetTransition
 L_02201168:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02201178: .word data_ov021_02202e78

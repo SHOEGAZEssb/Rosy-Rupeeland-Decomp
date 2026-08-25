@@ -47,7 +47,7 @@ extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern s32 Overlay021_List_HitTestRow(void *, const void *);
 extern s32 Overlay021_List_UpdateVisibleRows(void *);
 extern void Overlay021_SetTransition(void *, u32, u32);
-extern void func_ov021_021feea4(void *);
+extern void Overlay021_UpdateScene(void *);
 extern void func_ov021_021fee54(void *);
 extern s32 func_ov021_021ff274(void *);
 extern void func_ov021_021ff5b8(void *);
@@ -178,7 +178,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -266,6 +266,6 @@ extern "C" s32 func_ov021_022000f0(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }

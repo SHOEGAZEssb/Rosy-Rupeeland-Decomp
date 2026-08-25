@@ -4,8 +4,8 @@
     .extern ActorDescriptor_IsInvalid
     .extern InventoryRecordCollection_RebindPrimarySelectionDescriptors
 
-.global func_ov021_021feae4
-func_ov021_021feae4:
+.global Overlay021_HasPrimaryPanelEntry
+Overlay021_HasPrimaryPanelEntry:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     ldr r1, L_021feb5c
     ldr r5, [r1, #0x0]
@@ -40,5 +40,5 @@ L_021feb4c:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_021feb5c: .word data_021e9ac0
-    .size func_ov021_021feae4, . - func_ov021_021feae4
+    .size Overlay021_HasPrimaryPanelEntry, . - Overlay021_HasPrimaryPanelEntry
 

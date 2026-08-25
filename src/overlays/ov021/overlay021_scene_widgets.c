@@ -38,7 +38,7 @@ extern void Overlay021List_SyncFirstVisibleRow(void *);
  * positions, and materialize visible sprites. Store null when unavailable.
  * Heap/list/font/sprite SDK state changes; returns void and no MMIO occurs.
  */
-extern "C" void func_ov021_021fe520(void *state)
+extern "C" void Overlay021_CreateLists(void *state)
 {
     u8 *record = (u8 *)data_021f5128[FIELD(s32, state, 0x54)];
     s32 channel;
@@ -87,7 +87,7 @@ extern "C" void func_ov021_021fe520(void *state)
  * +0x98, input helper +0xA0, and label sprite +0x9C with the recovered fixed
  * animations/positions. Sprite/input/UI SDK state changes; returns void.
  */
-extern "C" void func_ov021_021fe6b0(void *state)
+extern "C" void Overlay021_SetupSceneSprites(void *state)
 {
     s32 i;
     for (i = 0; i < 2; i++) {

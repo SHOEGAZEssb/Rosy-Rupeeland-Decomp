@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_auxiliary_helpers.c. */
     .extern OverlaySlot_UnloadOverlay
     .extern Overlay001_CaptureViewState
-    .extern func_ov021_021feac8
+    .extern Overlay021_CopySnapshot
 
 .global func_ov021_021fecd0
 func_ov021_021fecd0:
@@ -16,7 +16,7 @@ func_ov021_021fecd0:
     bl Overlay001_CaptureViewState
     add r1, sp, #0x0
     add r0, r4, #0x368
-    bl func_ov021_021feac8
+    bl Overlay021_CopySnapshot
     ldr r0, [r4, #0x358]
     cmp r0, #0x0
     beq L_021fed14

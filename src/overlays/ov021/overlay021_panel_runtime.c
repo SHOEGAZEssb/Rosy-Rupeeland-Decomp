@@ -41,7 +41,7 @@ extern void *func_ov001_021fc7c0(void *, s32);
 extern void func_ov001_021fca38(void *, void *, s32);
 extern void Overlay001_GetViewRecordFromIndex(void *, void *, s32);
 extern void func_ov002_021fba00(void *);
-extern void func_ov021_021fea50(void *, u32);
+extern void Overlay021_SetNestedFlags(void *, u32);
 extern void func_ov045_0220b908(void *);
 extern void func_ov045_0220c18c(void *);
 #ifdef __cplusplus
@@ -58,7 +58,7 @@ extern void func_ov045_0220c18c(void *);
  * +0x35C, finalize the panel, and reset both saved fields to -1. Heap/panel/UI
  * state changes; returns void and performs no direct MMIO.
  */
-extern "C" void func_ov021_021fe8e8(void *state)
+extern "C" void Overlay021_CreatePrimaryPanel(void *state)
 {
     if (FIELD(void *, state, 0x354) == 0) {
         InventoryRecordCollection_RebindPrimarySelectionDescriptors(data_021e9ac0, FIELD(s32, state, 0x54));
@@ -82,7 +82,7 @@ extern "C" void func_ov021_021fe8e8(void *state)
                         restored = 1;
                     }
                 } else {
-                    func_ov021_021fea50(entry, 1);
+                    Overlay021_SetNestedFlags(entry, 1);
                 }
             }
         }
@@ -112,7 +112,7 @@ extern "C" void func_ov021_021fe8e8(void *state)
  * +0x354, then apply +0x368, finalize, and reset +0x374/+0x378 to -1.
  * Heap/panel/UI state changes; returns void and performs no direct MMIO.
  */
-extern "C" void func_ov021_021feb60(void *state)
+extern "C" void Overlay021_CreateSecondaryPanel(void *state)
 {
     if (FIELD(void *, state, 0x358) == 0) {
         InventoryRecordCollection_RebindSecondarySelectionDescriptors((u8 *)data_021e9ac0 + 0x34,
@@ -137,7 +137,7 @@ extern "C" void func_ov021_021feb60(void *state)
                         restored = 1;
                     }
                 } else {
-                    func_ov021_021fea50(entry, 1);
+                    Overlay021_SetNestedFlags(entry, 1);
                 }
             }
         }
@@ -169,7 +169,7 @@ extern "C" void func_ov021_021feb60(void *state)
  * submit that buffer at scale 0x100. UI/resource/graphics state changes;
  * returns void and performs no direct MMIO.
  */
-extern "C" void func_ov021_021feea4(void *state)
+extern "C" void Overlay021_UpdateScene(void *state)
 {
     GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     SpriteMotionController_Update((u8 *)state + 0xa0);

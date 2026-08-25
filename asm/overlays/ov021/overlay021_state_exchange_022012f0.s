@@ -7,9 +7,9 @@
     .extern DisplayBrightness_StartMaskedTransitions
     .extern SpriteMotionController_Hide
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fe390
-    .extern func_ov021_021fe8e8
-    .extern func_ov021_021feea4
+    .extern Overlay021_SetupPrimarySelectionBackground
+    .extern Overlay021_CreatePrimaryPanel
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff050
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
@@ -57,7 +57,7 @@ L_02201350:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
-    bl func_ov021_021fe8e8
+    bl Overlay021_CreatePrimaryPanel
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -66,7 +66,7 @@ L_02201350:
     b L_022013f0
 L_0220139c:
     mov r0, r4
-    bl func_ov021_021fe390
+    bl Overlay021_SetupPrimarySelectionBackground
     mov r0, r4
     mov r1, #0x2
     bl func_ov021_021ff0e0
@@ -89,7 +89,7 @@ L_022013d4:
     bl Overlay021_SetTransition
 L_022013f0:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02201400: .word gGameWork

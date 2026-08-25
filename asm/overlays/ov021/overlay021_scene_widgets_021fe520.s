@@ -12,8 +12,8 @@
     .extern Overlay021List_SyncFirstVisibleRow
     .extern gHeapContext
 
-.global func_ov021_021fe520
-func_ov021_021fe520:
+.global Overlay021_CreateLists
+Overlay021_CreateLists:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r1, L_021fe62c
     mov r10, r0
@@ -91,5 +91,5 @@ L_021fe62c: .word data_021f5128
 L_021fe630: .word gHeapContext
 L_021fe634: .word data_ov021_02202f98
 L_021fe638: .word data_020f4e14
-    .size func_ov021_021fe520, . - func_ov021_021fe520
+    .size Overlay021_CreateLists, . - Overlay021_CreateLists
 

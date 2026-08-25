@@ -8,9 +8,9 @@
     .extern SpriteMotionController_Show
     .extern Overlay021_SetTransition
     .extern Overlay021_SetupMainBackground
-    .extern func_ov021_021fea68
+    .extern Overlay021_DestroyPrimaryPanel
     .extern func_ov021_021fecd0
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021fefcc
     .extern func_ov021_021ff274
 
@@ -41,7 +41,7 @@ L_022021e0:
     cmp r0, #0x0
     beq L_0220228c
     mov r0, r4
-    bl func_ov021_021fea68
+    bl Overlay021_DestroyPrimaryPanel
     mov r0, r4
     bl func_ov021_021fecd0
     mov r0, r4
@@ -83,7 +83,7 @@ L_02202270:
     bl Overlay021_SetTransition
 L_0220228c:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0220229c: .word data_020f4e14

@@ -14,11 +14,11 @@
     .extern func_ov001_021fc7c0
     .extern func_ov001_021fca38
     .extern Overlay001_GetViewRecordFromIndex
-    .extern func_ov021_021fea50
+    .extern Overlay021_SetNestedFlags
     .extern gHeapContext
 
-.global func_ov021_021feb60
-func_ov021_021feb60:
+.global Overlay021_CreateSecondaryPanel
+Overlay021_CreateSecondaryPanel:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r10, r0
     ldr r0, [r10, #0x358]
@@ -74,7 +74,7 @@ L_021febe0:
     b L_021fec34
 L_021fec2c:
     mov r1, r4
-    bl func_ov021_021fea50
+    bl Overlay021_SetNestedFlags
 L_021fec34:
     add r9, r9, #0x1
 L_021fec38:
@@ -118,5 +118,5 @@ L_021fecc0: .word 0x1
 L_021fecc4: .word data_ov021_02202fa8
 L_021fecc8: .word gHeapContext
 L_021feccc: .word data_020f4e14
-    .size func_ov021_021feb60, . - func_ov021_021feb60
+    .size Overlay021_CreateSecondaryPanel, . - Overlay021_CreateSecondaryPanel
 

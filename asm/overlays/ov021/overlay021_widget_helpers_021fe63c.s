@@ -3,8 +3,8 @@
     .extern Heap_Free
     .extern Overlay021_List_Deinit
 
-.global func_ov021_021fe63c
-func_ov021_021fe63c:
+.global Overlay021_DestroyListsAndSavePositions
+Overlay021_DestroyListsAndSavePositions:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, #0x0
     mov r5, r0
@@ -37,5 +37,5 @@ L_021fe6a0:
     cmp r4, #0x2
     blt L_021fe650
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_ov021_021fe63c, . - func_ov021_021fe63c
+    .size Overlay021_DestroyListsAndSavePositions, . - Overlay021_DestroyListsAndSavePositions
 

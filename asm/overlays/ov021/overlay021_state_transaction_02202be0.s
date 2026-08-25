@@ -6,7 +6,7 @@
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern Overlay021_SetTransition
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
     .extern Overlay021Descriptor_GetFlags16_19
@@ -75,7 +75,7 @@ L_02202ca8:
     bl Overlay021_SetTransition
 L_02202cb8:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02202cc8: .word data_ov021_02202d48

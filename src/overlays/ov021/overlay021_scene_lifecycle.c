@@ -53,11 +53,11 @@ extern void Overlay021_Controller_DestroyNoOp(void *);
 extern void Overlay021_Snapshot_Init(void *);
 extern void Overlay021_Dialog_SetLayout(void *, s32, s32, s32, s32);
 extern void Overlay021_SetTransition(void *, u32, u32);
-extern void func_ov021_021fdf88(void *);
-extern void func_ov021_021fe098(void *);
+extern void Overlay021_SetupDisplay(void *);
+extern void Overlay021_LoadSubBackground(void *);
 extern void Overlay021_SetupMainBackground(void *);
-extern void func_ov021_021fe520(void *);
-extern void func_ov021_021fe6b0(void *);
+extern void Overlay021_CreateLists(void *);
+extern void Overlay021_SetupSceneSprites(void *);
 extern void func_ov045_0220b83c(void *);
 extern void func_ov045_0220b8cc(void *);
 extern void *func_ov045_0220c48c(s32, s32, s32);
@@ -187,11 +187,11 @@ extern "C" void *Overlay021_Scene_Init(void *state, s32 mode)
     FIELD(void *, state, 0x38c) = func_ov045_0220c48c(mode, 0, 0);
     FIELD(void *, state, 0x94) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
 
-    func_ov021_021fdf88(state);
-    func_ov021_021fe098(state);
+    Overlay021_SetupDisplay(state);
+    Overlay021_LoadSubBackground(state);
     Overlay021_SetupMainBackground(state);
-    func_ov021_021fe520(state);
-    func_ov021_021fe6b0(state);
+    Overlay021_CreateLists(state);
+    Overlay021_SetupSceneSprites(state);
     if (FIELD(void *, state, 0x2a4) != 0)
         FIELD(s32, state, 0x3e4) = Overlay021_List_FindSpecialRow(FIELD(void *, state, 0x2a4));
 

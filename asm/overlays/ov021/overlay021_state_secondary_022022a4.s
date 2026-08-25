@@ -7,13 +7,13 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern DisplayBrightness_StartMaskedTransitions
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fe390
+    .extern Overlay021_SetupPrimarySelectionBackground
     .extern Overlay021_RefreshSelectionBackground
-    .extern func_ov021_021fe8e8
-    .extern func_ov021_021fea68
-    .extern func_ov021_021feb60
+    .extern Overlay021_CreatePrimaryPanel
+    .extern Overlay021_DestroyPrimaryPanel
+    .extern Overlay021_CreateSecondaryPanel
     .extern func_ov021_021fecd0
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
 
@@ -51,14 +51,14 @@ L_022022f0:
     cmp r0, #0x0
     mov r0, r4
     beq L_02202328
-    bl func_ov021_021fea68
+    bl Overlay021_DestroyPrimaryPanel
     mov r0, r4
-    bl func_ov021_021feb60
+    bl Overlay021_CreateSecondaryPanel
     b L_02202334
 L_02202328:
     bl func_ov021_021fecd0
     mov r0, r4
-    bl func_ov021_021fe8e8
+    bl Overlay021_CreatePrimaryPanel
 L_02202334:
     ldr r1, [r4, #0x4]
     mov r0, #0x0
@@ -71,7 +71,7 @@ L_0220234c:
     cmp r0, #0x0
     mov r0, r4
     beq L_02202364
-    bl func_ov021_021fe390
+    bl Overlay021_SetupPrimarySelectionBackground
     b L_02202368
 L_02202364:
     bl Overlay021_RefreshSelectionBackground
@@ -107,7 +107,7 @@ L_022023c4:
     bl Overlay021_SetTransition
 L_022023d4:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_022023e4: .word data_020f4e14

@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_widget_helpers.c. */
     .extern SpriteMotionController_SetAnimation
 
-.global func_ov021_021fe84c
-func_ov021_021fe84c:
+.global Overlay021_RefreshListButtonAnimations
+Overlay021_RefreshListButtonAnimations:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r5, r0
     mov r6, #0xac
@@ -30,5 +30,5 @@ L_021fe898:
     cmp r4, #0x2
     blt L_021fe864
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_ov021_021fe84c, . - func_ov021_021fe84c
+    .size Overlay021_RefreshListButtonAnimations, . - Overlay021_RefreshListButtonAnimations
 

@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_graphics_setup.c. */
     .extern GraphicsAffineScanlineWave_Apply
 
-.global func_ov021_021fdf5c
-func_ov021_021fdf5c:
+.global Overlay021_ApplyScanlineWave
+Overlay021_ApplyScanlineWave:
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x20]
     mov r1, r1, lsl #0x15
@@ -16,5 +16,5 @@ func_ov021_021fdf5c:
 L_021fdf80:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_ov021_021fdf5c, . - func_ov021_021fdf5c
+    .size Overlay021_ApplyScanlineWave, . - Overlay021_ApplyScanlineWave
 

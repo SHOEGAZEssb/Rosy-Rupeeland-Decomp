@@ -12,8 +12,8 @@
     .extern Overlay000_Grid_Render
     .extern Overlay000_GetActiveMetadata
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fea68
-    .extern func_ov021_021feea4
+    .extern Overlay021_DestroyPrimaryPanel
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
     .extern func_ov021_021ffa10
@@ -183,14 +183,14 @@ L_02201a2c:
     movne r0, #0x1
     strne r0, [r4, #0x3d8]
     mov r0, r4
-    bl func_ov021_021fea68
+    bl Overlay021_DestroyPrimaryPanel
     ldr r1, L_02201a84
     mov r0, r4
     ldmia r1, {r1, r2}
     bl Overlay021_SetTransition
 L_02201a64:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02201a74: .word gGamePhaseCurrencyHud

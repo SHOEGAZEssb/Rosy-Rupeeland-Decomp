@@ -11,8 +11,8 @@
     .extern func_020b1ff0
     .extern func_020b44e8
 
-.global func_ov021_021fe098
-func_ov021_021fe098:
+.global Overlay021_LoadSubBackground
+Overlay021_LoadSubBackground:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -56,5 +56,5 @@ func_ov021_021fe098:
     ldmia sp!, {r4, pc}
 L_021fe13c: .word 0xc008
 L_021fe140: .word data_020f4e18
-    .size func_ov021_021fe098, . - func_ov021_021fe098
+    .size Overlay021_LoadSubBackground, . - Overlay021_LoadSubBackground
 

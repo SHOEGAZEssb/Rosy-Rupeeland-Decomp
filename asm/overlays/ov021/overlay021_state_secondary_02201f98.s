@@ -11,7 +11,7 @@
     .extern func_ov001_021fc7e4
     .extern Overlay021_SetTransition
     .extern func_ov021_021fecd0
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
     .extern func_ov021_021ffa10
@@ -152,7 +152,7 @@ L_02202154:
     bl Overlay021_SetTransition
 L_02202178:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02202188: .word gGamePhaseCurrencyHud

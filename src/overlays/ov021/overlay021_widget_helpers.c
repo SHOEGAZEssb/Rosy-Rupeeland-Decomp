@@ -17,7 +17,7 @@ extern void GraphicsSpriteGroup_Clear(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void Overlay000_CaptureViewState(void *, void *);
 extern void Overlay021_List_Deinit(void *);
-extern void func_ov021_021feac8(void *, const void *);
+extern void Overlay021_CopySnapshot(void *, const void *);
 #ifdef __cplusplus
 }
 #endif
@@ -28,7 +28,7 @@ extern void func_ov021_021feac8(void *, const void *);
  * +0x2B4/+0x2B8, destroy/free the widget, and clear its pointer. Heap/list/UI
  * ownership changes; returns void and performs no direct hardware access.
  */
-extern "C" void func_ov021_021fe63c(void *state)
+extern "C" void Overlay021_DestroyListsAndSavePositions(void *state)
 {
     s32 i;
     FIELD(s32, state, 0x2c0) = 0;
@@ -52,7 +52,7 @@ extern "C" void func_ov021_021fe63c(void *state)
  * 0x16+i*2 when its corresponding list +0x2A4 exists, otherwise 0x17+i*2.
  * Input-helper/UI state changes through SpriteMotionController_SetAnimation; returns void, no MMIO.
  */
-extern "C" void func_ov021_021fe84c(void *state)
+extern "C" void Overlay021_RefreshListButtonAnimations(void *state)
 {
     s32 i;
     for (i = 0; i < 2; i++) {
@@ -67,7 +67,7 @@ extern "C" void func_ov021_021fe84c(void *state)
  * records (absolute +0x1E8/+0x294), and clear sprite/object pointers
  * +0x13C/+0x9C/+0x98. UI/renderer state changes; returns void and no MMIO.
  */
-extern "C" void func_ov021_021fe8a8(void *state)
+extern "C" void Overlay021_ResetSceneSprites(void *state)
 {
     GraphicsSpriteGroup_Clear(FIELD(void *, state, 0x94));
     s32 i;
@@ -82,7 +82,7 @@ extern "C" void func_ov021_021fe8a8(void *state)
  * If object +0x0C exists, OR the caller mask into its flags at +0x20.
  * Returns void. Only the nested object's flags change; no SDK or MMIO effects.
  */
-extern "C" void func_ov021_021fea50(void *object, u32 mask)
+extern "C" void Overlay021_SetNestedFlags(void *object, u32 mask)
 {
     void *nested = FIELD(void *, object, 0xc);
     if (nested != 0)
@@ -95,13 +95,13 @@ extern "C" void func_ov021_021fea50(void *object, u32 mask)
  * panel pointer, and disable associated object +0x41C with argument zero.
  * Panel/UI ownership changes; returns void and performs no direct MMIO.
  */
-extern "C" void func_ov021_021fea68(void *state)
+extern "C" void Overlay021_DestroyPrimaryPanel(void *state)
 {
     void *panel = FIELD(void *, state, 0x354);
     if (panel != 0) {
         u32 snapshot[3];
         Overlay000_CaptureViewState(snapshot, panel);
-        func_ov021_021feac8((u8 *)state + 0x35c, snapshot);
+        Overlay021_CopySnapshot((u8 *)state + 0x35c, snapshot);
         typedef void (*Destructor)(void *);
         FIELD(Destructor *, panel, 0)[1](panel);
         FIELD(void *, state, 0x354) = 0;
@@ -113,7 +113,7 @@ extern "C" void func_ov021_021fea68(void *state)
  * Copy three words from caller source to destination. The destination record
  * changes; returns void and performs no SDK or hardware operations.
  */
-extern "C" void func_ov021_021feac8(void *destination, const void *source)
+extern "C" void Overlay021_CopySnapshot(void *destination, const void *source)
 {
     FIELD(u32, destination, 0) = FIELD(u32, source, 0);
     FIELD(u32, destination, 4) = FIELD(u32, source, 4);
@@ -126,7 +126,7 @@ extern "C" void func_ov021_021feac8(void *destination, const void *source)
  * a nonnull +0x0C member; otherwise return zero. The selected global data is
  * read only apart from any SDK-internal selection state; no MMIO occurs.
  */
-extern "C" s32 func_ov021_021feae4(void *state)
+extern "C" s32 Overlay021_HasPrimaryPanelEntry(void *state)
 {
     u8 *collection = (u8 *)data_021e9ac0;
     InventoryRecordCollection_RebindPrimarySelectionDescriptors(collection, FIELD(s32, state, 0x54));

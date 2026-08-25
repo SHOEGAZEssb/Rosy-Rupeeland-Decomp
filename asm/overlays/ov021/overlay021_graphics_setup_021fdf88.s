@@ -9,8 +9,8 @@
     .extern TitleDisplay_SetSubBgPriorities
     .extern func_020afd0c
 
-.global func_ov021_021fdf88
-func_ov021_021fdf88:
+.global Overlay021_SetupDisplay
+Overlay021_SetupDisplay:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     ldr r3, L_021fe07c
@@ -79,5 +79,5 @@ L_021fe088: .word data_020f4e14
 L_021fe08c: .word 0x17f
 L_021fe090: .word 0x4210
 L_021fe094: .word 0x4001050
-    .size func_ov021_021fdf88, . - func_ov021_021fdf88
+    .size Overlay021_SetupDisplay, . - Overlay021_SetupDisplay
 

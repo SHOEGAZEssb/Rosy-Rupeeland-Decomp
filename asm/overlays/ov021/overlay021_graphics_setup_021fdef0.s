@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_graphics_setup.c. */
     .extern TitleScrollValue_Advance
 
-.global func_ov021_021fdef0
-func_ov021_021fdef0:
+.global Overlay021_UpdateDisplay
+Overlay021_UpdateDisplay:
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x20]
     mov r1, r1, lsl #0x15
@@ -32,5 +32,5 @@ L_021fdf50:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_021fdf58: .word 0x1ff0000
-    .size func_ov021_021fdef0, . - func_ov021_021fdef0
+    .size Overlay021_UpdateDisplay, . - Overlay021_UpdateDisplay
 

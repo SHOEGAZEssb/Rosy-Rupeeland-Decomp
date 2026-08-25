@@ -8,11 +8,11 @@
     .extern TitleDisplay_SetMainBgPriorities
     .extern func_020afd0c
     .extern func_020b44e8
-    .extern func_ov021_021fe268
+    .extern Overlay021_ConfigureMainBg1
     .extern func_ov021_021ff5b8
 
-.global func_ov021_021fe390
-func_ov021_021fe390:
+.global Overlay021_SetupPrimarySelectionBackground
+Overlay021_SetupPrimarySelectionBackground:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r1, #0x3
@@ -27,7 +27,7 @@ func_ov021_021fe390:
     mov r3, r0
     mov r2, #0x1c
     str ip, [sp, #0x0]
-    bl func_ov021_021fe268
+    bl Overlay021_ConfigureMainBg1
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     ldr r3, L_021fe44c
@@ -63,5 +63,5 @@ func_ov021_021fe390:
 L_021fe44c: .word 0x800a
 L_021fe450: .word data_020f4e18
 L_021fe454: .word 0x4000050
-    .size func_ov021_021fe390, . - func_ov021_021fe390
+    .size Overlay021_SetupPrimarySelectionBackground, . - Overlay021_SetupPrimarySelectionBackground
 

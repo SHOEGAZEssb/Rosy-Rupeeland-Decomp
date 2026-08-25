@@ -17,7 +17,7 @@ extern void TitleDialog_ClearTextRect(void *);
 extern u32 Overlay021_Descriptor_GetCategory(const void *);
 extern void Overlay021_SetTransition(void *, u32, u32);
 extern void *Overlay021_List_GetSelectedRow(void *);
-extern void func_ov021_021feea4(void *);
+extern void Overlay021_UpdateScene(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -38,7 +38,7 @@ extern "C" s32 func_ov021_021ffa10(const void *descriptor)
  */
 extern "C" s32 func_ov021_021ffa28(void *state)
 {
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 1;
 }
 

@@ -30,11 +30,11 @@
     .extern Overlay021_Snapshot_Init
     .extern Overlay021_Dialog_SetLayout
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fdf88
-    .extern func_ov021_021fe098
+    .extern Overlay021_SetupDisplay
+    .extern Overlay021_LoadSubBackground
     .extern Overlay021_SetupMainBackground
-    .extern func_ov021_021fe520
-    .extern func_ov021_021fe6b0
+    .extern Overlay021_CreateLists
+    .extern Overlay021_SetupSceneSprites
     .extern func_ov045_0220b83c
     .extern func_ov045_0220c48c
     .extern gDebugFont
@@ -181,15 +181,15 @@ L_021fd8c4:
     bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r5, #0x94]
     mov r0, r5
-    bl func_ov021_021fdf88
+    bl Overlay021_SetupDisplay
     mov r0, r5
-    bl func_ov021_021fe098
+    bl Overlay021_LoadSubBackground
     mov r0, r5
     bl Overlay021_SetupMainBackground
     mov r0, r5
-    bl func_ov021_021fe520
+    bl Overlay021_CreateLists
     mov r0, r5
-    bl func_ov021_021fe6b0
+    bl Overlay021_SetupSceneSprites
     ldr r0, [r5, #0x2a4]
     cmp r0, #0x0
     beq L_021fda3c

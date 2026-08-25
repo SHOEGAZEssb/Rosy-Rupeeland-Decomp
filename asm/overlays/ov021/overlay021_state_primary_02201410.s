@@ -29,7 +29,7 @@
     .extern func_ov000_021fccfc
     .extern Overlay021_SetTransition
     .extern Overlay021_IsAuxiliaryRecordAvailable
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff274
     .extern Overlay021Descriptor_GetFlags16_19
     .extern func_ov021_021ff5b8
@@ -298,7 +298,7 @@ L_022017c0:
     bl func_ov021_021ff5b8
 L_022017d8:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_022017e8: .word data_ov021_02202d30

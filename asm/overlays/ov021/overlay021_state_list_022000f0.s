@@ -17,7 +17,7 @@
     .extern Overlay021_List_UpdateVisibleRows
     .extern Overlay021_SetTransition
     .extern func_ov021_021fee54
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff274
     .extern func_ov021_021ff5b8
     .extern func_ov021_021ff644
@@ -188,7 +188,7 @@ L_02200334:
     bl Overlay021_SetTransition
 L_02200344:
     mov r0, r5
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02200354: .word data_ov021_02202ee8

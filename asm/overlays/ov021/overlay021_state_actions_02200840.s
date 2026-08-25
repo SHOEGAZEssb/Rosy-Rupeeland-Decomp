@@ -12,12 +12,12 @@
     .extern Overlay021_Descriptor_GetCategory
     .extern Overlay021_List_Hide
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fe29c
-    .extern func_ov021_021fe8a8
-    .extern func_ov021_021fea68
+    .extern Overlay021_SetupAlternateMainBackground
+    .extern Overlay021_ResetSceneSprites
+    .extern Overlay021_DestroyPrimaryPanel
     .extern func_ov021_021fecd0
     .extern func_ov021_021fedac
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
     .extern Overlay021Descriptor_GetFlags16_19
@@ -49,7 +49,7 @@ L_0220087c:
     cmp r0, #0x0
     beq L_022008a0
     mov r0, r4
-    bl func_ov021_021fea68
+    bl Overlay021_DestroyPrimaryPanel
     b L_022008c0
 L_022008a0:
     ldr r0, [r4, #0x358]
@@ -63,7 +63,7 @@ L_022008b8:
     bl Overlay021_List_Hide
 L_022008c0:
     mov r0, r4
-    bl func_ov021_021fe8a8
+    bl Overlay021_ResetSceneSprites
     ldr r0, L_022009d4
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
@@ -77,7 +77,7 @@ L_022008c0:
     b L_022009c4
 L_022008f4:
     mov r0, r4
-    bl func_ov021_021fe29c
+    bl Overlay021_SetupAlternateMainBackground
     ldr r0, [r4, #0x3e0]
     cmp r0, #0x0
     bne L_02200944
@@ -134,7 +134,7 @@ L_022009b4:
     str r0, [r4, #0x3fc]
 L_022009c4:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_022009d4: .word data_020f4e14

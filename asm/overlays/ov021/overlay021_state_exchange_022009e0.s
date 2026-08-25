@@ -16,7 +16,7 @@
     .extern func_ov002_021fbdb0
     .extern Overlay021_Descriptor_GetCategory
     .extern Overlay021_SetTransition
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff1d0
     .extern func_ov021_021ff274
     .extern func_ov045_0220c028
@@ -238,7 +238,7 @@ L_02200cc0:
     bl Overlay021_SetTransition
 L_02200ce8:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02200cf8: .word 0x3c81

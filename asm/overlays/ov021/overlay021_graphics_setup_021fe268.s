@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_graphics_setup.c. */
 
-.global func_ov021_021fe268
-func_ov021_021fe268:
+.global Overlay021_ConfigureMainBg1
+Overlay021_ConfigureMainBg1:
     stmdb sp!, {r4, lr}
     ldr lr, L_021fe298
     ldr r4, [sp, #0x8]
@@ -16,5 +16,5 @@ func_ov021_021fe268:
     strh r0, [lr, #0x0]
     ldmia sp!, {r4, pc}
 L_021fe298: .word 0x400000a
-    .size func_ov021_021fe268, . - func_ov021_021fe268
+    .size Overlay021_ConfigureMainBg1, . - Overlay021_ConfigureMainBg1
 

@@ -28,8 +28,8 @@
     .extern func_ov001_021fcbf0
     .extern func_ov001_021fcc44
     .extern Overlay021_SetTransition
-    .extern func_ov021_021feae4
-    .extern func_ov021_021feea4
+    .extern Overlay021_HasPrimaryPanelEntry
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff274
     .extern Overlay021Descriptor_GetFlags16_19
     .extern func_ov021_021ff62c
@@ -157,7 +157,7 @@ L_02201d50:
     cmp r0, #0x0
     beq L_02201dac
     mov r0, r4
-    bl func_ov021_021feae4
+    bl Overlay021_HasPrimaryPanelEntry
     cmp r0, #0x0
     beq L_02201d9c
     ldr r0, [r4, #0x388]
@@ -298,7 +298,7 @@ L_02201f58:
     bl func_ov021_021ff644
 L_02201f70:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02201f80: .word data_ov021_02202dc8

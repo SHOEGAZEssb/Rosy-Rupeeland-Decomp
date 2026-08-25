@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_widget_helpers.c. */
     .extern GraphicsSpriteGroup_Clear
 
-.global func_ov021_021fe8a8
-func_ov021_021fe8a8:
+.global Overlay021_ResetSceneSprites
+Overlay021_ResetSceneSprites:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x94]
@@ -21,5 +21,5 @@ L_021fe8c4:
     str r2, [r4, #0x9c]
     str r2, [r4, #0x98]
     ldmia sp!, {r4, pc}
-    .size func_ov021_021fe8a8, . - func_ov021_021fe8a8
+    .size Overlay021_ResetSceneSprites, . - Overlay021_ResetSceneSprites
 

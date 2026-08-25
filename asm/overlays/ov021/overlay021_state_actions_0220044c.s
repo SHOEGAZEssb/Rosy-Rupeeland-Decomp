@@ -10,7 +10,7 @@
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern Overlay021_SetTransition
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff1d0
     .extern func_ov021_021ff274
     .extern func_ov021_021ffa10
@@ -139,7 +139,7 @@ L_022005d4:
     bl Overlay021_SetTransition
 L_02200604:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02200614: .word gGameWork

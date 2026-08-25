@@ -23,7 +23,7 @@ extern void *func_ov000_021fb6e0(void *, void *, s32);
 extern void Overlay001_CaptureViewState(void *, void *);
 extern void *Overlay002_Presentation_Init(void *, void *, s32);
 extern void func_ov002_021fb9c4(void *);
-extern void func_ov021_021feac8(void *, const void *);
+extern void Overlay021_CopySnapshot(void *, const void *);
 #ifdef __cplusplus
 }
 #endif
@@ -40,7 +40,7 @@ extern "C" void func_ov021_021fecd0(void *state)
     if (panel != 0) {
         u32 snapshot[3];
         Overlay001_CaptureViewState(snapshot, panel);
-        func_ov021_021feac8((u8 *)state + 0x368, snapshot);
+        Overlay021_CopySnapshot((u8 *)state + 0x368, snapshot);
         typedef void (*Destructor)(void *);
         FIELD(Destructor *, panel, 0)[1](panel);
         FIELD(void *, state, 0x358) = 0;

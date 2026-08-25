@@ -7,7 +7,7 @@
     .extern RecordDescriptor_GetMessage
     .extern DisplayBrightness_StartMaskedTransitions
     .extern Overlay021_SetTransition
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff1d0
     .extern func_ov021_021ff274
     .extern func_ov045_0220c028
@@ -72,7 +72,7 @@ L_022003ec:
     bl Overlay021_SetTransition
 L_02200434:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02200444: .word data_021f5128

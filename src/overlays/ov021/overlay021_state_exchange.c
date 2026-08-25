@@ -54,10 +54,10 @@ extern void Overlay021_List_RenderVisibleRows(void *);
 extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern void Overlay021_SetTransition(void *, u32, u32);
 extern void Overlay021_SetupMainBackground(void *);
-extern void func_ov021_021fe390(void *);
-extern void func_ov021_021fe6b0(void *);
-extern void func_ov021_021fe8e8(void *);
-extern void func_ov021_021feea4(void *);
+extern void Overlay021_SetupPrimarySelectionBackground(void *);
+extern void Overlay021_SetupSceneSprites(void *);
+extern void Overlay021_CreatePrimaryPanel(void *);
+extern void Overlay021_UpdateScene(void *);
 extern void Overlay021_DestroyAuxiliaryPanel(void *);
 extern void func_ov021_021fee54(void *);
 extern void func_ov021_021ff050(void *, s32);
@@ -180,7 +180,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -280,7 +280,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
     case 30:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             Overlay021_DestroyAuxiliaryPanel(state);
-            func_ov021_021fe6b0(state);
+            Overlay021_SetupSceneSprites(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             if (FIELD(void *, state, 0x37c) != 0) {
                 if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
@@ -314,7 +314,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -336,7 +336,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             Overlay021_DestroyAuxiliaryPanel(state);
-            func_ov021_021fe6b0(state);
+            Overlay021_SetupSceneSprites(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             if (FIELD(void *, state, 0x37c) != 0) {
                 FIELD(void *, state, 0x37c) = 0;
@@ -363,7 +363,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -389,13 +389,13 @@ extern "C" s32 func_ov021_022012f0(void *state)
             SpriteMotionController_Hide((u8 *)state + 0xa0);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-            func_ov021_021fe8e8(state);
+            Overlay021_CreatePrimaryPanel(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
         break;
     case 2:
-        func_ov021_021fe390(state);
+        Overlay021_SetupPrimarySelectionBackground(state);
         func_ov021_021ff0e0(state, 2);
         DisplayBrightness_StartMaskedTransitions(1, 0);
         FIELD(s32, state, 4)++;
@@ -406,6 +406,6 @@ extern "C" s32 func_ov021_022012f0(void *state)
             change_state(state, data_ov021_02202e18);
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }

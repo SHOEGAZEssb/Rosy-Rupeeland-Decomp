@@ -42,11 +42,11 @@ extern void Overlay021_List_Show(void *);
 extern void Overlay021_List_RenderVisibleRows(void *);
 extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern void Overlay021_SetTransition(void *, u32, u32);
-extern void func_ov021_021fe520(void *);
-extern void func_ov021_021fe63c(void *);
-extern void func_ov021_021fe84c(void *);
+extern void Overlay021_CreateLists(void *);
+extern void Overlay021_DestroyListsAndSavePositions(void *);
+extern void Overlay021_RefreshListButtonAnimations(void *);
 extern s32 Overlay021_IsAuxiliaryRecordAvailable(void *);
-extern void func_ov021_021feea4(void *);
+extern void Overlay021_UpdateScene(void *);
 extern void func_ov021_021fee54(void *);
 extern void func_ov021_021fefcc(void *);
 extern void func_ov021_021ff050(void *, s32);
@@ -112,7 +112,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
         }
         FIELD(u32, state, 0x20) |= 1;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -166,14 +166,14 @@ extern "C" s32 func_ov021_021ff834(void *state)
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-            func_ov021_021fe63c(state);
+            Overlay021_DestroyListsAndSavePositions(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
         break;
     case 4:
-        func_ov021_021fe520(state);
-        func_ov021_021fe84c(state);
+        Overlay021_CreateLists(state);
+        Overlay021_RefreshListButtonAnimations(state);
         if (FIELD(s32, state, 0x3d8) != 0) {
             FIELD(s32, state, 0x48) = 0;
             TitlePalette_SetMainBackdrop(0);
@@ -187,7 +187,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -281,6 +281,6 @@ extern "C" s32 func_ov021_021ffa38(void *state)
                                 data_ov021_02202f10[1]);
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }

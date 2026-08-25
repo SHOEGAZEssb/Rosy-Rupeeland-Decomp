@@ -14,7 +14,7 @@
     .extern RecordDescriptor_GetMessage
     .extern SpriteMotionController_Hide
     .extern Overlay021_SetTransition
-    .extern func_ov021_021feea4
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff0e0
     .extern func_ov045_0220c128
     .extern func_ov045_0220c9e8
@@ -113,7 +113,7 @@ L_021ff7f4:
     str r0, [r4, #0x20]
 L_021ff804:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021ff814: .word gGameWork

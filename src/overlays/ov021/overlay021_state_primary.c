@@ -54,10 +54,10 @@ extern s32 func_ov000_021fcc18(void *, void *);
 extern s32 func_ov000_021fccfc(void *, void *);
 extern void Overlay021_SetTransition(void *, u32, u32);
 extern void Overlay021_RefreshSelectionBackground(void *);
-extern void func_ov021_021fea68(void *);
+extern void Overlay021_DestroyPrimaryPanel(void *);
 extern s32 Overlay021_IsAuxiliaryRecordAvailable(void *);
-extern void func_ov021_021feea4(void *);
-extern void func_ov021_021feb60(void *);
+extern void Overlay021_UpdateScene(void *);
+extern void Overlay021_CreateSecondaryPanel(void *);
 extern void func_ov021_021ff050(void *, s32);
 extern void func_ov021_021ff0e0(void *, s32);
 extern s32 func_ov021_021ff274(void *);
@@ -192,7 +192,7 @@ extern "C" s32 func_ov021_02201410(void *state)
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -268,12 +268,12 @@ extern "C" s32 func_ov021_02201800(void *state)
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
                 FIELD(s32, state, 0x3d8) = 1;
-            func_ov021_021fea68(state);
+            Overlay021_DestroyPrimaryPanel(state);
             change_state(state, data_ov021_02202dd8);
         }
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }
 
@@ -299,7 +299,7 @@ extern "C" s32 func_ov021_02201a88(void *state)
             SpriteMotionController_Hide((u8 *)state + 0xa0);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-            func_ov021_021feb60(state);
+            Overlay021_CreateSecondaryPanel(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -316,6 +316,6 @@ extern "C" s32 func_ov021_02201a88(void *state)
             change_state(state, data_ov021_02202dd0);
         break;
     }
-    func_ov021_021feea4(state);
+    Overlay021_UpdateScene(state);
     return 0;
 }

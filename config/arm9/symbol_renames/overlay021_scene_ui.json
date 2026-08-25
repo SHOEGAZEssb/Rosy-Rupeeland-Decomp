@@ -1,0 +1,21 @@
+{
+  "func_ov021_021fdef0": "Overlay021_UpdateDisplay",
+  "func_ov021_021fdf5c": "Overlay021_ApplyScanlineWave",
+  "func_ov021_021fdf88": "Overlay021_SetupDisplay",
+  "func_ov021_021fe098": "Overlay021_LoadSubBackground",
+  "func_ov021_021fe268": "Overlay021_ConfigureMainBg1",
+  "func_ov021_021fe29c": "Overlay021_SetupAlternateMainBackground",
+  "func_ov021_021fe390": "Overlay021_SetupPrimarySelectionBackground",
+  "func_ov021_021fe520": "Overlay021_CreateLists",
+  "func_ov021_021fe63c": "Overlay021_DestroyListsAndSavePositions",
+  "func_ov021_021fe6b0": "Overlay021_SetupSceneSprites",
+  "func_ov021_021fe84c": "Overlay021_RefreshListButtonAnimations",
+  "func_ov021_021fe8a8": "Overlay021_ResetSceneSprites",
+  "func_ov021_021fe8e8": "Overlay021_CreatePrimaryPanel",
+  "func_ov021_021fea50": "Overlay021_SetNestedFlags",
+  "func_ov021_021fea68": "Overlay021_DestroyPrimaryPanel",
+  "func_ov021_021feac8": "Overlay021_CopySnapshot",
+  "func_ov021_021feae4": "Overlay021_HasPrimaryPanelEntry",
+  "func_ov021_021feb60": "Overlay021_CreateSecondaryPanel",
+  "func_ov021_021feea4": "Overlay021_UpdateScene"
+}

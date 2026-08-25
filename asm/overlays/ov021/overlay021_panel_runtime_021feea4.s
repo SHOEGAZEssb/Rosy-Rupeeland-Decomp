@@ -15,8 +15,8 @@
     .extern func_ov045_0220c18c
     .extern gGamePhaseCurrencyHud
 
-.global func_ov021_021feea4
-func_ov021_021feea4:
+.global Overlay021_UpdateScene
+Overlay021_UpdateScene:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     ldr r1, L_021fefc4
     mov r4, r0
@@ -98,5 +98,5 @@ L_021fef54:
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_021fefc4: .word gGamePhaseCurrencyHud
 L_021fefc8: .word data_021f5ee8
-    .size func_ov021_021feea4, . - func_ov021_021feea4
+    .size Overlay021_UpdateScene, . - Overlay021_UpdateScene
 

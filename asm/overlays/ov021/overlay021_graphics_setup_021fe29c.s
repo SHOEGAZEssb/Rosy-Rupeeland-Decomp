@@ -13,10 +13,10 @@
     .extern TitleScreenResourceCollection_Get
     .extern TitlePalette_SetMainBackdrop
     .extern func_020b44e8
-    .extern func_ov021_021fe268
+    .extern Overlay021_ConfigureMainBg1
 
-.global func_ov021_021fe29c
-func_ov021_021fe29c:
+.global Overlay021_SetupAlternateMainBackground
+Overlay021_SetupAlternateMainBackground:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x54
     mov r4, r0
@@ -36,7 +36,7 @@ func_ov021_021fe29c:
     strh r2, [lr, #0x0]
     mov r2, #0x1e
     str ip, [sp, #0x0]
-    bl func_ov021_021fe268
+    bl Overlay021_ConfigureMainBg1
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     add r0, sp, #0x10
@@ -78,5 +78,5 @@ L_021fe380: .word 0x4000008
 L_021fe384: .word 0xa06f
 L_021fe388: .word data_020f4e18
 L_021fe38c: .word 0xa070
-    .size func_ov021_021fe29c, . - func_ov021_021fe29c
+    .size Overlay021_SetupAlternateMainBackground, . - Overlay021_SetupAlternateMainBackground
 

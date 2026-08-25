@@ -40,7 +40,7 @@ extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(const void *, s32, s32);
 extern void func_020b44e8(void);
-extern void func_ov021_021fe268(s32, s32, s32, s32, s32);
+extern void Overlay021_ConfigureMainBg1(s32, s32, s32, s32, s32);
 extern void func_ov021_021ff5b8(void *);
 extern void func_ov021_021ff644(void *);
 #ifdef __cplusplus
@@ -53,7 +53,7 @@ extern void func_ov021_021ff644(void *);
  * 16..24 using the original masked 32-bit store, and update object +0x404.
  * Always return zero. Nintendo DS display MMIO and graphics SDK state may change.
  */
-extern "C" s32 func_ov021_021fdef0(void *state)
+extern "C" s32 Overlay021_UpdateDisplay(void *state)
 {
     if ((FIELD(u32, state, 0x20) & 0x400) != 0) {
         volatile u32 *mainDisplay = (volatile u32 *)0x04000000;
@@ -73,7 +73,7 @@ extern "C" s32 func_ov021_021fdef0(void *state)
  * If scene flag bit 10 is set, submit object +0x404 with argument zero.
  * Always return zero. Graphics SDK state may change; no direct MMIO occurs.
  */
-extern "C" s32 func_ov021_021fdf5c(void *state)
+extern "C" s32 Overlay021_ApplyScanlineWave(void *state)
 {
     if ((FIELD(u32, state, 0x20) & 0x400) != 0)
         GraphicsAffineScanlineWave_Apply((u8 *)state + 0x404, 0);
@@ -87,7 +87,7 @@ extern "C" s32 func_ov021_021fdf5c(void *state)
  * sub-engine blend/window record and configure register 0x04001050. Returns
  * void. Nintendo DS display/power MMIO and graphics SDK state change.
  */
-extern "C" void func_ov021_021fdf88(void *state)
+extern "C" void Overlay021_SetupDisplay(void *state)
 {
     *(volatile u16 *)0x04000304 &= (u16)~0x8000;
     FIELD(s32, state, 0x48) = 0x1c;
@@ -120,7 +120,7 @@ extern "C" void func_ov021_021fdf88(void *state)
  * 0x20 bytes at +0x3F0, and destroy the temporary resource set. Graphics and
  * resource memory change; returns void and performs no direct MMIO.
  */
-extern "C" void func_ov021_021fe098(void *state)
+extern "C" void Overlay021_LoadSubBackground(void *state)
 {
     void *buffer = (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0x400)) + 0x20;
     FIELD(void *, state, 0x3f0) = buffer;
@@ -150,7 +150,7 @@ extern "C" void func_ov021_021fe098(void *state)
 extern "C" void Overlay021_SetupMainBackground(void *state)
 {
     TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
-    func_ov021_021fe268(0, 0, 0, 0x1c, 1);
+    Overlay021_ConfigureMainBg1(0, 0, 0, 0x1c, 1);
     u8 resources[12];
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
@@ -179,12 +179,12 @@ extern "C" void Overlay021_SetupMainBackground(void *state)
  * temporary resource objects. Graphics resource and Nintendo DS BG MMIO state
  * change; returns void.
  */
-extern "C" void func_ov021_021fe29c(void *state)
+extern "C" void Overlay021_SetupAlternateMainBackground(void *state)
 {
     TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
     volatile u16 *bg0cnt = (volatile u16 *)0x04000008;
     *bg0cnt = (*bg0cnt & 0x43) | 0x3c00;
-    func_ov021_021fe268(0, 0, 0, 0x1e, 1);
+    Overlay021_ConfigureMainBg1(0, 0, 0, 0x1e, 1);
 
     u8 resources[12];
     u8 manager[0x44];
@@ -210,10 +210,10 @@ extern "C" void func_ov021_021fe29c(void *state)
  * 0x04000050 with 0/2/4/12, refresh the overlay-0 selection display, and
  * destroy the temporary resources. Graphics MMIO/resource state changes.
  */
-extern "C" void func_ov021_021fe390(void *state)
+extern "C" void Overlay021_SetupPrimarySelectionBackground(void *state)
 {
     TitleDisplay_SetMainBgPriorities(0, 3, 3, 3);
-    func_ov021_021fe268(0, 0, 0x1c, 0, 1);
+    Overlay021_ConfigureMainBg1(0, 0, 0x1c, 0, 1);
     u8 resources[12];
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
@@ -235,7 +235,7 @@ extern "C" void func_ov021_021fe390(void *state)
 extern "C" void Overlay021_RefreshSelectionBackground(void *state)
 {
     TitleDisplay_SetMainBgPriorities(0, 3, 3, 3);
-    func_ov021_021fe268(0, 0, 0x1c, 0, 1);
+    Overlay021_ConfigureMainBg1(0, 0, 0x1c, 0, 1);
     u8 resources[12];
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
@@ -254,7 +254,7 @@ extern "C" void Overlay021_RefreshSelectionBackground(void *state)
  * 2+, and 13+, preserving existing bits 0,1,6. Returns void. This directly
  * changes Nintendo DS background-control MMIO.
  */
-extern "C" void func_ov021_021fe268(s32 a, s32 b, s32 c, s32 d, s32 e)
+extern "C" void Overlay021_ConfigureMainBg1(s32 a, s32 b, s32 c, s32 d, s32 e)
 {
     volatile u16 *bg1cnt = (volatile u16 *)0x0400000a;
     *bg1cnt = (u16)((*bg1cnt & 0x43) | (a << 14) | (b << 7) | (c << 8) |

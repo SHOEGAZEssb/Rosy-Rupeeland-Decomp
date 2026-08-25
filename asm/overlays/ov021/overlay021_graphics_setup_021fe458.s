@@ -8,7 +8,7 @@
     .extern TitleDisplay_SetMainBgPriorities
     .extern func_020afd0c
     .extern func_020b44e8
-    .extern func_ov021_021fe268
+    .extern Overlay021_ConfigureMainBg1
     .extern func_ov021_021ff644
 
 .global Overlay021_RefreshSelectionBackground
@@ -27,7 +27,7 @@ Overlay021_RefreshSelectionBackground:
     mov r3, r0
     mov r2, #0x1c
     str ip, [sp, #0x0]
-    bl func_ov021_021fe268
+    bl Overlay021_ConfigureMainBg1
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     ldr r3, L_021fe514

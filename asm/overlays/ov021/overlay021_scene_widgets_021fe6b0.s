@@ -6,8 +6,8 @@
     .extern SpriteMotionController_SetPosition
     .extern SpriteMotionController_Hide
 
-.global func_ov021_021fe6b0
-func_ov021_021fe6b0:
+.global Overlay021_SetupSceneSprites
+Overlay021_SetupSceneSprites:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -115,5 +115,5 @@ L_021fe78c:
     bl GraphicsSpriteState_ApplyRenderConfig
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_ov021_021fe6b0, . - func_ov021_021fe6b0
+    .size Overlay021_SetupSceneSprites, . - Overlay021_SetupSceneSprites
 

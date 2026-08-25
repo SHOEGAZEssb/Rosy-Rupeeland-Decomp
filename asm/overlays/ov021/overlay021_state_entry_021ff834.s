@@ -14,10 +14,10 @@
     .extern TitleDialog_UpdateTextPage
     .extern TitleDialog_ClearTextRect
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fe520
-    .extern func_ov021_021fe63c
-    .extern func_ov021_021fe84c
-    .extern func_ov021_021feea4
+    .extern Overlay021_CreateLists
+    .extern Overlay021_DestroyListsAndSavePositions
+    .extern Overlay021_RefreshListButtonAnimations
+    .extern Overlay021_UpdateScene
     .extern func_ov021_021ff1d0
     .extern func_ov021_021ff274
     .extern func_ov021_021ffa10
@@ -110,7 +110,7 @@ L_021ff94c:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
-    bl func_ov021_021fe63c
+    bl Overlay021_DestroyListsAndSavePositions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -118,9 +118,9 @@ L_021ff94c:
     str r0, [r4, #0x8]
     b L_021ff9e8
 L_021ff98c:
-    bl func_ov021_021fe520
+    bl Overlay021_CreateLists
     mov r0, r4
-    bl func_ov021_021fe84c
+    bl Overlay021_RefreshListButtonAnimations
     ldr r0, [r4, #0x3d8]
     cmp r0, #0x0
     beq L_021ff9c4
@@ -144,7 +144,7 @@ L_021ff9c4:
     bl Overlay021_SetTransition
 L_021ff9e8:
     mov r0, r4
-    bl func_ov021_021feea4
+    bl Overlay021_UpdateScene
     mov r0, #0x0
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
