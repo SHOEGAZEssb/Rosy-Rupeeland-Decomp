@@ -11,7 +11,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern FieldEffect_Init
-.extern func_0201e584
+.extern OffsetTimedSprite_Init
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
@@ -73,7 +73,7 @@ AuxiliaryTimedSpritePresentation_InitBase: ; 0x0201f724
     ldr r3, [sp, #0x5c]
     add r1, sp, #0x0
     and r2, r2, #0xff
-    bl func_0201e584
+    bl OffsetTimedSprite_Init
 .L_0201f800:
     ldr r1, [sp, #0x64]
     str r0, [r4, #0x8]
@@ -102,4 +102,3 @@ AuxiliaryTimedSpritePresentation_InitBase: ; 0x0201f724
 .L_0201f85c: .word gHeapContext
 .L_0201f860: .word gGamePhaseRuntime
     .size AuxiliaryTimedSpritePresentation_InitBase, .-AuxiliaryTimedSpritePresentation_InitBase
-

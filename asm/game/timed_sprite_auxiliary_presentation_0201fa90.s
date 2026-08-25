@@ -11,7 +11,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern FieldEffect_Init
-.extern func_0201e584
+.extern OffsetTimedSprite_Init
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
@@ -46,4 +46,3 @@ AuxiliaryTimedSpritePresentation_Update: ; 0x0201fa90
     ldmia sp!, {r4, pc}
 .L_0201faf8: .word gGamePhaseRuntime
     .size AuxiliaryTimedSpritePresentation_Update, .-AuxiliaryTimedSpritePresentation_Update
-

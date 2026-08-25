@@ -9,8 +9,8 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern data_020d6084
-.global func_0201e620
-func_0201e620: ; 0x0201e620
+.global OffsetTimedSprite_Update
+OffsetTimedSprite_Update: ; 0x0201e620
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r5, r0
@@ -65,4 +65,4 @@ L_0201e6dc:
     ldmia sp!, {r3, r4, r5, pc}
 
 
-.size func_0201e620, . - func_0201e620
+.size OffsetTimedSprite_Update, . - OffsetTimedSprite_Update

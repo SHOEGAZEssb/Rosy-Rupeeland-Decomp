@@ -11,7 +11,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern FieldEffect_Init
-.extern func_0201e584
+.extern OffsetTimedSprite_Init
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
@@ -40,4 +40,3 @@ AuxiliaryTimedSpritePresentation_DestroyBase: ; 0x0201fa44
     ldmia sp!, {r4, pc}
 .L_0201fa8c: .word gAuxiliaryTimedSpritePresentationVtable
     .size AuxiliaryTimedSpritePresentation_DestroyBase, .-AuxiliaryTimedSpritePresentation_DestroyBase
-

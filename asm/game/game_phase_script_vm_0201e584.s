@@ -9,8 +9,8 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern data_020d6084
-.global func_0201e584
-func_0201e584: ; 0x0201e584
+.global OffsetTimedSprite_Init
+OffsetTimedSprite_Init: ; 0x0201e584
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     mov r7, r1
@@ -40,4 +40,4 @@ func_0201e584: ; 0x0201e584
 L_0201e5ec: .word data_020d6084
 
 
-.size func_0201e584, . - func_0201e584
+.size OffsetTimedSprite_Init, . - OffsetTimedSprite_Init

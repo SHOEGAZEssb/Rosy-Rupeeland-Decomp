@@ -9,8 +9,8 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern data_020d6084
-.global func_0201e5f0
-func_0201e5f0: ; 0x0201e5f0
+.global OffsetTimedSprite_Destroy
+OffsetTimedSprite_Destroy: ; 0x0201e5f0
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
@@ -18,4 +18,4 @@ func_0201e5f0: ; 0x0201e5f0
     ldmia sp!, {r4, pc}
 
 
-.size func_0201e5f0, . - func_0201e5f0
+.size OffsetTimedSprite_Destroy, . - OffsetTimedSprite_Destroy

@@ -21,7 +21,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
 
 /* Initialize the base, install the vtable at data_020d6084, copy tracks/lifetime,
  * remember offset, clear sprite flag 2, set sprite value, and return self. */
-OffsetTimedSprite *func_0201e584(OffsetTimedSprite *self,u8 *config,s32 spriteValue,s32 offset)
+OffsetTimedSprite *OffsetTimedSprite_Init(OffsetTimedSprite *self,u8 *config,s32 spriteValue,s32 offset)
 {
     TimedSpritePresentation_Init(self,config);self->vtable=data_020d6084;self->offset2c=offset;
     VecFx32Object_Assign(&self->first08,config+0x10);VecFx32Object_Assign(&self->second18,config+0x20);
@@ -30,13 +30,13 @@ OffsetTimedSprite *func_0201e584(OffsetTimedSprite *self,u8 *config,s32 spriteVa
 }
 
 /* Run shared non-freeing teardown and return self. */
-OffsetTimedSprite *func_0201e5f0(OffsetTimedSprite *self){TimedSpritePresentation_DestroyBase(self);return self;}
+OffsetTimedSprite *OffsetTimedSprite_Destroy(OffsetTimedSprite *self){TimedSpritePresentation_DestroyBase(self);return self;}
 
 /* Run shared teardown, free self, and return its old address. */
-OffsetTimedSprite *func_0201e604(OffsetTimedSprite *self){TimedSpritePresentation_DestroyBase(self);Heap_Free(self);return self;}
+OffsetTimedSprite *OffsetTimedSprite_DestroyAndFree(OffsetTimedSprite *self){TimedSpritePresentation_DestroyBase(self);Heap_Free(self);return self;}
 
 /* Decrement lifetime; hide/finish on expiry or sprite flag 1. Otherwise update motion, add offset to sprite halfword 0x28, and return flag 1. */
-s32 func_0201e620(OffsetTimedSprite *self,s32 argument)
+s32 OffsetTimedSprite_Update(OffsetTimedSprite *self,s32 argument)
 {
     self->remaining28--;if(self->remaining28<0||(*(u16 *)(self->sprite+0x24)&1)){TimedSpritePresentation_SetVisible(self,0);return 1;}
     VecFx32Object_Add(&self->first08,&self->second18);*(u16 *)(self->sprite+0x24)&=~4;

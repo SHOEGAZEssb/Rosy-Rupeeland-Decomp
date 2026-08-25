@@ -8116,28 +8116,28 @@ build build/reports/game_phase_script_vm_0201e584.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e584.o
 build build/reports/game_phase_script_vm_0201e584.txt: match_report build/reports/game_phase_script_vm_0201e584.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e584.json
-  report_args = --section .text --function func_0201e584 --require-exact
+  report_args = --section .text --function OffsetTimedSprite_Init --require-exact
 
 build build/reports/game_phase_script_vm_0201e5f0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e5f0.o | build/decomp/asm/game/game_phase_script_vm_0201e5f0.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e5f0.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e5f0.o
 build build/reports/game_phase_script_vm_0201e5f0.txt: match_report build/reports/game_phase_script_vm_0201e5f0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e5f0.json
-  report_args = --section .text --function func_0201e5f0 --require-exact
+  report_args = --section .text --function OffsetTimedSprite_Destroy --require-exact
 
 build build/reports/game_phase_script_vm_0201e604.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e604.o | build/decomp/asm/game/game_phase_script_vm_0201e604.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e604.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e604.o
 build build/reports/game_phase_script_vm_0201e604.txt: match_report build/reports/game_phase_script_vm_0201e604.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e604.json
-  report_args = --section .text --function func_0201e604 --require-exact
+  report_args = --section .text --function OffsetTimedSprite_DestroyAndFree --require-exact
 
 build build/reports/game_phase_script_vm_0201e620.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e620.o | build/decomp/asm/game/game_phase_script_vm_0201e620.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e620.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e620.o
 build build/reports/game_phase_script_vm_0201e620.txt: match_report build/reports/game_phase_script_vm_0201e620.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e620.json
-  report_args = --section .text --function func_0201e620 --require-exact
+  report_args = --section .text --function OffsetTimedSprite_Update --require-exact
 
 build build/reports/timed_sprite_offset_variant.txt: phony build/reports/game_phase_script_vm_0201e584.txt build/reports/game_phase_script_vm_0201e5f0.txt build/reports/game_phase_script_vm_0201e604.txt build/reports/game_phase_script_vm_0201e620.txt
 build build/reports/timed_sprite_attached_variant.json: objdiff build/decomp/delinks/asm/game/timed_sprite_attached_variant.o | build/decomp/asm/game/timed_sprite_attached_variant.o

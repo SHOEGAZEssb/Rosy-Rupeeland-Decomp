@@ -44,7 +44,7 @@ extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *gGamePhaseRuntime;
 
 extern OffsetSpriteConfig *TimedSpriteConfig_InitTracks(OffsetSpriteConfig *config);
-extern void *func_0201e584(void *self, OffsetSpriteConfig *config,
+extern void *OffsetTimedSprite_Init(void *self, OffsetSpriteConfig *config,
                            s32 spriteValue, s32 offset);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
@@ -128,7 +128,7 @@ void TimedSpriteOffsetPresentation_CreateSprite(
     *(s32 *)&config.second20.bytes[8] = 0;
     presentation = Heap_Alloc(0x30, gTimedSpritePresentationAllocationTag, 4, &gHeapContext);
     if (presentation != 0) {
-        func_0201e584(presentation, &config, spriteValue, offset);
+        OffsetTimedSprite_Init(presentation, &config, spriteValue, offset);
     }
     self->presentation08 = presentation;
     self->timer10 = 900;

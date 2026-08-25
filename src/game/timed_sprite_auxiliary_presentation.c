@@ -44,7 +44,7 @@ extern u8 *gGamePhaseRuntime;
 
 extern AuxiliarySpriteConfig *TimedSpriteConfig_InitTracks(AuxiliarySpriteConfig *config);
 extern void *AnimationResource_Init(void *self, s32 first, s32 second, s32 third);
-extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
+extern void *OffsetTimedSprite_Init(void *self, AuxiliarySpriteConfig *config,
                            s32 spriteValue, s32 offset);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
@@ -83,7 +83,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     *(s32 *)&config.second20.bytes[8] = 0;
     child = Heap_Alloc(0x30, gTimedSpriteAuxiliaryAllocationTag, 4, &gHeapContext);
     if (child != 0) {
-        func_0201e584(child, &config, spriteValue & 0xff, offset);
+        OffsetTimedSprite_Init(child, &config, spriteValue & 0xff, offset);
     }
     self->presentation08 = child;
     self->timer10 = 120;

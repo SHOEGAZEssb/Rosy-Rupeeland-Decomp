@@ -1,0 +1,6 @@
+{
+  "func_0201e584": "OffsetTimedSprite_Init",
+  "func_0201e5f0": "OffsetTimedSprite_Destroy",
+  "func_0201e604": "OffsetTimedSprite_DestroyAndFree",
+  "func_0201e620": "OffsetTimedSprite_Update"
+}

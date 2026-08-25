@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
 .extern FieldEffect_Init
-.extern func_0201e584
+.extern OffsetTimedSprite_Init
 .extern TimedSpriteConfig_InitTracks
 .extern TimedSpriteOffsetPresentation_CreateSprite
 .extern gHeapContext
@@ -32,4 +32,3 @@ TimedSpriteOffsetPresentation_Destroy: ; 0x0201f3e8
     ldmia sp!, {r4, pc}
 .L_0201f418: .word gTimedSpriteOffsetPresentationVtable
     .size TimedSpriteOffsetPresentation_Destroy, .-TimedSpriteOffsetPresentation_Destroy
-
