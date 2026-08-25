@@ -27,8 +27,8 @@
 .extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gHeapContext
-.global func_0201d754
-func_0201d754: ; 0x0201d754
+.global Overlay33RuntimeScene_Destroy
+Overlay33RuntimeScene_Destroy: ; 0x0201d754
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_0201d7e4
     mov r4, r0
@@ -69,4 +69,4 @@ L_0201d7c4:
 L_0201d7e4: .word gOverlay33RuntimeSceneVTable
 
 
-.size func_0201d754, . - func_0201d754
+.size Overlay33RuntimeScene_Destroy, . - Overlay33RuntimeScene_Destroy

@@ -30,7 +30,7 @@ extern const char data_020d5be4[];
 extern void RuntimePresentationManager_AppendFirstListEffect(void *list, void *object);
 extern void RuntimePresentationManager_AppendSecondListEffect(void *list, void *object);
 extern void *OverlayTransitionScene_Init(void *object, s32 kind, s32 parameter);
-extern void *func_0201d688(void *object, s32 value);
+extern void *Overlay33RuntimeScene_Init(void *object, s32 parameter);
 extern void *func_020200bc(void *object, s32 value, s32 zero0, s32 zero1,
                            s32 parameter);
 extern void *DisplayFadePresentation_Init(void *object, s32 mode, s32 value,
@@ -158,7 +158,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 8:
         createdObject = allocateObject(0x40, data_020d5bd4);
         if (createdObject)
-            func_0201d688(createdObject, value);
+            Overlay33RuntimeScene_Init(createdObject, value);
         break;
     case 7:
         break;

@@ -27,8 +27,8 @@
 .extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gHeapContext
-.global func_0201d688
-func_0201d688: ; 0x0201d688
+.global Overlay33RuntimeScene_Init
+Overlay33RuntimeScene_Init: ; 0x0201d688
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
@@ -83,4 +83,4 @@ L_0201d74c: .word gGamePhaseRuntime
 L_0201d750: .word data_020d36e1
 
 
-.size func_0201d688, . - func_0201d688
+.size Overlay33RuntimeScene_Init, . - Overlay33RuntimeScene_Init

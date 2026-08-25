@@ -1,0 +1,7 @@
+{
+  "func_0201d688": "Overlay33RuntimeScene_Init",
+  "func_0201d754": "Overlay33RuntimeScene_Destroy",
+  "func_0201d7e8": "Overlay33RuntimeScene_DestroyAndFree",
+  "func_0201d884": "Overlay33RuntimeScene_Update",
+  "func_0201d9c0": "GamePhaseRuntime_InvokeRootMethod0C"
+}

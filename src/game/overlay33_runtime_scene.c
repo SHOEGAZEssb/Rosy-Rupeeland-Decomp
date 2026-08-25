@@ -46,7 +46,8 @@ extern void GamePhaseCurrencyHud_Update(void *context);
  * offset-0x74 virtual, set display flag 0x40, snapshot the active selection,
  * set scene flags 0/1, and return self.
  */
-Overlay33RuntimeScene *func_0201d688(Overlay33RuntimeScene *self, u32 parameter)
+Overlay33RuntimeScene *Overlay33RuntimeScene_Init(
+    Overlay33RuntimeScene *self, u32 parameter)
 {
     void *runtime;
     Overlay33Child *child;
@@ -75,7 +76,7 @@ Overlay33RuntimeScene *func_0201d688(Overlay33RuntimeScene *self, u32 parameter)
  * destroy/free the optional overlay child, unload and destroy its slot, destroy
  * the base Scene, and return self.
  */
-Overlay33RuntimeScene *func_0201d754(Overlay33RuntimeScene *self)
+Overlay33RuntimeScene *Overlay33RuntimeScene_Destroy(Overlay33RuntimeScene *self)
 {
     self->base.vtable = &gOverlay33RuntimeSceneVTable;
     self->display2c->flags14 &= ~0x40;
@@ -92,8 +93,9 @@ Overlay33RuntimeScene *func_0201d754(Overlay33RuntimeScene *self)
     return self;
 }
 
-/* Perform func_0201d754's teardown, free the scene, and return its old address. */
-Overlay33RuntimeScene *func_0201d7e8(Overlay33RuntimeScene *self)
+/* Perform the standard teardown, free the scene, and return its old address. */
+Overlay33RuntimeScene *Overlay33RuntimeScene_DestroyAndFree(
+    Overlay33RuntimeScene *self)
 {
     self->base.vtable = &gOverlay33RuntimeSceneVTable;
     self->display2c->flags14 &= ~0x40;
@@ -117,7 +119,7 @@ Overlay33RuntimeScene *func_0201d7e8(Overlay33RuntimeScene *self)
  * its secondary poll is idle refresh two runtime channels, their managers, and
  * currency-HUD state. Returns one only when destroyed, otherwise zero.
  */
-s32 func_0201d884(Overlay33RuntimeScene *self)
+s32 Overlay33RuntimeScene_Update(Overlay33RuntimeScene *self)
 {
     u8 *runtime = (u8 *)gGamePhaseRuntime;
     void *selection = **(void ***)(runtime + 0x30bc);
@@ -149,7 +151,7 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
 }
 
 /* Invoke method 0x0c on the runtime root and return zero. */
-s32 func_0201d9c0(void)
+s32 GamePhaseRuntime_InvokeRootMethod0C(void)
 {
     Scene *runtime = (Scene *)gGamePhaseRuntime;
     runtime->vtable->method0C(runtime);

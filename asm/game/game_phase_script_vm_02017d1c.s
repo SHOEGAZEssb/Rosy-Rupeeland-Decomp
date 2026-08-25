@@ -20,7 +20,7 @@
 .extern OverlayManager_GetGlobal
 .extern GamePhaseScriptVm_Pop
 .extern OverlayTransitionScene_Init
-.extern func_0201d688
+.extern Overlay33RuntimeScene_Init
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_AppendSecondListEffect
 .extern func_020200bc
@@ -281,7 +281,7 @@ L_02018054:
     cmp r0, #0x0
     beq L_020181b0
     mov r1, r6
-    bl func_0201d688
+    bl Overlay33RuntimeScene_Init
     b L_020181b0
 L_0201807c:
     ldr r1, L_020181e0

@@ -27,8 +27,8 @@
 .extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gHeapContext
-.global func_0201d9c0
-func_0201d9c0: ; 0x0201d9c0
+.global GamePhaseRuntime_InvokeRootMethod0C
+GamePhaseRuntime_InvokeRootMethod0C: ; 0x0201d9c0
     stmdb sp!, {r3, lr}
     ldr r0, L_0201d9e0
     ldr r0, [r0, #0x0]
@@ -40,4 +40,4 @@ func_0201d9c0: ; 0x0201d9c0
 L_0201d9e0: .word gGamePhaseRuntime
 
 
-.size func_0201d9c0, . - func_0201d9c0
+.size GamePhaseRuntime_InvokeRootMethod0C, . - GamePhaseRuntime_InvokeRootMethod0C
