@@ -34,11 +34,11 @@ static void refreshPresentationObject(void *object)
  * mode 6 clears the corresponding blend-control register. Unknown modes and a
  * missing primary object do nothing. Return zero.
  */
-s32 func_02017ac8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchActorPresentationMode(GamePhaseActorScriptVm *self)
 {
-    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandC = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandB = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandA = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
     u8 *primary = *(u8 **)(actor + 0x54);
@@ -64,18 +64,18 @@ s32 func_02017ac8(GamePhaseActorScriptVm *self)
         }
         break;
     case 2:
-        func_02070958(*(void **)(primary + 0x18), first, second, third);
+        func_02070958(*(void **)(primary + 0x18), operandA, operandB, operandC);
         refreshPresentationObject(primary);
         if (secondary) {
-            func_02070958(*(void **)(secondary + 0x18), first, second, third);
+            func_02070958(*(void **)(secondary + 0x18), operandA, operandB, operandC);
             refreshPresentationObject(secondary);
         }
         break;
     case 3:
-        func_02070a78(*(void **)(primary + 0x18), first, second, third);
+        func_02070a78(*(void **)(primary + 0x18), operandA, operandB, operandC);
         refreshPresentationObject(primary);
         if (secondary) {
-            func_02070a78(*(void **)(secondary + 0x18), first, second, third);
+            func_02070a78(*(void **)(secondary + 0x18), operandA, operandB, operandC);
             refreshPresentationObject(secondary);
         }
         break;
@@ -85,13 +85,13 @@ s32 func_02017ac8(GamePhaseActorScriptVm *self)
             *(u16 *)(secondary + 0x2a) = 1;
         break;
     case 5: {
-        s32 complement = 16 - first;
+        s32 complement = 16 - operandA;
         void *primaryRegister = **(void ***)primary == data_020f4e14
             ? (void *)0x04000050 : (void *)0x04001050;
-        func_020afd0c(primaryRegister, 0, 0x2f, first, complement);
+        func_020afd0c(primaryRegister, 0, 0x2f, operandA, complement);
         if (secondary)
             func_020afd0c((void *)0x04001050, 0, 0x2f,
-                          first, complement);
+                          operandA, complement);
         break;
     }
     case 6:

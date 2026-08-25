@@ -245,9 +245,9 @@ s32 GamePhaseActorScriptVm_SetActorRuntimeFlag100WhenZero(GamePhaseActorScriptVm
 s32 GamePhaseActorScriptVm_QueryRetailRecordTier(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchActorScaledVectorCommand(GamePhaseActorScriptVm *self);
-s32 func_02017ac8(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchActorPresentationMode(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self);
-s32 func_02018208(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchIndexedSubtypeActorCommand(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetInteractionIconOffset(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ReturnOne(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchActorSigned16Command(GamePhaseActorScriptVm *self);

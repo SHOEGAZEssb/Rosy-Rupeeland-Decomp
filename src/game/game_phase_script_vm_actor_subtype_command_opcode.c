@@ -51,71 +51,71 @@ static u16 updateDirectionFlags(u16 flags, s32 horizontal, s32 vertical)
  * from integer script units to fx32.  Unsupported subtypes/commands do
  * nothing.  Return zero.
  */
-s32 func_02018208(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchIndexedSubtypeActorCommand(GamePhaseActorScriptVm *self)
 {
     s32 action = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 z = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 targetIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *object = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor),
-                                     targetIndex);
-    u16 subtype = *(u16 *)(object + 0x4e);
+    s32 targetRuntimeId = (s32)GamePhaseScriptVm_Pop(&self->base);
+    u8 *targetActor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor),
+                                     targetRuntimeId);
+    u16 subtype = *(u16 *)(targetActor + 0x4e);
 
     if (subtype == 9) {
         switch (command) {
         case 0:
-            *(s32 *)(object + 0x20c) = x * 41;
-            *(s32 *)(object + 0x210) = y * 29;
-            *(u16 *)(object + 0x218) = (u16)z;
-            func_ov087_022184b0(object, action);
+            *(s32 *)(targetActor + 0x20c) = x * 41;
+            *(s32 *)(targetActor + 0x210) = y * 29;
+            *(u16 *)(targetActor + 0x218) = (u16)z;
+            func_ov087_022184b0(targetActor, action);
             break;
         case 1: {
             VecFx32Object position;
             VecFx32Object_InitComponents(&position, x << 12, y << 12, z << 12);
-            func_ov087_022186a8(object, &position, action);
+            func_ov087_022186a8(targetActor, &position, action);
             VecFx32Object_Destroy(&position);
             break;
         }
         case 2:
             if (x == 0)
-                *(u16 *)(object + 0x21a) &= (u16)~4;
+                *(u16 *)(targetActor + 0x21a) &= (u16)~4;
             else if (x == 1)
-                *(u16 *)(object + 0x21a) |= 4;
+                *(u16 *)(targetActor + 0x21a) |= 4;
             break;
         case 3:
-            *(u16 *)(object + 0x21a) = updateDirectionFlags(
-                *(u16 *)(object + 0x21a), x, y);
+            *(u16 *)(targetActor + 0x21a) = updateDirectionFlags(
+                *(u16 *)(targetActor + 0x21a), x, y);
             break;
         case 4:
-            *(s32 *)(object + 0x228) = x;
+            *(s32 *)(targetActor + 0x228) = x;
             if (y != 0)
-                *(u16 *)(object + 0x21a) |= 0x100;
+                *(u16 *)(targetActor + 0x21a) |= 0x100;
             break;
         }
     } else if (subtype == 10) {
         switch (command) {
         case 0:
-            *(s32 *)(object + 0x208) = y * 6;
-            func_ov089_02218f28(object, action);
+            *(s32 *)(targetActor + 0x208) = y * 6;
+            func_ov089_02218f28(targetActor, action);
             break;
         case 1: {
             VecFx32Object position;
             VecFx32Object_InitComponents(&position, x << 12, y << 12, z << 12);
-            func_ov089_02219224(object, &position, action);
+            func_ov089_02219224(targetActor, &position, action);
             VecFx32Object_Destroy(&position);
             break;
         }
         case 2:
             if (x == 0)
-                *(u16 *)(object + 0x20c) &= (u16)~4;
+                *(u16 *)(targetActor + 0x20c) &= (u16)~4;
             else if (x == 1)
-                *(u16 *)(object + 0x20c) |= 4;
+                *(u16 *)(targetActor + 0x20c) |= 4;
             break;
         case 3:
-            *(u16 *)(object + 0x20c) = updateDirectionFlags(
-                *(u16 *)(object + 0x20c), x, y);
+            *(u16 *)(targetActor + 0x20c) = updateDirectionFlags(
+                *(u16 *)(targetActor + 0x20c), x, y);
             break;
         }
     }

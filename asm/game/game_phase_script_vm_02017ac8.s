@@ -8,8 +8,8 @@
 .extern func_02070a78
 .extern GraphicsSpriteRenderer_QueueStatePaletteUploads
 .extern func_020afd0c
-.global func_02017ac8
-func_02017ac8:
+.global GamePhaseActorScriptVm_DispatchActorPresentationMode
+GamePhaseActorScriptVm_DispatchActorPresentationMode:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #4
     mov r7, r0
@@ -169,4 +169,4 @@ L_02017d04:
 L_02017d10: .word data_020f4e14
 L_02017d14: .word 0x04000050
 L_02017d18: .word 0x04001050
-    .size func_02017ac8, . - func_02017ac8
+    .size GamePhaseActorScriptVm_DispatchActorPresentationMode, . - GamePhaseActorScriptVm_DispatchActorPresentationMode

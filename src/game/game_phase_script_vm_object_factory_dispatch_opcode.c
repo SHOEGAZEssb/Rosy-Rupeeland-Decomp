@@ -81,30 +81,30 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     s32 parameter = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *object;
+    void *createdObject;
 
     switch (mode) {
     case 20:
-        object = allocateObject(0x18, data_020d5b94);
-        if (object)
-            object = func_02024468(object);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x18, data_020d5b94);
+        if (createdObject)
+            createdObject = func_02024468(createdObject);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 19:
         GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
         GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
         break;
     case 18: {
-        u16 *first = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);
-        first[value] = (u16)parameter;
-        GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14)[value] = first[value];
+        u16 *debugPalette = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);
+        debugPalette[value] = (u16)parameter;
+        GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14)[value] = debugPalette[value];
         break;
     }
     case 17:
-        object = allocateObject(0x18, data_020d5b9c);
-        if (object)
-            object = func_0202432c(object, value, parameter);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x18, data_020d5b9c);
+        if (createdObject)
+            createdObject = func_0202432c(createdObject, value, parameter);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 16: {
         void *state = OverlayManager_GetGlobal();
@@ -113,87 +113,87 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         break;
     }
     case 15:
-        object = allocateObject(0x18, data_020d5ba4);
-        if (object)
-            object = func_02024200(object);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x18, data_020d5ba4);
+        if (createdObject)
+            createdObject = func_02024200(createdObject);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 14:
-        object = allocateObject(0x1c, data_020d5bac);
-        if (object)
-            object = IndexedSpriteOverlayPresentation_Init(object, value);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x1c, data_020d5bac);
+        if (createdObject)
+            createdObject = IndexedSpriteOverlayPresentation_Init(createdObject, value);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 13:
-        object = allocateObject(0x18, data_020d5bb4);
-        if (object)
-            object = func_020240cc(object, value);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x18, data_020d5bb4);
+        if (createdObject)
+            createdObject = func_020240cc(createdObject, value);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 12:
-        object = allocateObject(0x1c, data_020d5bbc);
-        if (object)
-            object = ReversedFrameSpriteOverlayPresentation_Init(object, value);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x1c, data_020d5bbc);
+        if (createdObject)
+            createdObject = ReversedFrameSpriteOverlayPresentation_Init(createdObject, value);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 11:
         /* 0x448 is a confirmed allocation size; the object type is unknown. */
-        object = allocateObject(0x448, data_020d5bc4);
-        if (object)
-            object = PaletteCyclePresentation_Init(object);
-        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x448, data_020d5bc4);
+        if (createdObject)
+            createdObject = PaletteCyclePresentation_Init(createdObject);
+        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), createdObject);
         break;
     case 10:
-        object = allocateObject(0x1c, data_020d5b74);
-        if (object)
-            object = func_020200bc(object, value, 0, 0, parameter);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x1c, data_020d5b74);
+        if (createdObject)
+            createdObject = func_020200bc(createdObject, value, 0, 0, parameter);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 9:
-        object = allocateObject(0x90, data_020d5bcc);
-        if (object)
-            object = FourSlot3DPresentation_Init(object, value);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x90, data_020d5bcc);
+        if (createdObject)
+            createdObject = FourSlot3DPresentation_Init(createdObject, value);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 8:
-        object = allocateObject(0x40, data_020d5bd4);
-        if (object)
-            func_0201d688(object, value);
+        createdObject = allocateObject(0x40, data_020d5bd4);
+        if (createdObject)
+            func_0201d688(createdObject, value);
         break;
     case 7:
         break;
     case 6:
-        object = allocateObject(0x18, data_020d5bb4);
-        if (object)
-            object = func_02023fa0(object);
-        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x18, data_020d5bb4);
+        if (createdObject)
+            createdObject = func_02023fa0(createdObject);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 5:
-        object = allocateObject(0x44, data_020d5bdc);
-        if (object)
-            func_0201d240(object, 1, value);
+        createdObject = allocateObject(0x44, data_020d5bdc);
+        if (createdObject)
+            func_0201d240(createdObject, 1, value);
         break;
     case 4:
-        object = allocateObject(0x24, data_020d5be4);
-        if (object)
-            object = func_0202225c(object);
-        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x24, data_020d5be4);
+        if (createdObject)
+            createdObject = func_0202225c(createdObject);
+        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), createdObject);
         break;
     case 3:
         SceneDisplayResources_Setup(value);
         break;
     case 2:
-        object = allocateObject(0x3cc, data_020d5b34);
-        if (object)
-            object = DualArrayBlendPresentation_Init(object, value);
-        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), object);
+        createdObject = allocateObject(0x3cc, data_020d5b34);
+        if (createdObject)
+            createdObject = DualArrayBlendPresentation_Init(createdObject, value);
+        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), createdObject);
         break;
     default:
-        object = allocateObject(0x54, data_020d5b34);
-        if (object)
-            object = DisplayFadePresentation_Init(object, mode, value,
+        createdObject = allocateObject(0x54, data_020d5b34);
+        if (createdObject)
+            createdObject = DisplayFadePresentation_Init(createdObject, mode, value,
                                                   parameter);
-        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), object);
+        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), createdObject);
         break;
     }
     return 0;

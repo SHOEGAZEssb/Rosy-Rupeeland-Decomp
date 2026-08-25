@@ -9,8 +9,8 @@
 .extern func_ov087_022186a8
 .extern func_ov089_02218f28
 .extern func_ov089_02219224
-.global func_02018208
-func_02018208:
+.global GamePhaseActorScriptVm_DispatchIndexedSubtypeActorCommand
+GamePhaseActorScriptVm_DispatchIndexedSubtypeActorCommand:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x20
     mov r9, r0
@@ -205,4 +205,4 @@ L_020184c8:
     mov r0, #0x0
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
-.size func_02018208, . - func_02018208
+.size GamePhaseActorScriptVm_DispatchIndexedSubtypeActorCommand, . - GamePhaseActorScriptVm_DispatchIndexedSubtypeActorCommand
