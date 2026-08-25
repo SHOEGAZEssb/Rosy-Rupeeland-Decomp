@@ -1,0 +1,9 @@
+{
+  "GamePhaseActorScriptVm_StartBrightnessTransition": "GamePhaseActorScriptVm_StartBrightnessTransition",
+  "GamePhaseActorScriptVm_IsBrightnessTransitionPending": "GamePhaseActorScriptVm_IsBrightnessTransitionPending",
+  "GamePhaseActorScriptVm_SetCollectionPendingValue": "GamePhaseActorScriptVm_SetCollectionPendingValue",
+  "GamePhaseActorScriptVm_PresentationNoOp": "GamePhaseActorScriptVm_PresentationNoOp",
+  "GamePhaseActorScriptVm_SetAttachmentAngle": "GamePhaseActorScriptVm_SetAttachmentAngle",
+  "GamePhaseActorScriptVm_SetAttachmentAngleFromByte": "GamePhaseActorScriptVm_SetAttachmentAngleFromByte",
+  "GamePhaseActorScriptVm_SetAttachmentScale": "GamePhaseActorScriptVm_SetAttachmentScale"
+}
