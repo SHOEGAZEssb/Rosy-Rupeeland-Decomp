@@ -1,0 +1,8 @@
+{
+  "GamePhaseActorScriptVm_ConfigureAndStartPackedTimer": "GamePhaseActorScriptVm_ConfigureAndStartPackedTimer",
+  "GamePhaseActorScriptVm_MarkPackedTimerComplete": "GamePhaseActorScriptVm_MarkPackedTimerComplete",
+  "GamePhaseActorScriptVm_GetPackedTimerRepeatCount": "GamePhaseActorScriptVm_GetPackedTimerRepeatCount",
+  "GamePhaseActorScriptVm_IsPackedTimerActive": "GamePhaseActorScriptVm_IsPackedTimerActive",
+  "GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2": "GamePhaseActorScriptVm_CreateSecondaryRenderAttachmentAndSetFlag1",
+  "GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1": "GamePhaseActorScriptVm_ReleaseSecondaryRenderAttachmentAndClearFlag1"
+}

@@ -275,8 +275,8 @@ s32 GamePhaseActorScriptVm_MarkPackedTimerComplete(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_GetPackedTimerRepeatCount(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_IsPackedTimerActive(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ResetType1ActorWhenFieldE4Zero(GamePhaseActorScriptVm *self);
-s32 GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2(GamePhaseActorScriptVm *self);
-s32 GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_CreateSecondaryRenderAttachmentAndSetFlag1(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_ReleaseSecondaryRenderAttachmentAndClearFlag1(GamePhaseActorScriptVm *self);
 s32 func_02019aa4(GamePhaseActorScriptVm *self);
 s32 func_02019c60(GamePhaseActorScriptVm *self);
 s32 func_02019dd4(GamePhaseActorScriptVm *self);

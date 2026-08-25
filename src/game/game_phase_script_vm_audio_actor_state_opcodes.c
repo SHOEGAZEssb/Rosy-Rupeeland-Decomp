@@ -1,4 +1,5 @@
 #include "tingle/game_phase_script_vm.h"
+#include "tingle/packed_timer_array.h"
 
 /*
  * Implement adjacent script operations for a recovered global audio-like
@@ -8,12 +9,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *PackedTimerArray_GetGlobal(void);
-extern void PackedTimerArray_ConfigureEntry(void *array, s16 id, u16 first,
-                                            u16 second, u16 third, u16 fourth);
-extern u8 *PackedTimerArray_Get(void *array, s32 id);
-extern void PackedTimer_Start(void *state);
-extern void PackedTimer_MarkComplete(void *state);
 extern void ActorDerivedType1_ResetToBaseState(void *actor);
 extern void Actor_CreateSecondaryRenderAttachment(
     void *actor, void *unusedAnimationResources, s32 attachPolicy);
@@ -28,34 +23,35 @@ extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *state);
  */
 s32 GamePhaseActorScriptVm_ConfigureAndStartPackedTimer(GamePhaseActorScriptVm *self)
 {
-    u16 fourth = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
-    u16 third = (u16)GamePhaseScriptVm_Pop(&self->base);
-    u16 second = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
-    u16 first = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
-    s16 id = (s16)GamePhaseScriptVm_Pop(&self->base);
-    PackedTimerArray_ConfigureEntry(PackedTimerArray_GetGlobal(), id, first,
-                                    second, third, fourth);
+    u16 repeatCount = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
+    u16 repeatLimit = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 repeatSeconds = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
+    u16 initialSeconds = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 timerId = (s16)GamePhaseScriptVm_Pop(&self->base);
+    PackedTimerArray_ConfigureEntry(PackedTimerArray_GetGlobal(), timerId,
+                                    initialSeconds, repeatSeconds, repeatLimit,
+                                    repeatCount);
     PackedTimer_Start(
-        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id));
+        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), timerId));
     return 0;
 }
 
 /* Pop a timer id, mark that packed timer complete, and return zero. */
 s32 GamePhaseActorScriptVm_MarkPackedTimerComplete(GamePhaseActorScriptVm *self)
 {
-    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 timerId = (s32)GamePhaseScriptVm_Pop(&self->base);
     PackedTimer_MarkComplete(
-        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id));
+        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), timerId));
     return 0;
 }
 
 /* Pop a timer id, store its repeat count as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_GetPackedTimerRepeatCount(GamePhaseActorScriptVm *self)
 {
-    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 timerId = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(
         &self->base,
-        *(u16 *)(PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id) + 6));
+        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), timerId)->repeatCount);
     return 0;
 }
 
@@ -65,9 +61,8 @@ s32 GamePhaseActorScriptVm_GetPackedTimerRepeatCount(GamePhaseActorScriptVm *sel
  */
 s32 GamePhaseActorScriptVm_IsPackedTimerActive(GamePhaseActorScriptVm *self)
 {
-    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u32 state = *(u32 *)(
-        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id) + 8) >> 29;
+    s32 timerId = (s32)GamePhaseScriptVm_Pop(&self->base);
+    u32 state = PackedTimerArray_Get(PackedTimerArray_GetGlobal(), timerId)->state;
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, state == 1 || state == 2);
     return 0;
 }
@@ -91,7 +86,7 @@ s32 GamePhaseActorScriptVm_ResetType1ActorWhenFieldE4Zero(GamePhaseActorScriptVm
  * policy two. The ABI's +0x1ec animation-resource argument is ignored. Return
  * zero.
  */
-s32 GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CreateSecondaryRenderAttachmentAndSetFlag1(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
     *(u32 *)(actor + 0x14) |= 1;
@@ -103,11 +98,12 @@ s32 GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2(GamePhaseActorScriptV
  * Destroy the actor's secondary presentation object at offset 0x58, clear its
  * pointer and actor flag bit 0, and return zero.
  */
-s32 GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ReleaseSecondaryRenderAttachmentAndClearFlag1(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
-    void *state = *(void **)(actor + 0x58);
-    GraphicsSpriteGroup_ReleaseState(*(void **)state, state);
+    void *secondaryAttachment = *(void **)(actor + 0x58);
+    GraphicsSpriteGroup_ReleaseState(*(void **)secondaryAttachment,
+                                     secondaryAttachment);
     *(void **)(actor + 0x58) = 0;
     *(u32 *)(actor + 0x14) &= ~1;
     return 0;

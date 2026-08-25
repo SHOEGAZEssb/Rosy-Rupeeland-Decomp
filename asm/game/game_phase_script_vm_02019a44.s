@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_audio_actor_state_opcodes.c.
 .text
 .extern Actor_CreateSecondaryRenderAttachment
-.global GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2
-GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2:
+.global GamePhaseActorScriptVm_CreateSecondaryRenderAttachmentAndSetFlag1
+GamePhaseActorScriptVm_CreateSecondaryRenderAttachmentAndSetFlag1:
     stmdb sp!, {r3, lr}
     ldr r0, [r0, #0x84]
     mov r2, #0x2
@@ -13,4 +13,4 @@ GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2:
     bl Actor_CreateSecondaryRenderAttachment
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.size GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2, . - GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2
+.size GamePhaseActorScriptVm_CreateSecondaryRenderAttachmentAndSetFlag1, . - GamePhaseActorScriptVm_CreateSecondaryRenderAttachmentAndSetFlag1
