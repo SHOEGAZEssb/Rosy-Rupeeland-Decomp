@@ -1,0 +1,10 @@
+{
+  "func_02025300": "RotatingCoreEffectController_Init",
+  "func_020254a4": "RotatingCoreEffectController_Destroy",
+  "func_02025564": "RotatingCoreEffectController_DestroyAndFree",
+  "func_0202562c": "RotatingCoreEffectController_SetCoreFlagBit2",
+  "func_02025644": "RotatingCoreEffectController_SetScaleValue",
+  "func_0202564c": "RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce",
+  "func_020256b4": "RotatingCoreEffectController_Update",
+  "func_02025a3c": "RotatingCoreEffectController_SetJitterFrames"
+}

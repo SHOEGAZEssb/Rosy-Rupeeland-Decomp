@@ -42,7 +42,7 @@ extern void Type7Actor_EnterSpecialPresentationState(O64_ARGS);
 extern void GamePhaseTouchPrompt_SetEnabled(O64_ARGS);
 extern void GamePhaseCurrencyHud_SetVisible(O64_ARGS);
 extern void RuntimePresentationManager_AppendFirstListEffect(O64_ARGS), RuntimePresentationManager_BroadcastSlot1C(O64_ARGS);
-extern void *func_02025300(O64_ARGS);
+extern void *RotatingCoreEffectController_Init(O64_ARGS);
 extern void Sound_SetCaptureEnabled(O64_ARGS), Sound_LoadGroup(O64_ARGS);
 extern void AuxiliaryInteraction_Destroy(O64_ARGS);
 extern s32 ActorDirection_GetPresentationGroup(O64_ARGS), func_020ae1fc(O64_ARGS);
@@ -242,7 +242,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
             if (replacement != 0) {
                 actorCollection =
                     GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
-                replacement = func_02025300(
+                replacement = RotatingCoreEffectController_Init(
                     replacement, (u8 *)actor + 0x18,
                     ActorCollection_GetSpriteGroup(actorCollection), 0x1e,
                     1, 0);

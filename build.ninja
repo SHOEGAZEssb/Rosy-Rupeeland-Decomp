@@ -9274,134 +9274,134 @@ build build/reports/rotating_core_effect_controller_02025300.json: objdiff build
   base_object = build/decomp/asm/game/rotating_core_effect_controller_02025300.o
 build build/reports/rotating_core_effect_controller_02025300.txt: match_report build/reports/rotating_core_effect_controller_02025300.json | tools/report_objdiff.py
   report_json = build/reports/rotating_core_effect_controller_02025300.json
-  report_args = --section .text --function func_02025300 --require-exact
+  report_args = --section .text --function RotatingCoreEffectController_Init --require-exact
 build build/reports/rotating_core_effect_controller_020254a4.json: objdiff build/decomp/delinks/asm/game/rotating_core_effect_controller_020254a4.o | build/decomp/asm/game/rotating_core_effect_controller_020254a4.o
   target_object = build/decomp/delinks/asm/game/rotating_core_effect_controller_020254a4.o
   base_object = build/decomp/asm/game/rotating_core_effect_controller_020254a4.o
 build build/reports/rotating_core_effect_controller_020254a4.txt: match_report build/reports/rotating_core_effect_controller_020254a4.json | tools/report_objdiff.py
   report_json = build/reports/rotating_core_effect_controller_020254a4.json
-  report_args = --section .text --function func_020254a4 --require-exact
+  report_args = --section .text --function RotatingCoreEffectController_Destroy --require-exact
 build build/reports/rotating_core_effect_controller_02025564.json: objdiff build/decomp/delinks/asm/game/rotating_core_effect_controller_02025564.o | build/decomp/asm/game/rotating_core_effect_controller_02025564.o
   target_object = build/decomp/delinks/asm/game/rotating_core_effect_controller_02025564.o
   base_object = build/decomp/asm/game/rotating_core_effect_controller_02025564.o
 build build/reports/rotating_core_effect_controller_02025564.txt: match_report build/reports/rotating_core_effect_controller_02025564.json | tools/report_objdiff.py
   report_json = build/reports/rotating_core_effect_controller_02025564.json
-  report_args = --section .text --function func_02025564 --require-exact
+  report_args = --section .text --function RotatingCoreEffectController_DestroyAndFree --require-exact
 build build/reports/rotating_core_effect_controller_0202562c.json: objdiff build/decomp/delinks/asm/game/rotating_core_effect_controller_0202562c.o | build/decomp/asm/game/rotating_core_effect_controller_0202562c.o
   target_object = build/decomp/delinks/asm/game/rotating_core_effect_controller_0202562c.o
   base_object = build/decomp/asm/game/rotating_core_effect_controller_0202562c.o
 build build/reports/rotating_core_effect_controller_0202562c.txt: match_report build/reports/rotating_core_effect_controller_0202562c.json | tools/report_objdiff.py
   report_json = build/reports/rotating_core_effect_controller_0202562c.json
-  report_args = --section .text --function func_0202562c --require-exact
+  report_args = --section .text --function RotatingCoreEffectController_SetCoreFlagBit2 --require-exact
 build build/reports/rotating_core_effect_controller_02025644.json: objdiff build/decomp/delinks/asm/game/rotating_core_effect_controller_02025644.o | build/decomp/asm/game/rotating_core_effect_controller_02025644.o
   target_object = build/decomp/delinks/asm/game/rotating_core_effect_controller_02025644.o
   base_object = build/decomp/asm/game/rotating_core_effect_controller_02025644.o
 build build/reports/rotating_core_effect_controller_02025644.txt: match_report build/reports/rotating_core_effect_controller_02025644.json | tools/report_objdiff.py
   report_json = build/reports/rotating_core_effect_controller_02025644.json
-  report_args = --section .text --function func_02025644 --require-exact
+  report_args = --section .text --function RotatingCoreEffectController_SetScaleValue --require-exact
 build build/reports/rotating_core_effect_controller_0202564c.json: objdiff build/decomp/delinks/asm/game/rotating_core_effect_controller_0202564c.o | build/decomp/asm/game/rotating_core_effect_controller_0202564c.o
   target_object = build/decomp/delinks/asm/game/rotating_core_effect_controller_0202564c.o
   base_object = build/decomp/asm/game/rotating_core_effect_controller_0202564c.o
 build build/reports/rotating_core_effect_controller_0202564c.txt: match_report build/reports/rotating_core_effect_controller_0202564c.json | tools/report_objdiff.py
   report_json = build/reports/rotating_core_effect_controller_0202564c.json
-  report_args = --section .text --function func_0202564c --require-exact
+  report_args = --section .text --function RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce --require-exact
 build build/reports/rotating_core_effect_controller_020256b4.json: objdiff build/decomp/delinks/asm/game/rotating_core_effect_controller_020256b4.o | build/decomp/asm/game/rotating_core_effect_controller_020256b4.o
   target_object = build/decomp/delinks/asm/game/rotating_core_effect_controller_020256b4.o
   base_object = build/decomp/asm/game/rotating_core_effect_controller_020256b4.o
 build build/reports/rotating_core_effect_controller_020256b4.txt: match_report build/reports/rotating_core_effect_controller_020256b4.json | tools/report_objdiff.py
   report_json = build/reports/rotating_core_effect_controller_020256b4.json
-  report_args = --section .text --function func_020256b4 --require-exact
+  report_args = --section .text --function RotatingCoreEffectController_Update --require-exact
 build build/reports/rotating_core_effect_controller_02025a3c.json: objdiff build/decomp/delinks/asm/game/rotating_core_effect_controller_02025a3c.o | build/decomp/asm/game/rotating_core_effect_controller_02025a3c.o
   target_object = build/decomp/delinks/asm/game/rotating_core_effect_controller_02025a3c.o
   base_object = build/decomp/asm/game/rotating_core_effect_controller_02025a3c.o
 build build/reports/rotating_core_effect_controller_02025a3c.txt: match_report build/reports/rotating_core_effect_controller_02025a3c.json | tools/report_objdiff.py
   report_json = build/reports/rotating_core_effect_controller_02025a3c.json
-  report_args = --section .text --function func_02025a3c --require-exact
+  report_args = --section .text --function RotatingCoreEffectController_SetJitterFrames --require-exact
 build build/reports/rotating_core_effect_controller.txt: phony build/reports/rotating_core_effect_controller_02025300.txt build/reports/rotating_core_effect_controller_020254a4.txt build/reports/rotating_core_effect_controller_02025564.txt build/reports/rotating_core_effect_controller_0202562c.txt build/reports/rotating_core_effect_controller_02025644.txt build/reports/rotating_core_effect_controller_0202564c.txt build/reports/rotating_core_effect_controller_020256b4.txt build/reports/rotating_core_effect_controller_02025a3c.txt
 build build/reports/dual_screen_ui_presentation_base_02025a44.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025a44.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025a44.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025a44.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025a44.o
 build build/reports/dual_screen_ui_presentation_base_02025a44.txt: match_report build/reports/dual_screen_ui_presentation_base_02025a44.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025a44.json
-  report_args = --section .text --function func_02025a44 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_Init --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025acc.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025acc.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025acc.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025acc.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025acc.o
 build build/reports/dual_screen_ui_presentation_base_02025acc.txt: match_report build/reports/dual_screen_ui_presentation_base_02025acc.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025acc.json
-  report_args = --section .text --function func_02025acc --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_InitAlternateEntry --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025b54.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025b54.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025b54.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025b54.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025b54.o
 build build/reports/dual_screen_ui_presentation_base_02025b54.txt: match_report build/reports/dual_screen_ui_presentation_base_02025b54.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025b54.json
-  report_args = --section .text --function func_02025b54 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_Destroy --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025b94.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025b94.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025b94.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025b94.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025b94.o
 build build/reports/dual_screen_ui_presentation_base_02025b94.txt: match_report build/reports/dual_screen_ui_presentation_base_02025b94.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025b94.json
-  report_args = --section .text --function func_02025b94 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_DestroyAndFree --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025bdc.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025bdc.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025bdc.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025bdc.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025bdc.o
 build build/reports/dual_screen_ui_presentation_base_02025bdc.txt: match_report build/reports/dual_screen_ui_presentation_base_02025bdc.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025bdc.json
-  report_args = --section .text --function func_02025bdc --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_DestroyAlternateEntry --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025c1c.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025c1c.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025c1c.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025c1c.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025c1c.o
 build build/reports/dual_screen_ui_presentation_base_02025c1c.txt: match_report build/reports/dual_screen_ui_presentation_base_02025c1c.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025c1c.json
-  report_args = --section .text --function func_02025c1c --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_NoOpHook0 --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025c20.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025c20.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025c20.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025c20.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025c20.o
 build build/reports/dual_screen_ui_presentation_base_02025c20.txt: match_report build/reports/dual_screen_ui_presentation_base_02025c20.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025c20.json
-  report_args = --section .text --function func_02025c20 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_ApplyVisibilityMask --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025cd0.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025cd0.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025cd0.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025cd0.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025cd0.o
 build build/reports/dual_screen_ui_presentation_base_02025cd0.txt: match_report build/reports/dual_screen_ui_presentation_base_02025cd0.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025cd0.json
-  report_args = --section .text --function func_02025cd0 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_SetEmbeddedEnabled --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025d10.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025d10.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025d10.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025d10.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025d10.o
 build build/reports/dual_screen_ui_presentation_base_02025d10.txt: match_report build/reports/dual_screen_ui_presentation_base_02025d10.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025d10.json
-  report_args = --section .text --function func_02025d10 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_NoOpHook1 --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025d14.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025d14.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025d14.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025d14.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025d14.o
 build build/reports/dual_screen_ui_presentation_base_02025d14.txt: match_report build/reports/dual_screen_ui_presentation_base_02025d14.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025d14.json
-  report_args = --section .text --function func_02025d14 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_GetEmbeddedState --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025d1c.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025d1c.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025d1c.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025d1c.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025d1c.o
 build build/reports/dual_screen_ui_presentation_base_02025d1c.txt: match_report build/reports/dual_screen_ui_presentation_base_02025d1c.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025d1c.json
-  report_args = --section .text --function func_02025d1c --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_LoadSubBg1Resources --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025dd8.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025dd8.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025dd8.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025dd8.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025dd8.o
 build build/reports/dual_screen_ui_presentation_base_02025dd8.txt: match_report build/reports/dual_screen_ui_presentation_base_02025dd8.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025dd8.json
-  report_args = --section .text --function func_02025dd8 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_LoadSubBg2Resources --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025e88.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025e88.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025e88.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025e88.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025e88.o
 build build/reports/dual_screen_ui_presentation_base_02025e88.txt: match_report build/reports/dual_screen_ui_presentation_base_02025e88.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025e88.json
-  report_args = --section .text --function func_02025e88 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_CreatePrimarySprite --require-exact
 build build/reports/dual_screen_ui_presentation_base_02025ed4.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025ed4.o | build/decomp/asm/game/dual_screen_ui_presentation_base_02025ed4.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_presentation_base_02025ed4.o
   base_object = build/decomp/asm/game/dual_screen_ui_presentation_base_02025ed4.o
 build build/reports/dual_screen_ui_presentation_base_02025ed4.txt: match_report build/reports/dual_screen_ui_presentation_base_02025ed4.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_presentation_base_02025ed4.json
-  report_args = --section .text --function func_02025ed4 --require-exact
+  report_args = --section .text --function DualScreenUiPresentationBase_CreateSecondarySprite --require-exact
 build build/reports/dual_screen_ui_presentation_base.txt: phony build/reports/dual_screen_ui_presentation_base_02025a44.txt build/reports/dual_screen_ui_presentation_base_02025acc.txt build/reports/dual_screen_ui_presentation_base_02025b54.txt build/reports/dual_screen_ui_presentation_base_02025b94.txt build/reports/dual_screen_ui_presentation_base_02025bdc.txt build/reports/dual_screen_ui_presentation_base_02025c1c.txt build/reports/dual_screen_ui_presentation_base_02025c20.txt build/reports/dual_screen_ui_presentation_base_02025cd0.txt build/reports/dual_screen_ui_presentation_base_02025d10.txt build/reports/dual_screen_ui_presentation_base_02025d14.txt build/reports/dual_screen_ui_presentation_base_02025d1c.txt build/reports/dual_screen_ui_presentation_base_02025dd8.txt build/reports/dual_screen_ui_presentation_base_02025e88.txt build/reports/dual_screen_ui_presentation_base_02025ed4.txt
 build build/reports/dual_screen_ui_standard_presentation_02025f20.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02025f20.o | build/decomp/asm/game/dual_screen_ui_standard_presentation_02025f20.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02025f20.o

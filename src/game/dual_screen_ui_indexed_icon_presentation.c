@@ -36,12 +36,12 @@ extern const u8 data_020d4742[];
 extern const u8 data_020d4744[];
 extern const u8 data_020d4746[];
 extern void *gDebugFont;
-extern void *func_02025a44(void *, void *);
-extern void *func_02025bdc(void *);
-extern void func_02025c20(void *, s32, u32);
-extern void func_02025d1c(void *);
-extern void func_02025e88(void *);
-extern void func_02025ed4(void *);
+extern void *DualScreenUiPresentationBase_Init(void *, void *);
+extern void *DualScreenUiPresentationBase_DestroyAlternateEntry(void *);
+extern void DualScreenUiPresentationBase_ApplyVisibilityMask(void *, s32, u32);
+extern void DualScreenUiPresentationBase_LoadSubBg1Resources(void *);
+extern void DualScreenUiPresentationBase_CreatePrimarySprite(void *);
+extern void DualScreenUiPresentationBase_CreateSecondarySprite(void *);
 extern void func_020269f8(void *embedded);
 extern void DebugSpriteText_Init(void *helper);
 extern void DebugSpriteText_Destroy(void *helper);
@@ -76,15 +76,15 @@ DualScreenUiIndexedIconPresentation *func_020261bc(
     s32 second;
     s32 third;
 
-    func_02025a44(self, source);
+    DualScreenUiPresentationBase_Init(self, source);
     self->vtable00 = (void **)data_020d6b20;
     DebugSpriteText_Init(self->helperc8);
     self->iconWrapperd0 = 0;
     self->drawEnabledd4 = 1;
     self->flagsc4 = (self->flagsc4 & ~3u) | 3;
-    func_02025e88(self);
-    func_02025ed4(self);
-    func_02025d1c(self);
+    DualScreenUiPresentationBase_CreatePrimarySprite(self);
+    DualScreenUiPresentationBase_CreateSecondarySprite(self);
+    DualScreenUiPresentationBase_LoadSubBg1Resources(self);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     DebugSpriteText_SetTextResource(self->helperc8, GamePhaseMetadata_GetTextResourceId(source));
 
@@ -117,7 +117,7 @@ DualScreenUiIndexedIconPresentation *func_02026308(
         Heap_Free(self->iconWrapperd0);
     }
     DebugSpriteText_Destroy(self->helperc8);
-    func_02025bdc(self);
+    DualScreenUiPresentationBase_DestroyAlternateEntry(self);
     return self;
 }
 
@@ -137,7 +137,7 @@ DualScreenUiIndexedIconPresentation *func_02026350(
 void func_020263a0(DualScreenUiIndexedIconPresentation *self)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-    func_02025d1c(self);
+    DualScreenUiPresentationBase_LoadSubBg1Resources(self);
     DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
 }
 
@@ -162,7 +162,7 @@ void func_0202640c(DualScreenUiIndexedIconPresentation *self, s32 enabled)
 {
     volatile u32 *displayControl = (volatile u32 *)0x04001000;
     self->drawEnabledd4 = enabled ? 1 : 0;
-    func_02025c20(self, enabled ? 1 : 0, 0x1f);
+    DualScreenUiPresentationBase_ApplyVisibilityMask(self, enabled ? 1 : 0, 0x1f);
     if (enabled) {
         *displayControl |= 0x200;
         *(u16 *)(self->iconWrapperd0->sprite00 + 0x24) &= (u16)~4;

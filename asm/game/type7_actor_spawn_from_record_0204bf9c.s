@@ -16,7 +16,7 @@
 .extern func_020beae4
 .extern Type7Actor_InitializeStationaryMotionState
 .extern Type7Actor_FindAuxiliaryRecord
-.extern func_02025d14
+.extern DualScreenUiPresentationBase_GetEmbeddedState
 .extern gGamePhaseRuntime
 .extern data_020e16b0
 .extern data_020e5804
@@ -320,7 +320,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
     add r0, r0, #0x3000
     strh r2, [r1, #0x0]
     ldr r0, [r0, #0xe8]
-    bl func_02025d14
+    bl DualScreenUiPresentationBase_GetEmbeddedState
     mov r1, #0x0
     strb r1, [r0, #0x8d]
     mov r0, #0x1

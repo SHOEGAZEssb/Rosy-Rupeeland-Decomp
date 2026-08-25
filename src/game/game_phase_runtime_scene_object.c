@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *func_02025f20(void *object, void *area);
 extern void *func_020261bc(void *object, void *area);
-extern void *func_02025acc(void *object, void *area);
+extern void *DualScreenUiPresentationBase_InitAlternateEntry(void *object, void *area);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -59,7 +59,7 @@ void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s
         object = Heap_Alloc(0xc8, (const char *)gGamePhaseDualScreenUiPresentationAllocationTag, 4,
                             &gHeapContext);
         if (object != 0)
-            object = func_02025acc(object, area);
+            object = DualScreenUiPresentationBase_InitAlternateEntry(object, area);
         *(void **)(b + 0x30e8) = object;
         return;
     }

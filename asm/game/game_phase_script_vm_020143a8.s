@@ -32,7 +32,7 @@
 .extern ArcingSpriteEffectPresentation_Init
 .extern BallisticSpriteEmitter_SpawnAndRegister
 .extern LaunchedSpritePairPresentation_Init
-.extern func_02025300
+.extern RotatingCoreEffectController_Init
 .extern func_02028630
 .extern func_02028814
 .extern func_0202906c
@@ -492,7 +492,7 @@ L_0201493c:
     mov r0, r5
     mov r3, r3, asr #0x10
     str r4, [sp, #0x4]
-    bl func_02025300
+    bl RotatingCoreEffectController_Init
     mov r5, r0
 L_020149c0:
     ldr r0, L_020154d0

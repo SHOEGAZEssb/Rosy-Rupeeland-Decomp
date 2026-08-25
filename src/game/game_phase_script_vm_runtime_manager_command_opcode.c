@@ -13,7 +13,7 @@ extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void Actor_SetFlag200000Inverse(void *actor, s32 enabled);
 extern void RuntimePresentationManager_DestroyAllEffects(void *presentationManager);
 extern void RuntimePresentationManager_GetGraphics3dPresentation(void *presentationManager);
-extern void *func_02025d14(void *state);
+extern void *DualScreenUiPresentationBase_GetEmbeddedState(void *state);
 extern void func_02026514(void *state);
 extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void ActorDerivedType1_UpdateOrientationFlag(void *manager);
@@ -69,7 +69,7 @@ s32 GamePhaseActorScriptVm_DispatchType1ManagerCommand(GamePhaseActorScriptVm *s
         GraphicsSpriteGroup_ReleaseResources(
             ActorCollection_GetSpriteGroup(
                 GamePhaseRuntime_GetActorCollection(runtime, 1)));
-        func_02026514(func_02025d14(*(void **)(runtime + 0x30e8)));
+        func_02026514(DualScreenUiPresentationBase_GetEmbeddedState(*(void **)(runtime + 0x30e8)));
         break;
     }
     case 4: {

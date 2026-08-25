@@ -11,9 +11,9 @@
 .extern AuxiliaryCoreSprite_SetVisible
 .extern gHeapContext
 
-    .global func_02025300
-    .type func_02025300, @function
-func_02025300: ; 0x02025300
+    .global RotatingCoreEffectController_Init
+    .type RotatingCoreEffectController_Init, @function
+RotatingCoreEffectController_Init: ; 0x02025300
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x24
     mov r6, r0
@@ -123,4 +123,4 @@ func_02025300: ; 0x02025300
 .L_02025498: .word 0x1357
 .L_0202549c: .word 0x1001
 .L_020254a0: .word 0x1359
-    .size func_02025300, . - func_02025300
+    .size RotatingCoreEffectController_Init, . - RotatingCoreEffectController_Init

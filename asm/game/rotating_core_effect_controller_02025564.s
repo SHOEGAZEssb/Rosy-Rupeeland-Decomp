@@ -6,9 +6,9 @@
 .extern FieldEffect_DestroyBase
 .extern AuxiliaryCore_Destroy
 
-    .global func_02025564
-    .type func_02025564, @function
-func_02025564: ; 0x02025564
+    .global RotatingCoreEffectController_DestroyAndFree
+    .type RotatingCoreEffectController_DestroyAndFree, @function
+RotatingCoreEffectController_DestroyAndFree: ; 0x02025564
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_02025628
     mov r4, r0
@@ -65,4 +65,4 @@ func_02025564: ; 0x02025564
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_02025628: .word data_020d6a70
-    .size func_02025564, . - func_02025564
+    .size RotatingCoreEffectController_DestroyAndFree, . - RotatingCoreEffectController_DestroyAndFree

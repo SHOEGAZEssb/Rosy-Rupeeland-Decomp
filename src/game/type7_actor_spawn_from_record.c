@@ -17,7 +17,7 @@ typedef struct Type7SpawnDescriptor {
 extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
-extern void *func_02025d14(void *state);
+extern void *DualScreenUiPresentationBase_GetEmbeddedState(void *state);
 extern u32 GamePhaseMetadata_GetFlagsBits12To15(s32 phase);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
@@ -199,7 +199,7 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
 
     record = Type7Actor_FindAuxiliaryRecord(recordIndex);
     data_020e5804 = record[0x13];
-    *(u8 *)((u8 *)func_02025d14(
+    *(u8 *)((u8 *)DualScreenUiPresentationBase_GetEmbeddedState(
         *(void **)(gGamePhaseRuntime + 0x30e8)) + 0x8d) = 0;
     return 1;
 }

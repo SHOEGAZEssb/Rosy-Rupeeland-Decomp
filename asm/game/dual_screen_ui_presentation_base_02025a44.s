@@ -8,9 +8,9 @@
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 
-    .global func_02025a44
-    .type func_02025a44, @function
-func_02025a44: ; 0x02025a44
+    .global DualScreenUiPresentationBase_Init
+    .type DualScreenUiPresentationBase_Init, @function
+DualScreenUiPresentationBase_Init: ; 0x02025a44
     stmdb sp!, {r3, r4, r5, lr}
     ldr r2, .L_02025abc
     mov r4, r0
@@ -45,4 +45,4 @@ func_02025a44: ; 0x02025a44
 .L_02025ac0: .word gDebugFont
 .L_02025ac4: .word 0x32b9
 .L_02025ac8: .word data_020f4e18
-    .size func_02025a44, . - func_02025a44
+    .size DualScreenUiPresentationBase_Init, . - DualScreenUiPresentationBase_Init

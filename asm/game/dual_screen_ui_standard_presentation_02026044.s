@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/dual_screen_ui_standard_presentation.c.
 .text
-.extern func_02025c20
+.extern DualScreenUiPresentationBase_ApplyVisibilityMask
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 
@@ -11,7 +11,7 @@ func_02026044: ; 0x02026044
     mov r5, r1
     mov r6, r0
     mov r4, r2
-    bl func_02025c20
+    bl DualScreenUiPresentationBase_ApplyVisibilityMask
     cmp r5, #0x0
     beq .L_020260c4
     mov r0, #0x1

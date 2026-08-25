@@ -100,7 +100,7 @@ static void destroy_polymorphic(void *object)
  * descriptors, position coordinates, fixed values 0,0,-0x18000, and the two
  * stack arguments; enable it through AuxiliaryCoreSprite_SetVisible and return self.
  */
-RotatingCoreEffectController *func_02025300(
+RotatingCoreEffectController *RotatingCoreEffectController_Init(
     RotatingCoreEffectController *self, const ControllerVector *position,
     void *owner, s32 countdown, s32 argument5, s32 argument6)
 {
@@ -144,7 +144,7 @@ RotatingCoreEffectController *func_02025300(
  * core, destroy all three fixed descriptors, destroy position/base, and return
  * self.  Descriptor and effect destruction dispatch through vtable slot one.
  */
-RotatingCoreEffectController *func_020254a4(
+RotatingCoreEffectController *RotatingCoreEffectController_Destroy(
     RotatingCoreEffectController *self)
 {
     self->vtable00 = (void **)data_020d6a70;
@@ -162,23 +162,23 @@ RotatingCoreEffectController *func_020254a4(
     return self;
 }
 
-/* Perform func_020254a4 teardown, free self, and return its old address. */
-RotatingCoreEffectController *func_02025564(
+/* Perform RotatingCoreEffectController_Destroy teardown, free self, and return its old address. */
+RotatingCoreEffectController *RotatingCoreEffectController_DestroyAndFree(
     RotatingCoreEffectController *self)
 {
-    func_020254a4(self);
+    RotatingCoreEffectController_Destroy(self);
     Heap_Free(self);
     return self;
 }
 
 /* Set bit 2 in the core halfword at recovered offset 0x2ee. */
-void func_0202562c(RotatingCoreEffectController *self)
+void RotatingCoreEffectController_SetCoreFlagBit2(RotatingCoreEffectController *self)
 {
     *(u16 *)(self->core08 + 0x2ee) |= 4;
 }
 
 /* Store the recovered signed control value at offset 0x30. */
-void func_02025644(RotatingCoreEffectController *self, s32 value)
+void RotatingCoreEffectController_SetScaleValue(RotatingCoreEffectController *self, s32 value)
 {
     self->value30 = (s16)value;
 }
@@ -187,7 +187,7 @@ void func_02025644(RotatingCoreEffectController *self, s32 value)
  * Once only, set stateFlags36 bit 15, allocate the optional 0x10-byte
  * descriptor, construct it from the three supplied IDs, and store it at 0x2c.
  */
-void func_0202564c(RotatingCoreEffectController *self,
+void RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce(RotatingCoreEffectController *self,
                    s32 resource, s32 palette, s32 animation)
 {
     if ((self->stateFlags36 & 0x8000) != 0) return;
@@ -215,7 +215,7 @@ void func_0202564c(RotatingCoreEffectController *self,
  * x/y jitter while jitterFrames32 remains, publish it through AuxiliaryCore_UpdateMotion,
  * and otherwise return zero.
  */
-s32 func_020256b4(RotatingCoreEffectController *self)
+s32 RotatingCoreEffectController_Update(RotatingCoreEffectController *self)
 {
     ControllerVector position;
     s32 state = ((s32)self->stateFlags36 << 17) >> 17;
@@ -299,7 +299,7 @@ s32 func_020256b4(RotatingCoreEffectController *self)
 }
 
 /* Store the remaining jitter-frame count at recovered offset 0x32. */
-void func_02025a3c(RotatingCoreEffectController *self, s32 frames)
+void RotatingCoreEffectController_SetJitterFrames(RotatingCoreEffectController *self, s32 frames)
 {
     self->jitterFrames32 = (s16)frames;
 }

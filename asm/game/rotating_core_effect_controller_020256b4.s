@@ -19,9 +19,9 @@
 .extern gHeapContext
 .extern genrand_int32
 
-    .global func_020256b4
-    .type func_020256b4, @function
-func_020256b4: ; 0x020256b4
+    .global RotatingCoreEffectController_Update
+    .type RotatingCoreEffectController_Update, @function
+RotatingCoreEffectController_Update: ; 0x020256b4
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x70
     mov r5, r0
@@ -259,4 +259,4 @@ func_020256b4: ; 0x020256b4
 .L_02025a30: .word data_020d6aa0
 .L_02025a34: .word gHeapContext
 .L_02025a38: .word gGamePhaseRuntime
-    .size func_020256b4, . - func_020256b4
+    .size RotatingCoreEffectController_Update, . - RotatingCoreEffectController_Update

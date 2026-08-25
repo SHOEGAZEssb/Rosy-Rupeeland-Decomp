@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/dual_screen_ui_grid_state.c.
 .text
-.extern func_02025cd0
+.extern DualScreenUiPresentationBase_SetEmbeddedEnabled
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
@@ -11,7 +11,7 @@ func_02026514: ; 0x02026514
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r1, #0x0
-    bl func_02025cd0
+    bl DualScreenUiPresentationBase_SetEmbeddedEnabled
     ldr r0, [r5, #0x0]
     cmp r0, #0x0
     beq .L_02026578

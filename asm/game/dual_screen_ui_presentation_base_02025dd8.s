@@ -9,9 +9,9 @@
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToSubBg
 
-    .global func_02025dd8
-    .type func_02025dd8, @function
-func_02025dd8: ; 0x02025dd8
+    .global DualScreenUiPresentationBase_LoadSubBg2Resources
+    .type DualScreenUiPresentationBase_LoadSubBg2Resources, @function
+DualScreenUiPresentationBase_LoadSubBg2Resources: ; 0x02025dd8
     stmdb sp!, {r3, lr}
     sub sp, sp, #0x10
     add r0, sp, #0x4
@@ -56,4 +56,4 @@ func_02025dd8: ; 0x02025dd8
 .L_02025e7c: .word 0x400100c
 .L_02025e80: .word gSubBgExtendedPaletteBuffer
 .L_02025e84: .word 0x4001018
-    .size func_02025dd8, . - func_02025dd8
+    .size DualScreenUiPresentationBase_LoadSubBg2Resources, . - DualScreenUiPresentationBase_LoadSubBg2Resources

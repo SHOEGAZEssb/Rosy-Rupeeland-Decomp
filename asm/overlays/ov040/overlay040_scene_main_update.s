@@ -11,11 +11,11 @@
     .extern VecFx32Object_InitCopy
     .extern VecFx32Object_Destroy
     .extern VecFx32Object_Assign
-    .extern func_02025300
-    .extern func_0202562c
-    .extern func_02025644
-    .extern func_0202564c
-    .extern func_02025a3c
+    .extern RotatingCoreEffectController_Init
+    .extern RotatingCoreEffectController_SetCoreFlagBit2
+    .extern RotatingCoreEffectController_SetScaleValue
+    .extern RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce
+    .extern RotatingCoreEffectController_SetJitterFrames
     .extern Sound_PlayDirectSequence
     .extern Sound_FadeDirectSequence
     .extern Sound_PlayEffectWithParameters
@@ -742,23 +742,23 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     mov r4, #0x1
     mov r3, #0x4b
     str r4, [sp, #0x4]
-    bl func_02025300
+    bl RotatingCoreEffectController_Init
 .L_021febf4:
     ldr r2, [r10, #0x48]
     mov r1, #0x130
     str r0, [r2, #0x60]
     ldr r0, [r10, #0x48]
     ldr r0, [r0, #0x60]
-    bl func_02025644
+    bl RotatingCoreEffectController_SetScaleValue
     ldr r0, [r10, #0x48]
     ldr r0, [r0, #0x60]
-    bl func_0202562c
+    bl RotatingCoreEffectController_SetCoreFlagBit2
     ldr r1, .L_021ff150
     ldr r0, [r10, #0x48]
     sub r2, r1, #0x8
     ldr r0, [r0, #0x60]
     add r3, r1, #0x1
-    bl func_0202564c
+    bl RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce
     mov r0, #0x3
     str r0, [r10, #0xb88]
     mov r0, #0x0
@@ -853,7 +853,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     str r0, [r10, #0xb38]
     ldr r0, [r10, #0x48]
     ldr r0, [r0, #0x60]
-    bl func_02025a3c
+    bl RotatingCoreEffectController_SetJitterFrames
     ldr r2, [r10, #0xb38]
     mov r1, r2, lsr #0x1f
     rsb r0, r1, r2, lsl #0x1f

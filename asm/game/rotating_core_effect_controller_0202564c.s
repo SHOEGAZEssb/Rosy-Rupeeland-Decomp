@@ -5,9 +5,9 @@
 .extern AnimationResource_Init
 .extern gHeapContext
 
-    .global func_0202564c
-    .type func_0202564c, @function
-func_0202564c: ; 0x0202564c
+    .global RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce
+    .type RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce, @function
+RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce: ; 0x0202564c
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     ldrh r0, [r7, #0x36]
@@ -35,4 +35,4 @@ func_0202564c: ; 0x0202564c
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_020256ac: .word data_020d6a98
 .L_020256b0: .word gHeapContext
-    .size func_0202564c, . - func_0202564c
+    .size RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce, . - RotatingCoreEffectController_ConfigureOrbitSpriteResourceOnce

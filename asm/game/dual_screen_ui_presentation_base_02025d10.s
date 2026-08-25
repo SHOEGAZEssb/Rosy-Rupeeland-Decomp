@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/dual_screen_ui_presentation_base.c.
 .text
 
-    .global func_02025d10
-    .type func_02025d10, @function
-func_02025d10: ; 0x02025d10
+    .global DualScreenUiPresentationBase_NoOpHook1
+    .type DualScreenUiPresentationBase_NoOpHook1, @function
+DualScreenUiPresentationBase_NoOpHook1: ; 0x02025d10
     bx lr
-    .size func_02025d10, . - func_02025d10
+    .size DualScreenUiPresentationBase_NoOpHook1, . - DualScreenUiPresentationBase_NoOpHook1

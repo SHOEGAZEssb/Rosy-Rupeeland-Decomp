@@ -25,13 +25,13 @@ extern "C" {
 #endif
 extern void *data_020d6b04;
 extern void *gDebugFont;
-extern void *func_02025a44(void *, void *);
-extern void *func_02025bdc(void *);
-extern void func_02025c20(void *, s32, u32);
-extern void func_02025d1c(void *);
-extern void func_02025dd8(void *);
-extern void func_02025e88(void *);
-extern void func_02025ed4(void *);
+extern void *DualScreenUiPresentationBase_Init(void *, void *);
+extern void *DualScreenUiPresentationBase_DestroyAlternateEntry(void *);
+extern void DualScreenUiPresentationBase_ApplyVisibilityMask(void *, s32, u32);
+extern void DualScreenUiPresentationBase_LoadSubBg1Resources(void *);
+extern void DualScreenUiPresentationBase_LoadSubBg2Resources(void *);
+extern void DualScreenUiPresentationBase_CreatePrimarySprite(void *);
+extern void DualScreenUiPresentationBase_CreateSecondarySprite(void *);
 extern void func_020269f8(void *embedded);
 extern void DebugSpriteText_Init(void *helper);
 extern void DebugSpriteText_Destroy(void *helper);
@@ -58,16 +58,16 @@ void func_02026174(DualScreenUiStandardPresentation *self, void *source);
 DualScreenUiStandardPresentation *func_02025f20(
     DualScreenUiStandardPresentation *self, void *source)
 {
-    func_02025a44(self, source);
+    DualScreenUiPresentationBase_Init(self, source);
     self->vtable00 = (void **)data_020d6b04;
     DebugSpriteText_Init(self->helperc8);
     self->drawEnabledd0 = 1;
     self->flagsc4 = (self->flagsc4 & ~3u) | 1u |
                     ((u32)(GamePhaseMetadata_IsAreaBehaviorPermitted(source) & 1) << 1);
-    func_02025e88(self);
-    func_02025ed4(self);
-    func_02025d1c(self);
-    func_02025dd8(self);
+    DualScreenUiPresentationBase_CreatePrimarySprite(self);
+    DualScreenUiPresentationBase_CreateSecondarySprite(self);
+    DualScreenUiPresentationBase_LoadSubBg1Resources(self);
+    DualScreenUiPresentationBase_LoadSubBg2Resources(self);
     func_02026174(self, self->sourceac);
     func_02026044(self, 1, 0x1f);
     return self;
@@ -78,7 +78,7 @@ DualScreenUiStandardPresentation *func_02025fc4(
     DualScreenUiStandardPresentation *self)
 {
     DebugSpriteText_Destroy(self->helperc8);
-    func_02025bdc(self);
+    DualScreenUiPresentationBase_DestroyAlternateEntry(self);
     return self;
 }
 
@@ -98,8 +98,8 @@ DualScreenUiStandardPresentation *func_02025fe4(
 void func_0202600c(DualScreenUiStandardPresentation *self)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-    func_02025d1c(self);
-    func_02025dd8(self);
+    DualScreenUiPresentationBase_LoadSubBg1Resources(self);
+    DualScreenUiPresentationBase_LoadSubBg2Resources(self);
     func_02026174(self, self->sourceac);
 }
 
@@ -113,7 +113,7 @@ void func_02026044(DualScreenUiStandardPresentation *self,
                    s32 enabled, u32 mask)
 {
     volatile u32 *displayControl = (volatile u32 *)0x04001000;
-    func_02025c20(self, enabled, mask);
+    DualScreenUiPresentationBase_ApplyVisibilityMask(self, enabled, mask);
     self->drawEnabledd0 = enabled ? 1 : 0;
     if (mask & 8) {
         if (enabled) *displayControl |= 0x200;

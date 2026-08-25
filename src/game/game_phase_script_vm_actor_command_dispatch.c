@@ -25,7 +25,7 @@ extern void *TimedSpriteBurstManager_Init(...);
 extern void *SpriteNumberMotionPresentation_Init(...);
 extern void *RecordSpriteMotionPresentation_Init(...);
 extern void *AuxiliaryTimedSpritePresentation_Init(...);
-extern void *func_02025300(...);
+extern void *RotatingCoreEffectController_Init(...);
 extern void *ArcingSpriteEffectPresentation_Init(...);
 extern void *LaunchedSpritePairPresentation_Init(...);
 extern void *OverlayTransitionScene_Init(...);
@@ -202,7 +202,7 @@ s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
                       convertEffectOperand((s32)a3));
         object = Heap_Alloc(0x38, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
-            object = func_02025300(
+            object = RotatingCoreEffectController_Init(
                 object, &vector, ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
                 (s16)a4, 1, 0);
         addScriptFieldEffect(object);

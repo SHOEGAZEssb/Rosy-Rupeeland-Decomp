@@ -7,9 +7,9 @@
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
-    .global func_02025b94
-    .type func_02025b94, @function
-func_02025b94: ; 0x02025b94
+    .global DualScreenUiPresentationBase_DestroyAndFree
+    .type DualScreenUiPresentationBase_DestroyAndFree, @function
+DualScreenUiPresentationBase_DestroyAndFree: ; 0x02025b94
     stmdb sp!, {r4, lr}
     ldr r1, .L_02025bd4
     mov r4, r0
@@ -28,4 +28,4 @@ func_02025b94: ; 0x02025b94
     ldmia sp!, {r4, pc}
 .L_02025bd4: .word data_020d6b3c
 .L_02025bd8: .word gDebugFont
-    .size func_02025b94, . - func_02025b94
+    .size DualScreenUiPresentationBase_DestroyAndFree, . - DualScreenUiPresentationBase_DestroyAndFree

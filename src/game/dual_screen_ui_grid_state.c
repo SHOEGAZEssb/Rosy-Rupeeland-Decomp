@@ -72,7 +72,7 @@ extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
 extern s32 ActorRuntimeCollection_GetBusyState(void *);
 extern s32 func_020adc90(s32, s32);
 extern void Sound_Play(void *, s32, s32);
-extern void func_02025cd0(void *, s32);
+extern void DualScreenUiPresentationBase_SetEmbeddedEnabled(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -115,14 +115,14 @@ DualScreenUiGridState *func_020264c4(DualScreenUiGridState *self)
 }
 
 /*
- * Disable the embedded state through func_02025cd0. If an owner exists, clear
+ * Disable the embedded state through DualScreenUiPresentationBase_SetEmbeddedEnabled. If an owner exists, clear
  * its sprites, destroy all four descriptors, release the debug-font owner, and
  * null it. Finally restore runtimeId74 to -1.
  */
 void func_02026514(DualScreenUiGridState *self)
 {
     s32 index;
-    func_02025cd0(self, 0);
+    DualScreenUiPresentationBase_SetEmbeddedEnabled(self, 0);
     if (self->spriteOwner00) {
         GraphicsSpriteGroup_Clear(self->spriteOwner00);
         for (index = 0; index < 4; index++)

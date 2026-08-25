@@ -1,0 +1,16 @@
+{
+  "func_02025a44": "DualScreenUiPresentationBase_Init",
+  "func_02025acc": "DualScreenUiPresentationBase_InitAlternateEntry",
+  "func_02025b54": "DualScreenUiPresentationBase_Destroy",
+  "func_02025b94": "DualScreenUiPresentationBase_DestroyAndFree",
+  "func_02025bdc": "DualScreenUiPresentationBase_DestroyAlternateEntry",
+  "func_02025c1c": "DualScreenUiPresentationBase_NoOpHook0",
+  "func_02025c20": "DualScreenUiPresentationBase_ApplyVisibilityMask",
+  "func_02025cd0": "DualScreenUiPresentationBase_SetEmbeddedEnabled",
+  "func_02025d10": "DualScreenUiPresentationBase_NoOpHook1",
+  "func_02025d14": "DualScreenUiPresentationBase_GetEmbeddedState",
+  "func_02025d1c": "DualScreenUiPresentationBase_LoadSubBg1Resources",
+  "func_02025dd8": "DualScreenUiPresentationBase_LoadSubBg2Resources",
+  "func_02025e88": "DualScreenUiPresentationBase_CreatePrimarySprite",
+  "func_02025ed4": "DualScreenUiPresentationBase_CreateSecondarySprite"
+}

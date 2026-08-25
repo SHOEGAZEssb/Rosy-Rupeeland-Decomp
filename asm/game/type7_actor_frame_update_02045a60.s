@@ -9,7 +9,7 @@
 .extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02025d14
+.extern DualScreenUiPresentationBase_GetEmbeddedState
 .extern func_02026588
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
@@ -207,14 +207,14 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000
     ldr r0, [r0, #0xe8]
-    bl func_02025d14
+    bl DualScreenUiPresentationBase_GetEmbeddedState
     mov r1, #0x0
     bl func_02026588
     ldr r0, .L_020461f0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000
     ldr r0, [r0, #0xe8]
-    bl func_02025d14
+    bl DualScreenUiPresentationBase_GetEmbeddedState
     mov r1, #0x0
     strb r1, [r0, #0x8d]
     mov r0, r4

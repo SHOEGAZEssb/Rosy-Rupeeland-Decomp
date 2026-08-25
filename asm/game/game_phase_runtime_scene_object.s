@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern gGamePhaseDualScreenUiPresentationAllocationTag
-.extern func_02025acc
+.extern DualScreenUiPresentationBase_InitAlternateEntry
 .extern func_02025f20
 .extern func_020261bc
 .extern gHeapContext
@@ -82,7 +82,7 @@ L_02008dd0:
     cmp r0, #0x0
     beq L_02008df4
     mov r1, r4
-    bl func_02025acc
+    bl DualScreenUiPresentationBase_InitAlternateEntry
 L_02008df4:
     add r1, r5, #0x3000
     str r0, [r1, #0xe8]

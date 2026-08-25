@@ -2,9 +2,9 @@
 .text
 .extern GraphicsSpriteGroup_CreateStateFromSource
 
-    .global func_02025e88
-    .type func_02025e88, @function
-func_02025e88: ; 0x02025e88
+    .global DualScreenUiPresentationBase_CreatePrimarySprite
+    .type DualScreenUiPresentationBase_CreatePrimarySprite, @function
+DualScreenUiPresentationBase_CreatePrimarySprite: ; 0x02025e88
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xa8]
@@ -24,4 +24,4 @@ func_02025e88: ; 0x02025e88
     bic r0, r0, #0x4
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size func_02025e88, . - func_02025e88
+    .size DualScreenUiPresentationBase_CreatePrimarySprite, . - DualScreenUiPresentationBase_CreatePrimarySprite

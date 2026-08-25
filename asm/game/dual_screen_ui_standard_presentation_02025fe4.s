@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern DebugSpriteText_Destroy
-.extern func_02025bdc
+.extern DualScreenUiPresentationBase_DestroyAlternateEntry
 
     .global func_02025fe4
     .type func_02025fe4, @function
@@ -12,7 +12,7 @@ func_02025fe4: ; 0x02025fe4
     add r0, r4, #0xc8
     bl DebugSpriteText_Destroy
     mov r0, r4
-    bl func_02025bdc
+    bl DualScreenUiPresentationBase_DestroyAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4

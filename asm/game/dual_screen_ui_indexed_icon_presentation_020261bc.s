@@ -9,10 +9,10 @@
 .extern AnimationBinding_Init
 .extern DebugSpriteText_Init
 .extern DebugSpriteText_SetTextResource
-.extern func_02025a44
-.extern func_02025d1c
-.extern func_02025e88
-.extern func_02025ed4
+.extern DualScreenUiPresentationBase_Init
+.extern DualScreenUiPresentationBase_LoadSubBg1Resources
+.extern DualScreenUiPresentationBase_CreatePrimarySprite
+.extern DualScreenUiPresentationBase_CreateSecondarySprite
 .extern GamePhaseMetadata_GetTextResourceId
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
@@ -25,7 +25,7 @@ func_020261bc: ; 0x020261bc
     sub sp, sp, #0x8
     mov r5, r0
     mov r4, r1
-    bl func_02025a44
+    bl DualScreenUiPresentationBase_Init
     ldr r1, .L_020262ec
     add r0, r5, #0xc8
     str r1, [r5, #0x0]
@@ -39,11 +39,11 @@ func_020261bc: ; 0x020261bc
     bic r1, r1, #0x1
     orr r1, r1, #0x3
     str r1, [r5, #0xc4]
-    bl func_02025e88
+    bl DualScreenUiPresentationBase_CreatePrimarySprite
     mov r0, r5
-    bl func_02025ed4
+    bl DualScreenUiPresentationBase_CreateSecondarySprite
     mov r0, r5
-    bl func_02025d1c
+    bl DualScreenUiPresentationBase_LoadSubBg1Resources
     ldr r0, .L_020262f0
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer

@@ -56,7 +56,7 @@ extern void ExtendedPaletteBuffer_Write(void *, const void *, s32, s32);
 }
 #endif
 
-void func_02025cd0(void *embedded, s32 enabled);
+void DualScreenUiPresentationBase_SetEmbeddedEnabled(void *embedded, s32 enabled);
 
 static DualScreenUiPresentationBase *initialize_base(
     DualScreenUiPresentationBase *self, void *source)
@@ -78,7 +78,7 @@ static DualScreenUiPresentationBase *initialize_base(
  * the debug-font sprite owner, enable its offset-0x20 mode, load resources
  * 0x32b7..0x32b9, clear flag bits 0/1, and return self.
  */
-DualScreenUiPresentationBase *func_02025a44(
+DualScreenUiPresentationBase *DualScreenUiPresentationBase_Init(
     DualScreenUiPresentationBase *self, void *source)
 {
     return initialize_base(self, source);
@@ -86,9 +86,9 @@ DualScreenUiPresentationBase *func_02025a44(
 
 /*
  * Second address-distinct constructor entry.  Its observable initialization is
- * identical to func_02025a44, as expected for recovered C1/C2-style entries.
+ * identical to DualScreenUiPresentationBase_Init, as expected for recovered C1/C2-style entries.
  */
-DualScreenUiPresentationBase *func_02025acc(
+DualScreenUiPresentationBase *DualScreenUiPresentationBase_InitAlternateEntry(
     DualScreenUiPresentationBase *self, void *source)
 {
     return initialize_base(self, source);
@@ -105,27 +105,27 @@ static DualScreenUiPresentationBase *teardown_base(
 }
 
 /* Release sprite-owner/resource/embedded state and return self. */
-DualScreenUiPresentationBase *func_02025b54(DualScreenUiPresentationBase *self)
+DualScreenUiPresentationBase *DualScreenUiPresentationBase_Destroy(DualScreenUiPresentationBase *self)
 {
     return teardown_base(self);
 }
 
 /* Perform base teardown, free self, and return its old address. */
-DualScreenUiPresentationBase *func_02025b94(DualScreenUiPresentationBase *self)
+DualScreenUiPresentationBase *DualScreenUiPresentationBase_DestroyAndFree(DualScreenUiPresentationBase *self)
 {
     teardown_base(self);
     Heap_Free(self);
     return self;
 }
 
-/* Third non-freeing destructor entry; behavior matches func_02025b54. */
-DualScreenUiPresentationBase *func_02025bdc(DualScreenUiPresentationBase *self)
+/* Third non-freeing destructor entry; behavior matches DualScreenUiPresentationBase_Destroy. */
+DualScreenUiPresentationBase *DualScreenUiPresentationBase_DestroyAlternateEntry(DualScreenUiPresentationBase *self)
 {
     return teardown_base(self);
 }
 
 /* Recovered virtual hook with no observable effect. */
-void func_02025c1c(DualScreenUiPresentationBase *self)
+void DualScreenUiPresentationBase_NoOpHook0(DualScreenUiPresentationBase *self)
 {
     (void)self;
 }
@@ -135,9 +135,9 @@ void func_02025c1c(DualScreenUiPresentationBase *self)
  * is hidden only for value zero with mask 0x1f; otherwise it is shown.  When
  * mask bit 1 is set, the secondary is shown only for nonzero value while base
  * flag bit 1 is clear, and hidden otherwise.  Update the sprite owner.  If mask
- * bit 0 is set, forward value to func_02025cd0 and update embedded state.
+ * bit 0 is set, forward value to DualScreenUiPresentationBase_SetEmbeddedEnabled and update embedded state.
  */
-void func_02025c20(DualScreenUiPresentationBase *self, s32 value, u32 mask)
+void DualScreenUiPresentationBase_ApplyVisibilityMask(DualScreenUiPresentationBase *self, s32 value, u32 mask)
 {
     if ((self->flagsc4 & 1) == 0) return;
     if (value == 0 && mask == 0x1f)
@@ -152,7 +152,7 @@ void func_02025c20(DualScreenUiPresentationBase *self, s32 value, u32 mask)
     }
     GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwnera8);
     if (mask & 1) {
-        func_02025cd0(self->embedded04, value);
+        DualScreenUiPresentationBase_SetEmbeddedEnabled(self->embedded04, value);
         func_020269f8(self->embedded04);
     }
 }
@@ -162,7 +162,7 @@ void func_02025c20(DualScreenUiPresentationBase *self, s32 value, u32 mask)
  * embedded state with a nonnull owner at offset zero also calls GraphicsSpriteGroup_ReleaseIndexedEntries
  * followed by GraphicsSpriteGroup_AdvanceAnimations; enabling requires no owner operation.
  */
-void func_02025cd0(void *embedded, s32 enabled)
+void DualScreenUiPresentationBase_SetEmbeddedEnabled(void *embedded, s32 enabled)
 {
     u8 *state = (u8 *)embedded;
     if (enabled) {
@@ -177,13 +177,13 @@ void func_02025cd0(void *embedded, s32 enabled)
 }
 
 /* Recovered virtual hook with no observable effect. */
-void func_02025d10(DualScreenUiPresentationBase *self)
+void DualScreenUiPresentationBase_NoOpHook1(DualScreenUiPresentationBase *self)
 {
     (void)self;
 }
 
 /* Return the address of the embedded state beginning at offset four. */
-void *func_02025d14(DualScreenUiPresentationBase *self)
+void *DualScreenUiPresentationBase_GetEmbeddedState(DualScreenUiPresentationBase *self)
 {
     return self->embedded04;
 }
@@ -194,7 +194,7 @@ void *func_02025d14(DualScreenUiPresentationBase *self)
  * first/second resource modes, copy 0x200 bytes into extended-palette buffer
  * offset 0x2000, clear register 0x04001014, and destroy the temporary set.
  */
-void func_02025d1c(DualScreenUiPresentationBase *self)
+void DualScreenUiPresentationBase_LoadSubBg1Resources(DualScreenUiPresentationBase *self)
 {
     GraphicsResourceSet set;
     volatile u16 *control = (volatile u16 *)0x0400100a;
@@ -217,7 +217,7 @@ void func_02025d1c(DualScreenUiPresentationBase *self)
  * copy 0x200 bytes to extended-palette offset 0x4000, clear 0x04001018, and
  * destroy the temporary resource set.
  */
-void func_02025dd8(DualScreenUiPresentationBase *self)
+void DualScreenUiPresentationBase_LoadSubBg2Resources(DualScreenUiPresentationBase *self)
 {
     GraphicsResourceSet set;
     volatile u16 *control = (volatile u16 *)0x0400100c;
@@ -237,7 +237,7 @@ void func_02025dd8(DualScreenUiPresentationBase *self)
  * Create the primary mode-2 sprite at (104,178), set halfword 0x28 to 1000,
  * clear visibility bit 2, and retain it at offset 0xb0.
  */
-void func_02025e88(DualScreenUiPresentationBase *self)
+void DualScreenUiPresentationBase_CreatePrimarySprite(DualScreenUiPresentationBase *self)
 {
     self->primarySpriteb0 =
         GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwnera8, self->resourceb8, 2);
@@ -251,7 +251,7 @@ void func_02025e88(DualScreenUiPresentationBase *self)
  * Create the secondary mode-2 sprite at (104,107), select frame one, set
  * visibility bit 2, and retain it at offset 0xb4.
  */
-void func_02025ed4(DualScreenUiPresentationBase *self)
+void DualScreenUiPresentationBase_CreateSecondarySprite(DualScreenUiPresentationBase *self)
 {
     self->secondarySpriteb4 =
         GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwnera8, self->resourceb8, 2);

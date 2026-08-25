@@ -6,7 +6,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern RuntimePresentationManager_DestroyAllEffects
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_02025d14
+.extern DualScreenUiPresentationBase_GetEmbeddedState
 .extern func_02026514
 .extern ActorCollection_GetSpriteGroup
 .extern ActorDerivedType1_UpdateOrientationFlag
@@ -88,7 +88,7 @@ L_02019b84:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000
     ldr r0, [r0, #0xe8]
-    bl func_02025d14
+    bl DualScreenUiPresentationBase_GetEmbeddedState
     bl func_02026514
     b L_02019c54
 L_02019bb8:

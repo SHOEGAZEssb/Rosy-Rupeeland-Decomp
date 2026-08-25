@@ -22,7 +22,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_BroadcastSlot1C
-.extern func_02025300
+.extern RotatingCoreEffectController_Init
 .extern ActorCollection_UnregisterAndDestroyAllActors
 .extern ActorCollection_DestroyUnretainedActors
 .extern ActorCollection_SetEnabled
@@ -254,7 +254,7 @@ Overlay064Scene_Construct:
     add r1, r5, #0x18
     mov r3, #0x1e
     str r6, [sp, #0x4]
-    bl func_02025300
+    bl RotatingCoreEffectController_Init
     mov r6, r0
 .L_02210050:
     ldr r0, .L_022105f8

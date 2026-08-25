@@ -3,9 +3,9 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 
-    .global func_02025ed4
-    .type func_02025ed4, @function
-func_02025ed4: ; 0x02025ed4
+    .global DualScreenUiPresentationBase_CreateSecondarySprite
+    .type DualScreenUiPresentationBase_CreateSecondarySprite, @function
+DualScreenUiPresentationBase_CreateSecondarySprite: ; 0x02025ed4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xa8]
@@ -25,4 +25,4 @@ func_02025ed4: ; 0x02025ed4
     orr r0, r0, #0x4
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size func_02025ed4, . - func_02025ed4
+    .size DualScreenUiPresentationBase_CreateSecondarySprite, . - DualScreenUiPresentationBase_CreateSecondarySprite

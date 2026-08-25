@@ -4,7 +4,7 @@
 .extern data_020d6b20
 .extern AnimationBinding_Destroy
 .extern DebugSpriteText_Destroy
-.extern func_02025bdc
+.extern DualScreenUiPresentationBase_DestroyAlternateEntry
 
     .global func_02026350
     .type func_02026350, @function
@@ -24,7 +24,7 @@ func_02026350: ; 0x02026350
     add r0, r5, #0xc8
     bl DebugSpriteText_Destroy
     mov r0, r5
-    bl func_02025bdc
+    bl DualScreenUiPresentationBase_DestroyAlternateEntry
     mov r0, r5
     bl Heap_Free
     mov r0, r5

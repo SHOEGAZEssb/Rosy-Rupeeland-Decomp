@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_indexed_icon_presentation.c.
 .text
 .extern DebugSpriteText_DrawCentered
-.extern func_02025d1c
+.extern DualScreenUiPresentationBase_LoadSubBg1Resources
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 
@@ -14,7 +14,7 @@ func_020263a0: ; 0x020263a0
     ldr r0, [r1, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
-    bl func_02025d1c
+    bl DualScreenUiPresentationBase_LoadSubBg1Resources
     add r0, r4, #0xc8
     mov r1, #0x68
     mov r2, #0xab

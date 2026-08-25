@@ -3,9 +3,9 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
-    .global func_02025cd0
-    .type func_02025cd0, @function
-func_02025cd0: ; 0x02025cd0
+    .global DualScreenUiPresentationBase_SetEmbeddedEnabled
+    .type DualScreenUiPresentationBase_SetEmbeddedEnabled, @function
+DualScreenUiPresentationBase_SetEmbeddedEnabled: ; 0x02025cd0
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrb r0, [r4, #0x8c]
@@ -22,4 +22,4 @@ func_02025cd0: ; 0x02025cd0
     ldr r0, [r4, #0x0]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
-    .size func_02025cd0, . - func_02025cd0
+    .size DualScreenUiPresentationBase_SetEmbeddedEnabled, . - DualScreenUiPresentationBase_SetEmbeddedEnabled
