@@ -5,7 +5,7 @@
 .extern data_020f4e18
 .extern data_ov032_02202308
 .extern data_ov032_02202358
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
@@ -39,7 +39,7 @@ func_ov032_02201f80:
     add r0, r10, #0x54
     mov r2, #0x7
     mov r3, #0x8
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r10, #0x4c]
     bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r2, [sp, #0x30]

@@ -8,9 +8,9 @@
 .extern data_ov023_021ffbc4
 .extern data_ov023_021ffbf0
 .extern data_ov023_021ffbf8
-.extern func_020716bc
+.extern GraphicsArchive_AcquirePaletteResource
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -93,7 +93,7 @@ L_021fda84:
     ldr r0, L_021fddd0
     ldr r1, L_021fddd4
     ldr r0, [r0, #0x0]
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
     str r0, [r10, #0x4c0]
     ldr r1, L_021fddd8
     add r0, r10, #0x54
@@ -114,7 +114,7 @@ L_021fda84:
     ldr r1, [r1, #0x0]
     mov r2, #0x3d
     mov r3, #0x3e
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, r10
     bl func_ov023_021fe164
     mov r0, r10

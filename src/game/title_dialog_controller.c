@@ -12,7 +12,7 @@ extern void *gSoundContext;
 extern u8 data_021f3d68[];
 extern u8 data_021f3ecc[];
 extern void *AnimationResourceState_InitEmbedded(void *state);
-extern void func_02071ee0(void *state, void *archive, u32 character_id,
+extern void AnimationResourceState_ReplaceResources(void *state, void *archive, u32 character_id,
                          u32 palette_id, u32 screen_id);
 extern void *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner);
 extern void GraphicsSpriteGroup_ClearStates(void *group);
@@ -67,7 +67,7 @@ void *TitleDialog_Init(void *object, void *font, void *text_resource)
     *(void **)(bytes + 0x08) = primary_group;
     *(void **)(bytes + 0x0c) = GraphicsSpriteGroupOwner_CreateGroupWrapper(font);
     GraphicsSpriteGroup_ClearStates(primary_group);
-    func_02071ee0(bytes + 0x14, data_020f4e18, 0x3298, 0x3299, 0x329a);
+    AnimationResourceState_ReplaceResources(bytes + 0x14, data_020f4e18, 0x3298, 0x3299, 0x329a);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(primary_group, bytes + 0x14, 2);
     *(void **)(bytes + 0x10) = sprite;
     GraphicsSpriteState_SetAnimation(sprite, 0x18);
@@ -181,7 +181,7 @@ void TitleDialog_ExpandActorDescriptor(void *object)
         ActorDescriptor_InitRange(descriptor, (u16)*(u32 *)(bytes + 0xe4), 1);
 
     component = ActorDescriptor_GetComponent(descriptor, 0);
-    func_02071ee0(bytes + 0x20, data_020f4e18,
+    AnimationResourceState_ReplaceResources(bytes + 0x20, data_020f4e18,
                   ActorDescriptorComponent_GetCharacterResourceId(component), ActorDescriptorComponent_GetPaletteResourceId(component),
                   ActorDescriptorComponent_GetCellResourceId(component));
     *(s32 *)(bytes + 0xdc) += 0x10;
@@ -260,7 +260,7 @@ void TitleDialog_ExpandPhaseLabel(void *object)
     GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
     AnimationResourceState_ReleaseResources(bytes + 0x20);
     RetailPhaseDatabase_SelectById(&record, (u16)*(u32 *)(bytes + 0xe4));
-    func_02071ee0(bytes + 0x20, data_020f4e18,
+    AnimationResourceState_ReplaceResources(bytes + 0x20, data_020f4e18,
                   0xd084, 0xd081, 0xd082);
     *(s32 *)(bytes + 0xdc) += 0x10;
     sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x20, 2);

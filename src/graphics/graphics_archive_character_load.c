@@ -15,10 +15,10 @@ typedef struct GraphicsArchiveCachedResource {
 extern "C" {
 #endif
 
-extern void *func_020702d4(void *cache, u32 resourceId);
-extern void func_02070244(void *cache, void *resource);
+extern void *GraphicsResourceCache_FindByResourceId(void *cache, u32 resourceId);
+extern void GraphicsResourceCache_Append(void *cache, void *resource);
 extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resourceId, u32 *size);
-extern void *func_020713e4(u32 size);
+extern void *GraphicsArchive_AllocateCachedHandle(u32 size);
 extern void *func_020702f4(void *resource, void *archive, void *source,
                            u32 size, u32 resourceId);
 
@@ -35,13 +35,13 @@ extern void *func_020702f4(void *resource, void *archive, void *source,
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_02071568(void *archive, u32 resourceId)
+void *GraphicsArchive_AcquireCharacterResource(void *archive, u32 resourceId)
 {
     GraphicsArchiveCachedResource *resource;
     GraphicsArchiveResourceHeader *source;
     u32 sourceSize;
 
-    resource = (GraphicsArchiveCachedResource *)func_020702d4(
+    resource = (GraphicsArchiveCachedResource *)GraphicsResourceCache_FindByResourceId(
         (u8 *)archive + 0xb4, resourceId);
     if (resource != 0) {
         resource->referenceCount++;
@@ -50,13 +50,13 @@ void *func_02071568(void *archive, u32 resourceId)
             archive, resourceId, &sourceSize);
         if (source != 0 &&
             (source->magic == 0x56434720 || source->magic == 0x56434754)) {
-            resource = (GraphicsArchiveCachedResource *)func_020713e4(0x2c);
+            resource = (GraphicsArchiveCachedResource *)GraphicsArchive_AllocateCachedHandle(0x2c);
             if (resource != 0) {
                 resource = (GraphicsArchiveCachedResource *)func_020702f4(
                     resource, archive, source, sourceSize, resourceId);
             }
             resource->referenceCount++;
-            func_02070244((u8 *)archive + 0xb4, resource);
+            GraphicsResourceCache_Append((u8 *)archive + 0xb4, resource);
         }
     }
     return resource;

@@ -72,7 +72,7 @@ extern void AnimationResourceState_InitEmbedded(...);
 extern void AnimationResourceState_Destroy(...);
 extern void AnimationResourceState_ReleaseResources(...);
 extern void GraphicsResourceSet_Init(...), GraphicsResourceSet_Destroy(...);
-extern void GraphicsResourceSet_Load(...), func_02071ee0(...);
+extern void GraphicsResourceSet_Load(...), AnimationResourceState_ReplaceResources(...);
 extern void GraphicsSpriteState_SetAnimationIndex(...);
 extern void *GraphicsSpriteGroup_CreateState(...);
 extern void GraphicsSpriteGroup_Clear(...);
@@ -244,7 +244,7 @@ void func_ov059_0220fd80(void *p, void *cfg, s32 bg, s32 priority,
   GraphicsBgMapResource_UploadToSubBg(
       F(GraphicsBgMapResource *, resources, 8), bg, 0);
   func_02070bc4(F(void *, resources, 4), regionId << 5);
-  func_02071ee0((u8 *)p + 0x44, data_020f4e18, 0x30c0, 0x30c1, 0x30c2);
+  AnimationResourceState_ReplaceResources((u8 *)p + 0x44, data_020f4e18, 0x30c0, 0x30c1, 0x30c2);
   F(void *, p, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
   for (row = 0; row < 4; row++)
     for (col = 0; col < 4; col++) {
@@ -382,7 +382,7 @@ void *func_ov059_022106fc(void *c, void *scene, s32 x, s32 y) {
   static const s32 dy[3] = {-0x30, 0x10, 0x30};
   __construct_array((u8 *)c + 4, 2, 0x0c, AnimationResourceState_InitEmbedded,
                     AnimationResourceState_Destroy);
-  func_02071ee0((u8 *)c + 4, data_020f4e18, 3, 1, 4);
+  AnimationResourceState_ReplaceResources((u8 *)c + 4, data_020f4e18, 3, 1, 4);
   F(void *, c, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
   TouchRegionManager_Allocate(Scene_GetEmbedded10(scene), 3);
   for (i = 0; i < 3; i++) {

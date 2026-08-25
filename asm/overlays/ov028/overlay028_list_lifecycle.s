@@ -7,7 +7,7 @@
 .extern Heap_AllocAlternateEntry
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -50,7 +50,7 @@ func_ov028_021fd00c:
     ldr r1, [r1, #0x0]
     mov r2, #0x60
     mov r3, #0x61
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     str r6, [r5, #0x3c]
     mov ip, #0x0
     str ip, [r5, #0x40]

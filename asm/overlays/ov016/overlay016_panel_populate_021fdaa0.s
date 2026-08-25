@@ -9,7 +9,7 @@
     .extern ActorDescriptorComponent_GetPaletteResourceId
     .extern ActorDescriptorComponent_GetCellResourceId
     .extern ActorDescriptorComponent_GetAnimation
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -77,7 +77,7 @@ func_ov016_021fdaa0:
     ldr r1, [r1, #0x0]
     mov r3, r5
     add r0, r10, #0x18
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r10, #0x4]
     add r1, r10, #0x18
     mov r2, #0x2
@@ -140,7 +140,7 @@ L_021fdbf0:
     ldr r1, L_021fdf48
     ldr r3, [sp, #0x20]
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r1, [sp, #0x14]
     ldr r0, [sp, #0x18]
     mov r2, #0x2

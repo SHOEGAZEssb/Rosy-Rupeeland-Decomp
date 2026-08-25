@@ -61,7 +61,7 @@ extern "C" void GraphicsSpriteState_ReleaseFromGroup(void *);
 extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void *GraphicsSpriteGroup_CreateState(void *, s32, s32, s32, s32);
 extern "C" void *AnimationResource_Init(void *, s32, s32, s32);
-extern "C" void func_02071ee0(void *, void *, s32, s32, s32);
+extern "C" void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern "C" void
 GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins(void *, ...);
 extern "C" void GraphicsSpriteState_SetScreenPositionCulled(void *, s32, s32,
@@ -265,7 +265,7 @@ extern "C" void *func_ov088_02217e44(void *a) {
  * actor. */
 extern "C" void func_ov088_02217f38(void *a, const void *config) {
     void *d = F(void *, a, 0x238);
-    func_02071ee0((u8 *)a + 0x1f0, data_020f4e18, F(u16, d, 0xa),
+    AnimationResourceState_ReplaceResources((u8 *)a + 0x1f0, data_020f4e18, F(u16, d, 0xa),
                   F(u16, d, 0xc), F(u16, d, 0xe));
     void *owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a));
     F(void *, a, 0x54) = GraphicsSpriteGroup_CreateState(

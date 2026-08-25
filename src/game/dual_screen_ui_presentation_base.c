@@ -37,7 +37,7 @@ extern void DualScreenUiGridState_Destroy(void *embedded);
 extern void DualScreenUiGridState_Update(void *embedded);
 extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void AnimationResourceState_Destroy(void *resource);
-extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *resource, void *owner, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *spriteOwner);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteOwner);
@@ -68,7 +68,7 @@ static DualScreenUiPresentationBase *initialize_base(
     self->flagsc4 &= ~3u;
     self->spriteOwnera8 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     *(u32 *)(self->spriteOwnera8 + 0x20) = 1;
-    func_02071ee0(self->resourceb8, data_020f4e18,
+    AnimationResourceState_ReplaceResources(self->resourceb8, data_020f4e18,
                   0x32b7, 0x32b8, 0x32b9);
     return self;
 }

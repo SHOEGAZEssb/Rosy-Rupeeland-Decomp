@@ -5,7 +5,7 @@
     .extern func_ov005_021fb82c
     .extern genrand_int32
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern func_02091bac
@@ -64,7 +64,7 @@ func_ov005_021fb86c: ; 0x021fb86c
     sub r2, r3, #0x1
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1a
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fbb58
     add r0, r10, #0x14
     str r3, [sp, #0x0]
@@ -72,7 +72,7 @@ func_ov005_021fb86c: ; 0x021fb86c
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fbb5c
     add r0, r10, #0xa4
     str r3, [sp, #0x0]
@@ -80,7 +80,7 @@ func_ov005_021fb86c: ; 0x021fb86c
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fbb60
     add r0, r10, #0xb0
     str r3, [sp, #0x0]
@@ -88,7 +88,7 @@ func_ov005_021fb86c: ; 0x021fb86c
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fbb64
     ldr r0, L_021fbb54
     str r3, [sp, #0x0]
@@ -96,7 +96,7 @@ func_ov005_021fb86c: ; 0x021fb86c
     sub r2, r3, #0x2
     add r0, r10, #0xbc
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r1, L_021fbb68
     mov r5, #0x0
     ldr r0, [r1, #0x0]
@@ -125,7 +125,7 @@ L_021fb9d4:
     ldrh r2, [r11, r2]
     ldrh r3, [r7, #0x2]
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r10, #0x4]
     add r1, r4, r8
     mov r2, #0x2

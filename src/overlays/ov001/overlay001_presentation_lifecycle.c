@@ -20,7 +20,7 @@ extern "C" {
 extern void *data_020f4e18;
 extern char data_ov001_021fcc88[];
 extern void AnimationResourceState_InitEmbedded(void *resource);
-extern void func_02071ee0(void *resource, void *manager, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void TitleCharacterResourceCollection_Init(void *state);
@@ -66,6 +66,6 @@ Overlay001PresentationState *func_ov001_021fb6f8(
     state->presentation_44 = presentation;
     func_ov001_021fb6e0((void *)state->presentation_44,
                         0x60, 0x5c, 0x78, 0x4c);
-    func_02071ee0(state->resource_08, data_020f4e18, 0x24, 0x22, 0x25);
+    AnimationResourceState_ReplaceResources(state->resource_08, data_020f4e18, 0x24, 0x22, 0x25);
     return state;
 }

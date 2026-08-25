@@ -4,7 +4,7 @@
     .extern data_020f4e18
     .extern data_ov020_021fe528
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
@@ -64,7 +64,7 @@ L_021fd3a8:
     add r0, r5, #0x1c
     mov r2, #0x4c
     mov r3, #0x4d
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd3f0: .word 0x7005

@@ -9,7 +9,7 @@
     .extern data_ov016_02201540
     .extern InventoryRecordCollection_Sort
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern SceneInputBase_Init
@@ -115,7 +115,7 @@ func_ov016_021fe77c:
     ldr r1, [r1, #0x0]
     mov r2, #0xd
     mov r3, #0xe
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x1e
     str r0, [sp, #0x0]
     add r0, r4, #0xd4
@@ -123,7 +123,7 @@ func_ov016_021fe77c:
     mov r2, #0x1c
     ldr r1, [r1, #0x0]
     mov r3, #0x1d
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, L_021fea8c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

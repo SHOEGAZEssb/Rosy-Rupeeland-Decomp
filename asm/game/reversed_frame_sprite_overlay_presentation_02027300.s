@@ -8,7 +8,7 @@
 .extern data_020f4e18
 .extern FieldEffect_Init
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -35,7 +35,7 @@ ReversedFrameSpriteOverlayPresentation_Init: ; 0x02027300
     add r0, r4, #0x8
     mov r2, #0x3a
     mov r3, #0x3b
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_020273c4
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

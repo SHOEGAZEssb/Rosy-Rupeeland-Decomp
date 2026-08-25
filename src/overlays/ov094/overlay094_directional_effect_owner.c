@@ -22,7 +22,7 @@ extern "C" {
 #endif
 extern void AnimationResourceState_InitEmbedded(void *resourceSet);
 extern void AnimationResourceState_Destroy(void *resourceSet);
-extern void func_02071ee0(void *resourceSet, void *archive, s32 characterId,
+extern void AnimationResourceState_ReplaceResources(void *resourceSet, void *archive, s32 characterId,
                          s32 paletteId, s32 screenId);
 extern void func_02091b6c(void *randomState);
 extern u32 genrand_int32(void);
@@ -65,7 +65,7 @@ extern "C" void *func_ov094_022185e4(void *object, s32 mode)
     *(s32 *)object = mode;
     *(s32 *)((u8 *)object + 0x04) = 0;
     *(u32 *)((u8 *)object + 0x30) = genrand_int32();
-    func_02071ee0((u8 *)object + 0x08, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 0x08, data_020f4e18,
                   0x2236, 0x2237, 0x2238);
     *(void **)((u8 *)object + 0x14) =
         GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);

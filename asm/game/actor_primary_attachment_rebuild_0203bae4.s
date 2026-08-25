@@ -4,7 +4,7 @@
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetOwningCollection
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
@@ -38,7 +38,7 @@ Actor_RebuildPrimaryAttachment: ; 0x0203bae4
     mov r2, r7
     mov r3, r6
     add r0, r4, #0x1f0
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, r4
     bl Actor_GetOwningCollection
     bl ActorCollection_GetSpriteGroup

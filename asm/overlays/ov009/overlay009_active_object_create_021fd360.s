@@ -1,7 +1,7 @@
     .text
     .extern data_020f4e18
     .extern func_020708c4
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroup_CreateStateFromSource
 
 /* Exact fallback; see documented portable reconstruction in
@@ -25,7 +25,7 @@ func_ov009_021fd360: ; 0x021fd360
     str r2, [sp, #0x0]
     ldr r1, [r1, #0x0]
     ldmia lr, {r2, r3}
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r4, #0x7c]
     bl func_020708c4
     ldr r2, [r4, #0xf8]

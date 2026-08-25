@@ -11,7 +11,7 @@
 .extern SpriteNodeList_RemoveNode
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseState
@@ -36,7 +36,7 @@ SpriteNumberGroup_Init: ; 0x0202293c
     ldr r1, .L_02022a84
     add r0, r10, #0x18
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     cmp r9, #0x0
     movlt r7, #0xd
     movge r7, #0x2

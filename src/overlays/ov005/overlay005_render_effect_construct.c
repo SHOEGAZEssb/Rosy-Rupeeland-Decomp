@@ -26,7 +26,7 @@ extern void Presentation_Init(void *state);
 extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02091b6c(void *animation);
 extern u32 genrand_int32(void);
-extern void func_02071ee0(void *resource, void *manager, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 #ifdef __cplusplus
 }
@@ -52,7 +52,7 @@ Overlay005RenderEffect *func_ov005_021fb6e4(Overlay005RenderEffect *state,
     state->random_0ac = 0;
     func_02091b6c(state->animation_0b0);
     state->random_0ac = genrand_int32();
-    func_02071ee0(state->resource_09c, data_020f4e18, 0x4003, 0x4004,
+    AnimationResourceState_ReplaceResources(state->resource_09c, data_020f4e18, 0x4003, 0x4004,
                   0x4005);
     state->owner_0a8 = owner;
     state->enabled_088 = 1;

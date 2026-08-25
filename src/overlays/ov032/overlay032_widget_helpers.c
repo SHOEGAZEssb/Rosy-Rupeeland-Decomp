@@ -22,7 +22,7 @@ extern void *RetailSelectionHistory_GetText(void *);
 extern void GraphicsSpriteRenderer_DrawText(...);
 extern void *InventoryScroll_InitBase(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(...);
+extern void AnimationResourceState_ReplaceResources(...);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
 extern void GraphicsSpriteState_ApplyRenderConfig(...);
@@ -111,7 +111,7 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
     FIELD(const void *, object, 0) = data_ov032_02202308;
     FIELD(void *, object, 0x4c) = canvas;
     FIELD(s32, object, 0x6c) = height;
-    func_02071ee0((u8 *)object + 0x54, data_020f4e18[0], 7, 8, 9);
+    AnimationResourceState_ReplaceResources((u8 *)object + 0x54, data_020f4e18[0], 7, 8, 9);
     void *resource = GraphicsSpriteGroupOwner_CreateGroup(canvas);
     FIELD(void *, object, 0x50) = resource;
     FIELD(s32, resource, 0x18) = arg4;

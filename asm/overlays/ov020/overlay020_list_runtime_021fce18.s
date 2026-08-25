@@ -6,7 +6,7 @@
     .extern data_ov020_021fe520
     .extern Heap_AllocAlternateEntry
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
@@ -43,7 +43,7 @@ func_ov020_021fce18:
     ldr r1, [r1, #0x0]
     add r0, r5, #0x8
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     str r6, [r5, #0x3c]
     mov ip, #0x0
     str ip, [r5, #0x40]

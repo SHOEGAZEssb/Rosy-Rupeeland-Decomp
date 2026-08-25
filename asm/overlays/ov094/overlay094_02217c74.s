@@ -3,7 +3,7 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov094_02217c34
 .extern gDebugFont
@@ -34,7 +34,7 @@ func_ov094_02217c74:
     sub r2, r3, #0x2
     mov r0, r4
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_02217d18
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

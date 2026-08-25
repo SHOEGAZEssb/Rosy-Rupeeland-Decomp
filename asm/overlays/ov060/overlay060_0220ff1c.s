@@ -8,7 +8,7 @@
 .extern data_020f4e18
 .extern data_ov060_0221064c
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov060_0220fd20
@@ -37,7 +37,7 @@ func_ov060_0220ff1c:
     ldrh r2, [sp, #0x28]
     ldr r1, [r1, #0x0]
     add r0, r7, #0x4
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_0221008c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

@@ -24,7 +24,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void MIi_CpuCopy16(const void *, void *, u32);
 extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -73,8 +73,8 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
     u32 length = LanguageLookupDatabase_GetResourceSize(data_021f3ecc, 0x2e5);
     MIi_CpuCopy16(LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x2e5),
                   (u8 *)state + 0x64, length);
-    func_02071ee0((u8 *)state + 4, data_020f4e18[0], 0x3d, 0x3e, 0x3f);
-    func_02071ee0((u8 *)state + 0x10, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)state + 4, data_020f4e18[0], 0x3d, 0x3e, 0x3f);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x10, data_020f4e18[0],
                   0x329b, 0x329c, 0x329d);
     FIELD(void *, state, 0x24) =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x20), (u8 *)state + 4, 1);

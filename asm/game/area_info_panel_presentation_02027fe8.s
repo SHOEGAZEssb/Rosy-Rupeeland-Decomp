@@ -2,7 +2,7 @@
 .text
 .extern data_020f4e18
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
@@ -37,7 +37,7 @@ AreaInfoPanelPresentation_Init: ; 0x02027fe8
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r5, #0x34]
     add r1, r5, #0x24
     mov r2, #0x1

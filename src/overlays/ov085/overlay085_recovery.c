@@ -41,7 +41,7 @@ extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C
 extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void Actor_UpdatePresentation(void*,void*,s32);
 extern "C" void Actor_TurnTowardVector(void*,s32,s32,s32); extern "C" void Actor_TurnTowardTargetPosition(void*,void*,s32);
 extern "C" void Actor_DebugDrawState(void); extern "C" void Sound_PlayOwnedEffect(void*,s32,s32,void*,s32,s32);
-extern "C" void func_02071ee0(void*,const void*,s32,s32,s32); extern "C" s32 func_0209189c(void*,s32,s32);
+extern "C" void AnimationResourceState_ReplaceResources(void*,const void*,s32,s32,s32); extern "C" s32 func_0209189c(void*,s32,s32);
 extern "C" s32 Fx32Vector2_Magnitude(s32,s32); extern "C" s32 func_020adc90(s32,s32);
 extern "C" s32 func_020adcac(const void*,const void*); extern "C" void func_020adfbc(const void*,const void*,void*);
 extern "C" void func_020adff0(const void*,const void*,void*); extern "C" s32 func_020ae024(s32,s32);
@@ -74,7 +74,7 @@ extern "C" void *func_ov085_02212c2c(void*a){func_ov085_02212c04(a);Heap_Free(a)
 /* Reset to the home state and refresh terrain-relative vectors. */
 extern "C" void func_ov085_02212c5c(void*a){set_pair(a,data_ov085_02214390,120);F(s32,a,0x210)=0;func_ov085_022131b4(a);}
 /* Build the sprite state from a five-field resource descriptor. */
-extern "C" void func_ov085_02212c8c(void*a,const void*r){func_02071ee0((u8*)a+0x1f0,data_020f4e18,F(s32,r,4),F(s32,r,8),F(s32,r,0xc));void*o=ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a));void*s=GraphicsSpriteGroup_CreateState(o,F(s32,a,0x1f0),F(s32,a,0x1f4),F(s32,a,0x1f8),F(u8,r,0x10));F(void*,a,0x54)=s;((M0)vm(a,0x14))(a);if(F(u32,a,0x14)&0x80)F(u8,s,0x3a)=(u8)F(u16,r,0x3c);}
+extern "C" void func_ov085_02212c8c(void*a,const void*r){AnimationResourceState_ReplaceResources((u8*)a+0x1f0,data_020f4e18,F(s32,r,4),F(s32,r,8),F(s32,r,0xc));void*o=ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a));void*s=GraphicsSpriteGroup_CreateState(o,F(s32,a,0x1f0),F(s32,a,0x1f4),F(s32,a,0x1f8),F(u8,r,0x10));F(void*,a,0x54)=s;((M0)vm(a,0x14))(a);if(F(u32,a,0x14)&0x80)F(u8,s,0x3a)=(u8)F(u16,r,0x3c);}
 /* Run one actor frame and dispatch its current state callback. */
 extern "C" void func_ov085_02212d08(void*a)
 {

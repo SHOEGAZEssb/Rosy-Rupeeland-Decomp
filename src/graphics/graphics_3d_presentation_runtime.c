@@ -34,8 +34,8 @@ extern void __destroy_arr(void *array, u32 count, u32 element_size,
                           void (*destructor)(void *));
 extern u32 genrand_int32(void);
 
-extern void *func_0207164c(void *manager, u32 archive_id);
-extern void *func_02071798(void *manager, u32 archive_id);
+extern void *GraphicsArchive_LoadCharacterResourceUncached(void *manager, u32 archive_id);
+extern void *GraphicsArchive_LoadPaletteResourceUncached(void *manager, u32 archive_id);
 extern u32 func_0207043c(const void *resource);
 extern u32 func_02070474(const void *resource);
 extern u32 func_020704c8(const void *resource);
@@ -174,8 +174,8 @@ void func_0209a5fc(void *object, u32 slot, u32 texture_id, u32 palette_id)
 {
     u8 *bytes = (u8 *)object;
     void *manager = data_020f4e18;
-    void *texture = func_0207164c(manager, texture_id);
-    void *palette = func_02071798(manager, palette_id);
+    void *texture = GraphicsArchive_LoadCharacterResourceUncached(manager, texture_id);
+    void *palette = GraphicsArchive_LoadPaletteResourceUncached(manager, palette_id);
     u32 texture_offset = *(u32 *)(bytes + 0x4d4);
     u32 palette_offset = *(u32 *)(bytes + 0x4d8);
 

@@ -8,9 +8,9 @@
     .extern data_ov022_022006d4
     .extern data_ov022_022006dc
     .extern data_ov022_022006e4
-    .extern func_020716bc
+    .extern GraphicsArchive_AcquirePaletteResource
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern SceneInputBase_Init
     .extern TitleCharacterResourceCollection_Init
@@ -78,7 +78,7 @@ func_ov022_021fdd44:
     ldr r0, L_021fdfd8
     ldr r1, L_021fdfdc
     ldr r0, [r0, #0x0]
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
     str r0, [r4, #0x374]
     add r0, r4, #0x54
     ldr r1, L_021fdfe0
@@ -96,7 +96,7 @@ func_ov022_021fdd44:
     mov r2, #0x3d
     ldr r1, [r1, #0x0]
     mov r3, #0x3e
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x41
     str r0, [sp, #0x0]
     add r0, r4, #0x84
@@ -104,7 +104,7 @@ func_ov022_021fdd44:
     mov r2, #0x40
     ldr r1, [r1, #0x0]
     mov r3, #0x3e
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r1, L_021fdfec
     ldr r0, L_021fdfd8
     str r1, [sp, #0x0]
@@ -112,7 +112,7 @@ func_ov022_021fdd44:
     ldr r1, [r0, #0x0]
     add r0, r4, #0x90
     add r3, r2, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r1, L_021fdff0
     ldr r3, L_021fdff4
     mov r0, #0x34

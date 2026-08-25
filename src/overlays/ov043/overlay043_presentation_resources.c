@@ -9,7 +9,7 @@
 
 extern "C" void *data_020f4e18;
 extern "C" void *data_020f4e14;
-extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
+extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archive, s32 first,
                                s32 second, s32 third, s32 fourth);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontObject, void *owner, s32 value);
@@ -29,7 +29,7 @@ extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *object);
  */
 extern "C" void func_ov043_0220bc2c(void *object)
 {
-    func_02071ee0((u8 *)object + 0x80, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 0x80, data_020f4e18,
                    0x16, 0x17, 0x18, 0x18);
     FIELD(void *, object, 0x8c) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     void *binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x8c),

@@ -17,7 +17,7 @@
 .extern data_ov025_022033a4
 .extern Sound_LoadGroup
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -170,7 +170,7 @@ func_ov025_021ff27c:
     mov r2, #0x4f
     ldr r1, [r1, #0x0]
     mov r3, #0x50
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x54
     str r0, [sp, #0x0]
     add r0, r10, #0x68
@@ -178,7 +178,7 @@ func_ov025_021ff27c:
     mov r2, #0x52
     ldr r1, [r1, #0x0]
     mov r3, #0x53
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021ffa18
     add r0, r10, #0x98
     str r3, [sp, #0x0]
@@ -186,7 +186,7 @@ func_ov025_021ff27c:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021ffa1c
     add r0, r10, #0x74
     str r3, [sp, #0x0]
@@ -194,7 +194,7 @@ func_ov025_021ff27c:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021ffa20
     ldr r0, L_021ffa14
     str r3, [sp, #0x0]
@@ -202,7 +202,7 @@ func_ov025_021ff27c:
     sub r2, r3, #0x2
     add r0, r10, #0x80
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021ffa24
     ldr r0, L_021ffa14
     str r3, [sp, #0x0]
@@ -210,7 +210,7 @@ func_ov025_021ff27c:
     sub r2, r3, #0x2
     add r0, r10, #0x8c
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021ffa28
     ldr r0, L_021ffa14
     str r3, [sp, #0x0]
@@ -218,7 +218,7 @@ func_ov025_021ff27c:
     sub r2, r3, #0x2
     add r0, r10, #0xa4
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, L_021ff9e8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

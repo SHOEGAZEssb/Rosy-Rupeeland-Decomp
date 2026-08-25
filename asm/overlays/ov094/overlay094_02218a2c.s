@@ -3,7 +3,7 @@
 .extern data_020f4e18
 .extern data_ov094_02219ef0
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern PresentationScalar_SetImmediate
 .extern PresentationScalar_TransitionTo
@@ -34,7 +34,7 @@ func_ov094_02218a2c:
     ldr r1, [r1, #0x0]
     add r0, r4, #0xa4
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     str r5, [r4, #0xb0]
     str r6, [r4, #0xb4]
     ldr r0, [r4, #0x9c]

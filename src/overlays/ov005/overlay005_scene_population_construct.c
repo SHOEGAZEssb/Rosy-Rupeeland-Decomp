@@ -29,7 +29,7 @@ extern void func_02091b6c(void *animation);
 extern void *func_ov005_021fb82c(void *state);
 extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
-extern void func_02071ee0(void *resource, void *manager, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 mode);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *drawObject, s32 mode, s32 x, s32 y,
@@ -91,15 +91,15 @@ func_ov005_021fb86c(Overlay005ScenePopulation *state, void *owner,
     context = GraphicsSpriteGroupOwner_CreateGroup(owner);
     FIELD(void *, state, 0x004) = context;
 
-    func_02071ee0((u8 *)state + 0x08, data_020f4e18, 0x3343, 0x332a,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x08, data_020f4e18, 0x3343, 0x332a,
                   0x3344);
-    func_02071ee0((u8 *)state + 0x14, data_020f4e18, 0x4003, 0x4004,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x14, data_020f4e18, 0x4003, 0x4004,
                   0x4005);
-    func_02071ee0((u8 *)state + 0xa4, data_020f4e18, 0x3384, 0x3385,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xa4, data_020f4e18, 0x3384, 0x3385,
                   0x3386);
-    func_02071ee0((u8 *)state + 0xb0, data_020f4e18, 0x3387, 0x3388,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xb0, data_020f4e18, 0x3387, 0x3388,
                   0x3389);
-    func_02071ee0((u8 *)state + 0xbc, data_020f4e18, 0x338a, 0x338b,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xbc, data_020f4e18, 0x338a, 0x338b,
                   0x338c);
 
     FIELD(s32, state, 0x104) = FIELD(s16, gGameWork, 0x12e);
@@ -113,7 +113,7 @@ func_ov005_021fb86c(Overlay005ScenePopulation *state, void *owner,
         s32 x = overlay005_record_coordinate(index, 0x18);
         s32 y = overlay005_record_coordinate(index, 0x1a);
 
-        func_02071ee0(resource, data_020f4e18, entry[0], entry[1], entry[2]);
+        AnimationResourceState_ReplaceResources(resource, data_020f4e18, entry[0], entry[1], entry[2]);
         draw = GraphicsSpriteGroup_CreateStateFromSource(context, resource, 2);
         FIELD(void *, state, 0x0c8 + index * 4) = draw;
         GraphicsSpriteState_ApplyRenderConfig(draw, 0, x, y, 1, index, 4);

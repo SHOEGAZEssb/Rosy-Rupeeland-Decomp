@@ -25,7 +25,7 @@
     .extern RetailPhaseSelection_BuildScaledResult
     .extern RetailPhaseSelection_SelectMatchingRecord
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsResourceSetVariant_Init
     .extern GraphicsResourceSetVariant_Load
     .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -167,7 +167,7 @@ L_021febe8:
     ldr r1, [r1, #0x0]
     mov r2, #0xd
     mov r3, #0xe
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x12
     str r0, [sp, #0x0]
     ldr r1, L_021ff104
@@ -175,7 +175,7 @@ L_021febe8:
     ldr r1, [r1, #0x0]
     mov r2, #0x10
     mov r3, #0x11
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x15
     str r0, [sp, #0x0]
     ldr r1, L_021ff104
@@ -183,7 +183,7 @@ L_021febe8:
     ldr r1, [r1, #0x0]
     mov r2, #0x13
     mov r3, #0x14
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021ff108
     ldr r1, L_021ff104
     str r3, [sp, #0x0]

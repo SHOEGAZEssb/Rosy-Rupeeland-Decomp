@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_pointer_collection.c. */
 .extern data_020f4e18
 .extern data_021f5128
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern RecordMode_GetCharacterResourceId
@@ -51,7 +51,7 @@ func_ov023_021fd634:
     add r0, r5, #0x8
     ldr r1, L_021fd72c
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r5, #0x4]
     add r1, r5, #0x8
     mov r2, #0x2

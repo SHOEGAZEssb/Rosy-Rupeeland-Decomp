@@ -8,7 +8,7 @@
 .extern data_020f2644
 .extern data_020f4e18
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern InventoryScroll_InitBase
 .extern InventoryScroll_ConfigureRange
@@ -41,7 +41,7 @@ func_02094154:
     ldr r1, [r1, #0x0]
     mov r2, #0x5
     mov r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r10, #0x4c]
     bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r2, [sp, #0x30]

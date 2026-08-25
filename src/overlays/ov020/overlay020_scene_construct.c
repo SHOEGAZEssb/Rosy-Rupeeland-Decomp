@@ -22,7 +22,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 GameWork_TestFlag(void *, u32);
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -64,8 +64,8 @@ extern "C" void *func_ov020_021fd844(void *state)
     func_020957bc((u8 *)state + 0x70);
     TitleCharacterResourceCollection_Init((u8 *)state + 0x1b8);
     FIELD(s32, state, 0x1e4) = 0;
-    func_02071ee0((u8 *)state + 0x60, data_020f4e18[0], 0x38, 1, 0x39);
-    func_02071ee0((u8 *)state + 0x54, data_020f4e18[0], 0x1f, 1, 0x20);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x60, data_020f4e18[0], 0x38, 1, 0x39);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x54, data_020f4e18[0], 0x1f, 1, 0x20);
     FIELD(void *, state, 0x6c) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_020957f0((u8 *)state + 0x70,
                   GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x6c),

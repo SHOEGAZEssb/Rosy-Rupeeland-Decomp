@@ -10,7 +10,7 @@
 .extern ActorDescriptorComponent_GetAnimation
 .extern func_020708c4
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -73,7 +73,7 @@ func_ov030_021fcf20:
     add r0, r10, #0x4
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     b L_021fd008
 L_021fcfe8:
     ldr r3, L_021fd258
@@ -83,7 +83,7 @@ L_021fcfe8:
     add r0, r10, #0x4
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
 L_021fd008:
     mov r0, r4
     mov r1, #0x0
@@ -105,7 +105,7 @@ L_021fd008:
     ldr r1, [r1, #0x0]
     mov r3, r5
     add r0, r10, #0x1c
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r10, #0x8]
     bl func_020708c4
     mov r0, #0x43
@@ -115,7 +115,7 @@ L_021fd008:
     ldr r1, [r1, #0x0]
     mov r2, #0x42
     mov r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r10, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r10, #0x28]

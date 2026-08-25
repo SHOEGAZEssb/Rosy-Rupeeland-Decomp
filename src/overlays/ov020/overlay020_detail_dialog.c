@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void AnimationResourceState_ReleaseResources(void *);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -65,7 +65,7 @@ extern "C" void *func_ov020_021fd320(void *state, void *font)
         dialog = TitleDialog_Init(dialog, font, FIELD(void *, state, 0x28));
     FIELD(void *, state, 0x4c) = dialog;
     func_ov020_021fd308(dialog, 0x22, 0x87, 0xc0, 0x30);
-    func_02071ee0((u8 *)state + 0x1c, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x1c, data_020f4e18[0],
                   0x4c, 0x4d, 0x4e);
     return state;
 }
@@ -102,7 +102,7 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
         GraphicsSpriteGroup_Clear(FIELD(void *, state, 0xc));
         entry = data_020ea650 + selection * 0x18;
         FIELD(s32, state, 0) = selection;
-        func_02071ee0((u8 *)state + 0x10, data_020f4e18[0],
+        AnimationResourceState_ReplaceResources((u8 *)state + 0x10, data_020f4e18[0],
                       FIELD(u16, entry, 2), FIELD(u16, entry, 4),
                       FIELD(u16, entry, 6));
         void *header = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc),

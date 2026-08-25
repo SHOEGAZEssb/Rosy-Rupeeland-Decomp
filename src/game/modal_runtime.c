@@ -11,7 +11,7 @@ extern void *data_020f4e14;
 extern void *data_020f4e18;
 
 extern void AnimationResourceState_InitEmbedded(void *state);
-extern void func_02071ee0(void *state, void *resource, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *state, void *resource, s32 first,
                           s32 second, s32 third);
 extern void func_020957bc(void *state);
 extern void TitleCharacterResourceCollection_Init(void *state);
@@ -223,7 +223,7 @@ void *func_020959d4(void *storage, s32 first, s32 second)
     *(u32 *)(self + 0x220) = 0;
     *(s32 *)(self + 0x224) = -1;
     *(u16 *)(self + 0x250) = 0;
-    func_02071ee0(self + 8, data_020f4e18, 0x38, 1, 0x39);
+    AnimationResourceState_ReplaceResources(self + 8, data_020f4e18, 0x38, 1, 0x39);
 
     *(void **)(self + 4) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     *(s32 *)((u8 *)*(void **)(self + 4) + 0x18) = first;

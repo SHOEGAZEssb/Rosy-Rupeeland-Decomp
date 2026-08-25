@@ -64,7 +64,7 @@ extern void VecFx32Object_InitSum(PresentationValue *destination,
                           const PresentationValue *right);
 extern void AnimationResourceState_InitEmbedded(void *state);
 extern void AnimationResourceState_Destroy(void *state);
-extern void func_02071ee0(void *state, void *table, s32 first, s32 second,
+extern void AnimationResourceState_ReplaceResources(void *state, void *table, s32 first, s32 second,
                           s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
 extern void GraphicsSpriteGroup_Clear(void *resource);
@@ -123,7 +123,7 @@ RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Init(
     VecFx32Object_Destroy(&offset);
     self->resource24 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     self->resource28 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    func_02071ee0(self->spriteConfig2c, data_020f4e18, 0x1658, 0x1659,
+    AnimationResourceState_ReplaceResources(self->spriteConfig2c, data_020f4e18, 0x1658, 0x1659,
                   0x165a);
     GameWork_ClearFlag(gGameWork, 0x408);
     GameWork_ClearFlag(gGameWork, 0x409);

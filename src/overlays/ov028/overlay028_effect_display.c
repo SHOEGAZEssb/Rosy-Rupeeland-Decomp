@@ -11,7 +11,7 @@ extern const u8 data_ov028_021ff29c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
@@ -52,7 +52,7 @@ extern "C" void func_ov028_021fd8b8(void *state, const void *descriptor,
         GraphicsSpriteRenderer_DrawText(font, (u8 *)descriptor + 0x18,
                       0x60, 0x1d, 14, 6, 0);
         const s32 *ids = FIELD(const s32 *, descriptor, 4);
-        func_02071ee0((u8 *)state + 8, data_020f4e18[0],
+        AnimationResourceState_ReplaceResources((u8 *)state + 8, data_020f4e18[0],
                       ids[1], ids[2], ids[3]);
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                      (u8 *)state + 8, 2);

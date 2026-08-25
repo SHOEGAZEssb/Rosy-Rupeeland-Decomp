@@ -13,9 +13,9 @@ extern void *data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u32 func_02071e60(void *, u32);
+extern u32 GraphicsArchive_FindCharacterResource(void *, u32);
 extern u32 GraphicsArchive_FindPaletteResource(void *, u32);
-extern u32 func_02071e80(void *, u32);
+extern u32 GraphicsArchive_FindCellResource(void *, u32);
 extern void *Actor_GetOwningCollection(ActorAuxiliaryAttachmentOwner *);
 extern void *ActorCollection_GetSpriteGroup(void *);
 extern void *GraphicsSpriteGroup_CreateState(void *, u32, u32, u32, s32);
@@ -45,9 +45,9 @@ void Actor_CreateAuxiliaryRenderAttachment(ActorAuxiliaryAttachmentOwner *actor)
         actor->auxiliaryRenderAttachment_a8 = 0;
         return;
     }
-    characterResource = func_02071e60(data_020f4e18, 0x1386);
+    characterResource = GraphicsArchive_FindCharacterResource(data_020f4e18, 0x1386);
     paletteResource = GraphicsArchive_FindPaletteResource(data_020f4e18, 0x1001);
-    cellResource = func_02071e80(data_020f4e18, 0x1387);
+    cellResource = GraphicsArchive_FindCellResource(data_020f4e18, 0x1387);
     actor->auxiliaryRenderAttachment_a8 = GraphicsSpriteGroup_CreateState(
         ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
         characterResource, paletteResource, cellResource, 2);

@@ -17,8 +17,8 @@ typedef struct GraphicsResourceHandleVariant {
 extern "C" {
 #endif
 
-extern void *func_02071568(void *archive, u32 resourceId);
-extern void *func_020716bc(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquireCharacterResource(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquirePaletteResource(void *archive, u32 resourceId);
 extern void *GraphicsArchive_AcquireVpoResource(void *archive, u32 resourceId);
 extern void func_02071bdc(void *archive, void *resource);
 extern void func_02071c38(void *archive, void *resource);
@@ -64,8 +64,8 @@ void GraphicsResourceSetVariant_Load(GraphicsResourceSet *set, void *archive,
         GraphicsResourceSetVariant_ReleaseHandles(set);
     }
 
-    set->resource0 = func_02071568(archive, resource0Id);
-    set->resource1 = func_020716bc(archive, resource1Id);
+    set->resource0 = GraphicsArchive_AcquireCharacterResource(archive, resource0Id);
+    set->resource1 = GraphicsArchive_AcquirePaletteResource(archive, resource1Id);
     set->resource2 = GraphicsArchive_AcquireVpoResource(archive, resource2Id);
 }
 

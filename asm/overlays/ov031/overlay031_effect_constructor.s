@@ -5,7 +5,7 @@
 .extern data_ov031_021fe758
 .extern data_ov031_021fe788
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -52,7 +52,7 @@ func_ov031_021fd258:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, L_021fd4a4
     add r1, r4, #0x5c
     ldr r0, [r0, #0x0]

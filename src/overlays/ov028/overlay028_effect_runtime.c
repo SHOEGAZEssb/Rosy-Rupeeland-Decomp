@@ -15,7 +15,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern u32 genrand_int32(void);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void AnimationResourceState_ReleaseResources(void *);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -54,8 +54,8 @@ extern "C" void *func_ov028_021fd680(void *state, void *font)
     func_02091b6c((u8 *)state + 0x58);
     FIELD(void *, state, 0) = font;
     FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
-    func_02071ee0((u8 *)state + 0x14, data_020f4e18[0], 0x60, 0x61, 0x62);
-    func_02071ee0((u8 *)state + 0x20, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x14, data_020f4e18[0], 0x60, 0x61, 0x62);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x20, data_020f4e18[0],
                   0x4000, 0x4001, 0x4002);
     FIELD(u32, state, 0x54) = genrand_int32();
     func_02092814((u8 *)state + 0x2c, 0x7000);

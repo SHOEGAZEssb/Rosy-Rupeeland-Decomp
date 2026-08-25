@@ -134,7 +134,7 @@ extern s32 ActorInteractionIcon_IsActive(const void *icon);
 #endif
 extern void Sound_PlayEffectWithParameters(void *, s32, s32, s32, s32, s32);
 extern void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32, ...);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern s32 func_020adae4(s32, s32);
 extern s32 func_020adc90(s32, s32);
 extern s32 func_020adcac(const void *, const void *);
@@ -320,7 +320,7 @@ void func_ov081_02212d64(void *actor, const void *descriptor)
 {
     void *owner;
 
-    func_02071ee0((u8 *)actor + 0x1f0, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)actor + 0x1f0, data_020f4e18,
                   FIELD(s32, descriptor, 4), FIELD(s32, descriptor, 8),
                   FIELD(s32, descriptor, 0xc));
     owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));

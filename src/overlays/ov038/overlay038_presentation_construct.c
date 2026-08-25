@@ -25,7 +25,7 @@ extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_020957bc(void *list);
 extern void TitleCharacterResourceCollection_Init(void *transform);
 extern void func_02091b6c(void *timer);
-extern void func_02071ee0(void *resource, void *archive, s32 firstId,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *archive, s32 firstId,
                           s32 mode, s32 lastId);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *resource, void *owner, s32 mode);
@@ -75,7 +75,7 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
     func_02091b6c((u8 *)presentation + 0x348);
     FIELD(s32, presentation, 0x33c) = 0;
 
-    func_02071ee0((u8 *)presentation + 0x54, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)presentation + 0x54, data_020f4e18[0],
                   0x38, 1, 0x39);
     void *owner = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);
     FIELD(void *, presentation, 0x60) = owner;

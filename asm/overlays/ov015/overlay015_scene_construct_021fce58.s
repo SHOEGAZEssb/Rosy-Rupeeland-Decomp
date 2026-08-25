@@ -14,7 +14,7 @@
     .extern InventoryRecord_GetMetadata
     .extern InventoryRecordCollection_SortAlternate
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -211,7 +211,7 @@ L_021fd090:
     add r0, r10, #0x58
     mov r2, #0x0
     mov r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r1, #0x48
     ldr r0, L_021fd224
     str r1, [sp, #0x0]
@@ -219,7 +219,7 @@ L_021fd090:
     add r0, r10, #0x64
     mov r2, #0x47
     mov r3, #0x45
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, L_021fd21c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

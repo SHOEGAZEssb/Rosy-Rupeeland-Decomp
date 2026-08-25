@@ -9,7 +9,7 @@
 .extern data_ov046_0220cf44
 .extern AreaInfoPanelPresentation_Init
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -74,7 +74,7 @@ func_ov046_0220c7d8:
     add r0, r5, #0x54
     sub r2, r3, #0x3
     sub r3, r3, #0x9
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     b .L_0220c918
 .L_0220c898:
     sub r0, r1, #0x1
@@ -87,7 +87,7 @@ func_ov046_0220c7d8:
     ldr r1, [r0, #0x0]
     add r0, r5, #0x54
     sub r3, r2, #0x6
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     b .L_0220c918
 .L_0220c8c8:
     sub r0, r1, #0x2
@@ -100,7 +100,7 @@ func_ov046_0220c7d8:
     add r0, r5, #0x54
     sub r2, r3, #0x1
     sub r3, r3, #0x7
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     b .L_0220c918
 .L_0220c8f8:
     ldr r3, .L_0220ca28
@@ -110,7 +110,7 @@ func_ov046_0220c7d8:
     add r0, r5, #0x54
     sub r2, r3, #0x1
     sub r3, r3, #0x3
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
 .L_0220c918:
     ldr r0, .L_0220ca2c
     ldr r0, [r0, #0x0]

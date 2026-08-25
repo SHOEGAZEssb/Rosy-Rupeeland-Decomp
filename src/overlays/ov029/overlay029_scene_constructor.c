@@ -21,7 +21,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GameWork_ClearFlag(void *, s32);
 extern u32 genrand_int32(void);
 extern void RuntimePresentationManager_BroadcastSlot1C(void *, s32);
-extern void *func_020716bc(void *, s32);
+extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
 extern void *RecordDescriptor_GetMessage(void *);
 extern void SceneInputBase_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
@@ -94,7 +94,7 @@ extern "C" void *func_ov029_021fce74(void *state, void *argument)
         break;
     }
 
-    FIELD(void *, state, 0xe8) = func_020716bc(data_020f4e18[0], 0xc007);
+    FIELD(void *, state, 0xe8) = GraphicsArchive_AcquirePaletteResource(data_020f4e18[0], 0xc007);
     func_02092814((u8 *)state + 0x78, 0x7007);
     func_02092814((u8 *)state + 0x78, 0x7005);
     func_ov029_021fd464(state);

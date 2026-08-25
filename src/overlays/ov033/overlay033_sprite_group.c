@@ -17,7 +17,7 @@ extern void AnimationResourceState_InitEmbedded(void *descriptor);
 extern void AnimationResourceState_Destroy(void *descriptor);
 extern void __construct_array(void *base, s32 count, s32 size,
                               void *constructor, void *destructor);
-extern void func_02071ee0(void *descriptor, void *resourceContext,
+extern void AnimationResourceState_ReplaceResources(void *descriptor, void *resourceContext,
                          s32 first, s32 second, s32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *spriteContext, void *descriptor, s32 mode);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 animation, s32 x, s32 y,
@@ -95,12 +95,12 @@ extern "C" void *func_ov033_021fce1c(void *group, void *spriteContext)
 
         if (i == 8 && activeObject != 0) {
             void *record = FIELD(void *, activeObject, 0x29c);
-            func_02071ee0(descriptor, data_020f4e18[0],
+            AnimationResourceState_ReplaceResources(descriptor, data_020f4e18[0],
                           FIELD(u16, record, 0x18),
                           FIELD(u16, record, 0x14),
                           FIELD(u16, record, 0x16));
         } else {
-            func_02071ee0(descriptor, data_020f4e18[0],
+            AnimationResourceState_ReplaceResources(descriptor, data_020f4e18[0],
                           spec->resourceFirst, spec->resourceSecond,
                           spec->resourceThird);
         }

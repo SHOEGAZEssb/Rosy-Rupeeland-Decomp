@@ -38,7 +38,7 @@ extern "C" void GraphicsResourceSet_Destroy(GraphicsResourceSet *set);
 extern "C" void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set);
 extern "C" void GraphicsBgMapResource_SetPaletteBank(void *resource, s32 value);
 extern "C" void func_020b44e8(void);
-extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
+extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
 extern "C" void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 value, s32 x, s32 y,
@@ -70,11 +70,11 @@ extern "C" void *func_ov045_0220c314(void *object)
     GraphicsResourceSet_Apply(&resources, 1, 0x100);
     GraphicsResourceSet_ReleaseHandles(&resources);
 
-    func_02071ee0((u8 *)object + 4, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 4, data_020f4e18,
                    FIELD(u16, data_020ed9e0, 0x38),
                    FIELD(u16, data_020ed9e0, 0x3a),
                    FIELD(u16, data_020ed9e0, 0x3c));
-    func_02071ee0((u8 *)object + 0x10, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 0x10, data_020f4e18,
                    0x49, 0x4a, 0x4b);
 
     SceneSpriteEntry *firstSprite =

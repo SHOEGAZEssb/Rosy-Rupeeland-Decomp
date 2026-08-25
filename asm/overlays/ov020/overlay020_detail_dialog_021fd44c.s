@@ -4,7 +4,7 @@
     .extern data_020f4e18
     .extern data_021f3ecc
     .extern data_ov020_021fe48c
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern AnimationResourceState_ReleaseResources
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -48,7 +48,7 @@ func_ov020_021fd44c:
     ldrh r2, [r8, #0x2]
     ldrh r3, [r8, #0x4]
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r6, #0xc]
     add r1, r6, #0x10
     mov r2, #0x2

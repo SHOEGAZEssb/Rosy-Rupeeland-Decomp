@@ -50,7 +50,7 @@ extern void *ActorDescriptor_GetComponent(void *record, s32 index);
 extern u32 ActorDescriptorComponent_GetCharacterResourceId(void *component);
 extern u32 ActorDescriptorComponent_GetPaletteResourceId(void *component);
 extern u32 ActorDescriptorComponent_GetCellResourceId(void *component);
-extern void func_02071ee0(void *state, void *manager, u32 resource0,
+extern void AnimationResourceState_ReplaceResources(void *state, void *manager, u32 resource0,
                           u32 resource1, u32 resource2);
 extern void *GraphicsSpriteGroup_CreateState(void *group, void *resource0,
                                              void *resource1, void *resource2,
@@ -439,7 +439,7 @@ void ActorKind8_CreatePrimaryPresentation(void *self)
         return;
     }
 
-    func_02071ee0(actor + 0x1f0, data_020f4e18,
+    AnimationResourceState_ReplaceResources(actor + 0x1f0, data_020f4e18,
                   lastResource - 2, lastResource - 1, lastResource);
     owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     sprite = GraphicsSpriteGroup_CreateState(
@@ -885,7 +885,7 @@ void func_020575bc(void *self, const void *descriptor, void *owner,
 
     *(const void **)(state + 0x14) = descriptor;
     *(void **)(state + 0x10) = owner;
-    func_02071ee0(state, data_020f4e18,
+    AnimationResourceState_ReplaceResources(state, data_020f4e18,
                   ActorDescriptorComponent_GetCharacterResourceId(component),
                   ActorDescriptorComponent_GetPaletteResourceId(component),
                   ActorDescriptorComponent_GetCellResourceId(component));

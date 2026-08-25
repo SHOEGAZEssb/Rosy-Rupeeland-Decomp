@@ -4,7 +4,7 @@
 .extern gFx32CosSinTable
 .extern data_020f4e18
 .extern DisplayController_GetVerticalOffset
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -65,7 +65,7 @@ LaunchedSpritePairPresentation_Update: ; 0x02024e24
     sub r2, r3, #0x2
     add r0, r4, #0x3c
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r4, #0x48]
     add r1, r4, #0x3c
     mov r2, #0x2

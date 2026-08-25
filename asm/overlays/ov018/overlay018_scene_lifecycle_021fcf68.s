@@ -11,7 +11,7 @@
     .extern data_ov018_021ffd58
     .extern GamePhaseState_GetConfiguration
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -162,7 +162,7 @@ L_021fd06c:
     ldr r1, [r1, #0x0]
     mov r2, #0x38
     mov r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fd350
     ldr r1, L_021fd34c
     str r3, [sp, #0x0]
@@ -170,7 +170,7 @@ L_021fd06c:
     ldr r1, [r1, #0x0]
     add r0, r4, #0xa0
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r1, L_021fd354
     mov r2, #0x4000
     str r1, [sp, #0x0]
@@ -178,7 +178,7 @@ L_021fd06c:
     add r0, r4, #0xac
     ldr r1, [r1, #0x0]
     add r3, r2, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fd358
     ldr r1, L_021fd34c
     str r3, [sp, #0x0]
@@ -186,7 +186,7 @@ L_021fd06c:
     ldr r1, [r1, #0x0]
     add r0, r4, #0xb8
     sub r3, r3, #0x3
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, L_021fd35c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

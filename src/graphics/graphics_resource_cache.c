@@ -21,7 +21,7 @@ typedef struct GraphicsResourceCache {
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_02070244(GraphicsResourceCache *cache,
+void GraphicsResourceCache_Append(GraphicsResourceCache *cache,
                    GraphicsResourceCacheNode *node)
 {
     if (node != 0) {
@@ -48,7 +48,7 @@ void func_02070244(GraphicsResourceCache *cache,
 #ifdef __cplusplus
 extern "C" {
 #endif
-asm void func_02070244(GraphicsResourceCache *cache,
+asm void GraphicsResourceCache_Append(GraphicsResourceCache *cache,
                        GraphicsResourceCacheNode *node)
 {
     cmp r1, #0
@@ -77,7 +77,7 @@ asm void func_02070244(GraphicsResourceCache *cache,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_02070280(GraphicsResourceCache *cache,
+void GraphicsResourceCache_Remove(GraphicsResourceCache *cache,
                    GraphicsResourceCacheNode *node)
 {
     if (node != 0) {
@@ -104,7 +104,7 @@ void func_02070280(GraphicsResourceCache *cache,
 #ifdef __cplusplus
 extern "C" {
 #endif
-asm void func_02070280(GraphicsResourceCache *cache,
+asm void GraphicsResourceCache_Remove(GraphicsResourceCache *cache,
                        GraphicsResourceCacheNode *node)
 {
     cmp r1, #0
@@ -132,7 +132,7 @@ asm void func_02070280(GraphicsResourceCache *cache,
 #ifdef __cplusplus
 extern "C"
 #endif
-GraphicsResourceCacheNode *func_020702b8(GraphicsResourceCache *cache,
+GraphicsResourceCacheNode *GraphicsResourceCache_FindNode(GraphicsResourceCache *cache,
                                          GraphicsResourceCacheNode *node)
 {
     GraphicsResourceCacheNode *current = cache->head;
@@ -152,7 +152,7 @@ GraphicsResourceCacheNode *func_020702b8(GraphicsResourceCache *cache,
 #ifdef __cplusplus
 extern "C"
 #endif
-GraphicsResourceCacheNode *func_020702d4(GraphicsResourceCache *cache,
+GraphicsResourceCacheNode *GraphicsResourceCache_FindByResourceId(GraphicsResourceCache *cache,
                                          u32 resourceId)
 {
     GraphicsResourceCacheNode *current = cache->head;

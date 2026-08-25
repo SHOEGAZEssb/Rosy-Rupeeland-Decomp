@@ -18,7 +18,7 @@ extern u8 gHeapContext[];
 
 extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void AnimationResourceState_Destroy(void *resource);
-extern void func_02071ee0(void *resource, void *owner, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *owner, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group,
@@ -486,7 +486,7 @@ void *func_02094154(void *controller, void *owner, s32 total, s32 visible,
     AnimationResourceState_InitEmbedded((u8 *)controller + 0x54);
     FIELD(void *, controller, 0x4c) = owner;
     FIELD(s32, controller, 0x6c) = height;
-    func_02071ee0((u8 *)controller + 0x54, data_020f4e18, 5, 1, 6);
+    AnimationResourceState_ReplaceResources((u8 *)controller + 0x54, data_020f4e18, 5, 1, 6);
 
     group = GraphicsSpriteGroupOwner_CreateGroup(owner);
     FIELD(void *, controller, 0x50) = group;

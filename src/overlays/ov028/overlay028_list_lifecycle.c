@@ -23,7 +23,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -58,7 +58,7 @@ extern "C" void *func_ov028_021fd00c(void *state, void *font, s32 capacity)
     FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, state, 4), 0x18) = 0x2f;
     FIELD(s32, FIELD(void *, state, 4), 0x1c) = 0x1c;
-    func_02071ee0((u8 *)state + 8, data_020f4e18[0], 0x60, 0x61, 0x62);
+    AnimationResourceState_ReplaceResources((u8 *)state + 8, data_020f4e18[0], 0x60, 0x61, 0x62);
     FIELD(s32, state, 0x3c) = capacity;
     FIELD(s32, state, 0x40) = 0;
 

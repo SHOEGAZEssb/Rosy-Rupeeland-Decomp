@@ -3,7 +3,7 @@
     .extern AnimationResourceState_InitEmbedded
     .extern func_02091b6c
     .extern genrand_int32
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern data_ov005_021fcaf0
     .extern data_020f4e18
 
@@ -32,7 +32,7 @@ func_ov005_021fb6e4: ; 0x021fb6e4
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     str r4, [r5, #0xa8]
     mov r0, #0x1
     str r0, [r5, #0x88]

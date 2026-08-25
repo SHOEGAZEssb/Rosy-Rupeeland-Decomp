@@ -12,9 +12,9 @@
     .extern OverlaySlot_Init
     .extern InventoryRecordCollection_Sort
     .extern InventoryRecordCollection_SortAlternate
-    .extern func_020716bc
+    .extern GraphicsArchive_AcquirePaletteResource
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern LanguageLookupDatabase_GetResourceSize
     .extern LanguageLookupDatabase_GetResourceById
@@ -141,7 +141,7 @@ L_021fd8c4:
     ldr r0, L_021fdb54
     ldr r1, L_021fdb58
     ldr r0, [r0, #0x0]
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
     str r0, [r5, #0x400]
     add r0, r5, #0x58
     ldr r1, L_021fdb5c
@@ -162,7 +162,7 @@ L_021fd8c4:
     mov r2, #0x3d
     ldr r1, [r1, #0x0]
     mov r3, #0x3e
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x46
     str r0, [sp, #0x0]
     add r0, r5, #0x88
@@ -170,7 +170,7 @@ L_021fd8c4:
     mov r2, #0x44
     ldr r1, [r1, #0x0]
     mov r3, #0x45
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r1, #0x0
     ldr r0, [r5, #0x54]
     mov r2, r1

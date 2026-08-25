@@ -13,11 +13,11 @@ extern "C" {
 #endif
 
 extern void *data_020f4e18;
-extern void func_02071e90(void *state);
-extern void func_02071ee0(void *state, void *manager, void *resource0,
+extern void AnimationResourceState_Init(void *state);
+extern void AnimationResourceState_ReplaceResources(void *state, void *manager, void *resource0,
                           void *resource1, void *resource2);
 extern void AnimationResourceState_ReleaseResources(void *state);
-extern void func_02071ecc(void *state);
+extern void AnimationResourceState_DestroyEmbedded(void *state);
 
 #ifdef __cplusplus
 }
@@ -31,9 +31,9 @@ extern void func_02071ecc(void *state);
 AnimationResource *AnimationResource_Init(AnimationResource *self, void *resource0,
                                  void *resource1, void *resource2)
 {
-    func_02071e90(&self->entries[0]);
+    AnimationResourceState_Init(&self->entries[0]);
     self->vtable = &gAnimationResourceVTable;
-    func_02071ee0(&self->entries[0], data_020f4e18, resource0, resource1,
+    AnimationResourceState_ReplaceResources(&self->entries[0], data_020f4e18, resource0, resource1,
                   resource2);
     return self;
 }
@@ -46,7 +46,7 @@ AnimationResource *AnimationResource_Destroy(AnimationResource *self)
 {
     self->vtable = &gAnimationResourceVTable;
     AnimationResourceState_ReleaseResources(&self->entries[0]);
-    func_02071ecc(&self->entries[0]);
+    AnimationResourceState_DestroyEmbedded(&self->entries[0]);
     return self;
 }
 
@@ -58,7 +58,7 @@ AnimationResource *AnimationResource_DestroyAndFree(AnimationResource *self)
 {
     self->vtable = &gAnimationResourceVTable;
     AnimationResourceState_ReleaseResources(&self->entries[0]);
-    func_02071ecc(&self->entries[0]);
+    AnimationResourceState_DestroyEmbedded(&self->entries[0]);
     Heap_Free(self);
     return self;
 }
@@ -76,7 +76,7 @@ void AnimationResource_RebindFrom(AnimationResource *self,
     void *resource2 = source->entries[2]->payload10;
 
     AnimationResourceState_ReleaseResources(&self->entries[0]);
-    func_02071ee0(&self->entries[0], data_020f4e18, resource0, resource1,
+    AnimationResourceState_ReplaceResources(&self->entries[0], data_020f4e18, resource0, resource1,
                   resource2);
 }
 

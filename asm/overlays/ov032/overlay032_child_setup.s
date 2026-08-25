@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_child_setup.c for documented portable C. */
 .extern data_020f4e18
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern AnimationResourceState_ReleaseResources
 .extern func_ov032_021fe0c4
 .extern Overlay032Controller_CreateObject
@@ -63,7 +63,7 @@ L_022010a8:
     ldr r2, [r3, #0x10]
     ldr r3, [r3, #0x14]
     add r0, r6, #0xc
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r6, #0x4]
     add r2, r5, r4
     cmp r0, #0x2

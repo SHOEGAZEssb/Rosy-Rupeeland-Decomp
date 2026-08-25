@@ -25,8 +25,8 @@ struct GraphicsCachedResource {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020702b8(void *cache, void *node);
-extern void func_02070280(void *cache, void *node);
+extern void *GraphicsResourceCache_FindNode(void *cache, void *node);
+extern void GraphicsResourceCache_Remove(void *cache, void *node);
 #ifdef __cplusplus
 }
 #endif
@@ -42,12 +42,12 @@ extern "C"
 void func_02071bdc(void *archive, GraphicsCachedResource *resource)
 {
     void *cache = (u8 *)archive + 0xb4;
-    if (func_020702b8(cache, resource) == 0)
+    if (GraphicsResourceCache_FindNode(cache, resource) == 0)
         return;
     resource->referenceCount--;
     if (resource->referenceCount != 0)
         return;
-    func_02070280(cache, resource);
+    GraphicsResourceCache_Remove(cache, resource);
     if (resource != 0)
 #ifdef __MWERKS__
         resource->destroyAndFree();
@@ -67,12 +67,12 @@ extern "C"
 void func_02071c38(void *archive, GraphicsCachedResource *resource)
 {
     void *cache = (u8 *)archive + 0xc0;
-    if (func_020702b8(cache, resource) == 0)
+    if (GraphicsResourceCache_FindNode(cache, resource) == 0)
         return;
     resource->referenceCount--;
     if (resource->referenceCount != 0)
         return;
-    func_02070280(cache, resource);
+    GraphicsResourceCache_Remove(cache, resource);
     if (resource != 0)
 #ifdef __MWERKS__
         resource->destroyAndFree();

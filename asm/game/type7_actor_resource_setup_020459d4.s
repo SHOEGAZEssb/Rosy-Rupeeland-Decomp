@@ -3,7 +3,7 @@
 .extern data_020f4e18
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_CreateState
 .global Type7Actor_SetupResources
 .type Type7Actor_SetupResources, @function
@@ -17,7 +17,7 @@ Type7Actor_SetupResources: ; 0x020459d4
     ldr r1, [r1, #0x0]
     add r0, r5, #0x1f0
     ldmib r4, {r2, r3}
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r2, [r5, #0x1f0]
     mov r0, r5
     ldr r1, [r2, #0x28]

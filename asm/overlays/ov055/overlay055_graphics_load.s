@@ -12,9 +12,9 @@
 .extern gSubBgPaletteBuffer
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_SetPaletteBank
-.extern func_02071568
-.extern func_020716bc
-.extern func_020718dc
+.extern GraphicsArchive_AcquireCharacterResource
+.extern GraphicsArchive_AcquirePaletteResource
+.extern GraphicsArchive_AcquireScreenResource
 .extern func_02071bdc
 .extern func_02071c38
 .extern func_02071cf0
@@ -44,19 +44,19 @@ func_ov055_0220ebec:
     ldr r0, [r0, #0x0]
     ldr r1, [r1, r2, lsl #0x2]
     ldmib r10, {r4, r7}
-    bl func_02071568
+    bl GraphicsArchive_AcquireCharacterResource
     ldr r2, .L_0220eecc
     ldr r1, .L_0220eec4
     mov r11, r0
     ldr r0, [r1, #0x0]
     ldr r1, [r2, r4, lsl #0x2]
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
     ldr r2, .L_0220eed0
     ldr r1, .L_0220eec4
     str r0, [sp, #0x8]
     ldr r0, [r1, #0x0]
     ldr r1, [r2, r7, lsl #0x2]
-    bl func_020718dc
+    bl GraphicsArchive_AcquireScreenResource
     mov r7, r0
     mov r4, #0x400
     ldr r8, [r7, #0x24]
@@ -137,19 +137,19 @@ func_ov055_0220ebec:
     ldr r0, [r0, #0x0]
     ldr r1, [r1, r2, lsl #0x2]
     ldmib r9, {r4, r6}
-    bl func_02071568
+    bl GraphicsArchive_AcquireCharacterResource
     ldr r2, .L_0220eecc
     ldr r1, .L_0220eec4
     mov r11, r0
     ldr r0, [r1, #0x0]
     ldr r1, [r2, r4, lsl #0x2]
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
     ldr r2, .L_0220eed0
     ldr r1, .L_0220eec4
     str r0, [sp, #0x4]
     ldr r0, [r1, #0x0]
     ldr r1, [r2, r6, lsl #0x2]
-    bl func_020718dc
+    bl GraphicsArchive_AcquireScreenResource
     mov r6, r0
     mov r4, #0x400
     ldr r7, [r6, #0x24]

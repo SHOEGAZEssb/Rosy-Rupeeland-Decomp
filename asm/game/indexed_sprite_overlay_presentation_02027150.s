@@ -9,7 +9,7 @@
 .extern data_020f4e18
 .extern FieldEffect_Init
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -38,7 +38,7 @@ IndexedSpriteOverlayPresentation_Init: ; 0x02027150
     ldrh r2, [ip, r3]
     ldrh r3, [lr, #0x2]
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_0202720c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

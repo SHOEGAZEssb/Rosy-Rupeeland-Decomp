@@ -19,7 +19,7 @@ extern "C" {
 extern void GameWork_ClearFlag(void *, s32);
 extern void InventoryRecordCollection_Sort(void *, s32);
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void SceneInputBase_Init(void *);
@@ -100,8 +100,8 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 cookingMode,
     func_02092754((u8 *)state + 0x84, 0x800b);
     func_02092814((u8 *)state + 0x60, 0x7005);
     func_02092814((u8 *)state + 0x60, 0x7001);
-    func_02071ee0((u8 *)state + 0xc8, data_020f4e18, 0xd, 0xe, 0xf);
-    func_02071ee0((u8 *)state + 0xd4, data_020f4e18, 0x1c, 0x1d, 0x1e);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xc8, data_020f4e18, 0xd, 0xe, 0xf);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xd4, data_020f4e18, 0x1c, 0x1d, 0x1e);
     FIELD(void *, state, 0xe0) =
         GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     func_ov016_021ff288(state);

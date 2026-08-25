@@ -40,7 +40,7 @@ extern void func_ov032_021fce08(void *, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_ov032_02200f88(void *, void *, s32, void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void Overlay032Controller_CreateObject(void *, void *, void *);
 extern void func_ov032_022014c0(void *, s32, s32, s32, s32, s32, s32, s32, s32);
 extern void GameWork_ClearFlag(void *, s32);
@@ -177,7 +177,7 @@ extern "C" void *func_ov032_021fce20(void *object)
                             object, i, FIELD(void *, object, 0));
 
     for (s32 i = 0; i < 6; ++i)
-        func_02071ee0((u8 *)object + resourceOffsets[i], data_020f4e18[0],
+        AnimationResourceState_ReplaceResources((u8 *)object + resourceOffsets[i], data_020f4e18[0],
                       resourceIds[i][0], resourceIds[i][1], resourceIds[i][2]);
     for (s32 i = 0; i < 18; ++i)
         setup_controller(object, &specs[i]);

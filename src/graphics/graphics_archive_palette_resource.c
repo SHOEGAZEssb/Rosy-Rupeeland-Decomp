@@ -14,7 +14,7 @@ typedef struct GraphicsArchivePaletteResource {
 extern "C" {
 #endif
 extern const u32 data_020e5c30[];
-extern void func_02070164(void *self, void *archive, const void *source,
+extern void GraphicsArchiveResource_Init(void *self, void *archive, const void *source,
                           u32 sourceSize, u32 resourceId, u32 resourceKind);
 #ifdef __cplusplus
 }
@@ -32,7 +32,7 @@ GraphicsArchivePaletteResource *func_02070750(
     GraphicsArchivePaletteResource *self, void *archive, const u32 *source,
     u32 sourceSize, u32 resourceId)
 {
-    func_02070164(self, archive, source, sourceSize, resourceId, 1);
+    GraphicsArchiveResource_Init(self, archive, source, sourceSize, resourceId, 1);
     self->vtable = data_020e5c30;
     self->source = source;
     self->payload = source + 2;

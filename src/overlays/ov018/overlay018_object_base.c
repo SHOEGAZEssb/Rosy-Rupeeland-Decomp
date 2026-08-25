@@ -14,7 +14,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void PresentationList_DeleteAll(void *);
@@ -40,7 +40,7 @@ extern "C" void *func_ov018_021fce00(void *state, void *renderer,
     SpritePresentation_InitVariant(state, 0);
     FIELD(const u32 *, state, 0) = data_ov018_021ffd20;
     AnimationResourceState_InitEmbedded((u8 *)state + 0xa0);
-    func_02071ee0((u8 *)state + 0xa0, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xa0, data_020f4e18[0],
                   FIELD(u16, descriptor, 4), FIELD(u16, descriptor, 6),
                   FIELD(u16, descriptor, 8));
     sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)state + 0xa0, 2);

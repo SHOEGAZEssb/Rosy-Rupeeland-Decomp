@@ -9,7 +9,7 @@
 .extern VecFx32Object_InitCopy
 .extern FieldEffect_Init
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov050_0220d824
 .extern gDebugFont
@@ -45,7 +45,7 @@ func_ov050_0220db84:
     ldr r1, [r1, #0x0]
     add r0, r10, #0x8
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_0220dca0
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

@@ -1,5 +1,5 @@
 .text
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_020957f0
@@ -22,7 +22,7 @@ func_ov043_0220bc2c:
     add r0, r4, #0x80
     mov r2, #0x16
     mov r3, #0x17
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_0220bcf0
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

@@ -13,7 +13,7 @@ typedef struct AnimationResourceState {
 void AnimationResourceState_ReleaseResources(AnimationResourceState *state);
 
 /* Initialize all three borrowed-resource slots to null and return state. */
-void *func_02071e90(AnimationResourceState *state)
+void *AnimationResourceState_Init(AnimationResourceState *state)
 {
     state->character = 0;
     state->palette = 0;
@@ -38,7 +38,7 @@ void *AnimationResourceState_Destroy(AnimationResourceState *state)
 }
 
 /* Release the equivalent embedded-state variant and return its storage. */
-void *func_02071ecc(AnimationResourceState *state)
+void *AnimationResourceState_DestroyEmbedded(AnimationResourceState *state)
 {
     AnimationResourceState_ReleaseResources(state);
     return state;

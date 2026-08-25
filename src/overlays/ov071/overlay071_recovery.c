@@ -33,7 +33,7 @@ extern void VecFx32Object_Init(...), VecFx32Object_Destroy(...);
 extern void VecFx32Object_InitComponents(...);
 extern void VecFx32Object_Assign(...), func_020a1794(...);
 extern void GraphicsSpriteState_SetAnimationIndex(...);
-extern void func_02099fb0(...), Heap_Free(...), func_02071ee0(...);
+extern void func_02099fb0(...), Heap_Free(...), AnimationResourceState_ReplaceResources(...);
 extern void *Heap_Alloc(...);
 extern void func_0209a07c(...), func_0209a0d8(...);
 extern s32 GameWork_TestFlag(...);

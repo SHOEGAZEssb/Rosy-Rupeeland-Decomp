@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_ui_sprite_group.c. */
     .extern data_020f4e18
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -33,7 +33,7 @@ Overlay017UiSpriteGroup_Init:
     ldr r1, [r1, #0x0]
     add r0, r9, #0x4
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fe890
     ldr r1, L_021fe88c
     str r3, [sp, #0x0]
@@ -41,7 +41,7 @@ Overlay017UiSpriteGroup_Init:
     ldr r1, [r1, #0x0]
     add r0, r9, #0x10
     sub r3, r3, #0x3
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r9, #0x0]
     add r1, r9, #0x4
     mov r2, #0x1

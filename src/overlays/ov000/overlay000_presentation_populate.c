@@ -48,7 +48,7 @@ extern u8 *RetailTextTable_FindRecordById(void *table, u16 resourceId);
 extern void TitleDialog_SetText(void *presentation, void *record, s32 mode);
 extern void TitleDialog_UpdateTextPage(void *presentation, s32 value);
 extern void TitleDialog_ClearTextRect(void *presentation);
-extern void func_02071ee0(void *resource, void *manager, u32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
 extern void func_ov000_021fb890(void *state, s32 startAnimation);
 #ifdef __cplusplus
@@ -142,7 +142,7 @@ void Overlay000_PopulatePresentation(Overlay000PresentationState *state, void *r
     resource1 = ActorDescriptorComponent_GetPaletteResourceId(component);
     component = ActorDescriptor_GetComponent(record, 0);
     resource2 = ActorDescriptorComponent_GetCellResourceId(component);
-    func_02071ee0(state->resource_14, data_020f4e18,
+    AnimationResourceState_ReplaceResources(state->resource_14, data_020f4e18,
                   resource0, resource1, resource2);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_14, 2);
     component = ActorDescriptor_GetComponent(record, 0);

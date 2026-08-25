@@ -15,12 +15,12 @@ typedef struct GraphicsArchiveCachedResource {
 extern u8 data_020e5c60[];
 extern u8 data_021e9e60[];
 
-extern void func_02070164(void *self, void *archive, const void *source,
+extern void GraphicsArchiveResource_Init(void *self, void *archive, const void *source,
                           u32 source_size, u32 resource_id,
                           u16 resource_type);
-extern void *func_020702d4(void *cache, u32 resource_id);
-extern void func_02070244(void *cache, void *resource);
-extern void *func_020713e4(u32 size);
+extern void *GraphicsResourceCache_FindByResourceId(void *cache, u32 resource_id);
+extern void GraphicsResourceCache_Append(void *cache, void *resource);
+extern void *GraphicsArchive_AllocateCachedHandle(u32 size);
 extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resource_id, u32 *size);
 extern void *GraphicsArchiveResource_DestroyVariant(void *self);
 extern void func_020a7298(void *heap, void *allocation);
@@ -31,7 +31,7 @@ void *func_02070c38(void *self, void *archive, const void *source,
     u8 *bytes = (u8 *)self;
     const u8 *source_bytes = (const u8 *)source;
 
-    func_02070164(self, archive, source, source_size, resource_id, 2);
+    GraphicsArchiveResource_Init(self, archive, source, source_size, resource_id, 2);
     *(void **)(bytes + 0x00) = data_020e5c60;
     *(const void **)(bytes + 0x20) = source;
     *(const u8 **)(bytes + 0x24) = source_bytes + *(const u32 *)(source_bytes + 0x08);
@@ -62,7 +62,7 @@ void *func_02071800(void *archive, u32 resource_id)
     const u32 *source;
     u32 source_size;
 
-    resource = (GraphicsArchiveCachedResource *)func_020702d4(
+    resource = (GraphicsArchiveCachedResource *)GraphicsResourceCache_FindByResourceId(
         (u8 *)archive + 0xcc, resource_id);
     if (resource != 0) {
         resource->reference_count++;
@@ -70,13 +70,13 @@ void *func_02071800(void *archive, u32 resource_id)
         source = (const u32 *)GraphicsArchive_LoadIndexedPayload(archive, resource_id,
                                             &source_size);
         if (source != 0 && source[0] == 0x56434520) {
-            resource = (GraphicsArchiveCachedResource *)func_020713e4(0x34);
+            resource = (GraphicsArchiveCachedResource *)GraphicsArchive_AllocateCachedHandle(0x34);
             if (resource != 0) {
                 resource = (GraphicsArchiveCachedResource *)func_02070c38(
                     resource, archive, source, source_size, resource_id);
             }
             resource->reference_count++;
-            func_02070244((u8 *)archive + 0xcc, resource);
+            GraphicsResourceCache_Append((u8 *)archive + 0xcc, resource);
         }
     }
     return resource;

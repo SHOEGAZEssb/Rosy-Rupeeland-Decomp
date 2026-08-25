@@ -50,7 +50,7 @@ extern void VecFx32Object_Destroy(PresentationVector *);
 extern void VecFx32Object_Assign(PresentationVector *, const PresentationVector *);
 extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void AnimationResourceState_Destroy(void *resource);
-extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *resource, void *owner, s32, s32, s32);
 extern void AnimationResourceState_ReleaseResources(void *resource);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *Actor_GetGlobalCollectionBySlot(void *actor, u32 slot);
@@ -102,7 +102,7 @@ LaunchedSpritePairPresentation *LaunchedSpritePairPresentation_Init(
     AnimationResourceState_InitEmbedded(self->resource3c);
     self->primarySpriteGroup48 = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     record = RuntimeRecordTable_FindByKey(data_021f3d68, recordIndex);
-    func_02071ee0(self->resource3c, data_020f4e18, 0x300a, 0x300b, 0x300c);
+    AnimationResourceState_ReplaceResources(self->resource3c, data_020f4e18, 0x300a, 0x300b, 0x300c);
     self->primarySprite50 =
         GraphicsSpriteGroup_CreateStateFromSource(self->primarySpriteGroup48, self->resource3c, 2);
     GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 0);
@@ -203,7 +203,7 @@ s32 LaunchedSpritePairPresentation_Update(LaunchedSpritePairPresentation *self)
             if (self->secondarySpriteGroup4c != 0)
                 GraphicsSpriteGroup_ReleaseState(self->secondarySpriteGroup4c, self->secondarySprite54);
             AnimationResourceState_ReleaseResources(self->resource3c);
-            func_02071ee0(self->resource3c, data_020f4e18,
+            AnimationResourceState_ReplaceResources(self->resource3c, data_020f4e18,
                           0x115a, 0x115b, 0x115c);
             self->primarySprite50 =
                 GraphicsSpriteGroup_CreateStateFromSource(self->primarySpriteGroup48, self->resource3c, 2);

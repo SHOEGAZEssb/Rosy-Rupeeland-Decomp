@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void Sound_Play(void *, s32, s32);
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -43,9 +43,9 @@ extern "C" void *Overlay017UiSpriteGroup_Init(void *group, s32 duration, s32 cur
     FIELD(s32, group, 0x60) = current;
     FIELD(s32, group, 0x64) = 0;
     FIELD(void *, group, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    func_02071ee0((u8 *)group + 4, data_020f4e18[0], 0x3293, 0x3294,
+    AnimationResourceState_ReplaceResources((u8 *)group + 4, data_020f4e18[0], 0x3293, 0x3294,
                   0x3295);
-    func_02071ee0((u8 *)group + 0x10, data_020f4e18[0], 0x3296, 0x3294,
+    AnimationResourceState_ReplaceResources((u8 *)group + 0x10, data_020f4e18[0], 0x3296, 0x3294,
                   0x3297);
     FIELD(void *, group, 0x1c) =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, group, 0), (u8 *)group + 4, 1);

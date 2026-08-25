@@ -6,7 +6,7 @@ extern void *data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ee0(void *resource, void *manager, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *ActorCollection_GetSpriteGroup(void *collection);
@@ -45,7 +45,7 @@ void Actor_InitializeFromDescriptor(void *self, const void *descriptor)
     if (!(*(s32 *)(record + 4) == -1 && *(s32 *)(record + 0x0c) == -1 &&
           *(s32 *)(record + 8) == -1) && *(void **)(actor + 0x54) == 0) {
         u8 *attachment;
-        func_02071ee0(actor + 0x1f0, data_020f4e18,
+        AnimationResourceState_ReplaceResources(actor + 0x1f0, data_020f4e18,
                       *(s32 *)(record + 4), *(s32 *)(record + 8),
                       *(s32 *)(record + 0x0c));
         attachment = (u8 *)GraphicsSpriteGroup_CreateState(

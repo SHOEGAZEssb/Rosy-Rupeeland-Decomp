@@ -22,7 +22,7 @@ extern void FS_InitFile(FSFile *file);
 extern void func_020b44e8(void);
 
 /* Initialize the three-word intrusive-list head exactly as 0x02070230. */
-void func_02070230(void *list)
+void GraphicsResourceCache_Init(void *list)
 {
     u32 *words = (u32 *)list;
 
@@ -31,7 +31,7 @@ void func_02070230(void *list)
     words[2] = 0;
 }
 
-void *func_02071294(void *manager)
+void *GraphicsArchive_Init(void *manager)
 {
     u8 *bytes = (u8 *)manager;
     const char *const *language_paths;
@@ -40,7 +40,7 @@ void *func_02071294(void *manager)
     int index;
 
     for (index = 0; index < 7; ++index)
-        func_02070230(bytes + 0xb4 + index * 0x0c);
+        GraphicsResourceCache_Init(bytes + 0xb4 + index * 0x0c);
 
     if (language >= 6)
         language = 5;

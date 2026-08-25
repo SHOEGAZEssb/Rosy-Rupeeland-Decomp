@@ -25,7 +25,7 @@ extern void __construct_array(void *, s32, s32, void *, void *);
 extern u32 genrand_int32(void);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern s32 TitleRandom_NextBounded(u32 *, s32);
@@ -54,7 +54,7 @@ extern "C" void *func_ov025_021fdecc(void *object)
     FIELD(u32, object, 0xf8) = 0;
     for (s32 i = 0; i < 3; ++i) {
         EffectResourceIds *entry = &data_ov025_02202c84[i];
-        func_02071ee0((u8 *)object + 0xb0 + i * 0xc, data_020f4e18,
+        AnimationResourceState_ReplaceResources((u8 *)object + 0xb0 + i * 0xc, data_020f4e18,
                       entry->first, entry->second, entry->third);
     }
 
@@ -80,7 +80,7 @@ extern "C" void *func_ov025_021fdecc(void *object)
     FIELD(u16, sprite, 0x28) = 0x2000;
     FIELD(u16, FIELD(void *, object, 0xf0), 0x24) |= 6;
 
-    func_02071ee0((u8 *)object + 0xd4, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 0xd4, data_020f4e18,
                   0x1154, 0x1155, 0x1156);
 
     sprite = GraphicsSpriteGroup_CreateStateFromSource(

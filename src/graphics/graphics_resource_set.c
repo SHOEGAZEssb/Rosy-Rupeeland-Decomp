@@ -11,9 +11,9 @@
 extern "C" {
 #endif
 
-extern void *func_02071568(void *archive, u32 resourceId);
-extern void *func_020716bc(void *archive, u32 resourceId);
-extern void *func_020718dc(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquireCharacterResource(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquirePaletteResource(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquireScreenResource(void *archive, u32 resourceId);
 
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ void GraphicsResourceSet_Load(GraphicsResourceSet *set, void *archive,
         GraphicsResourceSet_ReleaseHandles(set);
     }
 
-    set->resource0 = func_02071568(archive, resource0Id);
-    set->resource1 = func_020716bc(archive, resource1Id);
-    set->resource2 = func_020718dc(archive, resource2Id);
+    set->resource0 = GraphicsArchive_AcquireCharacterResource(archive, resource0Id);
+    set->resource1 = GraphicsArchive_AcquirePaletteResource(archive, resource1Id);
+    set->resource2 = GraphicsArchive_AcquireScreenResource(archive, resource2Id);
 }

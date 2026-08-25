@@ -36,7 +36,7 @@ extern void RetailPhaseSelection_AddActor(void *, u16, s32);
 extern s32 RetailPhaseSelection_BuildScaledResult(void *, s32);
 extern void *RetailPhaseSelection_SelectMatchingRecord(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSetVariant_Init(void *);
 extern void GraphicsResourceSetVariant_Load(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -148,9 +148,9 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     FIELD(void *, state, 0x240) = object;
     FIELD(void *, state, 0x244) = Graphics3DResourceOwner_CreateManager(object);
     func_02092814((u8 *)state + 0x1d8, 0x7006);
-    func_02071ee0((u8 *)state + 0x5c, data_020f4e18[0], 0xd, 0xe, 0xf);
-    func_02071ee0((u8 *)state + 0x68, data_020f4e18[0], 0x10, 0x11, 0x12);
-    func_02071ee0((u8 *)state + 0x74, data_020f4e18[0], 0x13, 0x14, 0x15);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x5c, data_020f4e18[0], 0xd, 0xe, 0xf);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x68, data_020f4e18[0], 0x10, 0x11, 0x12);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x74, data_020f4e18[0], 0x13, 0x14, 0x15);
     GraphicsResourceSetVariant_Load((u8 *)state + 0x248, data_020f4e18[0],
                   0x601b, 0x601c, 0x601d);
     Graphics3DResourceOwner_PrepareResources(FIELD(void *, state, 0x240), (u8 *)state + 0x248);

@@ -7,11 +7,11 @@
 #include "tingle/types.h"
 #include "tingle/heap.h"
 
-extern void *func_020702d4(void *cache, u32 resource_id);
-extern void func_02070244(void *cache, void *resource);
+extern void *GraphicsResourceCache_FindByResourceId(void *cache, u32 resource_id);
+extern void GraphicsResourceCache_Append(void *cache, void *resource);
 extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resource_id, u32 *size);
-extern void *func_020713e4(u32 size);
-extern void func_02070164(void *self, void *archive, const void *source,
+extern void *GraphicsArchive_AllocateCachedHandle(u32 size);
+extern void GraphicsArchiveResource_Init(void *self, void *archive, const void *source,
                           u32 source_size, u32 resource_id,
                           u16 resource_type);
 extern u8 data_020e5c50[];
@@ -32,12 +32,12 @@ typedef struct GraphicsArchiveCachedResource {
  * the VFD table, first entry, and data immediately following its 8-byte
  * entries respectively.
  */
-void *func_020710dc(void *self, void *archive, const u32 *source,
+void *GraphicsVfdResource_Init(void *self, void *archive, const u32 *source,
                     u32 source_size, u32 resource_id)
 {
     u8 *bytes = (u8 *)self;
 
-    func_02070164(self, archive, source, source_size, resource_id, 4);
+    GraphicsArchiveResource_Init(self, archive, source, source_size, resource_id, 4);
     *(void **)(bytes + 0x00) = data_020e5c50;
     *(const u32 **)(bytes + 0x20) = source;
     *(const u8 **)(bytes + 0x24) = (const u8 *)source + 8;
@@ -49,12 +49,12 @@ void *func_020710dc(void *self, void *archive, const u32 *source,
 /* Construct a cached VPO resource (retail 0x02071170). The archive retains
  * the source buffer; four source-relative tables are exposed at +0x24..+0x30,
  * and the caller owns the returned cache reference. */
-void *func_02071170(void *self, void *archive, const u32 *source,
+void *GraphicsVpoResource_Init(void *self, void *archive, const u32 *source,
                     u32 source_size, u32 resource_id)
 {
     u8 *bytes = (u8 *)self;
 
-    func_02070164(self, archive, source, source_size, resource_id, 5);
+    GraphicsArchiveResource_Init(self, archive, source, source_size, resource_id, 5);
     *(void **)bytes = data_020e5c40;
     *(const u32 **)(bytes + 0x20) = source;
     *(const u8 **)(bytes + 0x24) = (const u8 *)source + source[2];
@@ -66,12 +66,12 @@ void *func_02071170(void *self, void *archive, const u32 *source,
 
 /* Construct a cached OWLV resource (retail 0x0207121C). The archive retains
  * the source and the sole payload view begins eight bytes into it. */
-void *func_0207121c(void *self, void *archive, const u32 *source,
+void *GraphicsOwlvResource_Init(void *self, void *archive, const u32 *source,
                     u32 source_size, u32 resource_id)
 {
     u8 *bytes = (u8 *)self;
 
-    func_02070164(self, archive, source, source_size, resource_id, 6);
+    GraphicsArchiveResource_Init(self, archive, source, source_size, resource_id, 6);
     *(void **)bytes = data_020e5c70;
     *(const u32 **)(bytes + 0x20) = source;
     *(const u8 **)(bytes + 0x24) = (const u8 *)source + 8;
@@ -90,7 +90,7 @@ void *GraphicsArchive_AcquireVfdResource(void *archive, u32 resource_id)
     u32 source_size;
     u32 *source;
 
-    resource = (GraphicsArchiveCachedResource *)func_020702d4(
+    resource = (GraphicsArchiveCachedResource *)GraphicsResourceCache_FindByResourceId(
         (u8 *)archive + 0xe4, resource_id);
     if (resource != 0) {
         resource->reference_count++;
@@ -99,13 +99,13 @@ void *GraphicsArchive_AcquireVfdResource(void *archive, u32 resource_id)
 
     source = (u32 *)GraphicsArchive_LoadIndexedPayload(archive, resource_id, &source_size);
     if (source != 0 && *source == 0x56464420) {
-        resource = (GraphicsArchiveCachedResource *)func_020713e4(0x2c);
+        resource = (GraphicsArchiveCachedResource *)GraphicsArchive_AllocateCachedHandle(0x2c);
         if (resource != 0) {
-            resource = (GraphicsArchiveCachedResource *)func_020710dc(
+            resource = (GraphicsArchiveCachedResource *)GraphicsVfdResource_Init(
                 resource, archive, source, source_size, resource_id);
         }
         resource->reference_count++;
-        func_02070244((u8 *)archive + 0xe4, resource);
+        GraphicsResourceCache_Append((u8 *)archive + 0xe4, resource);
     }
     return resource;
 }
@@ -118,7 +118,7 @@ void *GraphicsArchive_AcquireVpoResource(void *archive, u32 resource_id)
     u32 source_size;
     u32 *source;
 
-    resource = (GraphicsArchiveCachedResource *)func_020702d4(
+    resource = (GraphicsArchiveCachedResource *)GraphicsResourceCache_FindByResourceId(
         (u8 *)archive + 0xf0, resource_id);
     if (resource != 0) {
         ++resource->reference_count;
@@ -129,10 +129,10 @@ void *GraphicsArchive_AcquireVpoResource(void *archive, u32 resource_id)
         resource = (GraphicsArchiveCachedResource *)Heap_Alloc(
             0x34, data_020e6908, 4, &gHeapContext);
         if (resource != 0)
-            resource = (GraphicsArchiveCachedResource *)func_02071170(
+            resource = (GraphicsArchiveCachedResource *)GraphicsVpoResource_Init(
                 resource, archive, source, source_size, resource_id);
         ++resource->reference_count;
-        func_02070244((u8 *)archive + 0xf0, resource);
+        GraphicsResourceCache_Append((u8 *)archive + 0xf0, resource);
     }
     return resource;
 }
@@ -145,7 +145,7 @@ void *GraphicsArchive_AcquireOwlvResource(void *archive, u32 resource_id)
     u32 source_size;
     u32 *source;
 
-    resource = (GraphicsArchiveCachedResource *)func_020702d4(
+    resource = (GraphicsArchiveCachedResource *)GraphicsResourceCache_FindByResourceId(
         (u8 *)archive + 0xfc, resource_id);
     if (resource != 0) {
         ++resource->reference_count;
@@ -156,29 +156,29 @@ void *GraphicsArchive_AcquireOwlvResource(void *archive, u32 resource_id)
         resource = (GraphicsArchiveCachedResource *)Heap_Alloc(
             0x28, data_020e6910, 4, &gHeapContext);
         if (resource != 0)
-            resource = (GraphicsArchiveCachedResource *)func_0207121c(
+            resource = (GraphicsArchiveCachedResource *)GraphicsOwlvResource_Init(
                 resource, archive, source, source_size, resource_id);
         ++resource->reference_count;
-        func_02070244((u8 *)archive + 0xfc, resource);
+        GraphicsResourceCache_Append((u8 *)archive + 0xfc, resource);
     }
     return resource;
 }
 
 /* Look up a character resource in archive cache +0xB4 without retaining it. */
-void *func_02071e60(void *archive, u32 resource_id)
+void *GraphicsArchive_FindCharacterResource(void *archive, u32 resource_id)
 {
-    return func_020702d4((u8 *)archive + 0xb4, resource_id);
+    return GraphicsResourceCache_FindByResourceId((u8 *)archive + 0xb4, resource_id);
 }
 
 /* Look up a palette resource in archive cache +0xC0 without retaining it. */
 void *GraphicsArchive_FindPaletteResource(void *archive, u32 resource_id)
 {
-    return func_020702d4((u8 *)archive + 0xc0, resource_id);
+    return GraphicsResourceCache_FindByResourceId((u8 *)archive + 0xc0, resource_id);
 }
 
 /* Look up a cell resource in archive cache +0xCC without retaining it. */
-void *func_02071e80(void *archive, u32 resource_id)
+void *GraphicsArchive_FindCellResource(void *archive, u32 resource_id)
 {
-    return func_020702d4((u8 *)archive + 0xcc, resource_id);
+    return GraphicsResourceCache_FindByResourceId((u8 *)archive + 0xcc, resource_id);
 }
 

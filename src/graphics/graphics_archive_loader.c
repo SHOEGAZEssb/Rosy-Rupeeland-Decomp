@@ -44,7 +44,7 @@ extern void func_020b4554(void *address, u32 size);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_020713e4(u32 size)
+void *GraphicsArchive_AllocateCachedHandle(u32 size)
 {
     void *allocation = func_020a72d4(data_021e9e60.allocator, size, 4);
     if (allocation == 0) {

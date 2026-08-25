@@ -14,7 +14,7 @@ extern void *gRuntimeContext;
 extern "C" {
 #endif
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern s64 func_020befec(s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
@@ -69,7 +69,7 @@ extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
     FIELD(void *, widget, 0x2c) = 0;
     FIELD(s32, widget, 0x8c) = 0;
 
-    func_02071ee0(widget, data_020f4e18, 0x4f, 0x50, 0x51);
+    AnimationResourceState_ReplaceResources(widget, data_020f4e18, 0x4f, 0x50, 0x51);
     void *owner = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     FIELD(void *, widget, 0xc) = owner;
     FIELD(s32, owner, 0x18) = 0x58;

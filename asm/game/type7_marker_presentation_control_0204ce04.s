@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/type7_marker_presentation_control.c.
 .extern func_020ae024
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02071e60
+.extern GraphicsArchive_FindCharacterResource
 .extern GraphicsArchive_FindPaletteResource
-.extern func_02071e80
+.extern GraphicsArchive_FindCellResource
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern data_020f4e18
 .text
@@ -100,7 +100,7 @@ Type7MarkerPresentation_ReloadResources: ; 0x0204cf28
     mov r6, r0
     ldr r0, [r1, #0x0]
     ldr r1, .L_0204cf98
-    bl func_02071e60
+    bl GraphicsArchive_FindCharacterResource
     ldr r1, .L_0204cf94
     mov r5, r0
     ldr r0, [r1, #0x0]
@@ -110,7 +110,7 @@ Type7MarkerPresentation_ReloadResources: ; 0x0204cf28
     mov r4, r0
     ldr r0, [r1, #0x0]
     ldr r1, .L_0204cfa0
-    bl func_02071e80
+    bl GraphicsArchive_FindCellResource
     mov r2, r5
     mov r3, r4
     ldr r1, [r6, #0x4]

@@ -6,7 +6,7 @@
 .extern data_021f5128
 .extern data_ov023_021ffc00
 .extern data_ov023_021ffc08
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern RecordMode_GetCharacterResourceId
 .extern RecordMode_GetPaletteResourceId
 .extern RecordMode_GetCellResourceId
@@ -76,7 +76,7 @@ L_021fe3ec:
     ldr r1, [r1, #0x0]
     mov r3, r4
     add r0, r6, #0x4
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x1a
     mov r2, #0x0
     mul r0, r7, r0

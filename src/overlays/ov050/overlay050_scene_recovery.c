@@ -21,7 +21,7 @@ extern "C" void Heap_Free(void *);
 extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern "C" void AnimationResourceState_InitEmbedded(void *);
 extern "C" void AnimationResourceState_Destroy(void *);
-extern "C" void func_02071ee0(void *, void *, s32, s32, s32);
+extern "C" void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern "C" void *VecFx32Object_Init(void *);
 extern "C" void *VecFx32Object_InitCopy(void *, const void *);
 extern "C" void *VecFx32Object_InitComponents(void *, s32, s32, s32);
@@ -68,7 +68,7 @@ extern "C" void *func_ov050_0220db84(void *scene, void *argument,
     FIELD(s32, scene, 0x48) = 0;
     FIELD(s32, scene, 0x54) = 0;
     FIELD(const void *, scene, 0x58) = resources;
-    func_02071ee0((u8 *)scene + 8, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)scene + 8, data_020f4e18[0],
                   0x1614, 0x1615, 0x1616);
     FIELD(void *, scene, 0x14) =
         GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);

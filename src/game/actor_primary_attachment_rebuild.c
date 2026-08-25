@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void GraphicsSpriteGroup_ReleaseState(void *owned, void *attachment);
 extern void AnimationResourceState_ReleaseResources(void *resource);
-extern void func_02071ee0(void *resource, void *manager, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *ActorCollection_GetSpriteGroup(void *collection);
@@ -44,7 +44,7 @@ void *Actor_RebuildPrimaryAttachment(void *self, u16 first, u16 second,
         GraphicsSpriteGroup_ReleaseState(*(void **)attachment, attachment);
     *(void **)(actor + 0x58) = 0;
     AnimationResourceState_ReleaseResources(actor + 0x1f0);
-    func_02071ee0(actor + 0x1f0, data_020f4e18, first, second, third);
+    AnimationResourceState_ReplaceResources(actor + 0x1f0, data_020f4e18, first, second, third);
     attachment = GraphicsSpriteGroup_CreateState(
         ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
         *(s32 *)(actor + 0x1f0), *(s32 *)(actor + 0x1f4),

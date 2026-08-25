@@ -4345,7 +4345,7 @@ build build/reports/graphics_archive_character_load.json: objdiff build/decomp/d
 
 build build/reports/graphics_archive_character_load.txt: match_report build/reports/graphics_archive_character_load.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_character_load.json
-  report_args = --section .text --function func_02071568 --require-exact
+  report_args = --section .text --function GraphicsArchive_AcquireCharacterResource --require-exact
 
 build build/reports/graphics_archive_character_load_uncached.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_character_load_uncached.o | build/decomp/src/graphics/graphics_archive_character_load_uncached.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_character_load_uncached.o
@@ -4353,7 +4353,7 @@ build build/reports/graphics_archive_character_load_uncached.json: objdiff build
 
 build build/reports/graphics_archive_character_load_uncached.txt: match_report build/reports/graphics_archive_character_load_uncached.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_character_load_uncached.json
-  report_args = --section .text --function func_0207164c --require-exact
+  report_args = --section .text --function GraphicsArchive_LoadCharacterResourceUncached --require-exact
 
 build build/reports/graphics_archive_palette_load.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_palette_load.o | build/decomp/src/graphics/graphics_archive_palette_load.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_palette_load.o
@@ -4361,7 +4361,7 @@ build build/reports/graphics_archive_palette_load.json: objdiff build/decomp/del
 
 build build/reports/graphics_archive_palette_load.txt: match_report build/reports/graphics_archive_palette_load.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_palette_load.json
-  report_args = --section .text --function func_020716bc --require-exact
+  report_args = --section .text --function GraphicsArchive_AcquirePaletteResource --require-exact
 
 build build/reports/graphics_archive_palette_load_uncached.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_palette_load_uncached.o | build/decomp/src/graphics/graphics_archive_palette_load_uncached.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_palette_load_uncached.o
@@ -4369,7 +4369,7 @@ build build/reports/graphics_archive_palette_load_uncached.json: objdiff build/d
 
 build build/reports/graphics_archive_palette_load_uncached.txt: match_report build/reports/graphics_archive_palette_load_uncached.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_palette_load_uncached.json
-  report_args = --section .text --function func_02071798 --require-exact
+  report_args = --section .text --function GraphicsArchive_LoadPaletteResourceUncached --require-exact
 
 build build/reports/graphics_archive_screen_load.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_screen_load.o | build/decomp/src/graphics/graphics_archive_screen_load.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_screen_load.o
@@ -4377,7 +4377,7 @@ build build/reports/graphics_archive_screen_load.json: objdiff build/decomp/deli
 
 build build/reports/graphics_archive_screen_load.txt: match_report build/reports/graphics_archive_screen_load.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_screen_load.json
-  report_args = --section .text --function func_020718dc --require-exact
+  report_args = --section .text --function GraphicsArchive_AcquireScreenResource --require-exact
 
 build build/reports/graphics_resource_cache.json: objdiff build/decomp/delinks/src/graphics/graphics_resource_cache.o | build/decomp/src/graphics/graphics_resource_cache.o
   target_object = build/decomp/delinks/src/graphics/graphics_resource_cache.o
@@ -4385,21 +4385,21 @@ build build/reports/graphics_resource_cache.json: objdiff build/decomp/delinks/s
 
 build build/reports/graphics_resource_cache.txt: match_report build/reports/graphics_resource_cache.json | tools/report_objdiff.py
   report_json = build/reports/graphics_resource_cache.json
-  report_args = --section .text --function func_02070244 --function func_02070280 --require-exact
+  report_args = --section .text --function GraphicsResourceCache_Append --function GraphicsResourceCache_Remove --require-exact
 
 build build/reports/graphics_resource_cache_source.json: objdiff build/decomp/delinks/src/graphics/graphics_resource_cache.o | build/decomp/src/graphics/graphics_resource_cache_portable.o
   target_object = build/decomp/delinks/src/graphics/graphics_resource_cache.o
   base_object = build/decomp/src/graphics/graphics_resource_cache_portable.o
 build build/reports/graphics_resource_cache_source.txt: match_report build/reports/graphics_resource_cache_source.json | tools/report_objdiff.py
   report_json = build/reports/graphics_resource_cache_source.json
-  report_args = --section .text --function func_02070244 --function func_02070280
+  report_args = --section .text --function GraphicsResourceCache_Append --function GraphicsResourceCache_Remove
 
 build build/reports/graphics_resource_cache_lookup.json: objdiff build/decomp/delinks/asm/graphics/graphics_resource_cache_lookup.o | build/decomp/asm/graphics/graphics_resource_cache_lookup.o
   target_object = build/decomp/delinks/asm/graphics/graphics_resource_cache_lookup.o
   base_object = build/decomp/asm/graphics/graphics_resource_cache_lookup.o
 build build/reports/graphics_resource_cache_lookup.txt: match_report build/reports/graphics_resource_cache_lookup.json | tools/report_objdiff.py
   report_json = build/reports/graphics_resource_cache_lookup.json
-  report_args = --section .text --function func_020702b8 --function func_020702d4 --require-exact
+  report_args = --section .text --function GraphicsResourceCache_FindNode --function GraphicsResourceCache_FindByResourceId --require-exact
 
 build build/decomp/src/graphics/graphics_resource_cache_portable.o: mwccarm src/graphics/graphics_resource_cache.c | include/tingle/types.h
   source = src/graphics/graphics_resource_cache.c
@@ -4409,7 +4409,7 @@ build build/reports/graphics_resource_cache_lookup_source.json: objdiff build/de
   base_object = build/decomp/src/graphics/graphics_resource_cache_portable.o
 build build/reports/graphics_resource_cache_lookup_source.txt: match_report build/reports/graphics_resource_cache_lookup_source.json | tools/report_objdiff.py
   report_json = build/reports/graphics_resource_cache_lookup_source.json
-  report_args = --section .text --function func_020702b8 --function func_020702d4
+  report_args = --section .text --function GraphicsResourceCache_FindNode --function GraphicsResourceCache_FindByResourceId
 
 build build/reports/graphics_archive_character_resource.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_character_resource.o | build/decomp/src/graphics/graphics_archive_character_resource.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_character_resource.o
@@ -4437,7 +4437,7 @@ build build/reports/graphics_archive_loader.json: objdiff build/decomp/delinks/s
   base_object = build/decomp/src/graphics/graphics_archive_loader.o
 build build/reports/graphics_archive_loader.txt: match_report build/reports/graphics_archive_loader.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_loader.json
-  report_args = --section .text --function func_020713e4 --require-exact
+  report_args = --section .text --function GraphicsArchive_AllocateCachedHandle --require-exact
 
 build build/reports/graphics_archive_loader_0207142c.json: objdiff build/decomp/delinks/asm/graphics/graphics_archive_loader_0207142c.o | build/decomp/asm/graphics/graphics_archive_loader_0207142c.o
   target_object = build/decomp/delinks/asm/graphics/graphics_archive_loader_0207142c.o
@@ -11744,7 +11744,7 @@ build build/reports/animation_resource_state.json: objdiff build/decomp/delinks/
   base_object = build/decomp/src/graphics/animation_resource_state.o
 build build/reports/animation_resource_state.txt: match_report build/reports/animation_resource_state.json | tools/report_objdiff.py
   report_json = build/reports/animation_resource_state.json
-  report_args = --section .text --function func_02071e90 --function AnimationResourceState_InitEmbedded --function AnimationResourceState_Destroy --function func_02071ecc --require-exact
+  report_args = --section .text --function AnimationResourceState_Init --function AnimationResourceState_InitEmbedded --function AnimationResourceState_Destroy --function AnimationResourceState_DestroyEmbedded --require-exact
 
 build animation_resource_state: phony build/reports/animation_resource_state.txt
 build build/reports/animation_resource_state_replace.json: objdiff build/decomp/delinks/src/graphics/animation_resource_state_replace.o | build/decomp/src/graphics/animation_resource_state_replace.o
@@ -11752,7 +11752,7 @@ build build/reports/animation_resource_state_replace.json: objdiff build/decomp/
   base_object = build/decomp/src/graphics/animation_resource_state_replace.o
 build build/reports/animation_resource_state_replace.txt: match_report build/reports/animation_resource_state_replace.json | tools/report_objdiff.py
   report_json = build/reports/animation_resource_state_replace.json
-  report_args = --section .text --function func_02071ee0 --require-exact
+  report_args = --section .text --function AnimationResourceState_ReplaceResources --require-exact
 
 build animation_resource_state_replace: phony build/reports/animation_resource_state_replace.txt
 build build/reports/animation_resource_state_release.json: objdiff build/decomp/delinks/src/graphics/animation_resource_state_release.o | build/decomp/src/graphics/animation_resource_state_release.o

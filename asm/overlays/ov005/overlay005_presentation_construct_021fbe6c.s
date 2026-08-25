@@ -1,7 +1,7 @@
     .text
     .extern SceneInputBase_Init
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern Heap_Alloc
     .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -47,7 +47,7 @@ func_ov005_021fbe6c: ; 0x021fbe6c
     sub r2, r3, #0x2
     add r0, r4, #0x54
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, L_021fc0d8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

@@ -30,8 +30,8 @@ typedef struct Overlay047Controller {
 
 extern "C" void *data_020f4e18;
 extern "C" void *gGameWork;
-extern "C" void *func_02071568(void *, u32);
-extern "C" void *func_020716bc(void *, u32);
+extern "C" void *GraphicsArchive_AcquireCharacterResource(void *, u32);
+extern "C" void *GraphicsArchive_AcquirePaletteResource(void *, u32);
 extern "C" s32 func_0207043c(void *);
 extern "C" s32 func_02070888(void *);
 extern "C" u32 func_02070474(void *);
@@ -61,8 +61,8 @@ extern "C" void *func_ov047_0220b740(void *controller, s32 kind, s32 x,
     if (kind == 1 || kind == 2 || (u32)(kind - 11) <= 3) {
         u32 modelId = (kind == 13 || kind == 14) ? 0x6128 : 0x6126;
         u32 animationId = (kind == 13 || kind == 14) ? 0x6129 : 0x6127;
-        self->model00 = func_02071568(data_020f4e18, modelId);
-        self->animation04 = func_020716bc(data_020f4e18, animationId);
+        self->model00 = GraphicsArchive_AcquireCharacterResource(data_020f4e18, modelId);
+        self->animation04 = GraphicsArchive_AcquirePaletteResource(data_020f4e18, animationId);
         self->textureOffset30 = 0x20000 - func_0207043c(self->model00);
         self->paletteOffset34 = 0x4000 - func_02070888(self->animation04);
         self->textureParam38 = func_02070474(self->model00);

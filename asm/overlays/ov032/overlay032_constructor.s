@@ -14,7 +14,7 @@
 .extern Sound_LoadGroup
 .extern GraphicsArchive_AcquireVfdResource
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsBankStateSnapshot_Init
@@ -251,7 +251,7 @@ L_021fd11c:
     add r0, r4, #0x1c
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r1, #0x28
     ldr r0, L_021fd774
     str r1, [sp, #0x0]
@@ -259,7 +259,7 @@ L_021fd11c:
     add r0, r4, #0x34
     mov r2, #0x26
     mov r3, #0x27
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r1, #0x5c
     ldr r0, L_021fd774
     str r1, [sp, #0x0]
@@ -267,7 +267,7 @@ L_021fd11c:
     add r0, r4, #0x28
     mov r2, #0x5b
     mov r3, #0x8
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fd790
     add r0, r4, #0x40
     str r3, [sp, #0x0]
@@ -275,7 +275,7 @@ L_021fd11c:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fd794
     add r0, r4, #0x4c
     str r3, [sp, #0x0]
@@ -283,7 +283,7 @@ L_021fd11c:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_021fd798
     add r0, r4, #0x58
     str r3, [sp, #0x0]
@@ -291,7 +291,7 @@ L_021fd11c:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     add r0, r4, #0x64
     ldr r1, [r4, #0x4]
     add r2, r4, #0x1c

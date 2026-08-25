@@ -8,7 +8,7 @@
 .extern data_ov029_021fed10
 .extern data_ov029_021fed18
 .extern RuntimePresentationManager_BroadcastSlot1C
-.extern func_020716bc
+.extern GraphicsArchive_AcquirePaletteResource
 .extern RecordDescriptor_GetMessage
 .extern SceneInputBase_Init
 .extern TitleCharacterResourceCollection_Init
@@ -112,7 +112,7 @@ L_021fcf88:
     ldr r0, L_021fd144
     ldr r1, L_021fd148
     ldr r0, [r0, #0x0]
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
     str r0, [r5, #0xe8]
     ldr r1, L_021fd14c
     add r0, r5, #0x78

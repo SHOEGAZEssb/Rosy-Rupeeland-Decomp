@@ -25,12 +25,12 @@ extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_020957bc(void *);
 extern void func_02091b6c(void *);
 extern void func_020929b0(void *);
-extern void *func_020716bc(void *, s32);
+extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
 extern s32 InventoryRecordCollection_FindId(void *, s32);
 extern void GameWork_SetFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void func_02092814(void *, s32);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
@@ -76,7 +76,7 @@ extern "C" void *func_ov030_021fda3c(void *scene)
     func_02091b6c((u8 *)scene + 0x340);
     func_020929b0((u8 *)scene + 0x364);
 
-    FIELD(void *, scene, 0x360) = func_020716bc(data_020f4e18[0], 0xc007);
+    FIELD(void *, scene, 0x360) = GraphicsArchive_AcquirePaletteResource(data_020f4e18[0], 0xc007);
     FIELD(s32, scene, 0x33c) = 0;
     FIELD(s32, scene, 0x338) = 0;
     FIELD(s32, scene, 0x35c) = -1;
@@ -92,9 +92,9 @@ extern "C" void *func_ov030_021fda3c(void *scene)
 
     func_02092814((u8 *)scene + 0x54, 0x7007);
     func_02092814((u8 *)scene + 0x54, 0x7005);
-    func_02071ee0((u8 *)scene + 0x7c, data_020f4e18[0], 0x42, 1, 0x43);
-    func_02071ee0((u8 *)scene + 0x88, data_020f4e18[0], 0xd0e4, 0xd081, 0xd082);
-    func_02071ee0((u8 *)scene + 0x94, data_020f4e18[0], 0xd0e5, 0xd081, 0xd082);
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x7c, data_020f4e18[0], 0x42, 1, 0x43);
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x88, data_020f4e18[0], 0xd0e4, 0xd081, 0xd082);
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x94, data_020f4e18[0], 0xd0e5, 0xd081, 0xd082);
 
     void *renderer = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);
     FIELD(void *, scene, 0x78) = renderer;

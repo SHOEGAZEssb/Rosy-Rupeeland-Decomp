@@ -16,7 +16,7 @@
     .extern ActorDescriptorComponent_GetCharacterResourceId
     .extern ActorDescriptorComponent_GetPaletteResourceId
     .extern ActorDescriptorComponent_GetCellResourceId
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern ActorDescriptorComponent_GetAnimation
     .extern gSystemState
     .extern data_020f4e18
@@ -134,7 +134,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     add r0, r6, #0x14
     ldr r1, L_021fbaa4
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r6, #0x4]
     add r1, r6, #0x14
     mov r2, #0x2

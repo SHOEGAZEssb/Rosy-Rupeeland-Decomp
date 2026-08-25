@@ -30,7 +30,7 @@ extern void *data_020f4e14;
 
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -57,7 +57,7 @@ ReversedFrameSpriteOverlayPresentation *ReversedFrameSpriteOverlayPresentation_I
     FieldEffect_Init(self);
     self->vtable00 = (void **)gReversedFrameSpriteOverlayPresentationVtable;
     AnimationResourceState_InitEmbedded(self->resource08);
-    func_02071ee0(self->resource08, data_020f4e18, 0x3a, 0x3b, 0x3c);
+    AnimationResourceState_ReplaceResources(self->resource08, data_020f4e18, 0x3a, 0x3b, 0x3c);
     self->spriteOwner14 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner14, self->resource08, 2);
     frame = value >= 0 ? 10 - value : 9 - value;

@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void AnimationResourceState_ReleaseResources(void *);
 extern void func_ov032_0220147c(void *);
-extern void func_02071ee0(...);
+extern void AnimationResourceState_ReplaceResources(...);
 extern void Overlay032Controller_CreateObject(...);
 extern void func_ov032_022014c0(...);
 extern void func_ov032_021fe0c4(void *);
@@ -54,7 +54,7 @@ extern "C" void func_ov032_02201020(void *child, s32 recordIndex, s32 selection,
         (index == 0 && selection < 4)) return;
 
     const u8 *record = records + (selection + index - 3) * 0x18;
-    func_02071ee0((u8 *)child + 0xc, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)child + 0xc, data_020f4e18[0],
                   FIELD(u32, record, 0x10), FIELD(u32, record, 0x14), FIELD(u32, record, 0x18));
     s32 x = FIELD(s32, child, 0x48);
     if (index == 2) x += FIELD(s32, record, 0x20);

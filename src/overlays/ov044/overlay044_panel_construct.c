@@ -14,7 +14,7 @@ extern "C" u8 data_ov044_0220d338[];
 extern "C" void AnimationResourceState_InitEmbedded(void *owner);
 extern "C" void TitleCharacterResourceCollection_Init(void *presentation);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
-extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
+extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archive, s32 first,
                                s32 second, s32 third, s32 fourth);
 extern "C" void *Heap_AllocAlternateEntry(s32 size, const void *tag,
                                  s32 alignment, void *heap);
@@ -50,7 +50,7 @@ extern "C" void *func_ov044_0220b740(void *object, void *font, s32 rowCount)
     FIELD(void *, object, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, object, 4), 0x18) = 0x30;
     FIELD(s32, FIELD(void *, object, 4), 0x1c) = 0x20;
-    func_02071ee0((u8 *)object + 8, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 8, data_020f4e18,
                    0x60, 0x61, 0x62, 0x62);
     FIELD(s32, object, 0x3c) = rowCount;
     FIELD(s32, object, 0x40) = 0;

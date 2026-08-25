@@ -8,7 +8,7 @@
 .extern FieldEffect_Init
 .extern ActorCollection_GetSpriteGroup
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 
@@ -41,7 +41,7 @@ DirectSpriteTrackPresentation_Init: ; 0x0201fc28
     str r1, [sp, #0x0]
     ldr r1, .L_0201fd5c
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     cmp r6, #0x0
     bne .L_0201fccc
     ldr r0, .L_0201fd60

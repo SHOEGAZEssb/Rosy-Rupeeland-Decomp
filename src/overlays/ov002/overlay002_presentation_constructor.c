@@ -40,7 +40,7 @@ extern const Overlay002SpriteTriple data_ov002_021fbea0[14];
 extern void *gSoundContext;
 extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02091b6c(void *animation);
-extern void func_02071ee0(void *resource, void *manager, s32 first, s32 second,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first, s32 second,
                           s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 kind);
@@ -79,7 +79,7 @@ Overlay002PresentationState *func_ov002_021fb6e0(
     state->field_08c = 0;
     state->field_090 = 0;
     state->field_094 = 0;
-    func_02071ee0(state->resource_004, data_020f4e18, 0x21be, 0x21bf,
+    AnimationResourceState_ReplaceResources(state->resource_004, data_020f4e18, 0x21be, 0x21bf,
                   0x21c0);
     state->resourceA_010 = GraphicsSpriteGroupOwner_CreateGroup(owner);
     state->resourceB_014 = GraphicsSpriteGroupOwner_CreateGroup(owner);

@@ -40,7 +40,7 @@ extern void SceneInputBase_Init(void *state);
 extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void Presentation_InitVariant(void *controller);
 extern void func_02091b6c(void *animation);
-extern void func_02071ee0(void *resource, void *manager, s32 first, s32 second,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first, s32 second,
                           s32 third);
 extern void func_020708c4(void *resourceMember);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
@@ -82,7 +82,7 @@ Overlay004PresentationState *func_ov004_021fb70c(
     state->argument1_150 = argument1;
     state->argument2_14c = argument2;
     state->field_068 = 0;
-    func_02071ee0(state->resource_054, data_020f4e18, 0x23b1, 0x23b2,
+    AnimationResourceState_ReplaceResources(state->resource_054, data_020f4e18, 0x23b1, 0x23b2,
                   0x23b3);
     func_020708c4(state->resource_054 + 4);
     state->context_060 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);

@@ -23,7 +23,7 @@ extern "C" void AnimationResourceState_InitEmbedded(void *object);
 extern "C" void func_020957bc(void *object);
 extern "C" void func_02092814(void *object, u32 id);
 extern "C" void func_02092754(void *object, u32 id);
-extern "C" void func_02071ee0(void *object, void *resource, s32 width,
+extern "C" void AnimationResourceState_ReplaceResources(void *object, void *resource, s32 width,
                                 s32 height, s32 palette);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
 extern "C" void func_ov044_0220c610(void *object);
@@ -60,7 +60,7 @@ extern "C" void *func_ov044_0220be60(void *object)
     func_02092814((u8 *)object + 0x54, 0x7005);
     func_02092754((u8 *)object + 0x78, 0x801b);
     func_02092754((u8 *)object + 0x78, 0x801c);
-    func_02071ee0((u8 *)object + 0xc0, (void *)data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 0xc0, (void *)data_020f4e18,
                   13, 14, 15);
     FIELD(void *, object, 0xbc) = GraphicsSpriteGroupOwner_CreateGroup((void *)data_020f4e14);
     func_ov044_0220c610(object);

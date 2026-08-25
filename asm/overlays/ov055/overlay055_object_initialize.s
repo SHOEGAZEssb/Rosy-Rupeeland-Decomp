@@ -4,7 +4,7 @@
 .extern GamePhaseProgress_GetOrCreateGlobal
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 
@@ -32,7 +32,7 @@ func_ov055_0220e400:
     sub r2, r3, #0x2
     add r0, sp, #0x4
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     b .L_0220e480
 .L_0220e460:
     ldr r3, .L_0220e514
@@ -42,7 +42,7 @@ func_ov055_0220e400:
     sub r2, r3, #0x2
     add r0, sp, #0x4
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
 .L_0220e480:
     mov r0, #0x2
     str r0, [sp, #0x0]

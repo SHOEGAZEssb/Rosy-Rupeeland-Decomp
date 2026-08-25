@@ -117,7 +117,7 @@ EXT(Sound_StopEffect);
 EXT(Sound_IsEffectPlaying);
 EXT(Fx32Vector2_Magnitude);
 EXT(Fx32Vector2_LimitMagnitude);
-EXT(func_02071ee0);
+EXT(AnimationResourceState_ReplaceResources);
 EXT(func_02050078);
 EXT(func_02072b68);
 EXT(func_020adc90);
@@ -963,7 +963,7 @@ extern "C" void func_ov075_02214898(void *result, const void *left,
 /* Builds the linked actor's sprite resources from its descriptor. */
 extern "C" void func_ov075_022146ec(void *actor, const void *descriptor)
 {
-    func_02071ee0(P(actor, 0x1f0), data_020f4e18,
+    AnimationResourceState_ReplaceResources(P(actor, 0x1f0), data_020f4e18,
                   F(s32, descriptor, 4), F(s32, descriptor, 8),
                   F(s32, descriptor, 0xc));
     void *collection = (void *)Actor_GetOwningCollection(actor);

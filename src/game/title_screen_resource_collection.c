@@ -11,7 +11,7 @@ typedef struct TitleScreenResourceCollection {
 
 extern void *data_020f4e18;
 extern void func_02071cf0(void *archive, void *resource);
-extern void *func_020718dc(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquireScreenResource(void *archive, u32 resourceId);
 
 /* Initialize an empty 16-entry screen-resource collection. */
 void *TitleScreenResourceCollection_Init(TitleScreenResourceCollection *collection)

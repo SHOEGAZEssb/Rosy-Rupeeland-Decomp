@@ -3,9 +3,9 @@
 .extern data_020f4e18
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_02071e60
+.extern GraphicsArchive_FindCharacterResource
 .extern GraphicsArchive_FindPaletteResource
-.extern func_02071e80
+.extern GraphicsArchive_FindCellResource
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 
@@ -22,7 +22,7 @@ Actor_CreateAuxiliaryRenderAttachment: ; 0x020314b8
     ldr r0, .L_02031554
     ldr r1, .L_02031558
     ldr r0, [r0, #0x0]
-    bl func_02071e60
+    bl GraphicsArchive_FindCharacterResource
     ldr r1, .L_02031554
     mov r7, r0
     ldr r0, [r1, #0x0]
@@ -32,7 +32,7 @@ Actor_CreateAuxiliaryRenderAttachment: ; 0x020314b8
     mov r6, r0
     ldr r0, [r1, #0x0]
     ldr r1, .L_02031560
-    bl func_02071e80
+    bl GraphicsArchive_FindCellResource
     mov r5, r0
     mov r0, r4
     bl Actor_GetOwningCollection

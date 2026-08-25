@@ -19,7 +19,7 @@ extern s32 ActorDescriptorComponent_GetCharacterResourceId(void *);
 extern s32 ActorDescriptorComponent_GetPaletteResourceId(void *);
 extern s32 ActorDescriptorComponent_GetCellResourceId(void *);
 extern s32 ActorDescriptorComponent_GetAnimation(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -50,7 +50,7 @@ static void overlay016_load_row_resource(void *resource, void *row)
     value = ActorDescriptor_GetComponent(row, 0);
     second = ActorDescriptorComponent_GetPaletteResourceId(value);
     value = ActorDescriptor_GetComponent(row, 0);
-    func_02071ee0(resource, data_020f4e18, first, second, ActorDescriptorComponent_GetCellResourceId(value));
+    AnimationResourceState_ReplaceResources(resource, data_020f4e18, first, second, ActorDescriptorComponent_GetCellResourceId(value));
 }
 
 /*

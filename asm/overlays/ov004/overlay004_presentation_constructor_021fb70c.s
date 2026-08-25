@@ -5,7 +5,7 @@
     .extern Presentation_InitVariant
     .extern func_02091b6c
     .extern data_020f4e18
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern func_020708c4
     .extern data_020f4e14
     .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -46,7 +46,7 @@ func_ov004_021fb70c: ; 0x021fb70c
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r4, #0x58]
     bl func_020708c4
     ldr r0, L_021fb854

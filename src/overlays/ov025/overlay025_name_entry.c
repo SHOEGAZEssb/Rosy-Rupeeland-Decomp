@@ -21,7 +21,7 @@ extern u8 gSystemState[];
 extern "C" {
 #endif
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -57,7 +57,7 @@ extern "C" void *func_ov025_021fce00(void *widget)
         locale = 1;
     }
     s32 resource_id = 0x4008;
-    func_02071ee0((u8 *)widget + 4, data_020f4e18, resource_id - 2,
+    AnimationResourceState_ReplaceResources((u8 *)widget + 4, data_020f4e18, resource_id - 2,
                   resource_id - 1, resource_id);
     FIELD(void *, widget, 0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     for (s32 i = 0; i < 16; ++i)

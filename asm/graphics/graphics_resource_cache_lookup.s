@@ -3,8 +3,8 @@
 ; src/graphics/graphics_resource_cache.c. MWCC reproduces each retail loop body
 ; but appends an unreachable `bx lr` after the back edge in both functions.
 
-.global func_020702b8
-func_020702b8:
+.global GraphicsResourceCache_FindNode
+GraphicsResourceCache_FindNode:
     ldr r0, [r0]
 .L_node_loop:
     cmp r0, #0
@@ -13,10 +13,10 @@ func_020702b8:
     bxeq lr
     ldr r0, [r0, #0xc]
     b .L_node_loop
-.size func_020702b8, . - func_020702b8
+.size GraphicsResourceCache_FindNode, . - GraphicsResourceCache_FindNode
 
-.global func_020702d4
-func_020702d4:
+.global GraphicsResourceCache_FindByResourceId
+GraphicsResourceCache_FindByResourceId:
     ldr r0, [r0]
 .L_id_loop:
     cmp r0, #0
@@ -26,4 +26,4 @@ func_020702d4:
     bxeq lr
     ldr r0, [r0, #0xc]
     b .L_id_loop
-.size func_020702d4, . - func_020702d4
+.size GraphicsResourceCache_FindByResourceId, . - GraphicsResourceCache_FindByResourceId

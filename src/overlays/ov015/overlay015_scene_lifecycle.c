@@ -26,7 +26,7 @@ extern void func_020957bc(void *); extern void func_02092754(void *,s32); extern
 extern void *Heap_Alloc(u32,const char *,s32,void *); extern void Heap_Free(void *);
 extern void *func_ov001_021fb6f8(void *,void *); extern void func_ov001_021fb7d4(void *);
 extern void *func_ov001_021fbabc(void *,void *); extern void InventoryRecordCollection_SortAlternate(void *,s32);
-extern void func_02071ee0(void *,void *,s32,s32,s32); extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void AnimationResourceState_ReplaceResources(void *,void *,s32,s32,s32); extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32); extern void func_020957f0(void *,void *,s32,s32,s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *,s32,s32,s32,s32,s32,s32); extern void func_020afd0c(void *,s32,s32,s32,s32);
 extern void Sound_LoadGroup(void *,s32); extern void Sound_ReleaseGroup(void *,s32); extern void GraphicsSpriteGroup_Destroy(void *);
@@ -69,8 +69,8 @@ extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soun
     InventoryRecordCollection_SortAlternate((u8 *)data_021e9ac0+0x34,1);
     object=Heap_Alloc(0x210,data_ov015_021fec90,4,gHeapContext);if(object)object=func_ov001_021fbabc(object,data_020f4e14);FIELD(void *,state,0xdc)=object;
     if(soundMode)Sound_LoadGroup(gSoundContext,0x82);
-    func_02071ee0((u8 *)state+0x58,data_020f4e18,0,1,2);
-    func_02071ee0((u8 *)state+0x64,data_020f4e18,0x47,0x45,0x48);
+    AnimationResourceState_ReplaceResources((u8 *)state+0x58,data_020f4e18,0,1,2);
+    AnimationResourceState_ReplaceResources((u8 *)state+0x64,data_020f4e18,0x47,0x45,0x48);
     FIELD(void *,state,0x54)=GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     for(i=0;i<3;i++){selected=GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *,state,0x54),(u8 *)state+0x58,1);func_020957f0((u8 *)state+0xfc+i*0xac,selected,0,2,0);}
     FIELD(s32,state,0x300)=0;func_ov015_021fda50(state);func_ov015_021fd8a8(state,0);func_ov015_021fd8ec(state);func_ov015_021fda50(state);

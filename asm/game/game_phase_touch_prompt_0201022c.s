@@ -7,7 +7,7 @@
 .extern data_020f4e18
 .extern FrameTask_Construct
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern Presentation_SetPosition
@@ -44,7 +44,7 @@ GamePhaseTouchPrompt_Init:
     ldr r1, [r1, #0x0]
     add r0, r4, #0xc
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r1, L_02010330
     ldr r3, L_02010334
     mov r0, #0xa0

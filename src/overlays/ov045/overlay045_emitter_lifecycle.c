@@ -20,7 +20,7 @@ extern "C" void AnimationResourceState_Destroy(void *owner);
 extern "C" void func_02091b6c(void *track);
 extern "C" u32 genrand_int32(void);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
-extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
+extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
 extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
 extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
@@ -70,7 +70,7 @@ extern "C" void *func_ov045_0220b83c(void *object)
     FIELD(u32, object, 0x64) = 0;
     FIELD(u32, object, 0x64) = genrand_int32();
     FIELD(void *, object, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    func_02071ee0((u8 *)object + 4, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 4, data_020f4e18,
                    0x1714, 0x1715, 0x1716);
     FIELD(s32, object, 0x58) = 0;
     FIELD(s32, object, 0x5c) = 0;

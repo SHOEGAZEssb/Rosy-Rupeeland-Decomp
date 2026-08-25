@@ -6,7 +6,7 @@
 .extern AnimationResource_InitEmpty
 .extern GamePhaseCurrencyHud_UpdateDigits
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 .extern gGameWork
@@ -64,7 +64,7 @@ L_02010904:
     sub r2, r3, #0x2
     add r0, r10, #0xc
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_02010b54
     ldr r0, L_02010b50
     str r3, [sp, #0x0]
@@ -72,7 +72,7 @@ L_02010904:
     sub r2, r3, #0x1
     add r0, r10, #0x1c
     sub r3, r3, #0x5
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_02010b58
     ldr r0, L_02010b50
     str r3, [sp, #0x0]
@@ -80,7 +80,7 @@ L_02010904:
     sub r2, r3, #0x1
     add r0, r10, #0x2c
     sub r3, r3, #0x3
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, L_02010b5c
     ldr r1, L_02010b50
     str r3, [sp, #0x0]
@@ -88,7 +88,7 @@ L_02010904:
     ldr r1, [r1, #0x0]
     add r0, r10, #0x3c
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r9, #0x0
 L_020109a8:
     mov r0, #0x1c

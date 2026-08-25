@@ -24,11 +24,11 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void __construct_array(void *, s32, s32, void (*)(void *), void (*)(void *));
 extern void __destroy_arr(void *, s32, s32, void (*)(void *));
 extern void Sound_ReleaseGroup(void *, s32);
-extern void *func_020716bc(void *, s32);
+extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
 extern void func_02071c38(void *, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
@@ -143,15 +143,15 @@ extern "C" void *func_ov022_021fdd44(void *scene)
     FIELD(s32, scene, 0x2c8) = 0;
     FIELD(s32, scene, 0x2b0) = 0;
 
-    FIELD(void *, scene, 0x374) = func_020716bc(data_020f4e18, 0xc007);
+    FIELD(void *, scene, 0x374) = GraphicsArchive_AcquirePaletteResource(data_020f4e18, 0xc007);
     func_02092814((u8 *)scene + 0x54, 0x7007);
     func_02092814((u8 *)scene + 0x54, 0x7005);
     func_02092814((u8 *)scene + 0x54, 0x7001);
-    func_02071ee0((u8 *)scene + 0x78, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x78, data_020f4e18,
                   0x3d, 0x3e, 0x3f);
-    func_02071ee0((u8 *)scene + 0x84, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x84, data_020f4e18,
                   0x40, 0x3e, 0x41);
-    func_02071ee0((u8 *)scene + 0x90, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x90, data_020f4e18,
                   0x4000, 0x4001, 0x4002);
 
     void *status = Heap_Alloc(0x34, data_ov022_022006d4, 4, gHeapContext);

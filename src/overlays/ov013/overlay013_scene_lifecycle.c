@@ -22,7 +22,7 @@ extern "C" {
 #endif
 extern void SceneInputBase_Init(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_020957bc(void *);
 extern void func_02091b6c(void *);
@@ -92,13 +92,13 @@ void *func_ov013_021fce2c(void *state)
     func_02091b6c((u8 *)state + 0x988);
 
     RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 1);
-    func_02071ee0((u8 *)state + 0x54, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x54, data_020f4e18,
                   0x3298, 0x3299, 0x329a);
-    func_02071ee0((u8 *)state + 0x60, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x60, data_020f4e18,
                   0x32fd, 0x32fe, 0x32ff);
-    func_02071ee0((u8 *)state + 0x6c, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x6c, data_020f4e18,
                   0x3300, 0x3301, 0x3302);
-    func_02071ee0((u8 *)state + 0x78, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x78, data_020f4e18,
                   0x4000, 0x4001, 0x4002);
 
     FIELD(void *, state, 0x9a4) = 0;

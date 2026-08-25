@@ -6,7 +6,7 @@
 .extern data_020f4e18
 .extern gGamePhaseRuntime
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02091b6c
 .extern func_ov094_02217c34
@@ -43,7 +43,7 @@ func_ov094_02219568:
     mov r0, r4
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     b .L_02219600
 .L_022195e0:
     ldr r3, .L_02219688
@@ -53,7 +53,7 @@ func_ov094_02219568:
     mov r0, r4
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
 .L_02219600:
     ldr r0, .L_0221968c
     ldr r0, [r0, #0x0]

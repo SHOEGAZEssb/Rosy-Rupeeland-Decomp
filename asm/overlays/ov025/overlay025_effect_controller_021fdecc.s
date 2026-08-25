@@ -8,7 +8,7 @@
 .extern data_ov025_02203354
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern TitleRandom_NextBounded
@@ -49,7 +49,7 @@ L_021fdf1c:
     ldrh r2, [r4, r1]
     ldrh r3, [r3, #0x2]
     ldr r1, [r8, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     add r5, r5, #0x1
     cmp r5, #0x3
     blt L_021fdf1c
@@ -100,7 +100,7 @@ L_021fdf1c:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r6, #0xe0]
     add r1, r6, #0xd4
     mov r2, #0x1

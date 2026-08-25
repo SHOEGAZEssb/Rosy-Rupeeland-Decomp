@@ -27,7 +27,7 @@ extern void ActorDerivedType1_ResetToBaseState(...);
 extern void *Actor_GetOwningCollection(...), *GraphicsSpriteGroup_CreateState(...);
 extern void GraphicsSpriteGroup_ReplaceStateResources(...);
 extern void GraphicsSpriteState_SetAnimationIndex(...);
-extern void func_02071ee0(...);
+extern void AnimationResourceState_ReplaceResources(...);
 extern void *AnimationResource_Init(...), *Heap_Alloc(...);
 extern void Heap_Free(...), *OverlayManager_GetGlobal(...);
 extern void OverlayManager_LoadOverlay(...);
@@ -105,7 +105,7 @@ void *func_ov087_022178dc(void *actor) {
  * optional palette selector for flagged actors. */
 void func_ov087_02217934(void *actor, const void *descriptor) {
   void *collection;
-  func_02071ee0((u8 *)actor + 0x1f0, data_020f4e18,
+  AnimationResourceState_ReplaceResources((u8 *)actor + 0x1f0, data_020f4e18,
                 F(s32, descriptor, 4), F(s32, descriptor, 8),
                 F(s32, descriptor, 0xc));
   collection = Actor_GetOwningCollection(actor);

@@ -20,7 +20,7 @@ extern "C" {
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
 extern Overlay094SpriteGroup *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void AnimationResourceState_InitEmbedded(void *resourceSet);
-extern void func_02071ee0(void *resourceSet, void *archive, s32 characterId,
+extern void AnimationResourceState_ReplaceResources(void *resourceSet, void *archive, s32 characterId,
                          s32 paletteId, s32 screenId);
 extern void func_02091b6c(void *randomState);
 extern void func_ov094_02217c34(void *effectList);
@@ -47,9 +47,9 @@ extern "C" void *func_ov094_02219568(void *object, s32 width, s32 height)
 
     void *area = *(void **)(gGamePhaseRuntime + 0x30bc);
     if (*(s32 *)area == 0xa7) {
-        func_02071ee0(object, data_020f4e18, 0x1690, 0x1691, 0x1692);
+        AnimationResourceState_ReplaceResources(object, data_020f4e18, 0x1690, 0x1691, 0x1692);
     } else {
-        func_02071ee0(object, data_020f4e18, 0x13cf, 0x13d0, 0x13d1);
+        AnimationResourceState_ReplaceResources(object, data_020f4e18, 0x13cf, 0x13d0, 0x13d1);
     }
 
     *(void **)((u8 *)object + 0x0c) =

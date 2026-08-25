@@ -6,7 +6,7 @@
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_CreateState
 .extern func_ov088_02219960
 .extern func_ov088_0221ad9c
@@ -26,7 +26,7 @@ func_ov088_02217f38:
     ldrh r2, [r3, #0xa]
     ldrh r3, [r3, #0xc]
     ldr r1, [ip, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, r5
     bl Actor_GetOwningCollection
     bl ActorCollection_GetSpriteGroup

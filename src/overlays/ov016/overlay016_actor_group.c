@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -55,8 +55,8 @@ extern "C" void *func_ov016_021fe118(void *state, s32 index)
     FIELD(void *, state, 0xcc) = 0;
     FIELD(void *, state, 0x18) =
         GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
-    func_02071ee0(state, data_020f4e18, 0xd, 0xe, 0xf);
-    func_02071ee0((u8 *)state + 0xc, data_020f4e18, 0x19, 0x1a, 0x1b);
+    AnimationResourceState_ReplaceResources(state, data_020f4e18, 0xd, 0xe, 0xf);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xc, data_020f4e18, 0x19, 0x1a, 0x1b);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x18), state, 1);
     func_020957f0((u8 *)state + 0x20, sprite, 1, 1, 0);
     func_02095820((u8 *)state + 0x20, 0x80, 0xaa);

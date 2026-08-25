@@ -25,7 +25,7 @@ extern "C" void *data_020f4e18;
 extern "C" void *gDebugFont;
 extern "C" void AnimationResourceState_InitEmbedded(void *owner);
 extern "C" void AnimationResourceState_Destroy(void *owner);
-extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
+extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
@@ -68,9 +68,9 @@ extern "C" void *func_ov045_0220be4c(void *object, s32 first, s32 second,
     AnimationResourceState_InitEmbedded((u8 *)object + 0x10);
     FIELD(s32, object, 0x34) = 0;
     func_ov045_0220bfdc(object);
-    func_02071ee0((u8 *)object + 4, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 4, data_020f4e18,
                    first, second, third);
-    func_02071ee0((u8 *)object + 0x10, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 0x10, data_020f4e18,
                    0x49, 0x4a, 0x4b);
     SpritePairFields *fields = (SpritePairFields *)object;
     SpritePairEntry *firstSprite = fields->sprite20 = (SpritePairEntry *)

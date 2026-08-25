@@ -28,7 +28,7 @@ extern u32 genrand_int32(void);
 extern void *GamePhaseState_GetConfiguration(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -147,12 +147,12 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
     FIELD(s32, state, 0x400) = 0;
     func_ov018_021fe644(state);
 
-    func_02071ee0((u8 *)state + 0x94, data_020f4e18[0], 0x38, 1, 0x39);
-    func_02071ee0((u8 *)state + 0xa0, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x94, data_020f4e18[0], 0x38, 1, 0x39);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xa0, data_020f4e18[0],
                   0x3298, 0x3299, 0x329a);
-    func_02071ee0((u8 *)state + 0xac, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xac, data_020f4e18[0],
                   0x4000, 0x4001, 0x4002);
-    func_02071ee0((u8 *)state + 0xb8, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xb8, data_020f4e18[0],
                   0x1003, 0x1001, 0x1004);
     FIELD(void *, state, 0xc4) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     FIELD(void *, state, 0xc8) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);

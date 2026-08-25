@@ -13,7 +13,7 @@ typedef struct GraphicsArchiveScreenResource {
 extern "C" {
 #endif
 extern const u32 data_020e5c80[];
-extern void func_02070164(void *self, void *archive, const void *source,
+extern void GraphicsArchiveResource_Init(void *self, void *archive, const void *source,
                           u32 sourceSize, u32 resourceId, u32 resourceKind);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ GraphicsArchiveScreenResource *func_02070d88(
     GraphicsArchiveScreenResource *self, void *archive, const u32 *source,
     u32 sourceSize, u32 resourceId)
 {
-    func_02070164(self, archive, source, sourceSize, resourceId, 3);
+    GraphicsArchiveResource_Init(self, archive, source, sourceSize, resourceId, 3);
     self->vtable = data_020e5c80;
     self->source = source;
     self->payload = (const u8 *)source + 0x14;

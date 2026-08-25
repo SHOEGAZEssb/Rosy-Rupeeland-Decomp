@@ -22,7 +22,7 @@ extern const char gSpriteNumberGroupNodeAllocationTag[];
 extern void *data_020f4e18;
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *,void *,s32,s32,s32);
+extern void AnimationResourceState_ReplaceResources(void *,void *,s32,s32,s32);
 extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
 extern void GraphicsSpriteGroup_ReleaseState(void *,void *);
@@ -49,7 +49,7 @@ SpriteNumberGroup *SpriteNumberGroup_Init(SpriteNumberGroup *self,void *spriteOw
     s32 remaining=value<0?-value:value,digits=0,base=value<0?13:2;
     self->spriteOwner00=spriteOwner; SpriteNodeList_Init(&self->nodes04);
     AnimationResourceState_InitEmbedded(self->resource18);
-    func_02071ee0(self->resource18,data_020f4e18,0x1717,0x1001,0x1718);
+    AnimationResourceState_ReplaceResources(self->resource18,data_020f4e18,0x1717,0x1001,0x1718);
     while(remaining>0) {
         u8 *sprite=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2);
         s32 quotient=remaining/10,remainder=remaining%10;

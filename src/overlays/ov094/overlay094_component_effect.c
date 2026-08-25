@@ -22,7 +22,7 @@ extern void PresentationScalar_TransitionTo(void *motion, s32 mode, s32 value);
 extern void Presentation_UpdateScript(void *effect);
 extern void AnimationResourceState_InitEmbedded(void *resourceSet);
 extern void AnimationResourceState_Destroy(void *resourceSet);
-extern void func_02071ee0(void *resourceSet, void *archive, s32 characterId,
+extern void AnimationResourceState_ReplaceResources(void *resourceSet, void *archive, s32 characterId,
                          s32 paletteId, s32 screenId);
 extern void GraphicsSpriteState_SetAnimationIndex(void *state, s32 index);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *state);
@@ -60,7 +60,7 @@ extern "C" void *func_ov094_02218a2c(void *effect, void *firstState,
     *(s32 *)((u8 *)effect + 0xa0) = 0;
     AnimationResourceState_InitEmbedded((u8 *)effect + 0xa4);
     *(u32 *)((u8 *)effect + 0xa0) = genrand_int32();
-    func_02071ee0((u8 *)effect + 0xa4, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)effect + 0xa4, data_020f4e18,
                   0x2236, 0x2237, 0x2238);
     *(const s32 **)((u8 *)effect + 0xb0) = coordinates;
     *(void **)((u8 *)effect + 0xb4) = secondState;

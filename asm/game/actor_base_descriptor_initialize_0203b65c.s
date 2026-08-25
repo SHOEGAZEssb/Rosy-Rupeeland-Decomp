@@ -5,7 +5,7 @@
 .extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetOwningCollection
 .extern Actor_ApplySpawnDescriptorScript
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
     .global Actor_InitializeFromDescriptor
@@ -34,7 +34,7 @@ Actor_InitializeFromDescriptor: ; 0x0203b65c
     ldr r1, [r0, #0x0]
     ldr r3, [r4, #0x8]
     add r0, r5, #0x1f0
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, r5
     bl Actor_GetOwningCollection
     bl ActorCollection_GetSpriteGroup

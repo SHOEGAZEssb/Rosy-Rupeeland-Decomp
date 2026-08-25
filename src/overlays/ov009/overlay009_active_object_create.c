@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 extern void *data_020f4e18;
-extern void func_02071ee0(void *member, void *archive, s32 first, s32 second,
+extern void AnimationResourceState_ReplaceResources(void *member, void *archive, s32 first, s32 second,
                           s32 third);
 extern void func_020708c4(void *member);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *member, u8 variant);
@@ -43,7 +43,7 @@ void func_ov009_021fd360(void *state)
 
     FIELD(s32, state, 0xd8) = 0;
     FIELD(s32, state, 0xdc) = 0;
-    func_02071ee0((u8 *)state + 0x78, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x78, data_020f4e18,
                   FIELD(s32, record, 0), FIELD(s32, record, 4),
                   FIELD(s32, record, 8));
     func_020708c4(FIELD(void *, state, 0x7c));

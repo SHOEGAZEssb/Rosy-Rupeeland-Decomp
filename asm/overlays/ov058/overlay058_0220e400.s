@@ -3,7 +3,7 @@
 .extern GameWork_TestFlag
 .extern data_020f4e18
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern gGameWork
@@ -29,7 +29,7 @@ func_ov058_0220e400:
     ldr r1, [r0, #0x0]
     mov r0, r4
     mov r3, #0x2240
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r1, .L_0220e590
     mov r2, #0x1000
     str r1, [sp, #0x0]
@@ -37,7 +37,7 @@ func_ov058_0220e400:
     add r0, r4, #0xc
     ldr r1, [r1, #0x0]
     add r3, r2, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r4, #0x18]
     mov r1, r4
     mov r2, #0x2

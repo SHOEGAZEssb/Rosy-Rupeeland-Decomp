@@ -14,9 +14,9 @@ extern "C" {
 extern void *ActorCollection_GetSpriteGroup(void);
 extern void Actor_GetOwningCollection(void *actor);
 extern void Actor_ApplySpawnDescriptorScript(void *actor, const void *descriptor);
-extern void *func_02071e60(void *archive, u32 resource_id);
+extern void *GraphicsArchive_FindCharacterResource(void *archive, u32 resource_id);
 extern void *GraphicsArchive_FindPaletteResource(void *archive, u32 resource_id);
-extern void *func_02071e80(void *archive, u32 resource_id);
+extern void *GraphicsArchive_FindCellResource(void *archive, u32 resource_id);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, void *resource1,
                            void *resource2, u32 mode);
@@ -37,11 +37,11 @@ extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, voi
  */
 void TriggerPresentationActor_SetupPresentation(void *actor, const void *descriptor)
 {
-    void *resource0 = func_02071e60(data_020f4e18,
+    void *resource0 = GraphicsArchive_FindCharacterResource(data_020f4e18,
                                     FIELD(u32, descriptor, 4));
     void *resource1 = GraphicsArchive_FindPaletteResource(data_020f4e18,
                                     FIELD(u32, descriptor, 8));
-    void *resource2 = func_02071e80(data_020f4e18,
+    void *resource2 = GraphicsArchive_FindCellResource(data_020f4e18,
                                     FIELD(u32, descriptor, 12));
     Actor_GetOwningCollection(actor);
     void *presentation = GraphicsSpriteGroup_CreateState(

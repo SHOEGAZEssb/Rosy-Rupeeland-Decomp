@@ -10,8 +10,8 @@
 extern "C" {
 #endif
 
-extern void *func_02071568(void *archive, u32 resourceId);
-extern void *func_020716bc(void *archive, u16 resourceId);
+extern void *GraphicsArchive_AcquireCharacterResource(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquirePaletteResource(void *archive, u16 resourceId);
 extern void GraphicsSpriteResource_ReleaseTexture(void *resource);
 extern void func_02071bdc(void *archive, void *resource);
 extern void func_02071c38(void *archive, void *resource);
@@ -33,8 +33,8 @@ Graphics3DResourceBinding *Graphics3DResourceBinding_Init(
 {
     binding->archive = archive;
     binding->owner = owner;
-    binding->textureResource = func_02071568(archive, textureResourceId);
-    binding->paletteResource = func_020716bc(archive, paletteResourceId);
+    binding->textureResource = GraphicsArchive_AcquireCharacterResource(archive, textureResourceId);
+    binding->paletteResource = GraphicsArchive_AcquirePaletteResource(archive, paletteResourceId);
     binding->textureRegion =
         Graphics3DResourceOwner_AcquireTextureRegion(owner, binding->textureResource);
     binding->paletteRegion =

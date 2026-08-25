@@ -10,19 +10,19 @@ typedef struct AnimationResourceState {
     void *cell;
 } AnimationResourceState;
 
-extern void *func_02071568(void *archive, u32 resourceId);
-extern void *func_020716bc(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquireCharacterResource(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquirePaletteResource(void *archive, u32 resourceId);
 extern void *func_02071800(void *archive, u32 resourceId);
 extern void AnimationResourceState_ReleaseResources(AnimationResourceState *state);
 
 /* Release any live triplet, then acquire all three requested archive entries.
  * The state owns no allocation and receives borrowed resource pointers. */
-void func_02071ee0(AnimationResourceState *state, void *archive,
+void AnimationResourceState_ReplaceResources(AnimationResourceState *state, void *archive,
                    u32 characterId, u32 paletteId, u32 cellId)
 {
     if (state->character != 0)
         AnimationResourceState_ReleaseResources(state);
-    state->character = func_02071568(archive, characterId);
-    state->palette = func_020716bc(archive, paletteId);
+    state->character = GraphicsArchive_AcquireCharacterResource(archive, characterId);
+    state->palette = GraphicsArchive_AcquirePaletteResource(archive, paletteId);
     state->cell = func_02071800(archive, cellId);
 }

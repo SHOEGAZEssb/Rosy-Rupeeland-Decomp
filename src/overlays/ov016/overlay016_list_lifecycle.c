@@ -18,7 +18,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, u32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -61,8 +61,8 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
     FIELD(s32, FIELD(void *, state, 4), 0x18) = 0x30;
     FIELD(s32, FIELD(void *, state, 4), 0x1c) = 0x20;
     FIELD(void *, state, 8) = GraphicsSpriteGroupOwner_CreateGroup(owner);
-    func_02071ee0((u8 *)state + 0x18, data_020f4e18, 0x19, 0x1a, 0x1b);
-    func_02071ee0((u8 *)state + 0xc, data_020f4e18, 0x60, 0x61, 0x62);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x18, data_020f4e18, 0x19, 0x1a, 0x1b);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0xc, data_020f4e18, 0x60, 0x61, 0x62);
 
     capacity = FIELD(s32, data_021e9e00, 4);
     FIELD(s32, state, 0x50) = capacity;

@@ -19,7 +19,7 @@ extern void AnimationResourceState_InitEmbedded(void *);
 extern void Presentation_InitVariant(void *);
 extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
@@ -85,7 +85,7 @@ extern "C" void *func_ov031_021fd258(void *effect)
     FIELD(u32, effect, 0x150) = genrand_int32();
     FIELD(void *, effect, 0x54) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(void *, effect, 0x58) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    func_02071ee0((u8 *)effect + 0x5c, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)effect + 0x5c, data_020f4e18[0],
                   0x23ae, 0x23af, 0x23b0);
     FIELD(s32, effect, 0x6c) = FIELD(s16, gGameWork, 0x1ce);
 

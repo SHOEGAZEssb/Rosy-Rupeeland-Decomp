@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resourceId, u32 *size);
-extern void *func_020713e4(u32 size);
+extern void *GraphicsArchive_AllocateCachedHandle(u32 size);
 extern void *func_020702f4(void *resource, void *archive, void *source,
                            u32 size, u32 resourceId);
 
@@ -27,7 +27,7 @@ extern void *func_020702f4(void *resource, void *archive, void *source,
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_0207164c(void *archive, u32 resourceId)
+void *GraphicsArchive_LoadCharacterResourceUncached(void *archive, u32 resourceId)
 {
     GraphicsArchiveResourceHeader *source;
     /* Retail leaves the failure result undefined; host I/O rejects it. */
@@ -42,7 +42,7 @@ void *func_0207164c(void *archive, u32 resourceId)
         archive, resourceId, &sourceSize);
     if (source != 0 &&
         (source->magic == 0x56434720 || source->magic == 0x56434754)) {
-        resource = func_020713e4(0x2c);
+        resource = GraphicsArchive_AllocateCachedHandle(0x2c);
         if (resource != 0)
             resource = func_020702f4(resource, archive, source, sourceSize,
                                      resourceId);

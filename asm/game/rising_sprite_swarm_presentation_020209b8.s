@@ -29,7 +29,7 @@
 .extern RisingSpriteSwarmPresentation_SetControllerState
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroupOwner_CreateGroup

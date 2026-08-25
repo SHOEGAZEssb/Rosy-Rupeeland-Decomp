@@ -12,14 +12,14 @@ extern u8 data_021e9e60[];
 extern void func_020a7298(void *heap, void *allocation);
 
 /* Base virtual no-op; it accepts the resource and changes no state. */
-void func_02070160(void *self)
+void GraphicsArchiveResource_NoOpHook(void *self)
 {
     (void)self;
 }
 
 /* Initializes the exact 0x20-byte resource header from archive/source
  * metadata. It does not take ownership beyond recording the source pointer. */
-void func_02070164(void *self, void *archive, const void *source,
+void GraphicsArchiveResource_Init(void *self, void *archive, const void *source,
                    u32 source_size, u32 resource_id, u16 resource_type)
 {
     u8 *bytes = (u8 *)self;
@@ -47,7 +47,7 @@ static void DestroyResourceData(void *self)
 }
 
 /* Non-deleting destructor; frees payload data and returns self. */
-void *func_020701a4(void *self)
+void *GraphicsArchiveResource_Destroy(void *self)
 {
     DestroyResourceData(self);
     return self;
@@ -55,7 +55,7 @@ void *func_020701a4(void *self)
 
 /* Heap-deleting destructor; frees payload and header, then returns the former
  * self address as required by the recovered ABI. */
-void *func_020701d0(void *self)
+void *GraphicsArchiveResource_DestroyAndFree(void *self)
 {
     DestroyResourceData(self);
     Heap_Free(self);
@@ -71,7 +71,7 @@ void *GraphicsArchiveResource_DestroyVariant(void *self)
 
 /* Deleting allocator-owned destructor: releases payload first and then frees
  * the header through the archive allocator stored in the global context. */
-void *func_0207039c(void *self)
+void *GraphicsArchiveResource_DeleteAllocatorOwned(void *self)
 {
     GraphicsArchiveResource_DestroyVariant(self);
     func_020a7298(*(void **)(data_021e9e60 + 4), self);
@@ -81,13 +81,13 @@ void *func_0207039c(void *self)
 /* Screen-resource deleting destructor sharing the base allocator contract. */
 void *GraphicsScreenResource_Delete(void *self)
 {
-    return func_0207039c(self);
+    return GraphicsArchiveResource_DeleteAllocatorOwned(self);
 }
 
 /* Allocator-owned resource deleting destructor sharing the base contract. */
-void *func_02071148(void *self)
+void *GraphicsArchiveResource_DeleteAllocatorOwnedVariant(void *self)
 {
-    return func_0207039c(self);
+    return GraphicsArchiveResource_DeleteAllocatorOwned(self);
 }
 
 /* Heap-deleting resource destructor at retail 0x02071200. The optional base
@@ -110,7 +110,7 @@ void *GraphicsArchiveResource_DeleteHeapSecondary(void *self)
 
 /* Derived deleting destructor; frees decoded data at +0x28, the base payload,
  * and finally the header through the archive allocator. */
-void *func_020707d4(void *self)
+void *GraphicsDecodedResource_DeleteAllocatorOwned(void *self)
 {
     void *decoded;
 

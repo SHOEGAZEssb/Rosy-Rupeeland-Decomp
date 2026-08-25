@@ -17,7 +17,7 @@
 .extern Actor_GetOwningCollection
 .extern Actor_GetGlobalCollectionBySlot
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern RuntimeRecordTable_FindByKey
@@ -58,7 +58,7 @@ LaunchedSpritePairPresentation_Init: ; 0x02024b04
     ldr r1, [r1, #0x0]
     add r0, r6, #0x3c
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r6, #0x48]
     add r1, r6, #0x3c
     mov r2, #0x2

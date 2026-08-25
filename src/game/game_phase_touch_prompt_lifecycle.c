@@ -12,7 +12,7 @@ extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void AnimationResourceState_InitEmbedded(void *state);
 extern void AnimationResourceState_Destroy(void *state);
-extern void func_02071ee0(void *state, void *manager, void *resource0,
+extern void AnimationResourceState_ReplaceResources(void *state, void *manager, void *resource0,
                           void *resource1, void *resource2);
 extern void *SpritePresentation_Init(void *self, GraphicsSpriteState *sprite);
 extern void Presentation_SetPosition(void *actor, s32 x, s32 y, s32 z);
@@ -44,7 +44,7 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Init(GamePhaseTouchPrompt *self, void
     self->savedState = 3;
     self->timer = 0;
     self->spriteGroup = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
-    func_02071ee0(&self->resources, data_020f4e18,
+    AnimationResourceState_ReplaceResources(&self->resources, data_020f4e18,
                   (void *)0x3298, (void *)0x3299, (void *)0x329a);
     allocation = Heap_Alloc(0xa0, gGamePhaseTouchPromptActorAllocationTag, 4, &gHeapContext);
     if (allocation) {

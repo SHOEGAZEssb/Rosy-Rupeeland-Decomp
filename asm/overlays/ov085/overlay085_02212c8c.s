@@ -3,7 +3,7 @@
 .extern data_020f4e18
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_CreateState
 
 .global func_ov085_02212c8c
@@ -17,7 +17,7 @@ func_ov085_02212c8c:
     ldr r1, [r1, #0x0]
     add r0, r5, #0x1f0
     ldmib r4, {r2, r3}
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, r5
     bl Actor_GetOwningCollection
     bl ActorCollection_GetSpriteGroup

@@ -41,7 +41,7 @@ extern void *data_020f4e18, *data_020f4e14, *gSoundContext;
 extern GamePhaseRuntime* gGamePhaseRuntime;
 extern GameWork* gGameWork;
 extern void *AnimationResourceState_InitEmbedded(void*), *AnimationResourceState_Destroy(void*);
-extern void func_02071ee0(void*, void*, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void*, void*, s32, s32, s32);
 extern void Sound_PlayDirectSequence(void*, s32, s32);
 extern void Sound_FadeDirectSequence(void*, s32, s32, s32);
 extern void Sound_Play(void*, s32, s32);
@@ -160,7 +160,7 @@ Overlay60Resources* func_ov060_0220ff1c(Overlay60Resources* self, Scene* scene,
     GraphicsSpriteSource3 source;
     AnimationResourceState_InitEmbedded(self->resource);
     func_ov060_0220ff00(0);
-    func_02071ee0(self->resource, data_020f4e18, first, second, third);
+    AnimationResourceState_ReplaceResources(self->resource, data_020f4e18, first, second, third);
     self->group = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     TouchRegionManager_Allocate(
         (TouchRegionManager*)Scene_GetEmbedded10(scene), 2);

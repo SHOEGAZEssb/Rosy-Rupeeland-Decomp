@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void AnimationResourceState_InitEmbedded(void *resourceSet);
 extern void AnimationResourceState_Destroy(void *resourceSet);
-extern void func_02071ee0(void *resourceSet, void *archive, s32 characterId,
+extern void AnimationResourceState_ReplaceResources(void *resourceSet, void *archive, s32 characterId,
                          s32 paletteId, s32 screenId);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *source);
 extern void GraphicsSpriteGroup_Destroy(void *group);
@@ -47,7 +47,7 @@ extern "C" void *func_ov094_0221991c(void *object)
 {
     AnimationResourceState_InitEmbedded(object);
     *(s32 *)((u8 *)object + 0x14) = 0;
-    func_02071ee0(object, data_020f4e18, 0x4000, 0x4001, 0x4002);
+    AnimationResourceState_ReplaceResources(object, data_020f4e18, 0x4000, 0x4001, 0x4002);
     *(void **)((u8 *)object + 0x0c) =
         GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     *(void **)((u8 *)object + 0x10) =

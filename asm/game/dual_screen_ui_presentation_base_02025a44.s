@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern DualScreenUiGridState_Init
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 
@@ -38,7 +38,7 @@ DualScreenUiPresentationBase_Init: ; 0x02025a44
     ldr r1, [r1, #0x0]
     add r0, r4, #0xb8
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_02025abc: .word data_020d6b3c

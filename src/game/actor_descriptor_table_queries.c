@@ -13,7 +13,7 @@ extern s32 InventoryRecord_HasId(void *record, u16 selector);
 extern void *InventoryRecord_GetMetadata(void *record);
 extern s32 ActorDescriptorState_FindEligibleEntry(void *state);
 extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
-extern void func_02071ee0(void *resource, void *manager, u32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
 extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
@@ -302,13 +302,13 @@ void *ActorDescriptorComponent_ResolveResource(void *self)
 /*
  * Resolve the selected descriptor component and load its three resource IDs
  * into caller-owned `resource`. The manager and resolved database storage are
- * borrowed; allocation and renderer effects belong to func_02071ee0.
+ * borrowed; allocation and renderer effects belong to AnimationResourceState_ReplaceResources.
  */
 void ActorDescriptorComponent_LoadResources(void *self, void *manager, void *resource)
 {
     u8 *resolved = (u8 *)ActorDescriptorComponent_ResolveResource(self);
 
-    func_02071ee0(resource, manager, *(u32 *)(resolved + 4),
+    AnimationResourceState_ReplaceResources(resource, manager, *(u32 *)(resolved + 4),
                   *(u32 *)(resolved + 8), *(u32 *)(resolved + 0x0c));
 }
 

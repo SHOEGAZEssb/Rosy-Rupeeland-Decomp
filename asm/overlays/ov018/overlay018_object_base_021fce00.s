@@ -6,7 +6,7 @@
     .extern data_ov018_021ffd20
     .extern AnimationResourceState_InitEmbedded
     .extern AnimationResourceState_Destroy
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern PresentationList_DeleteAll
@@ -33,7 +33,7 @@ func_ov018_021fce00:
     ldr r1, [r1, #0x0]
     ldrh r2, [r4, #0x4]
     ldrh r3, [r4, #0x6]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, r7
     add r1, r5, #0xa0
     mov r2, #0x2

@@ -12,7 +12,7 @@
 .extern Heap_Alloc
 .extern ActorDescriptor_IsInvalid
 .extern AnimationResourceState_InitEmbedded
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -62,7 +62,7 @@ func_ov000_021fbcc4: ; 0x021fbcc4
     add r0, r10, #0x10
     ldr r1, [r1, #0x0]
     mov r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, [r10, #0x4]
     bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r10, #0x8]

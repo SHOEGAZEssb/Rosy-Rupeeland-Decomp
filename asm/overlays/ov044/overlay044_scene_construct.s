@@ -6,7 +6,7 @@
 .extern func_020957bc
 .extern func_02092814
 .extern func_02092754
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov044_0220c610
 .extern func_ov044_0220c19c
@@ -66,7 +66,7 @@ func_ov044_0220be60:
     mov r2, #0xd
     ldr r1, [r1, #0x0]
     mov r3, #0xe
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_0220bfbc
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

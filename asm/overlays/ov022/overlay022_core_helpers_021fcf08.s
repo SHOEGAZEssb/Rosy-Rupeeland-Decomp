@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_core_helpers.c. */
     .extern data_020f4e18
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091b6c
     .extern func_ov022_021fcec8
@@ -37,7 +37,7 @@ func_ov022_021fcf08:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x0
     str r0, [r4, #0x58]
     str r0, [r4, #0x5c]

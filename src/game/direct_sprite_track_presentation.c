@@ -35,7 +35,7 @@ extern void *data_020f4e18;
 extern u8 *gGamePhaseRuntime;
 
 extern void AnimationResourceState_InitEmbedded(void *state);
-extern void func_02071ee0(void *state, void *table, s32 field0c, s32 field10,
+extern void AnimationResourceState_ReplaceResources(void *state, void *table, s32 field0c, s32 field10,
                           s32 field08);
 extern void AnimationResourceState_ReleaseResources(void *state);
 extern void AnimationResourceState_Destroy(void *state);
@@ -77,7 +77,7 @@ DirectSpriteTrackPresentation *DirectSpriteTrackPresentation_Init(
     AnimationResourceState_InitEmbedded(&self->resource08);
     self->sampleArgument18 = sampleArgument;
     VecFx32Object_InitComponents(&self->track1c, x << 12, y << 12, 0);
-    func_02071ee0(&self->resource08, data_020f4e18, field0c, field10, field08);
+    AnimationResourceState_ReplaceResources(&self->resource08, data_020f4e18, field0c, field10, field08);
     resource = ActorCollection_GetSpriteGroup(
         GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, selector == 0 ? 1 : 2));
     self->sprite14 = GraphicsSpriteGroup_CreateState(

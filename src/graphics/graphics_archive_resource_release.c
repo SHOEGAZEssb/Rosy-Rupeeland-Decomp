@@ -72,8 +72,8 @@ void func_02070d38(void *resource)
 
 typedef void (*GraphicsResourceDeletingDestructor)(void *resource);
 
-extern void *func_020702b8(void *cache, void *resource);
-extern void func_02070280(void *cache, void *resource);
+extern void *GraphicsResourceCache_FindNode(void *cache, void *resource);
+extern void GraphicsResourceCache_Remove(void *cache, void *resource);
 
 static void ReleaseCachedResource(void *archive, void *resource,
                                   u32 cache_offset)
@@ -82,13 +82,13 @@ static void ReleaseCachedResource(void *archive, void *resource,
     u16 *reference_count;
     GraphicsResourceDeletingDestructor *vtable;
 
-    if (func_020702b8(cache, resource) == 0)
+    if (GraphicsResourceCache_FindNode(cache, resource) == 0)
         return;
     reference_count = (u16 *)((u8 *)resource + 0x1c);
     (*reference_count)--;
     if (*reference_count != 0)
         return;
-    func_02070280(cache, resource);
+    GraphicsResourceCache_Remove(cache, resource);
     if (resource == 0)
         return;
     vtable = *(GraphicsResourceDeletingDestructor **)resource;

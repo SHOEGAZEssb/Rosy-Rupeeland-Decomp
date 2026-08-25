@@ -45,7 +45,7 @@ extern char data_ov000_021fcd5c[];
 extern void InventoryCell_Init(void *);
 extern void InventoryCell_Destroy(void *);
 extern void AnimationResourceState_InitEmbedded(void *resource);
-extern void func_02071ee0(void *resource, void *manager, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 animation, s32 x, s32 y,
@@ -107,7 +107,7 @@ Overlay000GridState *func_ov000_021fbcc4(Overlay000GridState *state,
     state->field_2a8 = 0;
     state->field_2ac = 0x1e;
 
-    func_02071ee0(state->resource_010, data_020f4e18, 0, 1, 2);
+    AnimationResourceState_ReplaceResources(state->resource_010, data_020f4e18, 0, 1, 2);
     state->spriteGroup_008 = GraphicsSpriteGroupOwner_CreateGroup(owner);
     state->spriteGroup_00c = GraphicsSpriteGroupOwner_CreateGroup(owner);
     FIELD(s32, state->spriteGroup_00c, 0x18) = 0;

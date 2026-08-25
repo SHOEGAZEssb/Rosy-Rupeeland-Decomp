@@ -2,7 +2,7 @@
 .extern AnimationResourceState_InitEmbedded
 .extern TitleCharacterResourceCollection_Init
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern Heap_AllocAlternateEntry
 .extern func_020c09cc
 .extern Heap_Alloc
@@ -43,7 +43,7 @@ func_ov044_0220b740:
     ldr r1, [r1, #0x0]
     mov r2, #0x60
     mov r3, #0x61
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     str r6, [r5, #0x3c]
     mov ip, #0x0
     str ip, [r5, #0x40]

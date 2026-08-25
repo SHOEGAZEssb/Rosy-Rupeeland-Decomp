@@ -25,7 +25,7 @@ extern "C" {
 extern void *RuntimePresentationManager_AppendSecondListEffect(void *, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_SetFrameIndex(void *, s32);
@@ -94,8 +94,8 @@ void *func_ov058_0220e400(void *object, void *mainGroup, void *subGroup)
     FIELD(void *, object, 0x18) = mainGroup;
     FIELD(void *, object, 0x1c) = subGroup;
     FIELD(s32, object, 0x30) = 0;
-    func_02071ee0(object, data_020f4e18[0], 0x223f, 0x2240, 0x2241);
-    func_02071ee0((u8 *)object + 0xc, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources(object, data_020f4e18[0], 0x223f, 0x2240, 0x2241);
+    AnimationResourceState_ReplaceResources((u8 *)object + 0xc, data_020f4e18[0],
                   0x1000, 0x1001, 0x1002);
     FIELD(void *, object, 0x20) =
         GraphicsSpriteGroup_CreateStateFromSource(mainGroup, object, 2);

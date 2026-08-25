@@ -9,8 +9,8 @@ extern "C" {
 extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *gDebugFont;
-extern void func_02071e90(void *state);
-extern void func_02071ee0(void *state, void *manager, void *resource0,
+extern void AnimationResourceState_Init(void *state);
+extern void AnimationResourceState_ReplaceResources(void *state, void *manager, void *resource0,
                           void *resource1, void *resource2);
 extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, s32 value);
 extern void GamePhaseCurrencyHud_SetVisible(GamePhaseCurrencyHud *self, s32 value);
@@ -21,7 +21,7 @@ extern void GamePhaseCurrencyHud_SetVisible(GamePhaseCurrencyHud *self, s32 valu
 /* Initialize an unbound animation-resource wrapper and return it. */
 AnimationResource *AnimationResource_InitEmpty(AnimationResource *self)
 {
-    func_02071e90(&self->entries[0]);
+    AnimationResourceState_Init(&self->entries[0]);
     self->vtable = &gAnimationResourceVTable;
     return self;
 }
@@ -59,13 +59,13 @@ GamePhaseCurrencyHud *GamePhaseCurrencyHud_Init(GamePhaseCurrencyHud *self)
         self->groups[display]->screenOffsetY = self->baseY;
     }
 
-    func_02071ee0(&self->resources[0].entries[0], data_020f4e18,
+    AnimationResourceState_ReplaceResources(&self->resources[0].entries[0], data_020f4e18,
                   (void *)0x32a7, (void *)0x32a8, (void *)0x32a9);
-    func_02071ee0(&self->resources[1].entries[0], data_020f4e18,
+    AnimationResourceState_ReplaceResources(&self->resources[1].entries[0], data_020f4e18,
                   (void *)0x32ac, (void *)0x32a8, (void *)0x32ad);
-    func_02071ee0(&self->resources[2].entries[0], data_020f4e18,
+    AnimationResourceState_ReplaceResources(&self->resources[2].entries[0], data_020f4e18,
                   (void *)0x32aa, (void *)0x32a8, (void *)0x32ab);
-    func_02071ee0(&self->resources[3].entries[0], data_020f4e18,
+    AnimationResourceState_ReplaceResources(&self->resources[3].entries[0], data_020f4e18,
                   (void *)0x329e, (void *)0x329f, (void *)0x32a0);
 
     for (display = 0; display < 2; display++) {

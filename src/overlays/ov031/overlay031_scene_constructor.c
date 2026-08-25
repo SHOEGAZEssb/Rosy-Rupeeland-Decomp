@@ -26,7 +26,7 @@ extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_ov031_021fd91c(void *, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_ov031_021fd258(void *);
@@ -86,7 +86,7 @@ extern "C" void *func_ov031_021fd95c(void *scene, void *owner)
     void *renderer = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(void *, scene, 0x58) = renderer;
     GraphicsSpriteGroup_ReleaseIndexedEntries(renderer);
-    func_02071ee0((u8 *)scene + 0x5c, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x5c, data_020f4e18[0],
                   0x14ec, 0x14ed, 0x14ee);
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x5c, 1);
     FIELD(void *, scene, 0x6c) = sprite;

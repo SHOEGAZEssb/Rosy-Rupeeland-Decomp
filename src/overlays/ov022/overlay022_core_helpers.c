@@ -15,7 +15,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091b6c(void *);
@@ -136,7 +136,7 @@ extern "C" void *func_ov022_021fcf08(void *emitter)
     FIELD(u32, emitter, 0x64) = 0;
     FIELD(u32, emitter, 0x64) = genrand_int32();
     FIELD(void *, emitter, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    func_02071ee0((u8 *)emitter + 4, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)emitter + 4, data_020f4e18,
                   0x1714, 0x1715, 0x1716);
     FIELD(s32, emitter, 0x58) = 0;
     FIELD(s32, emitter, 0x5c) = 0;

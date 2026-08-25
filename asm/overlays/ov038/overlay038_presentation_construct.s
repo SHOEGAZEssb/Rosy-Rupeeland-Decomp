@@ -7,7 +7,7 @@
     .extern func_020957bc
     .extern TitleCharacterResourceCollection_Init
     .extern func_02091b6c
-    .extern func_02071ee0
+    .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_020957f0
@@ -65,7 +65,7 @@ func_ov038_021fce2c:
     ldr r1, [r1, #0x0]
     mov r2, #0x38
     mov r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, L_021fd0a8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

@@ -96,7 +96,7 @@ extern "C" void ActorDerivedType1_ResetToBaseState(void *);
 extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
 extern "C" void *AnimationResource_Init(void *, s32, s32, s32);
-extern "C" void func_02071ee0(void *, void *, s32, s32, s32);
+extern "C" void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern "C" void func_02071bdc(void *, void *);
 extern "C" void func_02071c38(void *, void *);
 extern "C" void func_02071c94(void *, void *);
@@ -238,7 +238,7 @@ extern "C" void func_ov089_02217904(void *actor)
 extern "C" void func_ov089_02217960(void *actor, const void *descriptor)
 {
     void *owner;
-    func_02071ee0((u8 *)actor + 0x1f0, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)actor + 0x1f0, data_020f4e18,
                   FIELD(s32, descriptor, 4), FIELD(s32, descriptor, 8),
                   FIELD(s32, descriptor, 0xc));
     owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));

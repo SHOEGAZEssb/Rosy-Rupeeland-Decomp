@@ -3,9 +3,9 @@
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
 .extern Actor_ApplySpawnDescriptorScript
-.extern func_02071e60
+.extern GraphicsArchive_FindCharacterResource
 .extern GraphicsArchive_FindPaletteResource
-.extern func_02071e80
+.extern GraphicsArchive_FindCellResource
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .text
@@ -19,7 +19,7 @@ TriggerPresentationActor_SetupPresentation: ; 0x0204e9e8
     mov r5, r0
     ldr r0, [r2, #0x0]
     ldr r1, [r4, #0x4]
-    bl func_02071e60
+    bl GraphicsArchive_FindCharacterResource
     ldr r1, .L_0204ea88
     mov r8, r0
     ldr r0, [r1, #0x0]
@@ -29,7 +29,7 @@ TriggerPresentationActor_SetupPresentation: ; 0x0204e9e8
     mov r7, r0
     ldr r0, [r1, #0x0]
     ldr r1, [r4, #0xc]
-    bl func_02071e80
+    bl GraphicsArchive_FindCellResource
     mov r6, r0
     mov r0, r5
     bl Actor_GetOwningCollection

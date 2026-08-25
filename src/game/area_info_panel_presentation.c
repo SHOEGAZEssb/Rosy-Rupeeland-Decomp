@@ -35,7 +35,7 @@ extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -68,7 +68,7 @@ AreaInfoPanelPresentation *AreaInfoPanelPresentation_Init(AreaInfoPanelPresentat
     self->spriteOwner_34 = GraphicsSpriteGroupOwner_CreateGroup(uiContext);
     func_02092814(self, 0x7005);
     func_02092814(self, 0x7007);
-    func_02071ee0(self->resources_24, data_020f4e18,
+    AnimationResourceState_ReplaceResources(self->resources_24, data_020f4e18,
                   0x3326, 0x3327, 0x3328);
     self->primarySprite_38 =
         GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner_34, self->resources_24, 1);

@@ -14,11 +14,11 @@ extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
 extern void *gHeapContext;
 
 extern void GraphicsScratchHeap_Init(void);
-extern void *func_02071294(void *manager);
+extern void *GraphicsArchive_Init(void *manager);
 extern void GraphicsSpriteState_InitGlobalPool(void);
 extern void *GraphicsSpriteRenderer_Init(void *state, int engine, int arg2, int arg3);
-extern void *func_02071568(void *manager, u32 resourceId);
-extern void *func_020716bc(void *manager, u32 resourceId);
+extern void *GraphicsArchive_AcquireCharacterResource(void *manager, u32 resourceId);
+extern void *GraphicsArchive_AcquirePaletteResource(void *manager, u32 resourceId);
 extern void GraphicsSpriteRenderer_InitTextResources(void *state, void *resourceC000,
                           void *resourceC001);
 
@@ -69,7 +69,7 @@ void GraphicsSystem_Init(void)
                          gGraphicsSystemTags.resourceManager, 4,
                          gHeapContext);
     if (manager != 0) {
-        manager = func_02071294(manager);
+        manager = GraphicsArchive_Init(manager);
     }
     GRAPHICS_STATE_FIELD(void *, 0x10) = manager;
 
@@ -84,9 +84,9 @@ void GraphicsSystem_Init(void)
     GraphicsSystem_CreateEngine(1);
 
     manager = GRAPHICS_STATE_FIELD(void *, 0x10);
-    resourceC000 = func_02071568(manager, GRAPHICS_RESOURCE_ID_C000);
+    resourceC000 = GraphicsArchive_AcquireCharacterResource(manager, GRAPHICS_RESOURCE_ID_C000);
     GRAPHICS_STATE_FIELD(void *, 0x04) = resourceC000;
-    resourceC001 = func_020716bc(manager, GRAPHICS_RESOURCE_ID_C001);
+    resourceC001 = GraphicsArchive_AcquirePaletteResource(manager, GRAPHICS_RESOURCE_ID_C001);
     GRAPHICS_STATE_FIELD(void *, 0x00) = resourceC001;
 
     GraphicsSpriteRenderer_InitTextResources(GRAPHICS_STATE_FIELD(void *, 0x0C), resourceC000,
@@ -143,7 +143,7 @@ asm void GraphicsSystem_Init(void)
     bl Heap_Alloc
     cmp r0, #0
     beq graphics_init_manager_done
-    bl func_02071294
+    bl GraphicsArchive_Init
 graphics_init_manager_done:
     ldr r1, =gGraphicsState020F4E08
     str r0, [r1, #0x10]
@@ -167,12 +167,12 @@ graphics_init_main_done:
     ldr r0, =gGraphicsState020F4E08
     mov r1, #0xc000
     ldr r0, [r0, #0x10]
-    bl func_02071568
+    bl GraphicsArchive_AcquireCharacterResource
     ldr r2, =gGraphicsState020F4E08
     ldr r1, =0xc001
     str r0, [r2, #4]
     ldr r0, [r2, #0x10]
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
     ldr r1, =gGraphicsState020F4E08
     mov r2, r0
     str r2, [r1]

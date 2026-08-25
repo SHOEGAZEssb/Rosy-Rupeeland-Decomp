@@ -30,7 +30,7 @@ extern void *Actor_GetOwningCollection(void *actor);
 extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void *data_020f4e18;
 extern void *AnimationResourceState_InitEmbedded(void *state);
-extern void func_02071ee0(void *state, void *archive, u32 characterId,
+extern void AnimationResourceState_ReplaceResources(void *state, void *archive, u32 characterId,
                           u32 paletteId, u32 cellId);
 extern void *AnimationResourceState_Destroy(void *state);
 extern void AnimationResourceState_ReleaseResources(void *state);
@@ -59,7 +59,7 @@ ActorInteractionIcon *ActorInteractionIcon_Init(ActorInteractionIcon *self,
     VecFx32Object_Init(&self->offsetFx32);
     self->stateFlags = (self->stateFlags & ~0x1fu) | 1u;
     self->directionAngle = 0;
-    func_02071ee0(&self->spriteResources, data_020f4e18, 0x32ae, 0x3299,
+    AnimationResourceState_ReplaceResources(&self->spriteResources, data_020f4e18, 0x32ae, 0x3299,
                   0x32af);
     self->spriteState = GraphicsSpriteGroup_CreateStateFromSource(
         self->spriteGroup, &self->spriteResources, 2);

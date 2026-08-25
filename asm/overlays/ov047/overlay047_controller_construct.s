@@ -8,8 +8,8 @@
 .extern func_02070580
 .extern GraphicsBgResourceData_GetDecoded
 .extern func_02070888
-.extern func_02071568
-.extern func_020716bc
+.extern GraphicsArchive_AcquireCharacterResource
+.extern GraphicsArchive_AcquirePaletteResource
 .extern func_020b20b4
 .extern func_020b210c
 .extern func_020b2180
@@ -66,23 +66,23 @@ func_ov047_0220b740:
     ldr r0, .L_0220ba50
     ldr r1, .L_0220ba54
     ldr r0, [r0, #0x0]
-    bl func_02071568
+    bl GraphicsArchive_AcquireCharacterResource
     ldr r1, .L_0220ba50
     str r0, [r6, #0x0]
     ldr r0, [r1, #0x0]
     ldr r1, .L_0220ba58
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
     b .L_0220b82c
 .L_0220b808:
     ldr r0, .L_0220ba50
     ldr r1, .L_0220ba5c
     ldr r0, [r0, #0x0]
-    bl func_02071568
+    bl GraphicsArchive_AcquireCharacterResource
     ldr r1, .L_0220ba50
     str r0, [r6, #0x0]
     ldr r0, [r1, #0x0]
     ldr r1, .L_0220ba60
-    bl func_020716bc
+    bl GraphicsArchive_AcquirePaletteResource
 .L_0220b82c:
     str r0, [r6, #0x4]
     ldr r0, [r6, #0x0]

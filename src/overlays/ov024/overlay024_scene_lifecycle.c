@@ -26,7 +26,7 @@ extern void *AreaInfoPanelPresentation_Init(void *, void *);
 extern void AreaInfoPanelPresentation_Destroy(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -84,8 +84,8 @@ extern "C" void *func_ov024_021fce2c(void *scene)
     FIELD(s32, scene, 0x60) = FIELD(s32, scene, 0x5c);
     func_ov024_021fd2f8(scene);
 
-    func_02071ee0((u8 *)scene + 0x64, data_020f4e18, 0x38, 1, 0x39);
-    func_02071ee0((u8 *)scene + 0x70, data_020f4e18, 3, 1, 4);
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x64, data_020f4e18, 0x38, 1, 0x39);
+    AnimationResourceState_ReplaceResources((u8 *)scene + 0x70, data_020f4e18, 3, 1, 4);
     FIELD(void *, scene, 0x7c) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
 
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0x7c),

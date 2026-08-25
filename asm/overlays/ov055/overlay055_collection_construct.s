@@ -6,7 +6,7 @@
 .extern data_ov055_0220f078
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .extern func_ov055_0220e400
@@ -38,7 +38,7 @@ func_ov055_0220e574:
     sub r2, r3, #0x2
     mov r0, r6
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r1, .L_0220e7bc
     add r0, r6, #0xc
     str r1, [sp, #0x0]
@@ -46,7 +46,7 @@ func_ov055_0220e574:
     ldr r1, .L_0220e7b8
     mov r3, #0x2240
     ldr r1, [r1, #0x0]
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r3, .L_0220e7c0
     ldr r1, .L_0220e7b8
     str r3, [sp, #0x0]
@@ -54,7 +54,7 @@ func_ov055_0220e574:
     ldr r1, [r1, #0x0]
     add r0, r6, #0x18
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     mov r0, #0x2
     str r0, [sp, #0x0]
     ldmia r6, {r1, r2, r3}

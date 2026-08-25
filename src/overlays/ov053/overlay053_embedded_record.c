@@ -2,7 +2,7 @@
 
 /* Overlay 53 embedded field-effect record initialization. */
 
-extern "C" void func_02071e90(void *record);
+extern "C" void AnimationResourceState_Init(void *record);
 extern "C" u32 gAnimationResourceVTable[];
 
 /*
@@ -11,7 +11,7 @@ extern "C" u32 gAnimationResourceVTable[];
  */
 extern "C" void *func_ov053_0220d600(void *object)
 {
-    func_02071e90((u8 *)object + 4);
+    AnimationResourceState_Init((u8 *)object + 4);
     *(u32 **)object = gAnimationResourceVTable;
     return object;
 }

@@ -6,7 +6,7 @@ extern void *data_020f4e18[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ee0(void *output, void *context, u32 first, u32 second,
+extern void AnimationResourceState_ReplaceResources(void *output, void *context, u32 first, u32 second,
                           u32 third);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *ActorCollection_GetSpriteGroup(void *value);
@@ -17,7 +17,7 @@ extern void *GraphicsSpriteGroup_CreateState(void *context, void *first, void *s
 #endif
 
 /*
- * Inputs are actor and descriptor. Call func_02071ee0 for actor fields
+ * Inputs are actor and descriptor. Call AnimationResourceState_ReplaceResources for actor fields
  * +0x1f0/+0x1f4/+0x1f8 using data_020f4e18[0] and descriptor words +4/+8/+0xc,
  * then set bit 0x01000000 at +0x28 in the object stored at actor +0x1f0.
  * Transform Actor_GetOwningCollection(actor) through ActorCollection_GetSpriteGroup and pass that result,
@@ -33,7 +33,7 @@ void Type7Actor_SetupResources(void *self, const void *descriptor)
     const u8 *record = (const u8 *)descriptor;
     void *context;
     void *resource;
-    func_02071ee0(actor + 0x1f0, data_020f4e18[0],
+    AnimationResourceState_ReplaceResources(actor + 0x1f0, data_020f4e18[0],
                   *(const u32 *)(record + 4), *(const u32 *)(record + 8),
                   *(const u32 *)(record + 0x0c));
     *(u32 *)((u8 *)*(void **)(actor + 0x1f0) + 0x28) |= 0x01000000;

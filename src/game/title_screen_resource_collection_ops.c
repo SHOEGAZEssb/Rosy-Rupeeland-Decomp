@@ -8,7 +8,7 @@ typedef struct TitleScreenResourceCollection {
 
 extern void *data_020f4e18;
 extern void func_02071cf0(void *archive, void *resource);
-extern void *func_020718dc(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquireScreenResource(void *archive, u32 resourceId);
 
 /* Release every live screen resource and reset the collection. */
 void func_0209270c(TitleScreenResourceCollection *collection)
@@ -28,7 +28,7 @@ void func_02092754(TitleScreenResourceCollection *collection, u32 resourceId)
     if (collection->count >= 16)
         return;
     collection->entries[collection->count] =
-        func_020718dc(data_020f4e18, resourceId);
+        GraphicsArchive_AcquireScreenResource(data_020f4e18, resourceId);
     ++collection->count;
 }
 

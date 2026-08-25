@@ -38,7 +38,7 @@ extern void *data_020f4e14;
 
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -64,7 +64,7 @@ IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Init(
     FieldEffect_Init(self);
     self->vtable00 = (void **)gIndexedSpriteOverlayPresentationVtable;
     AnimationResourceState_InitEmbedded(self->resource08);
-    func_02071ee0(self->resource08, data_020f4e18,
+    AnimationResourceState_ReplaceResources(self->resource08, data_020f4e18,
                   record->resource00, record->palette02,
                   record->animation04);
     self->spriteOwner14 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);

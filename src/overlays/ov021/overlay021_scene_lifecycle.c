@@ -27,11 +27,11 @@ extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
 extern void InventoryRecordCollection_Sort(void *, s32);
 extern void InventoryRecordCollection_SortAlternate(void *, s32);
-extern void *func_020716bc(void *, s32);
+extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
 extern void func_02071c38(void *, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
@@ -177,13 +177,13 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     MIi_CpuCopy16(LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x2e3),
                   (u8 *)state + 0x314, size);
 
-    FIELD(void *, state, 0x400) = func_020716bc(data_020f4e18, 0xc007);
+    FIELD(void *, state, 0x400) = GraphicsArchive_AcquirePaletteResource(data_020f4e18, 0xc007);
     func_02092814((u8 *)state + 0x58, 0x7007);
     func_02092814((u8 *)state + 0x58, 0x7005);
     func_02092814((u8 *)state + 0x58, 0x7001);
     func_02092814((u8 *)state + 0x58, 0x7000);
-    func_02071ee0((u8 *)state + 0x7c, data_020f4e18, 0x3d, 0x3e, 0x3f);
-    func_02071ee0((u8 *)state + 0x88, data_020f4e18, 0x44, 0x45, 0x46);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x7c, data_020f4e18, 0x3d, 0x3e, 0x3f);
+    AnimationResourceState_ReplaceResources((u8 *)state + 0x88, data_020f4e18, 0x44, 0x45, 0x46);
     FIELD(void *, state, 0x38c) = func_ov045_0220c48c(mode, 0, 0);
     FIELD(void *, state, 0x94) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
 

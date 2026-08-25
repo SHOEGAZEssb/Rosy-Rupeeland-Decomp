@@ -28,7 +28,7 @@ extern "C" u8 gHeapContext[];
 
 extern "C" void *SceneInputBase_Init(void *scene);
 extern "C" void AnimationResourceState_InitEmbedded(void *state);
-extern "C" void func_02071ee0(void *state, void *archive, s32 characterId,
+extern "C" void AnimationResourceState_ReplaceResources(void *state, void *archive, s32 characterId,
                                 s32 paletteId, s32 cellId);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *group,
@@ -100,16 +100,16 @@ extern "C" void *func_ov046_0220c7d8(void *scene, s32 selection)
     }
 
     if (selection == 0x503) {
-        func_02071ee0((u8 *)scene + 0x54, data_020f4e18,
+        AnimationResourceState_ReplaceResources((u8 *)scene + 0x54, data_020f4e18,
                       0x32c1, 0x32bb, 0x32c4);
     } else if (selection == 0x502) {
-        func_02071ee0((u8 *)scene + 0x54, data_020f4e18,
+        AnimationResourceState_ReplaceResources((u8 *)scene + 0x54, data_020f4e18,
                       0x32c1, 0x32bb, 0x32c3);
     } else if (selection == 0x501) {
-        func_02071ee0((u8 *)scene + 0x54, data_020f4e18,
+        AnimationResourceState_ReplaceResources((u8 *)scene + 0x54, data_020f4e18,
                       0x32c1, 0x32bb, 0x32c2);
     } else {
-        func_02071ee0((u8 *)scene + 0x54, data_020f4e18,
+        AnimationResourceState_ReplaceResources((u8 *)scene + 0x54, data_020f4e18,
                       0x32bd, 0x32bb, 0x32be);
     }
 

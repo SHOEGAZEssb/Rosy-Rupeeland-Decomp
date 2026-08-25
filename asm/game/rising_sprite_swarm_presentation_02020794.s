@@ -29,7 +29,7 @@
 .extern RisingSpriteSwarmPresentation_SetControllerState
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -88,7 +88,7 @@ RisingSpriteSwarmPresentation_Init: ; 0x02020794
     ldr r1, [r1, #0x0]
     add r0, r4, #0x2c
     sub r3, r3, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_02020898
     ldr r1, .L_0202089c
     ldr r0, [r0, #0x0]

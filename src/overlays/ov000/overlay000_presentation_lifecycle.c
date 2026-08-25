@@ -23,7 +23,7 @@ extern void *data_020f4e18;
 extern u8 data_021f3ecc[];
 extern char data_ov000_021fcd4c[];
 extern void AnimationResourceState_InitEmbedded(void *resource);
-extern void func_02071ee0(void *resource, void *manager, s32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern u8 *RetailTextTable_FindRecordById(void *table, u16 resourceId);
@@ -75,7 +75,7 @@ Overlay000PresentationState *func_ov000_021fb728(
     func_ov000_021fb710((void *)state->presentation_44,
                         0x38, 0x58, 0x98, 0x40);
 
-    func_02071ee0(state->resource_08, data_020f4e18, 0x24, 0x22, 0x25);
+    AnimationResourceState_ReplaceResources(state->resource_08, data_020f4e18, 0x24, 0x22, 0x25);
     source = (u16 *)(RetailTextTable_FindRecordById(data_021f3ecc, 0x1ba) + 2);
     for (index = 0; index < 0x10; index++) {
         character = source[index];

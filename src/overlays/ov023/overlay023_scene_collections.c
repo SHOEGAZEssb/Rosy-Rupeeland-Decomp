@@ -15,7 +15,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern s32 RecordMode_GetCharacterResourceId(void *);
 extern s32 RecordMode_GetPaletteResourceId(void *);
 extern s32 RecordMode_GetCellResourceId(void *);
@@ -62,7 +62,7 @@ extern "C" void func_ov023_021fe39c(void *scene)
         s32 a = RecordMode_GetCharacterResourceId((u8 *)bank + 0x668);
         s32 b = RecordMode_GetPaletteResourceId((u8 *)bank + 0x668);
         s32 c = RecordMode_GetCellResourceId((u8 *)bank + 0x668);
-        func_02071ee0(entry + 4, data_020f4e18, a, b, c);
+        AnimationResourceState_ReplaceResources(entry + 4, data_020f4e18, a, b, c);
         FIELD(u16, entry, 0x14) = 0;
         FIELD(u16, entry, 0x16) = (u16)(i * 26);
 

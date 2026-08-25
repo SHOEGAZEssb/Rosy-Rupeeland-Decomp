@@ -31,7 +31,7 @@ extern u32 ActorDescriptorComponent_GetCharacterResourceId(void *component);
 extern u32 ActorDescriptorComponent_GetPaletteResourceId(void *component);
 extern u32 ActorDescriptorComponent_GetCellResourceId(void *component);
 extern u32 ActorDescriptorComponent_GetAnimation(void *component);
-extern void func_02071ee0(void *resource, void *manager, u32 first,
+extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *resource, s32 value, s32 x, s32 y,
@@ -105,7 +105,7 @@ void func_ov001_021fb87c(Overlay001PresentationPopulateState *state,
         second = ActorDescriptorComponent_GetPaletteResourceId(component);
         component = ActorDescriptor_GetComponent(record, 0);
         third = ActorDescriptorComponent_GetCellResourceId(component);
-        func_02071ee0(state->resource_14, data_020f4e18,
+        AnimationResourceState_ReplaceResources(state->resource_14, data_020f4e18,
                       first, second, third);
         resource = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_14, 2);
         component = ActorDescriptor_GetComponent(record, 0);

@@ -18,7 +18,7 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -126,7 +126,7 @@ extern "C" void *func_ov023_021fd634(void *collection, void *record)
         s32 a = RecordMode_GetCharacterResourceId((u8 *)bank + 0x660);
         s32 b = RecordMode_GetPaletteResourceId((u8 *)bank + 0x660);
         s32 c = RecordMode_GetCellResourceId((u8 *)bank + 0x660);
-        func_02071ee0((u8 *)collection + 8, data_020f4e18, a, b, c);
+        AnimationResourceState_ReplaceResources((u8 *)collection + 8, data_020f4e18, a, b, c);
         FIELD(void *, collection, 0x14) = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, collection, 4), (u8 *)collection + 8, 2);
         GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, collection, 0x14),

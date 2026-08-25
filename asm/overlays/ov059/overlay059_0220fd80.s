@@ -13,7 +13,7 @@
 .extern func_02070bc4
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsBgMapResource_SetPaletteBank
-.extern func_02071ee0
+.extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_020af9e0
@@ -169,7 +169,7 @@ func_ov059_0220fd80:
     add r0, r10, #0x44
     ldr r1, [r1, #0x0]
     add r3, r2, #0x1
-    bl func_02071ee0
+    bl AnimationResourceState_ReplaceResources
     ldr r0, .L_022100bc
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

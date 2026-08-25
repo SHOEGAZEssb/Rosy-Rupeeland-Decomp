@@ -14,7 +14,7 @@ extern "C" void *gDebugFont;
 extern "C" void Presentation_Init(void *object);
 extern "C" void AnimationResourceState_InitEmbedded(void *owner);
 extern "C" void AnimationResourceState_Destroy(void *owner);
-extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
+extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
@@ -57,7 +57,7 @@ extern "C" void *func_ov045_0220bc40(void *object)
     Presentation_Init(object);
     FIELD(void *, object, 0) = data_ov045_0220d5a8;
     AnimationResourceState_InitEmbedded((u8 *)object + 0x9c);
-    func_02071ee0((u8 *)object + 0x9c, data_020f4e18,
+    AnimationResourceState_ReplaceResources((u8 *)object + 0x9c, data_020f4e18,
                    0x1560, 0x1561, 0x1562);
     FIELD(void *, object, 0xa8) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(void *, object, 0xac) =
