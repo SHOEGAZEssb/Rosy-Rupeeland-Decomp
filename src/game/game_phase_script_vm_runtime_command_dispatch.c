@@ -1,4 +1,5 @@
 #include "tingle/game_phase_script_vm.h"
+#include "tingle/game_phase_load_scene.h"
 #include "tingle/heap.h"
 #include "tingle/vec_fx32.h"
 
@@ -25,7 +26,6 @@ extern void *func_020a042c(...);
 extern void *func_020200bc(...);
 extern void *func_0201cfd0(...);
 extern void *func_0206ec68(...);
-extern void *GamePhaseLoadScene_Init(...);
 extern void RuntimePresentationManager_AppendFirstListEffect(...);
 extern u8 *RuntimeRecordTable_FindByKey(...);
 #ifdef __cplusplus
@@ -178,6 +178,6 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
 
     object = allocCommandObject(0x9c, data_020d5b8c);
     if (object != 0)
-        GamePhaseLoadScene_Init(object, kind, parameter);
+        GamePhaseLoadScene_Init((GamePhaseLoadScene *)object, kind, parameter);
     return 0;
 }

@@ -7,7 +7,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d5460;
 extern void *gGamePhaseCurrencyHud;
 extern void func_02092364(void *object);
 extern void func_020923a0(void *object);
@@ -27,31 +26,32 @@ typedef struct OwnedObject {
 
 /*
  * Initialize the Scene and its four embedded helpers, retain the requested
- * phase values, enable Scene flags 0/1, and snapshot POWCNT1 bit 15. The flag
- * at currency-HUD offset 0xb0 determines field_34 with inverted bit-0 polarity.
+ * scene request, enable Scene flags 0/1, and snapshot POWCNT1 bit 15. The flag
+ * at currency-HUD offset 0xb0 determines restoreCurrencyHudVisibility with
+ * inverted bit-0 polarity.
  */
-GamePhaseLoadScene *GamePhaseLoadScene_Init(GamePhaseLoadScene *self, s32 phase,
-                                  s32 phaseArgument)
+GamePhaseLoadScene *GamePhaseLoadScene_Init(GamePhaseLoadScene *self, s32 sceneKind,
+                                            s32 sceneArgument)
 {
     u16 currencyHudFlags;
 
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d5460;
-    func_02092364(self->field_40);
-    OverlaySlot_Init((OverlaySlot *)self->field_74);
-    OverlaySlot_Init((OverlaySlot *)self->field_80);
-    OverlaySlot_Init((OverlaySlot *)self->field_8c);
+    self->base.vtable = &gGamePhaseLoadSceneVTable;
+    func_02092364(&self->graphicsBankStateSnapshot);
+    OverlaySlot_Init(&self->overlaySlot0);
+    OverlaySlot_Init(&self->overlaySlot1);
+    OverlaySlot_Init(&self->overlaySlot2);
     self->base.value04 = 9;
-    self->phase = phase;
-    self->phaseArgument = phaseArgument;
-    self->ownedObject = 0;
-    self->loadState = 0;
-    self->ownedObjectCallbacksEnabled = 0;
+    self->sceneKind = sceneKind;
+    self->sceneArgument = sceneArgument;
+    self->loadedScene = 0;
+    self->state = 0;
+    self->loadedSceneCallbacksEnabled = 0;
     self->runtimeCallbacksEnabled = 1;
     Scene_SetFlags03(&self->base);
     currencyHudFlags = *(u16 *)((u8 *)gGamePhaseCurrencyHud + 0xb0);
-    self->field_34 = (currencyHudFlags & 1) ? 0 : 1;
-    self->savedPowerControlBit15 =
+    self->restoreCurrencyHudVisibility = (currencyHudFlags & 1) ? 0 : 1;
+    self->savedScreenSwap =
         (*(volatile u16 *)0x04000304 & 0x8000) >> 15;
     return self;
 }
@@ -62,20 +62,20 @@ GamePhaseLoadScene *GamePhaseLoadScene_Init(GamePhaseLoadScene *self, s32 phase,
  */
 GamePhaseLoadScene *GamePhaseLoadScene_Destroy(GamePhaseLoadScene *self)
 {
-    self->base.vtable = &data_020d5460;
-    self->ownedObjectCallbacksEnabled = 0;
-    if (self->ownedObject != 0)
-        ((OwnedObject *)self->ownedObject)->vtable->release(self->ownedObject);
-    OverlaySlot_Destroy((OverlaySlot *)self->field_8c);
-    OverlaySlot_Destroy((OverlaySlot *)self->field_80);
-    OverlaySlot_Destroy((OverlaySlot *)self->field_74);
-    func_020923a0(self->field_40);
+    self->base.vtable = &gGamePhaseLoadSceneVTable;
+    self->loadedSceneCallbacksEnabled = 0;
+    if (self->loadedScene != 0)
+        ((OwnedObject *)self->loadedScene)->vtable->release(self->loadedScene);
+    OverlaySlot_Destroy(&self->overlaySlot2);
+    OverlaySlot_Destroy(&self->overlaySlot1);
+    OverlaySlot_Destroy(&self->overlaySlot0);
+    func_020923a0(&self->graphicsBankStateSnapshot);
     Scene_Destroy(&self->base);
     return self;
 }
 
 /* Free a previously destroyed load-scene allocation and return its old address. */
-GamePhaseLoadScene *func_0200d014(GamePhaseLoadScene *self)
+GamePhaseLoadScene *GamePhaseLoadScene_FreeStorage(GamePhaseLoadScene *self)
 {
     Heap_Free(self);
     return self;
@@ -84,14 +84,14 @@ GamePhaseLoadScene *func_0200d014(GamePhaseLoadScene *self)
 /* Perform full lifecycle cleanup, free the Scene allocation, and return it. */
 GamePhaseLoadScene *GamePhaseLoadScene_DestroyAndFree(GamePhaseLoadScene *self)
 {
-    self->base.vtable = &data_020d5460;
-    self->ownedObjectCallbacksEnabled = 0;
-    if (self->ownedObject != 0)
-        ((OwnedObject *)self->ownedObject)->vtable->release(self->ownedObject);
-    OverlaySlot_Destroy((OverlaySlot *)self->field_8c);
-    OverlaySlot_Destroy((OverlaySlot *)self->field_80);
-    OverlaySlot_Destroy((OverlaySlot *)self->field_74);
-    func_020923a0(self->field_40);
+    self->base.vtable = &gGamePhaseLoadSceneVTable;
+    self->loadedSceneCallbacksEnabled = 0;
+    if (self->loadedScene != 0)
+        ((OwnedObject *)self->loadedScene)->vtable->release(self->loadedScene);
+    OverlaySlot_Destroy(&self->overlaySlot2);
+    OverlaySlot_Destroy(&self->overlaySlot1);
+    OverlaySlot_Destroy(&self->overlaySlot0);
+    func_020923a0(&self->graphicsBankStateSnapshot);
     Scene_Destroy(&self->base);
     Heap_Free(self);
     return self;

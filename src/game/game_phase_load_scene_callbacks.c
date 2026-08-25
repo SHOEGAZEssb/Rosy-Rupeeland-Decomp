@@ -31,22 +31,22 @@ typedef struct LoadPhaseObject {
 
 /*
  * During the load scene's method-0x0c hook, update runtime offset 0x24 when
- * runtimeCallbacksEnabled is set and forward method 0x0c to the owned phase
- * object when its callbacks are enabled. This hook always returns zero.
+ * runtimeCallbacksEnabled is set and forward method 0x0c to the loaded scene
+ * when its callbacks are enabled. This hook always returns zero.
  */
 s32 GamePhaseLoadScene_UpdateRenderHelpers(GamePhaseLoadScene *self)
 {
     if (self->runtimeCallbacksEnabled)
         GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
-    if (self->ownedObjectCallbacksEnabled && self->ownedObject)
-        ((LoadPhaseObject *)self->ownedObject)->vtable->method0c(
-            self->ownedObject);
+    if (self->loadedSceneCallbacksEnabled && self->loadedScene)
+        ((LoadPhaseObject *)self->loadedScene)->vtable->method0c(
+            self->loadedScene);
     return 0;
 }
 
 /*
  * During method 0x10, pass the current VCOUNT to runtime offset 0x24 when its
- * callbacks are enabled and forward method 0x10 to the active phase object
+ * callbacks are enabled and forward method 0x10 to the loaded scene
  * when enabled. Returns zero.
  */
 s32 GamePhaseLoadScene_ForwardCurrentVCount(GamePhaseLoadScene *self)
@@ -54,9 +54,9 @@ s32 GamePhaseLoadScene_ForwardCurrentVCount(GamePhaseLoadScene *self)
     if (self->runtimeCallbacksEnabled)
         GamePhaseState_ForwardVCount((u8 *)gGamePhaseRuntime + 0x24,
                       *(volatile u16 *)0x04000006);
-    if (self->ownedObjectCallbacksEnabled && self->ownedObject)
-        ((LoadPhaseObject *)self->ownedObject)->vtable->method10(
-            self->ownedObject);
+    if (self->loadedSceneCallbacksEnabled && self->loadedScene)
+        ((LoadPhaseObject *)self->loadedScene)->vtable->method10(
+            self->loadedScene);
     return 0;
 }
 

@@ -251,8 +251,8 @@ s32 TingleRecoveredCanonicalGetSceneState(void)
         (void *)current->vtable->update != (void *)GamePhaseLoadScene_Update)
         return -1;
     loader = (GamePhaseLoadScene *)current;
-    if (loader->ownedObject == NULL) return -1;
-    return *(s32 *)((u8 *)loader->ownedObject + 4);
+    if (loader->loadedScene == NULL) return -1;
+    return *(s32 *)((u8 *)loader->loadedScene + 4);
 }
 
 s32 TingleRecoveredCanonicalGetTitleCallback(void)
@@ -265,8 +265,8 @@ s32 TingleRecoveredCanonicalGetTitleCallback(void)
         (void *)current->vtable->update != (void *)GamePhaseLoadScene_Update)
         return 0;
     loader = (GamePhaseLoadScene *)current;
-    if (loader->ownedObject == NULL) return 0;
-    callback = *(void **)((u8 *)loader->ownedObject + 0x24);
+    if (loader->loadedScene == NULL) return 0;
+    callback = *(void **)((u8 *)loader->loadedScene + 0x24);
     if (callback == (void *)func_ov025_022009d8) return 1;
     if (callback == (void *)func_ov025_02200e54) return 2;
     if (callback == (void *)func_ov025_02200fe4) return 3;

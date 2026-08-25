@@ -6,29 +6,29 @@
 .extern GameWork_SetFlag
 .extern GameWork_TestFlag
 .extern Heap_Alloc
-.extern data_020d548c
-.extern data_020d5494
-.extern data_020d549c
-.extern data_020d54a4
-.extern data_020d54ac
-.extern data_020d54b4
-.extern data_020d54bc
-.extern data_020d54c4
-.extern data_020d54cc
-.extern data_020d54d4
-.extern data_020d54dc
-.extern data_020d54e4
-.extern data_020d54ec
-.extern data_020d54f4
-.extern data_020d54fc
-.extern data_020d5504
-.extern data_020d550c
-.extern data_020d5514
-.extern data_020d551c
-.extern data_020d5524
-.extern data_020d552c
-.extern data_020d5534
-.extern data_020d553c
+.extern gOverlay013DefaultSceneAllocationTag
+.extern gInventorySceneAllocationTag
+.extern gOverlay044SceneAllocationTag
+.extern gOverlay043SceneAllocationTag
+.extern gOverlay018Kind8SceneAllocationTag
+.extern gOverlay019SceneAllocationTag
+.extern gOverlay021SceneAllocationTag
+.extern gOverlay022SceneAllocationTag
+.extern gOverlay020SceneAllocationTag
+.extern gOverlay013Kind25SceneAllocationTag
+.extern gOverlay013Kind13SceneAllocationTag
+.extern gOverlay016SceneAllocationTag
+.extern gOverlay018Kind15SceneAllocationTag
+.extern gOverlay025TitleSceneAllocationTag
+.extern gOverlay004SceneAllocationTag
+.extern gOverlay028SceneAllocationTag
+.extern gOverlay009SceneAllocationTag
+.extern gOverlay027SceneAllocationTag
+.extern gOverlay017SceneAllocationTag
+.extern gOverlay035Or036SceneAllocationTag
+.extern gOverlay037SceneAllocationTag
+.extern gOverlay059PhaseObjectSceneAllocationTag
+.extern gOverlay059FollowupSceneAllocationTag
 .extern data_020f4e14
 .extern gGamePhaseRuntime
 .extern OverlayManager_LoadOverlay
@@ -1253,73 +1253,73 @@ L_0200e100: .word 0x2e
 L_0200e104: .word 0x6
 L_0200e108: .word 0xd
 L_0200e10c: .word 0x9ac
-L_0200e110: .word data_020d548c
+L_0200e110: .word gOverlay013DefaultSceneAllocationTag
 L_0200e114: .word gHeapContext
-L_0200e118: .word data_020d5494
+L_0200e118: .word gInventorySceneAllocationTag
 L_0200e11c: .word gGameWork
 L_0200e120: .word 0x387
 L_0200e124: .word 0x1
 L_0200e128: .word 0xf
 L_0200e12c: .word 0x2c
-L_0200e130: .word data_020d549c
+L_0200e130: .word gOverlay044SceneAllocationTag
 L_0200e134: .word 0x2b
-L_0200e138: .word data_020d54a4
+L_0200e138: .word gOverlay043SceneAllocationTag
 L_0200e13c: .word 0x3
 L_0200e140: .word 0x12
 L_0200e144: .word 0x424
-L_0200e148: .word data_020d54ac
+L_0200e148: .word gOverlay018Kind8SceneAllocationTag
 L_0200e14c: .word 0x2
 L_0200e150: .word 0x13
-L_0200e154: .word data_020d54b4
+L_0200e154: .word gOverlay019SceneAllocationTag
 L_0200e158: .word 0x2d
 L_0200e15c: .word 0x15
 L_0200e160: .word 0x428
-L_0200e164: .word data_020d54bc
+L_0200e164: .word gOverlay021SceneAllocationTag
 L_0200e168: .word 0x16
-L_0200e16c: .word data_020d54c4
+L_0200e16c: .word gOverlay022SceneAllocationTag
 L_0200e170: .word 0x14
-L_0200e174: .word data_020d54cc
+L_0200e174: .word gOverlay020SceneAllocationTag
 L_0200e178: .word 0x26
-L_0200e17c: .word data_020d54d4
+L_0200e17c: .word gOverlay013Kind25SceneAllocationTag
 L_0200e180: .word 0x5
 L_0200e184: .word 0x18
-L_0200e188: .word data_020d54dc
+L_0200e188: .word gOverlay013Kind13SceneAllocationTag
 L_0200e18c: .word 0x10
 L_0200e190: .word 0x488
-L_0200e194: .word data_020d54e4
+L_0200e194: .word gOverlay016SceneAllocationTag
 L_0200e198: .word 0x17
 L_0200e19c: .word 0x4f8
-L_0200e1a0: .word data_020d54ec
+L_0200e1a0: .word gOverlay018Kind15SceneAllocationTag
 L_0200e1a4: .word 0x5e
 L_0200e1a8: .word 0x19
 L_0200e1ac: .word 0x63c
-L_0200e1b0: .word data_020d54f4
+L_0200e1b0: .word gOverlay025TitleSceneAllocationTag
 L_0200e1b4: .word 0x30
 L_0200e1b8: .word 0x4
 L_0200e1bc: .word 0x1a
-L_0200e1c0: .word data_020d54fc
+L_0200e1c0: .word gOverlay004SceneAllocationTag
 L_0200e1c4: .word 0x1c
-L_0200e1c8: .word data_020d5504
+L_0200e1c8: .word gOverlay028SceneAllocationTag
 L_0200e1cc: .word 0x1d
-L_0200e1d0: .word data_020d550c
+L_0200e1d0: .word gOverlay009SceneAllocationTag
 L_0200e1d4: .word 0x1b
-L_0200e1d8: .word data_020d5514
+L_0200e1d8: .word gOverlay027SceneAllocationTag
 L_0200e1dc: .word 0x1e
-L_0200e1e0: .word data_020d551c
+L_0200e1e0: .word gOverlay017SceneAllocationTag
 L_0200e1e4: .word 0x132
 L_0200e1e8: .word 0x259
 L_0200e1ec: .word 0x24
-L_0200e1f0: .word data_020d5524
+L_0200e1f0: .word gOverlay035Or036SceneAllocationTag
 L_0200e1f4: .word 0x23
 L_0200e1f8: .word 0x25
 L_0200e1fc: .word 0x4bc
-L_0200e200: .word data_020d552c
+L_0200e200: .word gOverlay037SceneAllocationTag
 L_0200e204: .word 0x389
 L_0200e208: .word 0x3b2
 L_0200e20c: .word 0x4000304
 L_0200e210: .word 0x3bd
 L_0200e214: .word 0x3b
-L_0200e218: .word data_020d5534
+L_0200e218: .word gOverlay059PhaseObjectSceneAllocationTag
 L_0200e21c:
     ldr r0, L_0200e0f0
     ldr r0, [r0, #0x0]
@@ -1436,7 +1436,6 @@ L_0200e3bc:
     ldmia sp!, {r3, r4, r5, pc}
 L_0200e3c4: .word 0x3ba
 L_0200e3c8: .word 0x48
-L_0200e3cc: .word data_020d553c
+L_0200e3cc: .word gOverlay059FollowupSceneAllocationTag
 L_0200e3d0: .word 0x3cd
     .size GamePhaseLoadScene_Update, . - GamePhaseLoadScene_Update
-

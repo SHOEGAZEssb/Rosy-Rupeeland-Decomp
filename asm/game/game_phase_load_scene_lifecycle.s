@@ -5,7 +5,7 @@
 .extern Scene_Destroy
 .extern Scene_Init
 .extern Scene_SetFlags03
-.extern data_020d5460
+.extern gGamePhaseLoadSceneVTable
 .extern OverlaySlot_Init
 .extern OverlaySlot_Destroy
 .extern func_02092364
@@ -55,7 +55,7 @@ GamePhaseLoadScene_Init: ; 0x0200cf00
     mov r1, r1, asr #0xf
     str r1, [r4, #0x98]
     ldmia sp!, {r4, r5, r6, pc}
-L_0200cfa4: .word data_020d5460
+L_0200cfa4: .word gGamePhaseLoadSceneVTable
 L_0200cfa8: .word gGamePhaseCurrencyHud
 L_0200cfac: .word 0x4000304
     .size GamePhaseLoadScene_Init, . - GamePhaseLoadScene_Init
@@ -87,17 +87,17 @@ L_0200cfe0:
     bl Scene_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200d010: .word data_020d5460
+L_0200d010: .word gGamePhaseLoadSceneVTable
     .size GamePhaseLoadScene_Destroy, . - GamePhaseLoadScene_Destroy
 
-    .global func_0200d014
-func_0200d014: ; 0x0200d014
+    .global GamePhaseLoadScene_FreeStorage
+GamePhaseLoadScene_FreeStorage: ; 0x0200d014
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0200d014, . - func_0200d014
+    .size GamePhaseLoadScene_FreeStorage, . - GamePhaseLoadScene_FreeStorage
 
     .global GamePhaseLoadScene_DestroyAndFree
 GamePhaseLoadScene_DestroyAndFree: ; 0x0200d028
@@ -128,6 +128,5 @@ L_0200d058:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200d090: .word data_020d5460
+L_0200d090: .word gGamePhaseLoadSceneVTable
     .size GamePhaseLoadScene_DestroyAndFree, . - GamePhaseLoadScene_DestroyAndFree
-

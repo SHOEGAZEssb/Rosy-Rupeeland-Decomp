@@ -1,3 +1,4 @@
+#include "tingle/game_phase_load_scene.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,6 @@ extern const char gType7ActorAuxiliaryLoadSceneAllocationTag[];
 extern "C" {
 #endif
 extern void Actor_DestroyInteractionIcon(void *actor);
-extern void *GamePhaseLoadScene_Init(void *allocation, s32 type, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -32,5 +32,6 @@ void Type7Actor_CreatePhase10LoadScene(void *self)
     loadSceneAllocation = Heap_Alloc(
         0x9c, gType7ActorAuxiliaryLoadSceneAllocationTag, 4, &gHeapContext);
     if (loadSceneAllocation != 0)
-        GamePhaseLoadScene_Init(loadSceneAllocation, 10, 0x7fff);
+        GamePhaseLoadScene_Init((GamePhaseLoadScene *)loadSceneAllocation,
+                                10, 0x7fff);
 }

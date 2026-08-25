@@ -42,29 +42,29 @@ extern void *gSoundContext;
 extern GraphicsSpriteRenderer *data_020f4e14;
 extern GraphicsSpriteRenderer *gDebugFont;
 extern GamePhaseCurrencyHud *gGamePhaseCurrencyHud;
-extern u8 data_020d553c[];
-extern u8 data_020d5534[];
-extern u8 data_020d548c[];
-extern u8 data_020d5494[];
-extern u8 data_020d549c[];
-extern u8 data_020d54a4[];
-extern u8 data_020d54ac[];
-extern u8 data_020d54c4[];
-extern u8 data_020d54bc[];
-extern u8 data_020d54cc[];
-extern u8 data_020d54dc[];
-extern u8 data_020d54e4[];
-extern u8 data_020d54ec[];
-extern u8 data_020d54f4[];
-extern u8 data_020d54fc[];
-extern u8 data_020d5504[];
-extern u8 data_020d550c[];
-extern u8 data_020d5514[];
-extern u8 data_020d551c[];
-extern u8 data_020d5524[];
-extern u8 data_020d54b4[];
-extern u8 data_020d552c[];
-extern u8 data_020d54d4[];
+extern u8 gOverlay059FollowupSceneAllocationTag[];
+extern u8 gOverlay059PhaseObjectSceneAllocationTag[];
+extern u8 gOverlay013DefaultSceneAllocationTag[];
+extern u8 gInventorySceneAllocationTag[];
+extern u8 gOverlay044SceneAllocationTag[];
+extern u8 gOverlay043SceneAllocationTag[];
+extern u8 gOverlay018Kind8SceneAllocationTag[];
+extern u8 gOverlay022SceneAllocationTag[];
+extern u8 gOverlay021SceneAllocationTag[];
+extern u8 gOverlay020SceneAllocationTag[];
+extern u8 gOverlay013Kind13SceneAllocationTag[];
+extern u8 gOverlay016SceneAllocationTag[];
+extern u8 gOverlay018Kind15SceneAllocationTag[];
+extern u8 gOverlay025TitleSceneAllocationTag[];
+extern u8 gOverlay004SceneAllocationTag[];
+extern u8 gOverlay028SceneAllocationTag[];
+extern u8 gOverlay009SceneAllocationTag[];
+extern u8 gOverlay027SceneAllocationTag[];
+extern u8 gOverlay017SceneAllocationTag[];
+extern u8 gOverlay035Or036SceneAllocationTag[];
+extern u8 gOverlay019SceneAllocationTag[];
+extern u8 gOverlay037SceneAllocationTag[];
+extern u8 gOverlay013Kind25SceneAllocationTag[];
 extern void func_02092c8c(s32 screens, s32 brightness);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
 extern s32 SceneInputBase_Update(void *object, s32 mode);
@@ -113,10 +113,10 @@ extern void *func_ov037_021fe4fc(void *object, s32 argument);
 #define UNK_0200e0f4 (&gGamePhaseCurrencyHud)
 #define UNK_0200e3d0 (0x3cd)
 #define UNK_0200e3c8 (0x48)
-#define UNK_0200e3cc ((const char *)data_020d553c)
+#define OVERLAY059_FOLLOWUP_SCENE_ALLOCATION_TAG ((const char *)gOverlay059FollowupSceneAllocationTag)
 #define UNK_0200e114 (&gHeapContext)
 #define UNK_0200e214 (0x3b)
-#define UNK_0200e218 ((const char *)data_020d5534)
+#define OVERLAY059_PHASE_OBJECT_SCENE_ALLOCATION_TAG ((const char *)gOverlay059PhaseObjectSceneAllocationTag)
 #define UNK_0200e210 (0x3bd)
 #define UNK_0200e0ec ((volatile u16 *)0x04000050)
 #define UNK_0200e0f8 ((volatile u16 *)0x04001050)
@@ -124,64 +124,64 @@ extern void *func_ov037_021fe4fc(void *object, s32 argument);
 #define UNK_0200e104 (0x6)
 #define UNK_0200e108 (0xd)
 #define UNK_0200e10c (0x9ac)
-#define UNK_0200e110 ((const char *)data_020d548c)
-#define UNK_0200e118 ((const char *)data_020d5494)
+#define OVERLAY013_DEFAULT_SCENE_ALLOCATION_TAG ((const char *)gOverlay013DefaultSceneAllocationTag)
+#define INVENTORY_SCENE_ALLOCATION_TAG ((const char *)gInventorySceneAllocationTag)
 #define UNK_0200e120 (0x387)
 #define UNK_0200e124 (0x1)
 #define UNK_0200e128 (0xf)
 #define UNK_0200e12c (0x2c)
-#define UNK_0200e130 ((const char *)data_020d549c)
+#define OVERLAY044_SCENE_ALLOCATION_TAG ((const char *)gOverlay044SceneAllocationTag)
 #define UNK_0200e134 (0x2b)
-#define UNK_0200e138 ((const char *)data_020d54a4)
+#define OVERLAY043_SCENE_ALLOCATION_TAG ((const char *)gOverlay043SceneAllocationTag)
 #define UNK_0200e13c (0x3)
 #define UNK_0200e140 (0x12)
 #define UNK_0200e144 (0x424)
-#define UNK_0200e148 ((const char *)data_020d54ac)
+#define OVERLAY018_KIND8_SCENE_ALLOCATION_TAG ((const char *)gOverlay018Kind8SceneAllocationTag)
 #define UNK_0200e168 (0x16)
-#define UNK_0200e16c ((const char *)data_020d54c4)
+#define OVERLAY022_SCENE_ALLOCATION_TAG ((const char *)gOverlay022SceneAllocationTag)
 #define UNK_0200e158 (0x2d)
 #define UNK_0200e15c (0x15)
 #define UNK_0200e160 (0x428)
-#define UNK_0200e164 ((const char *)data_020d54bc)
+#define OVERLAY021_SCENE_ALLOCATION_TAG ((const char *)gOverlay021SceneAllocationTag)
 #define UNK_0200e170 (0x14)
-#define UNK_0200e174 ((const char *)data_020d54cc)
+#define OVERLAY020_SCENE_ALLOCATION_TAG ((const char *)gOverlay020SceneAllocationTag)
 #define UNK_0200e180 (0x5)
 #define UNK_0200e184 (0x18)
-#define UNK_0200e188 ((const char *)data_020d54dc)
+#define OVERLAY013_KIND13_SCENE_ALLOCATION_TAG ((const char *)gOverlay013Kind13SceneAllocationTag)
 #define UNK_0200e18c (0x10)
 #define UNK_0200e190 (0x488)
-#define UNK_0200e194 ((const char *)data_020d54e4)
+#define OVERLAY016_SCENE_ALLOCATION_TAG ((const char *)gOverlay016SceneAllocationTag)
 #define UNK_0200e198 (0x17)
 #define UNK_0200e19c (0x4f8)
-#define UNK_0200e1a0 ((const char *)data_020d54ec)
+#define OVERLAY018_KIND15_SCENE_ALLOCATION_TAG ((const char *)gOverlay018Kind15SceneAllocationTag)
 #define UNK_0200e1a4 (0x5e)
 #define UNK_0200e1a8 (0x19)
 #define UNK_0200e1ac (0x63c)
-#define UNK_0200e1b0 ((const char *)data_020d54f4)
+#define OVERLAY025_TITLE_SCENE_ALLOCATION_TAG ((const char *)gOverlay025TitleSceneAllocationTag)
 #define UNK_0200e1b4 (0x30)
 #define UNK_0200e1b8 (0x4)
 #define UNK_0200e1bc (0x1a)
-#define UNK_0200e1c0 ((const char *)data_020d54fc)
+#define OVERLAY004_SCENE_ALLOCATION_TAG ((const char *)gOverlay004SceneAllocationTag)
 #define UNK_0200e1c4 (0x1c)
-#define UNK_0200e1c8 ((const char *)data_020d5504)
+#define OVERLAY028_SCENE_ALLOCATION_TAG ((const char *)gOverlay028SceneAllocationTag)
 #define UNK_0200e14c (0x2)
 #define UNK_0200e1cc (0x1d)
-#define UNK_0200e1d0 ((const char *)data_020d550c)
+#define OVERLAY009_SCENE_ALLOCATION_TAG ((const char *)gOverlay009SceneAllocationTag)
 #define UNK_0200e1d4 (0x1b)
-#define UNK_0200e1d8 ((const char *)data_020d5514)
+#define OVERLAY027_SCENE_ALLOCATION_TAG ((const char *)gOverlay027SceneAllocationTag)
 #define UNK_0200e1dc (0x1e)
-#define UNK_0200e1e0 ((const char *)data_020d551c)
+#define OVERLAY017_SCENE_ALLOCATION_TAG ((const char *)gOverlay017SceneAllocationTag)
 #define UNK_0200e1ec (0x24)
-#define UNK_0200e1f0 ((const char *)data_020d5524)
+#define OVERLAY035_OR_036_SCENE_ALLOCATION_TAG ((const char *)gOverlay035Or036SceneAllocationTag)
 #define UNK_0200e1e4 (0x132)
 #define UNK_0200e1f4 (0x23)
 #define UNK_0200e150 (0x13)
-#define UNK_0200e154 ((const char *)data_020d54b4)
+#define OVERLAY019_SCENE_ALLOCATION_TAG ((const char *)gOverlay019SceneAllocationTag)
 #define UNK_0200e1f8 (0x25)
 #define UNK_0200e1fc (0x4bc)
-#define UNK_0200e200 ((const char *)data_020d552c)
+#define OVERLAY037_SCENE_ALLOCATION_TAG ((const char *)gOverlay037SceneAllocationTag)
 #define UNK_0200e178 (0x26)
-#define UNK_0200e17c ((const char *)data_020d54d4)
+#define OVERLAY013_KIND25_SCENE_ALLOCATION_TAG ((const char *)gOverlay013Kind25SceneAllocationTag)
 
 /* The enclosing runtime type is not fully recovered yet. These accessors keep
  * the confirmed embedded-object boundaries explicit without assigning names
@@ -217,26 +217,26 @@ s32 GamePhaseLoadScene_Update(GamePhaseLoadScene *self)
 
 {
   u32 savedVBlankState;
-  u32 uVar4;
-  int iVar5;
-  int iVar6;
-  s32 bVar7;
+  u32 phaseObjectModeOrFlag;
+  int value;
+  int comparisonValue;
+  s32 usesAlternateScreenMode;
   void *object;
   OverlayManager *overlayManager;
   
-  switch(self->loadState) {
+  switch(self->state) {
   case 0:
-    self->loadState++;
-    iVar5 = self->phase;
-    if (iVar5 < 2) {
-      if (iVar5 != 1) goto code_r0x0200d170;
+    self->state++;
+    value = self->sceneKind;
+    if (value < 2) {
+      if (value != 1) goto code_r0x0200d170;
       func_02092c8c(1,0xfffffff0);
       if (GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime) != 2) {
         func_02092c8c(2,0xfffffff0);
       }
       goto code_r0x0200d17c;
     }
-    switch(iVar5) {
+    switch(value) {
     case 0x11:
       goto code_r0x0200d150;
     case 0x12:
@@ -261,8 +261,8 @@ code_r0x0200d150:
 code_r0x0200d170:
     func_02092c8c(3,0xfffffff0);
 code_r0x0200d17c:
-    iVar5 = DisplayBrightness_IsMainTransitionComplete();
-    if ((iVar5 == 0) || (iVar5 = DisplayBrightness_IsSubTransitionComplete(), iVar5 == 0)) {
+    value = DisplayBrightness_IsMainTransitionComplete();
+    if ((value == 0) || (value = DisplayBrightness_IsSubTransitionComplete(), value == 0)) {
       GraphicsSpriteGroup_AdvanceAnimations(ActorCollection_GetSpriteGroup(
           GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)));
       return 0;
@@ -271,46 +271,46 @@ code_r0x0200d17c:
   case 1:
     goto code_r0x0200d17c;
   case 2:
-    SceneInputBase_Update(self->ownedObject, 0);
-    if (-1 < *(int *)((u8 *)self->ownedObject + 0x20) << 0x1f) {
+    SceneInputBase_Update(self->loadedScene, 0);
+    if (-1 < *(int *)((u8 *)self->loadedScene + 0x20) << 0x1f) {
       return 0;
     }
     func_02092c8c(3,0);
-    self->loadState++;
+    self->state++;
     return 0;
   case 3:
-    SceneInputBase_Update(self->ownedObject, 0);
-    iVar5 = DisplayBrightness_IsMainTransitionComplete();
-    if (iVar5 == 0) {
+    SceneInputBase_Update(self->loadedScene, 0);
+    value = DisplayBrightness_IsMainTransitionComplete();
+    if (value == 0) {
       return 0;
     }
-    iVar5 = DisplayBrightness_IsSubTransitionComplete();
-    if (iVar5 == 0) {
+    value = DisplayBrightness_IsSubTransitionComplete();
+    if (value == 0) {
       return 0;
     }
-    self->loadState++;
+    self->state++;
     return 0;
   case 4:
-    iVar5 = SceneInputBase_Update(self->ownedObject, 1);
-    if (iVar5 == 0) {
+    value = SceneInputBase_Update(self->loadedScene, 1);
+    if (value == 0) {
       return 0;
     }
-    iVar5 = self->phase;
-    if (iVar5 < 2) {
-      if (iVar5 == 1) {
-        uVar4 = GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime);
-        bVar7 = uVar4 == 2;
-        if (bVar7) {
-          uVar4 = *(u32 *)((u8 *)self->ownedObject + 0x980);
+    value = self->sceneKind;
+    if (value < 2) {
+      if (value == 1) {
+        phaseObjectModeOrFlag = GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime);
+        usesAlternateScreenMode = phaseObjectModeOrFlag == 2;
+        if (usesAlternateScreenMode) {
+          phaseObjectModeOrFlag = *(u32 *)((u8 *)self->loadedScene + 0x980);
         }
-        if (bVar7 && uVar4 == 0) {
+        if (usesAlternateScreenMode && phaseObjectModeOrFlag == 0) {
           func_02092c8c(1,0xfffffff0);
           goto code_r0x0200dd3c;
         }
       }
       goto code_r0x0200dd30;
     }
-    switch(iVar5) {
+    switch(value) {
     case 0x12:
       goto code_r0x0200dcd0;
     case 0x13:
@@ -333,51 +333,51 @@ code_r0x0200dce0:
 code_r0x0200dd30:
     func_02092c8c(3,0xfffffff0);
 code_r0x0200dd3c:
-    self->loadState++;
+    self->state++;
     return 0;
   case 5:
-    SceneInputBase_Update(self->ownedObject, 0);
-    iVar5 = DisplayBrightness_IsMainTransitionComplete();
-    if (iVar5 == 0) {
+    SceneInputBase_Update(self->loadedScene, 0);
+    value = DisplayBrightness_IsMainTransitionComplete();
+    if (value == 0) {
       return 0;
     }
-    iVar5 = DisplayBrightness_IsSubTransitionComplete();
-    if (iVar5 == 0) {
+    value = DisplayBrightness_IsSubTransitionComplete();
+    if (value == 0) {
       return 0;
     }
-    iVar5 = 0;
+    value = 0;
     self->runtimeCallbacksEnabled = 0;
-    if (self->phase == 1) {
-      iVar5 = *(int *)((u8 *)self->ownedObject + 0x980);
+    if (self->sceneKind == 1) {
+      value = *(int *)((u8 *)self->loadedScene + 0x980);
     }
-    iVar6 = GameWork_TestFlag(gGameWork,UNK_0200e204);
-    if (iVar6 == 0) {
-      iVar6 = GameWork_TestFlag(gGameWork,UNK_0200e208);
-      if (iVar6 != 0) {
-        iVar5 = 0xb;
+    comparisonValue = GameWork_TestFlag(gGameWork,UNK_0200e204);
+    if (comparisonValue == 0) {
+      comparisonValue = GameWork_TestFlag(gGameWork,UNK_0200e208);
+      if (comparisonValue != 0) {
+        value = 0xb;
       }
     }
     else {
       GameWork_ClearFlag(gGameWork,UNK_0200e204);
-      iVar5 = 1;
+      value = 1;
     }
-    if (self->ownedObject != 0) {
-      ((OwnedSceneObject *)self->ownedObject)->vtable->release(
-          self->ownedObject);
+    if (self->loadedScene != 0) {
+      ((OwnedSceneObject *)self->loadedScene)->vtable->release(
+          self->loadedScene);
     }
-    self->ownedObject = 0;
-    OverlaySlot_UnloadOverlay((OverlaySlot *)self->field_74);
-    OverlaySlot_UnloadOverlay((OverlaySlot *)self->field_80);
-    OverlaySlot_UnloadOverlay((OverlaySlot *)self->field_8c);
+    self->loadedScene = 0;
+    OverlaySlot_UnloadOverlay(&self->overlaySlot0);
+    OverlaySlot_UnloadOverlay(&self->overlaySlot1);
+    OverlaySlot_UnloadOverlay(&self->overlaySlot2);
     *UNK_0200e20c = *UNK_0200e20c & 0x7fff |
-                    (u16)(self->savedPowerControlBit15 << 0xf);
+                    (u16)(self->savedScreenSwap << 0xf);
     Sound_SetModalEnvelopeEnabled(gSoundContext,0,0,0x14,0x1e);
-    func_02092418(self->field_40);
-    switch(iVar5) {
+    func_02092418(&self->graphicsBankStateSnapshot);
+    switch(value) {
     case 0:
-      iVar5 = self->phase;
-      if (iVar5 < 2) {
-        if ((iVar5 == 1) &&
+      value = self->sceneKind;
+      if (value < 2) {
+        if ((value == 1) &&
            (GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime) == 2)) {
           GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
           GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,0,1);
@@ -387,7 +387,7 @@ code_r0x0200dd3c:
         }
         goto code_r0x0200e21c;
       }
-      switch(iVar5) {
+      switch(value) {
       case 0x10:
         goto code_r0x0200e2ac;
       case 0x11:
@@ -417,15 +417,15 @@ code_r0x0200e21c:
       GamePhaseAreaScene_SetEnabled(
           GamePhaseRuntime_GetAreaScene(gGamePhaseRuntime), 1);
       GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
-      iVar5 = GameWork_TestFlag(gGameWork,UNK_0200e3c4);
-      if (iVar5 == 0) {
+      value = GameWork_TestFlag(gGameWork,UNK_0200e3c4);
+      if (value == 0) {
         func_02092c8c(3,0);
       }
       else {
         GameWork_ClearFlag(gGameWork,UNK_0200e3c4);
       }
 code_r0x0200e2ac:
-      if (self->field_34 != 0) {
+      if (self->restoreCurrencyHudVisibility != 0) {
         GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4, 1);
       }
       GraphicsSpriteGroup_PrepareResources(ActorCollection_GetSpriteGroup(
@@ -433,14 +433,14 @@ code_r0x0200e2ac:
       if (self != 0) {
         self->base.vtable->destroyAndFree(&self->base);
       }
-      iVar5 = GameWork_TestFlag(gGameWork,0x3cc);
-      if (iVar5 == 0) {
-        iVar5 = GameWork_TestFlag(gGameWork,UNK_0200e3d0);
-        if (iVar5 != 0) {
+      value = GameWork_TestFlag(gGameWork,0x3cc);
+      if (value == 0) {
+        value = GameWork_TestFlag(gGameWork,UNK_0200e3d0);
+        if (value != 0) {
           GameWork_ClearFlag(gGameWork,UNK_0200e3d0);
           overlayManager = OverlayManager_GetGlobal();
           OverlayManager_LoadOverlay(overlayManager,2,UNK_0200e3c8);
-          object = Heap_Alloc(0x80,UNK_0200e3cc,4,UNK_0200e114);
+          object = Heap_Alloc(0x80,OVERLAY059_FOLLOWUP_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
           if (object != 0) {
             func_ov059_0220fd20(object,1);
           }
@@ -450,7 +450,7 @@ code_r0x0200e2ac:
         GameWork_ClearFlag(gGameWork,0x3cc);
         overlayManager = OverlayManager_GetGlobal();
         OverlayManager_LoadOverlay(overlayManager,2,UNK_0200e3c8);
-        object = Heap_Alloc(0x80,UNK_0200e3cc,4,UNK_0200e114);
+        object = Heap_Alloc(0x80,OVERLAY059_FOLLOWUP_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
         if (object != 0) {
           func_ov059_0220fd20(object,0);
         }
@@ -488,7 +488,7 @@ code_r0x0200e2ac:
           GamePhaseRuntime_GetAreaScene(gGamePhaseRuntime), 1);
       overlayManager = OverlayManager_GetGlobal();
       OverlayManager_LoadOverlay(overlayManager,2,UNK_0200e214);
-      object = Heap_Alloc(0x90,UNK_0200e218,4,UNK_0200e114);
+      object = Heap_Alloc(0x90,OVERLAY059_PHASE_OBJECT_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
       if (object != 0) {
         func_ov059_02210fec(object, GamePhaseRuntime_GetPhaseObject(gGamePhaseRuntime));
       }
@@ -496,9 +496,9 @@ code_r0x0200e2ac:
     case 10:
       break;
     case 0xb:
-      self->phase = iVar5;
-      self->phaseArgument = (s32)*(s16 *)((u8 *)gGameWork + 0x204);
-      self->loadState = 0;
+      self->sceneKind = value;
+      self->sceneArgument = (s32)*(s16 *)((u8 *)gGameWork + 0x204);
+      self->state = 0;
       return 0;
     case 0xc:
       goto code_r0x0200deec;
@@ -511,12 +511,12 @@ code_r0x0200deec:
       GameWork_SetFlag(gGameWork,UNK_0200e210);
 code_r0x0200defc:
       GameWork_SetFlag(gGameWork,UNK_0200e204);
-      self->phase = iVar5;
-      self->loadState = 0;
+      self->sceneKind = value;
+      self->state = 0;
       return 0;
     }
-    self->phase = iVar5;
-    self->loadState = 0;
+    self->sceneKind = value;
+    self->state = 0;
   default:
     goto LAB_0200e3bc;
   }
@@ -525,7 +525,7 @@ code_r0x0200defc:
    * renderer cannot upload stale maps during construction of the new scene. */
   self->runtimeCallbacksEnabled = 0;
   GridEffectActorRegistry_FinalizeDepartingActors();
-  switch(self->phase) {
+  switch(self->sceneKind) {
   case 0x10:
     goto code_r0x0200d224;
   case 0x11:
@@ -548,25 +548,25 @@ code_r0x0200defc:
   }
   Sound_SetModalEnvelopeEnabled(*UNK_0200e0e8,1,0,0x14,0x1e);
 code_r0x0200d224:
-  if (self->phase == 10) {
-    func_020923a4(self->field_40);
+  if (self->sceneKind == 10) {
+    func_020923a4(&self->graphicsBankStateSnapshot);
   }
   else {
     RuntimePresentationManager_DisableGraphics3dForActivePhase((u8 *)gGamePhaseRuntime + 0x2f7c);
-    func_020923a4(self->field_40);
+    func_020923a4(&self->graphicsBankStateSnapshot);
     *UNK_0200e0ec = 0;
     GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 0);
     GraphicsSpriteGroup_ReleaseResources(ActorCollection_GetSpriteGroup(
         GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)));
     GraphicsSpriteRenderer_BuildFrame(*UNK_0200e0f0,0);
   }
-  iVar5 = self->phase;
-  if (iVar5 == 1) {
+  value = self->sceneKind;
+  if (value == 1) {
     if (GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime) != 2)
     goto code_r0x0200d2f0;
     GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4, 1);
   }
-  else if (iVar5 != 0x12 && iVar5 != 0x17) {
+  else if (value != 0x12 && value != 0x17) {
 code_r0x0200d2f0:
     *UNK_0200e0f8 = 0;
     GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 0, 1);
@@ -575,139 +575,139 @@ code_r0x0200d2f0:
     GraphicsSpriteRenderer_BuildFrame(*UNK_0200e0fc,0);
     GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4, 0);
   }
-  switch(self->phase) {
+  switch(self->sceneKind) {
   case 0:
   default:
 code_r0x0200d3bc:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e100);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e104);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_8c,UNK_0200e108);
-    object = Heap_Alloc(UNK_0200e10c,UNK_0200e110,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e100);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e104);
+    OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e108);
+    object = Heap_Alloc(UNK_0200e10c,OVERLAY013_DEFAULT_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov013_021fce2c(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 1:
     goto code_r0x0200d3bc;
   case 2:
-    object = Heap_Alloc(0x88,UNK_0200e118,4,UNK_0200e114);
+    object = Heap_Alloc(0x88,INVENTORY_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = InventoryScene_Init(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 3:
     GameWork_SetFlag(gGameWork,UNK_0200e120);
     GameWork_ClearFlag(gGameWork,0x388);
-    object = Heap_Alloc(0x88,UNK_0200e118,4,UNK_0200e114);
+    object = Heap_Alloc(0x88,INVENTORY_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = InventoryScene_Init(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 4:
     GameWork_ClearFlag(gGameWork,UNK_0200e120);
     GameWork_SetFlag(gGameWork,0x388);
-    object = Heap_Alloc(0x88,UNK_0200e118,4,UNK_0200e114);
+    object = Heap_Alloc(0x88,INVENTORY_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = InventoryScene_Init(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 5:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e124);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e128);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_8c,UNK_0200e12c);
-    object = Heap_Alloc(0x240,UNK_0200e130,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e124);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e128);
+    OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e12c);
+    object = Heap_Alloc(0x240,OVERLAY044_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov044_0220be60(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 6:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_8c,UNK_0200e134);
-    object = Heap_Alloc(0x2f8,UNK_0200e138,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e134);
+    object = Heap_Alloc(0x2f8,OVERLAY043_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov043_0220b76c(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 7:
     goto code_r0x0200d3bc;
   case 8:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e13c);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e140);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e13c);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e140);
     GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,0,1);
     GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 2, 0);
     GamePhaseAreaScene_SetEnabled(
         GamePhaseRuntime_GetAreaScene(gGamePhaseRuntime), 1);
     GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
-    object = Heap_Alloc(UNK_0200e144,UNK_0200e148,4,UNK_0200e114);
+    object = Heap_Alloc(UNK_0200e144,OVERLAY018_KIND8_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov018_021fcf68(object,self->phaseArgument);
+      object = func_ov018_021fcf68(object,self->sceneArgument);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 9:
     goto code_r0x0200d3bc;
   case 10:
     goto code_r0x0200d5d8;
   case 0xb:
-    if (self->phaseArgument == 7) {
-      OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e100);
-      OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e168);
-      object = Heap_Alloc(0x394,UNK_0200e16c,4,UNK_0200e114);
+    if (self->sceneArgument == 7) {
+      OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e100);
+      OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e168);
+      object = Heap_Alloc(0x394,OVERLAY022_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
       if (object != 0) {
         object = func_ov022_021fdd44(object);
       }
-      self->ownedObject = object;
+      self->loadedScene = object;
     }
     else {
-      OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e158);
-      OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e15c);
-      object = Heap_Alloc(UNK_0200e160,UNK_0200e164,4,UNK_0200e114);
+      OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e158);
+      OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e15c);
+      object = Heap_Alloc(UNK_0200e160,OVERLAY021_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
       if (object != 0) {
-        object = func_ov021_021fd7e8(object,self->phaseArgument);
+        object = func_ov021_021fd7e8(object,self->sceneArgument);
       }
-      self->ownedObject = object;
+      self->loadedScene = object;
     }
     break;
   case 0xc:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e170);
-    object = Heap_Alloc(0x1e8,UNK_0200e174,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e170);
+    object = Heap_Alloc(0x1e8,OVERLAY020_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov020_021fd844(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0xd:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e180);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e100);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_8c,UNK_0200e184);
-    object = Heap_Alloc(0x2f8,UNK_0200e188,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e180);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e100);
+    OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e184);
+    object = Heap_Alloc(0x2f8,OVERLAY013_KIND13_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov013_021fce2c(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0xe:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e18c);
-    object = Heap_Alloc(UNK_0200e190,UNK_0200e194,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e18c);
+    object = Heap_Alloc(UNK_0200e190,OVERLAY016_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov016_021fe77c(
           object, 2, (int)*(s16 *)((u8 *)gGameWork + 0x206));
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0xf:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e158);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e198);
-    object = Heap_Alloc(UNK_0200e19c,UNK_0200e1a0,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e158);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e198);
+    object = Heap_Alloc(UNK_0200e19c,OVERLAY018_KIND15_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov018_021fd9f8(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x10:
     /*
@@ -716,71 +716,71 @@ code_r0x0200d3bc:
      * scene, and calls its constructor. These are NDS overlay boundaries, not
      * host-side title abstractions.
      */
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e1a4);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e1a8);
-    object = Heap_Alloc(UNK_0200e1ac,UNK_0200e1b0,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e1a4);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e1a8);
+    object = Heap_Alloc(UNK_0200e1ac,OVERLAY025_TITLE_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov025_021ff27c(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x11:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e1b4);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e1b8);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_8c,UNK_0200e1bc);
-    object = Heap_Alloc(100,UNK_0200e1c0,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e1b4);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e1b8);
+    OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e1bc);
+    object = Heap_Alloc(100,OVERLAY004_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov004_021fc944(object,self->phaseArgument);
+      object = func_ov004_021fc944(object,self->sceneArgument);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x12:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e1c4);
-    object = Heap_Alloc(0x29c,UNK_0200e1c8,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e1c4);
+    object = Heap_Alloc(0x29c,OVERLAY028_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov028_021fdb00(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x13:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e14c);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e158);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_8c,UNK_0200e1cc);
-    object = Heap_Alloc(0x104,UNK_0200e1d0,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e14c);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e158);
+    OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e1cc);
+    object = Heap_Alloc(0x104,OVERLAY009_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov009_021fce74(object,self->phaseArgument);
+      object = func_ov009_021fce74(object,self->sceneArgument);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x14:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e1b4);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e1d4);
-    object = Heap_Alloc(0x5e0,UNK_0200e1d8,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e1b4);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e1d4);
+    object = Heap_Alloc(0x5e0,OVERLAY027_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = Overlay027Scene_Init(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x15:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e14c);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e158);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_8c,UNK_0200e1dc);
-    object = Heap_Alloc(0x398,UNK_0200e1e0,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e14c);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e158);
+    OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e1dc);
+    object = Heap_Alloc(0x398,OVERLAY017_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov017_021fda3c(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x16:
-    iVar5 = self->phaseArgument;
-    if (iVar5 < 0x12d) {
-      if (iVar5 < 300) {
-        if (iVar5 < 0xcc) {
-          if (iVar5 < 0xcb) {
-            if (iVar5 < 0xc9) {
-              if (iVar5 < 200) {
-                if (0x4d < iVar5) {
-                  switch(iVar5) {
+    value = self->sceneArgument;
+    if (value < 0x12d) {
+      if (value < 300) {
+        if (value < 0xcc) {
+          if (value < 0xcb) {
+            if (value < 0xc9) {
+              if (value < 200) {
+                if (0x4d < value) {
+                  switch(value) {
                   case 100:
                     break;
                   case 0x65:
@@ -804,110 +804,110 @@ code_r0x0200d3bc:
                 goto code_r0x0200db0c;
               }
             }
-            else if (iVar5 < 0xca) {
-              if (iVar5 != 0xc9) goto code_r0x0200db0c;
+            else if (value < 0xca) {
+              if (value != 0xc9) goto code_r0x0200db0c;
             }
-            else if (iVar5 != 0xca) goto code_r0x0200db0c;
+            else if (value != 0xca) goto code_r0x0200db0c;
           }
         }
-        else if (iVar5 < 0xcf) {
-          if (iVar5 < 0xce) {
-            if (iVar5 < 0xcd) {
-              if (iVar5 != 0xcc) goto code_r0x0200db0c;
+        else if (value < 0xcf) {
+          if (value < 0xce) {
+            if (value < 0xcd) {
+              if (value != 0xcc) goto code_r0x0200db0c;
             }
-            else if (iVar5 != 0xcd) goto code_r0x0200db0c;
+            else if (value != 0xcd) goto code_r0x0200db0c;
           }
         }
-        else if (iVar5 < 0xd0) {
-          if (iVar5 != 0xcf) {
+        else if (value < 0xd0) {
+          if (value != 0xcf) {
 code_r0x0200db0c:
-            OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e1b4);
-            OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e1ec);
-            object = Heap_Alloc(0x4c0,UNK_0200e1f0,4,UNK_0200e114);
+            OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e1b4);
+            OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e1ec);
+            object = Heap_Alloc(0x4c0,OVERLAY035_OR_036_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
             if (object != 0) {
-              object = func_ov036_022045d4(object,self->phaseArgument);
+              object = func_ov036_022045d4(object,self->sceneArgument);
             }
-            self->ownedObject = object;
+            self->loadedScene = object;
             break;
           }
         }
-        else if (iVar5 != 0xd0) goto code_r0x0200db0c;
+        else if (value != 0xd0) goto code_r0x0200db0c;
       }
     }
     else {
-      if (UNK_0200e1e4 < iVar5) {
-        if ((iVar5 < 0x259) && (iVar5 < 600)) {
-          iVar6 = UNK_0200e1e4 + 1;
-          if (iVar5 <= iVar6) goto joined_r0x0200dac4;
-          if (iVar5 == 0x134) goto code_r0x0200db50;
+      if (UNK_0200e1e4 < value) {
+        if ((value < 0x259) && (value < 600)) {
+          comparisonValue = UNK_0200e1e4 + 1;
+          if (value <= comparisonValue) goto joined_r0x0200dac4;
+          if (value == 0x134) goto code_r0x0200db50;
         }
         goto code_r0x0200db0c;
       }
-      if (iVar5 < UNK_0200e1e4) {
-        if (UNK_0200e1e4 + -3 < iVar5) {
-          if (0x130 < iVar5) {
-            iVar6 = UNK_0200e1e4 + -1;
+      if (value < UNK_0200e1e4) {
+        if (UNK_0200e1e4 + -3 < value) {
+          if (0x130 < value) {
+            comparisonValue = UNK_0200e1e4 + -1;
             goto joined_r0x0200dac4;
           }
-          if (iVar5 != 0x130) goto code_r0x0200db0c;
+          if (value != 0x130) goto code_r0x0200db0c;
         }
-        else if (iVar5 < UNK_0200e1e4 + -3) {
-          iVar6 = UNK_0200e1e4 + -5;
-          if (iVar6 < iVar5) {
-            iVar6 = UNK_0200e1e4 + -4;
+        else if (value < UNK_0200e1e4 + -3) {
+          comparisonValue = UNK_0200e1e4 + -5;
+          if (comparisonValue < value) {
+            comparisonValue = UNK_0200e1e4 + -4;
           }
 joined_r0x0200dac4:
-          if (iVar5 != iVar6) goto code_r0x0200db0c;
+          if (value != comparisonValue) goto code_r0x0200db0c;
         }
       }
     }
 code_r0x0200db50:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e1b4);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e1f4);
-    object = Heap_Alloc(0x4c0,UNK_0200e1f0,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e1b4);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e1f4);
+    object = Heap_Alloc(0x4c0,OVERLAY035_OR_036_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov035_02202378(object,self->phaseArgument);
+      object = func_ov035_02202378(object,self->sceneArgument);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x17:
 code_r0x0200d5d8:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e14c);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e150);
-    object = Heap_Alloc(100,UNK_0200e154,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e14c);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e150);
+    object = Heap_Alloc(100,OVERLAY019_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       /* Retail selects the alternate LCD route for phase 10 so the live main
        * scene remains visible while overlay 19 owns the keypad screen. */
       object = func_ov019_021fce28(
-          object, self->phaseArgument,
-          (void *)(u64)(self->phase == 10));
+          object, self->sceneArgument,
+          (void *)(u64)(self->sceneKind == 10));
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x18:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e1b4);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e1f8);
-    object = Heap_Alloc(UNK_0200e1fc,UNK_0200e200,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e1b4);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e1f8);
+    object = Heap_Alloc(UNK_0200e1fc,OVERLAY037_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov037_021fe4fc(object,self->phaseArgument);
+      object = func_ov037_021fe4fc(object,self->sceneArgument);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
     break;
   case 0x19:
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e100);
-    OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e178);
-    object = Heap_Alloc(0x368,UNK_0200e17c,4,UNK_0200e114);
+    OverlaySlot_LoadOverlay(&self->overlaySlot0,UNK_0200e100);
+    OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e178);
+    object = Heap_Alloc(0x368,OVERLAY013_KIND25_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov013_021fce2c(object);
     }
-    self->ownedObject = object;
+    self->loadedScene = object;
   }
   /* Retail writes one to +0x38 here: enable the newly constructed owned
    * object's VBlank/HBlank callbacks. The runtime callback gate at +0x3c
    * remains unchanged across this construction step. */
-  self->ownedObjectCallbacksEnabled = 1;
+  self->loadedSceneCallbacksEnabled = 1;
   GX_VBlankIntr(savedVBlankState);
-  self->loadState++;
+  self->state++;
 LAB_0200e3bc:
   return 0;
 }
