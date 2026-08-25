@@ -28,7 +28,7 @@ extern void TitleCharacterResourceCollection_Init(void *);
 extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void TitleScrollValue_Init(void *);
 extern void *TitleDialog_Init(void *, void *, void *);
-extern void func_02092f88(void *, s32, void *);
+extern void TitleDialog_SetExternalTextRow(void *, s32, void *);
 extern void func_020afd0c(void *, s32, s32, s32);
 extern void func_ov029_021fce00(void *, void *);
 extern void func_ov029_021fce34(void *, s32, s32, s32, s32);
@@ -123,7 +123,7 @@ extern "C" void *func_ov029_021fce74(void *state, void *argument)
     FIELD(s32, controller, 0xbc) = -2;
     FIELD(s32, controller, 0xd0) = 0xd;
     FIELD(s32, controller, 0xd4) = 0;
-    func_02092f88(controller, 6, (u8 *)state + 0xb0);
+    TitleDialog_SetExternalTextRow(controller, 6, (u8 *)state + 0xb0);
     FIELD(s32, state, 0xa8) = 0;
     FIELD(s32, state, 0xa0) = 0;
     void *child = Heap_Alloc(0x70, data_ov029_021fed18, 4, gHeapContext);

@@ -89,7 +89,7 @@ void *TitleDialog_Init(void *object, void *font, void *text_resource)
 }
 
 /* Assign one of the seven external text rows (retail 0x02092f88). */
-void func_02092f88(void *object, s32 row, void *text)
+void TitleDialog_SetExternalTextRow(void *object, s32 row, void *text)
 {
     if (row >= 0 && row < 7) {
         *(void **)((u8 *)object + 0x44 + (u32)row * 4) = text;
@@ -548,7 +548,7 @@ void TitleDialog_ClearTextRect(void *object)
 
 /* Release the two owned sprite groups and resource triplets while preserving
  * caller-owned controller storage (retail 0x02092E1C). */
-void *func_02092e1c(void *object)
+void *TitleDialog_Destroy(void *object)
 {
     u8 *bytes = (u8 *)object;
 
@@ -561,9 +561,9 @@ void *func_02092e1c(void *object)
 }
 
 /* Heap-owned deleting destructor (retail 0x02092E58). */
-void *func_02092e58(void *object)
+void *TitleDialog_Delete(void *object)
 {
-    func_02092e1c(object);
+    TitleDialog_Destroy(object);
     Heap_Free(object);
     return object;
 }

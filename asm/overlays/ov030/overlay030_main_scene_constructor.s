@@ -21,7 +21,7 @@
 .extern TitleCharacterResourceCollection_Append
 .extern TitleScrollValue_Init
 .extern TitleDialog_Init
-.extern func_02092f88
+.extern TitleDialog_SetExternalTextRow
 .extern SpriteMotionController_Init
 .extern SpriteMotionController_BindSprite
 .extern SpriteMotionController_SetPosition
@@ -209,15 +209,15 @@ L_021fdc7c:
     ldr r0, [r4, #0x2bc]
     add r2, r4, #0x2cc
     mov r1, #0x1
-    bl func_02092f88
+    bl TitleDialog_SetExternalTextRow
     ldr r0, [r4, #0x2bc]
     add r2, r4, #0x2ec
     mov r1, #0x2
-    bl func_02092f88
+    bl TitleDialog_SetExternalTextRow
     ldr r0, [r4, #0x2bc]
     mov r1, #0x3
     add r2, r4, #0x30c
-    bl func_02092f88
+    bl TitleDialog_SetExternalTextRow
     ldr r0, [r4, #0x78]
     add r1, r4, #0x7c
     mov r2, #0x1

@@ -43,7 +43,7 @@ extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void TitleScrollValue_Init(void *);
 extern void *TitleDialog_Init(void *, void *, void *);
-extern void func_02092f88(void *, s32, void *);
+extern void TitleDialog_SetExternalTextRow(void *, s32, void *);
 extern void SpriteMotionController_Init(void *);
 extern u32 genrand_int32(void);
 extern void func_ov002_021fb9c4(void *);
@@ -209,8 +209,8 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     FIELD(s32, dialog, 0xbc) = -2;
     FIELD(s32, dialog, 0xd0) = 13;
     FIELD(s32, dialog, 0xd4) = 0;
-    func_02092f88(dialog, 6, (u8 *)state + 0x398);
-    func_02092f88(dialog, 5, (u8 *)state + 0x3b8);
+    TitleDialog_SetExternalTextRow(dialog, 6, (u8 *)state + 0x398);
+    TitleDialog_SetExternalTextRow(dialog, 5, (u8 *)state + 0x3b8);
 
     void *currency_anim = Heap_Alloc(0x70, data_ov021_02202f90, 4, gHeapContext);
     if (currency_anim != 0)

@@ -20,7 +20,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *TitleDialog_Init(void *storage, void *owner, void *value);
 extern void TitleDialog_ConfigureLayout(void *state, void *first, void *second,
                           s32 third, s32 fourth);
-extern void func_02092f88(void *state, s32 value, void *destination);
+extern void TitleDialog_SetExternalTextRow(void *state, s32 value, void *destination);
 extern u8 data_021f3f54[];
 extern u8 gSystemState[];
 extern void *ModalMessageDatabase_BuildDescriptorById(void *manager,
@@ -238,6 +238,6 @@ void *ModalState_Init(void *storage, s32 first, s32 second)
     *(void **)(self + 0x24c) = dialog;
     TitleDialog_ConfigureLayout(dialog, (u8 *)(u32)first + 0x50,
                   (u8 *)(u32)second + 0x34, 0x78, 0x40);
-    func_02092f88(dialog, 1, self + 0x250);
+    TitleDialog_SetExternalTextRow(dialog, 1, self + 0x250);
     return self;
 }

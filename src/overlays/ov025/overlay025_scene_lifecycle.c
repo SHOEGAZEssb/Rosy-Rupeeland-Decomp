@@ -55,7 +55,7 @@ extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void TitleInterpolatedValue_Init(void *);
 extern void SceneInputBase_Init(void *);
 extern void *TitleDialog_Init(void *, void *, void *);
-extern void func_02092f88(void *, s32, void *);
+extern void TitleDialog_SetExternalTextRow(void *, s32, void *);
 extern void TitleScreenResourceCollection_Init(void *);
 extern void TitleScreenResourceCollection_Destroy(void *);
 extern void TitleScreenResourceCollection_Append(void *, s32);
@@ -251,7 +251,7 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     FIELD(s32, FIELD(void *, scene, 0x50c), 0xb4) = 0;
     FIELD(s32, FIELD(void *, scene, 0x50c), 0xbc) = -2;
     FIELD(s32, FIELD(void *, scene, 0x50c), 0xc0) = 0;
-    func_02092f88(FIELD(void *, scene, 0x50c), 1, (u8 *)scene + 0x510);
+    TitleDialog_SetExternalTextRow(FIELD(void *, scene, 0x50c), 1, (u8 *)scene + 0x510);
     FIELD(void *, scene, 0x59c) = 0;
     GameWork_ClearFlag(gGameWork, 0x3d3);
     GameWork_ClearFlag(gGameWork, 0x3d6);

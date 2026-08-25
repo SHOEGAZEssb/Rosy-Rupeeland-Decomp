@@ -36,7 +36,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_ov045_0220c48c(s32, s32, s32);
 extern void *TitleDialog_Init(void *, void *, void *);
-extern void func_02092f88(void *, s32, void *);
+extern void TitleDialog_SetExternalTextRow(void *, s32, void *);
 extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void *func_ov045_0220b83c(void *);
@@ -122,9 +122,9 @@ extern "C" void *func_ov030_021fda3c(void *scene)
     FIELD(s32, dialog, 0xbc) = -2;
     FIELD(s32, dialog, 0xd0) = 13;
     FIELD(s32, dialog, 0xd4) = 0;
-    func_02092f88(dialog, 1, (u8 *)scene + 0x2cc);
-    func_02092f88(dialog, 2, (u8 *)scene + 0x2ec);
-    func_02092f88(dialog, 3, (u8 *)scene + 0x30c);
+    TitleDialog_SetExternalTextRow(dialog, 1, (u8 *)scene + 0x2cc);
+    TitleDialog_SetExternalTextRow(dialog, 2, (u8 *)scene + 0x2ec);
+    TitleDialog_SetExternalTextRow(dialog, 3, (u8 *)scene + 0x30c);
 
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x7c, 1);
     SpriteMotionController_BindSprite((u8 *)scene + 0xb8, sprite, 0, 0, 0);

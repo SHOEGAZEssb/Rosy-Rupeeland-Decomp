@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
 .extern gDebugHudTextRows
-.extern func_02092f88
+.extern TitleDialog_SetExternalTextRow
 
     .global DebugHudState_UploadRows
 DebugHudState_UploadRows: ; 0x0200f7e4
@@ -16,7 +16,7 @@ L_0200f7f8:
     beq L_0200f810
     ldr r0, [r7, #0x8]
     mov r1, r6
-    bl func_02092f88
+    bl TitleDialog_SetExternalTextRow
 L_0200f810:
     add r6, r6, #0x1
     cmp r6, #0x8

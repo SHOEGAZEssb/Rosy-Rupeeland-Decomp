@@ -17,7 +17,7 @@
     .extern TitleCharacterResourceCollection_Append
     .extern TitleScrollValue_Init
     .extern TitleDialog_Init
-    .extern func_02092f88
+    .extern TitleDialog_SetExternalTextRow
     .extern SpriteMotionController_Init
     .extern func_ov022_021fcf08
     .extern func_ov022_021fd370
@@ -172,11 +172,11 @@ L_021fdf0c:
     ldr r0, [r4, #0x2cc]
     add r2, r4, #0x2d0
     mov r1, #0x5
-    bl func_02092f88
+    bl TitleDialog_SetExternalTextRow
     ldr r0, [r4, #0x2cc]
     add r2, r4, #0x310
     mov r1, #0x6
-    bl func_02092f88
+    bl TitleDialog_SetExternalTextRow
     mov r0, #0x70
     ldr r1, L_021fe004
     mov r2, #0x4

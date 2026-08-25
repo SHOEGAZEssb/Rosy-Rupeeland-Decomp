@@ -30,7 +30,7 @@
 .extern TitleCharacterResourceCollection_Append
 .extern TitleScrollValue_Init
 .extern TitleDialog_Init
-.extern func_02092f88
+.extern TitleDialog_SetExternalTextRow
 .extern Presentation_SetScript
 .extern PresentationList_Append
 .extern SpritePresentation_Init
@@ -513,7 +513,7 @@ L_021ff91c:
     mov r1, #0x1
     str r3, [r0, #0xc0]
     ldr r0, [r10, #0x50c]
-    bl func_02092f88
+    bl TitleDialog_SetExternalTextRow
     mov r1, #0x0
     ldr r0, L_021ffa54
     str r1, [r10, #0x59c]
