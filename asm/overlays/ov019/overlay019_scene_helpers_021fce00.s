@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov019/overlay019_scene_helpers.c. */
 
-.global func_ov019_021fce00
-func_ov019_021fce00:
+.global Overlay019_SetTransition
+Overlay019_SetTransition:
     stmdb sp!, {r0, r1, r2, r3}
     ldr r2, [sp, #0x4]
     ldr r1, [sp, #0x8]
@@ -13,4 +13,4 @@ func_ov019_021fce00:
     str r1, [r0, #0x8]
     add sp, sp, #0x10
     bx lr
-    .size func_ov019_021fce00, . - func_ov019_021fce00
+    .size Overlay019_SetTransition, . - Overlay019_SetTransition

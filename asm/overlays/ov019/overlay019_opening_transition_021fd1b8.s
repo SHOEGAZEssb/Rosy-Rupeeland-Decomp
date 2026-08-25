@@ -6,12 +6,12 @@
     .extern func_ov002_021fbdc0
     .extern Overlay002_UpdateFooterAnimation
     .extern func_ov002_021fbe60
-    .extern func_ov019_021fce00
+    .extern Overlay019_SetTransition
     .extern func_ov019_021fd170
     .extern gGamePhaseCurrencyHud
 
-.global func_ov019_021fd1b8
-func_ov019_021fd1b8:
+.global Overlay019_UpdateOpeningTransition
+Overlay019_UpdateOpeningTransition:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -49,7 +49,7 @@ L_021fd214:
     str r0, [r4, #0x60]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov019_021fce00
+    bl Overlay019_SetTransition
     b L_021fd25c
 L_021fd24c:
     ldr r0, [r4, #0x5c]
@@ -64,4 +64,4 @@ L_021fd25c:
 L_021fd26c: .word gGamePhaseCurrencyHud
 L_021fd270: .word 0x3c84
 L_021fd274: .word data_ov019_021fd5e8
-    .size func_ov019_021fd1b8, . - func_ov019_021fd1b8
+    .size Overlay019_UpdateOpeningTransition, . - Overlay019_UpdateOpeningTransition

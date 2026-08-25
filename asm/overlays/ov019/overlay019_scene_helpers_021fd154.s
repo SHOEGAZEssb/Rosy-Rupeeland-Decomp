@@ -6,9 +6,9 @@
     .extern func_ov002_021fba00
     .extern gGamePhaseCurrencyHud
 
-.global func_ov019_021fd154
+.global Overlay019_SetLcdRouting
 .global func_ov019_021fd170
-func_ov019_021fd154:
+Overlay019_SetLcdRouting:
     ldr r2, L_021fd16c
     ldrh r1, [r2, #0x0]
     bic r1, r1, #0x8000
@@ -16,7 +16,7 @@ func_ov019_021fd154:
     strh r0, [r2, #0x0]
     bx lr
 L_021fd16c: .word 0x4000304
-    .size func_ov019_021fd154, . - func_ov019_021fd154
+    .size Overlay019_SetLcdRouting, . - Overlay019_SetLcdRouting
 func_ov019_021fd170:
     stmdb sp!, {r4, lr}
     mov r4, r0

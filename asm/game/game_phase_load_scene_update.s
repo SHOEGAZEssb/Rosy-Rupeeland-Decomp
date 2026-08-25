@@ -64,7 +64,7 @@
 .extern Overlay017_Effect_Delete
 .extern Overlay018_Scene_Init
 .extern Overlay018_SetDialogLayout
-.extern func_ov019_021fce28
+.extern Overlay019_Scene_Init
 .extern func_ov020_021fd844
 .extern func_ov021_021fd7e8
 .extern func_ov022_021fdd44
@@ -475,7 +475,7 @@ L_0200d5d8:
     moveq r2, #0x1
     ldr r1, [r5, #0x30]
     movne r2, #0x0
-    bl func_ov019_021fce28 ; func_ov028_021fce28
+    bl Overlay019_Scene_Init ; func_ov028_021fce28
 L_0200d624:
     str r0, [r5, #0x24]
     b L_0200dbd4

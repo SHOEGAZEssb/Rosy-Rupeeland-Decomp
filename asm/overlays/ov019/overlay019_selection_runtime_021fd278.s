@@ -10,14 +10,14 @@
     .extern func_ov002_021fbd64
     .extern func_ov002_021fbd98
     .extern func_ov002_021fbdb0
-    .extern func_ov019_021fce00
+    .extern Overlay019_SetTransition
     .extern func_ov019_021fd170
     .extern gGameWork
     .extern gGamePhaseCurrencyHud
     .extern genrand_int32
 
-.global func_ov019_021fd278
-func_ov019_021fd278:
+.global Overlay019_UpdateSelection
+Overlay019_UpdateSelection:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -134,7 +134,7 @@ L_021fd3ec:
     ldr r1, L_021fd4c0
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov019_021fce00
+    bl Overlay019_SetTransition
     b L_021fd4a0
 L_021fd42c:
     mov r0, r4
@@ -148,7 +148,7 @@ L_021fd448:
     ldr r1, L_021fd4c4
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov019_021fce00
+    bl Overlay019_SetTransition
     b L_021fd4a0
 L_021fd45c:
     ldr r0, [r4, #0x5c]
@@ -180,4 +180,4 @@ L_021fd4b8: .word 0x3c82
 L_021fd4bc: .word gGameWork
 L_021fd4c0: .word data_ov019_021fd608
 L_021fd4c4: .word data_ov019_021fd600
-    .size func_ov019_021fd278, . - func_ov019_021fd278
+    .size Overlay019_UpdateSelection, . - Overlay019_UpdateSelection

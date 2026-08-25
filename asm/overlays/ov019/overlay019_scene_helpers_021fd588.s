@@ -3,8 +3,8 @@
     .extern gGamePhaseRuntime
     .extern GamePhaseState_ForwardVCount
 
-.global func_ov019_021fd588
-func_ov019_021fd588:
+.global Overlay019_ForwardVCount
+Overlay019_ForwardVCount:
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x20]
     mov r1, r1, lsl #0x15
@@ -23,4 +23,4 @@ L_021fd5bc:
     ldmia sp!, {r3, pc}
 L_021fd5c4: .word 0x4000006
 L_021fd5c8: .word gGamePhaseRuntime
-    .size func_ov019_021fd588, . - func_ov019_021fd588
+    .size Overlay019_ForwardVCount, . - Overlay019_ForwardVCount

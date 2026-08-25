@@ -22,7 +22,7 @@
     .extern TitlePalette_SetSubBackdrop
     .extern func_020aea7c
     .extern func_020b44e8
-    .extern func_ov019_021fd154
+    .extern Overlay019_SetLcdRouting
 
 .global Overlay019_SetupGraphics
 Overlay019_SetupGraphics:
@@ -49,7 +49,7 @@ Overlay019_SetupGraphics:
     cmp r0, #0x0
     bne L_021fd09c
     mov r0, #0x0
-    bl func_ov019_021fd154
+    bl Overlay019_SetLcdRouting
     mov r1, #0x13
     mov r0, #0x0
     str r1, [r4, #0x48]
@@ -84,7 +84,7 @@ Overlay019_SetupGraphics:
     b L_021fd128
 L_021fd09c:
     mov r0, #0x1
-    bl func_ov019_021fd154
+    bl Overlay019_SetLcdRouting
     mov r1, #0x13
     mov r0, #0x0
     str r1, [r4, #0x4c]

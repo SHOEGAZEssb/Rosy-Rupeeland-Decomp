@@ -23,7 +23,7 @@ extern void GamePhaseAreaScene_Update(void *);
  * +0x14. Always return zero. Global graphics state changes and this directly
  * writes main/sub Nintendo DS display-control and BG offset MMIO.
  */
-extern "C" s32 func_ov019_021fd4d8(void *state)
+extern "C" s32 Overlay019_UpdateDisplay(void *state)
 {
     if (FIELD(u32, state, 0x20) & 0x400) {
         volatile u32 *display;

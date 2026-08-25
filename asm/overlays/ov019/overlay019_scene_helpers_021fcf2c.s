@@ -4,9 +4,9 @@
     .extern data_ov019_021fd638
     .extern func_ov002_021fb9c4
 
-.global func_ov019_021fcf2c
+.global Overlay019_Scene_Deinit
 .global func_ov019_021fcf70
-func_ov019_021fcf2c:
+Overlay019_Scene_Deinit:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021fcf6c
     mov r5, r0
@@ -25,7 +25,7 @@ L_021fcf64:
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_021fcf6c: .word data_ov019_021fd638
-    .size func_ov019_021fcf2c, . - func_ov019_021fcf2c
+    .size Overlay019_Scene_Deinit, . - Overlay019_Scene_Deinit
 func_ov019_021fcf70:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021fcfb8

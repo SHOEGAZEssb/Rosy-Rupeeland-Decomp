@@ -4,8 +4,8 @@
     .extern GamePhaseState_UpdateRenderHelpers
     .extern GamePhaseAreaScene_Update
 
-.global func_ov019_021fd4d8
-func_ov019_021fd4d8:
+.global Overlay019_UpdateDisplay
+Overlay019_UpdateDisplay:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x20]
@@ -52,4 +52,4 @@ L_021fd574:
 L_021fd57c: .word gGamePhaseRuntime
 L_021fd580: .word 0x1ff0000
 L_021fd584: .word 0x4001000
-    .size func_ov019_021fd4d8, . - func_ov019_021fd4d8
+    .size Overlay019_UpdateDisplay, . - Overlay019_UpdateDisplay

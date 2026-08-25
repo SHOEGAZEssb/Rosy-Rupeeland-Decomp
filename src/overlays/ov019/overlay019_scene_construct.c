@@ -20,7 +20,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void SceneInputBase_Init(void *);
 extern void *Overlay002_Presentation_Init(void *, void *, s32);
-extern void func_ov019_021fce00(void *, s32, s32, s32);
+extern void Overlay019_SetTransition(void *, s32, s32, s32);
 extern void Overlay019_SetupGraphics(void *);
 #ifdef __cplusplus
 }
@@ -36,7 +36,7 @@ extern void Overlay019_SetupGraphics(void *);
  * pair data_ov019_021FD5F8, and return state. Heap, GameWork, resource, graphics,
  * and presentation state change; display setup performs Nintendo DS MMIO.
  */
-extern "C" void *func_ov019_021fce28(void *state, void *context, void *mode)
+extern "C" void *Overlay019_Scene_Init(void *state, void *context, void *mode)
 {
     SceneInputBase_Init(state);
     FIELD(const u32 *, state, 0) = data_ov019_021fd638;
@@ -56,7 +56,7 @@ extern "C" void *func_ov019_021fce28(void *state, void *context, void *mode)
 
     GameWork_ClearFlag(gGameWork, 0x390);
     FIELD(u32, state, 0x20) |= 0x400;
-    func_ov019_021fce00(state, data_ov019_021fd5f8[0],
+    Overlay019_SetTransition(state, data_ov019_021fd5f8[0],
                         data_ov019_021fd5f8[1], 0);
     return state;
 }

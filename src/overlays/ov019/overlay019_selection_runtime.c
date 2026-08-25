@@ -21,7 +21,7 @@ extern s32 Overlay002_ApplySelectedKey(void *);
 extern void func_ov002_021fbd64(void *);
 extern s32 func_ov002_021fbd98(void *);
 extern s32 func_ov002_021fbdb0(void *);
-extern void func_ov019_021fce00(void *, s32, s32, s32);
+extern void Overlay019_SetTransition(void *, s32, s32, s32);
 extern void func_ov019_021fd170(void *);
 #ifdef __cplusplus
 }
@@ -41,7 +41,7 @@ extern void func_ov019_021fd170(void *);
  * helper update 0x021FD170 and return zero. Input, PRNG, event, GameWork,
  * presentation, and transition state may change; no direct hardware access.
  */
-extern "C" s32 func_ov019_021fd278(void *state)
+extern "C" s32 Overlay019_UpdateSelection(void *state)
 {
     void *presentation = FIELD(void *, state, 0x5c);
     switch (FIELD(s32, state, 4)) {
@@ -73,7 +73,7 @@ extern "C" s32 func_ov019_021fd278(void *state)
         }
         func_ov002_021fbd64(presentation);
         if (FIELD(s32, presentation, 0x8c) == 12) {
-            func_ov019_021fce00(state, data_ov019_021fd600[0],
+            Overlay019_SetTransition(state, data_ov019_021fd600[0],
                                 data_ov019_021fd600[1], 0);
         } else if (FIELD(s32, presentation, 0x8c) == 13) {
             s32 value = FIELD(s32, presentation, 0x88);
@@ -87,7 +87,7 @@ extern "C" s32 func_ov019_021fd278(void *state)
                 SceneSound_PlayPackedEffect(state, 0x3c82);
                 FIELD(s32, gGameWork, 0x7cc) = value;
                 GameWork_SetFlag(gGameWork, 0x390);
-                func_ov019_021fce00(state, data_ov019_021fd608[0],
+                Overlay019_SetTransition(state, data_ov019_021fd608[0],
                                     data_ov019_021fd608[1], 0);
             }
         }

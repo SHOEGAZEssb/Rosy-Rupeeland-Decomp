@@ -9,14 +9,14 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern SceneInputBase_Init
     .extern func_ov000_021fb6e0
-    .extern func_ov019_021fce00
+    .extern Overlay019_SetTransition
     .extern Overlay019_SetupGraphics
     .extern gDebugFont
     .extern gGameWork
     .extern gHeapContext
 
-.global func_ov019_021fce28
-func_ov019_021fce28:
+.global Overlay019_Scene_Init
+Overlay019_Scene_Init:
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     mov r6, r1
@@ -76,7 +76,7 @@ L_021fcedc:
     str r0, [r4, #0x20]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov019_021fce00
+    bl Overlay019_SetTransition
     mov r0, r4
     ldmia sp!, {r4, r5, r6, pc}
 L_021fcf10: .word data_ov019_021fd638
@@ -86,4 +86,4 @@ L_021fcf1c: .word data_ov019_021fd64c
 L_021fcf20: .word gHeapContext
 L_021fcf24: .word gGameWork
 L_021fcf28: .word data_ov019_021fd5f8
-    .size func_ov019_021fce28, . - func_ov019_021fce28
+    .size Overlay019_Scene_Init, . - Overlay019_Scene_Init

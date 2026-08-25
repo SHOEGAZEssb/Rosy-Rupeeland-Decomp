@@ -1,0 +1,11 @@
+{
+  "func_ov019_021fce00": "Overlay019_SetTransition",
+  "func_ov019_021fce28": "Overlay019_Scene_Init",
+  "func_ov019_021fcf2c": "Overlay019_Scene_Deinit",
+  "func_ov019_021fd154": "Overlay019_SetLcdRouting",
+  "func_ov019_021fd1b8": "Overlay019_UpdateOpeningTransition",
+  "func_ov019_021fd278": "Overlay019_UpdateSelection",
+  "func_ov019_021fd4c8": "Overlay019_UpdateAndComplete",
+  "func_ov019_021fd4d8": "Overlay019_UpdateDisplay",
+  "func_ov019_021fd588": "Overlay019_ForwardVCount"
+}

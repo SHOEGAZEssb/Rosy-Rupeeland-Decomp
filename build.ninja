@@ -27298,25 +27298,25 @@ build build/reports/overlay019_scene_helpers_021fd588.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov019/overlay019_scene_helpers_021fd588.o
 build build/reports/overlay019_scene_helpers_021fce00.txt: match_report build/reports/overlay019_scene_helpers_021fce00.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_scene_helpers_021fce00.json
-  report_args = --section .text --function func_ov019_021fce00 --require-exact
+  report_args = --section .text --function Overlay019_SetTransition --require-exact
 build build/reports/overlay019_scene_helpers_021fcf2c.txt: match_report build/reports/overlay019_scene_helpers_021fcf2c.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_scene_helpers_021fcf2c.json
-  report_args = --section .text --function func_ov019_021fcf2c --require-exact
+  report_args = --section .text --function Overlay019_Scene_Deinit --require-exact
 build build/reports/overlay019_scene_helpers_021fcf70.txt: match_report build/reports/overlay019_scene_helpers_021fcf2c.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_scene_helpers_021fcf2c.json
   report_args = --section .text --function func_ov019_021fcf70 --require-exact
 build build/reports/overlay019_scene_helpers_021fd154.txt: match_report build/reports/overlay019_scene_helpers_021fd154.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_scene_helpers_021fd154.json
-  report_args = --section .text --function func_ov019_021fd154 --require-exact
+  report_args = --section .text --function Overlay019_SetLcdRouting --require-exact
 build build/reports/overlay019_scene_helpers_021fd170.txt: match_report build/reports/overlay019_scene_helpers_021fd154.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_scene_helpers_021fd154.json
   report_args = --section .text --function func_ov019_021fd170 --require-exact
 build build/reports/overlay019_scene_helpers_021fd4c8.txt: match_report build/reports/overlay019_scene_helpers_021fd4c8.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_scene_helpers_021fd4c8.json
-  report_args = --section .text --function func_ov019_021fd4c8 --require-exact
+  report_args = --section .text --function Overlay019_UpdateAndComplete --require-exact
 build build/reports/overlay019_scene_helpers_021fd588.txt: match_report build/reports/overlay019_scene_helpers_021fd588.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_scene_helpers_021fd588.json
-  report_args = --section .text --function func_ov019_021fd588 --require-exact
+  report_args = --section .text --function Overlay019_ForwardVCount --require-exact
 build overlay019_scene_helpers: phony build/decomp/src/overlays/ov019/overlay019_scene_helpers.o build/decomp/asm/overlays/ov019/overlay019_scene_helpers_021fce00.o build/decomp/asm/overlays/ov019/overlay019_scene_helpers_021fcf2c.o build/decomp/asm/overlays/ov019/overlay019_scene_helpers_021fd154.o build/decomp/asm/overlays/ov019/overlay019_scene_helpers_021fd4c8.o build/decomp/asm/overlays/ov019/overlay019_scene_helpers_021fd588.o build/reports/overlay019_scene_helpers_021fce00.txt build/reports/overlay019_scene_helpers_021fcf2c.txt build/reports/overlay019_scene_helpers_021fcf70.txt build/reports/overlay019_scene_helpers_021fd154.txt build/reports/overlay019_scene_helpers_021fd170.txt build/reports/overlay019_scene_helpers_021fd4c8.txt build/reports/overlay019_scene_helpers_021fd588.txt
 
 overlay019_scene_construct_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27330,7 +27330,7 @@ build build/reports/overlay019_scene_construct_021fce28.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov019/overlay019_scene_construct_021fce28.o
 build build/reports/overlay019_scene_construct_021fce28.txt: match_report build/reports/overlay019_scene_construct_021fce28.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_scene_construct_021fce28.json
-  report_args = --section .text --function func_ov019_021fce28 --require-exact
+  report_args = --section .text --function Overlay019_Scene_Init --require-exact
 build overlay019_scene_construct: phony build/decomp/src/overlays/ov019/overlay019_scene_construct.o build/decomp/asm/overlays/ov019/overlay019_scene_construct_021fce28.o build/reports/overlay019_scene_construct_021fce28.txt
 
 overlay019_graphics_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27358,7 +27358,7 @@ build build/reports/overlay019_opening_transition_021fd1b8.json: objdiff build/d
   base_object = build/decomp/asm/overlays/ov019/overlay019_opening_transition_021fd1b8.o
 build build/reports/overlay019_opening_transition_021fd1b8.txt: match_report build/reports/overlay019_opening_transition_021fd1b8.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_opening_transition_021fd1b8.json
-  report_args = --section .text --function func_ov019_021fd1b8 --require-exact
+  report_args = --section .text --function Overlay019_UpdateOpeningTransition --require-exact
 build overlay019_opening_transition: phony build/decomp/src/overlays/ov019/overlay019_opening_transition.o build/decomp/asm/overlays/ov019/overlay019_opening_transition_021fd1b8.o build/reports/overlay019_opening_transition_021fd1b8.txt
 
 overlay019_selection_runtime_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27372,7 +27372,7 @@ build build/reports/overlay019_selection_runtime_021fd278.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov019/overlay019_selection_runtime_021fd278.o
 build build/reports/overlay019_selection_runtime_021fd278.txt: match_report build/reports/overlay019_selection_runtime_021fd278.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_selection_runtime_021fd278.json
-  report_args = --section .text --function func_ov019_021fd278 --require-exact
+  report_args = --section .text --function Overlay019_UpdateSelection --require-exact
 build overlay019_selection_runtime: phony build/decomp/src/overlays/ov019/overlay019_selection_runtime.o build/decomp/asm/overlays/ov019/overlay019_selection_runtime_021fd278.o build/reports/overlay019_selection_runtime_021fd278.txt
 
 overlay019_display_callback_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27386,7 +27386,7 @@ build build/reports/overlay019_display_callback_021fd4d8.json: objdiff build/dec
   base_object = build/decomp/asm/overlays/ov019/overlay019_display_callback_021fd4d8.o
 build build/reports/overlay019_display_callback_021fd4d8.txt: match_report build/reports/overlay019_display_callback_021fd4d8.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_display_callback_021fd4d8.json
-  report_args = --section .text --function func_ov019_021fd4d8 --require-exact
+  report_args = --section .text --function Overlay019_UpdateDisplay --require-exact
 build overlay019_display_callback: phony build/decomp/src/overlays/ov019/overlay019_display_callback.o build/decomp/asm/overlays/ov019/overlay019_display_callback_021fd4d8.o build/reports/overlay019_display_callback_021fd4d8.txt
 
 build overlay019_partial: phony overlay019_scene_helpers overlay019_scene_construct overlay019_graphics_setup overlay019_opening_transition overlay019_selection_runtime overlay019_display_callback

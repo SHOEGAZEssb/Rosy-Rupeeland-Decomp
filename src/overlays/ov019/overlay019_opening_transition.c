@@ -15,7 +15,7 @@ extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void func_ov002_021fbdc0(void *);
 extern s32 Overlay002_UpdateFooterAnimation(void *);
 extern s32 func_ov002_021fbe60(void *);
-extern void func_ov019_021fce00(void *, s32, s32, s32);
+extern void Overlay019_SetTransition(void *, s32, s32, s32);
 extern void func_ov019_021fd170(void *);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ extern void func_ov019_021fd170(void *);
  * zero. Presentation, event, transition, global SDK, and caller state may
  * change; no direct hardware access occurs.
  */
-extern "C" s32 func_ov019_021fd1b8(void *state)
+extern "C" s32 Overlay019_UpdateOpeningTransition(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -45,7 +45,7 @@ extern "C" s32 func_ov019_021fd1b8(void *state)
         if (Overlay002_UpdateFooterAnimation(FIELD(void *, state, 0x5c))) {
             SceneSound_PlayPackedEffect(state, 0x3c84);
             FIELD(s32, state, 0x60) = 0;
-            func_ov019_021fce00(state, data_ov019_021fd5e8[0],
+            Overlay019_SetTransition(state, data_ov019_021fd5e8[0],
                                 data_ov019_021fd5e8[1], 0);
         } else {
             FIELD(s32, state, 0x60) =

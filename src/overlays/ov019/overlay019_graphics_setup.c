@@ -30,7 +30,7 @@ extern void TitlePalette_SetMainBackdrop(s32);
 extern void TitlePalette_SetSubBackdrop(s32);
 extern void func_020aea7c(s32);
 extern void func_020b44e8(void);
-extern void func_ov019_021fd154(s32);
+extern void Overlay019_SetLcdRouting(s32);
 #ifdef __cplusplus
 }
 #endif
@@ -59,7 +59,7 @@ extern "C" void Overlay019_SetupGraphics(void *state)
 
     if (FIELD(void *, state, 0x58) == 0) {
         volatile u16 *background = (volatile u16 *)0x04000008;
-        func_ov019_021fd154(0);
+        Overlay019_SetLcdRouting(0);
         FIELD(s32, state, 0x48) = 0x13;
         TitleDisplay_ConfigureMain2dEngine(0);
         background[0] = (background[0] & 0x43) | 0x3800;
@@ -71,7 +71,7 @@ extern "C" void Overlay019_SetupGraphics(void *state)
         TitlePalette_SetMainBackdrop(0);
     } else {
         volatile u16 *background = (volatile u16 *)0x04001008;
-        func_ov019_021fd154(1);
+        Overlay019_SetLcdRouting(1);
         FIELD(s32, state, 0x4c) = 0x13;
         TitleDisplay_ConfigureSub2dEngine(0);
         func_020aea7c(0x80);

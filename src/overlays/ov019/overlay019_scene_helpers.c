@@ -26,7 +26,7 @@ extern void func_ov002_021fba00(void *);
  * the fourth register argument is unused. Returns void; only caller memory
  * changes and no SDK or hardware effects occur.
  */
-extern "C" void func_ov019_021fce00(void *state, s32 value24, s32 value28,
+extern "C" void Overlay019_SetTransition(void *state, s32 value24, s32 value28,
                                      s32 unused)
 {
     (void)unused;
@@ -41,7 +41,7 @@ extern "C" void func_ov019_021fce00(void *state, s32 value24, s32 value28,
  * destroy/free optional overlay-2 helper +0x5C. Return state without freeing
  * it. Heap, helper, and caller state may change; no direct hardware access.
  */
-extern "C" void *func_ov019_021fcf2c(void *state)
+extern "C" void *Overlay019_Scene_Deinit(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov019_021fd638;
     FIELD(u32, state, 0x20) &= ~0x400U;
@@ -76,7 +76,7 @@ extern "C" void *func_ov019_021fcf70(void *state)
  * return void. This directly selects the LCD routing/swap state; no caller or
  * SDK memory changes.
  */
-extern "C" void func_ov019_021fd154(s32 value)
+extern "C" void Overlay019_SetLcdRouting(s32 value)
 {
     volatile u16 *powerControl = (volatile u16 *)0x04000304;
     *powerControl = (u16)((*powerControl & ~0x8000U) | (value << 15));
@@ -101,7 +101,7 @@ extern "C" void func_ov019_021fd170(void *state)
  * Invoke scene update helper 0x021FD170 and return one. Helper/global SDK state
  * may change; no direct hardware access occurs.
  */
-extern "C" s32 func_ov019_021fd4c8(void *state)
+extern "C" s32 Overlay019_UpdateAndComplete(void *state)
 {
     func_ov019_021fd170(state);
     return 1;
@@ -113,7 +113,7 @@ extern "C" s32 func_ov019_021fd4c8(void *state)
  * +0x24 to 0x0200EA34. Always return zero. Global SDK state may change and this
  * function directly reads display timing hardware.
  */
-extern "C" s32 func_ov019_021fd588(void *state)
+extern "C" s32 Overlay019_ForwardVCount(void *state)
 {
     if ((FIELD(u32, state, 0x20) & 0x400) &&
         FIELD(void *, state, 0x58) != 0) {

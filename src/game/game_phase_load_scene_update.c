@@ -96,7 +96,7 @@ extern void *Overlay027Scene_Init(void *object);
 extern void *Overlay017_Effect_Delete(void *object);
 extern void *func_ov036_022045d4(void *object, s32 argument);
 extern void *func_ov035_02202378(void *object, s32 argument);
-extern void *func_ov019_021fce28(void *object, s32 argument, void *mode);
+extern void *Overlay019_Scene_Init(void *object, s32 argument, void *mode);
 extern void *func_ov037_021fe4fc(void *object, s32 argument);
 #ifdef __cplusplus
 }
@@ -878,7 +878,7 @@ code_r0x0200d5d8:
     if (object != 0) {
       /* Retail selects the alternate LCD route for phase 10 so the live main
        * scene remains visible while overlay 19 owns the keypad screen. */
-      object = func_ov019_021fce28(
+      object = Overlay019_Scene_Init(
           object, self->sceneArgument,
           (void *)(u64)(self->sceneKind == 10));
     }
