@@ -49,7 +49,7 @@ extern void func_ov047_0220bda8(void *worker);
  * state08, increment the shared count, and return self.  The retail path calls
  * the refresh function even if worker allocation failed.
  */
-OverlayWorkerPresentation *func_020200bc(
+OverlayWorkerPresentation *OverlayWorkerPresentation_Init(
     OverlayWorkerPresentation *self, s32 first, s32 second, s32 third,
     s32 fourth)
 {
@@ -95,14 +95,14 @@ static OverlayWorkerPresentation *teardown_overlay_worker_presentation(
  * release the shared resource globally when the last instance leaves, tear
  * down the embedded resource and FieldEffect base, and return self.
  */
-OverlayWorkerPresentation *func_02020188(
+OverlayWorkerPresentation *OverlayWorkerPresentation_Destroy(
     OverlayWorkerPresentation *self)
 {
     return teardown_overlay_worker_presentation(self);
 }
 
-/* Perform func_02020188's teardown, free self, and return its old address. */
-OverlayWorkerPresentation *func_020201fc(
+/* Perform shared teardown, free self, and return its old address. */
+OverlayWorkerPresentation *OverlayWorkerPresentation_DestroyAndFree(
     OverlayWorkerPresentation *self)
 {
     teardown_overlay_worker_presentation(self);
@@ -117,7 +117,7 @@ OverlayWorkerPresentation *func_020201fc(
  * consume GameWork flag 0x3bb and return one if it was set; otherwise return
  * zero.  Values of state08 beyond one are inert and return zero.
  */
-s32 func_02020278(OverlayWorkerPresentation *self)
+s32 OverlayWorkerPresentation_Update(OverlayWorkerPresentation *self)
 {
     s32 mode;
 

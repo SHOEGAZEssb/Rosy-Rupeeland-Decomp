@@ -7,9 +7,9 @@
 .extern func_ov047_0220c338
 .extern gGameWork
 
-.global func_02020278
-    .type func_02020278, @function
-func_02020278: ; 0x02020278
+.global OverlayWorkerPresentation_Update
+    .type OverlayWorkerPresentation_Update, @function
+OverlayWorkerPresentation_Update: ; 0x02020278
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8]
@@ -75,4 +75,4 @@ func_02020278: ; 0x02020278
     ldmia sp!, {r4, pc}
 .L_0202035c: .word gGameWork
 .L_02020360: .word 0x3bb
-    .size func_02020278, .-func_02020278
+    .size OverlayWorkerPresentation_Update, .-OverlayWorkerPresentation_Update

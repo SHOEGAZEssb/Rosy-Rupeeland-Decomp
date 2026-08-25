@@ -13,9 +13,9 @@
 .extern gGameWork
 .extern gHeapContext
 
-.global func_020200bc
-    .type func_020200bc, @function
-func_020200bc: ; 0x020200bc
+.global OverlayWorkerPresentation_Init
+    .type OverlayWorkerPresentation_Init, @function
+OverlayWorkerPresentation_Init: ; 0x020200bc
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov r6, r1
@@ -69,4 +69,4 @@ func_020200bc: ; 0x020200bc
 .L_0202017c: .word 0x2f
 .L_02020180: .word gOverlayWorkerAllocationTag
 .L_02020184: .word gHeapContext
-    .size func_020200bc, .-func_020200bc
+    .size OverlayWorkerPresentation_Init, .-OverlayWorkerPresentation_Init

@@ -8,9 +8,9 @@
 .extern FieldEffect_DestroyBase
 .extern func_ov047_0220ba64
 
-.global func_02020188
-    .type func_02020188, @function
-func_02020188: ; 0x02020188
+.global OverlayWorkerPresentation_Destroy
+    .type OverlayWorkerPresentation_Destroy, @function
+OverlayWorkerPresentation_Destroy: ; 0x02020188
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_020201f4
     mov r4, r0
@@ -42,4 +42,4 @@ func_02020188: ; 0x02020188
     ldmia sp!, {r3, r4, r5, pc}
 .L_020201f4: .word data_020d6304
 .L_020201f8: .word data_021055cc
-    .size func_02020188, .-func_02020188
+    .size OverlayWorkerPresentation_Destroy, .-OverlayWorkerPresentation_Destroy

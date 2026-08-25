@@ -8404,25 +8404,25 @@ build build/reports/overlay_worker_presentation_020200bc.json: objdiff build/dec
   base_object = build/decomp/asm/game/overlay_worker_presentation_020200bc.o
 build build/reports/overlay_worker_presentation_020200bc.txt: match_report build/reports/overlay_worker_presentation_020200bc.json | tools/report_objdiff.py
   report_json = build/reports/overlay_worker_presentation_020200bc.json
-  report_args = --section .text --function func_020200bc --require-exact
+  report_args = --section .text --function OverlayWorkerPresentation_Init --require-exact
 build build/reports/overlay_worker_presentation_02020188.json: objdiff build/decomp/delinks/asm/game/overlay_worker_presentation_02020188.o | build/decomp/asm/game/overlay_worker_presentation_02020188.o
   target_object = build/decomp/delinks/asm/game/overlay_worker_presentation_02020188.o
   base_object = build/decomp/asm/game/overlay_worker_presentation_02020188.o
 build build/reports/overlay_worker_presentation_02020188.txt: match_report build/reports/overlay_worker_presentation_02020188.json | tools/report_objdiff.py
   report_json = build/reports/overlay_worker_presentation_02020188.json
-  report_args = --section .text --function func_02020188 --require-exact
+  report_args = --section .text --function OverlayWorkerPresentation_Destroy --require-exact
 build build/reports/overlay_worker_presentation_020201fc.json: objdiff build/decomp/delinks/asm/game/overlay_worker_presentation_020201fc.o | build/decomp/asm/game/overlay_worker_presentation_020201fc.o
   target_object = build/decomp/delinks/asm/game/overlay_worker_presentation_020201fc.o
   base_object = build/decomp/asm/game/overlay_worker_presentation_020201fc.o
 build build/reports/overlay_worker_presentation_020201fc.txt: match_report build/reports/overlay_worker_presentation_020201fc.json | tools/report_objdiff.py
   report_json = build/reports/overlay_worker_presentation_020201fc.json
-  report_args = --section .text --function func_020201fc --require-exact
+  report_args = --section .text --function OverlayWorkerPresentation_DestroyAndFree --require-exact
 build build/reports/overlay_worker_presentation_02020278.json: objdiff build/decomp/delinks/asm/game/overlay_worker_presentation_02020278.o | build/decomp/asm/game/overlay_worker_presentation_02020278.o
   target_object = build/decomp/delinks/asm/game/overlay_worker_presentation_02020278.o
   base_object = build/decomp/asm/game/overlay_worker_presentation_02020278.o
 build build/reports/overlay_worker_presentation_02020278.txt: match_report build/reports/overlay_worker_presentation_02020278.json | tools/report_objdiff.py
   report_json = build/reports/overlay_worker_presentation_02020278.json
-  report_args = --section .text --function func_02020278 --require-exact
+  report_args = --section .text --function OverlayWorkerPresentation_Update --require-exact
 build build/reports/overlay_worker_presentation.txt: phony build/reports/overlay_worker_presentation_020200bc.txt build/reports/overlay_worker_presentation_02020188.txt build/reports/overlay_worker_presentation_020201fc.txt build/reports/overlay_worker_presentation_02020278.txt
 build build/reports/sprite_motion_delta_02020364.json: objdiff build/decomp/delinks/asm/game/sprite_motion_delta_02020364.o | build/decomp/asm/game/sprite_motion_delta_02020364.o
   target_object = build/decomp/delinks/asm/game/sprite_motion_delta_02020364.o

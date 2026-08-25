@@ -23,7 +23,7 @@
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern Overlay52Scene_Init
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_020200bc
+.extern OverlayWorkerPresentation_Init
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
 .extern func_0206ec68
@@ -270,7 +270,7 @@ L_02016508:
     mov r2, r6
     mov r3, r7
     str r5, [sp]
-    bl func_020200bc
+    bl OverlayWorkerPresentation_Init
     mov r1, r0
 L_02016594:
     ldr r0, L_020167fc

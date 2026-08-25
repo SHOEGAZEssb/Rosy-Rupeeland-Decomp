@@ -23,7 +23,7 @@ extern void *func_0209d774(...);
 extern void *func_0209f2f8(...);
 extern void *func_0209fd50(...);
 extern void *func_020a042c(...);
-extern void *func_020200bc(...);
+extern void *OverlayWorkerPresentation_Init(...);
 extern void *Overlay52Scene_Init(...);
 extern void *func_0206ec68(...);
 extern void RuntimePresentationManager_AppendFirstListEffect(...);
@@ -123,7 +123,8 @@ s32 GamePhaseActorScriptVm_DispatchRuntimeCommand(GamePhaseActorScriptVm *self)
             - (position.value.z >> 12) - 16;
         commandObject = allocCommandObject(0x1c, data_020d5b74);
         if (commandObject != 0)
-            commandObject = func_020200bc(commandObject, parameter, effectX, effectY, 30);
+            commandObject = OverlayWorkerPresentation_Init(
+                commandObject, parameter, effectX, effectY, 30);
         RuntimePresentationManager_AppendFirstListEffect(runtime + 0x2f7c, commandObject);
         VecFx32Object_Destroy(&position);
         return 0;

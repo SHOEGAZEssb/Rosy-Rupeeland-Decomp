@@ -31,8 +31,8 @@ extern void RuntimePresentationManager_AppendFirstListEffect(void *list, void *o
 extern void RuntimePresentationManager_AppendSecondListEffect(void *list, void *object);
 extern void *OverlayTransitionScene_Init(void *object, s32 kind, s32 parameter);
 extern void *Overlay33RuntimeScene_Init(void *object, s32 parameter);
-extern void *func_020200bc(void *object, s32 value, s32 zero0, s32 zero1,
-                           s32 parameter);
+extern void *OverlayWorkerPresentation_Init(
+    void *object, s32 value, s32 zero0, s32 zero1, s32 parameter);
 extern void *DisplayFadePresentation_Init(void *object, s32 mode, s32 value,
                                           s32 parameter);
 extern void SceneDisplayResources_Setup(s32 sceneIndex);
@@ -146,7 +146,8 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 10:
         createdObject = allocateObject(0x1c, data_020d5b74);
         if (createdObject)
-            createdObject = func_020200bc(createdObject, value, 0, 0, parameter);
+            createdObject = OverlayWorkerPresentation_Init(
+                createdObject, value, 0, 0, parameter);
         RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), createdObject);
         break;
     case 9:

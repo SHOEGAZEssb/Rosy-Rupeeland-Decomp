@@ -1,0 +1,6 @@
+{
+  "func_020200bc": "OverlayWorkerPresentation_Init",
+  "func_02020188": "OverlayWorkerPresentation_Destroy",
+  "func_020201fc": "OverlayWorkerPresentation_DestroyAndFree",
+  "func_02020278": "OverlayWorkerPresentation_Update"
+}

@@ -23,7 +23,7 @@
 .extern Overlay33RuntimeScene_Init
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_AppendSecondListEffect
-.extern func_020200bc
+.extern OverlayWorkerPresentation_Init
 .extern DisplayFadePresentation_Init
 .extern SceneDisplayResources_Setup
 .extern DualArrayBlendPresentation_Init
@@ -245,7 +245,7 @@ L_02017fc8:
     mov r1, r6
     mov r3, r2
     str r5, [sp, #0x0]
-    bl func_020200bc
+    bl OverlayWorkerPresentation_Init
     mov r1, r0
 L_02017ffc:
     ldr r0, L_020181c4

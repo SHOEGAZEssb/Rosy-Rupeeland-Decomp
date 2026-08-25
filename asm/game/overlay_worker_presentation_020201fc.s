@@ -8,9 +8,9 @@
 .extern FieldEffect_DestroyBase
 .extern func_ov047_0220ba64
 
-.global func_020201fc
-    .type func_020201fc, @function
-func_020201fc: ; 0x020201fc
+.global OverlayWorkerPresentation_DestroyAndFree
+    .type OverlayWorkerPresentation_DestroyAndFree, @function
+OverlayWorkerPresentation_DestroyAndFree: ; 0x020201fc
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_02020270
     mov r4, r0
@@ -44,4 +44,4 @@ func_020201fc: ; 0x020201fc
     ldmia sp!, {r3, r4, r5, pc}
 .L_02020270: .word data_020d6304
 .L_02020274: .word data_021055cc
-    .size func_020201fc, .-func_020201fc
+    .size OverlayWorkerPresentation_DestroyAndFree, .-OverlayWorkerPresentation_DestroyAndFree
