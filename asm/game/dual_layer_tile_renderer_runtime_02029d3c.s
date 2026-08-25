@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_02029d3c
-    .type func_02029d3c, @function
-func_02029d3c: ; 0x02029d3c
+    .global DualLayerTileRenderer_NoOpHook
+    .type DualLayerTileRenderer_NoOpHook, @function
+DualLayerTileRenderer_NoOpHook: ; 0x02029d3c
     bx lr
-    .size func_02029d3c, . - func_02029d3c
+    .size DualLayerTileRenderer_NoOpHook, . - DualLayerTileRenderer_NoOpHook
 

@@ -2,9 +2,9 @@
 .text
 .extern ByteTileMapOwner_SetCell
 
-    .global func_02029d40
-    .type func_02029d40, @function
-func_02029d40: ; 0x02029d40
+    .global TileDrawCommand_Draw
+    .type TileDrawCommand_Draw, @function
+TileDrawCommand_Draw: ; 0x02029d40
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     mov r10, r3
@@ -54,5 +54,5 @@ func_02029d40: ; 0x02029d40
     blt .L_02029d70
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_02029d40, . - func_02029d40
+    .size TileDrawCommand_Draw, . - TileDrawCommand_Draw
 

@@ -70,7 +70,7 @@ extern void *Bg2ExtendedTileLayer_Init(void *, s32, s32, s32);
 extern void TileLayer_InitSourceMap(void *, void *, u32, u32, void *, s32, s32, void *);
 extern void TileLayer_SetScrollPositionDirect(void *, s32, s32);
 extern void TileLayer_RebuildCache(void *);
-extern void func_0202badc(void *);
+extern void ByteTileMapOwner_NoOpHook4(void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void TileLayer_ScrollToPixelPosition(void *, s32, s32);
@@ -227,7 +227,7 @@ void DualLayerTileRenderer_UpdatePosition(DualLayerTileRenderer *self, const voi
     s32 transformed[4];
     s32 x;
     s32 y;
-    func_0202badc(self);
+    ByteTileMapOwner_NoOpHook4(self);
     VecFx32_Subtract(transformed, position, self->origin_50);
     x = transformed[1] >> 12;
     y = transformed[2] >> 12;
@@ -409,7 +409,7 @@ void DualLayerTileRenderer_LoadEmbeddedRendererEntry(DualLayerTileRenderer *self
 }
 
 /* Recovered empty renderer hook; it has no inputs, state changes, or return value. */
-void func_02029d3c(void)
+void DualLayerTileRenderer_NoOpHook(void)
 {
 }
 

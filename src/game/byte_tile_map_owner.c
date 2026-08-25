@@ -75,28 +75,28 @@ ByteTileMapOwner *ByteTileMapOwner_Destroy(ByteTileMapOwner *self)
 }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bacc(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook0(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bad0(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook1(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bad4(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook2(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bad8(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook3(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202badc(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook4(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bae0(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook5(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bae4(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook6(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bae8(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook7(ByteTileMapOwner *self) { (void)self; }
 
 /*
  * Return the signed byte at (x,y). Both coordinates use dimensions_20's low
@@ -147,7 +147,7 @@ s32 ByteTileMapOwner_ReturnZero(const ByteTileMapOwner *self)
 }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bbf4(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook8(ByteTileMapOwner *self) { (void)self; }
 
 /* Replace flag bit one with enabled's low bit and preserve every other flag. */
 void ByteTileMapOwner_SetFlag2Enabled(ByteTileMapOwner *self, s32 enabled)
@@ -156,10 +156,10 @@ void ByteTileMapOwner_SetFlag2Enabled(ByteTileMapOwner *self, s32 enabled)
 }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bc10(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook9(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
-void func_0202bc14(ByteTileMapOwner *self) { (void)self; }
+void ByteTileMapOwner_NoOpHook10(ByteTileMapOwner *self) { (void)self; }
 
 #ifdef __cplusplus
 }

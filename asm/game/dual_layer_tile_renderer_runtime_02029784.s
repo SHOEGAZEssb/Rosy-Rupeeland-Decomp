@@ -4,7 +4,7 @@
 .extern VecFx32_Subtract
 .extern TileLayer_ScrollToPixelPosition
 .extern AnimatedTileStagingBuffer_Advance
-.extern func_0202badc
+.extern ByteTileMapOwner_NoOpHook4
 .extern func_020b17ec
 .extern func_020b1854
 
@@ -15,7 +15,7 @@ DualLayerTileRenderer_UpdatePosition: ; 0x02029784
     sub sp, sp, #0x10
     mov r4, r0
     mov r5, r1
-    bl func_0202badc
+    bl ByteTileMapOwner_NoOpHook4
     add r0, sp, #0x0
     mov r1, r5
     add r2, r4, #0x50

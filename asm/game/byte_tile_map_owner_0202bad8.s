@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/byte_tile_map_owner.c.
 .text
 
-    .global func_0202bad8
-    .type func_0202bad8, @function
-func_0202bad8: ; 0x0202bad8
+    .global ByteTileMapOwner_NoOpHook3
+    .type ByteTileMapOwner_NoOpHook3, @function
+ByteTileMapOwner_NoOpHook3: ; 0x0202bad8
     bx lr
-    .size func_0202bad8, . - func_0202bad8
+    .size ByteTileMapOwner_NoOpHook3, . - ByteTileMapOwner_NoOpHook3

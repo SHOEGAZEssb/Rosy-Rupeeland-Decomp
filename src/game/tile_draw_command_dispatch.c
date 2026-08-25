@@ -27,7 +27,7 @@ extern void ByteTileMapOwner_SetCell(void *, s32, s32, s32);
  * slot 12 receives layer bits 0..1 and each source/destination coordinate,
  * then ByteTileMapOwner_SetCell publishes packed bits 2..6 at the destination.
  */
-void func_02029d40(void *renderer, s32 x, s32 y,
+void TileDrawCommand_Draw(void *renderer, s32 x, s32 y,
                    const TileDrawCommand *command)
 {
     s32 row;
@@ -52,7 +52,7 @@ void func_02029d40(void *renderer, s32 x, s32 y,
 #endif
 
 /* Walk 0x1c-byte commands until both dimensions are zero, dispatching vtable slot 14. */
-void func_02029df4(void *renderer, s32 x, s32 y,
+void TileDrawCommandList_Draw(void *renderer, s32 x, s32 y,
                    const TileDrawCommand *commands)
 {
     while (commands->width_10 != 0 || commands->height_14 != 0) {

@@ -10197,20 +10197,20 @@ build build/reports/dual_layer_tile_renderer_runtime_02029d3c.json: objdiff buil
   base_object = build/decomp/src/game/dual_layer_tile_renderer_runtime.o
 build build/reports/dual_layer_tile_renderer_runtime_02029d3c.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029d3c.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029d3c.json
-  report_args = --section .text --function func_02029d3c --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_NoOpHook --require-exact
 build build/reports/dual_layer_tile_renderer_runtime.txt: phony build/reports/dual_layer_tile_renderer_runtime_02029370.txt build/reports/dual_layer_tile_renderer_runtime_02029648.txt build/reports/dual_layer_tile_renderer_runtime_0202973c.txt build/reports/dual_layer_tile_renderer_runtime_02029784.txt build/reports/dual_layer_tile_renderer_runtime_02029864.txt build/reports/dual_layer_tile_renderer_runtime_02029914.txt build/reports/dual_layer_tile_renderer_runtime_02029a00.txt build/reports/dual_layer_tile_renderer_runtime_02029a1c.txt build/reports/dual_layer_tile_renderer_runtime_02029a40.txt build/reports/dual_layer_tile_renderer_runtime_02029a80.txt build/reports/dual_layer_tile_renderer_runtime_02029ad0.txt build/reports/dual_layer_tile_renderer_runtime_02029b70.txt build/reports/dual_layer_tile_renderer_runtime_02029bfc.txt build/reports/dual_layer_tile_renderer_runtime_02029c94.txt build/reports/dual_layer_tile_renderer_runtime_02029ca4.txt build/reports/dual_layer_tile_renderer_runtime_02029d3c.txt
 build build/reports/tile_draw_command_dispatch_02029d40.json: objdiff build/decomp/delinks/asm/game/tile_draw_command_dispatch_02029d40.o | build/decomp/asm/game/tile_draw_command_dispatch_02029d40.o
   target_object = build/decomp/delinks/asm/game/tile_draw_command_dispatch_02029d40.o
   base_object = build/decomp/asm/game/tile_draw_command_dispatch_02029d40.o
 build build/reports/tile_draw_command_dispatch_02029d40.txt: match_report build/reports/tile_draw_command_dispatch_02029d40.json | tools/report_objdiff.py
   report_json = build/reports/tile_draw_command_dispatch_02029d40.json
-  report_args = --section .text --function func_02029d40 --require-exact
+  report_args = --section .text --function TileDrawCommand_Draw --require-exact
 build build/reports/tile_draw_command_dispatch_02029df4.json: objdiff build/decomp/delinks/asm/game/tile_draw_command_dispatch_02029df4.o | build/decomp/asm/game/tile_draw_command_dispatch_02029df4.o
   target_object = build/decomp/delinks/asm/game/tile_draw_command_dispatch_02029df4.o
   base_object = build/decomp/asm/game/tile_draw_command_dispatch_02029df4.o
 build build/reports/tile_draw_command_dispatch_02029df4.txt: match_report build/reports/tile_draw_command_dispatch_02029df4.json | tools/report_objdiff.py
   report_json = build/reports/tile_draw_command_dispatch_02029df4.json
-  report_args = --section .text --function func_02029df4 --require-exact
+  report_args = --section .text --function TileDrawCommandList_Draw --require-exact
 build build/reports/tile_draw_command_dispatch.txt: phony build/reports/tile_draw_command_dispatch_02029d40.txt build/reports/tile_draw_command_dispatch_02029df4.txt
 build build/reports/owned_tile_buffer_02029e44.json: objdiff build/decomp/delinks/asm/game/owned_tile_buffer_02029e44.o | build/decomp/src/game/owned_tile_buffer.o
   target_object = build/decomp/delinks/asm/game/owned_tile_buffer_02029e44.o
@@ -13431,49 +13431,49 @@ build build/reports/byte_tile_map_owner_0202bacc.json: objdiff build/decomp/deli
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bacc.txt: match_report build/reports/byte_tile_map_owner_0202bacc.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bacc.json
-  report_args = --section .text --function func_0202bacc --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook0 --require-exact
 build build/reports/byte_tile_map_owner_0202bad0.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad0.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad0.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bad0.txt: match_report build/reports/byte_tile_map_owner_0202bad0.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bad0.json
-  report_args = --section .text --function func_0202bad0 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook1 --require-exact
 build build/reports/byte_tile_map_owner_0202bad4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad4.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad4.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bad4.txt: match_report build/reports/byte_tile_map_owner_0202bad4.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bad4.json
-  report_args = --section .text --function func_0202bad4 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook2 --require-exact
 build build/reports/byte_tile_map_owner_0202bad8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad8.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad8.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bad8.txt: match_report build/reports/byte_tile_map_owner_0202bad8.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bad8.json
-  report_args = --section .text --function func_0202bad8 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook3 --require-exact
 build build/reports/byte_tile_map_owner_0202badc.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202badc.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202badc.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202badc.txt: match_report build/reports/byte_tile_map_owner_0202badc.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202badc.json
-  report_args = --section .text --function func_0202badc --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook4 --require-exact
 build build/reports/byte_tile_map_owner_0202bae0.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae0.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae0.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bae0.txt: match_report build/reports/byte_tile_map_owner_0202bae0.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bae0.json
-  report_args = --section .text --function func_0202bae0 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook5 --require-exact
 build build/reports/byte_tile_map_owner_0202bae4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae4.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae4.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bae4.txt: match_report build/reports/byte_tile_map_owner_0202bae4.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bae4.json
-  report_args = --section .text --function func_0202bae4 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook6 --require-exact
 build build/reports/byte_tile_map_owner_0202bae8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae8.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae8.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bae8.txt: match_report build/reports/byte_tile_map_owner_0202bae8.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bae8.json
-  report_args = --section .text --function func_0202bae8 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook7 --require-exact
 build build/reports/byte_tile_map_owner_0202baec.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202baec.o | build/decomp/asm/game/byte_tile_map_owner_0202baec.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202baec.o
   base_object = build/decomp/asm/game/byte_tile_map_owner_0202baec.o
@@ -13503,7 +13503,7 @@ build build/reports/byte_tile_map_owner_0202bbf4.json: objdiff build/decomp/deli
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bbf4.txt: match_report build/reports/byte_tile_map_owner_0202bbf4.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bbf4.json
-  report_args = --section .text --function func_0202bbf4 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook8 --require-exact
 build build/reports/byte_tile_map_owner_0202bbf8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbf8.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbf8.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
@@ -13515,13 +13515,13 @@ build build/reports/byte_tile_map_owner_0202bc10.json: objdiff build/decomp/deli
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bc10.txt: match_report build/reports/byte_tile_map_owner_0202bc10.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bc10.json
-  report_args = --section .text --function func_0202bc10 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook9 --require-exact
 build build/reports/byte_tile_map_owner_0202bc14.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bc14.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bc14.o
   base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bc14.txt: match_report build/reports/byte_tile_map_owner_0202bc14.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bc14.json
-  report_args = --section .text --function func_0202bc14 --require-exact
+  report_args = --section .text --function ByteTileMapOwner_NoOpHook10 --require-exact
 build build/reports/byte_tile_map_owner.txt: phony build/reports/byte_tile_map_owner_0202b9dc.txt build/reports/byte_tile_map_owner_0202ba4c.txt build/reports/byte_tile_map_owner_0202ba74.txt build/reports/byte_tile_map_owner_0202baa4.txt build/reports/byte_tile_map_owner_0202bacc.txt build/reports/byte_tile_map_owner_0202bad0.txt build/reports/byte_tile_map_owner_0202bad4.txt build/reports/byte_tile_map_owner_0202bad8.txt build/reports/byte_tile_map_owner_0202badc.txt build/reports/byte_tile_map_owner_0202bae0.txt build/reports/byte_tile_map_owner_0202bae4.txt build/reports/byte_tile_map_owner_0202bae8.txt build/reports/byte_tile_map_owner_0202baec.txt build/reports/byte_tile_map_owner_0202bb60.txt build/reports/byte_tile_map_owner_0202bbd0.txt build/reports/byte_tile_map_owner_0202bbd8.txt build/reports/byte_tile_map_owner_0202bbf4.txt build/reports/byte_tile_map_owner_0202bbf8.txt build/reports/byte_tile_map_owner_0202bc10.txt build/reports/byte_tile_map_owner_0202bc14.txt
 
 build byte_tile_map_owner: phony build/decomp/src/game/byte_tile_map_owner.o build/decomp/asm/game/byte_tile_map_owner_0202b9dc.o build/decomp/asm/game/byte_tile_map_owner_0202ba4c.o build/decomp/asm/game/byte_tile_map_owner_0202ba74.o build/decomp/asm/game/byte_tile_map_owner_0202baa4.o build/decomp/asm/game/byte_tile_map_owner_0202bacc.o build/decomp/asm/game/byte_tile_map_owner_0202bad0.o build/decomp/asm/game/byte_tile_map_owner_0202bad4.o build/decomp/asm/game/byte_tile_map_owner_0202bad8.o build/decomp/asm/game/byte_tile_map_owner_0202badc.o build/decomp/asm/game/byte_tile_map_owner_0202bae0.o build/decomp/asm/game/byte_tile_map_owner_0202bae4.o build/decomp/asm/game/byte_tile_map_owner_0202bae8.o build/decomp/asm/game/byte_tile_map_owner_0202baec.o build/decomp/asm/game/byte_tile_map_owner_0202bb60.o build/decomp/asm/game/byte_tile_map_owner_0202bbd0.o build/decomp/asm/game/byte_tile_map_owner_0202bbd8.o build/decomp/asm/game/byte_tile_map_owner_0202bbf4.o build/decomp/asm/game/byte_tile_map_owner_0202bbf8.o build/decomp/asm/game/byte_tile_map_owner_0202bc10.o build/decomp/asm/game/byte_tile_map_owner_0202bc14.o build/reports/byte_tile_map_owner.txt

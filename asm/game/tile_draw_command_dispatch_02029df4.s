@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_02029df4
-    .type func_02029df4, @function
-func_02029df4: ; 0x02029df4
+    .global TileDrawCommandList_Draw
+    .type TileDrawCommandList_Draw, @function
+TileDrawCommandList_Draw: ; 0x02029df4
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov r6, r1
@@ -27,5 +27,5 @@ func_02029df4: ; 0x02029df4
     cmpeq r0, #0x0
     bne .L_02029e0c
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_02029df4, . - func_02029df4
+    .size TileDrawCommandList_Draw, . - TileDrawCommandList_Draw
 

@@ -1,0 +1,5 @@
+{
+  "func_02029d3c": "DualLayerTileRenderer_NoOpHook",
+  "func_02029d40": "TileDrawCommand_Draw",
+  "func_02029df4": "TileDrawCommandList_Draw"
+}
