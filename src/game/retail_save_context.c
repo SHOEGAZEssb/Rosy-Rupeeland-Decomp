@@ -40,10 +40,10 @@ extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern s32 GamePhaseProgress_GetCurrentAdjustedThreshold(void *state);
 extern s32 GamePhaseProgressController_GetStage(void *state);
 extern s32 GamePhaseProgressController_GetComparisonStage(void *state);
-extern void func_0206392c(void *state, s32 mode);
+extern void ActorRuntimeManager_SaveState(void *state, s32 mode);
 extern void RetailRecordManager_SaveState(void *state, s32 mode);
 extern void RetailResourceDescriptorManager_SaveState(void *state, s32 mode);
-extern void func_020981f0(void *state, s32 mode);
+extern void RetailSelectionManager_SaveHistoryState(void *state, s32 mode);
 extern void RuntimeRecordTable_SaveActiveState(void *state, s32 mode);
 extern void *data_021e9ac0;
 extern void *data_021f5128;
@@ -51,12 +51,12 @@ extern u8 data_021f38fc[];
 extern u8 data_021f5f18[];
 extern u8 data_021f3d68[];
 extern u8 data_021e9e00[];
-extern void func_02063a00(void *state);
+extern void ActorRuntimeManager_LoadState(void *state);
 extern void RetailRecordManager_LoadState(void *state);
 extern void RetailResourceDescriptorManager_LoadState(void *state);
-extern void func_02098298(void *state);
+extern void RetailSelectionManager_LoadHistoryState(void *state);
 extern void RuntimeRecordTable_LoadActiveState(void *state);
-extern void func_0206f8c8(void *state);
+extern void RetailPhaseDatabase_RebuildUnlockHighWater(void *state);
 extern void Type7Actor_LoadPersistentState(void);
 extern void *PackedTimerArray_GetGlobal(void);
 extern void PackedTimerArray_LoadFromGameWork(void *array);
@@ -78,12 +78,12 @@ void RetailSaveContext_RestoreGameSingletons(void)
 {
     void *progress;
 
-    func_02063a00(data_021e9ac0);
+    ActorRuntimeManager_LoadState(data_021e9ac0);
     RetailRecordManager_LoadState(data_021f5128);
     RetailResourceDescriptorManager_LoadState(data_021f38fc);
-    func_02098298(data_021f5f18);
+    RetailSelectionManager_LoadHistoryState(data_021f5f18);
     RuntimeRecordTable_LoadActiveState(data_021f3d68);
-    func_0206f8c8(data_021e9e00);
+    RetailPhaseDatabase_RebuildUnlockHighWater(data_021e9e00);
     Type7Actor_LoadPersistentState();
     PackedTimerArray_LoadFromGameWork(PackedTimerArray_GetGlobal());
     progress = GamePhaseProgress_GetOrCreateGlobal();
@@ -621,10 +621,10 @@ static u32 retail_save_crc32(const u8 *bytes, u32 size)
 /* Apply the retail write-side save mode to the game-owned singleton set. */
 static void retail_save_apply_game_singleton_mode(s32 mode)
 {
-    func_0206392c(data_021e9ac0, mode);
+    ActorRuntimeManager_SaveState(data_021e9ac0, mode);
     RetailRecordManager_SaveState(data_021f5128, mode);
     RetailResourceDescriptorManager_SaveState(data_021f38fc, mode);
-    func_020981f0(data_021f5f18, mode);
+    RetailSelectionManager_SaveHistoryState(data_021f5f18, mode);
     RuntimeRecordTable_SaveActiveState(data_021f3d68, mode);
 }
 

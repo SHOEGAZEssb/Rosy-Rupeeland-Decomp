@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
-extern s32 func_0206fa9c(void *);
+extern s32 RetailPhaseRecord_IsUnlocked(void *);
 extern void *func_ov016_021fce34(void *, void *, s32);
 extern void func_ov016_021fd0e0(void *, void *, const u8 *, u32);
 extern void func_ov016_021fd210(void *);
@@ -59,7 +59,7 @@ extern "C" void func_ov016_021ff288(void *state)
     for (index = 0; index < FIELD(s32, data_021e9e00, 4); index++) {
         void *slot = (u8 *)FIELD(void *, data_021e9e00, 8) + index * 4;
 
-        if (func_0206fa9c(slot) != 0) {
+        if (RetailPhaseRecord_IsUnlocked(slot) != 0) {
             u8 payload[8];
             void *record = FIELD(void *, slot, 0);
             u32 flags = 0;

@@ -13,11 +13,11 @@ extern u8 data_021f5138[];
 extern u8 data_021e9ad0[];
 extern u8 data_021f4020[];
 extern void *RetailRecordCategory_InsertById(void *category, u16 actor_id);
-extern s32 func_02062e70(void *entry, const void *packed);
+extern s32 ActorInventoryEntry_LoadPackedState(void *entry, const void *packed);
 extern void RetailResourceDescriptor_LoadPackedState(void *entry, const void *packed);
 extern void RecordDescriptor_BindById(void *entry, u16 id);
 extern void RetailSelectionHistoryEntry_Init(void *entry, u16 identifier);
-extern s32 func_0206fa9c(void *entry_slot);
+extern s32 RetailPhaseRecord_IsUnlocked(void *entry_slot);
 extern void *ActorDatabase_FindDescriptorById(void *manager, u16 actor_id);
 extern void OS_Halt(void);
 extern void RetailRecordCategory12_ClearTrackedRecordFlags(void *category);
@@ -114,7 +114,7 @@ s32 ActorDescriptor_IsInvalid(void *entry_pointer)
 
 /* Restore one packed inventory entry. The word stores a 10-bit ID, five-bit
  * status, 10-bit quantity, and seven-bit subtype without overlapping fields. */
-s32 func_02062e70(void *entry_pointer, const void *packed_pointer)
+s32 ActorInventoryEntry_LoadPackedState(void *entry_pointer, const void *packed_pointer)
 {
     u8 *entry = (u8 *)entry_pointer;
     u32 packed = *(const u32 *)packed_pointer;
@@ -259,7 +259,7 @@ void RetailSelectionHistory_InsertUniqueId(void *state_pointer, u16 identifier)
     *(s32 *)(state + 0x460) = count + 1;
 }
 
-s32 func_0206fa9c(void *entry_slot_pointer)
+s32 RetailPhaseRecord_IsUnlocked(void *entry_slot_pointer)
 {
     u8 *entry = *(u8 **)entry_slot_pointer;
     s32 bit = *(s32 *)(entry + 0x104);
@@ -292,7 +292,7 @@ static void PackEntry(const u8 *entry, u32 *packed)
 }
 
 /* Exact portable behavior of assembly-selected retail 0x0206392C. */
-void func_0206392c(void *state_pointer, s32 mode)
+void ActorRuntimeManager_SaveState(void *state_pointer, s32 mode)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -441,7 +441,7 @@ void RetailRecordManager_SaveState(void *state_pointer, s32 mode)
 }
 
 /* Exact portable behavior of assembly-selected retail 0x020981F0. */
-void func_020981f0(void *state_pointer, s32 mode)
+void RetailSelectionManager_SaveHistoryState(void *state_pointer, s32 mode)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -503,7 +503,7 @@ void RetailRecordCategory9_PopulateTypeZeroRecords(void *category_pointer)
 }
 
 /* Exact portable behavior of assembly-selected retail 0x02063A00. */
-void func_02063a00(void *state_pointer)
+void ActorRuntimeManager_LoadState(void *state_pointer)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -518,7 +518,7 @@ void func_02063a00(void *state_pointer)
         u32 index;
         for (index = 0; index < ReadU32(state, count_offsets[group]); ++index) {
             u8 *entry = *(u8 **)(state + entry_offsets[group]) + index * 0x24;
-            if (func_02062e70(entry, work + work_offsets[group] + index * 4))
+            if (ActorInventoryEntry_LoadPackedState(entry, work + work_offsets[group] + index * 4))
                 active = (active + 1) & 0xffffu;
         }
         WriteU32(state, active_offsets[group], active);
@@ -576,7 +576,7 @@ void RetailRecordManager_LoadState(void *state_pointer)
 }
 
 /* Exact portable behavior of assembly-selected retail 0x02098298. */
-void func_02098298(void *state_pointer)
+void RetailSelectionManager_LoadHistoryState(void *state_pointer)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -619,7 +619,7 @@ void RuntimeRecordTable_LoadActiveState(void *state_pointer)
 }
 
 /* Exact portable behavior of assembly-selected retail 0x0206F8C8. */
-void func_0206f8c8(void *state_pointer)
+void RetailPhaseDatabase_RebuildUnlockHighWater(void *state_pointer)
 {
     u8 *state = (u8 *)state_pointer;
     s32 highest = -1;
@@ -627,7 +627,7 @@ void func_0206f8c8(void *state_pointer)
 
     for (index = 0; index < ReadU32(state, 0); ++index) {
         u8 **slot = *(u8 ***)(state + 8) + index;
-        if (func_0206fa9c(slot))
+        if (RetailPhaseRecord_IsUnlocked(slot))
             highest = *(s32 *)(*slot + 0x108);
     }
     WriteU32(state, 4, (u32)(highest + 1));

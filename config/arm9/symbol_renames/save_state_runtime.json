@@ -1,0 +1,9 @@
+{
+  "func_02062e70": "ActorInventoryEntry_LoadPackedState",
+  "func_0206392c": "ActorRuntimeManager_SaveState",
+  "func_02063a00": "ActorRuntimeManager_LoadState",
+  "func_0206f8c8": "RetailPhaseDatabase_RebuildUnlockHighWater",
+  "func_0206fa9c": "RetailPhaseRecord_IsUnlocked",
+  "func_020981f0": "RetailSelectionManager_SaveHistoryState",
+  "func_02098298": "RetailSelectionManager_LoadHistoryState"
+}

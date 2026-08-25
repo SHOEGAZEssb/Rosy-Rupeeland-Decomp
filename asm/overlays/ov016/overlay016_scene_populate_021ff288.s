@@ -8,7 +8,7 @@
     .extern data_ov016_02201588
     .extern data_ov016_02201590
     .extern ActorDescriptorState_FindInactiveQuantity
-    .extern func_0206fa9c
+    .extern RetailPhaseRecord_IsUnlocked
     .extern func_ov016_021fce34
     .extern func_ov016_021fd0e0
     .extern func_ov016_021fd210
@@ -52,7 +52,7 @@ L_021ff2f8:
     ldr r0, L_021ff3fc
     ldr r0, [r0, #0x8]
     add r0, r0, r4, lsl #0x2
-    bl func_0206fa9c
+    bl RetailPhaseRecord_IsUnlocked
     cmp r0, #0x0
     beq L_021ff3b0
     ldr r0, L_021ff3fc
