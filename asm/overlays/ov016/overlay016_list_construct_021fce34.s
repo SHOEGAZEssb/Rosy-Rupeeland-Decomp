@@ -16,14 +16,14 @@
     .extern InventoryScroll_Init
     .extern InventoryScroll_UpdatePresentation
     .extern CxxArray_ConstructWithCookie
-    .extern func_ov016_021fce00
+    .extern Overlay016_InitListDescriptor
     .extern func_ov016_021fd1e0
     .extern gHeapContext
 
 /* Exact fallback for list construction; see src/overlays/ov016/overlay016_list_lifecycle.c. */
-    .global func_ov016_021fce34
+    .global Overlay016_List_Init
 
-func_ov016_021fce34:
+Overlay016_List_Init:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0xc
     mov r5, r0
@@ -168,8 +168,8 @@ L_021fd050: .word data_020f4e18
 L_021fd054: .word data_021e9e00
 L_021fd058: .word data_ov016_02201570
 L_021fd05c: .word gHeapContext
-L_021fd060: .word func_ov016_021fce00
+L_021fd060: .word Overlay016_InitListDescriptor
 L_021fd064: .word data_ov016_02201578
 L_021fd068: .word 0x7005
 
-    .size func_ov016_021fce34, . - func_ov016_021fce34
+    .size Overlay016_List_Init, . - Overlay016_List_Init

@@ -2,12 +2,12 @@
     .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
 /* Exact fallbacks for list callbacks and visibility helpers; see src/overlays/ov016/overlay016_list_helpers.c. */
-    .global func_ov016_021fd0dc
+    .global Overlay016_ListDescriptor_NoOp
     .global func_ov016_021fd0e0
     .global func_ov016_021fd188
     .global func_ov016_021fd1e0
 
-func_ov016_021fd0dc:
+Overlay016_ListDescriptor_NoOp:
     bx lr
 
     .global func_ov016_021fd0e0
@@ -99,7 +99,7 @@ func_ov016_021fd1e0:
     bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r4, pc}
 
-    .size func_ov016_021fd0dc, func_ov016_021fd0e0 - func_ov016_021fd0dc
+    .size Overlay016_ListDescriptor_NoOp, func_ov016_021fd0e0 - Overlay016_ListDescriptor_NoOp
     .size func_ov016_021fd0e0, func_ov016_021fd188 - func_ov016_021fd0e0
     .size func_ov016_021fd188, func_ov016_021fd1e0 - func_ov016_021fd188
     .size func_ov016_021fd1e0, . - func_ov016_021fd1e0

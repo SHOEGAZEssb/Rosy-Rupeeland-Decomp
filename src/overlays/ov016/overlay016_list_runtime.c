@@ -13,7 +13,7 @@ extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void InventoryScroll_UpdatePresentation(void *);
-extern void func_ov016_021fd270(void *, s32);
+extern void Overlay016_CreateListSprite(void *, s32);
 extern void *func_ov016_021fd628(void *);
 #ifdef __cplusplus
 }
@@ -26,7 +26,7 @@ extern void *func_ov016_021fd628(void *);
  * descriptor sprite pointers may change. Return void; graphics resources are
  * created through SDK helpers, with no direct MMIO.
  */
-extern "C" void func_ov016_021fd210(void *state)
+extern "C" void Overlay016_CreateVisibleListSprites(void *state)
 {
     void *presentation = FIELD(void *, state, 0x58);
     s32 index = FIELD(s32, presentation, 0xc);
@@ -34,7 +34,7 @@ extern "C" void func_ov016_021fd210(void *state)
 
     FIELD(s32, FIELD(void *, state, 4), 0x1c) = 0x20 - index * 0x18;
     for (; index <= end; index++) {
-        func_ov016_021fd270(state, index);
+        Overlay016_CreateListSprite(state, index);
     }
 }
 
@@ -44,7 +44,7 @@ extern "C" void func_ov016_021fd210(void *state)
  * row index, offset by 0x32 when flag bits 0-2 at +0xC are all clear. Store the
  * new sprite pointer and return void. SDK graphics state changes; no direct MMIO.
  */
-extern "C" void func_ov016_021fd270(void *state, s32 index)
+extern "C" void Overlay016_CreateListSprite(void *state, s32 index)
 {
     void *descriptor;
     void *sprite;

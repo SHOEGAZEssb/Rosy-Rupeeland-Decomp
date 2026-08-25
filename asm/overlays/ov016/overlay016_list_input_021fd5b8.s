@@ -1,15 +1,15 @@
     .text
     .extern func_020befec
-    .extern func_ov016_021fd270
+    .extern Overlay016_CreateListSprite
     .extern func_ov016_021fd310
-    .extern func_ov016_021fd3f8
+    .extern Overlay016_RenderList
 
 /* Exact fallbacks; see src/overlays/ov016/overlay016_list_input.c. */
-    .global func_ov016_021fd5b8
+    .global Overlay016_HitTestList
     .global func_ov016_021fd628
     .global func_ov016_021fd640
 
-func_ov016_021fd5b8:
+Overlay016_HitTestList:
     stmdb sp!, {r4, lr}
     ldr r2, [r1, #0x4]
     ldr r1, [r1, #0x8]
@@ -77,9 +77,9 @@ func_ov016_021fd640:
     ldr r1, [r4, #0x58]
     mov r0, r4
     ldr r1, [r1, #0x70]
-    bl func_ov016_021fd270
+    bl Overlay016_CreateListSprite
     mov r0, r4
-    bl func_ov016_021fd3f8
+    bl Overlay016_RenderList
 L_021fd6b8:
     mov r0, #0x1
     ldmia sp!, {r4, pc}
@@ -87,6 +87,6 @@ L_021fd6c0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 
-    .size func_ov016_021fd5b8, func_ov016_021fd628 - func_ov016_021fd5b8
+    .size Overlay016_HitTestList, func_ov016_021fd628 - Overlay016_HitTestList
     .size func_ov016_021fd628, func_ov016_021fd640 - func_ov016_021fd628
     .size func_ov016_021fd640, . - func_ov016_021fd640

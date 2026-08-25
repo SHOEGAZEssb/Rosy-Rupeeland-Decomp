@@ -3,12 +3,12 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern PresentationList_DeleteAll
-    .extern func_ov016_021fe0d4
+    .extern Overlay016_SpriteWrapper_NoOp
 
 /* Exact fallbacks for actor-group destruction; see src/overlays/ov016/overlay016_actor_group.c. */
-    .global func_ov016_021fe24c
+    .global Overlay016_ActorGroup_Destroy
 
-func_ov016_021fe24c:
+Overlay016_ActorGroup_Destroy:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xd0
@@ -27,7 +27,7 @@ L_021fe274:
     str r1, [r4, #0xd0]
     bl PresentationList_DeleteAll
     add r0, r4, #0x20
-    bl func_ov016_021fe0d4
+    bl Overlay016_SpriteWrapper_NoOp
     add r0, r4, #0xc
     bl AnimationResourceState_Destroy
     mov r0, r4
@@ -36,4 +36,4 @@ L_021fe274:
     ldmia sp!, {r4, pc}
 L_021fe2ac: .word data_ov016_02201520
 
-    .size func_ov016_021fe24c, . - func_ov016_021fe24c
+    .size Overlay016_ActorGroup_Destroy, . - Overlay016_ActorGroup_Destroy

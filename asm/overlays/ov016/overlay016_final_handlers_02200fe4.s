@@ -5,7 +5,7 @@
     .extern data_ov016_02201438
     .extern SceneSound_PlayPackedEffect
     .extern Overlay000_Grid_Render
-    .extern func_ov016_021fe6f4
+    .extern Overlay016_HasActorGroupCompleted
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
 .global func_ov016_02200fe4
@@ -42,7 +42,7 @@ L_02201030:
     b L_022010a8
 L_02201054:
     ldr r0, [r4, #0x470]
-    bl func_ov016_021fe6f4
+    bl Overlay016_HasActorGroupCompleted
     cmp r0, #0x0
     beq L_022010a8
     ldr r2, [r4, #0x474]

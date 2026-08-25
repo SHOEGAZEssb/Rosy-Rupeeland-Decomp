@@ -7,9 +7,9 @@
     .extern SceneSound_PlayPackedEffect
     .extern Overlay000_Grid_Render
     .extern Overlay000_GetActiveMetadata
-    .extern func_ov016_021fe390
-    .extern func_ov016_021fe4d0
-    .extern func_ov016_021fe6f4
+    .extern Overlay016_SpawnMatchingActors
+    .extern Overlay016_AddActor
+    .extern Overlay016_HasActorGroupCompleted
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
 .global func_ov016_02200e88
@@ -30,7 +30,7 @@ L_02200ea8:
     bl Overlay000_GetActiveMetadata
     mov r1, r0
     ldr r0, [r4, #0x470]
-    bl func_ov016_021fe4d0
+    bl Overlay016_AddActor
     cmp r0, #0x0
     mov r0, r4
     beq L_02200f10
@@ -62,7 +62,7 @@ L_02200f2c:
     mov r2, r0
     ldr r0, [r4, #0x470]
     ldr r1, [r4, #0x468]
-    bl func_ov016_021fe390
+    bl Overlay016_SpawnMatchingActors
     movs r5, r0
     mov r0, r4
     beq L_02200f8c
@@ -92,7 +92,7 @@ L_02200f8c:
     b L_02200fc8
 L_02200fa8:
     ldr r0, [r4, #0x470]
-    bl func_ov016_021fe6f4
+    bl Overlay016_HasActorGroupCompleted
     cmp r0, #0x0
     beq L_02200fc8
     ldr r1, L_02200fe0

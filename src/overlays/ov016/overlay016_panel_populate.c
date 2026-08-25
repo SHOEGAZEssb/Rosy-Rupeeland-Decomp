@@ -65,7 +65,7 @@ static void overlay016_load_row_resource(void *resource, void *row)
  * first-column and baseline adjustments. Return void; extensive SDK graphics
  * and font state changes occur, with no direct MMIO.
  */
-extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
+extern "C" void Overlay016_PopulatePanel(void *state, void *selection, s32 image)
 {
     void *wrapper = FIELD(void *, selection, 0);
     s32 i;

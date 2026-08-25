@@ -1,10 +1,10 @@
     .text
-    .extern func_ov016_021fd270
+    .extern Overlay016_CreateListSprite
 
 /* Exact fallbacks for visible-row creation; see src/overlays/ov016/overlay016_list_runtime.c. */
-    .global func_ov016_021fd210
+    .global Overlay016_CreateVisibleListSprites
 
-func_ov016_021fd210:
+Overlay016_CreateVisibleListSprites:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x58]
@@ -20,7 +20,7 @@ func_ov016_021fd210:
 L_021fd240:
     mov r0, r4
     mov r1, r5
-    bl func_ov016_021fd270
+    bl Overlay016_CreateListSprite
     add r5, r5, #0x1
 L_021fd250:
     ldr r0, [r4, #0x58]
@@ -32,4 +32,4 @@ L_021fd250:
     ble L_021fd240
     ldmia sp!, {r3, r4, r5, pc}
 
-    .size func_ov016_021fd210, . - func_ov016_021fd210
+    .size Overlay016_CreateVisibleListSprites, . - Overlay016_CreateVisibleListSprites

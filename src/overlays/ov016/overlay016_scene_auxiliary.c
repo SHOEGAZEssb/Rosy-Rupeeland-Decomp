@@ -25,8 +25,8 @@ extern void *func_ov000_021fcab4(void *, s32);
 extern void func_ov000_021fcae8(void *, void *, s32);
 extern void Overlay000_CaptureViewState(void *, void *);
 extern void Overlay000_GetViewRecordFromIndex(void *, void *, s32);
-extern void *func_ov016_021fe118(void *, s32);
-extern void *func_ov016_021fe24c(void *);
+extern void *Overlay016_ActorGroup_Init(void *, s32);
+extern void *Overlay016_ActorGroup_Destroy(void *);
 extern void func_ov016_021ff6e8(void *, u32);
 extern void func_ov016_021ff700(void *, u32);
 #ifdef __cplusplus
@@ -59,7 +59,7 @@ extern "C" void Overlay016_PopulateAuxiliaryList(void *state)
 
     object = Heap_Alloc(0xe8, data_ov016_022015a0, 4, gHeapContext);
     if (object != 0) {
-        object = func_ov016_021fe118(object, FIELD(s32, state, 0x58));
+        object = Overlay016_ActorGroup_Init(object, FIELD(s32, state, 0x58));
     }
     FIELD(void *, state, 0x470) = object;
     FIELD(s32, state, 0x46c) = 0;
@@ -157,7 +157,7 @@ extern "C" void func_ov016_021ff71c(void *state)
 
     object = FIELD(void *, state, 0x470);
     if (object != 0) {
-        func_ov016_021fe24c(object);
+        Overlay016_ActorGroup_Destroy(object);
         Heap_Free(object);
     }
     FIELD(void *, state, 0x470) = 0;

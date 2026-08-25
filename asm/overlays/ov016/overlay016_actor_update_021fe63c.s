@@ -5,9 +5,9 @@
     .extern SpriteMotionController_Update
 
 /* Exact fallbacks for actor update; see src/overlays/ov016/overlay016_actor_runtime.c. */
-    .global func_ov016_021fe63c
+    .global Overlay016_UpdateActors
 
-func_ov016_021fe63c:
+Overlay016_UpdateActors:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x20
@@ -60,4 +60,4 @@ L_021fe6e8:
     bne L_021fe6d4
     ldmia sp!, {r4, pc}
 
-    .size func_ov016_021fe63c, . - func_ov016_021fe63c
+    .size Overlay016_UpdateActors, . - Overlay016_UpdateActors

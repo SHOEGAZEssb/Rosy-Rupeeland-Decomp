@@ -21,11 +21,11 @@
     .extern InventoryScroll_ResetPresentationState
     .extern SpriteMotionController_BeginHitResponse
     .extern ModalState_UpdateInput
-    .extern func_ov016_021fd3f8
-    .extern func_ov016_021fd5b8
+    .extern Overlay016_RenderList
+    .extern Overlay016_HitTestList
     .extern func_ov016_021fd628
     .extern func_ov016_021fd640
-    .extern func_ov016_021fe728
+    .extern Overlay016_HasActorReachedLimit
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
     .extern func_ov016_021ff908
@@ -113,7 +113,7 @@ L_0220017c:
     beq L_0220033c
     ldr r0, [r6, #0x444]
     add r1, r6, #0x30
-    bl func_ov016_021fd5b8
+    bl Overlay016_HitTestList
     mov r4, r0
     mov r0, r5
     add r1, r6, #0x30
@@ -243,7 +243,7 @@ L_0220033c:
     b L_02200470
 L_02200370:
     add r0, r6, #0xe8
-    bl func_ov016_021fe728
+    bl Overlay016_HasActorReachedLimit
     cmp r0, #0x0
     beq L_02200470
     ldr r0, [r6, #0x444]
@@ -288,7 +288,7 @@ L_022003f0:
     mov r0, r6
     bl func_ov016_021ff9b8
     ldr r0, [r6, #0x444]
-    bl func_ov016_021fd3f8
+    bl Overlay016_RenderList
     ldr r1, [r6, #0x4]
     mov r0, #0x0
     sub r1, r1, #0x2
@@ -297,7 +297,7 @@ L_022003f0:
     b L_02200470
 L_02200438:
     add r0, r6, #0xe8
-    bl func_ov016_021fe728
+    bl Overlay016_HasActorReachedLimit
     cmp r0, #0x0
     movne r0, #0x0
     strne r0, [r6, #0x4]

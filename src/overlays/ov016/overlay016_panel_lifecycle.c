@@ -34,7 +34,7 @@ extern void TitleCharacterResourceCollection_Append(void *, s32);
  * shifts the first column left by 16 pixels. Return state. SDK graphics objects
  * are allocated/initialized, but the function performs no direct MMIO.
  */
-extern "C" void *func_ov016_021fd6c8(void *state, void *owner)
+extern "C" void *Overlay016_Panel_Init(void *state, void *owner)
 {
     s32 i;
     s32 xOffset = gSystemState[0x5f] != 0 ? -0x10 : 0;

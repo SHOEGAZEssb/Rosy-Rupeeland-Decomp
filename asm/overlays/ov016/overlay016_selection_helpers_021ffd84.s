@@ -6,7 +6,7 @@
     .extern SpriteMotionController_SetAnimation
     .extern func_ov000_021fb890
     .extern func_ov016_021fd9dc
-    .extern func_ov016_021fdaa0
+    .extern Overlay016_PopulatePanel
     .extern func_ov016_021ffc2c
 .global func_ov016_021ffd84
 func_ov016_021ffd84:
@@ -55,7 +55,7 @@ L_021ffddc:
     ldr r3, [r3, #0x4c]
     ldr r0, [r4, #0x448]
     mla r1, r2, r1, r3
-    bl func_ov016_021fdaa0
+    bl Overlay016_PopulatePanel
     ldmia sp!, {r4, pc}
     .size func_ov016_021ffd84, . - func_ov016_021ffd84
 

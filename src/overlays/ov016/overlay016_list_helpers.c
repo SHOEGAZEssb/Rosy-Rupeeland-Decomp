@@ -17,7 +17,7 @@ extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
  * +8/+0xA/+0xC, and zero the six-byte payload at +0xE. The descriptor is fully
  * overwritten, the function returns void, and there are no hardware effects.
  */
-extern "C" void func_ov016_021fce00(void *descriptor)
+extern "C" void Overlay016_InitListDescriptor(void *descriptor)
 {
     s32 i;
 
@@ -36,7 +36,7 @@ extern "C" void func_ov016_021fce00(void *descriptor)
  * array element pointer supplied by the runtime, changes no state, returns
  * void, and has no SDK or hardware effects.
  */
-extern "C" void func_ov016_021fd0dc(void *descriptor)
+extern "C" void Overlay016_ListDescriptor_NoOp(void *descriptor)
 {
     (void)descriptor;
 }

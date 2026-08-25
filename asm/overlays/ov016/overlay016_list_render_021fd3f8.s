@@ -11,9 +11,9 @@
     .extern gSystemState
 
 /* Exact fallback; see src/overlays/ov016/overlay016_list_render.c. */
-    .global func_ov016_021fd3f8
+    .global Overlay016_RenderList
 
-func_ov016_021fd3f8:
+Overlay016_RenderList:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x10
     mov r2, #0xb0
@@ -132,4 +132,4 @@ L_021fd5ac: .word data_021e9ac0
 L_021fd5b0: .word gSystemState
 L_021fd5b4: .word data_021f3ecc
 
-    .size func_ov016_021fd3f8, . - func_ov016_021fd3f8
+    .size Overlay016_RenderList, . - Overlay016_RenderList

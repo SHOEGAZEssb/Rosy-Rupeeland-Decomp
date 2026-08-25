@@ -31,7 +31,7 @@ extern void GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, 
  * Rendering stops at count +0x54, returns void, and mutates font surfaces through
  * SDK calls. The system-state byte +0x5F shifts numeric baselines by two pixels.
  */
-extern "C" void func_ov016_021fd3f8(void *state)
+extern "C" void Overlay016_RenderList(void *state)
 {
     void *font = FIELD(void *, state, 0);
     s32 slot;

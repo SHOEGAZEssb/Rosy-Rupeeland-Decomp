@@ -1,9 +1,9 @@
     .text
 
 /* Exact fallbacks for descriptor initialization; see src/overlays/ov016/overlay016_list_helpers.c. */
-    .global func_ov016_021fce00
+    .global Overlay016_InitListDescriptor
 
-func_ov016_021fce00:
+Overlay016_InitListDescriptor:
     mov r3, #0x0
     str r3, [r0, #0x0]
     str r3, [r0, #0x4]
@@ -19,4 +19,4 @@ L_021fce1c:
     blt L_021fce1c
     bx lr
 
-    .size func_ov016_021fce00, . - func_ov016_021fce00
+    .size Overlay016_InitListDescriptor, . - Overlay016_InitListDescriptor

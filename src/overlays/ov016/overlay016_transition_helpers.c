@@ -17,7 +17,7 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void SceneSound_PlayPackedEffect(void *, s32);
 extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void SpriteMotionController_Hide(void *);
-extern void func_ov016_021fd3f8(void *);
+extern void Overlay016_RenderList(void *);
 extern void *func_ov016_021fd628(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff848(void *, u16);
@@ -48,7 +48,7 @@ extern "C" s32 func_ov016_021ffe90(void *state)
             func_ov016_021ff848(state, 0x18);
         }
         if (FIELD(s32, FIELD(void *, state, 0x444), 0x50) != 0) {
-            func_ov016_021fd3f8(FIELD(void *, state, 0x444));
+            Overlay016_RenderList(FIELD(void *, state, 0x444));
             func_ov016_021ffba4(state);
             Overlay016_SyncSelectedPanel(state);
             Overlay016ActorValue_Init(state, data_ov016_022013d8[0],

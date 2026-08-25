@@ -4,9 +4,9 @@
     .extern func_02091c7c
 
 /* Exact fallbacks for panel indicator animation; see src/overlays/ov016/overlay016_panel_animation.c. */
-    .global func_ov016_021fdf50
+    .global Overlay016_UpdatePanelAnimation
 
-func_ov016_021fdf50:
+Overlay016_UpdatePanelAnimation:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xf8
@@ -57,4 +57,4 @@ L_021fdff0:
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
 
-    .size func_ov016_021fdf50, . - func_ov016_021fdf50
+    .size Overlay016_UpdatePanelAnimation, . - Overlay016_UpdatePanelAnimation

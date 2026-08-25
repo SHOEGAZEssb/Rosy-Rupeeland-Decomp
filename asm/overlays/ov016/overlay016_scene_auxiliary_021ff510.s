@@ -13,7 +13,7 @@
     .extern func_ov000_021fcab4
     .extern func_ov000_021fcae8
     .extern Overlay000_GetViewRecordFromIndex
-    .extern func_ov016_021fe118
+    .extern Overlay016_ActorGroup_Init
     .extern func_ov016_021ff6e8
     .extern func_ov016_021ff700
     .extern gDebugFont
@@ -42,7 +42,7 @@ L_021ff540:
     cmp r0, #0x0
     beq L_021ff568
     ldr r1, [r8, #0x58]
-    bl func_ov016_021fe118
+    bl Overlay016_ActorGroup_Init
 L_021ff568:
     ldr r1, L_021ff6e0
     str r0, [r8, #0x470]

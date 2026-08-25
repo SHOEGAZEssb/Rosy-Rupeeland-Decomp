@@ -7,9 +7,9 @@
     .extern SpritePresentation_InitVariant
 
 /* Exact fallbacks for sprite-wrapper construction; see src/overlays/ov016/overlay016_sprite_wrapper.c. */
-    .global func_ov016_021fe004
+    .global Overlay016_SpriteWrapper_Init
 
-func_ov016_021fe004:
+Overlay016_SpriteWrapper_Init:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r5, r1
@@ -45,4 +45,4 @@ func_ov016_021fe004:
 L_021fe084: .word data_ov016_0220155c
 L_021fe088: .word data_020f4e18
 
-    .size func_ov016_021fe004, . - func_ov016_021fe004
+    .size Overlay016_SpriteWrapper_Init, . - Overlay016_SpriteWrapper_Init

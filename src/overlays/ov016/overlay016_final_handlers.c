@@ -28,8 +28,8 @@ extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void PresentationList_DeleteAll(void *);
 extern s32 func_02096450(void *, void *, void *, s32, s32);
 extern void Overlay000_Grid_Render(void *);
-extern void func_ov016_021fd3f8(void *);
-extern s32 func_ov016_021fe6f4(void *);
+extern void Overlay016_RenderList(void *);
+extern s32 Overlay016_HasActorGroupCompleted(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff094(void *);
 extern void Overlay016_CreateSceneSprite(void *);
@@ -68,7 +68,7 @@ extern "C" s32 func_ov016_02200fe4(void *state)
         }
         /* Mode-one success continues into the actor completion wait. */
     case 1:
-        if (func_ov016_021fe6f4(FIELD(void *, state, 0x470)) != 0) {
+        if (Overlay016_HasActorGroupCompleted(FIELD(void *, state, 0x470)) != 0) {
             void *actor = FIELD(void *, state, 0x474);
             FIELD(s32, actor, 0x1c)++;
             FIELD(void *, state, 0x474) = 0;
@@ -107,7 +107,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
             func_ov016_021ff848(state, 0x18);
             Overlay016_CreateSceneSprite(state);
             func_ov016_021ff094(state);
-            func_ov016_021fd3f8(FIELD(void *, state, 0x444));
+            Overlay016_RenderList(FIELD(void *, state, 0x444));
             func_ov016_021ffba4(state);
             DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;

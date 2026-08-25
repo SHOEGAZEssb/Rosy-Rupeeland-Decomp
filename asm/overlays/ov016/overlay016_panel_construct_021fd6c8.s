@@ -13,9 +13,9 @@
     .extern gSystemState
 
 /* Exact fallback; see src/overlays/ov016/overlay016_panel_lifecycle.c. */
-    .global func_ov016_021fd6c8
+    .global Overlay016_Panel_Init
 
-func_ov016_021fd6c8:
+Overlay016_Panel_Init:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -192,4 +192,4 @@ L_021fd970: .word 0x7006
 L_021fd974: .word data_020f4e18
 L_021fd978: .word gSystemState
 
-    .size func_ov016_021fd6c8, . - func_ov016_021fd6c8
+    .size Overlay016_Panel_Init, . - Overlay016_Panel_Init

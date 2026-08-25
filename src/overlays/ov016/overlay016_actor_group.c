@@ -27,7 +27,7 @@ extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_Hide(void *);
-extern void func_ov016_021fe0d4(void *);
+extern void Overlay016_SpriteWrapper_NoOp(void *);
 extern void Overlay016SmallBase_Init(void *);
 #ifdef __cplusplus
 }
@@ -42,7 +42,7 @@ extern void Overlay016SmallBase_Init(void *);
  * create sprite +0x1C at (0x26,0xAA). Return state. SDK graphics and actor state
  * changes; no direct MMIO.
  */
-extern "C" void *func_ov016_021fe118(void *state, s32 index)
+extern "C" void *Overlay016_ActorGroup_Init(void *state, s32 index)
 {
     void *sprite;
 
@@ -74,7 +74,7 @@ extern "C" void *func_ov016_021fe118(void *state, s32 index)
  * the recovered no-op callback for actor +0x20, and destroy resources +0x0C/+0.
  * Return state. Heap/SDK objects may be released; no direct hardware effects.
  */
-extern "C" void *func_ov016_021fe24c(void *state)
+extern "C" void *Overlay016_ActorGroup_Destroy(void *state)
 {
     typedef void (*DeleteFunction)(void *);
     void *object;
@@ -88,7 +88,7 @@ extern "C" void *func_ov016_021fe24c(void *state)
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x18));
     FIELD(const u32 *, state, 0xd0) = data_ov016_02201520;
     PresentationList_DeleteAll((u8 *)state + 0xd0);
-    func_ov016_021fe0d4((u8 *)state + 0x20);
+    Overlay016_SpriteWrapper_NoOp((u8 *)state + 0x20);
     AnimationResourceState_Destroy((u8 *)state + 0xc);
     AnimationResourceState_Destroy(state);
     return state;
@@ -101,7 +101,7 @@ extern "C" void *func_ov016_021fe24c(void *state)
  * and each actor receives +0x7C=0x10 and +0x80=0. Return void; actor transforms
  * change through SDK calls, with no direct MMIO.
  */
-extern "C" void func_ov016_021fe2b0(void *state)
+extern "C" void Overlay016_LayoutActors(void *state)
 {
     s32 count = FIELD(s32, state, 0xdc);
     s32 step;

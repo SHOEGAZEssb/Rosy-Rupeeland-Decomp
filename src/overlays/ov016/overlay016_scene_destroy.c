@@ -18,10 +18,10 @@ extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void TitleScreenResourceCollection_Destroy(void *);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void func_ov000_021fb848(void *);
-extern void func_ov016_021fd06c(void *);
-extern void func_ov016_021fd97c(void *);
-extern void func_ov016_021fe0d4(void *);
-extern void func_ov016_021fe24c(void *);
+extern void Overlay016_List_Destroy(void *);
+extern void Overlay016_Panel_Destroy(void *);
+extern void Overlay016_SpriteWrapper_NoOp(void *);
+extern void Overlay016_ActorGroup_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ static void overlay016_release_scene(void *state)
     FIELD(u32, state, 0x20) &= ~0x400u;
     object = FIELD(void *, state, 0x470);
     if (object != 0) {
-        func_ov016_021fe24c(object);
+        Overlay016_ActorGroup_Destroy(object);
         Heap_Free(object);
     }
     object = FIELD(void *, state, 0x450);
@@ -55,12 +55,12 @@ static void overlay016_release_scene(void *state)
     overlay016_delete_virtual(FIELD(void *, state, 0x44c));
     object = FIELD(void *, state, 0x448);
     if (object != 0) {
-        func_ov016_021fd97c(object);
+        Overlay016_Panel_Destroy(object);
         Heap_Free(object);
     }
     object = FIELD(void *, state, 0x444);
     if (object != 0) {
-        func_ov016_021fd06c(object);
+        Overlay016_List_Destroy(object);
         Heap_Free(object);
     }
     overlay016_delete_virtual(FIELD(void *, state, 0x460));
@@ -72,11 +72,11 @@ static void overlay016_release_scene(void *state)
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
 
-    func_ov016_021fe0d4((u8 *)state + 0x398);
-    func_ov016_021fe0d4((u8 *)state + 0x2ec);
-    func_ov016_021fe0d4((u8 *)state + 0x240);
-    func_ov016_021fe0d4((u8 *)state + 0x194);
-    func_ov016_021fe0d4((u8 *)state + 0xe8);
+    Overlay016_SpriteWrapper_NoOp((u8 *)state + 0x398);
+    Overlay016_SpriteWrapper_NoOp((u8 *)state + 0x2ec);
+    Overlay016_SpriteWrapper_NoOp((u8 *)state + 0x240);
+    Overlay016_SpriteWrapper_NoOp((u8 *)state + 0x194);
+    Overlay016_SpriteWrapper_NoOp((u8 *)state + 0xe8);
     AnimationResourceState_Destroy((u8 *)state + 0xd4);
     AnimationResourceState_Destroy((u8 *)state + 0xc8);
     TitleScreenResourceCollection_Destroy((u8 *)state + 0x84);

@@ -1,11 +1,11 @@
     .text
 
 /* Exact fallbacks for actor and value helpers; see src/overlays/ov016/overlay016_actor_runtime.c. */
-    .global func_ov016_021fe728
+    .global Overlay016_HasActorReachedLimit
     .global func_ov016_021fe740
     .global Overlay016ActorValue_Init
 
-func_ov016_021fe728:
+Overlay016_HasActorReachedLimit:
     ldr r1, [r0, #0x80]
     ldr r0, [r0, #0x7c]
     cmp r1, r0
@@ -34,6 +34,6 @@ Overlay016ActorValue_Init:
     add sp, sp, #0x10
     bx lr
 
-    .size func_ov016_021fe728, func_ov016_021fe740 - func_ov016_021fe728
+    .size Overlay016_HasActorReachedLimit, func_ov016_021fe740 - Overlay016_HasActorReachedLimit
     .size func_ov016_021fe740, Overlay016ActorValue_Init - func_ov016_021fe740
     .size Overlay016ActorValue_Init, . - Overlay016ActorValue_Init

@@ -30,8 +30,8 @@ extern void *InventoryScroll_Init(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), s32);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
-extern void func_ov016_021fce00(void *);
-extern void func_ov016_021fd0dc(void *);
+extern void Overlay016_InitListDescriptor(void *);
+extern void Overlay016_ListDescriptor_NoOp(void *);
 extern void func_ov016_021fd1e0(void *);
 #ifdef __cplusplus
 }
@@ -47,7 +47,7 @@ extern void func_ov016_021fd1e0(void *);
  * hide all children, queue values 0x7000/0x7005, and return state. Heap and SDK
  * allocations plus presentation resources are observable; no direct MMIO occurs.
  */
-extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
+extern "C" void *Overlay016_List_Init(void *state, void *owner, s32 tableIndex)
 {
     s32 capacity;
     void *object;
@@ -72,7 +72,7 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
                               gHeapContext);
         if (object != 0) {
             object = CxxArray_ConstructWithCookie(object, capacity, 0x14, 8,
-                                   func_ov016_021fce00, 0);
+                                   Overlay016_InitListDescriptor, 0);
         }
         FIELD(void *, state, 0x4c) = object;
         object = Heap_Alloc(0x80, data_ov016_02201578, 4, gHeapContext);
@@ -106,7 +106,7 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
  * tear down embedded resources +0x28/+0x18/+0x0C. Return the original state
  * pointer. Heap/presentation resources are released; no direct hardware access.
  */
-extern "C" void *func_ov016_021fd06c(void *state)
+extern "C" void *Overlay016_List_Destroy(void *state)
 {
     typedef void (*DeleteFunction)(void *);
     void *presentation;
@@ -119,7 +119,7 @@ extern "C" void *func_ov016_021fd06c(void *state)
         vtable[1](presentation);
     }
     if (FIELD(void *, state, 0x4c) != 0) {
-        CxxArray_DestroyAndFree(FIELD(void *, state, 0x4c), 0x14, 8, func_ov016_021fd0dc);
+        CxxArray_DestroyAndFree(FIELD(void *, state, 0x4c), 0x14, 8, Overlay016_ListDescriptor_NoOp);
     }
     TitleCharacterResourceCollection_Destroy((u8 *)state + 0x28);
     AnimationResourceState_Destroy((u8 *)state + 0x18);

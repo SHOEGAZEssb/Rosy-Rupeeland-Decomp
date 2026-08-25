@@ -24,7 +24,7 @@ extern void TitleCharacterResourceCollection_Destroy(void *);
  * +0x18/+0x0C. Return the original state pointer. SDK graphics resources are
  * released in reverse construction order and there is no direct MMIO.
  */
-extern "C" void *func_ov016_021fd97c(void *state)
+extern "C" void *Overlay016_Panel_Destroy(void *state)
 {
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 8));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));

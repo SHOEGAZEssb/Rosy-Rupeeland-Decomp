@@ -21,9 +21,9 @@
     .extern gSystemState
 
 /* Exact fallback; see src/overlays/ov016/overlay016_panel_populate.c. */
-    .global func_ov016_021fdaa0
+    .global Overlay016_PopulatePanel
 
-func_ov016_021fdaa0:
+Overlay016_PopulatePanel:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x2c
     ldr r7, [r1, #0x0]
@@ -333,4 +333,4 @@ L_021fdf40:
 L_021fdf48: .word data_020f4e18
 L_021fdf4c: .word gSystemState
 
-    .size func_ov016_021fdaa0, . - func_ov016_021fdaa0
+    .size Overlay016_PopulatePanel, . - Overlay016_PopulatePanel

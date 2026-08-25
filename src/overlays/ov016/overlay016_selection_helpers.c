@@ -18,7 +18,7 @@ extern void SpriteMotionController_Hide(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void *func_ov016_021fd628(void *);
 extern void func_ov016_021fd9dc(void *, s32);
-extern void func_ov016_021fdaa0(void *, void *, s32);
+extern void Overlay016_PopulatePanel(void *, void *, s32);
 extern void func_ov016_021ff848(void *, u16);
 extern void func_ov016_021ffc2c(void *);
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ extern "C" void Overlay016_SyncSelectedPanel(void *state)
     if (list != 0 && func_ov016_021fd628(list) != 0) {
         void *descriptor = func_ov016_021fd628(list);
         s32 index = FIELD(s32, FIELD(void *, list, 0x58), 0x14);
-        func_ov016_021fdaa0(FIELD(void *, state, 0x448), descriptor, index);
+        Overlay016_PopulatePanel(FIELD(void *, state, 0x448), descriptor, index);
     } else {
         func_ov016_021fd9dc(FIELD(void *, state, 0x448), 1);
     }
@@ -153,7 +153,7 @@ extern "C" void func_ov016_021ffd84(void *state)
             (FIELD(u32, state, 0x4c) & ~2u) | 4u;
         descriptor = (u8 *)FIELD(void *, FIELD(void *, state, 0x444), 0x4c) +
                      FIELD(s32, state, 0x480) * 0x14;
-        func_ov016_021fdaa0(FIELD(void *, state, 0x448), descriptor,
+        Overlay016_PopulatePanel(FIELD(void *, state, 0x448), descriptor,
                             FIELD(s32, state, 0x480));
     }
 }
@@ -174,7 +174,7 @@ extern "C" void func_ov016_021ffe3c(void *state, s32 delta)
         index = 0;
     }
     FIELD(s32, state, 0x480) = index;
-    func_ov016_021fdaa0(FIELD(void *, state, 0x448),
+    Overlay016_PopulatePanel(FIELD(void *, state, 0x448),
                         (u8 *)FIELD(void *, list, 0x4c) + index * 0x14,
                         index);
 }

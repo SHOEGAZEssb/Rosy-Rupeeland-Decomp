@@ -21,7 +21,7 @@ extern s32 func_02091c7c(void *, s32);
  * hidden are skipped. Always update owner children +4/+8 and return void. SDK
  * sprite/control state changes; there is no direct hardware access.
  */
-extern "C" void func_ov016_021fdf50(void *state)
+extern "C" void Overlay016_UpdatePanelAnimation(void *state)
 {
     s32 i;
 

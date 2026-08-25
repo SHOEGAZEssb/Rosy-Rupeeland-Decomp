@@ -8,10 +8,10 @@
     .extern TitleCharacterResourceCollection_Destroy
 
 /* Exact fallbacks; see src/overlays/ov016/overlay016_panel_helpers.c. */
-    .global func_ov016_021fd97c
+    .global Overlay016_Panel_Destroy
     .global func_ov016_021fd9dc
 
-func_ov016_021fd97c:
+Overlay016_Panel_Destroy:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8]
@@ -91,5 +91,5 @@ L_021fda30:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 
-    .size func_ov016_021fd97c, func_ov016_021fd9dc - func_ov016_021fd97c
+    .size Overlay016_Panel_Destroy, func_ov016_021fd9dc - Overlay016_Panel_Destroy
     .size func_ov016_021fd9dc, . - func_ov016_021fd9dc

@@ -18,10 +18,10 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
 extern s32 RetailPhaseRecord_IsUnlocked(void *);
-extern void *func_ov016_021fce34(void *, void *, s32);
+extern void *Overlay016_List_Init(void *, void *, s32);
 extern void func_ov016_021fd0e0(void *, void *, const u8 *, u32);
-extern void func_ov016_021fd210(void *);
-extern void *func_ov016_021fd6c8(void *, void *);
+extern void Overlay016_CreateVisibleListSprites(void *);
+extern void *Overlay016_Panel_Init(void *, void *);
 extern s32 func_ov016_021ffcb0(void *, void *, u8 *);
 #ifdef __cplusplus
 }
@@ -45,13 +45,13 @@ extern "C" void func_ov016_021ff288(void *state)
 
     object = Heap_Alloc(0x114, data_ov016_02201588, 4, gHeapContext);
     if (object != 0) {
-        object = func_ov016_021fd6c8(object, gDebugFont);
+        object = Overlay016_Panel_Init(object, gDebugFont);
     }
     FIELD(void *, state, 0x448) = object;
 
     object = Heap_Alloc(0x64, data_ov016_02201590, 4, gHeapContext);
     if (object != 0) {
-        object = func_ov016_021fce34(object, data_020f4e14,
+        object = Overlay016_List_Init(object, data_020f4e14,
                                     FIELD(s32, state, 0x58));
     }
     FIELD(void *, state, 0x444) = object;
@@ -85,5 +85,5 @@ extern "C" void func_ov016_021ff288(void *state)
             func_ov016_021fd0e0(FIELD(void *, state, 0x444), 0, 0, 1);
         }
     }
-    func_ov016_021fd210(FIELD(void *, state, 0x444));
+    Overlay016_CreateVisibleListSprites(FIELD(void *, state, 0x444));
 }

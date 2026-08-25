@@ -8,10 +8,10 @@
     .extern TitleScreenResourceCollection_Destroy
     .extern TitleCharacterResourceCollection_Destroy
     .extern func_ov000_021fb848
-    .extern func_ov016_021fd06c
-    .extern func_ov016_021fd97c
-    .extern func_ov016_021fe0d4
-    .extern func_ov016_021fe24c
+    .extern Overlay016_List_Destroy
+    .extern Overlay016_Panel_Destroy
+    .extern Overlay016_SpriteWrapper_NoOp
+    .extern Overlay016_ActorGroup_Destroy
     .extern gDebugFont
 
 /* Exact fallback for scene deleting destruction; see src/overlays/ov016/overlay016_scene_destroy.c. */
@@ -29,7 +29,7 @@ func_ov016_021fec0c:
     cmp r5, #0x0
     beq L_021fec44
     mov r0, r5
-    bl func_ov016_021fe24c
+    bl Overlay016_ActorGroup_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fec44:
@@ -52,7 +52,7 @@ L_021fec78:
     cmp r5, #0x0
     beq L_021fec94
     mov r0, r5
-    bl func_ov016_021fd97c
+    bl Overlay016_Panel_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fec94:
@@ -60,7 +60,7 @@ L_021fec94:
     cmp r5, #0x0
     beq L_021fecb0
     mov r0, r5
-    bl func_ov016_021fd06c
+    bl Overlay016_List_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fecb0:
@@ -92,15 +92,15 @@ L_021fece0:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x398
-    bl func_ov016_021fe0d4
+    bl Overlay016_SpriteWrapper_NoOp
     add r0, r4, #0x2ec
-    bl func_ov016_021fe0d4
+    bl Overlay016_SpriteWrapper_NoOp
     add r0, r4, #0x240
-    bl func_ov016_021fe0d4
+    bl Overlay016_SpriteWrapper_NoOp
     add r0, r4, #0x194
-    bl func_ov016_021fe0d4
+    bl Overlay016_SpriteWrapper_NoOp
     add r0, r4, #0xe8
-    bl func_ov016_021fe0d4
+    bl Overlay016_SpriteWrapper_NoOp
     add r0, r4, #0xd4
     bl AnimationResourceState_Destroy
     add r0, r4, #0xc8

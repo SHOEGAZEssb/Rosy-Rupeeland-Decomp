@@ -4,9 +4,9 @@
     .extern SpritePresentation_Destroy
 
 /* Exact fallbacks for sprite-wrapper deleting destruction; see src/overlays/ov016/overlay016_sprite_wrapper.c. */
-    .global func_ov016_021fe0ac
+    .global Overlay016_SpriteWrapper_Delete
 
-func_ov016_021fe0ac:
+Overlay016_SpriteWrapper_Delete:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xa0
@@ -18,4 +18,4 @@ func_ov016_021fe0ac:
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-    .size func_ov016_021fe0ac, . - func_ov016_021fe0ac
+    .size Overlay016_SpriteWrapper_Delete, . - Overlay016_SpriteWrapper_Delete

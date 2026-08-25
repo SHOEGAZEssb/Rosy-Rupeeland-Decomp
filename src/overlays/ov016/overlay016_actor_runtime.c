@@ -23,9 +23,9 @@ extern void SpritePresentation_SyncPosition(void *);
 extern void SpriteMotionController_Update(void *);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_Hide(void *);
-extern void *func_ov016_021fe004(void *, void *, void *);
-extern void func_ov016_021fe2b0(void *);
-extern s32 func_ov016_021fe728(void *);
+extern void *Overlay016_SpriteWrapper_Init(void *, void *, void *);
+extern void Overlay016_LayoutActors(void *);
+extern s32 Overlay016_HasActorReachedLimit(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -37,7 +37,7 @@ extern s32 func_ov016_021fe728(void *);
  * it, re-layout all actors, and start record +0x20. Return one on insertion or
  * zero at the limit. Heap/list/actor state changes; no direct MMIO.
  */
-extern "C" s32 func_ov016_021fe4d0(void *state, void *target)
+extern "C" s32 Overlay016_AddActor(void *state, void *target)
 {
     void *actor;
     void *position;
@@ -48,7 +48,7 @@ extern "C" s32 func_ov016_021fe4d0(void *state, void *target)
     }
     actor = Heap_Alloc(0xb0, data_ov016_02201580, 4, gHeapContext);
     if (actor != 0) {
-        actor = func_ov016_021fe004(actor, target, FIELD(void *, state, 0x18));
+        actor = Overlay016_SpriteWrapper_Init(actor, target, FIELD(void *, state, 0x18));
     }
     PresentationList_Append((u8 *)state + 0xd0, actor);
     position = FIELD(void *, target, 0x10);
@@ -58,7 +58,7 @@ extern "C" s32 func_ov016_021fe4d0(void *state, void *target)
                   (FIELD(s16, position, 0x2e) + FIELD(s32, base, 0x1c)) << 12,
                   0);
     SpritePresentation_SyncPosition(actor);
-    func_ov016_021fe2b0(state);
+    Overlay016_LayoutActors(state);
     SpriteMotionController_Show((u8 *)state + 0x20);
     return 1;
 }
@@ -71,7 +71,7 @@ extern "C" s32 func_ov016_021fe4d0(void *state, void *target)
  * empty, re-layout remaining actors, and return the removed target. Return null
  * when nothing matches. List/actor state changes; no direct hardware effects.
  */
-extern "C" void *func_ov016_021fe584(void *state, void *key, s32 remove)
+extern "C" void *Overlay016_RemoveActor(void *state, void *key, s32 remove)
 {
     void *actor;
 
@@ -95,7 +95,7 @@ extern "C" void *func_ov016_021fe584(void *state, void *key, s32 remove)
     if (FIELD(void *, state, 0xcc) == 0) {
         return 0;
     }
-    func_ov016_021fe2b0(state);
+    Overlay016_LayoutActors(state);
     return FIELD(void *, FIELD(void *, state, 0xcc), 0xac);
 }
 
@@ -107,7 +107,7 @@ extern "C" void *func_ov016_021fe584(void *state, void *key, s32 remove)
  * update slot on every active +0xD4 actor. Return void; actor/sprite state and
  * heap ownership may change, with no direct MMIO.
  */
-extern "C" void func_ov016_021fe63c(void *state)
+extern "C" void Overlay016_UpdateActors(void *state)
 {
     typedef s32 (*UpdateFunction)(void *);
     typedef void (*DeleteFunction)(void *);
@@ -141,19 +141,19 @@ extern "C" void func_ov016_021fe63c(void *state)
  * return one for an empty active list or the predicate for its first +0xD4 actor.
  * State is read only and there are no SDK or hardware effects beyond the helper.
  */
-extern "C" s32 func_ov016_021fe6f4(void *state)
+extern "C" s32 Overlay016_HasActorGroupCompleted(void *state)
 {
     if (FIELD(void *, state, 0xcc) != 0) {
-        return func_ov016_021fe728(FIELD(void *, state, 0xcc));
+        return Overlay016_HasActorReachedLimit(FIELD(void *, state, 0xcc));
     }
     if (FIELD(void *, state, 0xd4) == 0) {
         return 1;
     }
-    return func_ov016_021fe728(FIELD(void *, state, 0xd4));
+    return Overlay016_HasActorReachedLimit(FIELD(void *, state, 0xd4));
 }
 
 /* Return one when actor counter +0x80 reaches threshold +0x7C, otherwise zero. */
-extern "C" s32 func_ov016_021fe728(void *actor)
+extern "C" s32 Overlay016_HasActorReachedLimit(void *actor)
 {
     return FIELD(s32, actor, 0x80) >= FIELD(s32, actor, 0x7c);
 }

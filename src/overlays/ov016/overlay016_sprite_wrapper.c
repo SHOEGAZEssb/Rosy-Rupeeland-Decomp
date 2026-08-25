@@ -30,7 +30,7 @@ extern void SpritePresentation_Destroy(void *);
  * resource IDs, create sprite +0x9C on owner, and set sprite byte +0x3A to one.
  * Return state. SDK resource/sprite state changes; no direct MMIO.
  */
-extern "C" void *func_ov016_021fe004(void *state, void *descriptor, void *owner)
+extern "C" void *Overlay016_SpriteWrapper_Init(void *state, void *descriptor, void *owner)
 {
     SpritePresentation_InitVariant(state, 0);
     FIELD(const u32 *, state, 0) = data_ov016_0220155c;
@@ -50,7 +50,7 @@ extern "C" void *func_ov016_021fe004(void *state, void *descriptor, void *owner)
  * SDK resources are released; the allocation itself is retained and no direct
  * hardware effects occur.
  */
-extern "C" void *func_ov016_021fe08c(void *state)
+extern "C" void *Overlay016_SpriteWrapper_Destroy(void *state)
 {
     AnimationResourceState_Destroy((u8 *)state + 0xa0);
     SpritePresentation_Destroy(state);
@@ -61,7 +61,7 @@ extern "C" void *func_ov016_021fe08c(void *state)
  * Destroy resource +0xA0 and inherited base state, free the allocation, and
  * return its former pointer. Heap and SDK resources are released; no MMIO.
  */
-extern "C" void *func_ov016_021fe0ac(void *state)
+extern "C" void *Overlay016_SpriteWrapper_Delete(void *state)
 {
     AnimationResourceState_Destroy((u8 *)state + 0xa0);
     SpritePresentation_Destroy(state);
@@ -70,7 +70,7 @@ extern "C" void *func_ov016_021fe0ac(void *state)
 }
 
 /* Empty callback: accept one pointer, change no state, return void, and perform no hardware effects. */
-extern "C" void func_ov016_021fe0d4(void *state)
+extern "C" void Overlay016_SpriteWrapper_NoOp(void *state)
 {
     (void)state;
 }

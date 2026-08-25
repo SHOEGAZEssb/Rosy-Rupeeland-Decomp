@@ -33,8 +33,8 @@ extern s32 func_ov000_021fcb98(void *, void *);
 extern s32 func_ov000_021fcc18(void *, void *);
 extern s32 func_ov000_021fcca8(void *, void *);
 extern s32 func_ov000_021fccfc(void *, void *);
-extern void *func_ov016_021fe584(void *, void *, s32);
-extern s32 func_ov016_021fe728(void *);
+extern void *Overlay016_RemoveActor(void *, void *, s32);
+extern s32 Overlay016_HasActorReachedLimit(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ffc2c(void *);
@@ -149,7 +149,7 @@ extern "C" s32 func_ov016_02200900(void *state)
                     func_ov016_021ffd84(state);
                 } else {
                     FIELD(void *, state, 0x474) =
-                        func_ov016_021fe584(FIELD(void *, state, 0x470),
+                        Overlay016_RemoveActor(FIELD(void *, state, 0x470),
                                             (u8 *)state + 0x30,
                                             FIELD(s32, state, 0x54));
                     if (FIELD(void *, state, 0x474) != 0) {
@@ -179,7 +179,7 @@ extern "C" s32 func_ov016_02200900(void *state)
         }
         break;
     case 10:
-        if (func_ov016_021fe728((u8 *)FIELD(void *, state, 0x470) + 0x20) != 0) {
+        if (Overlay016_HasActorReachedLimit((u8 *)FIELD(void *, state, 0x470) + 0x20) != 0) {
             Overlay016ActorValue_Init(state, data_ov016_02201468[0],
                                 data_ov016_02201468[1]);
         }

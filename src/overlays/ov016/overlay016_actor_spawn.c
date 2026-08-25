@@ -15,8 +15,8 @@ extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void PresentationList_Append(void *, void *);
 extern void SpritePresentation_SyncPosition(void *);
 extern void SpriteMotionController_Show(void *);
-extern void *func_ov016_021fe004(void *, void *, void *);
-extern void func_ov016_021fe2b0(void *);
+extern void *Overlay016_SpriteWrapper_Init(void *, void *, void *);
+extern void Overlay016_LayoutActors(void *);
 extern s32 func_ov016_021fe358(void *, void *);
 #ifdef __cplusplus
 }
@@ -33,7 +33,7 @@ extern s32 func_ov016_021fe358(void *, void *);
  * actor record +0x20. Return the matched row count, or zero for duplicates/no
  * match. Heap/list/actor state changes; no direct MMIO.
  */
-extern "C" s32 func_ov016_021fe390(void *state, void *wrapper, void *target)
+extern "C" s32 Overlay016_SpawnMatchingActors(void *state, void *wrapper, void *target)
 {
     void *node;
     void *table;
@@ -59,7 +59,7 @@ extern "C" s32 func_ov016_021fe390(void *state, void *wrapper, void *target)
             for (i = 0; i < result; i++) {
                 void *actor = Heap_Alloc(0xb0, data_ov016_02201580, 4, gHeapContext);
                 if (actor != 0) {
-                    actor = func_ov016_021fe004(actor, target, FIELD(void *, state, 0x18));
+                    actor = Overlay016_SpriteWrapper_Init(actor, target, FIELD(void *, state, 0x18));
                 }
                 PresentationList_Append((u8 *)state + 0xd0, actor);
                 Presentation_SetPosition(actor,
@@ -68,7 +68,7 @@ extern "C" s32 func_ov016_021fe390(void *state, void *wrapper, void *target)
                               0);
                 SpritePresentation_SyncPosition(actor);
             }
-            func_ov016_021fe2b0(state);
+            Overlay016_LayoutActors(state);
             if (FIELD(s32, state, 0xdc) == func_ov016_021fe358(state, wrapper)) {
                 SpriteMotionController_Show((u8 *)state + 0x20);
             }

@@ -3,12 +3,12 @@
     .extern GraphicsSpriteGroup_Destroy
     .extern TitleCharacterResourceCollection_Destroy
     .extern CxxArray_DestroyAndFree
-    .extern func_ov016_021fd0dc
+    .extern Overlay016_ListDescriptor_NoOp
 
 /* Exact fallback for list destruction; see src/overlays/ov016/overlay016_list_lifecycle.c. */
-    .global func_ov016_021fd06c
+    .global Overlay016_List_Destroy
 
-func_ov016_021fd06c:
+Overlay016_List_Destroy:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -38,6 +38,6 @@ L_021fd0b8:
     bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_021fd0d8: .word func_ov016_021fd0dc
+L_021fd0d8: .word Overlay016_ListDescriptor_NoOp
 
-    .size func_ov016_021fd06c, . - func_ov016_021fd06c
+    .size Overlay016_List_Destroy, . - Overlay016_List_Destroy

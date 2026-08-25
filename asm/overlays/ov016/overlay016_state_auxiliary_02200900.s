@@ -26,8 +26,8 @@
     .extern func_ov000_021fcc18
     .extern func_ov000_021fcca8
     .extern func_ov000_021fccfc
-    .extern func_ov016_021fe584
-    .extern func_ov016_021fe728
+    .extern Overlay016_RemoveActor
+    .extern Overlay016_HasActorReachedLimit
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
     .extern func_ov016_021ffc2c
@@ -259,7 +259,7 @@ L_02200c34:
     ldr r0, [r4, #0x470]
     ldr r2, [r4, #0x54]
     add r1, r4, #0x30
-    bl func_ov016_021fe584
+    bl Overlay016_RemoveActor
     str r0, [r4, #0x474]
     cmp r0, #0x0
     beq L_02200c60
@@ -317,7 +317,7 @@ L_02200cf0:
 L_02200d0c:
     ldr r0, [r4, #0x470]
     add r0, r0, #0x20
-    bl func_ov016_021fe728
+    bl Overlay016_HasActorReachedLimit
     cmp r0, #0x0
     beq L_02200d30
     ldr r1, L_02200d58

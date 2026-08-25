@@ -8,9 +8,9 @@
 extern "C" {
 #endif
 extern s32 func_020befec(s32, s32);
-extern void func_ov016_021fd270(void *, s32);
+extern void Overlay016_CreateListSprite(void *, s32);
 extern void func_ov016_021fd310(void *, s32);
-extern void func_ov016_021fd3f8(void *);
+extern void Overlay016_RenderList(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,7 @@ extern void func_ov016_021fd3f8(void *);
  * index when below count +0x54; otherwise return -1. State is read only and no
  * hardware or SDK side effects occur beyond the signed division helper.
  */
-extern "C" s32 func_ov016_021fd5b8(void *state, const void *point)
+extern "C" s32 Overlay016_HitTestList(void *state, const void *point)
 {
     s32 x = FIELD(s32, point, 4) - 0x40;
     s32 y = FIELD(s32, point, 8) - 0x18;
@@ -70,8 +70,8 @@ extern "C" s32 func_ov016_021fd640(void *state)
         FIELD(s32, FIELD(void *, state, 4), 0x1c) =
             0x20 - FIELD(s32, presentation, 0xc) * 0x18;
         func_ov016_021fd310(state, FIELD(s32, presentation, 0x74));
-        func_ov016_021fd270(state, FIELD(s32, presentation, 0x70));
-        func_ov016_021fd3f8(state);
+        Overlay016_CreateListSprite(state, FIELD(s32, presentation, 0x70));
+        Overlay016_RenderList(state);
     }
     return 1;
 }

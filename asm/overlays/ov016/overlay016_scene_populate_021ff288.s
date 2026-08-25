@@ -9,10 +9,10 @@
     .extern data_ov016_02201590
     .extern ActorDescriptorState_FindInactiveQuantity
     .extern RetailPhaseRecord_IsUnlocked
-    .extern func_ov016_021fce34
+    .extern Overlay016_List_Init
     .extern func_ov016_021fd0e0
-    .extern func_ov016_021fd210
-    .extern func_ov016_021fd6c8
+    .extern Overlay016_CreateVisibleListSprites
+    .extern Overlay016_Panel_Init
     .extern func_ov016_021ffcb0
     .extern gDebugFont
     .extern gHeapContext
@@ -30,7 +30,7 @@ func_ov016_021ff288:
     beq L_021ff2bc
     ldr r1, L_021ff3f0
     ldr r1, [r1, #0x0]
-    bl func_ov016_021fd6c8
+    bl Overlay016_Panel_Init
 L_021ff2bc:
     ldr r1, L_021ff3f4
     str r0, [r7, #0x448]
@@ -43,7 +43,7 @@ L_021ff2bc:
     ldr r1, L_021ff3f8
     ldr r2, [r7, #0x58]
     ldr r1, [r1, #0x0]
-    bl func_ov016_021fce34
+    bl Overlay016_List_Init
 L_021ff2ec:
     str r0, [r7, #0x444]
     mov r4, #0x0
@@ -111,7 +111,7 @@ L_021ff3c8:
     cmp r4, r0
     blt L_021ff2f8
     ldr r0, [r7, #0x444]
-    bl func_ov016_021fd210
+    bl Overlay016_CreateVisibleListSprites
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_021ff3e8: .word data_ov016_02201588

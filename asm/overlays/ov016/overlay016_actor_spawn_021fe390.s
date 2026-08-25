@@ -5,15 +5,15 @@
     .extern PresentationList_Append
     .extern SpritePresentation_SyncPosition
     .extern SpriteMotionController_Show
-    .extern func_ov016_021fe004
-    .extern func_ov016_021fe2b0
+    .extern Overlay016_SpriteWrapper_Init
+    .extern Overlay016_LayoutActors
     .extern func_ov016_021fe358
     .extern gHeapContext
 
 /* Exact fallback; see src/overlays/ov016/overlay016_actor_spawn.c. */
-    .global func_ov016_021fe390
+    .global Overlay016_SpawnMatchingActors
 
-func_ov016_021fe390:
+Overlay016_SpawnMatchingActors:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r9, r1
@@ -59,7 +59,7 @@ L_021fe410:
     beq L_021fe43c
     ldr r2, [r10, #0x18]
     mov r1, r8
-    bl func_ov016_021fe004
+    bl Overlay016_SpriteWrapper_Init
     mov r11, r0
 L_021fe43c:
     mov r1, r11
@@ -83,7 +83,7 @@ L_021fe480:
     cmp r7, r4
     blt L_021fe410
     mov r0, r10
-    bl func_ov016_021fe2b0
+    bl Overlay016_LayoutActors
     ldr r5, [r10, #0xdc]
     mov r0, r10
     mov r1, r9
@@ -104,4 +104,4 @@ L_021fe4c0:
 L_021fe4c8: .word data_ov016_02201580
 L_021fe4cc: .word gHeapContext
 
-    .size func_ov016_021fe390, . - func_ov016_021fe390
+    .size Overlay016_SpawnMatchingActors, . - Overlay016_SpawnMatchingActors

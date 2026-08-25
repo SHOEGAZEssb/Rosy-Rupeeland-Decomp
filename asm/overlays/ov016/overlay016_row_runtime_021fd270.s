@@ -8,11 +8,11 @@
     .extern func_ov016_021fd628
 
 /* Exact fallbacks for row sprite and selection refresh; see src/overlays/ov016/overlay016_list_runtime.c. */
-    .global func_ov016_021fd270
+    .global Overlay016_CreateListSprite
     .global func_ov016_021fd310
     .global func_ov016_021fd358
 
-func_ov016_021fd270:
+Overlay016_CreateListSprite:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0xc
     mov r6, r0
@@ -123,6 +123,6 @@ L_021fd3e4:
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
 
-    .size func_ov016_021fd270, func_ov016_021fd310 - func_ov016_021fd270
+    .size Overlay016_CreateListSprite, func_ov016_021fd310 - Overlay016_CreateListSprite
     .size func_ov016_021fd310, func_ov016_021fd358 - func_ov016_021fd310
     .size func_ov016_021fd358, . - func_ov016_021fd358

@@ -4,7 +4,7 @@
     .extern Heap_Free
     .extern func_ov000_021fb848
     .extern Overlay000_CaptureViewState
-    .extern func_ov016_021fe24c
+    .extern Overlay016_ActorGroup_Destroy
 .global func_ov016_021ff71c
 func_ov016_021ff71c:
     stmdb sp!, {r4, r5, lr}
@@ -24,7 +24,7 @@ L_021ff744:
     cmp r5, #0x0
     beq L_021ff768
     mov r0, r5
-    bl func_ov016_021fe24c
+    bl Overlay016_ActorGroup_Destroy
     mov r0, r5
     bl Heap_Free
 L_021ff768:

@@ -6,8 +6,8 @@
     .extern func_02096304
     .extern Overlay000_Grid_Update
     .extern func_ov016_021fd358
-    .extern func_ov016_021fdf50
-    .extern func_ov016_021fe63c
+    .extern Overlay016_UpdatePanelAnimation
+    .extern Overlay016_UpdateActors
 .global func_ov016_021ff7bc
 func_ov016_021ff7bc:
     stmdb sp!, {r4, lr}
@@ -32,7 +32,7 @@ L_021ff804:
     ldr r0, [r4, #0x448]
     cmp r0, #0x0
     beq L_021ff814
-    bl func_ov016_021fdf50
+    bl Overlay016_UpdatePanelAnimation
 L_021ff814:
     ldr r0, [r4, #0x44c]
     cmp r0, #0x0
@@ -42,7 +42,7 @@ L_021ff824:
     ldr r0, [r4, #0x470]
     cmp r0, #0x0
     beq L_021ff834
-    bl func_ov016_021fe63c
+    bl Overlay016_UpdateActors
 L_021ff834:
     ldr r0, [r4, #0x464]
     cmp r0, #0x0

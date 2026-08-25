@@ -6,7 +6,7 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern DisplayBrightness_StartMaskedTransitions
-    .extern func_ov016_021fd3f8
+    .extern Overlay016_RenderList
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff094
     .extern Overlay016_CreateSceneSprite
@@ -52,7 +52,7 @@ L_02201108:
     mov r0, r4
     bl func_ov016_021ff094
     ldr r0, [r4, #0x444]
-    bl func_ov016_021fd3f8
+    bl Overlay016_RenderList
     mov r0, r4
     bl func_ov016_021ffba4
     mov r0, #0x1

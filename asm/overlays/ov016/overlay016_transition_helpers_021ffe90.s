@@ -7,7 +7,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern SpriteMotionController_Hide
     .extern ModalState_UpdateInput
-    .extern func_ov016_021fd3f8
+    .extern Overlay016_RenderList
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff848
     .extern func_ov016_021ff908
@@ -42,7 +42,7 @@ L_021ffee0:
     ldr r1, [r0, #0x50]
     cmp r1, #0x0
     beq L_021fff18
-    bl func_ov016_021fd3f8
+    bl Overlay016_RenderList
     mov r0, r4
     bl func_ov016_021ffba4
     mov r0, r4

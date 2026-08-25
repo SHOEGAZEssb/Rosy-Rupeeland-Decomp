@@ -28,11 +28,11 @@ extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern s32 ModalState_UpdateInput(void *, void *, s32);
-extern void func_ov016_021fd3f8(void *);
-extern s32 func_ov016_021fd5b8(void *, void *);
+extern void Overlay016_RenderList(void *);
+extern s32 Overlay016_HitTestList(void *, void *);
 extern void *func_ov016_021fd628(void *);
 extern s32 func_ov016_021fd640(void *);
-extern s32 func_ov016_021fe728(void *);
+extern s32 Overlay016_HasActorReachedLimit(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ff908(void *, s32, s32, void *);
@@ -87,7 +87,7 @@ extern "C" s32 func_ov016_0220007c(void *state)
         } else if ((FIELD(u16, FIELD(void *, state, 0x2c), 0) & 0x80) != 0) {
             InventoryScroll_MoveSelectionDown(presentation);
         } else if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
-            selected = func_ov016_021fd5b8(list, (u8 *)state + 0x30);
+            selected = Overlay016_HitTestList(list, (u8 *)state + 0x30);
             if (InventoryScroll_TestUpperArrowHold(presentation, (u8 *)state + 0x30) != 0) {
                 InventoryScroll_PageUp(presentation);
             } else if (InventoryScroll_TestLowerArrowHold(presentation, (u8 *)state + 0x30) != 0) {
@@ -140,7 +140,7 @@ extern "C" s32 func_ov016_0220007c(void *state)
         }
         break;
     case 3:
-        if (func_ov016_021fe728((u8 *)state + 0xe8) != 0) {
+        if (Overlay016_HasActorReachedLimit((u8 *)state + 0xe8) != 0) {
             void *descriptor = func_ov016_021fd628(list);
             if ((FIELD(u16, descriptor, 0xc) & 4) != 0) {
                 func_ov016_021ff908(state, 0x1c, 0, 0);
@@ -159,13 +159,13 @@ extern "C" s32 func_ov016_0220007c(void *state)
                           (u8 *)state + 0x30,
                           (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
             func_ov016_021ff9b8(state);
-            func_ov016_021fd3f8(list);
+            Overlay016_RenderList(list);
             FIELD(s32, state, 4) -= 2;
             FIELD(s32, state, 8) = 0;
         }
         break;
     case 10:
-        if (func_ov016_021fe728((u8 *)state + 0xe8) != 0) {
+        if (Overlay016_HasActorReachedLimit((u8 *)state + 0xe8) != 0) {
             FIELD(s32, state, 4) = 0;
             FIELD(s32, state, 8) = 0;
         }

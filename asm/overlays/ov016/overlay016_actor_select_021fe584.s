@@ -3,12 +3,12 @@
     .extern PresentationScalar_TransitionBy
     .extern PresentationList_Remove
     .extern SpriteMotionController_Hide
-    .extern func_ov016_021fe2b0
+    .extern Overlay016_LayoutActors
 
 /* Exact fallbacks for actor selection and removal; see src/overlays/ov016/overlay016_actor_runtime.c. */
-    .global func_ov016_021fe584
+    .global Overlay016_RemoveActor
 
-func_ov016_021fe584:
+Overlay016_RemoveActor:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     mov r7, r1
@@ -55,9 +55,9 @@ L_021fe618:
     moveq r0, #0x0
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
     mov r0, r4
-    bl func_ov016_021fe2b0
+    bl Overlay016_LayoutActors
     ldr r0, [r4, #0xcc]
     ldr r0, [r0, #0xac]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 
-    .size func_ov016_021fe584, . - func_ov016_021fe584
+    .size Overlay016_RemoveActor, . - Overlay016_RemoveActor

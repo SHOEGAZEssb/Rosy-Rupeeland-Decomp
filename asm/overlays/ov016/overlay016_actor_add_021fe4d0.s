@@ -5,14 +5,14 @@
     .extern PresentationList_Append
     .extern SpritePresentation_SyncPosition
     .extern SpriteMotionController_Show
-    .extern func_ov016_021fe004
-    .extern func_ov016_021fe2b0
+    .extern Overlay016_SpriteWrapper_Init
+    .extern Overlay016_LayoutActors
     .extern gHeapContext
 
 /* Exact fallbacks for single actor insertion; see src/overlays/ov016/overlay016_actor_runtime.c. */
-    .global func_ov016_021fe4d0
+    .global Overlay016_AddActor
 
-func_ov016_021fe4d0:
+Overlay016_AddActor:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     ldr r2, [r5, #0xdc]
@@ -30,7 +30,7 @@ func_ov016_021fe4d0:
     beq L_021fe51c
     ldr r2, [r5, #0x18]
     mov r1, r6
-    bl func_ov016_021fe004
+    bl Overlay016_SpriteWrapper_Init
     mov r4, r0
 L_021fe51c:
     mov r1, r4
@@ -52,7 +52,7 @@ L_021fe51c:
     mov r0, r4
     bl SpritePresentation_SyncPosition
     mov r0, r5
-    bl func_ov016_021fe2b0
+    bl Overlay016_LayoutActors
     add r0, r5, #0x20
     bl SpriteMotionController_Show
     mov r0, #0x1
@@ -60,4 +60,4 @@ L_021fe51c:
 L_021fe57c: .word data_ov016_02201580
 L_021fe580: .word gHeapContext
 
-    .size func_ov016_021fe4d0, . - func_ov016_021fe4d0
+    .size Overlay016_AddActor, . - Overlay016_AddActor

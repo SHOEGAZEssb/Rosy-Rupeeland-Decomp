@@ -3,10 +3,10 @@
     .extern PresentationScalar_TransitionTo
 
 /* Exact fallbacks for actor layout and aggregation; see src/overlays/ov016/overlay016_actor_group.c. */
-    .global func_ov016_021fe2b0
+    .global Overlay016_LayoutActors
     .global func_ov016_021fe358
 
-func_ov016_021fe2b0:
+Overlay016_LayoutActors:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r4, r0
     ldr r5, [r4, #0xdc]
@@ -71,5 +71,5 @@ L_021fe384:
     blt L_021fe374
     ldmia sp!, {r3, pc}
 
-    .size func_ov016_021fe2b0, func_ov016_021fe358 - func_ov016_021fe2b0
+    .size Overlay016_LayoutActors, func_ov016_021fe358 - Overlay016_LayoutActors
     .size func_ov016_021fe358, . - func_ov016_021fe358

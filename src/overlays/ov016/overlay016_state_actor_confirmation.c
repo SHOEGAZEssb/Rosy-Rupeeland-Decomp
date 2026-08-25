@@ -21,9 +21,9 @@ extern void Overlay000_Grid_UpdateTransition(void *);
 extern s32 func_ov000_021fc560(void *, void *);
 extern void Overlay000_Grid_Render(void *);
 extern void *Overlay000_GetActiveMetadata(void *);
-extern u32 func_ov016_021fe390(void *, void *, void *);
-extern s32 func_ov016_021fe4d0(void *, void *);
-extern s32 func_ov016_021fe6f4(void *);
+extern u32 Overlay016_SpawnMatchingActors(void *, void *, void *);
+extern s32 Overlay016_AddActor(void *, void *);
+extern s32 Overlay016_HasActorGroupCompleted(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ffc2c(void *);
@@ -101,7 +101,7 @@ extern "C" s32 func_ov016_02200e88(void *state)
     case 0:
         if (FIELD(s32, state, 0x54) == 1) {
             void *entry = Overlay000_GetActiveMetadata(list);
-            if (func_ov016_021fe4d0(FIELD(void *, state, 0x470), entry) != 0) {
+            if (Overlay016_AddActor(FIELD(void *, state, 0x470), entry) != 0) {
                 SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, entry, 0x1c)--;
                 Overlay000_Grid_Render(list);
@@ -115,7 +115,7 @@ extern "C" s32 func_ov016_02200e88(void *state)
             }
         } else {
             void *entry = Overlay000_GetActiveMetadata(list);
-            u32 consumed = func_ov016_021fe390(FIELD(void *, state, 0x470),
+            u32 consumed = Overlay016_SpawnMatchingActors(FIELD(void *, state, 0x470),
                                                FIELD(void *, state, 0x468),
                                                entry);
             if (consumed != 0) {
@@ -133,7 +133,7 @@ extern "C" s32 func_ov016_02200e88(void *state)
         }
         /* Successful consumption continues into the completion check. */
     case 1:
-        if (func_ov016_021fe6f4(FIELD(void *, state, 0x470)) != 0) {
+        if (Overlay016_HasActorGroupCompleted(FIELD(void *, state, 0x470)) != 0) {
             Overlay016ActorValue_Init(state, data_ov016_02201448[0],
                                 data_ov016_02201448[1]);
         }

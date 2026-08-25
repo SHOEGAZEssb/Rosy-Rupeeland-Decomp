@@ -1,7 +1,7 @@
     .text
 
 /* Exact fallback; see src/overlays/ov016/overlay016_selection_helpers.c. */
-    .extern func_ov016_021fdaa0
+    .extern Overlay016_PopulatePanel
 .global func_ov016_021ffe3c
 func_ov016_021ffe3c:
     ldr r2, [r0, #0x480]
@@ -25,6 +25,6 @@ L_021ffe6c:
     ldr ip, L_021ffe8c
     ldr r0, [r0, #0x448]
     bx ip
-L_021ffe8c: .word func_ov016_021fdaa0
+L_021ffe8c: .word Overlay016_PopulatePanel
     .size func_ov016_021ffe3c, . - func_ov016_021ffe3c
 

@@ -14,9 +14,9 @@
     .extern Overlay016SmallBase_Init
 
 /* Exact fallbacks for actor-group construction; see src/overlays/ov016/overlay016_actor_group.c. */
-    .global func_ov016_021fe118
+    .global Overlay016_ActorGroup_Init
 
-func_ov016_021fe118:
+Overlay016_ActorGroup_Init:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -95,4 +95,4 @@ L_021fe240: .word data_ov016_02201394
 L_021fe244: .word data_020f4e14
 L_021fe248: .word data_020f4e18
 
-    .size func_ov016_021fe118, . - func_ov016_021fe118
+    .size Overlay016_ActorGroup_Init, . - Overlay016_ActorGroup_Init
