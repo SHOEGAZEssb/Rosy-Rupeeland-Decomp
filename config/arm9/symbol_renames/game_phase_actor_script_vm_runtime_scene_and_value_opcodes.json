@@ -1,0 +1,9 @@
+{
+  "GamePhaseActorScriptVm_PrepareRuntimeScene": "GamePhaseActorScriptVm_PrepareRuntimeScene",
+  "GamePhaseActorScriptVm_DispatchVisualEffectControl": "GamePhaseActorScriptVm_DispatchVisualEffectControl",
+  "GamePhaseActorScriptVm_DispatchOptionalSingletonControl": "GamePhaseActorScriptVm_DispatchOptionalSingletonControl",
+  "GamePhaseActorScriptVm_DispatchOptionalSingletonQuery": "GamePhaseActorScriptVm_DispatchOptionalSingletonQuery",
+  "GamePhaseActorScriptVm_GenerateModeBasedValue": "GamePhaseActorScriptVm_GenerateModeBasedValue",
+  "func_0201a50c": "GamePhaseActorScriptVm_LookupSignedByteByHighNibble",
+  "func_020570b0": "SignedByteTable_LookupFx12Index"
+}

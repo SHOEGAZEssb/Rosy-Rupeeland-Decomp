@@ -2,9 +2,9 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern func_020570b0
-.global func_0201a50c
-func_0201a50c:
+.extern SignedByteTable_LookupFx12Index
+.global GamePhaseActorScriptVm_LookupSignedByteByHighNibble
+GamePhaseActorScriptVm_LookupSignedByteByHighNibble:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -12,10 +12,10 @@ func_0201a50c:
     mov r0, r0, lsr #0x10
     mov r0, r0, lsl #0x10
     mov r0, r0, lsr #0x10
-    bl func_020570b0
+    bl SignedByteTable_LookupFx12Index
     mov r1, r0
     mov r0, r4
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_0201a50c, . - func_0201a50c
+.size GamePhaseActorScriptVm_LookupSignedByteByHighNibble, . - GamePhaseActorScriptVm_LookupSignedByteByHighNibble

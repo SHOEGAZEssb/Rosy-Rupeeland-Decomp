@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern s32 func_020570b0(u16 value);
+extern s32 SignedByteTable_LookupFx12Index(u16 fx12Index);
 extern void func_02099114(s32 value);
 extern void Sound_StopAllManagedPlayers(void *context);
 extern void SoundPhaseManager_Reset(void *context);
@@ -17,10 +17,11 @@ extern void Sound_ReapplyCurrentGroupSlots(void *context);
 #endif
 
 /* Pop a value, pass its low byte shifted by eight to the converter, store the VM result, return zero. */
-s32 func_0201a50c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_LookupSignedByteByHighNibble(GamePhaseActorScriptVm *self)
 {
-    u16 value = (u16)((u8)GamePhaseScriptVm_Pop(&self->base) << 8);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)func_020570b0(value));
+    u16 fx12Index = (u16)((u8)GamePhaseScriptVm_Pop(&self->base) << 8);
+    s32 tableValue = SignedByteTable_LookupFx12Index(fx12Index);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)tableValue);
     return 0;
 }
 

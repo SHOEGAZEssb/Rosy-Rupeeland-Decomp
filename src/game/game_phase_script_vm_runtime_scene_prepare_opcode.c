@@ -16,10 +16,10 @@ extern void GamePhaseAreaScene_SetEnabled(void *state, s32 enabled);
 #endif
 
 /* Invoke virtual slot 0x0c with the confirmed arguments 1 and 31. */
-static void configureObject(void *object)
+static void configureAreaOverlayObject(void *areaOverlayObject)
 {
     typedef void (*Method)(void *, s32, s32);
-    (*(Method *)((u8 *)*(void **)object + 0x0c))(object, 1, 31);
+    (*(Method *)((u8 *)*(void **)areaOverlayObject + 0x0c))(areaOverlayObject, 1, 31);
 }
 
 /*
@@ -31,14 +31,14 @@ static void configureObject(void *object)
 s32 GamePhaseActorScriptVm_PrepareRuntimeScene(GamePhaseActorScriptVm *self)
 {
     u8 *runtime = (u8 *)gGamePhaseRuntime;
-    void *object = *(void **)(runtime + 0x30e8);
-    void *area = GamePhaseState_GetConfiguration(runtime + 0x24);
+    void *areaOverlayObject = *(void **)(runtime + 0x30e8);
+    void *areaConfiguration = GamePhaseState_GetConfiguration(runtime + 0x24);
     (void)self;
-    func_02026174(object, area);
-    configureObject(object);
+    func_02026174(areaOverlayObject, areaConfiguration);
+    configureAreaOverlayObject(areaOverlayObject);
     GamePhaseRuntime_UpdateDualScreenUiPresentation(runtime);
-    area = GamePhaseState_GetConfiguration(runtime + 0x24);
-    GamePhaseRuntime_RefreshAreaAuxiliaryObject(runtime, area, 1);
+    areaConfiguration = GamePhaseState_GetConfiguration(runtime + 0x24);
+    GamePhaseRuntime_RefreshAreaAuxiliaryObject(runtime, areaConfiguration, 1);
     GamePhaseAreaScene_SetEnabled(*(void **)(runtime + 0x2fb8), 1);
     return 0;
 }

@@ -27,15 +27,15 @@ s32 GamePhaseActorScriptVm_GenerateModeBasedValue(GamePhaseActorScriptVm *self)
     s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 generationMode = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 result;
-    if (mode >= 1 && mode <= 3) {
+    if (generationMode >= 1 && generationMode <= 3) {
         u32 value[3];
         s32 source;
         ActorMotionOscillation_InitInterval(value, first, second, third);
-        source = mode == 1 ? *(s32 *)(gSystemState + 0x64) : parameter;
-        result = ActorMotionOscillation_Sample(value, source, mode == 3);
-    } else if (mode == 4) {
+        source = generationMode == 1 ? *(s32 *)(gSystemState + 0x64) : parameter;
+        result = ActorMotionOscillation_Sample(value, source, generationMode == 3);
+    } else if (generationMode == 4) {
         s32 fraction = func_020befec((second - first) << 12, third);
         result = (fraction * parameter + (first << 12)) >> 12;
     } else {

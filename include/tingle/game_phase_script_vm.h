@@ -290,7 +290,7 @@ s32 GamePhaseActorScriptVm_DispatchVisualEffectControl(GamePhaseActorScriptVm *s
 s32 GamePhaseActorScriptVm_DispatchOptionalSingletonControl(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchOptionalSingletonQuery(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GenerateModeBasedValue(GamePhaseActorScriptVm *self);
-s32 func_0201a50c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_LookupSignedByteByHighNibble(GamePhaseActorScriptVm *self);
 s32 func_0201a540(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand(GamePhaseActorScriptVm *self);
 s32 func_0201a614(GamePhaseActorScriptVm *self);

@@ -21,10 +21,10 @@ extern s32 func_ov088_0221b380(void *object);
  */
 s32 GamePhaseActorScriptVm_DispatchOptionalSingletonQuery(GamePhaseActorScriptVm *self)
 {
-    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 query = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *object = (u8 *)ActorDerivedType1_GetSingletonObject();
     s32 result = 0;
-    switch (mode) {
+    switch (query) {
     case 0:
         if (object)
             result = (*(u16 *)(object + 0x21a) & 0x20) == 0;

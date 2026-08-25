@@ -22,21 +22,22 @@ extern void OS_Halt(void);
  */
 s32 GamePhaseActorScriptVm_DispatchVisualEffectControl(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 secondCoefficient = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 firstCoefficient = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)gGamePhaseRuntime;
     void *effect = runtime + 0x2ed8;
 
-    if (mode == 1) {
-        if (first == 0 && second == 0) {
+    if (command == 1) {
+        if (firstCoefficient == 0 && secondCoefficient == 0) {
             *(u32 *)(runtime + 0x2f6c) &= ~8;
         } else {
             *(u32 *)(runtime + 0x2f6c) |= 8;
-            GamePhaseVisualEffect_SetBlendCoefficients(effect, first, second);
+            GamePhaseVisualEffect_SetBlendCoefficients(effect, firstCoefficient,
+                                                       secondCoefficient);
         }
-    } else if (mode == 2) {
-        GamePhaseVisualEffect_SetEnabled(effect, first);
+    } else if (command == 2) {
+        GamePhaseVisualEffect_SetEnabled(effect, firstCoefficient);
     } else {
         OS_Halt();
     }

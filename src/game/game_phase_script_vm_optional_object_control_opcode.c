@@ -24,17 +24,17 @@ s32 GamePhaseActorScriptVm_DispatchOptionalSingletonControl(GamePhaseActorScript
     s32 second;
     s32 first;
     s32 enabled;
-    s32 mode;
+    s32 command;
     u8 *object;
     (void)GamePhaseScriptVm_Pop(&self->base);
     (void)GamePhaseScriptVm_Pop(&self->base);
     second = (s32)GamePhaseScriptVm_Pop(&self->base);
     first = (s32)GamePhaseScriptVm_Pop(&self->base);
     enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    mode = (s32)GamePhaseScriptVm_Pop(&self->base);
+    command = (s32)GamePhaseScriptVm_Pop(&self->base);
     object = (u8 *)ActorDerivedType1_GetSingletonObject();
 
-    switch (mode) {
+    switch (command) {
     case 0:
         func_ov088_02218130(object, first, second);
         break;
