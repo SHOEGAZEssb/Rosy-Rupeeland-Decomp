@@ -10,9 +10,9 @@
 .extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
 
-.global func_0201edd0
-.type func_0201edd0, @function
-func_0201edd0: ; 0x0201edd0
+.global SampledArcTimedSprite_Init
+.type SampledArcTimedSprite_Init, @function
+SampledArcTimedSprite_Init: ; 0x0201edd0
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -31,21 +31,21 @@ func_0201edd0: ; 0x0201edd0
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_0201ee14: .word data_020d60ac
-    .size func_0201edd0, .-func_0201edd0
+    .size SampledArcTimedSprite_Init, .-SampledArcTimedSprite_Init
 
-.global func_0201ee18
-.type func_0201ee18, @function
-func_0201ee18: ; 0x0201ee18
+.global SampledArcTimedSprite_Destroy
+.type SampledArcTimedSprite_Destroy, @function
+SampledArcTimedSprite_Destroy: ; 0x0201ee18
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201ee18, .-func_0201ee18
+    .size SampledArcTimedSprite_Destroy, .-SampledArcTimedSprite_Destroy
 
-.global func_0201ee2c
-.type func_0201ee2c, @function
-func_0201ee2c: ; 0x0201ee2c
+.global SampledArcTimedSprite_DestroyAndFree
+.type SampledArcTimedSprite_DestroyAndFree, @function
+SampledArcTimedSprite_DestroyAndFree: ; 0x0201ee2c
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
@@ -53,11 +53,11 @@ func_0201ee2c: ; 0x0201ee2c
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201ee2c, .-func_0201ee2c
+    .size SampledArcTimedSprite_DestroyAndFree, .-SampledArcTimedSprite_DestroyAndFree
 
-.global func_0201ee48
-.type func_0201ee48, @function
-func_0201ee48: ; 0x0201ee48
+.global SampledArcTimedSprite_Update
+.type SampledArcTimedSprite_Update, @function
+SampledArcTimedSprite_Update: ; 0x0201ee48
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -106,4 +106,4 @@ func_0201ee48: ; 0x0201ee48
 .L_0201eef4:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-    .size func_0201ee48, .-func_0201ee48
+    .size SampledArcTimedSprite_Update, .-SampledArcTimedSprite_Update

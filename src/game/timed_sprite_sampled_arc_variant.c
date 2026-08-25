@@ -40,7 +40,8 @@ extern void VecFx32_Subtract(void *output, s32 argument,
  * Initialize the shared base from config, install this vtable, clear sprite
  * flag 2, copy config lifetime 0x30 and track 0x10, and return self.
  */
-SampledArcTimedSprite *func_0201edd0(SampledArcTimedSprite *self, u8 *config)
+SampledArcTimedSprite *SampledArcTimedSprite_Init(
+    SampledArcTimedSprite *self, u8 *config)
 {
     TimedSpritePresentation_Init(self, config);
     self->vtable = data_020d60ac;
@@ -51,14 +52,16 @@ SampledArcTimedSprite *func_0201edd0(SampledArcTimedSprite *self, u8 *config)
 }
 
 /* Run the shared non-freeing teardown and return self. */
-SampledArcTimedSprite *func_0201ee18(SampledArcTimedSprite *self)
+SampledArcTimedSprite *SampledArcTimedSprite_Destroy(
+    SampledArcTimedSprite *self)
 {
     TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
-SampledArcTimedSprite *func_0201ee2c(SampledArcTimedSprite *self)
+SampledArcTimedSprite *SampledArcTimedSprite_DestroyAndFree(
+    SampledArcTimedSprite *self)
 {
     TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
@@ -71,7 +74,7 @@ SampledArcTimedSprite *func_0201ee2c(SampledArcTimedSprite *self)
  * integer pixels, subtract first08's Z from sampled Y, update the sprite with
  * recovered constant 8, destroy the sample, and return whether flag 8 is set.
  */
-s32 func_0201ee48(SampledArcTimedSprite *self, s32 argument)
+s32 SampledArcTimedSprite_Update(SampledArcTimedSprite *self, s32 argument)
 {
     s32 sample[4];
     s32 finished;

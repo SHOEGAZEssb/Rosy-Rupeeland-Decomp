@@ -8169,7 +8169,7 @@ build build/reports/timed_sprite_sampled_arc_variant.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/timed_sprite_sampled_arc_variant.o
 build build/reports/timed_sprite_sampled_arc_variant.txt: match_report build/reports/timed_sprite_sampled_arc_variant.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_sampled_arc_variant.json
-  report_args = --section .text --function func_0201edd0 --function func_0201ee18 --function func_0201ee2c --function func_0201ee48 --require-exact
+  report_args = --section .text --function SampledArcTimedSprite_Init --function SampledArcTimedSprite_Destroy --function SampledArcTimedSprite_DestroyAndFree --function SampledArcTimedSprite_Update --require-exact
 build build/reports/timed_sprite_burst_manager_0201eefc.json: objdiff build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201eefc.o | build/decomp/asm/game/timed_sprite_burst_manager_0201eefc.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201eefc.o
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201eefc.o

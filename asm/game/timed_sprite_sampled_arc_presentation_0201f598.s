@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
 .extern FieldEffect_Init
-.extern func_0201edd0
+.extern SampledArcTimedSprite_Init
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
@@ -51,7 +51,7 @@ TimedSpriteSampledArcPresentation_Init: ; 0x0201f598
     cmp r0, #0x0
     beq .L_0201f628
     add r1, sp, #0x0
-    bl func_0201edd0
+    bl SampledArcTimedSprite_Init
 .L_0201f628:
     str r0, [r4, #0x8]
     ldr r1, [r0, #0x4]
@@ -72,4 +72,3 @@ TimedSpriteSampledArcPresentation_Init: ; 0x0201f598
 .L_0201f668: .word gTimedSpritePresentationAllocationTag
 .L_0201f66c: .word gHeapContext
     .size TimedSpriteSampledArcPresentation_Init, .-TimedSpriteSampledArcPresentation_Init
-

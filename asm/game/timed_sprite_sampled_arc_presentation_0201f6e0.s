@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
 .extern FieldEffect_Init
-.extern func_0201edd0
+.extern SampledArcTimedSprite_Init
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
@@ -34,4 +34,3 @@ TimedSpriteSampledArcPresentation_Update: ; 0x0201f6e0
     ldmia sp!, {r4, pc}
 .L_0201f720: .word gGamePhaseRuntime
     .size TimedSpriteSampledArcPresentation_Update, .-TimedSpriteSampledArcPresentation_Update
-

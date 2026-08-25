@@ -1,0 +1,6 @@
+{
+  "func_0201edd0": "SampledArcTimedSprite_Init",
+  "func_0201ee18": "SampledArcTimedSprite_Destroy",
+  "func_0201ee2c": "SampledArcTimedSprite_DestroyAndFree",
+  "func_0201ee48": "SampledArcTimedSprite_Update"
+}

@@ -41,7 +41,8 @@ extern u8 *gGamePhaseRuntime;
 
 extern SampledArcSpriteConfig *TimedSpriteConfig_InitTracks(
     SampledArcSpriteConfig *config);
-extern void *func_0201edd0(void *self, SampledArcSpriteConfig *config);
+extern void *SampledArcTimedSprite_Init(void *self,
+                                       SampledArcSpriteConfig *config);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
@@ -82,7 +83,7 @@ TimedSpriteSampledArcPresentation *TimedSpriteSampledArcPresentation_Init(
     *(s32 *)&config.second20.bytes[8] = 0;
     presentation = Heap_Alloc(0x2c, gTimedSpritePresentationAllocationTag, 4, &gHeapContext);
     if (presentation != 0) {
-        func_0201edd0(presentation, &config);
+        SampledArcTimedSprite_Init(presentation, &config);
     }
     self->presentation08 = presentation;
     sprite = *(u8 **)((u8 *)presentation + 4);

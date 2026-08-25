@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
 .extern FieldEffect_Init
-.extern func_0201edd0
+.extern SampledArcTimedSprite_Init
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
@@ -31,4 +31,3 @@ TimedSpriteSampledArcPresentation_Destroy: ; 0x0201f670
     ldmia sp!, {r4, pc}
 .L_0201f6a0: .word gTimedSpriteSampledArcPresentationVtable
     .size TimedSpriteSampledArcPresentation_Destroy, .-TimedSpriteSampledArcPresentation_Destroy
-
