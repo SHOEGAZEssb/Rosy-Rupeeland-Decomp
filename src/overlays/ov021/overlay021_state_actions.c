@@ -45,15 +45,15 @@ extern void Overlay021_DestroyListsAndSavePositions(void *);
 extern void Overlay021_RefreshListButtonAnimations(void *);
 extern void Overlay021_ResetSceneSprites(void *);
 extern void Overlay021_DestroyPrimaryPanel(void *);
-extern void func_ov021_021fecd0(void *);
-extern void func_ov021_021fedac(void *);
+extern void Overlay021_DestroySecondaryPanel(void *);
+extern void Overlay021_CreateAuxiliaryPanel(void *);
 extern void Overlay021_UpdateScene(void *);
-extern void func_ov021_021fee54(void *);
-extern void func_ov021_021ff0e0(void *, s32);
-extern void func_ov021_021ff1d0(void *, const void *);
-extern s32 func_ov021_021ff274(void *);
+extern void Overlay021_ShowListMarker(void *);
+extern void Overlay021_Dialog_ShowMessage(void *, s32);
+extern void Overlay021_Dialog_ShowContent(void *, const void *);
+extern s32 Overlay021_Dialog_UpdatePrompt(void *);
 extern u32 Overlay021Descriptor_GetFlags16_19(const void *);
-extern s32 func_ov021_021ffa10(const void *);
+extern s32 Overlay021_Descriptor_HasFlag29(const void *);
 extern void func_ov045_0220c028(void *);
 #ifdef __cplusplus
 }
@@ -80,14 +80,14 @@ extern "C" s32 func_ov021_02200360(void *state)
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             const void *content =
                 RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 0);
-            func_ov021_021ff1d0(state, content);
+            Overlay021_Dialog_ShowContent(state, content);
             func_ov045_0220c028(FIELD(void *, state, 0x38c));
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
         break;
     case 2:
-        if (func_ov021_021ff274(state) != 0) {
+        if (Overlay021_Dialog_UpdatePrompt(state) != 0) {
             DisplayBrightness_StartMaskedTransitions(1, -16);
             const u8 *descriptor = FIELD(const u8 *, state, 0x2bc);
             const u8 *record = FIELD(const u8 *, descriptor, 4);
@@ -124,14 +124,14 @@ extern "C" s32 func_ov021_0220044c(void *state)
             const void *content = RecordDescriptor_GetMessage(
                 FIELD(void *, state, 0x2bc),
                 FIELD(s32, state, 0x3dc));
-            func_ov021_021ff1d0(state, content);
+            Overlay021_Dialog_ShowContent(state, content);
             func_ov045_0220c028(FIELD(void *, state, 0x38c));
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
         break;
     case 2:
-        if (func_ov021_021ff274(state) != 0) {
+        if (Overlay021_Dialog_UpdatePrompt(state) != 0) {
             DisplayBrightness_StartMaskedTransitions(1, -16);
             TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             if (GameWork_TestFlag(gGameWork, 0x39a) == 0) {
@@ -145,7 +145,7 @@ extern "C" s32 func_ov021_0220044c(void *state)
             }
             const u8 *descriptor = FIELD(const u8 *, state, 0x2bc);
             const u8 *record = FIELD(const u8 *, descriptor, 4);
-            if (func_ov021_021ffa10(descriptor) != 0) {
+            if (Overlay021_Descriptor_HasFlag29(descriptor) != 0) {
                 FIELD(s32, state, 0x3d8) = 1;
             } else {
                 u32 flags = FIELD(u32, record, 0xc);
@@ -233,7 +233,7 @@ extern "C" s32 func_ov021_02200630(void *state)
             Overlay021_List_Show(list);
             Overlay021_List_RenderVisibleRows(list);
             Overlay021_List_UpdateSelectionDisplay(list);
-            func_ov021_021fee54(state);
+            Overlay021_ShowListMarker(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -262,7 +262,7 @@ extern "C" s32 func_ov021_02200630(void *state)
  */
 extern "C" s32 func_ov021_02200840(void *state)
 {
-    func_ov021_021ff274(state);
+    Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
         FIELD(s32, state, 4)++;
@@ -273,12 +273,12 @@ extern "C" s32 func_ov021_02200840(void *state)
             if (FIELD(void *, state, 0x354) != 0)
                 Overlay021_DestroyPrimaryPanel(state);
             else if (FIELD(void *, state, 0x358) != 0)
-                func_ov021_021fecd0(state);
+                Overlay021_DestroySecondaryPanel(state);
             else
                 Overlay021_List_Hide(FIELD(void *, state, 0x2c0));
             Overlay021_ResetSceneSprites(state);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-            func_ov021_021fedac(state);
+            Overlay021_CreateAuxiliaryPanel(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -288,9 +288,9 @@ extern "C" s32 func_ov021_02200840(void *state)
         if (FIELD(s32, state, 0x3e0) == 0) {
             const void *descriptor = FIELD(void *, state, 0x2bc);
             if (Overlay021_Descriptor_GetCategory(descriptor) == 1)
-                func_ov021_021ff0e0(state, 4);
+                Overlay021_Dialog_ShowMessage(state, 4);
             else if (Overlay021Descriptor_GetFlags16_19(descriptor) == 1)
-                func_ov021_021ff0e0(state, 5);
+                Overlay021_Dialog_ShowMessage(state, 5);
         }
         DisplayBrightness_StartMaskedTransitions(1, 0);
         func_ov002_021fbdc0(FIELD(void *, state, 0x390));

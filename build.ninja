@@ -28004,7 +28004,7 @@ build build/reports/overlay021_auxiliary_helpers_021fecd0.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fecd0.o
 build build/reports/overlay021_auxiliary_helpers_021fecd0.txt: match_report build/reports/overlay021_auxiliary_helpers_021fecd0.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_auxiliary_helpers_021fecd0.json
-  report_args = --section .text --function func_ov021_021fecd0 --require-exact
+  report_args = --section .text --function Overlay021_DestroySecondaryPanel --require-exact
 build build/reports/overlay021_auxiliary_helpers_021fed30.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fed30.o | build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fed30.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fed30.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fed30.o
@@ -28016,7 +28016,7 @@ build build/reports/overlay021_auxiliary_helpers_021fedac.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fedac.o
 build build/reports/overlay021_auxiliary_helpers_021fedac.txt: match_report build/reports/overlay021_auxiliary_helpers_021fedac.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_auxiliary_helpers_021fedac.json
-  report_args = --section .text --function func_ov021_021fedac --require-exact
+  report_args = --section .text --function Overlay021_CreateAuxiliaryPanel --require-exact
 build build/reports/overlay021_auxiliary_helpers_021fee14.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee14.o | build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee14.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee14.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee14.o
@@ -28028,25 +28028,25 @@ build build/reports/overlay021_auxiliary_helpers_021fee54.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee54.o
 build build/reports/overlay021_auxiliary_helpers_021fee54.txt: match_report build/reports/overlay021_auxiliary_helpers_021fee54.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_auxiliary_helpers_021fee54.json
-  report_args = --section .text --function func_ov021_021fee54 --require-exact
+  report_args = --section .text --function Overlay021_ShowListMarker --require-exact
 build build/reports/overlay021_auxiliary_helpers_021fefcc.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fefcc.o | build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fefcc.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fefcc.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fefcc.o
 build build/reports/overlay021_auxiliary_helpers_021fefcc.txt: match_report build/reports/overlay021_auxiliary_helpers_021fefcc.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_auxiliary_helpers_021fefcc.json
-  report_args = --section .text --function func_ov021_021fefcc --require-exact
+  report_args = --section .text --function Overlay021_PositionListButtons --require-exact
 build build/reports/overlay021_auxiliary_helpers_021ff050.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff050.o | build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff050.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff050.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff050.o
 build build/reports/overlay021_auxiliary_helpers_021ff050.txt: match_report build/reports/overlay021_auxiliary_helpers_021ff050.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_auxiliary_helpers_021ff050.json
-  report_args = --section .text --function func_ov021_021ff050 --require-exact
+  report_args = --section .text --function Overlay021_SelectList --require-exact
 build build/reports/overlay021_auxiliary_helpers_021ff0c8.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff0c8.o | build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff0c8.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff0c8.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff0c8.o
 build build/reports/overlay021_auxiliary_helpers_021ff0c8.txt: match_report build/reports/overlay021_auxiliary_helpers_021ff0c8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_auxiliary_helpers_021ff0c8.json
-  report_args = --section .text --function func_ov021_021ff0c8 --require-exact
+  report_args = --section .text --function Overlay021_IsResourceStateReady --require-exact
 build overlay021_auxiliary_helpers: phony build/decomp/src/overlays/ov021/overlay021_auxiliary_helpers.o build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fecd0.o build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fed30.o build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fedac.o build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee14.o build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee54.o build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fefcc.o build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff050.o build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021ff0c8.o build/reports/overlay021_auxiliary_helpers_021fecd0.txt build/reports/overlay021_auxiliary_helpers_021fed30.txt build/reports/overlay021_auxiliary_helpers_021fedac.txt build/reports/overlay021_auxiliary_helpers_021fee14.txt build/reports/overlay021_auxiliary_helpers_021fee54.txt build/reports/overlay021_auxiliary_helpers_021fefcc.txt build/reports/overlay021_auxiliary_helpers_021ff050.txt build/reports/overlay021_auxiliary_helpers_021ff0c8.txt
 overlay021_selection_display_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov021/overlay021_selection_display.o: mwccarm src/overlays/ov021/overlay021_selection_display.c | include/tingle/types.h
@@ -28075,13 +28075,13 @@ build build/reports/overlay021_selection_display_021ff380.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff380.o
 build build/reports/overlay021_selection_display_021ff380.txt: match_report build/reports/overlay021_selection_display_021ff380.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff380.json
-  report_args = --section .text --function func_ov021_021ff380 --require-exact
+  report_args = --section .text --function Overlay021_BeginTileTransitionOffset80 --require-exact
 build build/reports/overlay021_selection_display_021ff3ac.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff3ac.o | build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff3ac.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff3ac.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff3ac.o
 build build/reports/overlay021_selection_display_021ff3ac.txt: match_report build/reports/overlay021_selection_display_021ff3ac.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff3ac.json
-  report_args = --section .text --function func_ov021_021ff3ac --require-exact
+  report_args = --section .text --function Overlay021_BeginTileTransitionOffset60 --require-exact
 build build/reports/overlay021_selection_display_021ff3d8.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff3d8.o | build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff3d8.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff3d8.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff3d8.o
@@ -28093,7 +28093,7 @@ build build/reports/overlay021_selection_display_021ff404.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff404.o
 build build/reports/overlay021_selection_display_021ff404.txt: match_report build/reports/overlay021_selection_display_021ff404.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff404.json
-  report_args = --section .text --function func_ov021_021ff404 --require-exact
+  report_args = --section .text --function Overlay021_RenderSelectionCategory --require-exact
 build build/reports/overlay021_selection_display_021ff4f0.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff4f0.o | build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff4f0.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff4f0.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff4f0.o
@@ -28105,25 +28105,25 @@ build build/reports/overlay021_selection_display_021ff504.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff504.o
 build build/reports/overlay021_selection_display_021ff504.txt: match_report build/reports/overlay021_selection_display_021ff504.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff504.json
-  report_args = --section .text --function func_ov021_021ff504 --require-exact
+  report_args = --section .text --function Overlay021_RenderSelectionName --require-exact
 build build/reports/overlay021_selection_display_021ff5b8.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff5b8.o | build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff5b8.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff5b8.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff5b8.o
 build build/reports/overlay021_selection_display_021ff5b8.txt: match_report build/reports/overlay021_selection_display_021ff5b8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff5b8.json
-  report_args = --section .text --function func_ov021_021ff5b8 --require-exact
+  report_args = --section .text --function Overlay021_RefreshPrimarySelectionDisplay --require-exact
 build build/reports/overlay021_selection_display_021ff62c.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff62c.o | build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff62c.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff62c.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff62c.o
 build build/reports/overlay021_selection_display_021ff62c.txt: match_report build/reports/overlay021_selection_display_021ff62c.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff62c.json
-  report_args = --section .text --function func_ov021_021ff62c --require-exact
+  report_args = --section .text --function Overlay021_TestNestedFlags --require-exact
 build build/reports/overlay021_selection_display_021ff644.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff644.o | build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff644.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff644.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff644.o
 build build/reports/overlay021_selection_display_021ff644.txt: match_report build/reports/overlay021_selection_display_021ff644.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff644.json
-  report_args = --section .text --function func_ov021_021ff644 --require-exact
+  report_args = --section .text --function Overlay021_RefreshSecondarySelectionDisplay --require-exact
 build overlay021_selection_display: phony build/decomp/src/overlays/ov021/overlay021_selection_display.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff380.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff3ac.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff3d8.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff404.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff4f0.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff504.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff5b8.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff62c.o build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff644.o build/reports/overlay021_selection_display_021ff380.txt build/reports/overlay021_selection_display_021ff3ac.txt build/reports/overlay021_selection_display_021ff3d8.txt build/reports/overlay021_selection_display_021ff404.txt build/reports/overlay021_selection_display_021ff4f0.txt build/reports/overlay021_selection_display_021ff504.txt build/reports/overlay021_selection_display_021ff5b8.txt build/reports/overlay021_selection_display_021ff62c.txt build/reports/overlay021_selection_display_021ff644.txt
 overlay021_action_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov021/overlay021_action_helpers.o: mwccarm src/overlays/ov021/overlay021_action_helpers.c | include/tingle/types.h
@@ -28140,19 +28140,19 @@ build build/reports/overlay021_action_helpers_021ffa10.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov021/overlay021_action_helpers_021ffa10.o
 build build/reports/overlay021_action_helpers_021ffa10.txt: match_report build/reports/overlay021_action_helpers_021ffa10.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_action_helpers_021ffa10.json
-  report_args = --section .text --function func_ov021_021ffa10 --require-exact
+  report_args = --section .text --function Overlay021_Descriptor_HasFlag29 --require-exact
 build build/reports/overlay021_action_helpers_021ffa28.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_action_helpers_021ffa28.o | build/decomp/asm/overlays/ov021/overlay021_action_helpers_021ffa28.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_action_helpers_021ffa28.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_action_helpers_021ffa28.o
 build build/reports/overlay021_action_helpers_021ffa28.txt: match_report build/reports/overlay021_action_helpers_021ffa28.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_action_helpers_021ffa28.json
-  report_args = --section .text --function func_ov021_021ffa28 --require-exact
+  report_args = --section .text --function Overlay021_UpdateAndComplete --require-exact
 build build/reports/overlay021_action_helpers_021ffcb4.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_action_helpers_021ffcb4.o | build/decomp/asm/overlays/ov021/overlay021_action_helpers_021ffcb4.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_action_helpers_021ffcb4.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_action_helpers_021ffcb4.o
 build build/reports/overlay021_action_helpers_021ffcb4.txt: match_report build/reports/overlay021_action_helpers_021ffcb4.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_action_helpers_021ffcb4.json
-  report_args = --section .text --function func_ov021_021ffcb4 --require-exact
+  report_args = --section .text --function Overlay021_BeginSelectedAction --require-exact
 build overlay021_action_helpers: phony build/decomp/src/overlays/ov021/overlay021_action_helpers.o build/decomp/asm/overlays/ov021/overlay021_action_helpers_021ffa10.o build/decomp/asm/overlays/ov021/overlay021_action_helpers_021ffa28.o build/decomp/asm/overlays/ov021/overlay021_action_helpers_021ffcb4.o build/reports/overlay021_action_helpers_021ffa10.txt build/reports/overlay021_action_helpers_021ffa28.txt build/reports/overlay021_action_helpers_021ffcb4.txt
 overlay021_scene_widgets_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov021/overlay021_scene_widgets.o: mwccarm src/overlays/ov021/overlay021_scene_widgets.c | include/tingle/types.h
@@ -28217,7 +28217,7 @@ build build/reports/overlay021_dialog_runtime_021ff0e0.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff0e0.o
 build build/reports/overlay021_dialog_runtime_021ff0e0.txt: match_report build/reports/overlay021_dialog_runtime_021ff0e0.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_dialog_runtime_021ff0e0.json
-  report_args = --section .text --function func_ov021_021ff0e0 --require-exact
+  report_args = --section .text --function Overlay021_Dialog_ShowMessage --require-exact
 build build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff1d0.o: mwasmarm asm/overlays/ov021/overlay021_dialog_runtime_021ff1d0.s
 build build/decomp/delinks/asm/overlays/ov021/overlay021_dialog_runtime_021ff1d0.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov021/delinks.txt config/arm9/overlays/ov021/symbols.txt config/arm9/overlays/ov021/relocs.txt
 build build/reports/overlay021_dialog_runtime_021ff1d0.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_dialog_runtime_021ff1d0.o | build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff1d0.o
@@ -28225,7 +28225,7 @@ build build/reports/overlay021_dialog_runtime_021ff1d0.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff1d0.o
 build build/reports/overlay021_dialog_runtime_021ff1d0.txt: match_report build/reports/overlay021_dialog_runtime_021ff1d0.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_dialog_runtime_021ff1d0.json
-  report_args = --section .text --function func_ov021_021ff1d0 --require-exact
+  report_args = --section .text --function Overlay021_Dialog_ShowContent --require-exact
 build build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff274.o: mwasmarm asm/overlays/ov021/overlay021_dialog_runtime_021ff274.s
 build build/decomp/delinks/asm/overlays/ov021/overlay021_dialog_runtime_021ff274.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov021/delinks.txt config/arm9/overlays/ov021/symbols.txt config/arm9/overlays/ov021/relocs.txt
 build build/reports/overlay021_dialog_runtime_021ff274.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_dialog_runtime_021ff274.o | build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff274.o
@@ -28233,7 +28233,7 @@ build build/reports/overlay021_dialog_runtime_021ff274.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff274.o
 build build/reports/overlay021_dialog_runtime_021ff274.txt: match_report build/reports/overlay021_dialog_runtime_021ff274.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_dialog_runtime_021ff274.json
-  report_args = --section .text --function func_ov021_021ff274 --require-exact
+  report_args = --section .text --function Overlay021_Dialog_UpdatePrompt --require-exact
 build overlay021_dialog_runtime: phony build/decomp/src/overlays/ov021/overlay021_dialog_runtime.o build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff0e0.o build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff1d0.o build/decomp/asm/overlays/ov021/overlay021_dialog_runtime_021ff274.o build/reports/overlay021_dialog_runtime_021ff0e0.txt build/reports/overlay021_dialog_runtime_021ff1d0.txt build/reports/overlay021_dialog_runtime_021ff274.txt
 overlay021_state_entry_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov021/overlay021_state_entry.o: mwccarm src/overlays/ov021/overlay021_state_entry.c | include/tingle/types.h

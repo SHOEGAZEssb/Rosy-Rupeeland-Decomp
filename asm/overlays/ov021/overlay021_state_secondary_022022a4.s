@@ -12,16 +12,16 @@
     .extern Overlay021_CreatePrimaryPanel
     .extern Overlay021_DestroyPrimaryPanel
     .extern Overlay021_CreateSecondaryPanel
-    .extern func_ov021_021fecd0
+    .extern Overlay021_DestroySecondaryPanel
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff0e0
-    .extern func_ov021_021ff274
+    .extern Overlay021_Dialog_ShowMessage
+    .extern Overlay021_Dialog_UpdatePrompt
 
 .global func_ov021_022022a4
 func_ov021_022022a4:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     ldr r0, [r4, #0x4]
     cmp r0, #0x3
     addls pc, pc, r0, lsl #0x2
@@ -56,7 +56,7 @@ L_022022f0:
     bl Overlay021_CreateSecondaryPanel
     b L_02202334
 L_02202328:
-    bl func_ov021_021fecd0
+    bl Overlay021_DestroySecondaryPanel
     mov r0, r4
     bl Overlay021_CreatePrimaryPanel
 L_02202334:
@@ -78,7 +78,7 @@ L_02202364:
 L_02202368:
     mov r0, r4
     mov r1, #0x2
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     mov r0, #0x1
     mov r1, #0x0
     bl DisplayBrightness_StartMaskedTransitions

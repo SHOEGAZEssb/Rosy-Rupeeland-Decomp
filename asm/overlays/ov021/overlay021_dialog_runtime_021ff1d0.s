@@ -10,8 +10,8 @@
     .extern Overlay045_DrawSelectorPreview
     .extern gDebugFont
 
-.global func_ov021_021ff1d0
-func_ov021_021ff1d0:
+.global Overlay021_Dialog_ShowContent
+Overlay021_Dialog_ShowContent:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -55,5 +55,5 @@ L_021ff248:
     ldmia sp!, {r3, r4, r5, pc}
 L_021ff26c: .word data_021f5ed0
 L_021ff270: .word gDebugFont
-    .size func_ov021_021ff1d0, . - func_ov021_021ff1d0
+    .size Overlay021_Dialog_ShowContent, . - Overlay021_Dialog_ShowContent
 

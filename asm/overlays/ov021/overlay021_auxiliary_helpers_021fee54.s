@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_auxiliary_helpers.c. */
 
-.global func_ov021_021fee54
-func_ov021_021fee54:
+.global Overlay021_ShowListMarker
+Overlay021_ShowListMarker:
     ldr r2, [r0, #0x48]
     mov r1, #0x18
     orr r2, r2, #0x2
@@ -23,5 +23,5 @@ func_ov021_021fee54:
     add r0, r1, #0x1c
     strh r0, [r3, #0x2e]
     bx lr
-    .size func_ov021_021fee54, . - func_ov021_021fee54
+    .size Overlay021_ShowListMarker, . - Overlay021_ShowListMarker
 

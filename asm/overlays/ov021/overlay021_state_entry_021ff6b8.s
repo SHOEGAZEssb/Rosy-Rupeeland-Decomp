@@ -15,7 +15,7 @@
     .extern SpriteMotionController_Hide
     .extern Overlay021_SetTransition
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff0e0
+    .extern Overlay021_Dialog_ShowMessage
     .extern func_ov045_0220c128
     .extern func_ov045_0220c9e8
     .extern Overlay045_DrawSelectorPreview
@@ -100,7 +100,7 @@ L_021ff790:
 L_021ff7d8:
     mov r0, r4
     mov r1, #0x0
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
 L_021ff7e4:
     ldr r1, L_021ff830
     mov r0, r4

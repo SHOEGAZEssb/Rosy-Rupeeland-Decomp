@@ -28,10 +28,10 @@
     .extern Overlay021_List_HitTestRow
     .extern Overlay021_List_UpdateVisibleRows
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fee54
+    .extern Overlay021_ShowListMarker
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff274
-    .extern func_ov021_021ffcb4
+    .extern Overlay021_Dialog_UpdatePrompt
+    .extern Overlay021_BeginSelectedAction
 
 .global func_ov021_021ffd5c
 func_ov021_021ffd5c:
@@ -39,7 +39,7 @@ func_ov021_021ffd5c:
     mov r5, r0
     ldr r1, [r5, #0x2c0]
     ldr r4, [r1, #0x58]
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     ldr r0, [r5, #0x4]
     cmp r0, #0xa
     addls pc, pc, r0, lsl #0x2
@@ -81,7 +81,7 @@ L_021ffdf0:
     cmp r0, #0x0
     beq L_022000d4
     mov r0, r5
-    bl func_ov021_021fee54
+    bl Overlay021_ShowListMarker
     b L_022000d4
 L_021ffe0c:
     mov r0, r4
@@ -180,14 +180,14 @@ L_021fff38:
     ldr r0, [r5, #0x2c0]
     bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r5
-    bl func_ov021_021fee54
+    bl Overlay021_ShowListMarker
     mov r0, #0xa
     str r0, [r5, #0x4]
     mov r0, #0x0
     str r0, [r5, #0x8]
     b L_022000d4
 L_021fff88:
-    bl func_ov021_021ffcb4
+    bl Overlay021_BeginSelectedAction
     b L_022000d4
 L_021fff90:
     ldr r1, [r5, #0x2c4]
@@ -201,7 +201,7 @@ L_021fff90:
     cmp r0, #0x0
     beq L_021fffc4
     mov r0, r5
-    bl func_ov021_021ffcb4
+    bl Overlay021_BeginSelectedAction
     b L_022000d4
 L_021fffc4:
     add r0, r5, #0xa0

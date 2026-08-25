@@ -31,17 +31,17 @@
     .extern Overlay021_SetupMainBackground
     .extern Overlay021_SetupSceneSprites
     .extern Overlay021_DestroyAuxiliaryPanel
-    .extern func_ov021_021fee54
+    .extern Overlay021_ShowListMarker
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff050
-    .extern func_ov021_021ff0c8
-    .extern func_ov021_021ff0e0
-    .extern func_ov021_021ff1d0
-    .extern func_ov021_021ff274
-    .extern func_ov021_021ff380
-    .extern func_ov021_021ff3ac
+    .extern Overlay021_SelectList
+    .extern Overlay021_IsResourceStateReady
+    .extern Overlay021_Dialog_ShowMessage
+    .extern Overlay021_Dialog_ShowContent
+    .extern Overlay021_Dialog_UpdatePrompt
+    .extern Overlay021_BeginTileTransitionOffset80
+    .extern Overlay021_BeginTileTransitionOffset60
     .extern Overlay021_UpdateTileTransitionOffset20
-    .extern func_ov021_021ffa10
+    .extern Overlay021_Descriptor_HasFlag29
     .extern func_ov045_0220b924
     .extern func_ov045_0220b9b8
     .extern func_ov045_0220bc34
@@ -151,7 +151,7 @@ L_022024fc:
     b L_02202ba8
 L_02202544:
     ldr r0, [r4, #0x384]
-    bl func_ov021_021ff0c8
+    bl Overlay021_IsResourceStateReady
     cmp r0, #0x0
     beq L_02202ba8
     mov r0, r4
@@ -183,11 +183,11 @@ L_02202584:
 L_022025b4:
     bl func_ov045_0220bdf0
     mov r0, r4
-    bl func_ov021_021ff380
+    bl Overlay021_BeginTileTransitionOffset80
 L_022025c0:
     mov r0, r4
     mov r1, #0x6
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     b L_022026f4
 L_022025d0:
     mov r0, r4
@@ -196,7 +196,7 @@ L_022025d0:
     ldr r0, [r4, #0x384]
     bl func_ov045_0220bdb0
     mov r0, r4
-    bl func_ov021_021ff3ac
+    bl Overlay021_BeginTileTransitionOffset60
     ldr r1, [r4, #0x2bc]
     add r0, r4, #0x3b8
     ldr r1, [r1, #0x4]
@@ -206,7 +206,7 @@ L_022025d0:
     bl GraphicsSpriteText_FormatDecimal
     mov r0, r4
     mov r1, #0x9
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     b L_022026f4
 L_02202618:
     mov r0, r4
@@ -227,18 +227,18 @@ L_02202618:
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
     b L_022026f4
 L_02202668:
     bl func_ov045_0220bdf0
     mov r0, r4
-    bl func_ov021_021ff380
+    bl Overlay021_BeginTileTransitionOffset80
     ldr r0, [r4, #0x2bc]
     mov r1, #0x3
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
     b L_022026f4
 L_02202690:
     mov r0, r4
@@ -247,7 +247,7 @@ L_02202690:
     ldr r0, [r4, #0x384]
     bl func_ov045_0220bdb0
     mov r0, r4
-    bl func_ov021_021ff3ac
+    bl Overlay021_BeginTileTransitionOffset60
     ldr r0, [r4, #0x2bc]
     ldr r2, [r4, #0x394]
     ldr r1, [r0, #0x4]
@@ -259,14 +259,14 @@ L_02202690:
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
     b L_022026f4
 L_022026e0:
     mov r1, #0x5
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
 L_022026f4:
     ldr r1, [r4, #0x4]
     mov r0, #0x0
@@ -275,7 +275,7 @@ L_022026f4:
     str r0, [r4, #0x8]
     b L_02202ba8
 L_0220270c:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02202ba8
     ldr r0, [r4, #0x3e8]
@@ -426,7 +426,7 @@ L_022028e0:
     b L_02202ba8
 L_02202940:
     ldr r0, [r4, #0x384]
-    bl func_ov021_021ff0c8
+    bl Overlay021_IsResourceStateReady
     cmp r0, #0x0
     beq L_02202ba8
     ldr r0, [r4, #0x384]
@@ -458,12 +458,12 @@ L_02202998:
     bl Overlay021_SetupSceneSprites
     ldr r1, [r4, #0x2c4]
     mov r0, r4
-    bl func_ov021_021ff050
+    bl Overlay021_SelectList
     ldr r0, [r4, #0x37c]
     cmp r0, #0x0
     beq L_022029fc
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]
@@ -479,7 +479,7 @@ L_022029fc:
     cmp r0, #0x0
     beq L_02202a38
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]
@@ -500,9 +500,9 @@ L_02202a38:
     ldr r0, [r4, #0x2c0]
     bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r4
-    bl func_ov021_021fee54
+    bl Overlay021_ShowListMarker
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]
@@ -545,7 +545,7 @@ L_02202aa8:
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -553,11 +553,11 @@ L_02202aa8:
     str r0, [r4, #0x8]
     b L_02202ba8
 L_02202b28:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02202ba8
     ldr r0, [r4, #0x384]
-    bl func_ov021_021ff0c8
+    bl Overlay021_IsResourceStateReady
     cmp r0, #0x0
     beq L_02202ba8
     ldr r0, [r4, #0x384]

@@ -1,0 +1,21 @@
+{
+  "func_ov021_021fecd0": "Overlay021_DestroySecondaryPanel",
+  "func_ov021_021fedac": "Overlay021_CreateAuxiliaryPanel",
+  "func_ov021_021fee54": "Overlay021_ShowListMarker",
+  "func_ov021_021fefcc": "Overlay021_PositionListButtons",
+  "func_ov021_021ff050": "Overlay021_SelectList",
+  "func_ov021_021ff0c8": "Overlay021_IsResourceStateReady",
+  "func_ov021_021ff0e0": "Overlay021_Dialog_ShowMessage",
+  "func_ov021_021ff1d0": "Overlay021_Dialog_ShowContent",
+  "func_ov021_021ff274": "Overlay021_Dialog_UpdatePrompt",
+  "func_ov021_021ff380": "Overlay021_BeginTileTransitionOffset80",
+  "func_ov021_021ff3ac": "Overlay021_BeginTileTransitionOffset60",
+  "func_ov021_021ff404": "Overlay021_RenderSelectionCategory",
+  "func_ov021_021ff504": "Overlay021_RenderSelectionName",
+  "func_ov021_021ff5b8": "Overlay021_RefreshPrimarySelectionDisplay",
+  "func_ov021_021ff62c": "Overlay021_TestNestedFlags",
+  "func_ov021_021ff644": "Overlay021_RefreshSecondarySelectionDisplay",
+  "func_ov021_021ffa10": "Overlay021_Descriptor_HasFlag29",
+  "func_ov021_021ffa28": "Overlay021_UpdateAndComplete",
+  "func_ov021_021ffcb4": "Overlay021_BeginSelectedAction"
+}

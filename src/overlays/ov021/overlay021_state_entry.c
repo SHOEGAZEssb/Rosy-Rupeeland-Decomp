@@ -47,13 +47,13 @@ extern void Overlay021_DestroyListsAndSavePositions(void *);
 extern void Overlay021_RefreshListButtonAnimations(void *);
 extern s32 Overlay021_IsAuxiliaryRecordAvailable(void *);
 extern void Overlay021_UpdateScene(void *);
-extern void func_ov021_021fee54(void *);
-extern void func_ov021_021fefcc(void *);
-extern void func_ov021_021ff050(void *, s32);
-extern void func_ov021_021ff0e0(void *, s32);
-extern void func_ov021_021ff1d0(void *, const void *);
-extern s32 func_ov021_021ff274(void *);
-extern s32 func_ov021_021ffa10(const void *);
+extern void Overlay021_ShowListMarker(void *);
+extern void Overlay021_PositionListButtons(void *);
+extern void Overlay021_SelectList(void *, s32);
+extern void Overlay021_Dialog_ShowMessage(void *, s32);
+extern void Overlay021_Dialog_ShowContent(void *, const void *);
+extern s32 Overlay021_Dialog_UpdatePrompt(void *);
+extern s32 Overlay021_Descriptor_HasFlag29(const void *);
 extern void func_ov045_0220c028(void *);
 extern void func_ov045_0220c128(void *, s32);
 extern s32 func_ov045_0220c9e8(s32, s32);
@@ -105,7 +105,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
                     gDebugFont, FIELD(void *, state, 0x58));
                 Overlay045_DrawSelectorPreview(FIELD(s32, state, 0x54), 0);
             } else {
-                func_ov021_021ff0e0(state, 0);
+                Overlay021_Dialog_ShowMessage(state, 0);
             }
             Overlay021_SetTransition(state, data_ov021_02202d28[0],
                                 data_ov021_02202d28[1]);
@@ -139,7 +139,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             const void *content =
                 RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 0);
-            func_ov021_021ff1d0(state, content);
+            Overlay021_Dialog_ShowContent(state, content);
             s32 result = TitleDialog_UpdateTextPage(FIELD(void *, state, 0x388),
                                        data_021f5ed0);
             if ((result & 0x200) == 0)
@@ -149,9 +149,9 @@ extern "C" s32 func_ov021_021ff834(void *state)
         }
         break;
     case 2:
-        if (func_ov021_021ff274(state) != 0) {
+        if (Overlay021_Dialog_UpdatePrompt(state) != 0) {
             DisplayBrightness_StartMaskedTransitions(1, -16);
-            if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
+            if (Overlay021_Descriptor_HasFlag29(FIELD(void *, state, 0x2bc)) != 0)
                 FIELD(s32, state, 0x3d8) = 1;
             const u8 *descriptor = FIELD(const u8 *, state, 0x2bc);
             const u8 *record = FIELD(const u8 *, descriptor, 4);
@@ -205,13 +205,13 @@ extern "C" s32 func_ov021_021ff834(void *state)
  */
 extern "C" s32 func_ov021_021ffa38(void *state)
 {
-    func_ov021_021ff274(state);
+    Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
         FIELD(u32, state, 0x48) &= ~2U;
         FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
         FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
-        func_ov021_021fefcc(state);
+        Overlay021_PositionListButtons(state);
         SpriteMotionController_Show((u8 *)state + 0xa0);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
@@ -255,7 +255,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
                             state, data_ov021_02202f18[0],
                             data_ov021_02202f18[1]);
                 } else {
-                    func_ov021_021ff0e0(state, 3);
+                    Overlay021_Dialog_ShowMessage(state, 3);
                     FIELD(s32, state, 4)++;
                     FIELD(s32, state, 8) = 0;
                 }
@@ -265,11 +265,11 @@ extern "C" s32 func_ov021_021ffa38(void *state)
         break;
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
+            Overlay021_SelectList(state, FIELD(s32, state, 0x2c4));
             Overlay021_List_Show(FIELD(void *, state, 0x2c0));
             Overlay021_List_RenderVisibleRows(FIELD(void *, state, 0x2c0));
             Overlay021_List_UpdateSelectionDisplay(FIELD(void *, state, 0x2c0));
-            func_ov021_021fee54(state);
+            Overlay021_ShowListMarker(state);
             DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;

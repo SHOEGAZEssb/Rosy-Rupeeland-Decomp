@@ -16,11 +16,11 @@
     .extern func_ov001_021fc348
     .extern Overlay021_List_UpdateVisibleRows
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fee54
+    .extern Overlay021_ShowListMarker
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff274
-    .extern func_ov021_021ff5b8
-    .extern func_ov021_021ff644
+    .extern Overlay021_Dialog_UpdatePrompt
+    .extern Overlay021_RefreshPrimarySelectionDisplay
+    .extern Overlay021_RefreshSecondarySelectionDisplay
 
 .global func_ov021_022000f0
 func_ov021_022000f0:
@@ -37,7 +37,7 @@ func_ov021_022000f0:
     ldreq r4, [r0, #0x58]
 L_0220011c:
     mov r0, r5
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     ldr r0, [r5, #0x4]
     cmp r0, #0x0
     beq L_02200144
@@ -85,7 +85,7 @@ L_022001b4:
     cmp r0, #0x0
     beq L_02200344
     mov r0, r5
-    bl func_ov021_021ff5b8
+    bl Overlay021_RefreshPrimarySelectionDisplay
     b L_02200344
 L_022001d8:
     ldr r0, [r5, #0x358]
@@ -95,7 +95,7 @@ L_022001d8:
     cmp r0, #0x0
     beq L_02200344
     mov r0, r5
-    bl func_ov021_021ff644
+    bl Overlay021_RefreshSecondarySelectionDisplay
     b L_02200344
 L_022001fc:
     ldr r0, [r5, #0x2c0]
@@ -103,7 +103,7 @@ L_022001fc:
     cmp r0, #0x0
     beq L_02200344
     mov r0, r5
-    bl func_ov021_021fee54
+    bl Overlay021_ShowListMarker
     b L_02200344
 L_02200218:
     ldr r0, [r5, #0x20]

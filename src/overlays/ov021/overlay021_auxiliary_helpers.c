@@ -34,7 +34,7 @@ extern void Overlay021_CopySnapshot(void *, const void *);
  * object +0x41C with argument zero. Panel/UI ownership changes; returns void,
  * with no direct hardware access.
  */
-extern "C" void func_ov021_021fecd0(void *state)
+extern "C" void Overlay021_DestroySecondaryPanel(void *state)
 {
     void *panel = FIELD(void *, state, 0x358);
     if (panel != 0) {
@@ -74,7 +74,7 @@ extern "C" s32 Overlay021_IsAuxiliaryRecordAvailable(void *state)
  * zero mode, and store it. Heap/panel/UI ownership changes; returns void and
  * performs no direct hardware access.
  */
-extern "C" void func_ov021_021fedac(void *state)
+extern "C" void Overlay021_CreateAuxiliaryPanel(void *state)
 {
     if (FIELD(void *, state, 0x390) != 0)
         return;
@@ -113,7 +113,7 @@ extern "C" void Overlay021_DestroyAuxiliaryPanel(void *state)
  * set Y to 0x1C + (selected(+0x14)-firstVisible(+0x0C))*24 using active list
  * +0x2C0. Scene and sprite state change; returns void and has no SDK/MMIO calls.
  */
-extern "C" void func_ov021_021fee54(void *state)
+extern "C" void Overlay021_ShowListMarker(void *state)
 {
     FIELD(u32, state, 0x48) |= 2;
     void *sprite = FIELD(void *, state, 0x98);
@@ -131,7 +131,7 @@ extern "C" void func_ov021_021fee54(void *state)
  * modes 9,12,13 move the second helper to Y=0x60; for mode 17 move the first
  * helper there. Input-helper UI state changes; returns void and no MMIO occurs.
  */
-extern "C" void func_ov021_021fefcc(void *state)
+extern "C" void Overlay021_PositionListButtons(void *state)
 {
     s32 i;
     for (i = 0; i < 2; i++)
@@ -150,7 +150,7 @@ extern "C" void func_ov021_021fefcc(void *state)
  * move the selected helper to X=128,Y=170. Input/list selection state changes;
  * returns void and performs no direct hardware access.
  */
-extern "C" void func_ov021_021ff050(void *state, s32 index)
+extern "C" void Overlay021_SelectList(void *state, s32 index)
 {
     FIELD(s32, state, 0x2c4) = index;
     FIELD(void *, state, 0x2c0) =
@@ -168,7 +168,7 @@ extern "C" void func_ov021_021ff050(void *state, s32 index)
  * Return one when word +0x80 is greater than or equal to word +0x7C, otherwise
  * zero. State is read only and no SDK or hardware effects occur.
  */
-extern "C" s32 func_ov021_021ff0c8(void *state)
+extern "C" s32 Overlay021_IsResourceStateReady(void *state)
 {
     return FIELD(s32, state, 0x80) >= FIELD(s32, state, 0x7c);
 }

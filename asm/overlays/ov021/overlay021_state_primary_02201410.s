@@ -30,16 +30,16 @@
     .extern Overlay021_SetTransition
     .extern Overlay021_IsAuxiliaryRecordAvailable
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff274
+    .extern Overlay021_Dialog_UpdatePrompt
     .extern Overlay021Descriptor_GetFlags16_19
-    .extern func_ov021_021ff5b8
-    .extern func_ov021_021ff62c
+    .extern Overlay021_RefreshPrimarySelectionDisplay
+    .extern Overlay021_TestNestedFlags
 
 .global func_ov021_02201410
 func_ov021_02201410:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     ldr r0, [r4, #0x4]
     cmp r0, #0x3
     addls pc, pc, r0, lsl #0x2
@@ -53,7 +53,7 @@ L_0220143c:
     ldr r0, [r4, #0x354]
     bl func_ov000_021fc3f8
     mov r0, r4
-    bl func_ov021_021ff5b8
+    bl Overlay021_RefreshPrimarySelectionDisplay
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -77,7 +77,7 @@ L_0220148c:
     cmp r0, #0x0
     beq L_022017d8
     mov r0, r4
-    bl func_ov021_021ff5b8
+    bl Overlay021_RefreshPrimarySelectionDisplay
     b L_022017d8
 L_022014a8:
     ldr r0, [r4, #0x354]
@@ -132,7 +132,7 @@ L_0220153c:
     ldr r0, [r4, #0x354]
     bl Overlay000_SyncSelection
     mov r0, r4
-    bl func_ov021_021ff5b8
+    bl Overlay021_RefreshPrimarySelectionDisplay
     b L_022017d8
 L_0220157c:
     ldr r0, [r4, #0x354]
@@ -189,7 +189,7 @@ L_02201614:
     ldr r0, [r4, #0x354]
     bl Overlay000_GetActiveMetadata
     mov r1, #0x1
-    bl func_ov021_021ff62c
+    bl Overlay021_TestNestedFlags
     cmp r0, #0x0
     bne L_02201720
     ldr r0, [r4, #0x354]
@@ -295,7 +295,7 @@ L_022017c0:
     cmp r0, #0x0
     beq L_022017d8
     mov r0, r4
-    bl func_ov021_021ff5b8
+    bl Overlay021_RefreshPrimarySelectionDisplay
 L_022017d8:
     mov r0, r4
     bl Overlay021_UpdateScene

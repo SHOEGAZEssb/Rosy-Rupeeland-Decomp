@@ -10,11 +10,11 @@
     .extern TitleDialog_ClearTextRect
     .extern func_ov001_021fc7e4
     .extern Overlay021_SetTransition
-    .extern func_ov021_021fecd0
+    .extern Overlay021_DestroySecondaryPanel
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff0e0
-    .extern func_ov021_021ff274
-    .extern func_ov021_021ffa10
+    .extern Overlay021_Dialog_ShowMessage
+    .extern Overlay021_Dialog_UpdatePrompt
+    .extern Overlay021_Descriptor_HasFlag29
     .extern func_ov045_0220b924
     .extern func_ov045_0220b9b8
     .extern gGamePhaseCurrencyHud
@@ -41,7 +41,7 @@ L_02201fc8:
     sub r1, r1, #0x1
     str r1, [r0, #0x1c]
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]
@@ -94,7 +94,7 @@ L_02202098:
     mov r0, r4
     mov r1, #0x6
     str r2, [r4, #0x380]
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     ldr r1, L_0220218c
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -106,7 +106,7 @@ L_022020c0:
     beq L_02202178
     mov r0, r4
     mov r1, #0x6
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -114,7 +114,7 @@ L_022020c0:
     str r0, [r4, #0x8]
     b L_02202178
 L_022020f0:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02202178
     ldr r1, [r4, #0x4]
@@ -145,7 +145,7 @@ L_02202154:
     cmp r0, #0x0
     beq L_02202178
     mov r0, r4
-    bl func_ov021_021fecd0
+    bl Overlay021_DestroySecondaryPanel
     ldr r1, L_02202190
     mov r0, r4
     ldmia r1, {r1, r2}

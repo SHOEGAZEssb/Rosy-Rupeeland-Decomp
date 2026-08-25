@@ -7,8 +7,8 @@
     .extern TitleDialog_ClearTextRect
     .extern Overlay021_SetTransition
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff0e0
-    .extern func_ov021_021ff274
+    .extern Overlay021_Dialog_ShowMessage
+    .extern Overlay021_Dialog_UpdatePrompt
     .extern Overlay021Descriptor_GetFlags16_19
 
 .global func_ov021_02202be0
@@ -42,11 +42,11 @@ L_02202c28:
     mov r0, r4
     bne L_02202c54
     mov r1, #0x1
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     b L_02202c5c
 L_02202c54:
     mov r1, #0x8
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
 L_02202c5c:
     ldr r1, [r4, #0x4]
     mov r0, #0x0
@@ -55,7 +55,7 @@ L_02202c5c:
     str r0, [r4, #0x8]
     b L_02202cb8
 L_02202c74:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02202cb8
     ldr r0, [r4, #0x388]

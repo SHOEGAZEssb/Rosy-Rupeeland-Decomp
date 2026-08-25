@@ -8,8 +8,8 @@
     .extern DisplayBrightness_StartMaskedTransitions
     .extern Overlay021_SetTransition
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff1d0
-    .extern func_ov021_021ff274
+    .extern Overlay021_Dialog_ShowContent
+    .extern Overlay021_Dialog_UpdatePrompt
     .extern func_ov045_0220c028
 
 .global func_ov021_02200360
@@ -42,7 +42,7 @@ L_022003a8:
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
     ldr r0, [r4, #0x38c]
     bl func_ov045_0220c028
     ldr r1, [r4, #0x4]
@@ -52,7 +52,7 @@ L_022003a8:
     str r0, [r4, #0x8]
     b L_02200434
 L_022003ec:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02200434
     mov r0, #0x1

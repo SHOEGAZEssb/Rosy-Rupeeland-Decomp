@@ -15,18 +15,18 @@
     .extern Overlay021_SetupAlternateMainBackground
     .extern Overlay021_ResetSceneSprites
     .extern Overlay021_DestroyPrimaryPanel
-    .extern func_ov021_021fecd0
-    .extern func_ov021_021fedac
+    .extern Overlay021_DestroySecondaryPanel
+    .extern Overlay021_CreateAuxiliaryPanel
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff0e0
-    .extern func_ov021_021ff274
+    .extern Overlay021_Dialog_ShowMessage
+    .extern Overlay021_Dialog_UpdatePrompt
     .extern Overlay021Descriptor_GetFlags16_19
 
 .global func_ov021_02200840
 func_ov021_02200840:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     ldr r0, [r4, #0x4]
     cmp r0, #0x3
     addls pc, pc, r0, lsl #0x2
@@ -56,7 +56,7 @@ L_022008a0:
     cmp r0, #0x0
     beq L_022008b8
     mov r0, r4
-    bl func_ov021_021fecd0
+    bl Overlay021_DestroySecondaryPanel
     b L_022008c0
 L_022008b8:
     ldr r0, [r4, #0x2c0]
@@ -68,7 +68,7 @@ L_022008c0:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
-    bl func_ov021_021fedac
+    bl Overlay021_CreateAuxiliaryPanel
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -87,7 +87,7 @@ L_022008f4:
     bne L_02200928
     mov r0, r4
     mov r1, #0x4
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     b L_02200944
 L_02200928:
     ldr r0, [r4, #0x2bc]
@@ -96,7 +96,7 @@ L_02200928:
     bne L_02200944
     mov r0, r4
     mov r1, #0x5
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
 L_02200944:
     mov r0, #0x1
     mov r1, #0x0

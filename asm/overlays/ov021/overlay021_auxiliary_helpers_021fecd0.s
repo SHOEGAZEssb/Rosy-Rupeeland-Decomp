@@ -4,8 +4,8 @@
     .extern Overlay001_CaptureViewState
     .extern Overlay021_CopySnapshot
 
-.global func_ov021_021fecd0
-func_ov021_021fecd0:
+.global Overlay021_DestroySecondaryPanel
+Overlay021_DestroySecondaryPanel:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -32,5 +32,5 @@ L_021fed14:
 L_021fed28:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}
-    .size func_ov021_021fecd0, . - func_ov021_021fecd0
+    .size Overlay021_DestroySecondaryPanel, . - Overlay021_DestroySecondaryPanel
 

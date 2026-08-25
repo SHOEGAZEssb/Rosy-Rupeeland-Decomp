@@ -57,15 +57,15 @@ extern void Overlay021_CreatePrimaryPanel(void *);
 extern void Overlay021_DestroyPrimaryPanel(void *);
 extern s32 Overlay021_HasPrimaryPanelEntry(void *);
 extern void Overlay021_CreateSecondaryPanel(void *);
-extern void func_ov021_021fecd0(void *);
+extern void Overlay021_DestroySecondaryPanel(void *);
 extern void Overlay021_UpdateScene(void *);
-extern void func_ov021_021fefcc(void *);
-extern void func_ov021_021ff0e0(void *, s32);
-extern s32 func_ov021_021ff274(void *);
+extern void Overlay021_PositionListButtons(void *);
+extern void Overlay021_Dialog_ShowMessage(void *, s32);
+extern s32 Overlay021_Dialog_UpdatePrompt(void *);
 extern u32 Overlay021Descriptor_GetFlags16_19(const void *);
-extern s32 func_ov021_021ff62c(void *, s32);
-extern void func_ov021_021ff644(void *);
-extern s32 func_ov021_021ffa10(const void *);
+extern s32 Overlay021_TestNestedFlags(void *, s32);
+extern void Overlay021_RefreshSecondarySelectionDisplay(void *);
+extern s32 Overlay021_Descriptor_HasFlag29(const void *);
 extern s32 func_ov045_0220b924(void *, s32, s32, s32);
 extern s32 func_ov045_0220b9b8(void *);
 #ifdef __cplusplus
@@ -87,11 +87,11 @@ static void change_state(void *state, const u32 *next)
  */
 extern "C" s32 func_ov021_02201ba8(void *state)
 {
-    func_ov021_021ff274(state);
+    Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
         func_ov001_021fc1f0(FIELD(void *, state, 0x358));
-        func_ov021_021ff644(state);
+        Overlay021_RefreshSecondarySelectionDisplay(state);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         break;
@@ -100,7 +100,7 @@ extern "C" s32 func_ov021_02201ba8(void *state)
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else if (Overlay001_Grid_UpdateTransition(FIELD(void *, state, 0x358)) != 0) {
-            func_ov021_021ff644(state);
+            Overlay021_RefreshSecondarySelectionDisplay(state);
         }
         break;
     case 2: {
@@ -121,7 +121,7 @@ extern "C" s32 func_ov021_02201ba8(void *state)
                     if (row != FIELD(s32, widget, 0x1ac)) {
                         Overlay001_SetSelection(widget, row);
                         Overlay001_SyncSelection(widget);
-                        func_ov021_021ff644(state);
+                        Overlay021_RefreshSecondarySelectionDisplay(state);
                     }
                     break;
                 }
@@ -145,7 +145,7 @@ extern "C" s32 func_ov021_02201ba8(void *state)
                                    FIELD(s32, state, 0x2c4) * 0xac;
                 if (SpriteMotionController_BeginHitResponse(controller, input, 0, 4) != 0) {
                     void *entry = func_ov001_021fc7e4(widget);
-                    if (func_ov021_021ff62c(entry, 1) == 0) {
+                    if (Overlay021_TestNestedFlags(entry, 1) == 0) {
                         FIELD(void *, state, 0x380) = FIELD(void *, entry, 0xc);
                         void *selected = FIELD(void *, state, 0x380);
                         if (selected != 0 && FIELD(void *, selected, 0xc) != 0) {
@@ -188,7 +188,7 @@ extern "C" s32 func_ov021_02201ba8(void *state)
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         } else if (func_ov001_021fc320(FIELD(void *, state, 0x358)) != 0) {
-            func_ov021_021ff644(state);
+            Overlay021_RefreshSecondarySelectionDisplay(state);
         }
         break;
     }
@@ -210,7 +210,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
     case 0: {
         void *entry = func_ov001_021fc7e4(FIELD(void *, state, 0x358));
         FIELD(s32, entry, 0x1c)--;
-        if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
+        if (Overlay021_Descriptor_HasFlag29(FIELD(void *, state, 0x2bc)) != 0)
             FIELD(s32, state, 0x3d8) = 1;
         s32 gain = FIELD(s32, FIELD(void *, state, 0x2bc), 8);
         s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
@@ -230,20 +230,20 @@ extern "C" s32 func_ov021_02201f98(void *state)
                 FIELD(s32, state, 8) = 0;
             } else {
                 FIELD(void *, state, 0x380) = 0;
-                func_ov021_021ff0e0(state, 6);
+                Overlay021_Dialog_ShowMessage(state, 6);
                 change_state(state, data_ov021_02202d98);
             }
         }
         break;
     case 2:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov021_021ff0e0(state, 6);
+            Overlay021_Dialog_ShowMessage(state, 6);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
         break;
     case 3:
-        if (func_ov021_021ff274(state) != 0) {
+        if (Overlay021_Dialog_UpdatePrompt(state) != 0) {
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -258,7 +258,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
         break;
     case 5:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov021_021fecd0(state);
+            Overlay021_DestroySecondaryPanel(state);
             change_state(state, data_ov021_02202d50);
         }
         break;
@@ -276,7 +276,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
  */
 extern "C" s32 func_ov021_02202194(void *state)
 {
-    func_ov021_021ff274(state);
+    Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
         DisplayBrightness_StartMaskedTransitions(1, -16);
@@ -286,14 +286,14 @@ extern "C" s32 func_ov021_02202194(void *state)
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             Overlay021_DestroyPrimaryPanel(state);
-            func_ov021_021fecd0(state);
+            Overlay021_DestroySecondaryPanel(state);
             Overlay021_SetupMainBackground(state);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             FIELD(u32, state, 0x48) &= ~2U;
             FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
             FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
             SpriteMotionController_Show((u8 *)state + 0xa0);
-            func_ov021_021fefcc(state);
+            Overlay021_PositionListButtons(state);
             DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -317,7 +317,7 @@ extern "C" s32 func_ov021_02202194(void *state)
  */
 extern "C" s32 func_ov021_022022a4(void *state)
 {
-    func_ov021_021ff274(state);
+    Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
         DisplayBrightness_StartMaskedTransitions(1, -16);
@@ -331,7 +331,7 @@ extern "C" s32 func_ov021_022022a4(void *state)
                 Overlay021_DestroyPrimaryPanel(state);
                 Overlay021_CreateSecondaryPanel(state);
             } else {
-                func_ov021_021fecd0(state);
+                Overlay021_DestroySecondaryPanel(state);
                 Overlay021_CreatePrimaryPanel(state);
             }
             FIELD(s32, state, 4)++;
@@ -343,7 +343,7 @@ extern "C" s32 func_ov021_022022a4(void *state)
             Overlay021_SetupPrimarySelectionBackground(state);
         else
             Overlay021_RefreshSelectionBackground(state);
-        func_ov021_021ff0e0(state, 2);
+        Overlay021_Dialog_ShowMessage(state, 2);
         DisplayBrightness_StartMaskedTransitions(1, 0);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;

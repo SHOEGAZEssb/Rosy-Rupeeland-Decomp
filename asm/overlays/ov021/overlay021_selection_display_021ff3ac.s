@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_selection_display.c. */
     .extern GraphicsBgResourceData_GetDecoded
 
-.global func_ov021_021ff3ac
-func_ov021_021ff3ac:
+.global Overlay021_BeginTileTransitionOffset60
+Overlay021_BeginTileTransitionOffset60:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x3f4]
@@ -15,5 +15,5 @@ func_ov021_021ff3ac:
     mov r0, #0x0
     str r0, [r4, #0x3f8]
     ldmia sp!, {r4, pc}
-    .size func_ov021_021ff3ac, . - func_ov021_021ff3ac
+    .size Overlay021_BeginTileTransitionOffset60, . - Overlay021_BeginTileTransitionOffset60
 

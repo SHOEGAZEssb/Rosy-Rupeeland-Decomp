@@ -18,7 +18,7 @@
     .extern Overlay021_CreateLists
     .extern Overlay021_DestroyListsAndSavePositions
     .extern Overlay021_RefreshListButtonAnimations
-    .extern func_ov021_021fee54
+    .extern Overlay021_ShowListMarker
     .extern Overlay021_UpdateScene
 
 .global func_ov021_02200630
@@ -140,7 +140,7 @@ L_022007ac:
     ldr r0, [r4, #0x2c0]
     bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r4
-    bl func_ov021_021fee54
+    bl Overlay021_ShowListMarker
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

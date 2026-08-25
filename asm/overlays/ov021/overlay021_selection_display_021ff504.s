@@ -6,8 +6,8 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
 
-.global func_ov021_021ff504
-func_ov021_021ff504:
+.global Overlay021_RenderSelectionName
+Overlay021_RenderSelectionName:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r2, #0x16
@@ -54,5 +54,5 @@ L_021ff5ac:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
 L_021ff5b4: .word data_020f4e14
-    .size func_ov021_021ff504, . - func_ov021_021ff504
+    .size Overlay021_RenderSelectionName, . - Overlay021_RenderSelectionName
 

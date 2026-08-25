@@ -18,9 +18,9 @@
     .extern Overlay021_DestroyListsAndSavePositions
     .extern Overlay021_RefreshListButtonAnimations
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff1d0
-    .extern func_ov021_021ff274
-    .extern func_ov021_021ffa10
+    .extern Overlay021_Dialog_ShowContent
+    .extern Overlay021_Dialog_UpdatePrompt
+    .extern Overlay021_Descriptor_HasFlag29
     .extern func_ov045_0220c028
 
 .global func_ov021_021ff834
@@ -56,7 +56,7 @@ L_021ff884:
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
     ldr r0, [r4, #0x388]
     ldr r1, L_021ff9fc
     bl TitleDialog_UpdateTextPage
@@ -75,14 +75,14 @@ L_021ff8d0:
     str r0, [r4, #0x8]
     b L_021ff9e8
 L_021ff8e8:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_021ff9e8
     mov r0, #0x1
     sub r1, r0, #0x11
     bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]

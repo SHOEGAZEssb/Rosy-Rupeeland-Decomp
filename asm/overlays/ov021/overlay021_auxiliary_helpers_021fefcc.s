@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_auxiliary_helpers.c. */
     .extern SpriteMotionController_SetPosition
 
-.global func_ov021_021fefcc
-func_ov021_021fefcc:
+.global Overlay021_PositionListButtons
+Overlay021_PositionListButtons:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r4, r0
     mov r9, #0x0
@@ -40,5 +40,5 @@ L_021ff034:
     mov r2, #0x60
     bl SpriteMotionController_SetPosition
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_ov021_021fefcc, . - func_ov021_021fefcc
+    .size Overlay021_PositionListButtons, . - Overlay021_PositionListButtons
 

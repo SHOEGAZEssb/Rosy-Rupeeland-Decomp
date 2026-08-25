@@ -9,7 +9,7 @@
     .extern func_020afd0c
     .extern func_020b44e8
     .extern Overlay021_ConfigureMainBg1
-    .extern func_ov021_021ff5b8
+    .extern Overlay021_RefreshPrimarySelectionDisplay
 
 .global Overlay021_SetupPrimarySelectionBackground
 Overlay021_SetupPrimarySelectionBackground:
@@ -55,7 +55,7 @@ Overlay021_SetupPrimarySelectionBackground:
     mov r3, #0x4
     bl func_020afd0c
     mov r0, r4
-    bl func_ov021_021ff5b8
+    bl Overlay021_RefreshPrimarySelectionDisplay
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

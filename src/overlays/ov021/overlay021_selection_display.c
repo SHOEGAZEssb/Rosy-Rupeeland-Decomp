@@ -17,9 +17,9 @@ extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_DrawDecimal(void *, s32, u32, s32, s32, s32, s32, s32);
 extern void *Overlay000_GetActiveMetadata(void *);
 extern void *func_ov001_021fc7e4(void *);
-extern void func_ov021_021ff404(void *, const void *);
-extern void func_ov021_021ff504(void *, const void *);
-extern u32 func_ov021_021ff62c(const void *, u32);
+extern void Overlay021_RenderSelectionCategory(void *, const void *);
+extern void Overlay021_RenderSelectionName(void *, const void *);
+extern u32 Overlay021_TestNestedFlags(const void *, u32);
 #ifdef __cplusplus
 }
 #endif
@@ -29,7 +29,7 @@ extern u32 func_ov021_021ff62c(const void *, u32);
  * +0x3F0, set destination to resource +0x400's buffer +0x80, and reset timer
  * +0x3F8. Graphics buffer state changes; returns void and no MMIO occurs.
  */
-extern "C" void func_ov021_021ff380(void *state)
+extern "C" void Overlay021_BeginTileTransitionOffset80(void *state)
 {
     FIELD(void *, state, 0x3f0) = FIELD(void *, state, 0x3f4);
     FIELD(void *, state, 0x3f4) =
@@ -41,7 +41,7 @@ extern "C" void func_ov021_021ff380(void *state)
  * As 0x021FF380, but select resource buffer offset +0x60. Graphics buffer
  * state changes; returns void and performs no direct hardware access.
  */
-extern "C" void func_ov021_021ff3ac(void *state)
+extern "C" void Overlay021_BeginTileTransitionOffset60(void *state)
 {
     FIELD(void *, state, 0x3f0) = FIELD(void *, state, 0x3f4);
     FIELD(void *, state, 0x3f4) =
@@ -67,7 +67,7 @@ extern "C" void Overlay021_UpdateTileTransitionOffset20(void *state)
  * uses cached text +0x2D4; other categories print descriptor value +8 using
  * format constant 0x2710. Font/UI state changes; returns void and no MMIO.
  */
-extern "C" void func_ov021_021ff404(void *state, const void *descriptor)
+extern "C" void Overlay021_RenderSelectionCategory(void *state, const void *descriptor)
 {
     void *font = data_020f4e14;
     GraphicsSpriteRenderer_SetFontResource(
@@ -104,7 +104,7 @@ extern "C" u32 Overlay021Descriptor_GetFlags16_19(const void *descriptor)
  * resolve display text with func_020628C8, and render it at X=0x10,Y=6 with
  * style 0x0E/4. Font/sprite state changes; returns void and no MMIO occurs.
  */
-extern "C" void func_ov021_021ff504(void *state, const void *item)
+extern "C" void Overlay021_RenderSelectionName(void *state, const void *item)
 {
     void *font = data_020f4e14;
     GraphicsSpriteCanvas_FillRect(font, 0x10, 6, 0xb0, 0x16, 0);
@@ -124,7 +124,7 @@ extern "C" void func_ov021_021ff504(void *state, const void *item)
  * Return nested object +0x0C flags +0x20 masked by the caller value, or zero
  * when the nested object is absent. Inputs are read only; no SDK/MMIO occurs.
  */
-extern "C" u32 func_ov021_021ff62c(const void *object, u32 mask)
+extern "C" u32 Overlay021_TestNestedFlags(const void *object, u32 mask)
 {
     const void *nested = FIELD(const void *, object, 0xc);
     return nested != 0 ? FIELD(u32, nested, 0x20) & mask : 0;
@@ -136,16 +136,16 @@ extern "C" u32 func_ov021_021ff62c(const void *object, u32 mask)
  * category line, otherwise render the entry only when it owns a nonnull nested
  * +0x0C member. Panel/font/sprite state changes; returns void, no MMIO.
  */
-extern "C" void func_ov021_021ff5b8(void *state)
+extern "C" void Overlay021_RefreshPrimarySelectionDisplay(void *state)
 {
     void *entry = Overlay000_GetActiveMetadata(FIELD(void *, state, 0x354));
     void *item = FIELD(void *, entry, 0xc);
-    func_ov021_021ff504(state, item);
+    Overlay021_RenderSelectionName(state, item);
     entry = Overlay000_GetActiveMetadata(FIELD(void *, state, 0x354));
-    if (func_ov021_021ff62c(entry, 1) != 0) {
-        func_ov021_021ff404(state, 0);
+    if (Overlay021_TestNestedFlags(entry, 1) != 0) {
+        Overlay021_RenderSelectionCategory(state, 0);
     } else if (item != 0 && FIELD(void *, item, 0xc) != 0) {
-        func_ov021_021ff404(state, item);
+        Overlay021_RenderSelectionCategory(state, item);
     }
 }
 
@@ -154,15 +154,15 @@ extern "C" void func_ov021_021ff5b8(void *state)
  * item/flag/category rules as 0x021FF5B8. Panel/font/sprite state changes;
  * returns void and performs no direct hardware access.
  */
-extern "C" void func_ov021_021ff644(void *state)
+extern "C" void Overlay021_RefreshSecondarySelectionDisplay(void *state)
 {
     void *entry = func_ov001_021fc7e4(FIELD(void *, state, 0x358));
     void *item = FIELD(void *, entry, 0xc);
-    func_ov021_021ff504(state, item);
+    Overlay021_RenderSelectionName(state, item);
     entry = func_ov001_021fc7e4(FIELD(void *, state, 0x358));
-    if (func_ov021_021ff62c(entry, 1) != 0) {
-        func_ov021_021ff404(state, 0);
+    if (Overlay021_TestNestedFlags(entry, 1) != 0) {
+        Overlay021_RenderSelectionCategory(state, 0);
     } else if (item != 0 && FIELD(void *, item, 0xc) != 0) {
-        func_ov021_021ff404(state, item);
+        Overlay021_RenderSelectionCategory(state, item);
     }
 }

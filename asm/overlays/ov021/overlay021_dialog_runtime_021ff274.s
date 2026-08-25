@@ -7,8 +7,8 @@
     .extern func_ov045_0220c174
     .extern func_ov045_0220c280
 
-.global func_ov021_021ff274
-func_ov021_021ff274:
+.global Overlay021_Dialog_UpdatePrompt
+Overlay021_Dialog_UpdatePrompt:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x30
     mov r4, r0
@@ -83,5 +83,5 @@ L_021ff358:
 L_021ff378:
     add sp, sp, #0x30
     ldmia sp!, {r4, pc}
-    .size func_ov021_021ff274, . - func_ov021_021ff274
+    .size Overlay021_Dialog_UpdatePrompt, . - Overlay021_Dialog_UpdatePrompt
 

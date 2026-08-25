@@ -26,12 +26,12 @@
     .extern Overlay021_SetupMainBackground
     .extern Overlay021_SetupSceneSprites
     .extern Overlay021_DestroyAuxiliaryPanel
-    .extern func_ov021_021fee54
+    .extern Overlay021_ShowListMarker
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff050
-    .extern func_ov021_021ff0e0
-    .extern func_ov021_021ff274
-    .extern func_ov021_021ffa10
+    .extern Overlay021_SelectList
+    .extern Overlay021_Dialog_ShowMessage
+    .extern Overlay021_Dialog_UpdatePrompt
+    .extern Overlay021_Descriptor_HasFlag29
     .extern func_ov045_0220b924
     .extern func_ov045_0220b9b8
     .extern func_ov045_0220bc34
@@ -175,7 +175,7 @@ L_02200ee0:
     bne L_02201168
     mov r0, r4
     mov r1, #0xa
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -183,7 +183,7 @@ L_02200ee0:
     str r0, [r4, #0x8]
     b L_02201168
 L_02200f24:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02201168
     ldr r1, [r4, #0x4]
@@ -261,12 +261,12 @@ L_02201024:
     bl Overlay021_SetupSceneSprites
     ldr r1, [r4, #0x2c4]
     mov r0, r4
-    bl func_ov021_021ff050
+    bl Overlay021_SelectList
     ldr r0, [r4, #0x37c]
     cmp r0, #0x0
     beq L_02201088
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]
@@ -282,7 +282,7 @@ L_02201088:
     cmp r0, #0x0
     beq L_022010c4
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]
@@ -303,7 +303,7 @@ L_022010c4:
     ldr r0, [r4, #0x2c0]
     bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r4
-    bl func_ov021_021fee54
+    bl Overlay021_ShowListMarker
     ldr r0, [r4, #0x2bc]
     bl Overlay021_Descriptor_GetCategory
     cmp r0, #0x1
@@ -320,7 +320,7 @@ L_022010c4:
     b L_02201168
 L_02201124:
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]

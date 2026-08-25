@@ -48,11 +48,11 @@ extern s32 Overlay021_List_HitTestRow(void *, const void *);
 extern s32 Overlay021_List_UpdateVisibleRows(void *);
 extern void Overlay021_SetTransition(void *, u32, u32);
 extern void Overlay021_UpdateScene(void *);
-extern void func_ov021_021fee54(void *);
-extern s32 func_ov021_021ff274(void *);
-extern void func_ov021_021ff5b8(void *);
-extern void func_ov021_021ff644(void *);
-extern void func_ov021_021ffcb4(void *);
+extern void Overlay021_ShowListMarker(void *);
+extern s32 Overlay021_Dialog_UpdatePrompt(void *);
+extern void Overlay021_RefreshPrimarySelectionDisplay(void *);
+extern void Overlay021_RefreshSecondarySelectionDisplay(void *);
+extern void Overlay021_BeginSelectedAction(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -72,7 +72,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
 {
     void *list = FIELD(void *, state, 0x2c0);
     void *controller = FIELD(void *, list, 0x58);
-    func_ov021_021ff274(state);
+    Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
         InventoryScroll_ResetPresentationState(controller);
@@ -85,7 +85,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
             FIELD(s32, state, 8) = 0;
         } else {
             if (Overlay021_List_UpdateVisibleRows(list) != 0)
-                func_ov021_021fee54(state);
+                Overlay021_ShowListMarker(state);
             break;
         }
         /* Completed opening deliberately continues into interaction. */
@@ -124,11 +124,11 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                         SceneSound_PlayPackedEffect(state, 0);
                         InventoryScroll_SetSelectedRow(controller, selected);
                         Overlay021_List_UpdateSelectionDisplay(list);
-                        func_ov021_021fee54(state);
+                        Overlay021_ShowListMarker(state);
                         FIELD(s32, state, 4) = 10;
                         FIELD(s32, state, 8) = 0;
                     } else {
-                        func_ov021_021ffcb4(state);
+                        Overlay021_BeginSelectedAction(state);
                     }
                     break;
                 } else {
@@ -136,7 +136,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                     if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x14c +
                                       channel * 0xac,
                                       (u8 *)state + 0x30, 0, 4) != 0) {
-                        func_ov021_021ffcb4(state);
+                        Overlay021_BeginSelectedAction(state);
                         break;
                     }
                     if (SpriteMotionController_BeginHitResponse((u8 *)state + 0xa0,
@@ -205,7 +205,7 @@ extern "C" s32 func_ov021_022000f0(void *state)
     else
         controller = FIELD(void *, FIELD(void *, state, 0x2c0), 0x58);
 
-    func_ov021_021ff274(state);
+    Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
         InventoryScroll_BeginMarkerDrag(controller, 4);
@@ -221,15 +221,15 @@ extern "C" s32 func_ov021_022000f0(void *state)
             FIELD(s32, state, 8) = 0;
         } else if (primary != 0) {
             if (Overlay000_Grid_UpdateTransition(primary) != 0)
-                func_ov021_021ff5b8(state);
+                Overlay021_RefreshPrimarySelectionDisplay(state);
             break;
         } else if (secondary != 0) {
             if (Overlay001_Grid_UpdateTransition(secondary) != 0)
-                func_ov021_021ff644(state);
+                Overlay021_RefreshSecondarySelectionDisplay(state);
             break;
         } else {
             if (Overlay021_List_UpdateVisibleRows(FIELD(void *, state, 0x2c0)) != 0)
-                func_ov021_021fee54(state);
+                Overlay021_ShowListMarker(state);
             break;
         }
         /* Completed opening deliberately continues into input state 2. */

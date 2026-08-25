@@ -17,8 +17,8 @@
     .extern Overlay021_Descriptor_GetCategory
     .extern Overlay021_SetTransition
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff1d0
-    .extern func_ov021_021ff274
+    .extern Overlay021_Dialog_ShowContent
+    .extern Overlay021_Dialog_UpdatePrompt
     .extern func_ov045_0220c028
     .extern genrand_int32
     .extern gGamePhaseCurrencyHud
@@ -27,7 +27,7 @@
 func_ov021_022009e0:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     ldr r0, [r4, #0x4]
     cmp r0, #0xa
     bgt L_02200a30
@@ -189,7 +189,7 @@ L_02200bfc:
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
     ldr r0, [r4, #0x38c]
     bl func_ov045_0220c028
     mov r0, #0x14
@@ -227,7 +227,7 @@ L_02200ca0:
     b L_02200ce8
 L_02200cc0:
     mov r0, r4
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02200ce8
     ldr r0, [r4, #0x388]

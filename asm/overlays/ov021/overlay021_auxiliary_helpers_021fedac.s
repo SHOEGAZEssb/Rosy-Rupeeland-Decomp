@@ -7,8 +7,8 @@
     .extern func_ov000_021fb6e0
     .extern gHeapContext
 
-.global func_ov021_021fedac
-func_ov021_021fedac:
+.global Overlay021_CreateAuxiliaryPanel
+Overlay021_CreateAuxiliaryPanel:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x390]
@@ -36,5 +36,5 @@ L_021fee04: .word 0x2
 L_021fee08: .word data_ov021_02202fb0
 L_021fee0c: .word gHeapContext
 L_021fee10: .word data_020f4e14
-    .size func_ov021_021fedac, . - func_ov021_021fedac
+    .size Overlay021_CreateAuxiliaryPanel, . - Overlay021_CreateAuxiliaryPanel
 

@@ -14,9 +14,9 @@
     .extern Overlay021_SetTransition
     .extern Overlay021_DestroyPrimaryPanel
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff0e0
-    .extern func_ov021_021ff274
-    .extern func_ov021_021ffa10
+    .extern Overlay021_Dialog_ShowMessage
+    .extern Overlay021_Dialog_UpdatePrompt
+    .extern Overlay021_Descriptor_HasFlag29
     .extern func_ov045_0220b924
     .extern func_ov045_0220b9b8
     .extern GameWork_SetFlag
@@ -48,7 +48,7 @@ L_02201830:
     ldr r0, [r4, #0x354]
     bl Overlay000_Grid_Render
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]
@@ -127,7 +127,7 @@ L_02201970:
     mov r0, r4
     mov r1, #0x6
     str r2, [r4, #0x37c]
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     ldr r1, L_02201a80
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -139,7 +139,7 @@ L_02201998:
     beq L_02201a64
     mov r0, r4
     mov r1, #0x6
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -147,7 +147,7 @@ L_02201998:
     str r0, [r4, #0x8]
     b L_02201a64
 L_022019c8:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02201a64
     ldr r1, [r4, #0x4]
@@ -178,7 +178,7 @@ L_02201a2c:
     cmp r0, #0x0
     beq L_02201a64
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     movne r0, #0x1
     strne r0, [r4, #0x3d8]

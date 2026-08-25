@@ -9,16 +9,16 @@
     .extern Overlay021_SetTransition
     .extern Overlay021_SetupMainBackground
     .extern Overlay021_DestroyPrimaryPanel
-    .extern func_ov021_021fecd0
+    .extern Overlay021_DestroySecondaryPanel
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021fefcc
-    .extern func_ov021_021ff274
+    .extern Overlay021_PositionListButtons
+    .extern Overlay021_Dialog_UpdatePrompt
 
 .global func_ov021_02202194
 func_ov021_02202194:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     ldr r0, [r4, #0x4]
     cmp r0, #0x0
     beq L_022021c0
@@ -43,7 +43,7 @@ L_022021e0:
     mov r0, r4
     bl Overlay021_DestroyPrimaryPanel
     mov r0, r4
-    bl func_ov021_021fecd0
+    bl Overlay021_DestroySecondaryPanel
     mov r0, r4
     bl Overlay021_SetupMainBackground
     ldr r0, L_0220229c
@@ -63,7 +63,7 @@ L_022021e0:
     strh r1, [r2, #0x24]
     bl SpriteMotionController_Show
     mov r0, r4
-    bl func_ov021_021fefcc
+    bl Overlay021_PositionListButtons
     mov r0, #0x1
     mov r1, #0x0
     bl DisplayBrightness_StartMaskedTransitions

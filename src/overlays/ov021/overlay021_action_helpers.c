@@ -26,7 +26,7 @@ extern void Overlay021_UpdateScene(void *);
  * Return one when descriptor->record(+4) flags +0x0C contain bit 29,
  * otherwise zero. Inputs are read only; no SDK or hardware effects occur.
  */
-extern "C" s32 func_ov021_021ffa10(const void *descriptor)
+extern "C" s32 Overlay021_Descriptor_HasFlag29(const void *descriptor)
 {
     const u8 *record = FIELD(const u8 *, descriptor, 4);
     return (FIELD(u32, record, 0xc) & 0x20000000U) != 0;
@@ -36,7 +36,7 @@ extern "C" s32 func_ov021_021ffa10(const void *descriptor)
  * Refresh every active scene component through 0x021FEEA4 and return one.
  * UI/resource state may change through that update; no direct MMIO here.
  */
-extern "C" s32 func_ov021_021ffa28(void *state)
+extern "C" s32 Overlay021_UpdateAndComplete(void *state)
 {
     Overlay021_UpdateScene(state);
     return 1;
@@ -50,7 +50,7 @@ extern "C" s32 func_ov021_021ffa28(void *state)
  * data_ov021_02202F08. Other selections emit SDK action (1,-16) and transition
  * through data_ov021_02202F00. Dialog/action/transition state changes; no MMIO.
  */
-extern "C" void func_ov021_021ffcb4(void *state)
+extern "C" void Overlay021_BeginSelectedAction(void *state)
 {
     TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
     SceneSound_PlayPackedEffect(state, 2);

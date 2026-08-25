@@ -10,8 +10,8 @@
     .extern Overlay021_List_GetSelectedRow
     .extern Overlay021_SetTransition
 
-.global func_ov021_021ffcb4
-func_ov021_021ffcb4:
+.global Overlay021_BeginSelectedAction
+Overlay021_BeginSelectedAction:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x388]
@@ -55,4 +55,4 @@ L_021ffd34:
     ldmia sp!, {r4, pc}
 L_021ffd54: .word data_ov021_02202f08
 L_021ffd58: .word data_ov021_02202f00
-    .size func_ov021_021ffcb4, . - func_ov021_021ffcb4
+    .size Overlay021_BeginSelectedAction, . - Overlay021_BeginSelectedAction

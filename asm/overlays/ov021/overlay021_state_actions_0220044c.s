@@ -11,9 +11,9 @@
     .extern TitleDialog_ClearTextRect
     .extern Overlay021_SetTransition
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff1d0
-    .extern func_ov021_021ff274
-    .extern func_ov021_021ffa10
+    .extern Overlay021_Dialog_ShowContent
+    .extern Overlay021_Dialog_UpdatePrompt
+    .extern Overlay021_Descriptor_HasFlag29
     .extern func_ov045_0220c028
     .extern gGameWork
 
@@ -43,7 +43,7 @@ L_02200484:
     bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
-    bl func_ov021_021ff1d0
+    bl Overlay021_Dialog_ShowContent
     ldr r0, [r4, #0x38c]
     bl func_ov045_0220c028
     ldr r1, [r4, #0x4]
@@ -53,7 +53,7 @@ L_02200484:
     str r0, [r4, #0x8]
     b L_02200604
 L_022004c8:
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     cmp r0, #0x0
     beq L_02200604
     mov r0, #0x1
@@ -92,7 +92,7 @@ L_022004c8:
     str r1, [r4, #0x3d8]
 L_0220055c:
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ffa10
+    bl Overlay021_Descriptor_HasFlag29
     cmp r0, #0x0
     bne L_022005cc
     ldr r1, [r4, #0x2bc]

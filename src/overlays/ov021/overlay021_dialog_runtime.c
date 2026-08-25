@@ -35,7 +35,7 @@ extern void Overlay045_DrawSelectorPreview(s32, s32);
  * the default external setup. Select debug-font context +0x58 and notify mode
  * +0x54 with argument zero. Dialog/font/external UI state changes; returns void.
  */
-extern "C" void func_ov021_021ff0e0(void *state, s32 messageId)
+extern "C" void Overlay021_Dialog_ShowMessage(void *state, s32 messageId)
 {
     void *modeRecord = data_021f5128[FIELD(s32, state, 0x54)];
     void *dialog = FIELD(void *, state, 0x388);
@@ -66,7 +66,7 @@ extern "C" void func_ov021_021ff0e0(void *state, s32 messageId)
  * default setup. Select debug-font context +0x58 and notify mode +0x54 with
  * zero. Dialog/font/external UI state changes; returns void and no MMIO occurs.
  */
-extern "C" void func_ov021_021ff1d0(void *state, const void *content)
+extern "C" void Overlay021_Dialog_ShowContent(void *state, const void *content)
 {
     void *dialog = FIELD(void *, state, 0x388);
     TitleDialog_ClearTextRect(dialog);
@@ -94,7 +94,7 @@ extern "C" void func_ov021_021ff1d0(void *state, const void *content)
  * invoking the external accept operation and returning one. Return zero while
  * incomplete. Dialog/external UI state changes; no direct MMIO occurs.
  */
-extern "C" s32 func_ov021_021ff274(void *state)
+extern "C" s32 Overlay021_Dialog_UpdatePrompt(void *state)
 {
     u16 templateCopy[11];
     const u16 *source = FIELD(const u16 *, state, 0x2c);

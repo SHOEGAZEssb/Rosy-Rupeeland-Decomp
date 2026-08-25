@@ -5,8 +5,8 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteRenderer_DrawDecimal
 
-.global func_ov021_021ff404
-func_ov021_021ff404:
+.global Overlay021_RenderSelectionCategory
+Overlay021_RenderSelectionCategory:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     ldr r2, L_021ff4e8
@@ -69,5 +69,5 @@ L_021ff4e0:
     ldmia sp!, {r3, r4, r5, pc}
 L_021ff4e8: .word data_020f4e14
 L_021ff4ec: .word 0x2710
-    .size func_ov021_021ff404, . - func_ov021_021ff404
+    .size Overlay021_RenderSelectionCategory, . - Overlay021_RenderSelectionCategory
 

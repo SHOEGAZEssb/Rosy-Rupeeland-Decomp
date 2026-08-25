@@ -15,18 +15,18 @@
     .extern Overlay021_List_UpdateSelectionDisplay
     .extern Overlay021_SetTransition
     .extern Overlay021_IsAuxiliaryRecordAvailable
-    .extern func_ov021_021fee54
+    .extern Overlay021_ShowListMarker
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021fefcc
-    .extern func_ov021_021ff050
-    .extern func_ov021_021ff0e0
-    .extern func_ov021_021ff274
+    .extern Overlay021_PositionListButtons
+    .extern Overlay021_SelectList
+    .extern Overlay021_Dialog_ShowMessage
+    .extern Overlay021_Dialog_UpdatePrompt
 
 .global func_ov021_021ffa38
 func_ov021_021ffa38:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r8, r0
-    bl func_ov021_021ff274
+    bl Overlay021_Dialog_UpdatePrompt
     ldr r0, [r8, #0x4]
     cmp r0, #0x4
     addls pc, pc, r0, lsl #0x2
@@ -50,7 +50,7 @@ L_021ffa68:
     ldrh r1, [r2, #0x24]
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_ov021_021fefcc
+    bl Overlay021_PositionListButtons
     add r0, r8, #0xa0
     bl SpriteMotionController_Show
     ldr r1, [r8, #0x4]
@@ -139,7 +139,7 @@ L_021ffbcc:
     b L_021ffc94
 L_021ffbe0:
     mov r1, #0x3
-    bl func_ov021_021ff0e0
+    bl Overlay021_Dialog_ShowMessage
     ldr r1, [r8, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -162,7 +162,7 @@ L_021ffc1c:
     beq L_021ffc94
     ldr r1, [r8, #0x2c4]
     mov r0, r8
-    bl func_ov021_021ff050
+    bl Overlay021_SelectList
     ldr r0, [r8, #0x2c0]
     bl Overlay021_List_Show
     ldr r0, [r8, #0x2c0]
@@ -170,7 +170,7 @@ L_021ffc1c:
     ldr r0, [r8, #0x2c0]
     bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r8
-    bl func_ov021_021fee54
+    bl Overlay021_ShowListMarker
     mov r0, #0x1
     mov r1, #0x0
     bl DisplayBrightness_StartMaskedTransitions

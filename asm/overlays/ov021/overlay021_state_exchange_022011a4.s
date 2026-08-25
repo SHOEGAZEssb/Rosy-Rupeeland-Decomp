@@ -12,9 +12,9 @@
     .extern Overlay021_SetupMainBackground
     .extern Overlay021_SetupSceneSprites
     .extern Overlay021_DestroyAuxiliaryPanel
-    .extern func_ov021_021fee54
+    .extern Overlay021_ShowListMarker
     .extern Overlay021_UpdateScene
-    .extern func_ov021_021ff050
+    .extern Overlay021_SelectList
 
 .global func_ov021_022011a4
 func_ov021_022011a4:
@@ -47,7 +47,7 @@ L_022011ec:
     bl Overlay021_SetupSceneSprites
     ldr r1, [r4, #0x2c4]
     mov r0, r4
-    bl func_ov021_021ff050
+    bl Overlay021_SelectList
     ldr r0, [r4, #0x37c]
     cmp r0, #0x0
     beq L_0220123c
@@ -79,7 +79,7 @@ L_02201264:
     ldr r0, [r4, #0x2c0]
     bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r4
-    bl func_ov021_021fee54
+    bl Overlay021_ShowListMarker
     mov r0, #0x1
     mov r1, #0x0
     bl DisplayBrightness_StartMaskedTransitions

@@ -41,8 +41,8 @@ extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(const void *, s32, s32);
 extern void func_020b44e8(void);
 extern void Overlay021_ConfigureMainBg1(s32, s32, s32, s32, s32);
-extern void func_ov021_021ff5b8(void *);
-extern void func_ov021_021ff644(void *);
+extern void Overlay021_RefreshPrimarySelectionDisplay(void *);
+extern void Overlay021_RefreshSecondarySelectionDisplay(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -223,7 +223,7 @@ extern "C" void Overlay021_SetupPrimarySelectionBackground(void *state)
     FIELD(s32, state, 0x3fc) = 0x20;
     FIELD(s32, state, 0x48) = 0x12;
     func_020afd0c((void *)0x04000050, 0, 2, 4, 0xc);
-    func_ov021_021ff5b8(state);
+    Overlay021_RefreshPrimarySelectionDisplay(state);
     GraphicsResourceSet_Destroy(resources);
 }
 
@@ -245,7 +245,7 @@ extern "C" void Overlay021_RefreshSelectionBackground(void *state)
     FIELD(s32, state, 0x3fc) = 0x20;
     FIELD(s32, state, 0x48) = 0x12;
     func_020afd0c((void *)0x04000050, 0, 2, 4, 0xc);
-    func_ov021_021ff644(state);
+    Overlay021_RefreshSecondarySelectionDisplay(state);
     GraphicsResourceSet_Destroy(resources);
 }
 
