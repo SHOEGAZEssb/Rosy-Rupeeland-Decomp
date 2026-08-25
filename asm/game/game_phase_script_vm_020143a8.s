@@ -28,7 +28,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern DirectSpriteTrackPresentation_SpawnAndRegister
 .extern SpriteNumberMotionPresentation_Init
-.extern func_02022ff4
+.extern RecordSpriteMotionPresentation_Init
 .extern func_02023434
 .extern func_02023ed4
 .extern func_02024b04
@@ -246,7 +246,7 @@ L_020145e8:
     ldr r2, [r0, #0xea4]
     mov r0, r4
     mov r3, r9
-    bl func_02022ff4
+    bl RecordSpriteMotionPresentation_Init
     mov r4, r0
 L_0201464c:
     ldr r0, L_020154d0

@@ -11,5 +11,5 @@ extern "C" { extern void *data_020d660c; extern void SpriteNodeList_Clear(void *
 #endif
 
 /* Install the list vtable, clear/free its nodes, free self, and return its old address. */
-SpriteNodeList *func_020233a0(SpriteNodeList *self)
+SpriteNodeList *SpriteNodeList_DestroyAndFree(SpriteNodeList *self)
 {self->vtable=(void **)data_020d660c;SpriteNodeList_Clear(self);Heap_Free(self);return self;}

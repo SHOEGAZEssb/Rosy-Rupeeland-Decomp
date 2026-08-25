@@ -30,9 +30,9 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseState
 
-.global func_02023260
-    .type func_02023260, @function
-func_02023260: ; 0x02023260
+.global RecordSpriteMotionPresentation_Destroy
+    .type RecordSpriteMotionPresentation_Destroy, @function
+RecordSpriteMotionPresentation_Destroy: ; 0x02023260
     stmdb sp!, {r4, lr}
     ldr r1, .L_020232ac
     mov r4, r0
@@ -53,5 +53,5 @@ func_02023260: ; 0x02023260
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_020232ac: .word data_020d6630
-    .size func_02023260, .-func_02023260
+    .size RecordSpriteMotionPresentation_Destroy, .-RecordSpriteMotionPresentation_Destroy
 

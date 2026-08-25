@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern data_020d660c
 .extern SpriteNodeList_Clear
-.global func_020233a0
-    .type func_020233a0, @function
-func_020233a0:
+.global SpriteNodeList_DestroyAndFree
+    .type SpriteNodeList_DestroyAndFree, @function
+SpriteNodeList_DestroyAndFree:
     stmdb sp!, {r4, lr}
     ldr r1, .L_020233c4
     mov r4, r0
@@ -16,4 +16,4 @@ func_020233a0:
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_020233c4: .word data_020d660c
-    .size func_020233a0, .-func_020233a0
+    .size SpriteNodeList_DestroyAndFree, .-SpriteNodeList_DestroyAndFree

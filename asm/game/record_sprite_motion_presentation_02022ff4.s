@@ -30,9 +30,9 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseState
 
-.global func_02022ff4
-    .type func_02022ff4, @function
-func_02022ff4: ; 0x02022ff4
+.global RecordSpriteMotionPresentation_Init
+    .type RecordSpriteMotionPresentation_Init, @function
+RecordSpriteMotionPresentation_Init: ; 0x02022ff4
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x84
     mov r4, r0
@@ -194,5 +194,5 @@ func_02022ff4: ; 0x02022ff4
 .L_02023254: .word data_020d6630
 .L_02023258: .word data_021e9ac0
 .L_0202325c: .word data_020f4e18
-    .size func_02022ff4, .-func_02022ff4
+    .size RecordSpriteMotionPresentation_Init, .-RecordSpriteMotionPresentation_Init
 

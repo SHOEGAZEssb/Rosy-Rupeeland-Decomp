@@ -8894,32 +8894,32 @@ build build/reports/record_sprite_motion_presentation_02022ff4.json: objdiff bui
   base_object = build/decomp/asm/game/record_sprite_motion_presentation_02022ff4.o
 build build/reports/record_sprite_motion_presentation_02022ff4.txt: match_report build/reports/record_sprite_motion_presentation_02022ff4.json | tools/report_objdiff.py
   report_json = build/reports/record_sprite_motion_presentation_02022ff4.json
-  report_args = --section .text --function func_02022ff4 --require-exact
+  report_args = --section .text --function RecordSpriteMotionPresentation_Init --require-exact
 build build/reports/record_sprite_motion_presentation_02023260.json: objdiff build/decomp/delinks/asm/game/record_sprite_motion_presentation_02023260.o | build/decomp/asm/game/record_sprite_motion_presentation_02023260.o
   target_object = build/decomp/delinks/asm/game/record_sprite_motion_presentation_02023260.o
   base_object = build/decomp/asm/game/record_sprite_motion_presentation_02023260.o
 build build/reports/record_sprite_motion_presentation_02023260.txt: match_report build/reports/record_sprite_motion_presentation_02023260.json | tools/report_objdiff.py
   report_json = build/reports/record_sprite_motion_presentation_02023260.json
-  report_args = --section .text --function func_02023260 --require-exact
+  report_args = --section .text --function RecordSpriteMotionPresentation_Destroy --require-exact
 build build/reports/record_sprite_motion_presentation_020232b0.json: objdiff build/decomp/delinks/asm/game/record_sprite_motion_presentation_020232b0.o | build/decomp/asm/game/record_sprite_motion_presentation_020232b0.o
   target_object = build/decomp/delinks/asm/game/record_sprite_motion_presentation_020232b0.o
   base_object = build/decomp/asm/game/record_sprite_motion_presentation_020232b0.o
 build build/reports/record_sprite_motion_presentation_020232b0.txt: match_report build/reports/record_sprite_motion_presentation_020232b0.json | tools/report_objdiff.py
   report_json = build/reports/record_sprite_motion_presentation_020232b0.json
-  report_args = --section .text --function func_020232b0 --require-exact
+  report_args = --section .text --function RecordSpriteMotionPresentation_DestroyAndFree --require-exact
 build build/reports/record_sprite_motion_presentation_02023308.json: objdiff build/decomp/delinks/asm/game/record_sprite_motion_presentation_02023308.o | build/decomp/asm/game/record_sprite_motion_presentation_02023308.o
   target_object = build/decomp/delinks/asm/game/record_sprite_motion_presentation_02023308.o
   base_object = build/decomp/asm/game/record_sprite_motion_presentation_02023308.o
 build build/reports/record_sprite_motion_presentation_02023308.txt: match_report build/reports/record_sprite_motion_presentation_02023308.json | tools/report_objdiff.py
   report_json = build/reports/record_sprite_motion_presentation_02023308.json
-  report_args = --section .text --function func_02023308 --require-exact
+  report_args = --section .text --function RecordSpriteMotionPresentation_Update --require-exact
 build build/reports/record_sprite_motion_presentation.txt: phony build/reports/record_sprite_motion_presentation_02022ff4.txt build/reports/record_sprite_motion_presentation_02023260.txt build/reports/record_sprite_motion_presentation_020232b0.txt build/reports/record_sprite_motion_presentation_02023308.txt
 build build/reports/sprite_number_list_delete_020233a0.json: objdiff build/decomp/delinks/asm/game/sprite_number_list_delete_020233a0.o | build/decomp/asm/game/sprite_number_list_delete_020233a0.o
   target_object = build/decomp/delinks/asm/game/sprite_number_list_delete_020233a0.o
   base_object = build/decomp/asm/game/sprite_number_list_delete_020233a0.o
 build build/reports/sprite_number_list_delete_020233a0.txt: match_report build/reports/sprite_number_list_delete_020233a0.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_list_delete_020233a0.json
-  report_args = --section .text --function func_020233a0 --require-exact
+  report_args = --section .text --function SpriteNodeList_DestroyAndFree --require-exact
 build build/reports/sprite_number_list_delete.txt: phony build/reports/sprite_number_list_delete_020233a0.txt
 build build/reports/vec_fx32_scale_rounded_020233c8.json: objdiff build/decomp/delinks/asm/math/vec_fx32_scale_rounded_020233c8.o | build/decomp/asm/math/vec_fx32_scale_rounded_020233c8.o
   target_object = build/decomp/delinks/asm/math/vec_fx32_scale_rounded_020233c8.o

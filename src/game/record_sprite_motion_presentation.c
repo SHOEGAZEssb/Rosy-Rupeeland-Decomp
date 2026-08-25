@@ -45,7 +45,7 @@ extern void OS_Halt(void);
  * the two Z offsets from arg6/arg7 (negated when initial Y <= 0x40), clear timer,
  * destroy temporaries and return self.
  */
-RecordSpriteMotionPresentation *func_02022ff4(
+RecordSpriteMotionPresentation *RecordSpriteMotionPresentation_Init(
     RecordSpriteMotionPresentation *self,s32 sampleArgument,const u8 *config,
     s32 mode,s32 recordId,s32 rangeEnd,s32 firstOffset,s32 secondOffset)
 {
@@ -86,15 +86,15 @@ static RecordSpriteMotionPresentation *teardown_record_sprite(RecordSpriteMotion
 }
 
 /* Release sprite/resource and all tracks, tear down base, and return self. */
-RecordSpriteMotionPresentation *func_02023260(RecordSpriteMotionPresentation *self)
+RecordSpriteMotionPresentation *RecordSpriteMotionPresentation_Destroy(RecordSpriteMotionPresentation *self)
 {return teardown_record_sprite(self);}
 
-/* Perform func_02023260 teardown, free self, and return its old address. */
-RecordSpriteMotionPresentation *func_020232b0(RecordSpriteMotionPresentation *self)
+/* Perform RecordSpriteMotionPresentation_Destroy teardown, free self, and return its old address. */
+RecordSpriteMotionPresentation *RecordSpriteMotionPresentation_DestroyAndFree(RecordSpriteMotionPresentation *self)
 {teardown_record_sprite(self);Heap_Free(self);return self;}
 
 /* Sample/reposition sprite, chain both offsets into the track, and return whether 60 frames elapsed. */
-s32 func_02023308(RecordSpriteMotionPresentation *self)
+s32 RecordSpriteMotionPresentation_Update(RecordSpriteMotionPresentation *self)
 {
     TrackValue sampled,position;VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
     VecFx32Object_InitPlanarProjection(&position,&sampled);VecFx32Object_Destroy(&sampled);

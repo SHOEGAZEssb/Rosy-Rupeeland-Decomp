@@ -23,7 +23,7 @@ extern void *ActorCollection_GetSpriteGroup(...);
 extern u32 *VecFx32Object_SetComponents(void *object, u32 first, u32 second, u32 third);
 extern void *TimedSpriteBurstManager_Init(...);
 extern void *SpriteNumberMotionPresentation_Init(...);
-extern void *func_02022ff4(...);
+extern void *RecordSpriteMotionPresentation_Init(...);
 extern void *AuxiliaryTimedSpritePresentation_Init(...);
 extern void *func_02025300(...);
 extern void *func_02023434(...);
@@ -147,7 +147,7 @@ s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
     case 4: {
         void *object = Heap_Alloc(0x54, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
-            object = func_02022ff4(object, getScriptEffectContext(),
+            object = RecordSpriteMotionPresentation_Init(object, getScriptEffectContext(),
                                    *(void **)((u8 *)gGamePhaseRuntime + 0x2ea4),
                                    a1, a2, a3, 0x2000, -0xc0);
         addScriptFieldEffect(object);

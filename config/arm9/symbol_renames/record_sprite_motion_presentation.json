@@ -1,0 +1,6 @@
+{
+  "func_02022ff4": "RecordSpriteMotionPresentation_Init",
+  "func_02023260": "RecordSpriteMotionPresentation_Destroy",
+  "func_020232b0": "RecordSpriteMotionPresentation_DestroyAndFree",
+  "func_02023308": "RecordSpriteMotionPresentation_Update"
+}
