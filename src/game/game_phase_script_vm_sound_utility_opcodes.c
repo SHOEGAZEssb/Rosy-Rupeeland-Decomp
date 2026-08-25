@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *gSoundContext;
 extern s32 SignedByteTable_LookupFx12Index(u16 fx12Index);
-extern void func_02099114(s32 value);
+extern void GameWork_SelectWeightedValueFromTable(s32 tableIndex);
 extern void Sound_StopAllManagedPlayers(void *context);
 extern void SoundPhaseManager_Reset(void *context);
 extern void Sound_ReapplyCurrentGroupSlots(void *context);
@@ -26,9 +26,10 @@ s32 GamePhaseActorScriptVm_LookupSignedByteByHighNibble(GamePhaseActorScriptVm *
 }
 
 /* Pop a value, pass it to the recovered global operation, and return zero. */
-s32 func_0201a540(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SelectWeightedGameWorkValue(GamePhaseActorScriptVm *self)
 {
-    func_02099114((s32)GamePhaseScriptVm_Pop(&self->base));
+    s32 tableIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GameWork_SelectWeightedValueFromTable(tableIndex);
     return 0;
 }
 

@@ -19,7 +19,7 @@ extern void Sound_SetEffectParameters(void *context, s32 soundId, s32 variant,
  * operand into a nine-bit sound ID and seven-bit variant, invoke the selected
  * sound operation, and return zero.  Other selectors do nothing.
  */
-s32 func_0201ab60(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchEffectParameterCommand(GamePhaseActorScriptVm *self)
 {
     s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);

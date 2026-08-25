@@ -21,23 +21,24 @@ extern void Sound_ConfigureGroupSlots(void *context, s32 first, s32 second, s32 
  * phase-to-music table entry. It is narrowed to a halfword before dispatch;
  * unsupported selectors consume their operands without side effects.
  */
-s32 func_0201ac18(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_PlayStream(GamePhaseActorScriptVm *self)
 {
-    s32 fifth = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 fadeIn = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 fadeDurationFrames = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 initialVolume = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 startPosition = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 streamId = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
 
     if (command == 32) {
-        Sound_PlayStream(gSoundContext, (u16)first, second, third, fourth, fifth);
+        Sound_PlayStream(gSoundContext, (u16)streamId, startPosition,
+                         initialVolume, fadeDurationFrames, fadeIn);
     }
     return 0;
 }
 
 /* Pop seven operands, pass them unchanged to the sound context, and return zero. */
-s32 func_0201ac9c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ConfigureSoundGroupSlots(GamePhaseActorScriptVm *self)
 {
     s32 seventh = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 sixth = (s32)GamePhaseScriptVm_Pop(&self->base);

@@ -19,8 +19,8 @@
 .extern SoundPhaseDatabaseManager_Update
 .extern SoundPhaseManager_RequestAlternateTransition
 .extern gSoundContext
-.global func_0201a614
-func_0201a614: ; 0x0201a614
+.global GamePhaseActorScriptVm_DispatchSoundCommand
+GamePhaseActorScriptVm_DispatchSoundCommand: ; 0x0201a614
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r5, r0
@@ -246,4 +246,4 @@ L_0201a928:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
 L_0201a934: .word gSoundContext
-.size func_0201a614, . - func_0201a614
+.size GamePhaseActorScriptVm_DispatchSoundCommand, . - GamePhaseActorScriptVm_DispatchSoundCommand

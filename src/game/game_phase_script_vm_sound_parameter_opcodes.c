@@ -20,7 +20,7 @@ extern void Sound_UpdateGroupSlot(void *context, s32 first, s32 second);
  * control, and return zero.  The first two controls narrow both operands to
  * halfwords; selector 23 narrows only the first.  Other selectors do nothing.
  */
-s32 func_0201a938(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchTwoOperandSoundCommand(GamePhaseActorScriptVm *self)
 {
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);

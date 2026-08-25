@@ -8,8 +8,8 @@
 .extern Sound_GetDirectSequenceTrackMask
 .extern Sound_SetDirectSequenceTrackMask
 .extern gSoundContext
-.global func_0201aa14
-func_0201aa14: ; 0x0201aa14
+.global GamePhaseActorScriptVm_DispatchThreeOperandSoundCommand
+GamePhaseActorScriptVm_DispatchThreeOperandSoundCommand: ; 0x0201aa14
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r7, r0
@@ -100,4 +100,4 @@ L_0201ab50:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_0201ab5c: .word gSoundContext
-.size func_0201aa14, . - func_0201aa14
+.size GamePhaseActorScriptVm_DispatchThreeOperandSoundCommand, . - GamePhaseActorScriptVm_DispatchThreeOperandSoundCommand

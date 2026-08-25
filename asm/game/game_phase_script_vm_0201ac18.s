@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Sound_PlayStream
 .extern gSoundContext
-.global func_0201ac18
-func_0201ac18: ; 0x0201ac18
+.global GamePhaseActorScriptVm_PlayStream
+GamePhaseActorScriptVm_PlayStream: ; 0x0201ac18
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x8
     mov r9, r0
@@ -39,4 +39,4 @@ L_0201ac8c:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_0201ac98: .word gSoundContext
-.size func_0201ac18, . - func_0201ac18
+.size GamePhaseActorScriptVm_PlayStream, . - GamePhaseActorScriptVm_PlayStream

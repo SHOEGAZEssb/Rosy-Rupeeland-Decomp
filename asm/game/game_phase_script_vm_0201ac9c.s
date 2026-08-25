@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Sound_ConfigureGroupSlots
 .extern gSoundContext
-.global func_0201ac9c
-func_0201ac9c: ; 0x0201ac9c
+.global GamePhaseActorScriptVm_ConfigureSoundGroupSlots
+GamePhaseActorScriptVm_ConfigureSoundGroupSlots: ; 0x0201ac9c
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x10
     mov r10, r0
@@ -38,4 +38,4 @@ func_0201ac9c: ; 0x0201ac9c
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_0201ad1c: .word gSoundContext
-.size func_0201ac9c, . - func_0201ac9c
+.size GamePhaseActorScriptVm_ConfigureSoundGroupSlots, . - GamePhaseActorScriptVm_ConfigureSoundGroupSlots

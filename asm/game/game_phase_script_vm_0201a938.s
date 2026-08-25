@@ -7,8 +7,8 @@
 .extern Sound_FadeStreamVolume
 .extern Sound_UpdateGroupSlot
 .extern gSoundContext
-.global func_0201a938
-func_0201a938: ; 0x0201a938
+.global GamePhaseActorScriptVm_DispatchTwoOperandSoundCommand
+GamePhaseActorScriptVm_DispatchTwoOperandSoundCommand: ; 0x0201a938
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -71,4 +71,4 @@ L_0201aa08:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_0201aa10: .word gSoundContext
-.size func_0201a938, . - func_0201a938
+.size GamePhaseActorScriptVm_DispatchTwoOperandSoundCommand, . - GamePhaseActorScriptVm_DispatchTwoOperandSoundCommand

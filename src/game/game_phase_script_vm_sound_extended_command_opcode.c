@@ -25,7 +25,7 @@ extern void Sound_SetDirectSequenceTrackMask(void *context, u16 index, u16 mask)
  * reads a halfword mask, sets or clears the requested bit, then writes it back.
  * Selectors 30..32 and unsupported selectors do nothing.
  */
-s32 func_0201aa14(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchThreeOperandSoundCommand(GamePhaseActorScriptVm *self)
 {
     s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);

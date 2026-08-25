@@ -1,0 +1,12 @@
+{
+  "func_0201a540": "GamePhaseActorScriptVm_SelectWeightedGameWorkValue",
+  "GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand": "GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand",
+  "func_0201a614": "GamePhaseActorScriptVm_DispatchSoundCommand",
+  "func_0201a938": "GamePhaseActorScriptVm_DispatchTwoOperandSoundCommand",
+  "func_0201aa14": "GamePhaseActorScriptVm_DispatchThreeOperandSoundCommand",
+  "func_0201ab60": "GamePhaseActorScriptVm_DispatchEffectParameterCommand",
+  "func_0201ac18": "GamePhaseActorScriptVm_PlayStream",
+  "func_0201ac9c": "GamePhaseActorScriptVm_ConfigureSoundGroupSlots",
+  "func_02099114": "GameWork_SelectWeightedValueFromTable",
+  "func_02099354": "WeightedSelectionRecordArray_Destroy"
+}

@@ -4,8 +4,8 @@
 .extern Sound_PlayEffectWithParameters
 .extern Sound_SetEffectParameters
 .extern gSoundContext
-.global func_0201ab60
-func_0201ab60: ; 0x0201ab60
+.global GamePhaseActorScriptVm_DispatchEffectParameterCommand
+GamePhaseActorScriptVm_DispatchEffectParameterCommand: ; 0x0201ab60
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x8
     mov r8, r0
@@ -55,4 +55,4 @@ L_0201ac08:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_0201ac14: .word gSoundContext
-.size func_0201ab60, . - func_0201ab60
+.size GamePhaseActorScriptVm_DispatchEffectParameterCommand, . - GamePhaseActorScriptVm_DispatchEffectParameterCommand

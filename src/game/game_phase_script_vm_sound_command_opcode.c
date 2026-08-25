@@ -32,9 +32,9 @@ extern void SoundPhaseManager_RequestAlternateTransition(void *context, s32 enab
  * nine-bit sound ID and seven-bit variant.  Commands 3 and 5 store their query
  * values as VM results; selectors 15..33 and unsupported selectors have no effect.
  */
-s32 func_0201a614(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchSoundCommand(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 soundValue = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u16 packed;
     s32 soundId;
@@ -42,44 +42,44 @@ s32 func_0201a614(GamePhaseActorScriptVm *self)
 
     switch (command) {
     case 0:
-        packed = (u16)value;
+        packed = (u16)soundValue;
         soundId = packed >> 7;
         variant = packed & 0x7f;
         Sound_Play(gSoundContext, soundId, variant);
         break;
     case 1:
-        packed = (u16)value;
+        packed = (u16)soundValue;
         soundId = packed >> 7;
         variant = packed & 0x7f;
         Sound_StopEffect(gSoundContext, soundId, variant);
         break;
     case 2:
-        packed = (u16)value;
+        packed = (u16)soundValue;
         soundId = packed >> 7;
         variant = packed & 0x7f;
         Sound_PlayOwnedEffect(gSoundContext, soundId, variant, self->actor, 0, 0x100);
         break;
     case 3:
-        packed = (u16)value;
+        packed = (u16)soundValue;
         soundId = packed >> 7;
         variant = packed & 0x7f;
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                       (u32)Sound_IsEffectPlaying(gSoundContext, soundId, variant));
         break;
-    case 4: Sound_StopAllDirectSequences(gSoundContext, value); break;
+    case 4: Sound_StopAllDirectSequences(gSoundContext, soundValue); break;
     case 5:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)Sound_IsDirectSequencePlaying(gSoundContext, (u16)value));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)Sound_IsDirectSequencePlaying(gSoundContext, (u16)soundValue));
         break;
-    case 6: func_020594ec(gSoundContext, (u16)value); break;
-    case 7: Sound_StopStream(gSoundContext, value); break;
-    case 8: Sound_LoadGroup(gSoundContext, value); break;
-    case 9: Sound_ReleaseGroup(gSoundContext, value); break;
-    case 10: Sound_SetCaptureEnabled(gSoundContext, value == 1); break;
-    case 11: Sound_SetCaptureRoute0Enabled(gSoundContext, value == 1, 20, 30); break;
-    case 12: Sound_SetCaptureRoute1Enabled(gSoundContext, value == 1, 20, 30); break;
-    case 13: Sound_SetDirectCaptureRoutesEnabled(gSoundContext, value == 1, 20, 30); break;
-    case 14: SoundPhaseDatabaseManager_Update(gSoundContext, value == 1); break;
-    case 34: SoundPhaseManager_RequestAlternateTransition(gSoundContext, value == 1); break;
+    case 6: func_020594ec(gSoundContext, (u16)soundValue); break;
+    case 7: Sound_StopStream(gSoundContext, soundValue); break;
+    case 8: Sound_LoadGroup(gSoundContext, soundValue); break;
+    case 9: Sound_ReleaseGroup(gSoundContext, soundValue); break;
+    case 10: Sound_SetCaptureEnabled(gSoundContext, soundValue == 1); break;
+    case 11: Sound_SetCaptureRoute0Enabled(gSoundContext, soundValue == 1, 20, 30); break;
+    case 12: Sound_SetCaptureRoute1Enabled(gSoundContext, soundValue == 1, 20, 30); break;
+    case 13: Sound_SetDirectCaptureRoutesEnabled(gSoundContext, soundValue == 1, 20, 30); break;
+    case 14: SoundPhaseDatabaseManager_Update(gSoundContext, soundValue == 1); break;
+    case 34: SoundPhaseManager_RequestAlternateTransition(gSoundContext, soundValue == 1); break;
     }
     return 0;
 }
