@@ -1,0 +1,10 @@
+{
+  "func_02017718": "GamePhaseActorScriptVm_InsertRetailRecordIdAtCategoryIndex",
+  "func_02017750": "GamePhaseActorScriptVm_RemoveRetailRecordIdAtCategoryIndex",
+  "func_02017788": "GamePhaseActorScriptVm_HasAvailableRetailRecordForSelector",
+  "func_0201787c": "GamePhaseActorScriptVm_IsRetailRecordSelectorDiscovered",
+  "func_020178bc": "GamePhaseActorScriptVm_IsRetailRecordSelectorAvailable",
+  "GamePhaseActorScriptVm_SetActorRuntimeFlag100WhenZero": "GamePhaseActorScriptVm_SetActorRuntimeFlag100WhenZero",
+  "GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled": "GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled",
+  "GamePhaseActorScriptVm_DispatchActorScaledVectorCommand": "GamePhaseActorScriptVm_DispatchActorScaledVectorCommand"
+}

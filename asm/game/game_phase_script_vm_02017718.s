@@ -3,8 +3,8 @@
 .extern data_021f5128
 .extern GamePhaseScriptVm_Pop
 .extern RetailRecordCategory_InsertById
-.global func_02017718
-func_02017718:
+.global GamePhaseActorScriptVm_InsertRetailRecordIdAtCategoryIndex
+GamePhaseActorScriptVm_InsertRetailRecordIdAtCategoryIndex:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -19,4 +19,4 @@ func_02017718:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
 L_0201774c: .word data_021f5128
-    .size func_02017718, . - func_02017718
+    .size GamePhaseActorScriptVm_InsertRetailRecordIdAtCategoryIndex, . - GamePhaseActorScriptVm_InsertRetailRecordIdAtCategoryIndex

@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RetailRecordManager_CategoryHasAvailableEntry
-.global func_02017788
-func_02017788:
+.global GamePhaseActorScriptVm_HasAvailableRetailRecordForSelector
+GamePhaseActorScriptVm_HasAvailableRetailRecordForSelector:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -22,4 +22,4 @@ func_02017788:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
 L_020177c4: .word data_021f5128
-    .size func_02017788, . - func_02017788
+    .size GamePhaseActorScriptVm_HasAvailableRetailRecordForSelector, . - GamePhaseActorScriptVm_HasAvailableRetailRecordForSelector

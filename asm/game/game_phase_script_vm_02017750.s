@@ -3,8 +3,8 @@
 .extern data_021f5128
 .extern GamePhaseScriptVm_Pop
 .extern RecordCategory_RemoveById
-.global func_02017750
-func_02017750:
+.global GamePhaseActorScriptVm_RemoveRetailRecordIdAtCategoryIndex
+GamePhaseActorScriptVm_RemoveRetailRecordIdAtCategoryIndex:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -19,4 +19,4 @@ func_02017750:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
 L_02017784: .word data_021f5128
-    .size func_02017750, . - func_02017750
+    .size GamePhaseActorScriptVm_RemoveRetailRecordIdAtCategoryIndex, . - GamePhaseActorScriptVm_RemoveRetailRecordIdAtCategoryIndex

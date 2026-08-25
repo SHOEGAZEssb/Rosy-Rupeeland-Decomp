@@ -16,20 +16,20 @@ extern void RecordDescriptor_SetValue(void *object, s32 value);
 #endif
 
 /* Pop a command value and table index, call RetailRecordCategory_InsertById on that object, and return zero. */
-s32 func_02017718(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_InsertRetailRecordIdAtCategoryIndex(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    RetailRecordCategory_InsertById(data_021f5128[index], value);
+    s32 recordId = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 categoryIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
+    RetailRecordCategory_InsertById(data_021f5128[categoryIndex], recordId);
     return 0;
 }
 
 /* Pop a command value and table index, call RecordCategory_RemoveById on that object, and return zero. */
-s32 func_02017750(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_RemoveRetailRecordIdAtCategoryIndex(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    RecordCategory_RemoveById(data_021f5128[index], value);
+    s32 recordId = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 categoryIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
+    RecordCategory_RemoveById(data_021f5128[categoryIndex], recordId);
     return 0;
 }
 
@@ -41,8 +41,8 @@ s32 GamePhaseActorScriptVm_SetRetailRecordValue(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 category_index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *category = data_021f5128[category_index];
+    s32 categoryIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
+    void *category = data_021f5128[categoryIndex];
     void *slot = RecordCategory_FindSlotById(
         category, RetailRecord_GetCategoryBank((u16)id), (u16)id);
     if (slot)

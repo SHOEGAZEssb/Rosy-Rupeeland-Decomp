@@ -31,20 +31,20 @@ extern void RuntimePresentationManager_AppendFirstListEffect(void *list, void *o
  */
 s32 GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled(GamePhaseActorScriptVm *self)
 {
-    s32 actorIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 actorRuntimeId = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 trackZ = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)gGamePhaseRuntime;
     if (enabled) {
         void *actor = ActorCollection_FindActorByRuntimeId(
-            GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)runtime, 1), actorIndex);
-        void *object = Heap_Alloc(0x4c, data_020d5b34, 4, &gHeapContext);
-        if (object)
-            object = RisingSpriteSwarmPresentation_Init(
-                object,
+            GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)runtime, 1), actorRuntimeId);
+        void *presentation = Heap_Alloc(0x4c, data_020d5b34, 4, &gHeapContext);
+        if (presentation)
+            presentation = RisingSpriteSwarmPresentation_Init(
+                presentation,
                 ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc), actor,
                 trackZ);
-        RuntimePresentationManager_AppendFirstListEffect(runtime + 0x2f7c, object);
+        RuntimePresentationManager_AppendFirstListEffect(runtime + 0x2f7c, presentation);
     } else {
         GameWork_SetFlag(gGameWork, 0x408);
     }

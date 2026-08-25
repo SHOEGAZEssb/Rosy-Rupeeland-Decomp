@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RetailRecordManager_IsSelectorAvailable
-.global func_020178bc
-func_020178bc:
+.global GamePhaseActorScriptVm_IsRetailRecordSelectorAvailable
+GamePhaseActorScriptVm_IsRetailRecordSelectorAvailable:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -22,4 +22,4 @@ func_020178bc:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
 L_020178f8: .word data_021f5128
-    .size func_020178bc, . - func_020178bc
+    .size GamePhaseActorScriptVm_IsRetailRecordSelectorAvailable, . - GamePhaseActorScriptVm_IsRetailRecordSelectorAvailable
