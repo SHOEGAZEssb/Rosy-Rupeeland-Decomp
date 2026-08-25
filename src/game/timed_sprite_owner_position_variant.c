@@ -29,7 +29,7 @@ extern "C" {
 extern void *data_020d60d8;
 extern OwnerPositionTimedSprite *func_0201e6e4(
     OwnerPositionTimedSprite *self, u8 *owner, u8 *config, s32 spriteValue);
-extern OwnerPositionTimedSprite *func_0201e380(
+extern OwnerPositionTimedSprite *TimedSpritePresentation_DestroyBase(
     OwnerPositionTimedSprite *self);
 extern void TimedSpritePresentation_SetVisible(OwnerPositionTimedSprite *self, s32 enabled);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
@@ -59,14 +59,14 @@ OwnerPositionTimedSprite *func_0201ecbc(OwnerPositionTimedSprite *self,
 /* Run the shared non-freeing teardown and return self. */
 OwnerPositionTimedSprite *func_0201ecec(OwnerPositionTimedSprite *self)
 {
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
 OwnerPositionTimedSprite *func_0201ed00(OwnerPositionTimedSprite *self)
 {
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

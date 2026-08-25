@@ -10,8 +10,10 @@
 .extern TimedSpritePresentation_SetVisible
 .extern gFieldEffectVtable
 .extern data_020d6098
+.global TimedSpritePresentation_Init
 .global func_0201e290
-func_0201e290: ; 0x0201e290
+TimedSpritePresentation_Init: ; 0x0201e290
+func_0201e290:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
@@ -44,4 +46,4 @@ func_0201e290: ; 0x0201e290
 L_0201e304: .word data_020d6098
 
 
-.size func_0201e290, . - func_0201e290
+.size TimedSpritePresentation_Init, . - TimedSpritePresentation_Init

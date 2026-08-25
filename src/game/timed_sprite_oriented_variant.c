@@ -10,8 +10,8 @@ typedef struct TimedSprite { void *vtable; u8 *sprite; Track first08; Track seco
 extern "C" {
 #endif
 extern void *data_020d605c;
-extern TimedSprite *func_0201e290(TimedSprite *self,u8 *config);
-extern TimedSprite *func_0201e380(TimedSprite *self);
+extern TimedSprite *TimedSpritePresentation_Init(TimedSprite *self,u8 *config);
+extern TimedSprite *TimedSpritePresentation_DestroyBase(TimedSprite *self);
 extern void TimedSpritePresentation_SetVisible(TimedSprite *self,s32 enabled);
 extern void VecFx32Object_Assign(Track *destination,const void *source);
 extern void VecFx32Object_Add(Track *first,Track *second);
@@ -31,7 +31,7 @@ extern void GraphicsSpriteState_SetWorldPositionFromOrigin(void *sprite,s32 argu
 TimedSprite *func_0201e454(TimedSprite *self,u8 *config)
 {
     u16 angle;
-    func_0201e290(self,config);
+    TimedSpritePresentation_Init(self,config);
     self->vtable=data_020d605c;
     VecFx32Object_Assign(&self->first08,config+0x10);
     VecFx32Object_Assign(&self->second18,config+0x20);
@@ -45,10 +45,10 @@ TimedSprite *func_0201e454(TimedSprite *self,u8 *config)
 }
 
 /* Run the shared non-freeing teardown and return self. */
-TimedSprite *func_0201e4d0(TimedSprite *self){func_0201e380(self);return self;}
+TimedSprite *func_0201e4d0(TimedSprite *self){TimedSpritePresentation_DestroyBase(self);return self;}
 
 /* Run the shared teardown, free self, and return its old address. */
-TimedSprite *func_0201e4e4(TimedSprite *self){func_0201e380(self);Heap_Free(self);return self;}
+TimedSprite *func_0201e4e4(TimedSprite *self){TimedSpritePresentation_DestroyBase(self);Heap_Free(self);return self;}
 
 /*
  * Decrement lifetime and hide/finish when negative.  Otherwise advance the

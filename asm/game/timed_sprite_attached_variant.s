@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/timed_sprite_attached_variant.c.
 .text
 .extern Heap_Free
-.extern func_0201e290
-.extern func_0201e380
+.extern TimedSpritePresentation_Init
+.extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -24,7 +24,7 @@ func_0201e6e4: ; 0x0201e6e4
     mov r1, r7
     mov r5, r0
     mov r6, r3
-    bl func_0201e290
+    bl TimedSpritePresentation_Init
     ldr r1, .L_0201e760
     mov r0, #0x0
     str r1, [r5, #0x0]
@@ -57,7 +57,7 @@ func_0201e6e4: ; 0x0201e6e4
 func_0201e764: ; 0x0201e764
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_0201e764, .-func_0201e764
@@ -67,7 +67,7 @@ func_0201e764: ; 0x0201e764
 func_0201e778: ; 0x0201e778
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

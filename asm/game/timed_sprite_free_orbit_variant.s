@@ -6,7 +6,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
-.extern func_0201e380
+.extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
 .extern func_0201e9d8
 
@@ -42,7 +42,7 @@ func_0201ebf8: ; 0x0201ebf8
     add r0, r4, #0x40
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_0201ebf8, .-func_0201ebf8
@@ -55,7 +55,7 @@ func_0201ec18: ; 0x0201ec18
     add r0, r4, #0x40
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

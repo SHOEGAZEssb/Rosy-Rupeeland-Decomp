@@ -23,9 +23,9 @@ typedef struct SampledArcTimedSprite {
 extern "C" {
 #endif
 extern void *data_020d60ac;
-extern SampledArcTimedSprite *func_0201e290(SampledArcTimedSprite *self,
+extern SampledArcTimedSprite *TimedSpritePresentation_Init(SampledArcTimedSprite *self,
                                             u8 *config);
-extern SampledArcTimedSprite *func_0201e380(SampledArcTimedSprite *self);
+extern SampledArcTimedSprite *TimedSpritePresentation_DestroyBase(SampledArcTimedSprite *self);
 extern void TimedSpritePresentation_SetVisible(SampledArcTimedSprite *self, s32 enabled);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
@@ -42,7 +42,7 @@ extern void VecFx32_Subtract(void *output, s32 argument,
  */
 SampledArcTimedSprite *func_0201edd0(SampledArcTimedSprite *self, u8 *config)
 {
-    func_0201e290(self, config);
+    TimedSpritePresentation_Init(self, config);
     self->vtable = data_020d60ac;
     *(u16 *)(self->sprite + 0x24) &= (u16)~2;
     self->remaining28 = *(s32 *)(config + 0x30);
@@ -53,14 +53,14 @@ SampledArcTimedSprite *func_0201edd0(SampledArcTimedSprite *self, u8 *config)
 /* Run the shared non-freeing teardown and return self. */
 SampledArcTimedSprite *func_0201ee18(SampledArcTimedSprite *self)
 {
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
 SampledArcTimedSprite *func_0201ee2c(SampledArcTimedSprite *self)
 {
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

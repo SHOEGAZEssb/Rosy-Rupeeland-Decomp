@@ -18,8 +18,8 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0201e290(void *, void *);
-extern void *func_0201e380(void *);
+extern void *TimedSpritePresentation_Init(void *, void *);
+extern void *TimedSpritePresentation_DestroyBase(void *);
 
 extern void TimedSpritePresentation_SetVisible(void *, s32);
 extern void *VecFx32Object_Init(void *);
@@ -71,7 +71,7 @@ static s32 fx_mul(s32 left, s32 right)
 void *func_ov073_0220fd20(void *object, const void *position,
                           void *resources, s32 animation, s32 frameOffset)
 {
-    func_0201e290(object, resources);
+    TimedSpritePresentation_Init(object, resources);
     FIELD(const void *, object, 0) = data_ov073_02210bcc;
     VecFx32Object_InitCopy((u8 *)object + 0x2c, position);
     FIELD(u16, object, 0x3c) = (u16)frameOffset;
@@ -91,7 +91,7 @@ void *func_ov073_0220fd20(void *object, const void *position,
 void *func_ov073_0220fdb8(void *object)
 {
     VecFx32Object_Destroy((u8 *)object + 0x2c);
-    func_0201e380(object);
+    TimedSpritePresentation_DestroyBase(object);
     return object;
 }
 

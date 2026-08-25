@@ -4,7 +4,7 @@
 .extern data_020d60d8
 .extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
-.extern func_0201e380
+.extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
 .extern func_0201e6e4
 
@@ -30,7 +30,7 @@ func_0201ecbc: ; 0x0201ecbc
 func_0201ecec: ; 0x0201ecec
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_0201ecec, .-func_0201ecec
@@ -40,7 +40,7 @@ func_0201ecec: ; 0x0201ecec
 func_0201ed00: ; 0x0201ed00
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

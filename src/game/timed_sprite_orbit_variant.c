@@ -39,7 +39,7 @@ extern u8 data_020d6118[];
 extern const s16 gFx32CosSinTable[];
 extern OrbitTimedSprite *func_0201e6e4(OrbitTimedSprite *self, u8 *owner,
                                        u8 *config, s32 spriteValue);
-extern OrbitTimedSprite *func_0201e380(OrbitTimedSprite *self);
+extern OrbitTimedSprite *TimedSpritePresentation_DestroyBase(OrbitTimedSprite *self);
 extern void TimedSpritePresentation_SetVisible(OrbitTimedSprite *self, s32 enabled);
 extern void VecFx32Object_Add(PresentationTrack *first,
                           PresentationTrack *second);
@@ -90,14 +90,14 @@ OrbitTimedSprite *func_0201ea20(OrbitTimedSprite *self, u8 *owner, u8 *config,
 /* Run the shared non-freeing teardown and return self. */
 OrbitTimedSprite *func_0201ea68(OrbitTimedSprite *self)
 {
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
 OrbitTimedSprite *func_0201ea7c(OrbitTimedSprite *self)
 {
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

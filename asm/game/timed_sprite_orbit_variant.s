@@ -6,7 +6,7 @@
 .extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern CPoint2DS16_InitFromRectangle
-.extern func_0201e380
+.extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
 .extern func_0201e6e4
 .extern genrand_int32
@@ -62,7 +62,7 @@ func_0201ea20: ; 0x0201ea20
 func_0201ea68: ; 0x0201ea68
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_0201ea68, .-func_0201ea68
@@ -72,7 +72,7 @@ func_0201ea68: ; 0x0201ea68
 func_0201ea7c: ; 0x0201ea7c
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

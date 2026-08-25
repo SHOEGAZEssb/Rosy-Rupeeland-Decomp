@@ -10,8 +10,8 @@
 .extern TimedSpritePresentation_SetVisible
 .extern gFieldEffectVtable
 .extern data_020d6098
-.global func_0201e3d8
-func_0201e3d8: ; 0x0201e3d8
+.global TimedSpritePresentation_Update
+TimedSpritePresentation_Update: ; 0x0201e3d8
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -47,4 +47,4 @@ L_0201e44c:
     ldmia sp!, {r3, r4, r5, pc}
 
 
-.size func_0201e3d8, . - func_0201e3d8
+.size TimedSpritePresentation_Update, . - TimedSpritePresentation_Update

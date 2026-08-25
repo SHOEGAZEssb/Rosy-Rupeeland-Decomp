@@ -1,0 +1,8 @@
+{
+  "func_0201e290": "TimedSpritePresentation_Init",
+  "func_0201e308": "TimedSpritePresentation_Destroy",
+  "func_0201e340": "TimedSpritePresentation_DestroyAndFree",
+  "func_0201e380": "TimedSpritePresentation_DestroyBase",
+  "TimedSpritePresentation_SetVisible": "TimedSpritePresentation_SetVisible",
+  "func_0201e3d8": "TimedSpritePresentation_Update"
+}

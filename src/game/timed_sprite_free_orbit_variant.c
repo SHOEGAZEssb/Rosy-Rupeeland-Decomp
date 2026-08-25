@@ -41,7 +41,7 @@ extern FreeOrbitTimedSprite *func_0201e9d8(FreeOrbitTimedSprite *self,
                                            u8 *owner, u8 *config,
                                            s32 spriteValue,
                                            s16 spriteOffset, s16 spriteByte);
-extern FreeOrbitTimedSprite *func_0201e380(FreeOrbitTimedSprite *self);
+extern FreeOrbitTimedSprite *TimedSpritePresentation_DestroyBase(FreeOrbitTimedSprite *self);
 extern void TimedSpritePresentation_SetVisible(FreeOrbitTimedSprite *self, s32 enabled);
 extern void VecFx32Object_InitCopy(PresentationTrack *track, const void *source);
 extern void VecFx32Object_Destroy(void *track);
@@ -71,7 +71,7 @@ FreeOrbitTimedSprite *func_0201ebac(FreeOrbitTimedSprite *self,
 FreeOrbitTimedSprite *func_0201ebf8(FreeOrbitTimedSprite *self)
 {
     VecFx32Object_Destroy(&self->position40);
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
@@ -79,7 +79,7 @@ FreeOrbitTimedSprite *func_0201ebf8(FreeOrbitTimedSprite *self)
 FreeOrbitTimedSprite *func_0201ec18(FreeOrbitTimedSprite *self)
 {
     VecFx32Object_Destroy(&self->position40);
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

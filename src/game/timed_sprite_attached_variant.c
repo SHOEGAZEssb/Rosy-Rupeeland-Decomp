@@ -35,9 +35,9 @@ extern "C" {
 #endif
 extern void *data_020d6138;
 extern const s16 gFx32CosSinTable[];
-extern AttachedTimedSprite *func_0201e290(AttachedTimedSprite *self,
+extern AttachedTimedSprite *TimedSpritePresentation_Init(AttachedTimedSprite *self,
                                           u8 *config);
-extern AttachedTimedSprite *func_0201e380(AttachedTimedSprite *self);
+extern AttachedTimedSprite *TimedSpritePresentation_DestroyBase(AttachedTimedSprite *self);
 extern void TimedSpritePresentation_SetVisible(AttachedTimedSprite *self, s32 enabled);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
@@ -62,7 +62,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
 AttachedTimedSprite *func_0201e6e4(AttachedTimedSprite *self, u8 *owner,
                                    u8 *config, s32 spriteValue)
 {
-    func_0201e290(self, config);
+    TimedSpritePresentation_Init(self, config);
     self->vtable = (void **)data_020d6138;
     self->radialX30 = 0;
     self->radialScale34 = 0x1800;
@@ -78,14 +78,14 @@ AttachedTimedSprite *func_0201e6e4(AttachedTimedSprite *self, u8 *owner,
 /* Run the shared non-freeing teardown and return self. */
 AttachedTimedSprite *func_0201e764(AttachedTimedSprite *self)
 {
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
 AttachedTimedSprite *func_0201e778(AttachedTimedSprite *self)
 {
-    func_0201e380(self);
+    TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

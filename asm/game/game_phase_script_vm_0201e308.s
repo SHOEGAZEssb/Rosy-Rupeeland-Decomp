@@ -10,8 +10,8 @@
 .extern TimedSpritePresentation_SetVisible
 .extern gFieldEffectVtable
 .extern data_020d6098
-.global func_0201e308
-func_0201e308: ; 0x0201e308
+.global TimedSpritePresentation_Destroy
+TimedSpritePresentation_Destroy: ; 0x0201e308
     stmdb sp!, {r4, lr}
     ldr r1, L_0201e33c
     mov r4, r0
@@ -28,4 +28,4 @@ func_0201e308: ; 0x0201e308
 L_0201e33c: .word data_020d6098
 
 
-.size func_0201e308, . - func_0201e308
+.size TimedSpritePresentation_Destroy, . - TimedSpritePresentation_Destroy

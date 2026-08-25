@@ -6,8 +6,8 @@
 .extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern VecFx32_Subtract
-.extern func_0201e290
-.extern func_0201e380
+.extern TimedSpritePresentation_Init
+.extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
 
 .global func_0201edd0
@@ -16,7 +16,7 @@ func_0201edd0: ; 0x0201edd0
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0201e290
+    bl TimedSpritePresentation_Init
     ldr r1, .L_0201ee14
     add r0, r5, #0x8
     str r1, [r5, #0x0]
@@ -38,7 +38,7 @@ func_0201edd0: ; 0x0201edd0
 func_0201ee18: ; 0x0201ee18
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_0201ee18, .-func_0201ee18
@@ -48,7 +48,7 @@ func_0201ee18: ; 0x0201ee18
 func_0201ee2c: ; 0x0201ee2c
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e380
+    bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -8044,28 +8044,28 @@ build build/reports/game_phase_script_vm_0201e290.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e290.o
 build build/reports/game_phase_script_vm_0201e290.txt: match_report build/reports/game_phase_script_vm_0201e290.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e290.json
-  report_args = --section .text --function func_0201e290 --require-exact
+  report_args = --section .text --function TimedSpritePresentation_Init --require-exact
 
 build build/reports/game_phase_script_vm_0201e308.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e308.o | build/decomp/asm/game/game_phase_script_vm_0201e308.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e308.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e308.o
 build build/reports/game_phase_script_vm_0201e308.txt: match_report build/reports/game_phase_script_vm_0201e308.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e308.json
-  report_args = --section .text --function func_0201e308 --require-exact
+  report_args = --section .text --function TimedSpritePresentation_Destroy --require-exact
 
 build build/reports/game_phase_script_vm_0201e340.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e340.o | build/decomp/asm/game/game_phase_script_vm_0201e340.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e340.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e340.o
 build build/reports/game_phase_script_vm_0201e340.txt: match_report build/reports/game_phase_script_vm_0201e340.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e340.json
-  report_args = --section .text --function func_0201e340 --require-exact
+  report_args = --section .text --function TimedSpritePresentation_DestroyAndFree --require-exact
 
 build build/reports/game_phase_script_vm_0201e380.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e380.o | build/decomp/asm/game/game_phase_script_vm_0201e380.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e380.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e380.o
 build build/reports/game_phase_script_vm_0201e380.txt: match_report build/reports/game_phase_script_vm_0201e380.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e380.json
-  report_args = --section .text --function func_0201e380 --require-exact
+  report_args = --section .text --function TimedSpritePresentation_DestroyBase --require-exact
 
 build build/reports/game_phase_script_vm_0201e3b8.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e3b8.o | build/decomp/asm/game/game_phase_script_vm_0201e3b8.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e3b8.o
@@ -8079,7 +8079,7 @@ build build/reports/game_phase_script_vm_0201e3d8.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e3d8.o
 build build/reports/game_phase_script_vm_0201e3d8.txt: match_report build/reports/game_phase_script_vm_0201e3d8.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e3d8.json
-  report_args = --section .text --function func_0201e3d8 --require-exact
+  report_args = --section .text --function TimedSpritePresentation_Update --require-exact
 
 build build/reports/timed_sprite_presentation.txt: phony build/reports/game_phase_script_vm_0201e250.txt build/reports/game_phase_script_vm_0201e274.txt build/reports/game_phase_script_vm_0201e278.txt build/reports/game_phase_script_vm_0201e28c.txt build/reports/game_phase_script_vm_0201e290.txt build/reports/game_phase_script_vm_0201e308.txt build/reports/game_phase_script_vm_0201e340.txt build/reports/game_phase_script_vm_0201e380.txt build/reports/game_phase_script_vm_0201e3b8.txt build/reports/game_phase_script_vm_0201e3d8.txt
 build build/reports/game_phase_script_vm_0201e454.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e454.o | build/decomp/asm/game/game_phase_script_vm_0201e454.o

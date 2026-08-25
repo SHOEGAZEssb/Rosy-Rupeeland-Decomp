@@ -108,11 +108,14 @@ def instructions_match_after_renames(target_entry: dict, current_entry: dict,
 def is_exported_function(entry: dict) -> bool:
     """Recognize source functions even when objdiff omits their kind tag."""
     return (
-        entry.get("kind") == "SYMBOL_FUNCTION"
-        or (
-            bool(entry.get("flags", {}).get("global"))
-            and entry.get("match_percent") is not None
-            and bool(entry.get("instructions"))
+        not bool(entry.get("flags", {}).get("local"))
+        and (
+            entry.get("kind") == "SYMBOL_FUNCTION"
+            or (
+                bool(entry.get("flags", {}).get("global"))
+                and entry.get("match_percent") is not None
+                and bool(entry.get("instructions"))
+            )
         )
     )
 
@@ -142,11 +145,15 @@ def main() -> int:
         if not is_exported_function(target_entry):
             continue
         name = str(target_entry.get("name", ""))
+        current_candidates = [
+            entry for entry in current_symbols
+            if normalized_symbol(str(entry.get("name", "")), renames)
+            == normalized_symbol(name, renames)
+        ]
         current_entry = next(
-            (entry for entry in current_symbols
-             if normalized_symbol(str(entry.get("name", "")), renames)
-             == normalized_symbol(name, renames)),
-            None,
+            (entry for entry in current_candidates
+             if entry.get("size") is not None and entry.get("instructions")),
+            current_candidates[0] if current_candidates else None,
         )
         if current_entry is not None and instructions_match_after_renames(
             target_entry, current_entry, target_symbols, current_symbols, renames
@@ -176,9 +183,16 @@ def main() -> int:
     lines.extend(("", "Functions:"))
     for name in functions:
         target_entry = find_match(target["symbols"], name)
-        current_entry = next(entry for entry in current_symbols
-                             if normalized_symbol(str(entry.get("name", "")), renames)
-                             == normalized_symbol(name, renames))
+        current_candidates = [
+            entry for entry in current_symbols
+            if normalized_symbol(str(entry.get("name", "")), renames)
+            == normalized_symbol(name, renames)
+        ]
+        current_entry = next(
+            (entry for entry in current_candidates
+             if entry.get("size") is not None and entry.get("instructions")),
+            current_candidates[0],
+        )
         percent = float(target_entry["match_percent"])
         if name in rename_only:
             percent = 100.0
