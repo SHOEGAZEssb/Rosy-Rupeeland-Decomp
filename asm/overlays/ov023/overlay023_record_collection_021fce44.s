@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_record_collection.c. */
 .extern data_ov023_021ffbd8
 .extern data_ov023_021ffbe0
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern TitleCharacterResourceCollection_Init
 .extern func_02092814
@@ -47,7 +47,7 @@ func_ov023_021fce44:
     ldr r1, L_021fcfb4
     ldr r3, L_021fcfb8
     add r0, r0, #0x8
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_021fcedc
     ldr r1, L_021fcfbc

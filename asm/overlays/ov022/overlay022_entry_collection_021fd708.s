@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_entry_collection.c. */
     .extern data_ov022_02200674
     .extern data_ov022_022006bc
-    .extern func_02003e20
+    .extern Heap_AllocAlternateEntry
     .extern func_02093a34
     .extern IndexedSelectionController_ConfigureRange
     .extern func_020c09cc
@@ -29,7 +29,7 @@ func_ov022_021fd708:
     ldr r3, L_021fd7bc
     add r0, r0, #0x8
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_021fd77c
     ldr ip, L_021fd7c0

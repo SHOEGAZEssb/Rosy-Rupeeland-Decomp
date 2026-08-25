@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/owned_tile_buffer.c.
 .text
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 
     .global OwnedTileBuffer_Clear
     .type OwnedTileBuffer_Clear, @function
@@ -10,7 +10,7 @@ OwnedTileBuffer_Clear: ; 0x02029e64
     ldr r0, [r4, #0x0]
     cmp r0, #0x0
     beq .L_02029e84
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, #0x0
     str r0, [r4, #0x0]
 .L_02029e84:

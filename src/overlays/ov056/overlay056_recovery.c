@@ -13,8 +13,8 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void *func_02003e20(u32, const void *, s32, void *);
-extern void func_02003e38(void *), Heap_Free(void *), Heap_DestroyRoot(void);
+extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
+extern void Heap_FreeAlternateEntry(void *), Heap_Free(void *), Heap_DestroyRoot(void);
 extern void MIi_CpuClear32(s32, void *, u32),
     MIi_CpuClearFast(s32, void *, u32);
 extern void MI_UncompressLZ8(const void *, void *);
@@ -56,7 +56,7 @@ void func_ov056_0220f58c(void *, s32, void *, s32, s32);
 /* Free an owned array and clear its pointer/count pair. */
 void *func_ov056_0220e6b0(void *a) {
   if (F(void *, a, 0))
-    func_02003e38(F(void *, a, 0));
+    Heap_FreeAlternateEntry(F(void *, a, 0));
   F(void *, a, 0) = 0;
   F(s32, a, 4) = 0;
   return 0;
@@ -95,7 +95,7 @@ void func_ov056_0220e71c(void *l) {
 void func_ov056_0220e75c(void *a, s32 n) {
   if (F(void *, a, 0))
     func_ov056_0220e6b0(a);
-  F(void *, a, 0) = func_02003e20(n * 4, data_ov056_0220f660, 4, gHeapContext);
+  F(void *, a, 0) = Heap_AllocAlternateEntry(n * 4, data_ov056_0220f660, 4, gHeapContext);
   F(s32, a, 4) = n;
 }
 /* Configure the sub-engine BG2 affine control register. */
@@ -157,7 +157,7 @@ void func_ov056_0220f58c(void *d, s32 i, void *f, s32 stride, s32 sub) {
 }
 /* Decode one cell and submit its 0x800-byte graphics block. */
 void func_ov056_0220e8f8(void *s, s32 x, s32 y) {
-  void *b = func_02003e20(0x800, data_ov056_0220f6fc, -4, gHeapContext);
+  void *b = Heap_AllocAlternateEntry(0x800, data_ov056_0220f6fc, -4, gHeapContext);
   s32 t = func_ov056_0220f40c((u8 *)s + 0x81c, x, y),
       c = func_ov056_0220ec70(s, x, y);
   if (t < 0)
@@ -167,7 +167,7 @@ void func_ov056_0220e8f8(void *s, s32 x, s32 y) {
                         F(s32, s, 0x838));
   func_020b44e8();
   func_020b171c(b, c << 11, 0x800);
-  func_02003e38(b);
+  Heap_FreeAlternateEntry(b);
 }
 /* Initialize one eight-by-eight tile-map cell. */
 void func_ov056_0220e9e0(void *s, s32 x, s32 y) {
@@ -320,7 +320,7 @@ void *func_ov056_0220f330(void *g) {
 /* Free a grid backing array and clear its pointer/count. */
 void func_ov056_0220f348(void *g) {
   if (F(void *, g, 0))
-    func_02003e38(F(void *, g, 0));
+    Heap_FreeAlternateEntry(F(void *, g, 0));
   F(void *, g, 0) = 0;
   F(s32, g, 4) = 0;
 }
@@ -331,7 +331,7 @@ void func_ov056_0220f374(void *g, s32 w, s32 h) {
   F(s32, g, 12) = h;
   if (F(void *, g, 0))
     func_ov056_0220f348(g);
-  F(void *, g, 0) = func_02003e20(n * 2, data_ov056_0220f668, 4, gHeapContext);
+  F(void *, g, 0) = Heap_AllocAlternateEntry(n * 2, data_ov056_0220f668, 4, gHeapContext);
   F(s32, g, 4) = n;
   for (i = 0; i < n; i++)
     F(u16 *, g, 0)[i] = (u16)i;
@@ -406,14 +406,14 @@ void func_ov056_0220f0ac(void *s, void *d, s32 x, s32 y) {
       s32 wx = x + a, wy = y + b, gx = wx < 0 ? (wx - 0x40) / 0x40 : wx / 0x40,
           gy = wy < 0 ? (wy - 0x40) / 0x40 : wy / 0x40,
           t = func_ov056_0220f40c((u8 *)s + 0x81c, gx, gy);
-      void *q = func_02003e20(0x800, data_ov056_0220f6fc, -4, gHeapContext);
+      void *q = Heap_AllocAlternateEntry(0x800, data_ov056_0220f6fc, -4, gHeapContext);
       if (t < 0)
         MIi_CpuClear32(0, q, 0x800);
       else
         func_ov056_0220f58c(q, t, (u8 *)s + 0x84c, F(s32, s, 0x834),
                             F(s32, s, 0x838));
       func_ov056_0220f200(s, d, (const u8 *)q, gx * 64 - x, gy * 64 - y);
-      func_02003e38(q);
+      Heap_FreeAlternateEntry(q);
     }
 }
 /* Update camera streaming and retire chunks whose transfer completed. */
@@ -457,7 +457,7 @@ s32 func_ov056_0220ed9c(void *s) {
 }
 /* Destroy every file, vector, grid, array, and cached-chunk resource. */
 void *func_ov056_0220e79c(void *s) {
-  func_02003e38(F(void *, s, 0));
+  Heap_FreeAlternateEntry(F(void *, s, 0));
   func_ov056_0220e854(s);
   GameFile_Close((u8 *)s + 0x84c);
   OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 1);
@@ -499,7 +499,7 @@ void *func_ov056_0220e400(void *s, const char *dir, s32 show) {
   GameString_Destroy(p);
   GameString_Destroy(b);
   n = GameFile_GetLength(f);
-  F(void *, s, 0) = func_02003e20(n * 2, data_ov056_0220f6ec, 4, gHeapContext);
+  F(void *, s, 0) = Heap_AllocAlternateEntry(n * 2, data_ov056_0220f6ec, 4, gHeapContext);
   GameFile_Read(f, F(void *, s, 0), n);
   GameFile_Close(f);
   GameString_InitCString(b, data_ov056_0220f6f4, 0);

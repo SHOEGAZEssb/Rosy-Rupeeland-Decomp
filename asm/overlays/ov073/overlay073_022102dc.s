@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov073/overlay073_recovery.c.
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 .extern VecFx32Object_Destroy
 
 .global func_ov073_022102dc
@@ -24,7 +24,7 @@ func_ov073_022102dc:
     cmp r4, r0
     blt .L_022102ec
     ldr r0, [r5, #0x0]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     add r0, r5, #0x18
     bl VecFx32Object_Destroy
     add r0, r5, #0x8

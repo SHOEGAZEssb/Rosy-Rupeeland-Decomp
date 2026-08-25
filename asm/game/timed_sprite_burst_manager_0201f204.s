@@ -9,8 +9,8 @@
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
 .extern gGamePhaseRuntime
-.extern func_02003e20
-.extern func_02003e38
+.extern Heap_AllocAlternateEntry
+.extern Heap_FreeAlternateEntry
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy

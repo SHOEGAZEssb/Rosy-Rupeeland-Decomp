@@ -26,7 +26,7 @@ extern void ActorRuntimeCollection_ReleaseSelectedObject(void *state);
  * Prepare actors for a phase operation. Modes 1/3 update the primary actor at
  * offset 0x28; modes 2/3 also update the optional actor at 0x2fb8. The value
  * selects one of two actor setup variants. When global transition state is
- * idle, value is not 2, and the gameplay context passes func_02007868, this
+ * idle, value is not 2, and the gameplay context passes GamePhaseRuntime_IsReadyForTransition, this
  * also starts the global transition. Returns no value.
  */
 void GamePhaseRuntime_PrepareActorCollections(GamePhaseRuntime *self, s32 value, s32 mode)
@@ -66,7 +66,7 @@ void GamePhaseRuntime_PrepareActorCollections(GamePhaseRuntime *self, s32 value,
     }
 
     if (!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) && value != 2 &&
-        func_02007868(*(void **)(b + 0x2ea4)) &&
+        GamePhaseRuntime_IsReadyForTransition(*(void **)(b + 0x2ea4)) &&
         !ActorRuntimeCollection_DispatchQueuedValue(gActorRuntimeCollection) &&
         ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection))
         ActorRuntimeCollection_ReleaseSelectedObject(gActorRuntimeCollection);

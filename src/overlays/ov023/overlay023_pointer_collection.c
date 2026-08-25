@@ -15,7 +15,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *func_02003e20(u32, const void *, u32, void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
@@ -67,7 +67,7 @@ extern "C" void *func_ov023_021fd444(void *collection, void *font, s32 capacity)
     FIELD(void *, collection, 0x14) = 0;
     void *items = 0;
     if (capacity) {
-        items = func_02003e20(capacity * 4 + 8,
+        items = Heap_AllocAlternateEntry(capacity * 4 + 8,
                               data_ov023_021ffbe8, 4, gHeapContext);
         if (items) func_020c09cc(items, capacity, 4, 8,
                                 func_ov023_021fd438, 0);

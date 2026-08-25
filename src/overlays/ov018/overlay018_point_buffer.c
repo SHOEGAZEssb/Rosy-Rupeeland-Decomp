@@ -13,8 +13,8 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void *func_02003e20(u32, const void *, s32, void *);
-extern void func_02003e38(void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
+extern void Heap_FreeAlternateEntry(void *);
 extern void PresentationList_DeleteAll(void *);
 extern void func_ov018_021ff3cc(void *);
 #ifdef __cplusplus
@@ -66,7 +66,7 @@ extern "C" void *func_ov018_021ff330(void *state, s32 capacity)
     FIELD(const u32 *, state, 0) = data_ov018_021ffd8c;
     FIELD(s32, state, 0xc) = capacity;
     FIELD(void *, state, 4) =
-        func_02003e20(capacity * 4, data_ov018_021ffd94, 4, gHeapContext);
+        Heap_AllocAlternateEntry(capacity * 4, data_ov018_021ffd94, 4, gHeapContext);
     func_ov018_021ff3cc(state);
     return state;
 }
@@ -79,7 +79,7 @@ extern "C" void *func_ov018_021ff330(void *state, s32 capacity)
 extern "C" void *func_ov018_021ff37c(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov018_021ffd8c;
-    func_02003e38(FIELD(void *, state, 4));
+    Heap_FreeAlternateEntry(FIELD(void *, state, 4));
     return state;
 }
 
@@ -91,7 +91,7 @@ extern "C" void *func_ov018_021ff37c(void *state)
 extern "C" void *func_ov018_021ff3a0(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov018_021ffd8c;
-    func_02003e38(FIELD(void *, state, 4));
+    Heap_FreeAlternateEntry(FIELD(void *, state, 4));
     Heap_Free(state);
     return state;
 }

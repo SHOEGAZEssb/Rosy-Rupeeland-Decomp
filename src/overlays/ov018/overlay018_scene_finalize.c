@@ -14,7 +14,7 @@ extern void *gGamePhaseCurrencyHud;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02003e38(void *);
+extern void Heap_FreeAlternateEntry(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -53,7 +53,7 @@ extern "C" s32 func_ov018_021fe6f0(void *state)
         void *temporary = func_ov003_021fb804(FIELD(void *, state, 0x190));
         func_020b1ccc(temporary, 0, 0x600);
         func_020b1ff0((u8 *)FIELD(void *, state, 0x190) + 4, 0x20, 0x20);
-        func_02003e38(temporary);
+        Heap_FreeAlternateEntry(temporary);
         FIELD(u32, state, 0x20) |= 1;
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;

@@ -4,7 +4,7 @@
     .extern data_020f4e18
     .extern data_ov020_021fe518
     .extern data_ov020_021fe520
-    .extern func_02003e20
+    .extern Heap_AllocAlternateEntry
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -56,7 +56,7 @@ func_ov020_021fce18:
     ldr r1, L_021fcfbc
     ldr r3, L_021fcfc0
     add r0, r0, #0x8
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_021fced8
     ldr r2, L_021fcfc4

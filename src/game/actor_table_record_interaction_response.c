@@ -11,7 +11,7 @@ extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
-extern s32 func_02007868(void *actor);
+extern s32 GamePhaseRuntime_IsReadyForTransition(void *actor);
 extern void ActorDerivedType1_StartRecordOrHandleType6D66(void *manager, s32 value);
 extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void ActorTableRecord_ApplySeparationImpulse(void *actor, void *target);
@@ -61,7 +61,7 @@ void ActorTableRecord_ApplyNonDirectionalCollisionResponse(void *self,
  * subtract response divided by self low-13-bit +0x20c from self +0x8c/+0x90,
  * and store max(30-magnitude,0) at self byte +0x210. For type-one other and a
  * nonnegative signed self record +0x214 halfword +0x02, dispatch that value
- * through ActorDerivedType1_StartRecordOrHandleType6D66 when func_02007868(other) is true.
+ * through ActorDerivedType1_StartRecordOrHandleType6D66 when GamePhaseRuntime_IsReadyForTransition(other) is true.
  *
  * If byte +0x211 is zero, play nonzero record sound +0x0a through
  * Actor_PlayHorizontalSpatialSound, then copy record byte +0x0c to +0x211. Self word +0x20c bit
@@ -120,7 +120,7 @@ void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
     actor[0x210] = (u8)(magnitude < 30 ? 30 - magnitude : 0);
 
     if (target[0x4d] == 1 && *(s16 *)(record + 2) != -1 &&
-        func_02007868(target) != 0)
+        GamePhaseRuntime_IsReadyForTransition(target) != 0)
         ActorDerivedType1_StartRecordOrHandleType6D66(*(void **)(gGamePhaseRuntime + 0x2ea4),
                       *(s16 *)(record + 2));
     if (actor[0x211] == 0 && *(u16 *)(record + 0x0a) != 0)

@@ -6,7 +6,7 @@
     .extern data_021f3ecc
     .extern data_ov021_02202f78
     .extern data_ov021_02202f80
-    .extern func_02003e20
+    .extern Heap_AllocAlternateEntry
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteState_ApplyRenderConfig
@@ -104,7 +104,7 @@ func_ov021_021fce18:
     ldr r1, L_021fd060
     ldr r3, L_021fd064
     add r0, r0, #0x8
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_021fcf78
     ldr r2, L_021fd068

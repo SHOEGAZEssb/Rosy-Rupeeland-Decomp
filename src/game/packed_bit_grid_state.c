@@ -36,7 +36,7 @@ void PackedBitGrid_Init(PackedBitGrid *self)
 void PackedBitGrid_Clear(PackedBitGrid *self)
 {
     if (self->bytes_00) {
-        func_02003e38(self->bytes_00);
+        Heap_FreeAlternateEntry(self->bytes_00);
         self->bytes_00 = 0;
     }
     self->byteCount_04 = 0;
@@ -68,7 +68,7 @@ void PackedBitGrid_Configure(PackedBitGrid *self, const void *configuration)
     if (self->bytes_00)
         PackedBitGrid_Clear(self);
     self->byteCount_04 = (self->stride_08 * self->rowCount_0c + 7) / 8;
-    self->bytes_00 = (u8 *)func_02003e20(self->byteCount_04,
+    self->bytes_00 = (u8 *)Heap_AllocAlternateEntry(self->byteCount_04,
                                          data_020d8810, 4, &gHeapContext);
     for (i = 0; i < self->byteCount_04; i++)
         self->bytes_00[i] = 0;

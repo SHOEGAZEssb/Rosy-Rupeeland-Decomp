@@ -14,7 +14,7 @@ extern "C" {
 extern void ActorTableRecord_ApplyCollisionResponse(void *actor, s32 value,
                                                     s32 zero, s32 extra);
 extern void ActorRegisteredSubclass_StartTimedState(void *actor, u16 limit);
-extern s32 func_02007868(void *actor);
+extern s32 GamePhaseRuntime_IsReadyForTransition(void *actor);
 extern void ActorRegisteredSubclass_TriggerPrimaryInteraction(void *actor);
 #ifdef __cplusplus
 }
@@ -59,7 +59,7 @@ void ActorRegisteredSubclass_ResetRegistry(void)
 
 /*
  * If counter gActorRegisteredSubclassCounters[1] is nonzero and the primary runtime actor passes
- * func_02007868, scan all four registry slots, selecting the actor whose
+ * GamePhaseRuntime_IsReadyForTransition, scan all four registry slots, selecting the actor whose
  * attachment halfword +0x28 is smallest. Every occupied slot is cleared while
  * scanning. If the selected actor is within squared X/Y distance 1600 of the
  * primary actor (coordinates shifted down 12), invoke
@@ -77,7 +77,7 @@ void ActorRegisteredSubclass_ProcessRegistry(void)
     if (gActorRegisteredSubclassCounters[1] == 0)
         return;
     primary = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
-    if (func_02007868(primary) != 0) {
+    if (GamePhaseRuntime_IsReadyForTransition(primary) != 0) {
         for (i = 0; i < 4; ++i) {
             u8 *candidate = (u8 *)gActorRegisteredSubclassRegistry[i];
             if (candidate != 0) {

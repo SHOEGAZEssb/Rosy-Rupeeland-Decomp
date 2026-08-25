@@ -3,8 +3,8 @@
 .extern MIi_CpuClear32
 .extern MIi_CpuClearFast
 .extern data_ov056_0220f6fc
-.extern func_02003e20
-.extern func_02003e38
+.extern Heap_AllocAlternateEntry
+.extern Heap_FreeAlternateEntry
 .extern func_020b1ff0
 .extern func_ov056_0220f200
 .extern func_ov056_0220f40c
@@ -65,7 +65,7 @@ func_ov056_0220f0ac:
     ldr r2, [sp, #0x18]
     ldr r3, .L_0220f1fc
     mov r0, #0x800
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     ldr r1, [sp, #0x14]
     str r0, [sp, #0x10]
     cmp r1, #0x0
@@ -91,7 +91,7 @@ func_ov056_0220f0ac:
     mov r0, r10
     bl func_ov056_0220f200
     ldr r0, [sp, #0x10]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     add r5, r5, #0x40
     cmp r5, #0x140
     blt .L_0220f12c

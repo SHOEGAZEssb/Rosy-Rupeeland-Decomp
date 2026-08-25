@@ -66,7 +66,7 @@ SpriteEffectInstance *SpriteEffectInstance_Init(
     effect->primitiveColor52 = config->primitiveColor3c;
 
     count = effect->particleCapacity04;
-    allocation = func_02003e20(count * 0x10 + 8, gSpriteEffectParticleStorageAllocationTag, 4,
+    allocation = Heap_AllocAlternateEntry(count * 0x10 + 8, gSpriteEffectParticleStorageAllocationTag, 4,
                                &gHeapContext);
     if (allocation != 0)
         allocation = func_020c09cc(allocation, count, 0x10, 8,
@@ -74,26 +74,26 @@ SpriteEffectInstance *SpriteEffectInstance_Init(
                                    (void *)VecFx32Object_Destroy);
     effect->positions08 = allocation;
 
-    allocation = func_02003e20(count * 0x10 + 8, gSpriteEffectParticleStorageAllocationTag, 4,
+    allocation = Heap_AllocAlternateEntry(count * 0x10 + 8, gSpriteEffectParticleStorageAllocationTag, 4,
                                &gHeapContext);
     if (allocation != 0)
         allocation = func_020c09cc(allocation, count, 0x10, 8,
                                    (void *)VecFx32Object_Init,
                                    (void *)VecFx32Object_Destroy);
     effect->velocities0c = allocation;
-    effect->angles10 = (u16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
+    effect->angles10 = (u16 *)Heap_AllocAlternateEntry(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
-    effect->angularVelocities14 = (s32 *)func_02003e20(count * 4, gSpriteEffectParticleStorageAllocationTag, 4,
+    effect->angularVelocities14 = (s32 *)Heap_AllocAlternateEntry(count * 4, gSpriteEffectParticleStorageAllocationTag, 4,
                                             &gHeapContext);
-    effect->scales18 = (s16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
+    effect->scales18 = (s16 *)Heap_AllocAlternateEntry(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
-    effect->remainingParticleLifetimes1c = (s16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
+    effect->remainingParticleLifetimes1c = (s16 *)Heap_AllocAlternateEntry(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                             &gHeapContext);
-    effect->animationFrames20 = (s16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
+    effect->animationFrames20 = (s16 *)Heap_AllocAlternateEntry(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
-    effect->grayscaleColors24 = (u16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
+    effect->grayscaleColors24 = (u16 *)Heap_AllocAlternateEntry(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
-    effect->scaleAnimationState28 = (s32 *)func_02003e20(count * 4, gSpriteEffectParticleStorageAllocationTag, 4,
+    effect->scaleAnimationState28 = (s32 *)Heap_AllocAlternateEntry(count * 4, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
 
     for (index = (s32)effect->particleCapacity04 - 1; index >= 0; --index)

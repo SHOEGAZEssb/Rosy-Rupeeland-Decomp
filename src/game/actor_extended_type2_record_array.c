@@ -40,7 +40,7 @@ void *ActorExtendedRecordArray_Init(void *self, const void *records)
     *(s32 *)(object + 8) = count;
 
     if (count > 0) {
-        void *allocation = func_02003e20((u32)(count * 8 + 8),
+        void *allocation = Heap_AllocAlternateEntry((u32)(count * 8 + 8),
                                          data_020df9e0, 4, &gHeapContext);
         if (allocation != 0) {
             allocation = func_020c09cc(allocation, count, 8, 8,

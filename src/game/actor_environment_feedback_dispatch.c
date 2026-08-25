@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *value);
-extern s32 func_02008514(void *runtime, s32 x, s32 y);
+extern s32 GamePhaseRuntime_RequestSecondaryWarp(void *runtime, s32 x, s32 y);
 extern void *TimedSpriteOffsetPresentation_Init(void *allocation, ...);
 extern void *TimedSpriteSampledArcPresentation_Init(void *allocation, ...);
 extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *presentation);
@@ -55,7 +55,7 @@ static void playPackedSound(u16 packed)
  * Terrain at the actor's height is decoded through the runtime map object's
  * virtual +0x2c query: codes 24/25 select resource two, subtypes four/five
  * select resources four/five, and any other encountered or higher cell can
- * select resource fifteen. Code 24 additionally requires func_02008514.
+ * select resource fifteen. Code 24 additionally requires GamePhaseRuntime_RequestSecondaryWarp.
  *
  * Resource two creates a sampled-arc entry in the first free one of six global
  * slots (evicting the entry with the greatest nested sprite halfword +0x28 if
@@ -109,7 +109,7 @@ s32 ActorFeedback_DispatchEnvironment(void *self)
                     found24or25 = 1;
                     if (kind == 24)
                         found24 = 1;
-                    if (func_02008514(gGamePhaseRuntime, x << 16, y << 16) != 0)
+                    if (GamePhaseRuntime_RequestSecondaryWarp(gGamePhaseRuntime, x << 16, y << 16) != 0)
                         goto scanComplete;
                 }
                 if (subtype == 4)

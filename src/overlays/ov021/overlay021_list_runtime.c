@@ -22,7 +22,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void MIi_CpuCopy16(const void *, void *, u32);
-extern void *func_02003e20(u32, const void *, s32, void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -84,7 +84,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
     FIELD(s32, state, 0x50) = capacity;
     FIELD(s32, state, 0x54) = 0;
     if (capacity != 0) {
-        void *rows = func_02003e20(capacity * 12 + 8,
+        void *rows = Heap_AllocAlternateEntry(capacity * 12 + 8,
                                    data_ov021_02202f78, 4, gHeapContext);
         if (rows != 0)
             rows = func_020c09cc(rows, capacity, 12, 8,

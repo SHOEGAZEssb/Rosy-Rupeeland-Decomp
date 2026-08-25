@@ -14,7 +14,7 @@
 .extern data_ov056_0220f6ec
 .extern data_ov056_0220f6f4
 .extern Heap_DestroyRoot
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -90,7 +90,7 @@ func_ov056_0220e400:
     ldr r3, .L_0220e688
     mov r0, r0, lsl #0x1
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r6, #0x0]
     add r0, sp, #0x3c
     bl GameFile_GetLength

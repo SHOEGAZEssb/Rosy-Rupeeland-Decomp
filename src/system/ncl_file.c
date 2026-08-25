@@ -56,7 +56,7 @@ s32 NclFile_ParseResource(NclFile *self, const void *resource)
     u32 size = (*(const u32 *)(block + 0x8) *
                 *(const u32 *)(block + 0xc)) << 1;
 
-    self->base.data = func_02003e20(size, gNclFileBufferTag, 4, &gHeapContext);
+    self->base.data = Heap_AllocAlternateEntry(size, gNclFileBufferTag, 4, &gHeapContext);
     MI_CpuCopy8(block + 0x10, self->base.data, size);
     func_020b4554(self->base.data, size);
     self->base.size = size;
@@ -80,7 +80,7 @@ s32 NclFile_LoadCompressedFromFile(NclFile *self, GameFile *file,
         OS_Halt();
     }
     NclFile_ParseResource(self, expanded + 4);
-    func_02003e38(expanded);
+    Heap_FreeAlternateEntry(expanded);
     return 1;
 }
 

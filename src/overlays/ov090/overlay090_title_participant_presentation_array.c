@@ -46,7 +46,7 @@ TitleParticipantPresentationArray *func_ov090_0221bc84(
     self->parameter_10 = 0x1000;
     self->resource_value_14 = FIELD(s32, position, 0x0c);
     VecFx32Triple_Init(&self->path_18);
-    self->items = (TitleParticipantPresentation **)func_02003e20(
+    self->items = (TitleParticipantPresentation **)Heap_AllocAlternateEntry(
         count * 4, data_ov090_0221cc98, 4, &gHeapContext);
     for (i = 0; i < self->count; i++) {
         TitleParticipantPresentation *item =
@@ -72,7 +72,7 @@ TitleParticipantPresentationArray *func_ov090_0221bd78(
         if (item != 0)
             (*(void *(*)(void *))(*(void ***)item)[1])(item);
     }
-    func_02003e38(self->items);
+    Heap_FreeAlternateEntry(self->items);
     VecFx32Triple_Destroy(&self->path_18);
     return self;
 }
@@ -88,7 +88,7 @@ TitleParticipantPresentationArray *func_ov090_0221bdd8(
         if (item != 0)
             (*(void *(*)(void *))(*(void ***)item)[1])(item);
     }
-    func_02003e38(self->items);
+    Heap_FreeAlternateEntry(self->items);
     VecFx32Triple_Destroy(&self->path_18);
     Heap_Free(self);
     return self;

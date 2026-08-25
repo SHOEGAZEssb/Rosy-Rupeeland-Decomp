@@ -65,7 +65,7 @@ s32 NcgFile_ParseResource(NcgFile *self, const void *resource)
     self->height = *(const u32 *)(block + 0xc);
     self->format = *(const u32 *)(block + 0x10);
     size = NcgFile_GetPayloadSize(self);
-    self->base.data = func_02003e20(size, gNcgFileBufferTag, 4, &gHeapContext);
+    self->base.data = Heap_AllocAlternateEntry(size, gNcgFileBufferTag, 4, &gHeapContext);
     MI_CpuCopy8(block + 0x14, self->base.data, size);
     func_020b4554(self->base.data, size);
     self->base.size = size;
@@ -89,7 +89,7 @@ s32 NcgFile_LoadCompressedFromFile(NcgFile *self, GameFile *file,
         OS_Halt();
     }
     NcgFile_ParseResource(self, expanded + 4);
-    func_02003e38(expanded);
+    Heap_FreeAlternateEntry(expanded);
     return 1;
 }
 

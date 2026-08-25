@@ -168,7 +168,7 @@ void OwnedTileBuffer_Resize(void *ownedBuffer, u32 count)
     void **bytes = (void **)ownedBuffer;
     if (*bytes)
         OwnedTileBuffer_Clear(ownedBuffer);
-    bytes[0] = func_02003e20(count * 2, gTileLayerArrayAllocationTag, 4, &gHeapContext);
+    bytes[0] = Heap_AllocAlternateEntry(count * 2, gTileLayerArrayAllocationTag, 4, &gHeapContext);
     ((u32 *)ownedBuffer)[1] = count;
 }
 

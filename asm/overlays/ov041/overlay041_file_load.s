@@ -10,7 +10,7 @@
 .extern GameFile_Read
 .extern OS_Halt
 .extern data_ov041_02205984
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern gHeapContext
 
     .global func_ov041_021fe088
@@ -35,7 +35,7 @@ func_ov041_021fe088: ; 0x021fe088
     ldr r3, .L_021fe10c
     mvn r2, #0x3
     mov r4, r0
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     add r1, r6, r5, lsl #0x2
     str r0, [r1, #0x168]
     mov r1, r0

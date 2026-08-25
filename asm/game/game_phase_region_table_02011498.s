@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_region_table_lifecycle.c.
 .text
 .extern gGamePhaseRegionInitialArrayAllocationTag
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern GamePhaseRegion_Init
 .extern GamePhaseRegion_Destroy
 .extern func_020c09cc
@@ -22,7 +22,7 @@ GamePhaseRegionTable_InitWithCount: ; 0x02011498
     ldr r3, L_0201150c
     add r0, r0, #0x8
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_020114f8
     ldr r1, L_02011510

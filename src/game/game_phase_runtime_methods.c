@@ -120,14 +120,14 @@ s32 GamePhaseRuntime_HandleEvent100(GamePhaseRuntime *self, s32 event)
 }
 
 /* No-op virtual method; it changes no state and returns zero. */
-s32 func_02007420(GamePhaseRuntime *self)
+s32 GamePhaseRuntime_NoOpHook0(GamePhaseRuntime *self)
 {
     (void)self;
     return 0;
 }
 
 /* Second no-op virtual method; it changes no state and returns zero. */
-s32 func_02007428(GamePhaseRuntime *self)
+s32 GamePhaseRuntime_NoOpHook1(GamePhaseRuntime *self)
 {
     (void)self;
     return 0;

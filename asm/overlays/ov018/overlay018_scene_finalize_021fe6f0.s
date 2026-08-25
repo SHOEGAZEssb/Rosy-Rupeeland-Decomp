@@ -5,7 +5,7 @@
     .extern data_ov018_021ffc08
     .extern data_ov018_021ffc30
     .extern DisplayBrightness_IsMainTransitionComplete
-    .extern func_02003e38
+    .extern Heap_FreeAlternateEntry
     .extern GamePhaseCurrencyHud_SetVisible
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_020b1ccc
@@ -58,7 +58,7 @@ L_021fe710:
     mov r2, r1
     bl func_020b1ff0
     mov r0, r5
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     ldr r1, [r4, #0x20]
     mov r0, #0x0
     bic r1, r1, #0x1

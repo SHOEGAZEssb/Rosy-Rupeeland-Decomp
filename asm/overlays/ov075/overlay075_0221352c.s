@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_ov075_02216db0
 .extern data_ov075_02217168
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern VecFx32Object_Init
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_ov075_02212ae0
@@ -39,7 +39,7 @@ func_ov075_0221352c:
     ldr r3, .L_022135c0
     mov r0, r0, lsl #0x2
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r4, #0x2a4]
     ldr r1, [r4, #0xd0]
     mov r0, r4

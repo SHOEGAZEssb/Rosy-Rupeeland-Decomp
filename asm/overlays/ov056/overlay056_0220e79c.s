@@ -5,7 +5,7 @@
 .extern data_ov056_0220f6a4
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 .extern VecFx32Object_Destroy
 .extern func_ov056_0220e690
 .extern func_ov056_0220e71c
@@ -17,7 +17,7 @@ func_ov056_0220e79c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x0]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, r4
     bl func_ov056_0220e854
     add r0, r4, #0x4c

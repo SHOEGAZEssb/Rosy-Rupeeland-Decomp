@@ -11,7 +11,7 @@
 extern "C" {
 void *func_ov041_021ff1cc(void *);
 void func_ov041_021fd000(void *);
-void *func_02003e20(s32, const void *, s32, void *);
+void *Heap_AllocAlternateEntry(s32, const void *, s32, void *);
 void func_020c09cc(void *, s32, s32, s32, void *, void *);
 void *func_0209a208(void *, s32, s32, s32, s32, s32);
 void VecFx32Object_Init(void *);
@@ -29,7 +29,7 @@ typedef void (*PlacementCallback)(void *, void *, s32, s32, s32, s32);
 
 static void *allocate_overlay_array(s32 bytes)
 {
-    return func_02003e20(bytes, &data_ov041_0220598c, 4, &gHeapContext);
+    return Heap_AllocAlternateEntry(bytes, &data_ov041_0220598c, 4, &gHeapContext);
 }
 
 /*

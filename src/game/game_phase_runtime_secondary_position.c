@@ -19,7 +19,7 @@ extern void VecFx32Object_Destroy(void *value);
  * runtime offset 0x2fa4. The temporary is explicitly destroyed. Returns no
  * value and preserves the recovered behavior of forwarding null actors.
  */
-void func_0200866c(GamePhaseRuntime *self)
+void GamePhaseRuntime_UpdateSecondaryAreaPosition(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     u8 value[16];

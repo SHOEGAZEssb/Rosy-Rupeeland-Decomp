@@ -4,14 +4,14 @@
 .extern gHeapContext
 .extern gSizedCompressedBufferPayloadAllocationTag
 .extern SizedCompressedBuffer_Clear
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern GameFile_Seek
 .extern GameFile_Read
 .extern MI_UncompressLZ8
 .extern MI_CpuCopy8
 .extern func_020b4554
 .extern func_020b44e8
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 
     .global SizedCompressedBuffer_LoadLz8Section
     .type SizedCompressedBuffer_LoadLz8Section, @function
@@ -30,7 +30,7 @@ SizedCompressedBuffer_LoadLz8Section: ; 0x0202b520
     ldr r3, .L_0202b5ec
     mov r0, r6
     mvn r2, #0x3
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     mov r5, r0
     mov r0, r8
     mov r1, r7
@@ -48,7 +48,7 @@ SizedCompressedBuffer_LoadLz8Section: ; 0x0202b520
     mov r0, r0, lsl #0x1
     mov r2, #0x4
     ldr r3, .L_0202b5ec
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r4, #0x0]
     mov r0, r5
     ldr r1, [r4, #0x0]
@@ -63,7 +63,7 @@ SizedCompressedBuffer_LoadLz8Section: ; 0x0202b520
     bl func_020b4554
     bl func_020b44e8
     mov r0, r5
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     str r6, [r4, #0x4]
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, r7, r8, pc}

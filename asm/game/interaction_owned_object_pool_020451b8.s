@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/interaction_owned_object_pool.c.
 .text
 .extern Heap_Free
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 .global InteractionRecordAllocatorPool_Init
 .type InteractionRecordAllocatorPool_Init, @function
 .global InteractionRecordAllocatorPool_DestroyContents
@@ -26,7 +26,7 @@ InteractionRecordAllocatorPool_DestroyContents: ; 0x020451d4
     cmp r5, #0x0
     beq .L_020451fc
     ldr r0, [r5, #0x4]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, r5
     bl Heap_Free
 .L_020451fc:

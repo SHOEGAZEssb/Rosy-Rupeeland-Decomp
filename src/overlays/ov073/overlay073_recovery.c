@@ -33,8 +33,8 @@ extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
     void *, const void *, s32, s32, s32, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
-extern void *func_02003e20(u32, const void *, s32, void *);
-extern void func_02003e38(void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
+extern void Heap_FreeAlternateEntry(void *);
 extern s32 func_020adae4(s32, s32);
 extern s32 func_020adfbc(const void *, const void *, void *);
 extern s32 func_020ae024(s32, s32);
@@ -222,7 +222,7 @@ void *func_ov073_022102dc(void *controller)
             vtable[1](child);
         }
     }
-    func_02003e38(FIELD(void *, controller, 0));
+    Heap_FreeAlternateEntry(FIELD(void *, controller, 0));
     VecFx32Object_Destroy((u8 *)controller + 0x18);
     VecFx32Object_Destroy((u8 *)controller + 8);
     return controller;
@@ -245,7 +245,7 @@ void *func_ov073_022100b4(void *controller, void *animation,
     FIELD(s32, controller, 0x34) = 0x1000;
     FIELD(s32, controller, 0x38) = 0;
     FIELD(s32, controller, 0x3c) = count;
-    FIELD(void *, controller, 0) = func_02003e20(count * 4,
+    FIELD(void *, controller, 0) = Heap_AllocAlternateEntry(count * 4,
         data_ov073_02210c04, 4, gHeapContext);
     func_ov073_022102bc(descriptor);
     FIELD(void *, descriptor, 0) = ActorCollection_GetSpriteGroup(

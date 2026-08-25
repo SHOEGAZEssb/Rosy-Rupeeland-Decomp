@@ -3,7 +3,7 @@
 .extern gGamePhaseRuntime
 .extern gActorRegisteredSubclassCounters
 .extern gActorRegisteredSubclassRegistry
-.extern func_02007868
+.extern GamePhaseRuntime_IsReadyForTransition
 .extern ActorTableRecord_ApplyCollisionResponse
 .extern ActorRegisteredSubclass_TriggerPrimaryInteraction
 .extern ActorRegisteredSubclass_StartTimedState
@@ -65,7 +65,7 @@ ActorRegisteredSubclass_ProcessRegistry: ; 0x0203d944
     add r0, r0, #0x2000
     ldr r4, [r0, #0xea4]
     mov r0, r4
-    bl func_02007868
+    bl GamePhaseRuntime_IsReadyForTransition
     cmp r0, #0x0
     beq .L_0203da04
     mov r0, #0x0

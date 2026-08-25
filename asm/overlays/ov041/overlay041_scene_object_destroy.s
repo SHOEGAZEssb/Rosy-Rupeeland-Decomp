@@ -3,7 +3,7 @@
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_scene_object_lifecycle.c. */
 .extern data_ov041_02205820
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 .extern func_02099fb0
 .extern func_020c0c24
 .extern func_ov041_021fce00
@@ -15,7 +15,7 @@ func_ov041_021ff530: ; 0x021ff530
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x80]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     ldr r0, [r4, #0x84]
     ldr r3, .L_021ff5a4
     mov r1, #0xc
@@ -27,13 +27,13 @@ func_ov041_021ff530: ; 0x021ff530
     mov r2, #0x8
     bl func_020c0c24
     ldr r0, [r4, #0x8c]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     ldr r0, [r4, #0x90]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     ldr r0, [r4, #0x94]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     ldr r0, [r4, #0x98]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, r4
     bl func_02099fb0
     mov r0, r4

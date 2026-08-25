@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern gGamePhaseRuntime
 .extern data_ov073_02210c04
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -51,7 +51,7 @@ func_ov073_022100b4:
     str r0, [r10, #0x3c]
     mov r0, r0, lsl #0x2
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r10, #0x0]
     add r0, sp, #0x4
     bl func_ov073_022102bc

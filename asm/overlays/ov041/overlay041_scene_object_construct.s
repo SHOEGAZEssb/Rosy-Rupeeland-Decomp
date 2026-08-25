@@ -6,7 +6,7 @@
 .extern data_ov041_02204f30
 .extern data_ov041_02205820
 .extern data_ov041_0220598c
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern func_0209a208
@@ -41,7 +41,7 @@ func_ov041_021ff20c: ; 0x021ff20c
     mov r0, r8, lsl #0x1
     mov r2, #0x4
     ldrne r6, .L_021ff4c0
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r10, #0x80]
     ldr r4, [r10, #0x1ac]
     mov r0, #0xc
@@ -50,7 +50,7 @@ func_ov041_021ff20c: ; 0x021ff20c
     ldr r3, .L_021ff4bc
     add r0, r0, #0x8
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq .L_021ff2b4
     ldr r1, .L_021ff4c4
@@ -70,7 +70,7 @@ func_ov041_021ff20c: ; 0x021ff20c
     ldr r3, .L_021ff4bc
     add r0, r0, #0x8
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq .L_021ff300
     ldr r1, .L_021ff4c4
@@ -88,28 +88,28 @@ func_ov041_021ff20c: ; 0x021ff20c
     ldr r3, .L_021ff4bc
     mov r0, r0, lsl #0x1
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r10, #0x8c]
     ldr r0, [r10, #0x1ac]
     ldr r1, .L_021ff4b4
     ldr r3, .L_021ff4bc
     mov r0, r0, lsl #0x2
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r10, #0x90]
     ldr r0, [r10, #0x1ac]
     ldr r1, .L_021ff4b4
     ldr r3, .L_021ff4bc
     mov r0, r0, lsl #0x1
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r10, #0x94]
     ldr r0, [r10, #0x1ac]
     ldr r1, .L_021ff4b4
     ldr r3, .L_021ff4bc
     mov r0, r0, lsl #0x1
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r10, #0x98]
     ldr r3, [r10, #0x1ac]
     mvn r2, #0x0

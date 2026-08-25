@@ -11,7 +11,7 @@ extern void GamePhaseRuntime_PrepareActorCollections(void *context, u32 value, s
 extern void GamePhaseRuntime_FinalizeActorCollections(void *context, u32 value, s32 mode);
 extern s32 GamePhaseRuntime_SynchronizeActorPlacement(void *context, s32 index);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(void *runtime);
-extern void func_0200866c(void *context);
+extern void GamePhaseRuntime_UpdateSecondaryAreaPosition(void *context);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *context);
 extern void GamePhaseRuntime_ProcessPendingPresentationRefreshes(void *runtime);
 extern void GamePhaseCurrencyHud_Update(void *context);
@@ -37,7 +37,7 @@ s32 ActorRuntimeScene_Update(ActorRuntimeScene *self)
     if (self->base.value08 == 0) {
         GamePhaseRuntime_DispatchActorQueryRequest(root);
         GamePhaseRuntime_PrepareActorCollections(root, self->base.value04, 3);
-        func_0200866c(root);
+        GamePhaseRuntime_UpdateSecondaryAreaPosition(root);
         GamePhaseRuntime_SynchronizeActorPlacement(root, 0);
         GamePhaseRuntime_SynchronizeActorPlacement(root, 1);
         GamePhaseRuntime_FinalizeActorCollections(root, self->base.value04, 3);

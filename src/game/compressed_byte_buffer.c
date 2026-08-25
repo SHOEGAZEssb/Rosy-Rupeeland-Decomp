@@ -30,7 +30,7 @@ void CompressedByteBuffer_Init(CompressedByteBuffer *self)
 CompressedByteBuffer *CompressedByteBuffer_Destroy(CompressedByteBuffer *self)
 {
     if (self->bytes_00)
-        func_02003e38(self->bytes_00);
+        Heap_FreeAlternateEntry(self->bytes_00);
     return self;
 }
 
@@ -67,19 +67,19 @@ s32 CompressedByteBuffer_LoadLz8Payload(CompressedByteBuffer *self, GameFile *fi
     u32 expandedSize;
     u32 payloadSize;
 
-    compressed = (u8 *)func_02003e20(compressedSize, gSizedCompressedBufferTempAllocationTag, -4,
+    compressed = (u8 *)Heap_AllocAlternateEntry(compressedSize, gSizedCompressedBufferTempAllocationTag, -4,
                                      &gHeapContext);
     GameFile_Seek(file, fileOffset, 0);
     GameFile_Read(file, compressed, compressedSize);
     expandedSize = *(u32 *)compressed >> 8;
-    self->bytes_00 = (u8 *)func_02003e20(expandedSize, data_020deb34, 4,
+    self->bytes_00 = (u8 *)Heap_AllocAlternateEntry(expandedSize, data_020deb34, 4,
                                          &gHeapContext);
     MI_UncompressLZ8(compressed, self->bytes_00);
     payloadSize = expandedSize - 4;
     MI_CpuCopy8(self->bytes_00 + 4, self->bytes_00, payloadSize);
     func_020b4554(self->bytes_00, payloadSize);
     func_020b44e8();
-    func_02003e38(compressed);
+    Heap_FreeAlternateEntry(compressed);
     return 1;
 }
 

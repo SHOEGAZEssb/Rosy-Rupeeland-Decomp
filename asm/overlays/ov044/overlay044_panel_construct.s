@@ -3,7 +3,7 @@
 .extern TitleCharacterResourceCollection_Init
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02071ee0
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern func_020c09cc
 .extern Heap_Alloc
 .extern func_02094154
@@ -55,7 +55,7 @@ func_ov044_0220b740:
     ldr r1, .L_0220b8cc
     ldr r3, .L_0220b8d0
     add r0, r0, #0x8
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq .L_0220b7fc
     ldr r1, .L_0220b8d4

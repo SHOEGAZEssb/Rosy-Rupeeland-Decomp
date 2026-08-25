@@ -9,8 +9,8 @@
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
 .extern gGamePhaseRuntime
-.extern func_02003e20
-.extern func_02003e38
+.extern Heap_AllocAlternateEntry
+.extern Heap_FreeAlternateEntry
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -45,7 +45,7 @@ OwnedPointerArray_Clear: ; 0x0201f0d0
     ldr r0, [r4, #0x0]
     cmp r0, #0x0
     beq .L_0201f0f0
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, #0x0
     str r0, [r4, #0x0]
 .L_0201f0f0:

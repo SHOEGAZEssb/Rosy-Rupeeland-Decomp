@@ -63,13 +63,13 @@ Overlay60TouchRegion* func_ov060_0220fd20(
 /* Destroy the inherited touch region without freeing its allocation. */
 Overlay60TouchRegion* func_ov060_0220fd54(Overlay60TouchRegion* self)
 {
-    func_02004b54(self);
+    TemporaryObject_NoOpDestructor(self);
     return self;
 }
 /* Destroy and free one touch region, returning its former address. */
 Overlay60TouchRegion* func_ov060_0220fd68(Overlay60TouchRegion* self)
 {
-    func_02004b54(self);
+    TemporaryObject_NoOpDestructor(self);
     Heap_Free(self);
     return self;
 }

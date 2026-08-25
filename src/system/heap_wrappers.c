@@ -18,7 +18,7 @@ void *Heap_Alloc(u32 size, const char *tag, s32 alignment,
 }
 
 /* Address-derived alias of Heap_Alloc with the same inputs, effects, and result. */
-void *func_02003e20(u32 size, const char *tag, s32 alignment,
+void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment,
                     HeapContext *context)
 {
     return Heap_AllocCore(size, tag, alignment, context);
@@ -31,7 +31,7 @@ void Heap_Free(void *allocation)
 }
 
 /* Address-derived alias of Heap_Free with the same input and heap side effect. */
-void func_02003e38(void *allocation)
+void Heap_FreeAlternateEntry(void *allocation)
 {
     Heap_FreeCore(allocation);
 }

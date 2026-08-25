@@ -14,7 +14,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *func_02003e20(u32, const void *, u32, void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -65,7 +65,7 @@ extern "C" void *func_ov023_021fce44(void *collection, void *font, s32 capacity)
     FIELD(s32, collection, 0x34) = 0;
     void *entries = 0;
     if (capacity != 0) {
-        entries = func_02003e20(capacity * 0x18 + 8,
+        entries = Heap_AllocAlternateEntry(capacity * 0x18 + 8,
                                 data_ov023_021ffbd8, 4, gHeapContext);
         if (entries != 0)
             func_020c09cc(entries, capacity, 0x18, 8,

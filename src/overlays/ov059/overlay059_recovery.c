@@ -18,7 +18,7 @@ extern void *data_020f4e18, *gGamePhaseRuntime, *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(...), *func_02003e20(...);
+extern void *Heap_Alloc(...), *Heap_AllocAlternateEntry(...);
 extern void Heap_Free(...), Scene_Init(...), Scene_Destroy(...);
 extern void Scene_SetFlags03(...), Scene_ClearFlags03(...);
 extern void *Scene_GetEmbedded10(...);
@@ -29,7 +29,7 @@ extern void DisplayBrightness_StartMainTransition(...);
 extern void DisplayBrightness_StartSubTransition(...);
 extern s32 DisplayBrightness_IsSubTransitionIncreasing(...);
 extern s32 DisplayBrightness_IsSubTransitionDecreasing(...);
-extern void TouchRegion_Init(...), func_02004b54(...);
+extern void TouchRegion_Init(...), TemporaryObject_NoOpDestructor(...);
 extern void TouchRegion_BeginPress(...), TouchRegion_EndPress(...);
 extern void TouchRegion_Tick(...), TouchRegionManager_Allocate(...);
 extern void TouchRegionManager_Add(...), TouchRegionManager_Tick(...);
@@ -50,7 +50,7 @@ extern void GamePhaseRuntime_CreateSecondaryActorSubsystem(...);
 extern void GamePhaseRuntime_DestroySecondaryActorSubsystem(...);
 extern void GamePhaseRuntime_ApplyScreenMode(...);
 extern void GamePhaseRuntime_UpdateActorPresentationState(...);
-extern void func_02008f2c(...), GamePhaseState_UpdateRenderHelpers(...);
+extern void GamePhaseRuntime_DefaultPredicateReturnZero(...), GamePhaseState_UpdateRenderHelpers(...);
 extern void GamePhaseCurrencyHud_SetVisible(...);
 extern void GamePhaseRegionTable_Init(...), GamePhaseRegionTable_Destroy(...);
 extern void GamePhaseRegionTable_Load(...);
@@ -317,11 +317,11 @@ void *func_ov059_02210554(void *r, s32 id, const void *bounds) {
   return r;
 }
 void *func_ov059_02210578(void *r) {
-  func_02004b54(r);
+  TemporaryObject_NoOpDestructor(r);
   return r;
 }
 void *func_ov059_0221058c(void *r) {
-  func_02004b54(r);
+  TemporaryObject_NoOpDestructor(r);
   Heap_Free(r);
   return r;
 }
@@ -425,7 +425,7 @@ s32 func_ov059_022109bc(const void *m, s32 id) {
 void *func_ov059_02210a2c(void *a, s32 n) {
   void *p = 0;
   if (n) {
-    p = func_02003e20(n * 0x70 + 8, data_ov059_02211ac0, 4, gHeapContext);
+    p = Heap_AllocAlternateEntry(n * 0x70 + 8, data_ov059_02211ac0, 4, gHeapContext);
     if (p)
       p = func_020c09cc(p, n, 0x70, 8, func_ov059_0220fd20,
                         func_ov059_0220fd64);
@@ -449,7 +449,7 @@ void func_ov059_02210b24(void *a, s32 n) {
   void *p;
   if (F(void *, a, 0))
     func_ov059_02210ab0(a);
-  p = func_02003e20(n * 0x70 + 8, data_ov059_02211ac8, 4, gHeapContext);
+  p = Heap_AllocAlternateEntry(n * 0x70 + 8, data_ov059_02211ac8, 4, gHeapContext);
   if (p)
     p = func_020c09cc(p, n, 0x70, 8, func_ov059_0220fd20, func_ov059_0220fd64);
   F(void *, a, 0) = p;
@@ -727,7 +727,7 @@ s32 func_ov059_02211330(void *s) {
   s32 state, next, finished;
   u8 pos[16];
   GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-  func_02008f2c();
+  GamePhaseRuntime_DefaultPredicateReturnZero();
   state = F(s32, s, 0x24);
   if (state == 0)
     F(s32, s, 0x24) = 1;

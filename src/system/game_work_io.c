@@ -10,9 +10,9 @@
 #define GAME_WORK_PAYLOAD_SIZE (sizeof(GameWork) - GAME_WORK_HEADER_SIZE)
 #define GAME_WORK_SERIALIZED_RAW 0x80000000U
 
-extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
+extern void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment,
                            void *heap);
-extern void func_02003e38(void *allocation);
+extern void Heap_FreeAlternateEntry(void *allocation);
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
 extern void MI_UncompressLZ8(const void *source, void *destination);
 extern u32 MI_CompressLZ(const u8 *source, u32 size, u8 *destination);
@@ -36,7 +36,7 @@ u32 GameWork_Serialize(GameWork *work, void *buffer, u32 bufferSize)
     MI_CpuCopy8(work, buffer, GAME_WORK_HEADER_SIZE);
 
     /* A negative alignment selects the game heap wrapper's reverse direction. */
-    scratch = (u8 *)func_02003e20(sizeof(GameWork), gGameWorkBufferTag, -4,
+    scratch = (u8 *)Heap_AllocAlternateEntry(sizeof(GameWork), gGameWorkBufferTag, -4,
                                   &gHeapContext);
     MI_CpuCopy8((u8 *)work + GAME_WORK_HEADER_SIZE, scratch, payloadSize);
     compressedSize =
@@ -51,7 +51,7 @@ u32 GameWork_Serialize(GameWork *work, void *buffer, u32 bufferSize)
         compressedSize = payloadSize;
     }
 
-    func_02003e38(scratch);
+    Heap_FreeAlternateEntry(scratch);
     return compressedSize + GAME_WORK_HEADER_SIZE;
 }
 
@@ -80,10 +80,10 @@ void GameWork_Deserialize(GameWork *work, const void *buffer, u32 bufferSize)
  */
 void GameWork_CompressionRoundTrip(void)
 {
-    void *buffer = func_02003e20(sizeof(GameWork), gGameWorkBufferTag, -4,
+    void *buffer = Heap_AllocAlternateEntry(sizeof(GameWork), gGameWorkBufferTag, -4,
                                  &gHeapContext);
     u32 serializedSize = GameWork_Serialize(gGameWork, buffer, 0x5ED4);
 
     GameWork_Deserialize(gGameWork, buffer, serializedSize);
-    func_02003e38(buffer);
+    Heap_FreeAlternateEntry(buffer);
 }

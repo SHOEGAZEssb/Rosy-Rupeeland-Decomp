@@ -16,7 +16,7 @@ extern "C" void TitleCharacterResourceCollection_Init(void *presentation);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third, s32 fourth);
-extern "C" void *func_02003e20(s32 size, const void *tag,
+extern "C" void *Heap_AllocAlternateEntry(s32 size, const void *tag,
                                  s32 alignment, void *heap);
 extern "C" void *func_020c09cc(void *records, s32 count, s32 stride,
                                 s32 alignment, void (*construct)(void *),
@@ -56,7 +56,7 @@ extern "C" void *func_ov044_0220b740(void *object, void *font, s32 rowCount)
     FIELD(s32, object, 0x40) = 0;
 
     if (rowCount != 0) {
-        void *records = func_02003e20(rowCount * 0x20 + 8,
+        void *records = Heap_AllocAlternateEntry(rowCount * 0x20 + 8,
                                       data_ov044_0220d330, 4, gHeapContext);
         if (records)
             records = func_020c09cc(records, rowCount, 0x20, 8,

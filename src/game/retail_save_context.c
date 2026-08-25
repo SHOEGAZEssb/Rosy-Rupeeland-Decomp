@@ -26,9 +26,9 @@ extern s32 func_020bc874(u32 source, void *destination, u32 size,
 extern void RetailSaveContext_CardFatalErrorCallback(void);
 extern const u32 data_020ef330[];
 extern u8 data_021f5da0[];
-extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
+extern void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment,
                            HeapContext *context);
-extern void func_02003e38(void *allocation);
+extern void Heap_FreeAlternateEntry(void *allocation);
 extern s32 func_020bc6f8(void);
 extern s32 func_020bc07c(void);
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
@@ -240,7 +240,7 @@ s32 RetailSaveContext_DiscoverRecords(void *context_pointer)
     }
     case 5:
         retail_save_release_game_buffer();
-        *transfer_slot = func_02003e20(0xaa00, data_020ef368, 4,
+        *transfer_slot = Heap_AllocAlternateEntry(0xaa00, data_020ef368, 4,
                                       &gHeapContext);
         *record_index = 0;
         *(u32 *)(context + 0x1b4) = 6;
@@ -391,7 +391,7 @@ s32 RetailSaveContext_LoadRecord(void *context_pointer)
     case 0:
         *(u32 *)(context + 0x24) = *(u32 *)(context + 0x14) * 0xaa00u;
         retail_save_release_game_buffer();
-        *transfer_slot = func_02003e20(0xaa00, data_020ef368, 4,
+        *transfer_slot = Heap_AllocAlternateEntry(0xaa00, data_020ef368, 4,
                                       &gHeapContext);
         if (*transfer_slot == 0) {
             *(u32 *)(context + 0x10) = 3;
@@ -647,7 +647,7 @@ static void retail_save_release_game_buffer(void)
 {
     void **slot = (void **)(data_021f5da0 + 0x14);
     if (*slot != 0) {
-        func_02003e38(*slot);
+        Heap_FreeAlternateEntry(*slot);
         *slot = 0;
     }
 }
@@ -807,7 +807,7 @@ s32 RetailSaveContext_WriteRecord(void *context_pointer)
             *(u32 *)(work + 0x3c) = 0;
         }
         retail_save_release_game_buffer();
-        *transfer_slot = func_02003e20(0xaa00, data_020ef368, 4,
+        *transfer_slot = Heap_AllocAlternateEntry(0xaa00, data_020ef368, 4,
                                       &gHeapContext);
         if (*transfer_slot == 0) {
             *(u32 *)(context + 0x10) = 4;
@@ -883,7 +883,7 @@ static void retail_save_release_transfer(void)
 {
     void **transfer = (void **)(data_021f5da0 + 0x14);
     if (*transfer != 0) {
-        func_02003e38(*transfer);
+        Heap_FreeAlternateEntry(*transfer);
         *transfer = 0;
     }
 }
@@ -918,7 +918,7 @@ s32 RetailSaveContext_CopyRecord(void *context_pointer)
         offset = *(u32 *)(context + 0x14) * 0xaa00u;
         *(u32 *)(context + 0x24) = offset;
         retail_save_release_transfer();
-        *transfer_slot = func_02003e20(0xaa00, data_020ef368, 4,
+        *transfer_slot = Heap_AllocAlternateEntry(0xaa00, data_020ef368, 4,
                                       &gHeapContext);
         func_020bc02c(*(u16 *)(context + 4));
         func_020bc874(offset, *transfer_slot, 0xaa00, 0, 0, 1, 6, 1, 0,

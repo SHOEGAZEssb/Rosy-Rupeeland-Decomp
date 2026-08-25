@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tile_layer_scroll_and_access.c.
 .text
 .extern gTileLayerArrayAllocationTag
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern OwnedTileBuffer_Clear
 .extern gHeapContext
 
@@ -20,7 +20,7 @@ OwnedTileBuffer_Resize: ; 0x0202a74c
     ldr r3, .L_0202a788
     mov r0, r4, lsl #0x1
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     stmia r5, {r0, r4}
     ldmia sp!, {r3, r4, r5, pc}
 .L_0202a784: .word gTileLayerArrayAllocationTag

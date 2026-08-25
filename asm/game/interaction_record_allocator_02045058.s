@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/interaction_record_allocator.c.
 .text
 .extern gInteractionRecordAllocatorAllocationTag
-.extern func_02003e20
-.extern func_02003e38
+.extern Heap_AllocAlternateEntry
+.extern Heap_FreeAlternateEntry
 .extern func_020bf1f8
 .extern gHeapContext
 .extern genrand_int32
@@ -32,7 +32,7 @@ InteractionRecordAllocator_Init: ; 0x02045058
     ldr r3, .L_020450d8
     mov r0, r0, lsl #0x2
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     mov r2, #0x0
     str r0, [r4, #0x4]
     mov r1, r2
@@ -61,7 +61,7 @@ InteractionRecordAllocator_ReserveRandomRecord: ; 0x020450dc
     mov r0, r0, lsl #0x2
     mov r2, #0x4
     mov r7, #0x0
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     mov r6, r0
     mov r1, r7
     b .L_0204512c
@@ -84,7 +84,7 @@ InteractionRecordAllocator_ReserveRandomRecord: ; 0x020450dc
     bl func_020bf1f8
     mov r0, r6
     ldr r6, [r6, r1, lsl #0x2]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     ldr r0, [r5, #0x4]
     str r4, [r0, r6, lsl #0x2]
     ldr r0, [r5, #0x0]
@@ -92,7 +92,7 @@ InteractionRecordAllocator_ReserveRandomRecord: ; 0x020450dc
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0204516c:
     mov r0, r6
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0204517c: .word gInteractionRecordAllocatorAllocationTag

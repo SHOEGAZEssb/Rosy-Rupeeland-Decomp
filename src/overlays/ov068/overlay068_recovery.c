@@ -5,8 +5,8 @@
 
 extern "C" void Scene_Init(void *); extern "C" void Scene_Destroy(void *);
 extern "C" void Heap_Free(void *); extern "C" void GX_DispOn(void);
-extern "C" void DebugText_BeginFrame(void); extern "C" void func_02003e38(void *);
-extern "C" void *func_02003e20(s32, const void *, s32, void *);
+extern "C" void DebugText_BeginFrame(void); extern "C" void Heap_FreeAlternateEntry(void *);
+extern "C" void *Heap_AllocAlternateEntry(s32, const void *, s32, void *);
 extern "C" void func_02071b94(void *, s32, s32, s32, void **, void **, void **);
 extern "C" void func_02071bdc(void *, void *); extern "C" void func_02071c38(void *, void *);
 extern "C" void func_02071c94(void *, void *);
@@ -56,9 +56,9 @@ extern "C" void *func_ov068_0220fd20(void *s)
 /* Release the helper allocation if present and preserve its identity. */
 extern "C" void *func_ov068_02210024(void *h){if(FIELD(void*,h,0))func_ov068_02210044(h);return h;}
 /* Release and clear a pointer-table helper. */
-extern "C" void func_ov068_02210044(void *h){if(FIELD(void*,h,0)){func_02003e38(FIELD(void*,h,0));FIELD(void*,h,0)=0;}FIELD(s32,h,4)=0;}
+extern "C" void func_ov068_02210044(void *h){if(FIELD(void*,h,0)){Heap_FreeAlternateEntry(FIELD(void*,h,0));FIELD(void*,h,0)=0;}FIELD(s32,h,4)=0;}
 /* Replace the helper storage with a count-entry four-byte-aligned table. */
-extern "C" void *func_ov068_02210070(void *h,s32 count){if(FIELD(void*,h,0))func_ov068_02210044(h);FIELD(void*,h,0)=func_02003e20(count*4,data_ov068_02210740,4,gHeapContext);FIELD(s32,h,4)=count;return h;}
+extern "C" void *func_ov068_02210070(void *h,s32 count){if(FIELD(void*,h,0))func_ov068_02210044(h);FIELD(void*,h,0)=Heap_AllocAlternateEntry(count*4,data_ov068_02210740,4,gHeapContext);FIELD(s32,h,4)=count;return h;}
 
 static void destroy_scene(void *s)
 {

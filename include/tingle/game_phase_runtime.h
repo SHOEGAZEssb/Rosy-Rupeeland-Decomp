@@ -36,15 +36,15 @@ s32 GamePhaseRuntime_QueueQueryUntilHandled(GamePhaseRuntime *self,
 s32 GamePhaseRuntime_QueueBroadcastQuery(GamePhaseRuntime *self,
                                          const void *query);
 s32 GamePhaseRuntime_HandleEvent100(GamePhaseRuntime *self, s32 event);
-s32 func_02007420(GamePhaseRuntime *self);
-s32 func_02007428(GamePhaseRuntime *self);
+s32 GamePhaseRuntime_NoOpHook0(GamePhaseRuntime *self);
+s32 GamePhaseRuntime_NoOpHook1(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_Update(GamePhaseRuntime *self);
-s32 func_02007868(void *context);
+s32 GamePhaseRuntime_IsReadyForTransition(void *context);
 void GamePhaseRuntime_PrepareActorCollections(GamePhaseRuntime *self, s32 value, s32 mode);
 void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value, s32 mode);
 void GamePhaseRuntime_RunFrameMaintenance(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction);
-void func_02007f08(void);
+void GamePhaseRuntime_NoOpAreaRequestHook(void);
 void *GamePhaseRuntime_GetActorCollection(GamePhaseRuntime *self, s32 index);
 void GamePhaseRuntime_StageAreaRequest(GamePhaseRuntime *self, s32 areaNumber,
                    s32 value0, s32 value1, s32 value2, s32 mode);
@@ -59,9 +59,9 @@ void RectS16_InitComponents(RectS16 *destination, s32 left, s32 top,
                             s32 right, s16 bottom);
 s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_RequestPrimaryWarp(GamePhaseRuntime *self, s32 x, s32 y);
-s32 func_02008514(GamePhaseRuntime *self, s32 x, s32 y);
+s32 GamePhaseRuntime_RequestSecondaryWarp(GamePhaseRuntime *self, s32 x, s32 y);
 void GamePhaseRuntime_ApplyScreenMode(GamePhaseRuntime *self, s32 mode, s32 use3dMode);
-void func_0200866c(GamePhaseRuntime *self);
+void GamePhaseRuntime_UpdateSecondaryAreaPosition(GamePhaseRuntime *self);
 void GamePhaseRuntime_BuildPrimaryTransform(void *destination, GamePhaseRuntime *self);
 void ActorMotionState_BuildOscillationOffset(void *destination, const void *runtimeFields);
 void GamePhaseRuntime_BuildSecondaryTransform(void *destination, GamePhaseRuntime *self);
@@ -73,7 +73,7 @@ void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *a
 void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s32 mode, void *area);
 void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 mode);
 void GamePhaseRuntime_ProcessPendingPresentationRefreshes(GamePhaseRuntime *self);
-s32 func_02008f2c(void);
+s32 GamePhaseRuntime_DefaultPredicateReturnZero(void);
 s32 FrameCounter_Tick31(void *counter);
 void GamePhaseRuntime_SetGlobalValue30F8(void *value);
 void *GamePhaseRuntime_GetAuxiliaryOverlayObject(GamePhaseRuntime *self);

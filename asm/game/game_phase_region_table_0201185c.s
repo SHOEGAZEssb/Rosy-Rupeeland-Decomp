@@ -11,8 +11,8 @@
 .extern gGamePhaseRegionDataPath
 .extern gGamePhaseRegionCompressedBufferAllocationTag
 .extern gGamePhaseRegionExpandedBufferAllocationTag
-.extern func_02003e20
-.extern func_02003e38
+.extern Heap_AllocAlternateEntry
+.extern Heap_FreeAlternateEntry
 .extern GamePhaseRegionTable_SetRegionsFromSentinel
 .extern GamePhaseRegionTable_Resize
 .extern gHeapContext
@@ -44,7 +44,7 @@ L_020118a8:
     ldr r1, L_020119bc
     ldr r3, L_020119c0
     mvn r2, #0x3
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     mov r4, r0
     ldr r1, [r5, #0x30]
     add r0, sp, #0x0
@@ -62,7 +62,7 @@ L_020118a8:
     ldr r3, L_020119c0
     mov r0, r0, lsl #0x1
     mvn r2, #0x3
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     mov r5, r0
     mov r0, r4
     mov r1, r5
@@ -102,9 +102,9 @@ L_0201198c:
     cmp r0, r6
     blt L_0201193c
     mov r0, r4
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, r5
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     add r0, sp, #0x0
     bl GameFile_Destroy
     mov r0, #0x1

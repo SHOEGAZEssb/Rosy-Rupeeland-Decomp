@@ -56,7 +56,7 @@ TouchRegion *TouchRegion_Init(TouchRegion *region, s32 value,
 void RectS16_Copy(RectS16 *destination, const RectS16 *source);
 TouchRegion *TouchRegion_Destroy(TouchRegion *region);
 TouchRegion *TouchRegion_DestroyAndFree(TouchRegion *region);
-void func_02004b54(void *object);
+void TemporaryObject_NoOpDestructor(void *object);
 s32 TouchRegion_ContainsPoint(const TouchRegion *region, s32 x, s32 y);
 void TouchRegion_BeginPress(TouchRegion *region);
 void TouchRegion_EndPress(TouchRegion *region);

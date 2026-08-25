@@ -5,7 +5,7 @@
     .extern data_ov001_021fcc80
     .extern data_ov001_021fcc90
     .extern data_ov001_021fcc98
-    .extern func_02003e20
+    .extern Heap_AllocAlternateEntry
     .extern ActorDescriptor_IsInvalid
     .extern InventoryCell_Init
     .extern InventoryCell_Destroy
@@ -158,7 +158,7 @@ L_021fbc68:
     add r0, r0, #0x8
     mov r2, #0x4
     str r5, [r10, #0x1a4]
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_021fbce4
     ldr r1, L_021fbe60

@@ -2,7 +2,7 @@
 .text
 .extern gFx32CosSinTable
 .extern gGamePhaseRuntime
-.extern func_02007868
+.extern GamePhaseRuntime_IsReadyForTransition
 .extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_StartRecordOrHandleType6D66
 .extern ActorTableRecord_ApplySeparationImpulse
@@ -181,7 +181,7 @@ ActorTableRecord_ApplyCollisionResponse: ; 0x0203cb48
     cmpne r1, r0
     beq .L_0203cdcc
     mov r0, r5
-    bl func_02007868
+    bl GamePhaseRuntime_IsReadyForTransition
     cmp r0, #0x0
     beq .L_0203cdcc
     ldr r0, .L_0203ce9c

@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern data_ov028_021ff2c0
 .extern data_ov028_021ff2c8
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
 .extern func_02071ee0
@@ -63,7 +63,7 @@ func_ov028_021fd00c:
     ldr r1, L_021fd194
     ldr r3, L_021fd198
     add r0, r0, #0x8
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_021fd0cc
     ldr r2, L_021fd19c

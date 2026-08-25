@@ -31,10 +31,10 @@ void Heap_AccumulateAllocationSize(void *allocation, void *unused);
 void Heap_CopyAllocationTag(s8 *destination, const s8 *tag);
 void *Heap_Alloc(u32 size, const char *tag, s32 alignment,
                  HeapContext *context);
-void *func_02003e20(u32 size, const char *tag, s32 alignment,
+void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment,
                     HeapContext *context);
 void Heap_Free(void *allocation);
-void func_02003e38(void *allocation);
+void Heap_FreeAlternateEntry(void *allocation);
 
 #ifdef __cplusplus
 }

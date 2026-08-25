@@ -17,7 +17,7 @@ extern u8 gSystemState[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *func_02003e20(u32, const void *, u32, void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
@@ -69,7 +69,7 @@ extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
     FIELD(s32, menu, 0x28) = capacity;
     FIELD(s32, menu, 0x2c) = 0;
     if (capacity != 0) {
-        void *entries = func_02003e20(capacity * 8 + 8,
+        void *entries = Heap_AllocAlternateEntry(capacity * 8 + 8,
                                       data_ov022_022006c4, 4, gHeapContext);
         if (entries != 0)
             func_020c09cc(entries, capacity, 8, 8,

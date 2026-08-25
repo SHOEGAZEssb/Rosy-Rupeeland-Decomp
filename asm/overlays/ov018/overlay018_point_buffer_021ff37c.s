@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_point_buffer.c (lifecycle and accessors). */
     .extern Heap_Free
     .extern data_ov018_021ffd8c
-    .extern func_02003e38
+    .extern Heap_FreeAlternateEntry
 .global func_ov018_021ff37c
 func_ov018_021ff37c:
     stmdb sp!, {r4, lr}
@@ -10,7 +10,7 @@ func_ov018_021ff37c:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x4]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021ff39c: .word data_ov018_021ffd8c
@@ -23,7 +23,7 @@ func_ov018_021ff3a0:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x4]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -13,7 +13,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void *func_02003e20(u32, const void *, u32, void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern void func_02093a34(void *);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
 extern void func_020c09cc(void *, s32, s32, s32, void (*)(void *), void *);
@@ -50,7 +50,7 @@ extern "C" void *func_ov022_021fd708(void *collection, s32 capacity)
     FIELD(s32, collection, 0x3c) = capacity;
     FIELD(s32, collection, 0x40) = 0;
     if (capacity != 0) {
-        void *entries = func_02003e20(capacity * 8 + 8,
+        void *entries = Heap_AllocAlternateEntry(capacity * 8 + 8,
                                       data_ov022_022006bc, 4, gHeapContext);
         if (entries != 0)
             func_020c09cc(entries, capacity, 8, 8,

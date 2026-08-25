@@ -10,9 +10,9 @@ extern void *gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02003e20(u32 size, const char *label, u32 alignment,
+extern void *Heap_AllocAlternateEntry(u32 size, const char *label, u32 alignment,
                            void *heapContext);
-extern void func_02003e38(void *allocation);
+extern void Heap_FreeAlternateEntry(void *allocation);
 extern u32 genrand_int32(void);
 
 /*
@@ -35,7 +35,7 @@ void *InteractionRecordAllocator_Init(void *self, const void *recordTable)
     }
     *(s32 *)(object + 8) = count;
     *(void **)(object + 4) =
-        func_02003e20((u32)count * 4, gInteractionRecordAllocatorAllocationTag, 4, &gHeapContext);
+        Heap_AllocAlternateEntry((u32)count * 4, gInteractionRecordAllocatorAllocationTag, 4, &gHeapContext);
     for (i = 0; i < count; ++i)
         (*(void ***)(object + 4))[i] = 0;
     return object;
@@ -53,7 +53,7 @@ void *InteractionRecordAllocator_ReserveRandomRecord(void *self, void *owner)
 {
     u8 *object = (u8 *)self;
     s32 count = *(s32 *)(object + 8);
-    s32 *indices = (s32 *)func_02003e20(
+    s32 *indices = (s32 *)Heap_AllocAlternateEntry(
         (u32)count * 4, gInteractionRecordAllocatorAllocationTag, 4, &gHeapContext);
     void **owners = *(void ***)(object + 4);
     s32 candidateCount = 0;
@@ -64,11 +64,11 @@ void *InteractionRecordAllocator_ReserveRandomRecord(void *self, void *owner)
     }
     if (candidateCount > 0) {
         s32 chosen = indices[genrand_int32() % candidateCount];
-        func_02003e38(indices);
+        Heap_FreeAlternateEntry(indices);
         owners[chosen] = owner;
         return (u8 *)*(void **)object + chosen * 4;
     }
-    func_02003e38(indices);
+    Heap_FreeAlternateEntry(indices);
     return 0;
 }
 

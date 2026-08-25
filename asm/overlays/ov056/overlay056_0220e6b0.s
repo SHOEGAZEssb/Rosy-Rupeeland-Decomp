@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov056/overlay056_recovery.c.
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 
 .global func_ov056_0220e6b0
 func_ov056_0220e6b0:
@@ -9,7 +9,7 @@ func_ov056_0220e6b0:
     ldr r0, [r4, #0x0]
     cmp r0, #0x0
     beq .L_0220e6d0
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, #0x0
     str r0, [r4, #0x0]
 .L_0220e6d0:

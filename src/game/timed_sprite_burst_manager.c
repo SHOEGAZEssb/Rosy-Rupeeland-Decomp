@@ -72,9 +72,9 @@ extern void TouchPoint_Init(TouchPointValue *point, s32 x, s32 y);
 extern void VecFx32Object_Init(PresentationTrack *track);
 extern void VecFx32Object_InitCopy(PresentationTrack *track, const void *source);
 extern void VecFx32Object_Destroy(void *track);
-extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
+extern void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment,
                            HeapContext *heap);
-extern void func_02003e38(void *allocation);
+extern void Heap_FreeAlternateEntry(void *allocation);
 extern void *ActorMotion_GetPosition(void *source);
 
 extern void *OrientedTimedSprite_Init(void *self, BurstSpriteConfig *config);
@@ -171,7 +171,7 @@ OwnedPointerArray *OwnedPointerArray_Destroy(OwnedPointerArray *array)
 void OwnedPointerArray_Clear(OwnedPointerArray *array)
 {
     if (array->items != 0) {
-        func_02003e38(array->items);
+        Heap_FreeAlternateEntry(array->items);
         array->items = 0;
     }
     array->count = 0;
@@ -195,7 +195,7 @@ void OwnedPointerArray_Resize(OwnedPointerArray *array, s32 count)
         OwnedPointerArray_Clear(array);
     }
     array->items =
-        (void **)func_02003e20((u32)count * 4, gTimedSpritePointerArrayAllocationTag, 4,
+        (void **)Heap_AllocAlternateEntry((u32)count * 4, gTimedSpritePointerArrayAllocationTag, 4,
                               &gHeapContext);
     array->count = count;
 }

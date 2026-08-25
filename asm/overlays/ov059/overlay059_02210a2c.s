@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_ov059_02211ac0
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern func_020c09cc
 .extern func_ov059_0220fd20
 .extern func_ov059_0220fd64
@@ -23,7 +23,7 @@ func_ov059_02210a2c:
     ldr r3, .L_02210aa4
     add r0, r0, #0x8
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq .L_02210a90
     ldr r1, .L_02210aa8

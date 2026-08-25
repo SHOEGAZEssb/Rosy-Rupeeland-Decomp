@@ -4085,7 +4085,7 @@ build build/reports/heap_wrappers.json: objdiff build/decomp/delinks/src/system/
 
 build build/reports/heap_wrappers.txt: match_report build/reports/heap_wrappers.json | tools/report_objdiff.py
   report_json = build/reports/heap_wrappers.json
-  report_args = --section .text --function Heap_Alloc --function func_02003e20 --function Heap_Free --function func_02003e38 --require-exact
+  report_args = --section .text --function Heap_Alloc --function Heap_AllocAlternateEntry --function Heap_Free --function Heap_FreeAlternateEntry --require-exact
 
 build build/reports/vec_fx32.json: objdiff build/decomp/delinks/src/math/vec_fx32.o | build/decomp/src/math/vec_fx32.o
   target_object = build/decomp/delinks/src/math/vec_fx32.o
@@ -10648,7 +10648,7 @@ build build/reports/game_phase_runtime_methods.json: objdiff build/decomp/delink
 
 build build/reports/game_phase_runtime_methods.txt: match_report build/reports/game_phase_runtime_methods.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_methods.json
-  report_args = --section .text --function GamePhaseRuntime_UpdateRenderHelpers --function GamePhaseRuntime_ForwardCurrentVCount --function GamePhaseRuntime_QueueSelectionQuery --function ActorQuery_CopyCoordinates --function GamePhaseRuntime_QueueQueryUntilHandled --function GamePhaseRuntime_QueueBroadcastQuery --function GamePhaseRuntime_HandleEvent100 --function func_02007420 --function func_02007428
+  report_args = --section .text --function GamePhaseRuntime_UpdateRenderHelpers --function GamePhaseRuntime_ForwardCurrentVCount --function GamePhaseRuntime_QueueSelectionQuery --function ActorQuery_CopyCoordinates --function GamePhaseRuntime_QueueQueryUntilHandled --function GamePhaseRuntime_QueueBroadcastQuery --function GamePhaseRuntime_HandleEvent100 --function GamePhaseRuntime_NoOpHook0 --function GamePhaseRuntime_NoOpHook1
 
 build build/reports/game_phase_runtime_update.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_update.o | build/decomp/asm/game/game_phase_runtime_update.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_update.o
@@ -10664,7 +10664,7 @@ build build/reports/game_phase_runtime_readiness.json: objdiff build/decomp/deli
 
 build build/reports/game_phase_runtime_readiness.txt: match_report build/reports/game_phase_runtime_readiness.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_readiness.json
-  report_args = --section .text --function func_02007868 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_IsReadyForTransition --require-exact
 
 build build/reports/game_phase_runtime_prepare.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_prepare.o | build/decomp/src/game/game_phase_runtime_prepare.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_prepare.o
@@ -10704,7 +10704,7 @@ build build/reports/game_phase_runtime_area_request.json: objdiff build/decomp/d
 
 build build/reports/game_phase_runtime_area_request.txt: match_report build/reports/game_phase_runtime_area_request.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_area_request.json
-  report_args = --section .text --function func_02007f08 --function GamePhaseRuntime_GetActorCollection --function GamePhaseRuntime_StageAreaRequest --require-exact
+  report_args = --section .text --function GamePhaseRuntime_NoOpAreaRequestHook --function GamePhaseRuntime_GetActorCollection --function GamePhaseRuntime_StageAreaRequest --require-exact
 
 build build/reports/game_phase_runtime_apply_request.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_apply_request.o | build/decomp/src/game/game_phase_runtime_apply_request.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_apply_request.o
@@ -10752,7 +10752,7 @@ build build/reports/game_phase_runtime_warp_request.json: objdiff build/decomp/d
 
 build build/reports/game_phase_runtime_warp_request.txt: match_report build/reports/game_phase_runtime_warp_request.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_warp_request.json
-  report_args = --section .text --function GamePhaseRuntime_RequestPrimaryWarp --function func_02008514 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_RequestPrimaryWarp --function GamePhaseRuntime_RequestSecondaryWarp --require-exact
 
 build build/reports/game_phase_runtime_screen_mode.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_screen_mode.o | build/decomp/asm/game/game_phase_runtime_screen_mode.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_screen_mode.o
@@ -10768,7 +10768,7 @@ build build/reports/game_phase_runtime_secondary_position.json: objdiff build/de
 
 build build/reports/game_phase_runtime_secondary_position.txt: match_report build/reports/game_phase_runtime_secondary_position.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_secondary_position.json
-  report_args = --section .text --function func_0200866c --require-exact
+  report_args = --section .text --function GamePhaseRuntime_UpdateSecondaryAreaPosition --require-exact
 
 build build/reports/game_phase_runtime_primary_transform.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_primary_transform.o | build/decomp/src/game/game_phase_runtime_primary_transform.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_primary_transform.o
@@ -10832,7 +10832,7 @@ build build/reports/game_phase_runtime_misc.json: objdiff build/decomp/delinks/s
 
 build build/reports/game_phase_runtime_misc.txt: match_report build/reports/game_phase_runtime_misc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_misc.json
-  report_args = --section .text --function GamePhaseRuntime_ProcessPendingPresentationRefreshes --function func_02008f2c --function FrameCounter_Tick31 --function GamePhaseRuntime_SetGlobalValue30F8 --function GamePhaseRuntime_GetAuxiliaryOverlayObject --function Heap_FreeAndReturnPointer --require-exact
+  report_args = --section .text --function GamePhaseRuntime_ProcessPendingPresentationRefreshes --function GamePhaseRuntime_DefaultPredicateReturnZero --function FrameCounter_Tick31 --function GamePhaseRuntime_SetGlobalValue30F8 --function GamePhaseRuntime_GetAuxiliaryOverlayObject --function Heap_FreeAndReturnPointer --require-exact
 
 build build/reports/actor_motion_lifecycle.json: objdiff build/decomp/delinks/src/game/actor_motion_lifecycle.o | build/decomp/src/game/actor_motion_lifecycle.o
   target_object = build/decomp/delinks/src/game/actor_motion_lifecycle.o
@@ -12523,7 +12523,7 @@ build build/reports/touch_region.json: objdiff build/decomp/delinks/src/system/t
 
 build build/reports/touch_region.txt: match_report build/reports/touch_region.json | tools/report_objdiff.py
   report_json = build/reports/touch_region.json
-  report_args = --section .text --function NoOpDestructor --function TouchRegion_Init --function RectS16_Assign --function TouchRegion_Destroy --function TouchRegion_DestroyAndFree --function func_02004b54 --function TouchRegion_ContainsPoint --function TouchRegion_BeginPress --function TouchRegion_EndPress --function TouchRegion_SetEnabled --function TouchRegion_Tick --function TouchRegion_Notify --function TouchRegionManager_Init --function TouchRegionArray_Destroy --function TouchRegionArray_Reset --function TouchRegionManager_Destroy --function TouchRegionManager_DestroyAndFree --function TouchRegionManager_Allocate --function TouchRegionManager_Add --function TouchRegionManager_Clear --function TouchRegionManager_BeginPressAt --function TouchRegionManager_EndPressOutside --function TouchRegionManager_Tick --function TouchRegionManager_SetEnabled --function TouchRegionManager_NotifyAll
+  report_args = --section .text --function NoOpDestructor --function TouchRegion_Init --function RectS16_Assign --function TouchRegion_Destroy --function TouchRegion_DestroyAndFree --function TemporaryObject_NoOpDestructor --function TouchRegion_ContainsPoint --function TouchRegion_BeginPress --function TouchRegion_EndPress --function TouchRegion_SetEnabled --function TouchRegion_Tick --function TouchRegion_Notify --function TouchRegionManager_Init --function TouchRegionArray_Destroy --function TouchRegionArray_Reset --function TouchRegionManager_Destroy --function TouchRegionManager_DestroyAndFree --function TouchRegionManager_Allocate --function TouchRegionManager_Add --function TouchRegionManager_Clear --function TouchRegionManager_BeginPressAt --function TouchRegionManager_EndPressOutside --function TouchRegionManager_Tick --function TouchRegionManager_SetEnabled --function TouchRegionManager_NotifyAll
 
 build mt19937: phony build/decomp/delinks/src/system/mt19937.o build/decomp/src/system/mt19937.o
 build input: phony build/decomp/delinks/src/system/input.o build/decomp/src/system/input.o build/reports/input.txt

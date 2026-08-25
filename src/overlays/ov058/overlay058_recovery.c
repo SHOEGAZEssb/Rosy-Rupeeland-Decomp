@@ -60,7 +60,7 @@ extern void func_020b1c64(const void *, u32, u32);
 extern void func_020b1bfc(const void *, u32, u32);
 extern void PaletteBuffer_Write(void *, const void *, u32, u32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void *func_02003e20(u32, const void *, s32, void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
 extern void *Heap_AllocCore(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
 extern void Heap_FreeCore(void *);
@@ -135,7 +135,7 @@ void func_ov058_0220e598(void *object)
 /* Allocate and clear the 256x192 32-bit mirrored display buffer. */
 void *func_ov058_0220e5fc(void *bufferOwner)
 {
-    void *buffer = func_02003e20(0xc000, data_ov058_0220fce4,
+    void *buffer = Heap_AllocAlternateEntry(0xc000, data_ov058_0220fce4,
                                  4, gHeapContext);
     FIELD(void *, bufferOwner, 0) = buffer;
     MIi_CpuClearFast(0, buffer, 0xc000);

@@ -10,7 +10,7 @@
 
 extern "C" {
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-void func_02003e38(void *);
+void Heap_FreeAlternateEntry(void *);
 void func_020c0c24(void *, s32, s32, void *);
 void func_02099fb0(void *);
 void func_ov041_021fec04(void *, const void *);
@@ -47,15 +47,15 @@ extern "C" void func_ov041_021ff4d0(void *, void *render, s32 x, s32 y,
 extern "C" void *func_ov041_021ff530(void *object)
 {
     FIELD(void *, object, 0) = &data_ov041_02205820;
-    func_02003e38(FIELD(void *, object, 0x80));
+    Heap_FreeAlternateEntry(FIELD(void *, object, 0x80));
     func_020c0c24(FIELD(void *, object, 0x84), 12, 8,
                   (void *)func_ov041_021fce00);
     func_020c0c24(FIELD(void *, object, 0x88), 12, 8,
                   (void *)func_ov041_021fce00);
-    func_02003e38(FIELD(void *, object, 0x8c));
-    func_02003e38(FIELD(void *, object, 0x90));
-    func_02003e38(FIELD(void *, object, 0x94));
-    func_02003e38(FIELD(void *, object, 0x98));
+    Heap_FreeAlternateEntry(FIELD(void *, object, 0x8c));
+    Heap_FreeAlternateEntry(FIELD(void *, object, 0x90));
+    Heap_FreeAlternateEntry(FIELD(void *, object, 0x94));
+    Heap_FreeAlternateEntry(FIELD(void *, object, 0x98));
     func_02099fb0(object);
     return object;
 }

@@ -11,9 +11,9 @@
 extern "C" {
 #endif
 
-extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
+extern void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment,
                            void *heap);
-extern void func_02003e38(void *allocation);
+extern void Heap_FreeAlternateEntry(void *allocation);
 extern void Heap_Free(void *allocation);
 extern void OS_CreateThread(void *thread, ThreadEntry entry, void *argument,
                             void *stackTop, u32 stackSize, u32 priority);
@@ -39,7 +39,7 @@ Thread *Thread_Init(Thread *thread)
 Thread *Thread_Destroy(Thread *thread)
 {
     thread->vtable = &gThreadVTable;
-    func_02003e38(thread->stack);
+    Heap_FreeAlternateEntry(thread->stack);
     return thread;
 }
 
@@ -47,7 +47,7 @@ Thread *Thread_Destroy(Thread *thread)
 Thread *Thread_DestroyAndFree(Thread *thread)
 {
     thread->vtable = &gThreadVTable;
-    func_02003e38(thread->stack);
+    Heap_FreeAlternateEntry(thread->stack);
     Heap_Free(thread);
     return thread;
 }
@@ -56,7 +56,7 @@ Thread *Thread_DestroyAndFree(Thread *thread)
 Thread *Thread_Deinit(Thread *thread)
 {
     thread->vtable = &gThreadVTable;
-    func_02003e38(thread->stack);
+    Heap_FreeAlternateEntry(thread->stack);
     return thread;
 }
 
@@ -69,7 +69,7 @@ Thread *Thread_Deinit(Thread *thread)
 void Thread_Create(Thread *thread, ThreadEntry entry, void *argument,
                    u32 stackSize, u32 priority)
 {
-    thread->stack = func_02003e20(stackSize & ~7, gThreadStackTag, 4,
+    thread->stack = Heap_AllocAlternateEntry(stackSize & ~7, gThreadStackTag, 4,
                                   (void *)&gHeapContext);
     OS_CreateThread(thread->osThread, entry, argument,
                     (u8 *)thread->stack + (stackSize & ~7), stackSize,
@@ -90,7 +90,7 @@ asm void Thread_Create(Thread *thread, ThreadEntry entry, void *argument,
     ldr r3, =gHeapContext
     bic r0, r4, #7
     mov r2, #4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r7, #0xc4]
     ldr r0, [sp, #0x20]
     str r4, [sp]

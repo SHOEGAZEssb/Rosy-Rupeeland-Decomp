@@ -10,7 +10,7 @@
 
 extern "C" {
 void GraphicsResourceSet_ReleaseHandles(void *);
-void func_02003e38(void *);
+void Heap_FreeAlternateEntry(void *);
 void __destroy_arr(void *, s32, s32, void *);
 void func_02099fb0(void *);
 void Heap_Free(void *);
@@ -29,7 +29,7 @@ void GameFile_Read(void *, void *, s32);
 void GameFile_Close(void *);
 void GameFile_Destroy(void *);
 void OS_Halt(void);
-void *func_02003e20(s32, const void *, s32, void *);
+void *Heap_AllocAlternateEntry(s32, const void *, s32, void *);
 void func_ov041_021fce00(void *);
 extern void *gSoundContext;
 extern u8 gHeapContext;
@@ -53,11 +53,11 @@ extern "C" void func_ov041_021fdeb4(void *owner)
         GraphicsResourceSet_ReleaseHandles((u8 *)owner + offsets[i]);
 
     if (FIELD(void *, owner, 0x170) != 0) {
-        func_02003e38(FIELD(void *, owner, 0x170));
+        Heap_FreeAlternateEntry(FIELD(void *, owner, 0x170));
         FIELD(void *, owner, 0x170) = 0;
     }
     if (FIELD(void *, owner, 0x16c) != 0) {
-        func_02003e38(FIELD(void *, owner, 0x16c));
+        Heap_FreeAlternateEntry(FIELD(void *, owner, 0x16c));
         FIELD(void *, owner, 0x16c) = 0;
     }
 
@@ -106,7 +106,7 @@ extern "C" void func_ov041_021fe088(void *owner, s32 index, const char *path)
     if (GameFile_Open(file, path) == 0)
         OS_Halt();
     s32 length = GameFile_GetLength(file);
-    void *buffer = func_02003e20(length, data_ov041_02205984, -4, &gHeapContext);
+    void *buffer = Heap_AllocAlternateEntry(length, data_ov041_02205984, -4, &gHeapContext);
     FIELD(void *, owner, 0x168 + index * 4) = buffer;
     GameFile_Read(file, buffer, length);
     GameFile_Close(file);

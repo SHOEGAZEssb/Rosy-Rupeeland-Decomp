@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/packed_bit_grid_state.c.
 .text
 .extern data_020d8810
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern PackedBitGrid_Clear
 .extern gHeapContext
 
@@ -32,7 +32,7 @@ PackedBitGrid_Configure: ; 0x0202751c
     ldr r3, .L_020275ac
     mov r0, r5
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     mov r2, #0x0
     stmia r4, {r0, r5}
     mov r1, r2

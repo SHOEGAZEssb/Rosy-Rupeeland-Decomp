@@ -47,7 +47,7 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *object);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
 extern void GamePhaseCurrencyHud_Update(void *context);
 extern s32 GamePhaseState_TryStartBoundaryTransition(void *object);
-extern void func_0200866c(GamePhaseRuntime *self);
+extern void GamePhaseRuntime_UpdateSecondaryAreaPosition(GamePhaseRuntime *self);
 extern s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 index);
 extern s32 RuntimePresentationManager_UpdatePresentations(
     void *manager, s32 graphicsUpdateArgument);
@@ -117,7 +117,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
     }
 
     object = *(void **)(b + 0x2ea4);
-    if (func_02007868(object) &&
+    if (GamePhaseRuntime_IsReadyForTransition(object) &&
         !GameWork_TestFlag(gGameWork, 0x3ee) &&
         (s32)(*(u32 *)(*(u8 **)(b + 0x30bc) + 0x40) << 7) < 0) {
         PackedTimerArray_Update(PackedTimerArray_GetGlobal());
@@ -160,7 +160,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         GamePhaseRuntime_PrepareActorCollections(self, self->field_04, 3);
         if (GamePhaseState_TryStartBoundaryTransition(b + 0x24))
             return 0;
-        func_0200866c(self);
+        GamePhaseRuntime_UpdateSecondaryAreaPosition(self);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 0);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 1);
         RuntimePresentationManager_UpdatePresentations(b + 0x2f7c, 1);

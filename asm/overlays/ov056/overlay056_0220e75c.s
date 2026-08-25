@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov056/overlay056_recovery.c.
 .extern data_ov056_0220f660
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern func_ov056_0220e6b0
 .extern gHeapContext
 
@@ -19,7 +19,7 @@ func_ov056_0220e75c:
     ldr r3, .L_0220e798
     mov r0, r4, lsl #0x2
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     stmia r5, {r0, r4}
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220e794: .word data_ov056_0220f660

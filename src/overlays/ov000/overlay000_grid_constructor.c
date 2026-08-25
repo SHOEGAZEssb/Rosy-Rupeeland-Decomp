@@ -147,7 +147,7 @@ Overlay000GridState *func_ov000_021fbcc4(Overlay000GridState *state,
     state->rowCount_258 = (rawCount + 4) / 5;
     roundedCount = state->rowCount_258 * 5;
     state->cellCount_254 = roundedCount;
-    state->cells_250 = (u8 *)func_02003e20(
+    state->cells_250 = (u8 *)Heap_AllocAlternateEntry(
         roundedCount * 0x20 + 8, data_ov000_021fcd54, 4, &gHeapContext);
     if (state->cells_250 != 0) {
         state->cells_250 = (u8 *)func_020c09cc(

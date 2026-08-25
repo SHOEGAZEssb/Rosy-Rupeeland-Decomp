@@ -13,7 +13,7 @@ extern const char gGamePhaseRegionExpandedBufferAllocationTag[];
 extern void OS_Halt(void);
 extern void MI_UncompressLZ8(const void *source, void *destination);
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
-extern void func_02003e38(void *allocation);
+extern void Heap_FreeAlternateEntry(void *allocation);
 #ifdef __cplusplus
 }
 #endif
@@ -57,8 +57,8 @@ s32 GamePhaseRegionTable_Load(GamePhaseRegionTable *self,
     GamePhaseRegionTable_Resize(self, count);
     for (i = 0; i < count; i++)
         self->regions[i] = ((GamePhaseRegion *)expanded)[i];
-    func_02003e38(compressed);
-    func_02003e38(expanded);
+    Heap_FreeAlternateEntry(compressed);
+    Heap_FreeAlternateEntry(expanded);
     GameFile_Destroy(&file);
     return 1;
 }

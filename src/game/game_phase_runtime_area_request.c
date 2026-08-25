@@ -15,7 +15,7 @@ extern void *GamePhaseMetadata_GetByIndex(s32 areaId);
 #endif
 
 /* Empty recovered callback; it accepts no documented input and changes no state. */
-void func_02007f08(void)
+void GamePhaseRuntime_NoOpAreaRequestHook(void)
 {
 }
 

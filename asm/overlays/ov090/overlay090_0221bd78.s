@@ -2,7 +2,7 @@
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_participant_presentation_array.c.
 .extern data_ov090_0221cc78
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 .extern VecFx32Triple_Destroy
 
 .global func_ov090_0221bd78
@@ -28,7 +28,7 @@ func_ov090_0221bd78:
     cmp r4, r0
     blt .L_0221bd90
     ldr r0, [r5, #0x4]
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     add r0, r5, #0x18
     bl VecFx32Triple_Destroy
     mov r0, r5

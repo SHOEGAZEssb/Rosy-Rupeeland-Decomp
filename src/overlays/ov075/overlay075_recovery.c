@@ -90,7 +90,7 @@ EXT(Actor_GetCachedTerrainHeight);
 EXT(Actor_ClearTransientContactState);
 EXT(GamePhaseRuntime_GetActorCollection);
 EXT(func_02003e2c);
-EXT(func_02003e20);
+EXT(Heap_AllocAlternateEntry);
 EXT(func_02003e14);
 EXT(func_02004fe0);
 EXT(func_0200500c);
@@ -513,7 +513,7 @@ extern "C" void *func_ov075_0221352c(void *actor, void *descriptor, s32 arg2,
     F(void *, F(void *, actor, 0x26c), 4) = 0;
     s32 value = ActorExtendedType2_GetDescriptorValue2A(actor);
     F(s16, actor, 0x2aa) = (s16)(value < 1 ? 1 : value);
-    F(void *, actor, 0x2a4) = (void *)func_02003e20(
+    F(void *, actor, 0x2a4) = (void *)Heap_AllocAlternateEntry(
         F(s16, actor, 0x2aa) * 4, data_ov075_02217168, 4, gHeapContext);
     F(u32, actor, 0xd0) |= 0x20000;
     return actor;

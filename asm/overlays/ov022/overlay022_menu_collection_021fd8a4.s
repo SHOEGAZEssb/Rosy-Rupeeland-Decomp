@@ -3,7 +3,7 @@
     .extern data_020f4e14
     .extern data_ov022_022006c4
     .extern data_ov022_022006cc
-    .extern func_02003e20
+    .extern Heap_AllocAlternateEntry
     .extern GraphicsSpriteGroup_ReleaseIndexedEntries
     .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
@@ -34,7 +34,7 @@ func_ov022_021fd8a4:
     ldr r1, L_021fda08
     ldr r3, L_021fda0c
     add r0, r0, #0x8
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_021fd910
     ldr ip, L_021fda10

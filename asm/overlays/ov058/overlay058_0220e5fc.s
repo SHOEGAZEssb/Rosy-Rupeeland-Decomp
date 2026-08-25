@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov058/overlay058_recovery.c.
 .extern MIi_CpuClearFast
 .extern data_ov058_0220fce4
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern gHeapContext
 
 .global func_ov058_0220e5fc
@@ -13,7 +13,7 @@ func_ov058_0220e5fc:
     ldr r3, .L_0220e638
     mov r0, #0xc000
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r4, #0x0]
     mov r1, r0
     mov r0, #0x0

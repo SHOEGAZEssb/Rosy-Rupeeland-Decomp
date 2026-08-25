@@ -15,7 +15,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void *func_02003e20(u32, const void *, s32, void *);
+extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
@@ -68,7 +68,7 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
     FIELD(s32, state, 0x50) = capacity;
     FIELD(s32, state, 0x54) = 0;
     if (capacity != 0) {
-        object = func_02003e20(capacity * 0x14 + 8, data_ov016_02201570, 4,
+        object = Heap_AllocAlternateEntry(capacity * 0x14 + 8, data_ov016_02201570, 4,
                               gHeapContext);
         if (object != 0) {
             object = func_020c09cc(object, capacity, 0x14, 8,

@@ -9,7 +9,7 @@
 .extern gActorFeedbackPresentations
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_02008514
+.extern GamePhaseRuntime_RequestSecondaryWarp
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern TimedSpriteOffsetPresentation_Init
 .extern TimedSpriteSampledArcPresentation_Init
@@ -112,7 +112,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     ldr r1, [sp, #0x24]
     ldr r0, [r0, #0x0]
     mov r2, r8, lsl #0x10
-    bl func_02008514
+    bl GamePhaseRuntime_RequestSecondaryWarp
     cmp r0, #0x0
     bne .L_0203a4cc
 .L_0203a484:

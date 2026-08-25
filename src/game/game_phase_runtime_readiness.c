@@ -9,7 +9,7 @@
  * clear; offset 0x270 must be null; fields 0x24 and 0x1dc must agree; and the
  * signed halfword at 0x268 must be zero. This function changes no state.
  */
-s32 func_02007868(void *context)
+s32 GamePhaseRuntime_IsReadyForTransition(void *context)
 {
     u8 *b = (u8 *)context;
     s32 result;

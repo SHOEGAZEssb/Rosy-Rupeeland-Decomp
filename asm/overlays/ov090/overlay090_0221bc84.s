@@ -4,7 +4,7 @@
 .extern Heap_Alloc
 .extern data_ov090_0221cc78
 .extern data_ov090_0221cc98
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern VecFx32Triple_Init
 .extern func_020befec
 .extern func_ov090_0221b9a0
@@ -37,7 +37,7 @@ func_ov090_0221bc84:
     ldr r3, .L_0221bd74
     mov r2, #0x4
     mov r0, r0, lsl #0x2
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r10, #0x4]
     mov r4, #0x0
     mov r11, #0x18

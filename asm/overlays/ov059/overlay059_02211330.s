@@ -22,7 +22,7 @@
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
 .extern GamePhaseRuntime_ApplyScreenMode
 .extern GamePhaseRuntime_UpdateActorPresentationState
-.extern func_02008f2c
+.extern GamePhaseRuntime_DefaultPredicateReturnZero
 .extern GamePhaseAreaScene_GetConfig
 .extern GamePhaseAreaScene_ApplyRevealedRegions
 .extern GamePhaseMetadata_GetTextResourceId
@@ -49,7 +49,7 @@ func_ov059_02211330:
     mov r5, r0
     ldr r0, [r1, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
-    bl func_02008f2c
+    bl GamePhaseRuntime_DefaultPredicateReturnZero
     ldr r1, [r5, #0x24]
     cmp r1, #0x64
     bgt .L_02211390

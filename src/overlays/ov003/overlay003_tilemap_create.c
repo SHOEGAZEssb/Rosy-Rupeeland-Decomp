@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern const char data_ov003_021fbcd8[];
 extern void *gHeapContext;
-extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
+extern void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment,
                            void *context);
 extern void func_020b4554(void *address, u32 size);
 #ifdef __cplusplus
@@ -34,7 +34,7 @@ u16 *func_ov003_021fb804(void *owner, u16 paletteBank)
     s32 i;
 
     (void)owner;
-    map = (u16 *)func_02003e20(0x600, data_ov003_021fbcd8, 4, gHeapContext);
+    map = (u16 *)Heap_AllocAlternateEntry(0x600, data_ov003_021fbcd8, 4, gHeapContext);
     for (i = 0; i < 0x300; i++) {
         map[i] = (u16)((i & 0x3ff) | ((paletteBank & 0xf) << 12));
     }

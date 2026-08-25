@@ -39,7 +39,7 @@ NitroFile *NitroFile_Destroy(NitroFile *self)
 {
     self->vtable = &gNitroFileVTable;
     if (self->data != 0) {
-        func_02003e38(self->data);
+        Heap_FreeAlternateEntry(self->data);
     }
     return self;
 }
@@ -52,7 +52,7 @@ NitroFile *NitroFile_DestroyAndFree(NitroFile *self)
 {
     self->vtable = &gNitroFileVTable;
     if (self->data != 0) {
-        func_02003e38(self->data);
+        Heap_FreeAlternateEntry(self->data);
     }
     Heap_Free(self);
     return self;
@@ -66,7 +66,7 @@ NitroFile *NitroFile_DestroyBase(NitroFile *self)
 {
     self->vtable = &gNitroFileVTable;
     if (self->data != 0) {
-        func_02003e38(self->data);
+        Heap_FreeAlternateEntry(self->data);
     }
     return self;
 }
@@ -79,7 +79,7 @@ void NitroFile_Clear(NitroFile *self)
 {
     self->size = 0;
     if (self->data != 0) {
-        func_02003e38(self->data);
+        Heap_FreeAlternateEntry(self->data);
         self->data = 0;
     }
 }
@@ -99,15 +99,15 @@ void *NitroFile_ReadCompressedLz8(NitroFile *self, GameFile *file, s32 offset,
     s32 expandedSize;
 
     (void)self;
-    compressed = func_02003e20(compressedSize, data_020d40f4, -4,
+    compressed = Heap_AllocAlternateEntry(compressedSize, data_020d40f4, -4,
                                &gHeapContext);
     GameFile_Seek(file, offset, 0);
     GameFile_Read(file, compressed, compressedSize);
 
     expandedSize = (s32)(*(const u32 *)compressed >> 8);
     expandedSize = (expandedSize / 2) * 2;
-    expanded = func_02003e20(expandedSize, data_020d40fc, 4, &gHeapContext);
+    expanded = Heap_AllocAlternateEntry(expandedSize, data_020d40fc, 4, &gHeapContext);
     MI_UncompressLZ8(compressed, expanded);
-    func_02003e38(compressed);
+    Heap_FreeAlternateEntry(compressed);
     return expanded;
 }

@@ -12,10 +12,10 @@
 extern "C" {
 #endif
 
-extern void *func_02003e20(u32 size, const void *tag, u32 alignment,
+extern void *Heap_AllocAlternateEntry(u32 size, const void *tag, u32 alignment,
                            void *heapContext);
 extern void Heap_Free(void *allocation);
-extern void func_02003e38(void *allocation);
+extern void Heap_FreeAlternateEntry(void *allocation);
 extern u32 strlen(const char *string);
 extern char *strcpy(char *destination, const char *source);
 extern char *strncpy(char *destination, const char *source, u32 length);
@@ -94,19 +94,19 @@ void GameString_Assign(GameString *string, const char *source, u32 length)
 
     sourceLength = strlen(source);
     if (sourceLength == 0) {
-        string->data = (char *)func_02003e20(1, gGameStringHeapTag, 4,
+        string->data = (char *)Heap_AllocAlternateEntry(1, gGameStringHeapTag, 4,
                                             gHeapContext);
         string->data[0] = 0;
         return;
     }
 
     if (length == 0) {
-        string->data = (char *)func_02003e20(sourceLength + 1,
+        string->data = (char *)Heap_AllocAlternateEntry(sourceLength + 1,
                                             gGameStringHeapTag, 4,
                                             gHeapContext);
         strcpy(string->data, source);
     } else {
-        string->data = (char *)func_02003e20(length + 1, gGameStringHeapTag,
+        string->data = (char *)Heap_AllocAlternateEntry(length + 1, gGameStringHeapTag,
                                             4, gHeapContext);
         strncpy(string->data, source, length);
         string->data[length] = 0;
@@ -135,7 +135,7 @@ void GameString_Append(GameString *string, const char *suffix)
     temporary = 0;
 
     if (string->data != 0) {
-        temporary = (char *)func_02003e20(strlen(oldData) + 1,
+        temporary = (char *)Heap_AllocAlternateEntry(strlen(oldData) + 1,
                                          gGameStringHeapTag, 4,
                                          gHeapContext);
         strcpy(temporary, string->data);
@@ -143,13 +143,13 @@ void GameString_Append(GameString *string, const char *suffix)
     if (string->data != 0)
         GameString_Clear(string);
 
-    string->data = (char *)func_02003e20(totalLength + 1,
+    string->data = (char *)Heap_AllocAlternateEntry(totalLength + 1,
                                         gGameStringHeapTag, 4,
                                         gHeapContext);
     strcpy(string->data, temporary);
     strcat(string->data, suffix);
     if (temporary != 0)
-        func_02003e38(temporary);
+        Heap_FreeAlternateEntry(temporary);
 }
 #else
 /* MWCC commutes the length addition in the equivalent portable expression. */
@@ -176,7 +176,7 @@ asm void GameString_Append(GameString *string, const char *suffix)
     ldr r3, =gHeapContext
     add r0, r0, #1
     mov r2, #4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     ldr r1, [r5, #4]
     mov r7, r0
     bl strcpy
@@ -191,7 +191,7 @@ allocate_combined:
     ldr r3, =gHeapContext
     add r0, r6, #1
     mov r2, #4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     str r0, [r5, #4]
     mov r1, r7
     bl strcpy
@@ -201,7 +201,7 @@ allocate_combined:
     cmp r7, #0
     ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
     mov r0, r7
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 }
 #endif
@@ -211,7 +211,7 @@ void GameString_Clear(GameString *string) throw()
 {
     if (string->data == 0)
         return;
-    func_02003e38(string->data);
+    Heap_FreeAlternateEntry(string->data);
     string->data = 0;
 }
 

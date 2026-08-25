@@ -4,7 +4,7 @@
  * src/overlays/ov041/overlay041_resource_transition.c. */
 .extern Heap_Free
 .extern __destroy_arr
-.extern func_02003e38
+.extern Heap_FreeAlternateEntry
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_02099fb0
 .extern func_ov041_021fce00
@@ -56,14 +56,14 @@ func_ov041_021fdeb4: ; 0x021fdeb4
     ldr r0, [r5, #0x170]
     cmp r0, #0x0
     beq .L_021fdf74
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, #0x0
     str r0, [r5, #0x170]
 .L_021fdf74:
     ldr r0, [r5, #0x16c]
     cmp r0, #0x0
     beq .L_021fdf8c
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     mov r0, #0x0
     str r0, [r5, #0x16c]
 .L_021fdf8c:

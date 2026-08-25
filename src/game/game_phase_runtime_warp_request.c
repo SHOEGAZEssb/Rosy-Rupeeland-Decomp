@@ -34,7 +34,7 @@ s32 GamePhaseRuntime_RequestPrimaryWarp(GamePhaseRuntime *self, s32 x, s32 y)
  * Perform the same global warp request as GamePhaseRuntime_RequestPrimaryWarp but select warp type
  * one at GameWork offset 0x5c. self is unused. Returns one.
  */
-s32 func_02008514(GamePhaseRuntime *self, s32 x, s32 y)
+s32 GamePhaseRuntime_RequestSecondaryWarp(GamePhaseRuntime *self, s32 x, s32 y)
 {
     (void)self;
     GameWork_SetFlag(gGameWork, 0x410);

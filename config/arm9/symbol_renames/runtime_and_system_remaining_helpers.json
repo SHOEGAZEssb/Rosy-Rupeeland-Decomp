@@ -1,0 +1,12 @@
+{
+  "func_02003e20": "Heap_AllocAlternateEntry",
+  "func_02003e38": "Heap_FreeAlternateEntry",
+  "func_02004b54": "TemporaryObject_NoOpDestructor",
+  "func_02007420": "GamePhaseRuntime_NoOpHook0",
+  "func_02007428": "GamePhaseRuntime_NoOpHook1",
+  "func_02007868": "GamePhaseRuntime_IsReadyForTransition",
+  "func_02007f08": "GamePhaseRuntime_NoOpAreaRequestHook",
+  "func_02008514": "GamePhaseRuntime_RequestSecondaryWarp",
+  "func_0200866c": "GamePhaseRuntime_UpdateSecondaryAreaPosition",
+  "func_02008f2c": "GamePhaseRuntime_DefaultPredicateReturnZero"
+}

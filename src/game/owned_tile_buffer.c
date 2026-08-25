@@ -23,7 +23,7 @@ OwnedTileBuffer *OwnedTileBuffer_Destroy(OwnedTileBuffer *self)
 void OwnedTileBuffer_Clear(OwnedTileBuffer *self)
 {
     if (self->bytes_00) {
-        func_02003e38(self->bytes_00);
+        Heap_FreeAlternateEntry(self->bytes_00);
         self->bytes_00 = 0;
     }
     self->count_04 = 0;

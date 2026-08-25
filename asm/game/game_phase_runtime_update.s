@@ -8,12 +8,12 @@
 .extern PackedTimerArray_GetGlobal
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02007868
+.extern GamePhaseRuntime_IsReadyForTransition
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseRuntime_DispatchActorQueryRequest
-.extern func_0200866c
+.extern GamePhaseRuntime_UpdateSecondaryAreaPosition
 .extern FrameCounter_Tick31
 .extern DebugPhaseSelector_Init
 .extern GamePhaseTransitionScene_Init
@@ -126,7 +126,7 @@ L_02007540:
 L_02007548:
     add r0, r4, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02007868
+    bl GamePhaseRuntime_IsReadyForTransition
     cmp r0, #0x0
     beq L_020075d8
     ldr r0, L_02007844
@@ -231,7 +231,7 @@ L_020076a0:
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     mov r0, r4
-    bl func_0200866c
+    bl GamePhaseRuntime_UpdateSecondaryAreaPosition
     mov r0, r4
     mov r1, #0x0
     bl GamePhaseRuntime_SynchronizeActorPlacement

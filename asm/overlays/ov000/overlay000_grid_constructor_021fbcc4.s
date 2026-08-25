@@ -8,7 +8,7 @@
 .extern InventoryCell_Init
 .extern InventoryCell_Destroy
 .extern data_ov000_021fcd5c
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern Heap_Alloc
 .extern ActorDescriptor_IsInvalid
 .extern AnimationResourceState_InitEmbedded
@@ -180,7 +180,7 @@ L_021fbec4:
     add r0, r0, #0x8
     mov r2, #0x4
     str r5, [r10, #0x254]
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq L_021fbf40
     ldr r1, L_021fc048

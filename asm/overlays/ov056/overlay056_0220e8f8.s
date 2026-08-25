@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov056/overlay056_recovery.c.
 .extern MIi_CpuClear32
 .extern data_ov056_0220f6fc
-.extern func_02003e20
-.extern func_02003e38
+.extern Heap_AllocAlternateEntry
+.extern Heap_FreeAlternateEntry
 .extern func_020b171c
 .extern func_020b44e8
 .extern func_ov056_0220ec70
@@ -29,7 +29,7 @@ func_ov056_0220e8f8:
     ldr r3, .L_0220e99c
     mov r0, #0x800
     mvn r2, #0x3
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     mov r7, r0
     cmp r5, #0x0
     bge .L_0220e95c
@@ -53,7 +53,7 @@ func_ov056_0220e8f8:
     mov r2, #0x800
     bl func_020b171c
     mov r0, r7
-    bl func_02003e38
+    bl Heap_FreeAlternateEntry
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0220e998: .word data_ov056_0220f6fc
 .L_0220e99c: .word gHeapContext

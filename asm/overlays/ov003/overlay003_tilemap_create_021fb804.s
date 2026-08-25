@@ -1,7 +1,7 @@
     .text
     .extern data_ov003_021fbcd8
     .extern gHeapContext
-    .extern func_02003e20
+    .extern Heap_AllocAlternateEntry
     .extern func_020b4554
     .global func_ov003_021fb804
 func_ov003_021fb804: ; 0x021fb804
@@ -11,7 +11,7 @@ func_ov003_021fb804: ; 0x021fb804
     ldr r3, L_021fb8a8
     mov r0, #0x600
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     mov r4, r0
     mov r0, r5, lsl #0x10
     mov r0, r0, lsr #0x10

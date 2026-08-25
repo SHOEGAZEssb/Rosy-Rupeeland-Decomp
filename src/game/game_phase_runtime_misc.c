@@ -36,7 +36,7 @@ void GamePhaseRuntime_ProcessPendingPresentationRefreshes(GamePhaseRuntime *self
 }
 
 /* No-op predicate; it changes no state and always returns zero. */
-s32 func_02008f2c(void)
+s32 GamePhaseRuntime_DefaultPredicateReturnZero(void)
 {
     return 0;
 }

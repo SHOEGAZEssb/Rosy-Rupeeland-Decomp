@@ -16,9 +16,9 @@
 extern "C" {
 #endif
 
-extern void *func_02003e20(u32 size, const char *tag, s32 alignment, void *heap);
+extern void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
-extern void func_02003e38(void *allocation);
+extern void Heap_FreeAlternateEntry(void *allocation);
 extern const char data_020d3fc8[];
 extern u8 gHeapContext[];
 extern const TouchRegionVTable gTouchRegionVTable;
@@ -71,7 +71,7 @@ TouchRegion *TouchRegion_DestroyAndFree(TouchRegion *region)
 }
 
 /* Empty helper used by overlay-side temporary objects of an unknown type. */
-void func_02004b54(void *object)
+void TemporaryObject_NoOpDestructor(void *object)
 {
     (void)object;
 }
@@ -198,7 +198,7 @@ TouchRegionArray *TouchRegionArray_Destroy(TouchRegionArray *array)
 void TouchRegionArray_Reset(TouchRegionArray *array)
 {
     if (array->items != 0) {
-        func_02003e38(array->items);
+        Heap_FreeAlternateEntry(array->items);
         array->items = 0;
     }
     array->capacity = 0;
@@ -231,7 +231,7 @@ void TouchRegionManager_Allocate(TouchRegionManager *manager, s32 capacity)
     TouchRegionArray_Reset(&manager->regions);
     if (manager->regions.items != 0)
         TouchRegionArray_Reset(&manager->regions);
-    manager->regions.items = (TouchRegion **)func_02003e20(
+    manager->regions.items = (TouchRegion **)Heap_AllocAlternateEntry(
         capacity * sizeof(TouchRegion *), data_020d3fc8, 4, gHeapContext);
     manager->regions.capacity = capacity;
     for (i = 0; i < capacity; i++)

@@ -2,7 +2,7 @@
 .text
 .extern data_020df9e0
 .extern data_020dfec0
-.extern func_02003e20
+.extern Heap_AllocAlternateEntry
 .extern ActorExtendedRecordArray_InitElementNoOp
 .extern func_020c09cc
 .extern gHeapContext
@@ -35,7 +35,7 @@ ActorExtendedRecordArray_Init: ; 0x0203de48
     ldr r3, .L_0203df40
     add r0, r0, #0x8
     mov r2, #0x4
-    bl func_02003e20
+    bl Heap_AllocAlternateEntry
     cmp r0, #0x0
     beq .L_0203ded8
     ldr r6, .L_0203df44

@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_ProcessPendingPresentationRefreshes
 .extern GamePhaseRuntime_DispatchActorQueryRequest
 .extern GamePhaseRuntime_PrepareActorCollections
-.extern func_0200866c
+.extern GamePhaseRuntime_UpdateSecondaryAreaPosition
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern RuntimePresentationManager_UpdatePresentations
@@ -36,7 +36,7 @@ L_0200b6f0:
     bl GamePhaseRuntime_PrepareActorCollections
     ldr r0, L_0200b7ac
     ldr r0, [r0, #0x0]
-    bl func_0200866c
+    bl GamePhaseRuntime_UpdateSecondaryAreaPosition
     ldr r0, L_0200b7ac
     mov r1, #0x0
     ldr r0, [r0, #0x0]
