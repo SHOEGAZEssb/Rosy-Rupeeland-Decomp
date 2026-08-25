@@ -55,9 +55,9 @@ func_0204e9e8: ; 0x0204e9e8
 .L_0204ea88: .word data_020f4e18
 .size func_0204e9e8, . - func_0204e9e8
 
-    .global func_0204ea8c
+    .global Actor_SetPresentationSelection
 
-func_0204ea8c: ; 0x0204ea8c
+Actor_SetPresentationSelection: ; 0x0204ea8c
     add r2, r0, #0x100
     strh r1, [r2, #0xee]
     mov r1, #0x0
@@ -66,5 +66,4 @@ func_0204ea8c: ; 0x0204ea8c
     ldr r0, [r0, #0x54]
     bx ip
 .L_0204eaa8: .word GraphicsSpriteState_SetAnimationIndex
-.size func_0204ea8c, . - func_0204ea8c
-
+.size Actor_SetPresentationSelection, . - Actor_SetPresentationSelection

@@ -14,7 +14,7 @@ extern void Actor_EnsureInteractionIcon(void *actor);
 extern void Actor_DestroyInteractionIcon(void *actor);
 extern void Actor_SetInteractionIconOffset(void *actor, s32 offsetX,
                                            s32 offsetY);
-extern void func_0204ea8c(void *actor, s32 value);
+extern void Actor_SetPresentationSelection(void *actor, u16 selection);
 #ifdef __cplusplus
 }
 #endif
@@ -45,9 +45,9 @@ s32 GamePhaseActorScriptVm_ReturnOne(GamePhaseActorScriptVm *self)
  */
 s32 GamePhaseActorScriptVm_DispatchActorSigned16Command(GamePhaseActorScriptVm *self)
 {
-    s16 value = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 presentationSelection = (s16)GamePhaseScriptVm_Pop(&self->base);
     (void)GamePhaseScriptVm_Pop(&self->base);
-    func_0204ea8c(self->actor, value);
+    Actor_SetPresentationSelection(self->actor, presentationSelection);
     return 0;
 }
 
@@ -58,11 +58,11 @@ s32 GamePhaseActorScriptVm_DispatchActorSigned16Command(GamePhaseActorScriptVm *
 s32 GamePhaseActorScriptVm_SetActorFlag10(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
+    u32 *actorFlags14 = (u32 *)((u8 *)self->actor + 0x14);
     if (enabled)
-        *flags |= 0x10;
+        *actorFlags14 |= 0x10;
     else
-        *flags &= ~0x10;
+        *actorFlags14 &= ~0x10;
     return 0;
 }
 
@@ -73,16 +73,16 @@ s32 GamePhaseActorScriptVm_SetActorFlag10(GamePhaseActorScriptVm *self)
  */
 s32 GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions(GamePhaseActorScriptVm *self)
 {
-    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    fx32 transitionDivisor = (fx32)GamePhaseScriptVm_Pop(&self->base);
+    s32 targetBrightness = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 startBrightness = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 screenMask = (s32)GamePhaseScriptVm_Pop(&self->base);
     if (screenMask & 1)
         DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0),
-                      first, second, third);
+                      startBrightness, targetBrightness, transitionDivisor);
     if (screenMask & 2)
         DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1),
-                      first, second, third);
+                      startBrightness, targetBrightness, transitionDivisor);
     return 0;
 }
 
@@ -95,13 +95,13 @@ s32 GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions(GamePhaseAc
 s32 GamePhaseActorScriptVm_SetInteractionIconEnabled(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
+    u32 *actorFlags14 = (u32 *)((u8 *)self->actor + 0x14);
     if (enabled) {
         Actor_EnsureInteractionIcon(self->actor);
-        *flags |= 0x08000000;
+        *actorFlags14 |= 0x08000000;
     } else {
         Actor_DestroyInteractionIcon(self->actor);
-        *flags &= ~0x08000000;
+        *actorFlags14 &= ~0x08000000;
     }
     return 0;
 }

@@ -14,7 +14,7 @@ extern "C" {
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
-extern void func_0204ea8c(void *actor, u16 selection);
+extern void Actor_SetPresentationSelection(void *actor, u16 selection);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ extern void func_0204ea8c(void *actor, u16 selection);
  * Inputs are actor type, presentation selection, a fixed-point position, and
  * five descriptor values. Build the recovered 100-byte descriptor using the
  * final two values as its dimensions, allocate through manager index one,
- * reset presentation state with func_0204ea8c, and set actor flag 0x100.
+ * select and reset the presentation state, and set actor flag 0x100.
  * Retail leaves the updated flag word in r0 but recovered callers treat the
  * function as void. Actor-manager state changes; no hardware is touched directly.
  */
@@ -42,7 +42,6 @@ void func_0204eb18(u32 type, u32 selection, const void *position,
                   width, height, 0, 0, 0, 0, 0, 0xff, 0, 0, 0, 0);
     void *manager = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
-    func_0204ea8c(actor, selection);
+    Actor_SetPresentationSelection(actor, selection);
     FIELD(u32, actor, 0x10) |= 0x100;
 }
-

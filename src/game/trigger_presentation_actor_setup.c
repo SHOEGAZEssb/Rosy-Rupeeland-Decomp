@@ -59,7 +59,7 @@ void func_0204e9e8(void *actor, const void *descriptor)
  * at 0x54. The callee's return is propagated by retail assembly; actor and
  * presentation state change, with no direct hardware effects.
  */
-void func_0204ea8c(void *actor, u16 selection)
+void Actor_SetPresentationSelection(void *actor, u16 selection)
 {
     FIELD(u16, actor, 0x1ee) = selection;
     FIELD(u16, actor, 0x1ec) = 0;

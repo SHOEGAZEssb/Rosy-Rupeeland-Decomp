@@ -1,0 +1,7 @@
+{
+  "GamePhaseActorScriptVm_ReturnOne": "GamePhaseActorScriptVm_ReturnOne",
+  "GamePhaseActorScriptVm_DispatchActorSigned16Command": "GamePhaseActorScriptVm_DispatchActorSigned16Command",
+  "GamePhaseActorScriptVm_SetActorFlag10": "GamePhaseActorScriptVm_SetActorFlag10",
+  "GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions": "GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions",
+  "func_0204ea8c": "Actor_SetPresentationSelection"
+}

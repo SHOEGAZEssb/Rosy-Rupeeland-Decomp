@@ -20079,7 +20079,7 @@ build build/reports/trigger_presentation_actor_setup_0204e9e8.json: objdiff buil
   base_object = build/decomp/asm/game/trigger_presentation_actor_setup_0204e9e8.o
 build build/reports/trigger_presentation_actor_setup_0204e9e8.txt: match_report build/reports/trigger_presentation_actor_setup_0204e9e8.json | tools/report_objdiff.py
   report_json = build/reports/trigger_presentation_actor_setup_0204e9e8.json
-  report_args = --section .text --function func_0204e9e8 --function func_0204ea8c --require-exact
+  report_args = --section .text --function func_0204e9e8 --function Actor_SetPresentationSelection --require-exact
 build trigger_presentation_actor_setup: phony build/decomp/src/game/trigger_presentation_actor_setup.o build/decomp/asm/game/trigger_presentation_actor_setup_0204e9e8.o build/reports/trigger_presentation_actor_setup_0204e9e8.txt
 
 trigger_presentation_actor_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

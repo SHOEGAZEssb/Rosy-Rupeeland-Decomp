@@ -3,7 +3,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
-.extern func_0204ea8c
+.extern Actor_SetPresentationSelection
 .text
 
     .global func_0204eb18
@@ -56,7 +56,7 @@ func_0204eb18: ; 0x0204eb18
     bl ActorCollection_SpawnActorFromDescriptor
     mov r5, r0
     mov r1, r4
-    bl func_0204ea8c
+    bl Actor_SetPresentationSelection
     ldr r0, [r5, #0x10]
     orr r0, r0, #0x100
     str r0, [r5, #0x10]
@@ -64,4 +64,3 @@ func_0204eb18: ; 0x0204eb18
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204ebf0: .word gGamePhaseRuntime
 .size func_0204eb18, . - func_0204eb18
-
