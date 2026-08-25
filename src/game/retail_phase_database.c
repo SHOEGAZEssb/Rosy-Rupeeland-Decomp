@@ -22,7 +22,7 @@ extern u8 data_021e9e00[];
 extern u8 data_021e9e1c[];
 extern void OS_Halt(void);
 extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
-extern void func_020634b0(void *manager);
+extern void ActorRuntimeManager_SortDefaultEntriesByPhaseRank(void *manager);
 extern void SelfLinkedSpriteConfig_Init(void *descriptor);
 extern void ActorDescriptor_InitRange(void *descriptor, u16 id, u16 last_index);
 extern void ActorDescriptor_Init(void *descriptor, u16 id, u16 kind, u16 quantity);
@@ -398,12 +398,12 @@ void RetailPhaseDatabase_UnlockById(void *manager_pointer, u16 id)
 }
 
 /* Execute the exact retail phase database aggregate order at 0x0206F780. */
-void func_0206f780(void)
+void RetailPhaseDatabase_LoadAll(void)
 {
     RetailPhaseDatabase_LoadRecords(data_021e9de8);
     RetailPhaseSelection_InitPool(data_021e9e1c);
     RetailPhaseDatabase_BuildPointerView(data_021e9e00);
-    func_020634b0(*(void **)data_021e9ac0);
+    ActorRuntimeManager_SortDefaultEntriesByPhaseRank(*(void **)data_021e9ac0);
 }
 
 

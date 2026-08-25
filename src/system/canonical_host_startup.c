@@ -49,9 +49,9 @@ extern void SoundContext_Initialize(void);
 extern void SoundContext_Update(void *context);
 extern void RetailDatabaseManagers_InitGlobals(void);
 extern void RetailSaveContext_InitializeGlobal(void);
-extern void func_0206328c(void);
+extern void ActorDatabase_LoadAndCreateRuntimeManager(void);
 extern void RetailResourceDescriptorManager_InitGlobal(void);
-extern void func_0206f780(void);
+extern void RetailPhaseDatabase_LoadAll(void);
 extern void RetailRecordManager_InitGlobal(void);
 extern s32 RetailSaveContext_IdentifyBackupDevice(RuntimeContext *context);
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment,
@@ -136,9 +136,9 @@ s32 TingleRecoveredCanonicalStartup(void)
     STARTUP_STEP("game work", GameWork_Create());
     STARTUP_STEP("retail database managers", RetailDatabaseManagers_InitGlobals());
     STARTUP_STEP("runtime context", RetailSaveContext_InitializeGlobal());
-    STARTUP_STEP("manager 0206328c", func_0206328c());
+    STARTUP_STEP("manager 0206328c", ActorDatabase_LoadAndCreateRuntimeManager());
     STARTUP_STEP("resource descriptor manager", RetailResourceDescriptorManager_InitGlobal());
-    STARTUP_STEP("manager 0206f780", func_0206f780());
+    STARTUP_STEP("manager 0206f780", RetailPhaseDatabase_LoadAll());
     STARTUP_STEP("manager 0207a268", RetailRecordManager_InitGlobal());
 
     gSystemState.enabledKeyMask = 0x0fff;

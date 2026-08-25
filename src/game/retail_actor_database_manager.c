@@ -31,8 +31,8 @@ extern void SelfLinkedSpriteConfig_Init(void *descriptor);
 extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern void *SharedResourceDescriptorTable_GetById(void *manager, u16 id);
-extern void func_02063cd0(void *database);
-extern void *func_0206330c(void *manager);
+extern void ActorDatabase_LoadActorDescriptors(void *database);
+extern void *ActorRuntimeManager_Init(void *manager);
 
 static u16 ReadU16(const u8 *bytes)
 {
@@ -134,7 +134,7 @@ static void InitializeSecondaryContainer(u8 *container, u32 mode,
 }
 
 /* Populate the retail default type-1 actor-entry set at 0x020633AC. */
-void func_020633ac(void *manager_pointer)
+void ActorRuntimeManager_BuildDefaultEntries(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     u8 *actors = *(u8 **)(data_021e9ad0 + 0x2c0);
@@ -172,14 +172,14 @@ void func_020633ac(void *manager_pointer)
 }
 
 /* Construct and publish the 0x4c-byte runtime manager at 0x0206330C. */
-void *func_0206330c(void *manager_pointer)
+void *ActorRuntimeManager_Init(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
 
     InitializePrimaryContainer(manager, 0, 0xdc, 0);
     InitializeSecondaryContainer(manager + 0x34, 1, 0x64, 1);
     *(void **)data_021e9ac0 = manager;
-    func_020633ac(manager);
+    ActorRuntimeManager_BuildDefaultEntries(manager);
     return manager;
 }
 
@@ -199,7 +199,7 @@ static u32 FindPhaseActorRank(u16 actor_id)
 }
 
 /* Rank and sort the retail default actor entries at 0x020634B0. */
-void func_020634b0(void *manager_pointer)
+void ActorRuntimeManager_SortDefaultEntriesByPhaseRank(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     u8 *entries = *(u8 **)(manager + 0x20);
@@ -239,7 +239,7 @@ void func_020634b0(void *manager_pointer)
 }
 
 /* Load the 0x0c-byte type-3 descriptors at retail 0x02063F30. */
-void func_02063f30(void *database_pointer)
+void ActorDatabase_LoadType3Descriptors(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile file;
@@ -275,7 +275,7 @@ void func_02063f30(void *database_pointer)
 }
 
 /* Load the 0x14-byte type-0 descriptors at retail 0x020640A4. */
-void func_020640a4(void *database_pointer)
+void ActorDatabase_LoadType0Descriptors(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile file;
@@ -316,7 +316,7 @@ void func_020640a4(void *database_pointer)
 }
 
 /* Load the localized 0x74-byte type-1 descriptors at retail 0x0206425C. */
-void func_0206425c(void *database_pointer)
+void ActorDatabase_LoadType1Descriptors(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile file;
@@ -359,7 +359,7 @@ void func_0206425c(void *database_pointer)
 }
 
 /* Load the 0x0c-byte type-2 descriptors at retail 0x02064444. */
-void func_02064444(void *database_pointer)
+void ActorDatabase_LoadType2Descriptors(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile file;
@@ -395,7 +395,7 @@ void func_02064444(void *database_pointer)
 }
 
 /* Load and cross-link the 0x70-byte actor descriptors at 0x02063CD0. */
-void func_02063cd0(void *database_pointer)
+void ActorDatabase_LoadActorDescriptors(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile *file = (FSFile *)database;
@@ -461,23 +461,23 @@ void func_02063cd0(void *database_pointer)
 /* Construct the aggregate in the exact retail loader order at 0x02063B14. */
 void ActorDatabase_Init(void *database)
 {
-    func_02063f30(database);
-    func_020640a4(database);
-    func_0206425c(database);
-    func_02064444(database);
-    func_02063cd0(database);
+    ActorDatabase_LoadType3Descriptors(database);
+    ActorDatabase_LoadType0Descriptors(database);
+    ActorDatabase_LoadType1Descriptors(database);
+    ActorDatabase_LoadType2Descriptors(database);
+    ActorDatabase_LoadActorDescriptors(database);
     *(void **)((u8 *)database + 0x254) = FindActorRecord(database, 0x3e);
     *(void **)((u8 *)database + 0x258) = FindActorRecord(database, 0x40);
     LanguageDatabase_CopyRecordById(gLanguageDatabase, 0x11c5, (u8 *)database + 0x25c, 0x40);
 }
 
 /* Load the actor databases and allocate their 0x4c-byte runtime manager. */
-void func_0206328c(void)
+void ActorDatabase_LoadAndCreateRuntimeManager(void)
 {
     void *manager;
 
     ActorDatabase_Init(data_021e9ad0);
     manager = Heap_Alloc(0x4c, data_020e4f80, 4, &gHeapContext);
     if (manager != 0)
-        func_0206330c(manager);
+        ActorRuntimeManager_Init(manager);
 }

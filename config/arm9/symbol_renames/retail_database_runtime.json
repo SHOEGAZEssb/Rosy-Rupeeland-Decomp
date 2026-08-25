@@ -1,0 +1,13 @@
+{
+  "func_0206328c": "ActorDatabase_LoadAndCreateRuntimeManager",
+  "func_0206330c": "ActorRuntimeManager_Init",
+  "func_020633ac": "ActorRuntimeManager_BuildDefaultEntries",
+  "func_020634b0": "ActorRuntimeManager_SortDefaultEntriesByPhaseRank",
+  "func_02063cd0": "ActorDatabase_LoadActorDescriptors",
+  "func_02063f30": "ActorDatabase_LoadType3Descriptors",
+  "func_020640a4": "ActorDatabase_LoadType0Descriptors",
+  "func_0206425c": "ActorDatabase_LoadType1Descriptors",
+  "func_02064444": "ActorDatabase_LoadType2Descriptors",
+  "func_0206f780": "RetailPhaseDatabase_LoadAll",
+  "func_02097f94": "RetailSelectionManager_RebuildGroups"
+}

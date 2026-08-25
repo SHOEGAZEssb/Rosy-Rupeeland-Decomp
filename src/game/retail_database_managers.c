@@ -57,7 +57,7 @@ static u16 ReadU16(const u8 *bytes)
 }
 
 /* Rebuild the ten retail selection groups at 0x02097F94. */
-void func_02097f94(void *manager_pointer)
+void RetailSelectionManager_RebuildGroups(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     u8 *records = *(u8 **)(data_021f3ecc + 0x154);
@@ -293,7 +293,7 @@ void RetailSelectionDatabase_Load(void *manager_pointer)
     if (special_count > 30)
         OS_Halt();
     CheckedFS_CloseFile(file);
-    func_02097f94(data_021f5f18);
+    RetailSelectionManager_RebuildGroups(data_021f5f18);
 }
 
 /* Resolve a selection record's borrowed message at retail 0x02079408.
