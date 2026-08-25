@@ -47,7 +47,7 @@ extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov014_021fd07c(void *state)
+void Overlay014_SetupGraphics(void *state)
 {
     Overlay014ResourceSet first, second, third;
     volatile u16 *power = (volatile u16 *)0x04000304;

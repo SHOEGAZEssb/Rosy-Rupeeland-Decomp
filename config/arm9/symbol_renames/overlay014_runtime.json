@@ -1,0 +1,16 @@
+{
+  "func_ov014_021fce00": "Overlay014_ClearValueTriple",
+  "func_ov014_021fce14": "Overlay014_SetCallbackDescriptor",
+  "func_ov014_021fce3c": "Overlay014_Scene_Init",
+  "func_ov014_021fcf50": "Overlay014_CopyValueTriple",
+  "func_ov014_021fcf6c": "Overlay014_Scene_Destroy",
+  "func_ov014_021fcff0": "Overlay014_Scene_Delete",
+  "func_ov014_021fd07c": "Overlay014_SetupGraphics",
+  "func_ov014_021fd2f8": "Overlay014_UpdatePresentationEnabled",
+  "func_ov014_021fd350": "Overlay014_ResetState",
+  "func_ov014_021fd38c": "Overlay014_UpdateMainState",
+  "func_ov014_021fd67c": "Overlay014_UpdateFocusState",
+  "func_ov014_021fd7b4": "Overlay014_UpdateFinishState",
+  "func_ov014_021fd89c": "Overlay014_UpdateSubordinate",
+  "func_ov014_021fd8b8": "Overlay014_ApplyDisplayModes"
+}

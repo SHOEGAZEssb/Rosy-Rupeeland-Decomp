@@ -18,8 +18,8 @@ extern const s32 data_ov014_021fd940[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov014_021fce14(void *, s32, s32, s32);
-extern void func_ov014_021fd2f8(void *, s32);
+extern void Overlay014_SetCallbackDescriptor(void *, s32, s32, s32);
+extern void Overlay014_UpdatePresentationEnabled(void *, s32);
 extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void SceneSound_StopPackedEffect(void *, s32);
 extern void GameWork_SetFlag(void *, s32);
@@ -56,7 +56,7 @@ extern void Overlay000_Grid_Update(void *);
 /* Install a confirmed two-word callback descriptor at +0x24/+0x28. */
 static void overlay014_set_callback(void *state, const s32 *descriptor)
 {
-    func_ov014_021fce14(state, descriptor[0], descriptor[1], 0);
+    Overlay014_SetCallbackDescriptor(state, descriptor[0], descriptor[1], 0);
 }
 
 /*
@@ -74,7 +74,7 @@ static void overlay014_set_callback(void *state, const s32 *descriptor)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov014_021fd38c(void *state)
+s32 Overlay014_UpdateMainState(void *state)
 {
     void *subordinate = FIELD(void *, state, 0x78);
     s32 selected;
@@ -82,13 +82,13 @@ s32 func_ov014_021fd38c(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0:
         func_ov000_021fc3f8(subordinate);
-        func_ov014_021fd2f8(state, 0);
+        Overlay014_UpdatePresentationEnabled(state, 0);
         ++FIELD(s32, state, 4);
         FIELD(s32, state, 8) = 0;
         break;
     case 1:
         if (func_ov000_021fc450(subordinate)) {
-            func_ov014_021fd2f8(state, 0);
+            Overlay014_UpdatePresentationEnabled(state, 0);
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
         } else {
@@ -112,7 +112,7 @@ s32 func_ov014_021fd38c(void *state)
                     if (selected != FIELD(s32, subordinate, 0x25c)) {
                         Overlay000_SetSelection(subordinate, selected);
                         Overlay000_SyncSelection(subordinate);
-                        func_ov014_021fd2f8(state, 0);
+                        Overlay014_UpdatePresentationEnabled(state, 0);
                     }
                     break;
                 }
@@ -149,7 +149,7 @@ s32 func_ov014_021fd38c(void *state)
             --FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
         } else if (func_ov000_021fc538(subordinate)) {
-            func_ov014_021fd2f8(state, 0);
+            Overlay014_UpdatePresentationEnabled(state, 0);
         }
         break;
     }
@@ -170,7 +170,7 @@ s32 func_ov014_021fd38c(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov014_021fd67c(void *state)
+s32 Overlay014_UpdateFocusState(void *state)
 {
     void *subordinate = FIELD(void *, state, 0x78);
     void *member = FIELD(void *, subordinate, 0x26c);
@@ -187,7 +187,7 @@ s32 func_ov014_021fd67c(void *state)
             break;
         }
         if (FIELD(s32, member, 0x0c) != FIELD(s32, member, 0x10)) {
-            func_ov014_021fd2f8(state, 0);
+            Overlay014_UpdatePresentationEnabled(state, 0);
             SceneSound_StopPackedEffect(state, 8);
         }
         ++FIELD(s32, state, 4);
@@ -221,7 +221,7 @@ s32 func_ov014_021fd67c(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov014_021fd7b4(void *state)
+s32 Overlay014_UpdateFinishState(void *state)
 {
     void *subordinate = FIELD(void *, state, 0x78);
 

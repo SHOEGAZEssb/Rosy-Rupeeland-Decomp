@@ -45,7 +45,7 @@ extern void Heap_Free(void *allocation);
 extern void DisplayBrightness_StartMainTransition(s32 mode, s32 duration);
 extern void DisplayBrightness_StartSubTransition(s32 mode, s32 duration);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void *func_ov014_021fce3c(void *scene,
+extern void *Overlay014_Scene_Init(void *scene,
                                 const InventoryViewState *state);
 extern void *func_ov015_021fce58(void *scene,
                                 const InventoryViewState *state,
@@ -84,7 +84,7 @@ void InventoryScene_LoadPrimaryView(void *scene)
     OverlaySlot_LoadOverlay((OverlaySlot *)((u8 *)scene + 0x64), 14);
     child = Heap_Alloc(0x90, data_020e55ec, 4, gHeapContext);
     if (child != 0)
-        child = func_ov014_021fce3c(
+        child = Overlay014_Scene_Init(
             child, (const InventoryViewState *)((u8 *)scene + 0x70));
     FIELD(void *, scene, 0x54) = child;
     FIELD(u32, scene, 0x20) |= 0x400;

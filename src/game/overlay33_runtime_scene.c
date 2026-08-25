@@ -25,7 +25,7 @@ extern void *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern Overlay33Child *func_ov033_021fd070(Overlay33Child *self, u32 parameter);
 extern void func_ov030_021fd260(Overlay33Child *self);
-extern s32 func_ov014_021fd2f8(Overlay33Child *self);
+extern s32 Overlay014_UpdatePresentationEnabled(Overlay33Child *self);
 extern s32 func_ov033_021fd37c(Overlay33Child *self);
 extern void func_ov033_021fd324(Overlay33Child *self, void *value);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *runtime);
@@ -133,7 +133,7 @@ s32 Overlay33RuntimeScene_Update(Overlay33RuntimeScene *self)
         GamePhaseRuntime_UpdateDualScreenUiPresentation(runtime);
     }
     GamePhaseRuntime_PrepareActorCollections(runtime, self->base.value04, 3);
-    if (func_ov014_021fd2f8(self->child3c) != 0) {
+    if (Overlay014_UpdatePresentationEnabled(self->child3c) != 0) {
         if (self != 0)
             self->base.vtable->destroyAndFree(&self->base);
         return 1;

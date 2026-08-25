@@ -1,9 +1,9 @@
     .text
 
 /* Exact fallback; see src/overlays/ov014/overlay014_value_helpers.c. */
-    .global func_ov014_021fce14
+    .global Overlay014_SetCallbackDescriptor
 
-func_ov014_021fce14:
+Overlay014_SetCallbackDescriptor:
     stmdb sp!, {r0, r1, r2, r3}
     ldr r2, [sp, #0x4]
     ldr r1, [sp, #0x8]
@@ -14,4 +14,4 @@ func_ov014_021fce14:
     str r1, [r0, #0x8]
     add sp, sp, #0x10
     bx lr
-    .size func_ov014_021fce14, . - func_ov014_021fce14
+    .size Overlay014_SetCallbackDescriptor, . - Overlay014_SetCallbackDescriptor

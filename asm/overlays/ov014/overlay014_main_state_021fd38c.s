@@ -23,15 +23,15 @@
     .extern func_ov000_021fcc18
     .extern func_ov000_021fcca8
     .extern func_ov000_021fccfc
-    .extern func_ov014_021fce14
-    .extern func_ov014_021fd2f8
+    .extern Overlay014_SetCallbackDescriptor
+    .extern Overlay014_UpdatePresentationEnabled
     .extern gGameWork
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov014/overlay014_state_machines.c. */
-    .global func_ov014_021fd38c
+    .global Overlay014_UpdateMainState
 
-func_ov014_021fd38c:
+Overlay014_UpdateMainState:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -48,7 +48,7 @@ L_021fd3b4:
     bl func_ov000_021fc3f8
     mov r0, r4
     mov r1, #0x0
-    bl func_ov014_021fd2f8
+    bl Overlay014_UpdatePresentationEnabled
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -62,7 +62,7 @@ L_021fd3e0:
     beq L_021fd414
     mov r0, r4
     mov r1, #0x0
-    bl func_ov014_021fd2f8
+    bl Overlay014_UpdatePresentationEnabled
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -109,7 +109,7 @@ L_021fd420:
     ldr r1, L_021fd668
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov014_021fce14
+    bl Overlay014_SetCallbackDescriptor
     b L_021fd650
 L_021fd4b4:
     cmp r5, #0x0
@@ -127,7 +127,7 @@ L_021fd4b4:
     bl Overlay000_SyncSelection
     mov r0, r4
     mov r1, #0x0
-    bl func_ov014_021fd2f8
+    bl Overlay014_UpdatePresentationEnabled
     b L_021fd650
 L_021fd4f8:
     ldr r0, [r4, #0x78]
@@ -141,7 +141,7 @@ L_021fd4f8:
     ldr r1, L_021fd66c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov014_021fce14
+    bl Overlay014_SetCallbackDescriptor
     b L_021fd650
 L_021fd52c:
     ldr r0, [r4, #0x78]
@@ -155,7 +155,7 @@ L_021fd52c:
     ldr r1, L_021fd670
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov014_021fce14
+    bl Overlay014_SetCallbackDescriptor
     b L_021fd650
 L_021fd560:
     ldr r0, [r4, #0x78]
@@ -173,7 +173,7 @@ L_021fd560:
     ldr r1, L_021fd678
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov014_021fce14
+    bl Overlay014_SetCallbackDescriptor
     b L_021fd650
 L_021fd5a4:
     ldr r0, [r4, #0x78]
@@ -221,7 +221,7 @@ L_021fd634:
     beq L_021fd650
     mov r0, r4
     mov r1, #0x0
-    bl func_ov014_021fd2f8
+    bl Overlay014_UpdatePresentationEnabled
 L_021fd650:
     ldr r0, [r4, #0x78]
     cmp r0, #0x0
@@ -235,4 +235,4 @@ L_021fd66c: .word data_ov014_021fd938
 L_021fd670: .word data_ov014_021fd958
 L_021fd674: .word gGameWork
 L_021fd678: .word data_ov014_021fd930
-    .size func_ov014_021fd38c, . - func_ov014_021fd38c
+    .size Overlay014_UpdateMainState, . - Overlay014_UpdateMainState

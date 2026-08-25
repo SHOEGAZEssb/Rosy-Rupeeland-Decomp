@@ -22,9 +22,9 @@
     .extern gDebugFont
 
 /* Exact fallback; see src/overlays/ov014/overlay014_graphics_setup.c. */
-    .global func_ov014_021fd07c
+    .global Overlay014_SetupGraphics
 
-func_ov014_021fd07c:
+Overlay014_SetupGraphics:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x28
     ldr r1, L_021fd2c8
@@ -184,4 +184,4 @@ L_021fd2e8: .word 0x800a
 L_021fd2ec: .word 0x800f
 L_021fd2f0: .word 0x800c
 L_021fd2f4: .word 0x4210
-    .size func_ov014_021fd07c, . - func_ov014_021fd07c
+    .size Overlay014_SetupGraphics, . - Overlay014_SetupGraphics

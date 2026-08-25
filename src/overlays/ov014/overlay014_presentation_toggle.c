@@ -22,7 +22,7 @@ extern void func_ov000_021fb890(void *, s32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov014_021fd2f8(void *state, s32 forceDisabled)
+void Overlay014_UpdatePresentationEnabled(void *state, s32 forceDisabled)
 {
     void *record = 0;
 

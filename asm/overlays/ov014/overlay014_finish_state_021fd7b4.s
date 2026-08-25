@@ -7,13 +7,13 @@
     .extern func_ov000_021fc614
     .extern Overlay000_Grid_Render
     .extern Overlay000_SyncSelection
-    .extern func_ov014_021fce14
+    .extern Overlay014_SetCallbackDescriptor
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov014/overlay014_state_machines.c. */
-    .global func_ov014_021fd7b4
+    .global Overlay014_UpdateFinishState
 
-func_ov014_021fd7b4:
+Overlay014_UpdateFinishState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -68,7 +68,7 @@ L_021fd84c:
     ldr r1, L_021fd898
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov014_021fce14
+    bl Overlay014_SetCallbackDescriptor
 L_021fd880:
     ldr r0, [r4, #0x78]
     cmp r0, #0x0
@@ -78,4 +78,4 @@ L_021fd890:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fd898: .word data_ov014_021fd940
-    .size func_ov014_021fd7b4, . - func_ov014_021fd7b4
+    .size Overlay014_UpdateFinishState, . - Overlay014_UpdateFinishState

@@ -8,14 +8,14 @@
     .extern func_ov000_021fc450
     .extern Overlay000_Grid_UpdateTransition
     .extern func_ov000_021fc560
-    .extern func_ov014_021fce14
-    .extern func_ov014_021fd2f8
+    .extern Overlay014_SetCallbackDescriptor
+    .extern Overlay014_UpdatePresentationEnabled
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov014/overlay014_state_machines.c. */
-    .global func_ov014_021fd67c
+    .global Overlay014_UpdateFocusState
 
-func_ov014_021fd67c:
+Overlay014_UpdateFocusState:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r1, [r5, #0x78]
@@ -51,7 +51,7 @@ L_021fd6cc:
     bne L_021fd710
     mov r0, r5
     mov r1, #0x0
-    bl func_ov014_021fd2f8
+    bl Overlay014_UpdatePresentationEnabled
     mov r0, r5
     mov r1, #0x8
     bl SceneSound_StopPackedEffect
@@ -92,7 +92,7 @@ L_021fd77c:
     ldr r1, L_021fd7b0
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov014_021fce14
+    bl Overlay014_SetCallbackDescriptor
 L_021fd798:
     ldr r0, [r5, #0x78]
     cmp r0, #0x0
@@ -102,4 +102,4 @@ L_021fd7a8:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd7b0: .word data_ov014_021fd948
-    .size func_ov014_021fd67c, . - func_ov014_021fd67c
+    .size Overlay014_UpdateFocusState, . - Overlay014_UpdateFocusState

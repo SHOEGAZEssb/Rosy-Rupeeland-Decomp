@@ -11,7 +11,7 @@
 .extern OverlaySlot_UnloadOverlay
 .extern func_ov033_021fd070
 .extern func_ov030_021fd260
-.extern func_ov014_021fd2f8
+.extern Overlay014_UpdatePresentationEnabled
 .extern func_ov033_021fd37c
 .extern func_ov033_021fd324
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation

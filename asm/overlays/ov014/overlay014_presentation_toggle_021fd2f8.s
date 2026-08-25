@@ -4,9 +4,9 @@
     .extern Overlay000_GetActiveMetadata
 
 /* Exact fallback; see src/overlays/ov014/overlay014_presentation_toggle.c. */
-    .global func_ov014_021fd2f8
+    .global Overlay014_UpdatePresentationEnabled
 
-func_ov014_021fd2f8:
+Overlay014_UpdatePresentationEnabled:
     stmdb sp!, {r4, lr}
     mov r4, r0
     cmp r1, #0x0
@@ -30,4 +30,4 @@ L_021fd334:
     bic r0, r0, #0x2
     str r0, [r4, #0x4c]
     ldmia sp!, {r4, pc}
-    .size func_ov014_021fd2f8, . - func_ov014_021fd2f8
+    .size Overlay014_UpdatePresentationEnabled, . - Overlay014_UpdatePresentationEnabled

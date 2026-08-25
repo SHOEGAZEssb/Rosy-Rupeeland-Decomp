@@ -31,10 +31,10 @@ extern void InventoryRecordCollection_Sort(void *, s32);
 extern void *Overlay000_Grid_Init(void *, void *);
 extern void func_ov000_021fcae8(void *, void *, s32);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern void func_ov014_021fce00(void *);
-extern void func_ov014_021fcf50(void *, const void *);
-extern void func_ov014_021fd07c(void *);
-extern void func_ov014_021fce14(void *, s32, s32, s32);
+extern void Overlay014_ClearValueTriple(void *);
+extern void Overlay014_CopyValueTriple(void *, const void *);
+extern void Overlay014_SetupGraphics(void *);
+extern void Overlay014_SetCallbackDescriptor(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -54,22 +54,22 @@ typedef void (*Overlay014Destructor)(void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov014_021fce3c(void *state, const void *parameters)
+void *Overlay014_Scene_Init(void *state, const void *parameters)
 {
     void *object;
 
     SceneInputBase_Init(state);
     FIELD(const void *, state, 0) = data_ov014_021fd994;
     TitleCharacterResourceCollection_Init((u8 *)state + 0x54);
-    func_ov014_021fce00((u8 *)state + 0x7c);
-    func_ov014_021fd07c(state);
+    Overlay014_ClearValueTriple((u8 *)state + 0x7c);
+    Overlay014_SetupGraphics(state);
     TitleCharacterResourceCollection_Append((u8 *)state + 0x54, 0x7005);
     object = Heap_Alloc(0x68, data_ov014_021fd9a8, 4, gHeapContext);
     if (object != 0)
         object = func_ov000_021fb728(object, gDebugFont);
     FIELD(void *, state, 0x88) = object;
     if (parameters != 0)
-        func_ov014_021fcf50((u8 *)state + 0x7c, parameters);
+        Overlay014_CopyValueTriple((u8 *)state + 0x7c, parameters);
 
     InventoryRecordCollection_Sort(data_021e9ac0, 0);
     object = Heap_Alloc(0x2b0, data_ov014_021fd9b0, 4, gHeapContext);
@@ -79,7 +79,7 @@ void *func_ov014_021fce3c(void *state, const void *parameters)
     func_ov000_021fcae8(object, (u8 *)state + 0x7c, 0);
     FIELD(s32, state, 0x8c) = 0;
     FIELD(u32, state, 0x20) |= 0x400;
-    func_ov014_021fce14(state, data_ov014_021fd960[0],
+    Overlay014_SetCallbackDescriptor(state, data_ov014_021fd960[0],
                         data_ov014_021fd960[1], 0);
     return state;
 }
@@ -93,7 +93,7 @@ void *func_ov014_021fce3c(void *state, const void *parameters)
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov014_021fcf6c(void *state)
+void *Overlay014_Scene_Destroy(void *state)
 {
     void *object;
 
@@ -115,13 +115,13 @@ void *func_ov014_021fcf6c(void *state)
     return state;
 }
 
-/* Call func_ov014_021fcf6c, free state itself, and return its former address; heap state changes are observable. */
+/* Call Overlay014_Scene_Destroy, free state itself, and return its former address; heap state changes are observable. */
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov014_021fcff0(void *state)
+void *Overlay014_Scene_Delete(void *state)
 {
-    func_ov014_021fcf6c(state);
+    Overlay014_Scene_Destroy(state);
     Heap_Free(state);
     return state;
 }

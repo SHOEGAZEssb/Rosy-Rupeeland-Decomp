@@ -12,26 +12,26 @@ extern void func_ov000_021fc59c(void *);
 extern void func_ov000_021fc5c4(void *);
 extern void func_ov000_021fc5ec(void *);
 extern void Overlay000_Grid_Update(void *);
-extern void func_ov014_021fce14(void *, s32, s32, s32);
+extern void Overlay014_SetCallbackDescriptor(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Apply three reset/stop operations to subordinate +0x78, install the two-word
- * callback descriptor data_ov014_021fd928 through func_ov014_021fce14, and
+ * callback descriptor data_ov014_021fd928 through Overlay014_SetCallbackDescriptor, and
  * return zero. Callees may alter subordinate presentation and scene state.
  */
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov014_021fd350(void *state)
+s32 Overlay014_ResetState(void *state)
 {
     void *subordinate = FIELD(void *, state, 0x78);
     func_ov000_021fc59c(subordinate);
     func_ov000_021fc5c4(subordinate);
     func_ov000_021fc5ec(subordinate);
-    func_ov014_021fce14(state, data_ov014_021fd928[0],
+    Overlay014_SetCallbackDescriptor(state, data_ov014_021fd928[0],
                         data_ov014_021fd928[1], 0);
     return 0;
 }
@@ -40,7 +40,7 @@ s32 func_ov014_021fd350(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov014_021fd89c(void *state)
+s32 Overlay014_UpdateSubordinate(void *state)
 {
     void *subordinate = FIELD(void *, state, 0x78);
     if (subordinate != 0)
@@ -56,7 +56,7 @@ s32 func_ov014_021fd89c(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov014_021fd8b8(void *state)
+s32 Overlay014_ApplyDisplayModes(void *state)
 {
     if (FIELD(u32, state, 0x20) & 0x400) {
         volatile u32 *mainDispcnt = (volatile u32 *)0x04000000;

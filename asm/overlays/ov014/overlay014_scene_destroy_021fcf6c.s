@@ -9,9 +9,9 @@
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov014/overlay014_scene_lifecycle.c. */
-    .global func_ov014_021fcf6c
+    .global Overlay014_Scene_Destroy
 
-func_ov014_021fcf6c:
+Overlay014_Scene_Destroy:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021fcfe4
     mov r4, r0
@@ -47,4 +47,4 @@ L_021fcfbc:
 L_021fcfe4: .word data_ov014_021fd994
 L_021fcfe8: .word data_020f4e14
 L_021fcfec: .word gDebugFont
-    .size func_ov014_021fcf6c, . - func_ov014_021fcf6c
+    .size Overlay014_Scene_Destroy, . - Overlay014_Scene_Destroy

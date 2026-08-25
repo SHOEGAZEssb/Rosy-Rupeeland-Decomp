@@ -13,18 +13,18 @@
     .extern func_ov000_021fb728
     .extern Overlay000_Grid_Init
     .extern func_ov000_021fcae8
-    .extern func_ov014_021fce00
-    .extern func_ov014_021fce14
-    .extern func_ov014_021fcf50
-    .extern func_ov014_021fd07c
+    .extern Overlay014_ClearValueTriple
+    .extern Overlay014_SetCallbackDescriptor
+    .extern Overlay014_CopyValueTriple
+    .extern Overlay014_SetupGraphics
     .extern gDebugFont
     .extern gHeapContext
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov014/overlay014_scene_lifecycle.c. */
-    .global func_ov014_021fce3c
+    .global Overlay014_Scene_Init
 
-func_ov014_021fce3c:
+Overlay014_Scene_Init:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
@@ -34,9 +34,9 @@ func_ov014_021fce3c:
     str r1, [r4, #0x0]
     bl TitleCharacterResourceCollection_Init
     add r0, r4, #0x7c
-    bl func_ov014_021fce00
+    bl Overlay014_ClearValueTriple
     mov r0, r4
-    bl func_ov014_021fd07c
+    bl Overlay014_SetupGraphics
     add r0, r4, #0x54
     ldr r1, L_021fcf30
     bl TitleCharacterResourceCollection_Append
@@ -56,7 +56,7 @@ L_021fcea0:
     beq L_021fceb8
     mov r1, r5
     add r0, r4, #0x7c
-    bl func_ov014_021fcf50
+    bl Overlay014_CopyValueTriple
 L_021fceb8:
     ldr r0, L_021fcf40
     mov r1, #0x0
@@ -85,7 +85,7 @@ L_021fcef0:
     str r0, [r4, #0x20]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov014_021fce14
+    bl Overlay014_SetCallbackDescriptor
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fcf2c: .word data_ov014_021fd994
@@ -97,4 +97,4 @@ L_021fcf40: .word data_021e9ac0
 L_021fcf44: .word data_ov014_021fd9b0
 L_021fcf48: .word data_020f4e14
 L_021fcf4c: .word data_ov014_021fd960
-    .size func_ov014_021fce3c, . - func_ov014_021fce3c
+    .size Overlay014_Scene_Init, . - Overlay014_Scene_Init

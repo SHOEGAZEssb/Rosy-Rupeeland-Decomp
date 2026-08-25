@@ -11,7 +11,7 @@
 .extern OverlaySlot_UnloadOverlay
 .extern func_ov033_021fd070
 .extern func_ov030_021fd260
-.extern func_ov014_021fd2f8
+.extern Overlay014_UpdatePresentationEnabled
 .extern func_ov033_021fd37c
 .extern func_ov033_021fd324
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
@@ -58,7 +58,7 @@ L_0201d8dc:
     mov r2, #0x3
     bl GamePhaseRuntime_PrepareActorCollections
     ldr r0, [r4, #0x3c]
-    bl func_ov014_021fd2f8 ; func_ov024_021fd2f8, func_ov033_021fd2f8
+    bl Overlay014_UpdatePresentationEnabled ; func_ov024_021fd2f8, func_ov033_021fd2f8
     cmp r0, #0x0
     beq L_0201d920
     cmp r4, #0x0
