@@ -6,9 +6,9 @@
 .extern gGamePhaseRuntime
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
-.extern func_02026990
-.extern func_020269a4
-.extern func_02026e44
+.extern GridMotion_ResetWithVelocity
+.extern DualScreenUiGridState_IsRuntimeEligible
+.extern DualScreenUiGridState_RefreshTransitionFrames
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReleaseState
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -16,9 +16,9 @@
 .extern gDebugFont
 .extern gHeapContext
 
-    .global func_02026588
-    .type func_02026588, @function
-func_02026588: ; 0x02026588
+    .global DualScreenUiGridState_Rebuild
+    .type DualScreenUiGridState_Rebuild, @function
+DualScreenUiGridState_Rebuild: ; 0x02026588
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0xc
     ldr r2, .L_02026970
@@ -230,7 +230,7 @@ func_02026588: ; 0x02026588
     bne .L_020268a8
     add r0, r9, #0x7c
     mov r1, #0x6000
-    bl func_02026990
+    bl GridMotion_ResetWithVelocity
 .L_020268a8:
     mov r2, #0x0
     mov r1, #0xff
@@ -243,9 +243,9 @@ func_02026588: ; 0x02026588
     cmp r8, #0x0
     bne .L_02026900
     mov r0, r9
-    bl func_02026e44
+    bl DualScreenUiGridState_RefreshTransitionFrames
     mov r0, r7
-    bl func_020269a4
+    bl DualScreenUiGridState_IsRuntimeEligible
     cmp r0, #0x0
     beq .L_02026968
     ldrb r0, [r9, #0x8c]
@@ -295,4 +295,4 @@ func_02026588: ; 0x02026588
 .L_02026984: .word 0x32b5
 .L_02026988: .word 0x1664
 .L_0202698c: .word data_020c3704
-    .size func_02026588, . - func_02026588
+    .size DualScreenUiGridState_Rebuild, . - DualScreenUiGridState_Rebuild

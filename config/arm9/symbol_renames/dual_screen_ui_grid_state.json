@@ -1,0 +1,12 @@
+{
+  "func_020264b0": "GridMotion_Init",
+  "func_020264c4": "DualScreenUiGridState_Init",
+  "func_02026514": "DualScreenUiGridState_Destroy",
+  "func_02026588": "DualScreenUiGridState_Rebuild",
+  "func_02026990": "GridMotion_ResetWithVelocity",
+  "func_020269a4": "DualScreenUiGridState_IsRuntimeEligible",
+  "func_020269f8": "DualScreenUiGridState_Update",
+  "func_02026e38": "DualScreenUiDerivedPresentation_TestFlagBit7",
+  "func_02026e44": "DualScreenUiGridState_RefreshTransitionFrames",
+  "func_02026ed4": "DualScreenUiGridState_FinalizeCompletedAnimations"
+}

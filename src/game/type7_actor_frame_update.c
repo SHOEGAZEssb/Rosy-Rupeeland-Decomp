@@ -21,7 +21,7 @@ extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern void Type7Actor_PlayStateSound(void *actor, s32 enabled);
 extern void Type7Actor_SetTarget(void *actor, void *worldObject, s32 value);
 extern void *DualScreenUiPresentationBase_GetEmbeddedState(void *object);
-extern void func_02026588(void *object, s32 value);
+extern void DualScreenUiGridState_Rebuild(void *object, s32 value);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern void VecFx32Object_Destroy(void *value);
 extern void *VecFx32Object_Assign(void *destination, const void *source);
@@ -169,7 +169,7 @@ void Type7Actor_UpdateFrame(void *self)
         worldObject = *(void **)(gGamePhaseRuntime + 0x2ea4);
         Type7Actor_SetTarget(actor, worldObject, *(s16 *)(record + 0x30));
         worldHelper = *(void **)(gGamePhaseRuntime + 0x30e8);
-        func_02026588(DualScreenUiPresentationBase_GetEmbeddedState(worldHelper), 0);
+        DualScreenUiGridState_Rebuild(DualScreenUiPresentationBase_GetEmbeddedState(worldHelper), 0);
         *((u8 *)DualScreenUiPresentationBase_GetEmbeddedState(worldHelper) + 0x8d) = 0;
         Type7Actor_DispatchCurrentCallback(actor);
     }

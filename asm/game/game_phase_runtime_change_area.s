@@ -19,7 +19,7 @@
 .extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseAreaScene_SetOverlayObject
 .extern TimedSpriteRecordPresentation_SpawnAndRegister
-.extern func_02026174
+.extern DualScreenUiStandardPresentation_BindSource
 .extern GamePhaseMetadata_GetByIndex
 .extern ActorCollection_DispatchEventToActors
 .extern func_020be8c0
@@ -256,7 +256,7 @@ L_02007e44:
     add r1, r7, #0x3000
     ldr r0, [r1, #0xe8]
     ldr r1, [r1, #0xbc]
-    bl func_02026174
+    bl DualScreenUiStandardPresentation_BindSource
     add r0, r7, #0x2000
     ldr r3, [r0, #0xea4]
     add r2, r7, #0x3000

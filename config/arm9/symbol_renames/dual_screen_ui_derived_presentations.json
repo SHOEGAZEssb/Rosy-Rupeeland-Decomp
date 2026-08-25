@@ -1,0 +1,15 @@
+{
+  "func_02025f20": "DualScreenUiStandardPresentation_Init",
+  "func_02025fc4": "DualScreenUiStandardPresentation_Destroy",
+  "func_02025fe4": "DualScreenUiStandardPresentation_DestroyAndFree",
+  "func_0202600c": "DualScreenUiStandardPresentation_RefreshResources",
+  "func_02026044": "DualScreenUiStandardPresentation_SetEnabled",
+  "func_0202613c": "DualScreenUiStandardPresentation_Update",
+  "func_02026174": "DualScreenUiStandardPresentation_BindSource",
+  "func_020261bc": "DualScreenUiIndexedIconPresentation_Init",
+  "func_02026308": "DualScreenUiIndexedIconPresentation_Destroy",
+  "func_02026350": "DualScreenUiIndexedIconPresentation_DestroyAndFree",
+  "func_020263a0": "DualScreenUiIndexedIconPresentation_RefreshResources",
+  "func_020263d4": "DualScreenUiIndexedIconPresentation_Update",
+  "func_0202640c": "DualScreenUiIndexedIconPresentation_SetEnabled"
+}

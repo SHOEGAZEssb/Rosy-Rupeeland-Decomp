@@ -18,9 +18,9 @@
 .extern gDebugFont
 .extern gHeapContext
 
-    .global func_020261bc
-    .type func_020261bc, @function
-func_020261bc: ; 0x020261bc
+    .global DualScreenUiIndexedIconPresentation_Init
+    .type DualScreenUiIndexedIconPresentation_Init, @function
+DualScreenUiIndexedIconPresentation_Init: ; 0x020261bc
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r5, r0
@@ -105,4 +105,4 @@ func_020261bc: ; 0x020261bc
 .L_020262fc: .word data_020d4746
 .L_02026300: .word data_020d4742
 .L_02026304: .word data_020d4744
-    .size func_020261bc, . - func_020261bc
+    .size DualScreenUiIndexedIconPresentation_Init, . - DualScreenUiIndexedIconPresentation_Init

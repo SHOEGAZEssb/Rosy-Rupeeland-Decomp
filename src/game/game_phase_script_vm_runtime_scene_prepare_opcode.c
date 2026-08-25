@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *gGamePhaseRuntime;
 extern void *GamePhaseState_GetConfiguration(void *state);
-extern void func_02026174(void *object, void *area);
+extern void DualScreenUiStandardPresentation_BindSource(void *object, void *area);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *runtime);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(void *runtime, void *area, s32 enabled);
 extern void GamePhaseAreaScene_SetEnabled(void *state, s32 enabled);
@@ -34,7 +34,7 @@ s32 GamePhaseActorScriptVm_PrepareRuntimeScene(GamePhaseActorScriptVm *self)
     void *areaOverlayObject = *(void **)(runtime + 0x30e8);
     void *areaConfiguration = GamePhaseState_GetConfiguration(runtime + 0x24);
     (void)self;
-    func_02026174(areaOverlayObject, areaConfiguration);
+    DualScreenUiStandardPresentation_BindSource(areaOverlayObject, areaConfiguration);
     configureAreaOverlayObject(areaOverlayObject);
     GamePhaseRuntime_UpdateDualScreenUiPresentation(runtime);
     areaConfiguration = GamePhaseState_GetConfiguration(runtime + 0x24);

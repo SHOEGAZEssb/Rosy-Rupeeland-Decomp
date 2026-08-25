@@ -4,9 +4,9 @@
 .extern DebugSpriteText_Destroy
 .extern DualScreenUiPresentationBase_DestroyAlternateEntry
 
-    .global func_02025fe4
-    .type func_02025fe4, @function
-func_02025fe4: ; 0x02025fe4
+    .global DualScreenUiStandardPresentation_DestroyAndFree
+    .type DualScreenUiStandardPresentation_DestroyAndFree, @function
+DualScreenUiStandardPresentation_DestroyAndFree: ; 0x02025fe4
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xc8
@@ -17,4 +17,4 @@ func_02025fe4: ; 0x02025fe4
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02025fe4, . - func_02025fe4
+    .size DualScreenUiStandardPresentation_DestroyAndFree, . - DualScreenUiStandardPresentation_DestroyAndFree

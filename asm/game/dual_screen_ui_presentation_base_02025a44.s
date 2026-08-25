@@ -2,7 +2,7 @@
 .text
 .extern data_020d6b3c
 .extern data_020f4e18
-.extern func_020264c4
+.extern DualScreenUiGridState_Init
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -17,7 +17,7 @@ DualScreenUiPresentationBase_Init: ; 0x02025a44
     mov r5, r1
     str r2, [r4, #0x0]
     add r0, r4, #0x4
-    bl func_020264c4
+    bl DualScreenUiGridState_Init
     str r5, [r4, #0xac]
     add r0, r4, #0xb8
     bl AnimationResourceState_InitEmbedded

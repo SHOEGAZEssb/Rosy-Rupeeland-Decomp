@@ -2,9 +2,9 @@
 .text
 .extern DualScreenUiPresentationBase_ApplyVisibilityMask
 
-    .global func_0202640c
-    .type func_0202640c, @function
-func_0202640c: ; 0x0202640c
+    .global DualScreenUiIndexedIconPresentation_SetEnabled
+    .type DualScreenUiIndexedIconPresentation_SetEnabled, @function
+DualScreenUiIndexedIconPresentation_SetEnabled: ; 0x0202640c
     stmdb sp!, {r4, lr}
     mov r4, r0
     cmp r1, #0x0
@@ -48,4 +48,4 @@ func_0202640c: ; 0x0202640c
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
 .L_020264ac: .word 0x4001000
-    .size func_0202640c, . - func_0202640c
+    .size DualScreenUiIndexedIconPresentation_SetEnabled, . - DualScreenUiIndexedIconPresentation_SetEnabled

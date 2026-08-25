@@ -10,7 +10,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern DualScreenUiPresentationBase_GetEmbeddedState
-.extern func_02026588
+.extern DualScreenUiGridState_Rebuild
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
 .extern Actor_SynchronizeStatePresentation
@@ -209,7 +209,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     ldr r0, [r0, #0xe8]
     bl DualScreenUiPresentationBase_GetEmbeddedState
     mov r1, #0x0
-    bl func_02026588
+    bl DualScreenUiGridState_Rebuild
     ldr r0, .L_020461f0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000

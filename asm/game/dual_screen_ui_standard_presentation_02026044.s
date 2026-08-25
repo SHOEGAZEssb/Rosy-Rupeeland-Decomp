@@ -4,9 +4,9 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 
-    .global func_02026044
-    .type func_02026044, @function
-func_02026044: ; 0x02026044
+    .global DualScreenUiStandardPresentation_SetEnabled
+    .type DualScreenUiStandardPresentation_SetEnabled, @function
+DualScreenUiStandardPresentation_SetEnabled: ; 0x02026044
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r1
     mov r6, r0
@@ -73,4 +73,4 @@ func_02026044: ; 0x02026044
     ldmia sp!, {r4, r5, r6, pc}
 .L_02026134: .word 0x4001000
 .L_02026138: .word gDebugFont
-    .size func_02026044, . - func_02026044
+    .size DualScreenUiStandardPresentation_SetEnabled, . - DualScreenUiStandardPresentation_SetEnabled

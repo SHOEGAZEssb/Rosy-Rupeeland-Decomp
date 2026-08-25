@@ -5,9 +5,9 @@
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
-    .global func_02026514
-    .type func_02026514, @function
-func_02026514: ; 0x02026514
+    .global DualScreenUiGridState_Destroy
+    .type DualScreenUiGridState_Destroy, @function
+DualScreenUiGridState_Destroy: ; 0x02026514
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r1, #0x0
@@ -40,4 +40,4 @@ func_02026514: ; 0x02026514
     strh r0, [r5, #0x74]
     ldmia sp!, {r3, r4, r5, pc}
 .L_02026584: .word gDebugFont
-    .size func_02026514, . - func_02026514
+    .size DualScreenUiGridState_Destroy, . - DualScreenUiGridState_Destroy

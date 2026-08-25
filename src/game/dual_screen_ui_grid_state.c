@@ -77,11 +77,11 @@ extern void DualScreenUiPresentationBase_SetEmbeddedEnabled(void *, s32);
 }
 #endif
 
-void func_02026514(DualScreenUiGridState *self);
-void func_02026588(DualScreenUiGridState *self, s32 alternateMode);
-s32 func_020269a4(u8 *runtime);
-void func_02026e44(DualScreenUiGridState *self);
-void func_02026ed4(DualScreenUiGridState *self);
+void DualScreenUiGridState_Destroy(DualScreenUiGridState *self);
+void DualScreenUiGridState_Rebuild(DualScreenUiGridState *self, s32 alternateMode);
+s32 DualScreenUiGridState_IsRuntimeEligible(u8 *runtime);
+void DualScreenUiGridState_RefreshTransitionFrames(DualScreenUiGridState *self);
+void DualScreenUiGridState_FinalizeCompletedAnimations(DualScreenUiGridState *self);
 
 static void destroy_object(void *object)
 {
@@ -90,7 +90,7 @@ static void destroy_object(void *object)
 }
 
 /* Store four recovered motion words from registers and the fifth stack value. */
-void func_020264b0(GridMotion *self, s32 position, s32 scale,
+void GridMotion_Init(GridMotion *self, s32 position, s32 scale,
                    s32 velocity, s32 damping)
 {
     self->position00 = position;
@@ -103,11 +103,11 @@ void func_020264b0(GridMotion *self, s32 position, s32 scale,
  * Initialize an empty grid: runtimeId=-1, counters zero, motion
  * (0,0,0,0x1800), flags/sound count zero, and no sprite owner. Return self.
  */
-DualScreenUiGridState *func_020264c4(DualScreenUiGridState *self)
+DualScreenUiGridState *DualScreenUiGridState_Init(DualScreenUiGridState *self)
 {
     self->runtimeId74 = -1;
     self->animationCounter76 = 0;
-    func_020264b0(&self->motion7c, 0, 0, 0, 0x1800);
+    GridMotion_Init(&self->motion7c, 0, 0, 0, 0x1800);
     self->flags8c = 0;
     self->soundCount8d = 0;
     self->spriteOwner00 = 0;
@@ -119,7 +119,7 @@ DualScreenUiGridState *func_020264c4(DualScreenUiGridState *self)
  * its sprites, destroy all four descriptors, release the debug-font owner, and
  * null it. Finally restore runtimeId74 to -1.
  */
-void func_02026514(DualScreenUiGridState *self)
+void DualScreenUiGridState_Destroy(DualScreenUiGridState *self)
 {
     s32 index;
     DualScreenUiPresentationBase_SetEmbeddedEnabled(self, 0);
@@ -149,7 +149,7 @@ void func_02026514(DualScreenUiGridState *self)
  * spring scale 0x6000 plus runtime activation checks or assign clamped groups
  * of three initial frames in alternate mode.
  */
-void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
+void DualScreenUiGridState_Rebuild(DualScreenUiGridState *self, s32 alternateMode)
 {
     u8 *runtime = *(u8 **)(gGamePhaseRuntime + 0x2ea8);
     s32 index;
@@ -223,8 +223,8 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
         self->motion7c.velocity04 = 0x6000;
         self->motion7c.position00 = 0;
         self->motion7c.acceleration08 = 0;
-        func_02026e44(self);
-        if (func_020269a4(runtime)) {
+        DualScreenUiGridState_RefreshTransitionFrames(self);
+        if (DualScreenUiGridState_IsRuntimeEligible(runtime)) {
             self->flags8c &= (u8)~1;
             *(u32 *)(self->spriteOwner00 + 0x20) = 1;
         }
@@ -241,7 +241,7 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
 }
 
 /* Set velocity04, clear position00/acceleration08, and preserve smoothing0c. */
-void func_02026990(GridMotion *self, s32 scale)
+void GridMotion_ResetWithVelocity(GridMotion *self, s32 scale)
 {
     self->velocity04 = scale;
     self->position00 = 0;
@@ -252,7 +252,7 @@ void func_02026990(GridMotion *self, s32 scale)
  * Return one only when runtime subobject 0x29c flag bit 5 and runtime flag
  * 0x268 bit 4 are both set and Type7Actor_GetStateCode(runtime) does not return 5.
  */
-s32 func_020269a4(u8 *runtime)
+s32 DualScreenUiGridState_IsRuntimeEligible(u8 *runtime)
 {
     u8 *record = *(u8 **)(runtime + 0x29c);
     if ((*(u16 *)(record + 0x38) & 0x20) == 0) return 0;
@@ -275,7 +275,7 @@ static s32 rounded_fx_mul(s32 first, s32 second)
  * bit 1, and update the sprite owner. Invalid state hides the owner through
  * GraphicsSpriteGroup_ReleaseIndexedEntries before the final update.
  */
-void func_020269f8(DualScreenUiGridState *self)
+void DualScreenUiGridState_Update(DualScreenUiGridState *self)
 {
     u8 *runtime;
     s32 active;
@@ -285,16 +285,16 @@ void func_020269f8(DualScreenUiGridState *self)
     runtime = *(u8 **)(gGamePhaseRuntime + 0x2ea8);
     active = self->spriteOwner00 && *(u32 *)(self->spriteOwner00 + 0x20);
     if (active) {
-        if (!runtime) func_02026514(self);
+        if (!runtime) DualScreenUiGridState_Destroy(self);
         else if (self->runtimeId74 != *(u16 *)(runtime + 0x4e)) {
-            if (func_020269a4(runtime)) func_02026588(self, 1);
-            else func_02026514(self);
+            if (DualScreenUiGridState_IsRuntimeEligible(runtime)) DualScreenUiGridState_Rebuild(self, 1);
+            else DualScreenUiGridState_Destroy(self);
         }
-    } else if (runtime && func_020269a4(runtime)) {
-        func_02026588(self, 1);
+    } else if (runtime && DualScreenUiGridState_IsRuntimeEligible(runtime)) {
+        DualScreenUiGridState_Rebuild(self, 1);
     }
     if (!self->spriteOwner00) return;
-    if (!runtime || (self->flags8c & 1) || !func_020269a4(runtime)) {
+    if (!runtime || (self->flags8c & 1) || !DualScreenUiGridState_IsRuntimeEligible(runtime)) {
         GraphicsSpriteGroup_ReleaseIndexedEntries(self->spriteOwner00);
         GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwner00);
         return;
@@ -306,12 +306,12 @@ void func_020269f8(DualScreenUiGridState *self)
     else if (self->target78 != desiredTarget) {
         self->targetDelay7a = 1;
         self->target78 += self->target78 > desiredTarget ? -1 : 1;
-        func_02026e44(self);
+        DualScreenUiGridState_RefreshTransitionFrames(self);
     }
-    func_02026ed4(self);
+    DualScreenUiGridState_FinalizeCompletedAnimations(self);
     if (((RuntimePredicate)(*(void ***)runtime)[42])(runtime) &&
         !(self->flags8c & 2))
-        func_02026990(&self->motion7c, 0x6000);
+        GridMotion_ResetWithVelocity(&self->motion7c, 0x6000);
 
     if (*(s32 *)(runtime + 0x1fc) <= 300) {
         *(u16 *)(self->progressSprite70 + 0x24) &= (u16)~4;
@@ -366,7 +366,7 @@ void func_020269f8(DualScreenUiGridState *self)
 }
 
 /* Return field 0xd0 bit 7 from the supplied larger UI-derived object. */
-s32 func_02026e38(const u8 *self)
+s32 DualScreenUiDerivedPresentation_TestFlagBit7(const u8 *self)
 {
     return *(const u32 *)(self + 0xd0) & 0x80;
 }
@@ -377,7 +377,7 @@ s32 func_02026e38(const u8 *self)
  * index state+4, otherwise the steady frame at index state. Update sprites only
  * when their current byte-0x38 frame differs, and clear completion bit 0.
  */
-void func_02026e44(DualScreenUiGridState *self)
+void DualScreenUiGridState_RefreshTransitionFrames(DualScreenUiGridState *self)
 {
     s32 remaining = self->target78;
     s32 index;
@@ -400,7 +400,7 @@ void func_02026e44(DualScreenUiGridState *self)
  * For each grid sprite whose completion bit 0 is set, select the steady frame
  * indexed by cachedFrames90 and clear the completion bit.
  */
-void func_02026ed4(DualScreenUiGridState *self)
+void DualScreenUiGridState_FinalizeCompletedAnimations(DualScreenUiGridState *self)
 {
     s32 index;
     for (index = 0; index < 20; index++) {

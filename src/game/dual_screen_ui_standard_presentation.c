@@ -32,7 +32,7 @@ extern void DualScreenUiPresentationBase_LoadSubBg1Resources(void *);
 extern void DualScreenUiPresentationBase_LoadSubBg2Resources(void *);
 extern void DualScreenUiPresentationBase_CreatePrimarySprite(void *);
 extern void DualScreenUiPresentationBase_CreateSecondarySprite(void *);
-extern void func_020269f8(void *embedded);
+extern void DualScreenUiGridState_Update(void *embedded);
 extern void DebugSpriteText_Init(void *helper);
 extern void DebugSpriteText_Destroy(void *helper);
 extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
@@ -45,17 +45,17 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteOwner);
 }
 #endif
 
-void func_02026044(DualScreenUiStandardPresentation *self,
+void DualScreenUiStandardPresentation_SetEnabled(DualScreenUiStandardPresentation *self,
                    s32 enabled, u32 mask);
-void func_02026174(DualScreenUiStandardPresentation *self, void *source);
+void DualScreenUiStandardPresentation_BindSource(DualScreenUiStandardPresentation *self, void *source);
 
 /*
  * Construct the shared base, install this vtable, initialize helper c8, set
  * drawEnabledd0 and base flag bit 0, derive base flag bit 1 from
  * GamePhaseMetadata_IsAreaBehaviorPermitted(source), create both fixed sprites, configure both extended
- * palettes, bind source through func_02026174, enable mask 0x1f, and return self.
+ * palettes, bind source through DualScreenUiStandardPresentation_BindSource, enable mask 0x1f, and return self.
  */
-DualScreenUiStandardPresentation *func_02025f20(
+DualScreenUiStandardPresentation *DualScreenUiStandardPresentation_Init(
     DualScreenUiStandardPresentation *self, void *source)
 {
     DualScreenUiPresentationBase_Init(self, source);
@@ -68,13 +68,13 @@ DualScreenUiStandardPresentation *func_02025f20(
     DualScreenUiPresentationBase_CreateSecondarySprite(self);
     DualScreenUiPresentationBase_LoadSubBg1Resources(self);
     DualScreenUiPresentationBase_LoadSubBg2Resources(self);
-    func_02026174(self, self->sourceac);
-    func_02026044(self, 1, 0x1f);
+    DualScreenUiStandardPresentation_BindSource(self, self->sourceac);
+    DualScreenUiStandardPresentation_SetEnabled(self, 1, 0x1f);
     return self;
 }
 
 /* Destroy helper and shared base without freeing storage, then return self. */
-DualScreenUiStandardPresentation *func_02025fc4(
+DualScreenUiStandardPresentation *DualScreenUiStandardPresentation_Destroy(
     DualScreenUiStandardPresentation *self)
 {
     DebugSpriteText_Destroy(self->helperc8);
@@ -82,11 +82,11 @@ DualScreenUiStandardPresentation *func_02025fc4(
     return self;
 }
 
-/* Perform func_02025fc4 teardown, free self, and return its old address. */
-DualScreenUiStandardPresentation *func_02025fe4(
+/* Perform DualScreenUiStandardPresentation_Destroy teardown, free self, and return its old address. */
+DualScreenUiStandardPresentation *DualScreenUiStandardPresentation_DestroyAndFree(
     DualScreenUiStandardPresentation *self)
 {
-    func_02025fc4(self);
+    DualScreenUiStandardPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -95,12 +95,12 @@ DualScreenUiStandardPresentation *func_02025fe4(
  * Flush the debug-font owner, rebuild both palette configurations, and rebind
  * the currently retained source.  This method has no returned status.
  */
-void func_0202600c(DualScreenUiStandardPresentation *self)
+void DualScreenUiStandardPresentation_RefreshResources(DualScreenUiStandardPresentation *self)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     DualScreenUiPresentationBase_LoadSubBg1Resources(self);
     DualScreenUiPresentationBase_LoadSubBg2Resources(self);
-    func_02026174(self, self->sourceac);
+    DualScreenUiStandardPresentation_BindSource(self, self->sourceac);
 }
 
 /*
@@ -109,7 +109,7 @@ void func_0202600c(DualScreenUiStandardPresentation *self)
  * under mask bit 4, set/clear plane bit 10 in register 0x04001000.  Disabling
  * finishes by flushing the debug-font owner; enabling does not.
  */
-void func_02026044(DualScreenUiStandardPresentation *self,
+void DualScreenUiStandardPresentation_SetEnabled(DualScreenUiStandardPresentation *self,
                    s32 enabled, u32 mask)
 {
     volatile u32 *displayControl = (volatile u32 *)0x04001000;
@@ -130,11 +130,11 @@ void func_02026044(DualScreenUiStandardPresentation *self,
  * Draw helper c8 at (104,171) while drawEnabledd0 is nonzero, then update the
  * embedded state and sprite owner every call.
  */
-void func_0202613c(DualScreenUiStandardPresentation *self)
+void DualScreenUiStandardPresentation_Update(DualScreenUiStandardPresentation *self)
 {
     if (self->drawEnabledd0)
         DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
-    func_020269f8(self->embedded04);
+    DualScreenUiGridState_Update(self->embedded04);
     GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwnera8);
 }
 
@@ -143,7 +143,7 @@ void func_0202613c(DualScreenUiStandardPresentation *self)
  * source's recovered 16-bit value through GamePhaseMetadata_GetTextResourceId, and publish it to the
  * helper at offset 0xc8.
  */
-void func_02026174(DualScreenUiStandardPresentation *self, void *source)
+void DualScreenUiStandardPresentation_BindSource(DualScreenUiStandardPresentation *self, void *source)
 {
     self->sourceac = source;
     self->flagsc4 = (self->flagsc4 & ~2u) |

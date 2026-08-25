@@ -9408,141 +9408,141 @@ build build/reports/dual_screen_ui_standard_presentation_02025f20.json: objdiff 
   base_object = build/decomp/asm/game/dual_screen_ui_standard_presentation_02025f20.o
 build build/reports/dual_screen_ui_standard_presentation_02025f20.txt: match_report build/reports/dual_screen_ui_standard_presentation_02025f20.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_standard_presentation_02025f20.json
-  report_args = --section .text --function func_02025f20 --require-exact
+  report_args = --section .text --function DualScreenUiStandardPresentation_Init --require-exact
 build build/reports/dual_screen_ui_standard_presentation_02025fc4.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02025fc4.o | build/decomp/asm/game/dual_screen_ui_standard_presentation_02025fc4.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02025fc4.o
   base_object = build/decomp/asm/game/dual_screen_ui_standard_presentation_02025fc4.o
 build build/reports/dual_screen_ui_standard_presentation_02025fc4.txt: match_report build/reports/dual_screen_ui_standard_presentation_02025fc4.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_standard_presentation_02025fc4.json
-  report_args = --section .text --function func_02025fc4 --require-exact
+  report_args = --section .text --function DualScreenUiStandardPresentation_Destroy --require-exact
 build build/reports/dual_screen_ui_standard_presentation_02025fe4.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02025fe4.o | build/decomp/asm/game/dual_screen_ui_standard_presentation_02025fe4.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02025fe4.o
   base_object = build/decomp/asm/game/dual_screen_ui_standard_presentation_02025fe4.o
 build build/reports/dual_screen_ui_standard_presentation_02025fe4.txt: match_report build/reports/dual_screen_ui_standard_presentation_02025fe4.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_standard_presentation_02025fe4.json
-  report_args = --section .text --function func_02025fe4 --require-exact
+  report_args = --section .text --function DualScreenUiStandardPresentation_DestroyAndFree --require-exact
 build build/reports/dual_screen_ui_standard_presentation_0202600c.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_0202600c.o | build/decomp/asm/game/dual_screen_ui_standard_presentation_0202600c.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_0202600c.o
   base_object = build/decomp/asm/game/dual_screen_ui_standard_presentation_0202600c.o
 build build/reports/dual_screen_ui_standard_presentation_0202600c.txt: match_report build/reports/dual_screen_ui_standard_presentation_0202600c.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_standard_presentation_0202600c.json
-  report_args = --section .text --function func_0202600c --require-exact
+  report_args = --section .text --function DualScreenUiStandardPresentation_RefreshResources --require-exact
 build build/reports/dual_screen_ui_standard_presentation_02026044.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02026044.o | build/decomp/asm/game/dual_screen_ui_standard_presentation_02026044.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02026044.o
   base_object = build/decomp/asm/game/dual_screen_ui_standard_presentation_02026044.o
 build build/reports/dual_screen_ui_standard_presentation_02026044.txt: match_report build/reports/dual_screen_ui_standard_presentation_02026044.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_standard_presentation_02026044.json
-  report_args = --section .text --function func_02026044 --require-exact
+  report_args = --section .text --function DualScreenUiStandardPresentation_SetEnabled --require-exact
 build build/reports/dual_screen_ui_standard_presentation_0202613c.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_0202613c.o | build/decomp/asm/game/dual_screen_ui_standard_presentation_0202613c.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_0202613c.o
   base_object = build/decomp/asm/game/dual_screen_ui_standard_presentation_0202613c.o
 build build/reports/dual_screen_ui_standard_presentation_0202613c.txt: match_report build/reports/dual_screen_ui_standard_presentation_0202613c.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_standard_presentation_0202613c.json
-  report_args = --section .text --function func_0202613c --require-exact
+  report_args = --section .text --function DualScreenUiStandardPresentation_Update --require-exact
 build build/reports/dual_screen_ui_standard_presentation_02026174.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02026174.o | build/decomp/asm/game/dual_screen_ui_standard_presentation_02026174.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_standard_presentation_02026174.o
   base_object = build/decomp/asm/game/dual_screen_ui_standard_presentation_02026174.o
 build build/reports/dual_screen_ui_standard_presentation_02026174.txt: match_report build/reports/dual_screen_ui_standard_presentation_02026174.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_standard_presentation_02026174.json
-  report_args = --section .text --function func_02026174 --require-exact
+  report_args = --section .text --function DualScreenUiStandardPresentation_BindSource --require-exact
 build build/reports/dual_screen_ui_standard_presentation.txt: phony build/reports/dual_screen_ui_standard_presentation_02025f20.txt build/reports/dual_screen_ui_standard_presentation_02025fc4.txt build/reports/dual_screen_ui_standard_presentation_02025fe4.txt build/reports/dual_screen_ui_standard_presentation_0202600c.txt build/reports/dual_screen_ui_standard_presentation_02026044.txt build/reports/dual_screen_ui_standard_presentation_0202613c.txt build/reports/dual_screen_ui_standard_presentation_02026174.txt
 build build/reports/dual_screen_ui_indexed_icon_presentation_020261bc.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_020261bc.o | build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_020261bc.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_020261bc.o
   base_object = build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_020261bc.o
 build build/reports/dual_screen_ui_indexed_icon_presentation_020261bc.txt: match_report build/reports/dual_screen_ui_indexed_icon_presentation_020261bc.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_indexed_icon_presentation_020261bc.json
-  report_args = --section .text --function func_020261bc --require-exact
+  report_args = --section .text --function DualScreenUiIndexedIconPresentation_Init --require-exact
 build build/reports/dual_screen_ui_indexed_icon_presentation_02026308.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_02026308.o | build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_02026308.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_02026308.o
   base_object = build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_02026308.o
 build build/reports/dual_screen_ui_indexed_icon_presentation_02026308.txt: match_report build/reports/dual_screen_ui_indexed_icon_presentation_02026308.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_indexed_icon_presentation_02026308.json
-  report_args = --section .text --function func_02026308 --require-exact
+  report_args = --section .text --function DualScreenUiIndexedIconPresentation_Destroy --require-exact
 build build/reports/dual_screen_ui_indexed_icon_presentation_02026350.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_02026350.o | build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_02026350.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_02026350.o
   base_object = build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_02026350.o
 build build/reports/dual_screen_ui_indexed_icon_presentation_02026350.txt: match_report build/reports/dual_screen_ui_indexed_icon_presentation_02026350.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_indexed_icon_presentation_02026350.json
-  report_args = --section .text --function func_02026350 --require-exact
+  report_args = --section .text --function DualScreenUiIndexedIconPresentation_DestroyAndFree --require-exact
 build build/reports/dual_screen_ui_indexed_icon_presentation_020263a0.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_020263a0.o | build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_020263a0.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_020263a0.o
   base_object = build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_020263a0.o
 build build/reports/dual_screen_ui_indexed_icon_presentation_020263a0.txt: match_report build/reports/dual_screen_ui_indexed_icon_presentation_020263a0.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_indexed_icon_presentation_020263a0.json
-  report_args = --section .text --function func_020263a0 --require-exact
+  report_args = --section .text --function DualScreenUiIndexedIconPresentation_RefreshResources --require-exact
 build build/reports/dual_screen_ui_indexed_icon_presentation_020263d4.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_020263d4.o | build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_020263d4.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_020263d4.o
   base_object = build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_020263d4.o
 build build/reports/dual_screen_ui_indexed_icon_presentation_020263d4.txt: match_report build/reports/dual_screen_ui_indexed_icon_presentation_020263d4.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_indexed_icon_presentation_020263d4.json
-  report_args = --section .text --function func_020263d4 --require-exact
+  report_args = --section .text --function DualScreenUiIndexedIconPresentation_Update --require-exact
 build build/reports/dual_screen_ui_indexed_icon_presentation_0202640c.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_0202640c.o | build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_0202640c.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_indexed_icon_presentation_0202640c.o
   base_object = build/decomp/asm/game/dual_screen_ui_indexed_icon_presentation_0202640c.o
 build build/reports/dual_screen_ui_indexed_icon_presentation_0202640c.txt: match_report build/reports/dual_screen_ui_indexed_icon_presentation_0202640c.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_indexed_icon_presentation_0202640c.json
-  report_args = --section .text --function func_0202640c --require-exact
+  report_args = --section .text --function DualScreenUiIndexedIconPresentation_SetEnabled --require-exact
 build build/reports/dual_screen_ui_indexed_icon_presentation.txt: phony build/reports/dual_screen_ui_indexed_icon_presentation_020261bc.txt build/reports/dual_screen_ui_indexed_icon_presentation_02026308.txt build/reports/dual_screen_ui_indexed_icon_presentation_02026350.txt build/reports/dual_screen_ui_indexed_icon_presentation_020263a0.txt build/reports/dual_screen_ui_indexed_icon_presentation_020263d4.txt build/reports/dual_screen_ui_indexed_icon_presentation_0202640c.txt
 build build/reports/dual_screen_ui_grid_state_020264b0.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020264b0.o | build/decomp/asm/game/dual_screen_ui_grid_state_020264b0.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020264b0.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_020264b0.o
 build build/reports/dual_screen_ui_grid_state_020264b0.txt: match_report build/reports/dual_screen_ui_grid_state_020264b0.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_020264b0.json
-  report_args = --section .text --function func_020264b0 --require-exact
+  report_args = --section .text --function GridMotion_Init --require-exact
 build build/reports/dual_screen_ui_grid_state_020264c4.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020264c4.o | build/decomp/asm/game/dual_screen_ui_grid_state_020264c4.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020264c4.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_020264c4.o
 build build/reports/dual_screen_ui_grid_state_020264c4.txt: match_report build/reports/dual_screen_ui_grid_state_020264c4.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_020264c4.json
-  report_args = --section .text --function func_020264c4 --require-exact
+  report_args = --section .text --function DualScreenUiGridState_Init --require-exact
 build build/reports/dual_screen_ui_grid_state_02026514.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026514.o | build/decomp/asm/game/dual_screen_ui_grid_state_02026514.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026514.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_02026514.o
 build build/reports/dual_screen_ui_grid_state_02026514.txt: match_report build/reports/dual_screen_ui_grid_state_02026514.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_02026514.json
-  report_args = --section .text --function func_02026514 --require-exact
+  report_args = --section .text --function DualScreenUiGridState_Destroy --require-exact
 build build/reports/dual_screen_ui_grid_state_02026588.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026588.o | build/decomp/asm/game/dual_screen_ui_grid_state_02026588.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026588.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_02026588.o
 build build/reports/dual_screen_ui_grid_state_02026588.txt: match_report build/reports/dual_screen_ui_grid_state_02026588.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_02026588.json
-  report_args = --section .text --function func_02026588 --require-exact
+  report_args = --section .text --function DualScreenUiGridState_Rebuild --require-exact
 build build/reports/dual_screen_ui_grid_state_02026990.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026990.o | build/decomp/asm/game/dual_screen_ui_grid_state_02026990.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026990.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_02026990.o
 build build/reports/dual_screen_ui_grid_state_02026990.txt: match_report build/reports/dual_screen_ui_grid_state_02026990.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_02026990.json
-  report_args = --section .text --function func_02026990 --require-exact
+  report_args = --section .text --function GridMotion_ResetWithVelocity --require-exact
 build build/reports/dual_screen_ui_grid_state_020269a4.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020269a4.o | build/decomp/asm/game/dual_screen_ui_grid_state_020269a4.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020269a4.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_020269a4.o
 build build/reports/dual_screen_ui_grid_state_020269a4.txt: match_report build/reports/dual_screen_ui_grid_state_020269a4.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_020269a4.json
-  report_args = --section .text --function func_020269a4 --require-exact
+  report_args = --section .text --function DualScreenUiGridState_IsRuntimeEligible --require-exact
 build build/reports/dual_screen_ui_grid_state_020269f8.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020269f8.o | build/decomp/asm/game/dual_screen_ui_grid_state_020269f8.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020269f8.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_020269f8.o
 build build/reports/dual_screen_ui_grid_state_020269f8.txt: match_report build/reports/dual_screen_ui_grid_state_020269f8.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_020269f8.json
-  report_args = --section .text --function func_020269f8 --require-exact
+  report_args = --section .text --function DualScreenUiGridState_Update --require-exact
 build build/reports/dual_screen_ui_grid_state_02026e38.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026e38.o | build/decomp/asm/game/dual_screen_ui_grid_state_02026e38.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026e38.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_02026e38.o
 build build/reports/dual_screen_ui_grid_state_02026e38.txt: match_report build/reports/dual_screen_ui_grid_state_02026e38.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_02026e38.json
-  report_args = --section .text --function func_02026e38 --require-exact
+  report_args = --section .text --function DualScreenUiDerivedPresentation_TestFlagBit7 --require-exact
 build build/reports/dual_screen_ui_grid_state_02026e44.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026e44.o | build/decomp/asm/game/dual_screen_ui_grid_state_02026e44.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026e44.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_02026e44.o
 build build/reports/dual_screen_ui_grid_state_02026e44.txt: match_report build/reports/dual_screen_ui_grid_state_02026e44.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_02026e44.json
-  report_args = --section .text --function func_02026e44 --require-exact
+  report_args = --section .text --function DualScreenUiGridState_RefreshTransitionFrames --require-exact
 build build/reports/dual_screen_ui_grid_state_02026ed4.json: objdiff build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026ed4.o | build/decomp/asm/game/dual_screen_ui_grid_state_02026ed4.o
   target_object = build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026ed4.o
   base_object = build/decomp/asm/game/dual_screen_ui_grid_state_02026ed4.o
 build build/reports/dual_screen_ui_grid_state_02026ed4.txt: match_report build/reports/dual_screen_ui_grid_state_02026ed4.json | tools/report_objdiff.py
   report_json = build/reports/dual_screen_ui_grid_state_02026ed4.json
-  report_args = --section .text --function func_02026ed4 --require-exact
+  report_args = --section .text --function DualScreenUiGridState_FinalizeCompletedAnimations --require-exact
 build build/reports/dual_screen_ui_grid_state.txt: phony build/reports/dual_screen_ui_grid_state_020264b0.txt build/reports/dual_screen_ui_grid_state_020264c4.txt build/reports/dual_screen_ui_grid_state_02026514.txt build/reports/dual_screen_ui_grid_state_02026588.txt build/reports/dual_screen_ui_grid_state_02026990.txt build/reports/dual_screen_ui_grid_state_020269a4.txt build/reports/dual_screen_ui_grid_state_020269f8.txt build/reports/dual_screen_ui_grid_state_02026e38.txt build/reports/dual_screen_ui_grid_state_02026e44.txt build/reports/dual_screen_ui_grid_state_02026ed4.txt
 build build/reports/four_stage_command_presentation_02026f38.json: objdiff build/decomp/delinks/asm/game/four_stage_command_presentation_02026f38.o | build/decomp/asm/game/four_stage_command_presentation_02026f38.o
   target_object = build/decomp/delinks/asm/game/four_stage_command_presentation_02026f38.o

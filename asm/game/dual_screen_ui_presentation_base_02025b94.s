@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020d6b3c
-.extern func_02026514
+.extern DualScreenUiGridState_Destroy
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
@@ -21,7 +21,7 @@ DualScreenUiPresentationBase_DestroyAndFree: ; 0x02025b94
     add r0, r4, #0xb8
     bl AnimationResourceState_Destroy
     add r0, r4, #0x4
-    bl func_02026514
+    bl DualScreenUiGridState_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

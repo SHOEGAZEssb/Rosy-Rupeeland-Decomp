@@ -4,9 +4,9 @@
 .extern GamePhaseMetadata_GetTextResourceId
 .extern GamePhaseMetadata_IsAreaBehaviorPermitted
 
-    .global func_02026174
-    .type func_02026174, @function
-func_02026174: ; 0x02026174
+    .global DualScreenUiStandardPresentation_BindSource
+    .type DualScreenUiStandardPresentation_BindSource, @function
+DualScreenUiStandardPresentation_BindSource: ; 0x02026174
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -25,4 +25,4 @@ func_02026174: ; 0x02026174
     mov r1, r1, lsr #0x10
     bl DebugSpriteText_SetTextResource
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02026174, . - func_02026174
+    .size DualScreenUiStandardPresentation_BindSource, . - DualScreenUiStandardPresentation_BindSource

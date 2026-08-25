@@ -7,7 +7,7 @@
 .extern RuntimePresentationManager_DestroyAllEffects
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern DualScreenUiPresentationBase_GetEmbeddedState
-.extern func_02026514
+.extern DualScreenUiGridState_Destroy
 .extern ActorCollection_GetSpriteGroup
 .extern ActorDerivedType1_UpdateOrientationFlag
 .extern ActorDerivedType1_TeardownActiveRecord
@@ -89,7 +89,7 @@ L_02019b84:
     add r0, r0, #0x3000
     ldr r0, [r0, #0xe8]
     bl DualScreenUiPresentationBase_GetEmbeddedState
-    bl func_02026514
+    bl DualScreenUiGridState_Destroy
     b L_02019c54
 L_02019bb8:
     mov r6, #0x1

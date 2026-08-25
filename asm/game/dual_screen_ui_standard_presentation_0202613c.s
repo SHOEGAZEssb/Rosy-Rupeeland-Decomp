@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/dual_screen_ui_standard_presentation.c.
 .text
 .extern DebugSpriteText_DrawCentered
-.extern func_020269f8
+.extern DualScreenUiGridState_Update
 .extern GraphicsSpriteGroup_AdvanceAnimations
 
-    .global func_0202613c
-    .type func_0202613c, @function
-func_0202613c: ; 0x0202613c
+    .global DualScreenUiStandardPresentation_Update
+    .type DualScreenUiStandardPresentation_Update, @function
+DualScreenUiStandardPresentation_Update: ; 0x0202613c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xd0]
@@ -18,8 +18,8 @@ func_0202613c: ; 0x0202613c
     bl DebugSpriteText_DrawCentered
 .L_02026160:
     add r0, r4, #0x4
-    bl func_020269f8
+    bl DualScreenUiGridState_Update
     ldr r0, [r4, #0xa8]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
-    .size func_0202613c, . - func_0202613c
+    .size DualScreenUiStandardPresentation_Update, . - DualScreenUiStandardPresentation_Update

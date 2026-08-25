@@ -32,9 +32,9 @@ extern void *data_020d6b3c;
 extern void *gDebugFont;
 extern void *data_020f4e18;
 extern u8 gSubBgExtendedPaletteBuffer[];
-extern void func_020264c4(void *embedded);
-extern void func_02026514(void *embedded);
-extern void func_020269f8(void *embedded);
+extern void DualScreenUiGridState_Init(void *embedded);
+extern void DualScreenUiGridState_Destroy(void *embedded);
+extern void DualScreenUiGridState_Update(void *embedded);
 extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void AnimationResourceState_Destroy(void *resource);
 extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
@@ -62,7 +62,7 @@ static DualScreenUiPresentationBase *initialize_base(
     DualScreenUiPresentationBase *self, void *source)
 {
     self->vtable00 = (void **)data_020d6b3c;
-    func_020264c4(self->embedded04);
+    DualScreenUiGridState_Init(self->embedded04);
     self->sourceac = source;
     AnimationResourceState_InitEmbedded(self->resourceb8);
     self->flagsc4 &= ~3u;
@@ -100,7 +100,7 @@ static DualScreenUiPresentationBase *teardown_base(
     self->vtable00 = (void **)data_020d6b3c;
     GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteOwnera8);
     AnimationResourceState_Destroy(self->resourceb8);
-    func_02026514(self->embedded04);
+    DualScreenUiGridState_Destroy(self->embedded04);
     return self;
 }
 
@@ -153,7 +153,7 @@ void DualScreenUiPresentationBase_ApplyVisibilityMask(DualScreenUiPresentationBa
     GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwnera8);
     if (mask & 1) {
         DualScreenUiPresentationBase_SetEmbeddedEnabled(self->embedded04, value);
-        func_020269f8(self->embedded04);
+        DualScreenUiGridState_Update(self->embedded04);
     }
 }
 

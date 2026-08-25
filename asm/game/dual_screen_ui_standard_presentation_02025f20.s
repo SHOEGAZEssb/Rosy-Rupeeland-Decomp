@@ -7,12 +7,12 @@
 .extern DualScreenUiPresentationBase_LoadSubBg2Resources
 .extern DualScreenUiPresentationBase_CreatePrimarySprite
 .extern DualScreenUiPresentationBase_CreateSecondarySprite
-.extern func_02026174
+.extern DualScreenUiStandardPresentation_BindSource
 .extern GamePhaseMetadata_IsAreaBehaviorPermitted
 
-    .global func_02025f20
-    .type func_02025f20, @function
-func_02025f20: ; 0x02025f20
+    .global DualScreenUiStandardPresentation_Init
+    .type DualScreenUiStandardPresentation_Init, @function
+DualScreenUiStandardPresentation_Init: ; 0x02025f20
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
@@ -44,7 +44,7 @@ func_02025f20: ; 0x02025f20
     bl DualScreenUiPresentationBase_LoadSubBg2Resources
     mov r0, r4
     ldr r1, [r4, #0xac]
-    bl func_02026174
+    bl DualScreenUiStandardPresentation_BindSource
     mov r0, r4
     mov r1, #0x1
     mov r2, #0x1f
@@ -54,4 +54,4 @@ func_02025f20: ; 0x02025f20
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_02025fc0: .word data_020d6b04
-    .size func_02025f20, . - func_02025f20
+    .size DualScreenUiStandardPresentation_Init, . - DualScreenUiStandardPresentation_Init

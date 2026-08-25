@@ -3,8 +3,8 @@
 .text
 .extern gGamePhaseDualScreenUiPresentationAllocationTag
 .extern DualScreenUiPresentationBase_InitAlternateEntry
-.extern func_02025f20
-.extern func_020261bc
+.extern DualScreenUiStandardPresentation_Init
+.extern DualScreenUiIndexedIconPresentation_Init
 .extern gHeapContext
 .extern Heap_Alloc
 .extern OS_Halt
@@ -49,7 +49,7 @@ L_02008d4c:
     cmp r0, #0x0
     beq L_02008d84
     mov r1, r4
-    bl func_02025f20
+    bl DualScreenUiStandardPresentation_Init
 L_02008d84:
     add r1, r5, #0x3000
     str r0, [r1, #0xe8]
@@ -65,7 +65,7 @@ L_02008d90:
     cmp r0, #0x0
     beq L_02008dbc
     mov r1, r4
-    bl func_020261bc
+    bl DualScreenUiIndexedIconPresentation_Init
 L_02008dbc:
     add r1, r5, #0x3000
     str r0, [r1, #0xe8]

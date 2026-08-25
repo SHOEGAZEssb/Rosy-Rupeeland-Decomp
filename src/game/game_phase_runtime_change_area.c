@@ -31,7 +31,7 @@ extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, 
 extern void GamePhaseAreaScene_SetOverlayObject(void *actor, void *object);
 extern void GamePhaseAreaScene_SetEnabled(void *actor, s32 value);
 extern void func_ov056_0220f054(void *object, const void *value);
-extern void func_02026174(void *object, void *area);
+extern void DualScreenUiStandardPresentation_BindSource(void *object, void *area);
 extern void *GamePhaseRuntime_GetActorCollection(GamePhaseRuntime *self, s32 index);
 #ifdef __cplusplus
 }
@@ -121,7 +121,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
         GamePhaseRuntime_InitScaledAreaCoordinates(optionalValue, self, area);
         func_ov056_0220f054(*(void **)(b + 0x30ec), optionalValue);
     }
-    func_02026174(*(void **)(b + 0x30e8), area);
+    DualScreenUiStandardPresentation_BindSource(*(void **)(b + 0x30e8), area);
     *(void **)(b + 0x30f0) = *(void **)(b + 0x2ea4);
 
     object = GamePhaseRuntime_GetActorCollection(self, 1);

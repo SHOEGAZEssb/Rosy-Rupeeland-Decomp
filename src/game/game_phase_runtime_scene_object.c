@@ -8,8 +8,8 @@ extern u8 gGamePhaseDualScreenUiPresentationAllocationTag[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02025f20(void *object, void *area);
-extern void *func_020261bc(void *object, void *area);
+extern void *DualScreenUiStandardPresentation_Init(void *object, void *area);
+extern void *DualScreenUiIndexedIconPresentation_Init(void *object, void *area);
 extern void *DualScreenUiPresentationBase_InitAlternateEntry(void *object, void *area);
 extern void OS_Halt(void);
 #ifdef __cplusplus
@@ -40,7 +40,7 @@ void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s
             object = Heap_Alloc(0xd4, (const char *)gGamePhaseDualScreenUiPresentationAllocationTag, 4,
                                 &gHeapContext);
             if (object != 0)
-                object = func_02025f20(object, area);
+                object = DualScreenUiStandardPresentation_Init(object, area);
             *(void **)(b + 0x30e8) = object;
             return;
         }
@@ -48,7 +48,7 @@ void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s
             object = Heap_Alloc(0xd8, (const char *)gGamePhaseDualScreenUiPresentationAllocationTag, 4,
                                 &gHeapContext);
             if (object != 0)
-                object = func_020261bc(object, area);
+                object = DualScreenUiIndexedIconPresentation_Init(object, area);
             *(void **)(b + 0x30e8) = object;
             return;
         }

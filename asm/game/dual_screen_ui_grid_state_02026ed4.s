@@ -3,9 +3,9 @@
 .extern data_020c3704
 .extern GraphicsSpriteState_SetAnimationIndex
 
-    .global func_02026ed4
-    .type func_02026ed4, @function
-func_02026ed4: ; 0x02026ed4
+    .global DualScreenUiGridState_FinalizeCompletedAnimations
+    .type DualScreenUiGridState_FinalizeCompletedAnimations, @function
+DualScreenUiGridState_FinalizeCompletedAnimations: ; 0x02026ed4
     stmdb sp!, {r4, r5, r6, lr}
     ldr r4, .L_02026f34
     mov r6, r0
@@ -33,4 +33,4 @@ func_02026ed4: ; 0x02026ed4
     blt .L_02026ee4
     ldmia sp!, {r4, r5, r6, pc}
 .L_02026f34: .word data_020c3704
-    .size func_02026ed4, . - func_02026ed4
+    .size DualScreenUiGridState_FinalizeCompletedAnimations, . - DualScreenUiGridState_FinalizeCompletedAnimations

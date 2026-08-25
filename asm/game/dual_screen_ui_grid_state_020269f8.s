@@ -5,12 +5,12 @@
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeCollection_GetBusyState
-.extern func_02026514
-.extern func_02026588
-.extern func_02026990
-.extern func_020269a4
-.extern func_02026e44
-.extern func_02026ed4
+.extern DualScreenUiGridState_Destroy
+.extern DualScreenUiGridState_Rebuild
+.extern GridMotion_ResetWithVelocity
+.extern DualScreenUiGridState_IsRuntimeEligible
+.extern DualScreenUiGridState_RefreshTransitionFrames
+.extern DualScreenUiGridState_FinalizeCompletedAnimations
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
@@ -18,9 +18,9 @@
 .extern func_020befec
 .extern gSoundContext
 
-    .global func_020269f8
-    .type func_020269f8, @function
-func_020269f8: ; 0x020269f8
+    .global DualScreenUiGridState_Update
+    .type DualScreenUiGridState_Update, @function
+DualScreenUiGridState_Update: ; 0x020269f8
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r6, r0
     ldrb r0, [r6, #0x8c]
@@ -46,7 +46,7 @@ func_020269f8: ; 0x020269f8
     cmp r5, #0x0
     bne .L_02026a5c
     mov r0, r6
-    bl func_02026514
+    bl DualScreenUiGridState_Destroy
     b .L_02026ab8
 .L_02026a5c:
     ldrsh r1, [r6, #0x74]
@@ -54,26 +54,26 @@ func_020269f8: ; 0x020269f8
     cmp r1, r0
     beq .L_02026ab8
     mov r0, r5
-    bl func_020269a4
+    bl DualScreenUiGridState_IsRuntimeEligible
     cmp r0, #0x0
     mov r0, r6
     beq .L_02026a8c
     mov r1, #0x1
-    bl func_02026588
+    bl DualScreenUiGridState_Rebuild
     b .L_02026ab8
 .L_02026a8c:
-    bl func_02026514
+    bl DualScreenUiGridState_Destroy
     b .L_02026ab8
 .L_02026a94:
     cmp r5, #0x0
     beq .L_02026ab8
     mov r0, r5
-    bl func_020269a4
+    bl DualScreenUiGridState_IsRuntimeEligible
     cmp r0, #0x0
     beq .L_02026ab8
     mov r0, r6
     mov r1, #0x1
-    bl func_02026588
+    bl DualScreenUiGridState_Rebuild
 .L_02026ab8:
     ldr r0, [r6, #0x0]
     cmp r0, #0x0
@@ -84,7 +84,7 @@ func_020269f8: ; 0x020269f8
     tst r0, #0x1
     bne .L_02026e14
     mov r0, r5
-    bl func_020269a4
+    bl DualScreenUiGridState_IsRuntimeEligible
     cmp r0, #0x0
     beq .L_02026e14
     ldr r0, [r6, #0x0]
@@ -112,10 +112,10 @@ func_020269f8: ; 0x020269f8
     mov r0, r6
     add r1, r1, r2
     strh r1, [r6, #0x78]
-    bl func_02026e44
+    bl DualScreenUiGridState_RefreshTransitionFrames
 .L_02026b50:
     mov r0, r6
-    bl func_02026ed4
+    bl DualScreenUiGridState_FinalizeCompletedAnimations
     mov r0, r5
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xa8]
@@ -127,7 +127,7 @@ func_020269f8: ; 0x020269f8
     bne .L_02026b88
     add r0, r6, #0x7c
     mov r1, #0x6000
-    bl func_02026990
+    bl GridMotion_ResetWithVelocity
 .L_02026b88:
     ldr r1, [r5, #0x1fc]
     mov r0, #0x0
@@ -308,4 +308,4 @@ func_020269f8: ; 0x020269f8
 .L_02026e2c: .word gActorRuntimeCollection
 .L_02026e30: .word gSoundContext
 .L_02026e34: .word 0xfffffccd
-    .size func_020269f8, . - func_020269f8
+    .size DualScreenUiGridState_Update, . - DualScreenUiGridState_Update

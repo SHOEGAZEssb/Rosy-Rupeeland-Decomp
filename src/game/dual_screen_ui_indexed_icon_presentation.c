@@ -42,7 +42,7 @@ extern void DualScreenUiPresentationBase_ApplyVisibilityMask(void *, s32, u32);
 extern void DualScreenUiPresentationBase_LoadSubBg1Resources(void *);
 extern void DualScreenUiPresentationBase_CreatePrimarySprite(void *);
 extern void DualScreenUiPresentationBase_CreateSecondarySprite(void *);
-extern void func_020269f8(void *embedded);
+extern void DualScreenUiGridState_Update(void *embedded);
 extern void DebugSpriteText_Init(void *helper);
 extern void DebugSpriteText_Destroy(void *helper);
 extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
@@ -56,7 +56,7 @@ extern void AnimationBinding_Destroy(void *wrapper);
 }
 #endif
 
-void func_0202640c(DualScreenUiIndexedIconPresentation *self, s32 enabled);
+void DualScreenUiIndexedIconPresentation_SetEnabled(DualScreenUiIndexedIconPresentation *self, s32 enabled);
 
 /*
  * Construct the shared base, install this vtable, initialize helper c8, clear
@@ -68,7 +68,7 @@ void func_0202640c(DualScreenUiIndexedIconPresentation *self, s32 enabled);
  * sprite at (48,16), byte 0x3a=0, halfword 0x28=1000, enable the subclass, and
  * return self.
  */
-DualScreenUiIndexedIconPresentation *func_020261bc(
+DualScreenUiIndexedIconPresentation *DualScreenUiIndexedIconPresentation_Init(
     DualScreenUiIndexedIconPresentation *self, u8 *source)
 {
     s32 offset;
@@ -103,12 +103,12 @@ DualScreenUiIndexedIconPresentation *func_020261bc(
     *(u16 *)(self->iconWrapperd0->sprite00 + 0x2e) = 16;
     self->iconWrapperd0->sprite00[0x3a] = 0;
     *(u16 *)(self->iconWrapperd0->sprite00 + 0x28) = 1000;
-    func_0202640c(self, 1);
+    DualScreenUiIndexedIconPresentation_SetEnabled(self, 1);
     return self;
 }
 
 /* Destroy/free the icon wrapper, helper, and shared base; return self. */
-DualScreenUiIndexedIconPresentation *func_02026308(
+DualScreenUiIndexedIconPresentation *DualScreenUiIndexedIconPresentation_Destroy(
     DualScreenUiIndexedIconPresentation *self)
 {
     self->vtable00 = (void **)data_020d6b20;
@@ -121,11 +121,11 @@ DualScreenUiIndexedIconPresentation *func_02026308(
     return self;
 }
 
-/* Perform func_02026308 teardown, free self, and return its old address. */
-DualScreenUiIndexedIconPresentation *func_02026350(
+/* Perform DualScreenUiIndexedIconPresentation_Destroy teardown, free self, and return its old address. */
+DualScreenUiIndexedIconPresentation *DualScreenUiIndexedIconPresentation_DestroyAndFree(
     DualScreenUiIndexedIconPresentation *self)
 {
-    func_02026308(self);
+    DualScreenUiIndexedIconPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -134,7 +134,7 @@ DualScreenUiIndexedIconPresentation *func_02026350(
  * Flush the debug-font owner, configure the first extended palette, and draw
  * helper c8 immediately at (104,171).
  */
-void func_020263a0(DualScreenUiIndexedIconPresentation *self)
+void DualScreenUiIndexedIconPresentation_RefreshResources(DualScreenUiIndexedIconPresentation *self)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     DualScreenUiPresentationBase_LoadSubBg1Resources(self);
@@ -145,11 +145,11 @@ void func_020263a0(DualScreenUiIndexedIconPresentation *self)
  * Draw helper c8 at (104,171) while drawEnabledd4 is nonzero, then update the
  * embedded state and shared sprite owner on every call.
  */
-void func_020263d4(DualScreenUiIndexedIconPresentation *self)
+void DualScreenUiIndexedIconPresentation_Update(DualScreenUiIndexedIconPresentation *self)
 {
     if (self->drawEnabledd4)
         DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
-    func_020269f8(self->embedded04);
+    DualScreenUiGridState_Update(self->embedded04);
     GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwnera8);
 }
 
@@ -158,7 +158,7 @@ void func_020263d4(DualScreenUiIndexedIconPresentation *self)
  * display-plane bit 9 at 0x04001000, and respectively clear/set sprite
  * visibility bit 2 in the indexed wrapper.  Store the state in drawEnabledd4.
  */
-void func_0202640c(DualScreenUiIndexedIconPresentation *self, s32 enabled)
+void DualScreenUiIndexedIconPresentation_SetEnabled(DualScreenUiIndexedIconPresentation *self, s32 enabled)
 {
     volatile u32 *displayControl = (volatile u32 *)0x04001000;
     self->drawEnabledd4 = enabled ? 1 : 0;

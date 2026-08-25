@@ -3,9 +3,9 @@
 .extern data_020c3704
 .extern GraphicsSpriteState_SetAnimationIndex
 
-    .global func_02026e44
-    .type func_02026e44, @function
-func_02026e44: ; 0x02026e44
+    .global DualScreenUiGridState_RefreshTransitionFrames
+    .type DualScreenUiGridState_RefreshTransitionFrames, @function
+DualScreenUiGridState_RefreshTransitionFrames: ; 0x02026e44
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r9, r0
     ldrsh r7, [r9, #0x78]
@@ -45,4 +45,4 @@ func_02026e44: ; 0x02026e44
     blt .L_02026e60
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02026ed0: .word data_020c3704
-    .size func_02026e44, . - func_02026e44
+    .size DualScreenUiGridState_RefreshTransitionFrames, . - DualScreenUiGridState_RefreshTransitionFrames

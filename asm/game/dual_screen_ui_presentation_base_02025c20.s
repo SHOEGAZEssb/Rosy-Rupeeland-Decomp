@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_presentation_base.c.
 .text
 .extern DualScreenUiPresentationBase_SetEmbeddedEnabled
-.extern func_020269f8
+.extern DualScreenUiGridState_Update
 .extern GraphicsSpriteGroup_AdvanceAnimations
 
     .global DualScreenUiPresentationBase_ApplyVisibilityMask
@@ -51,6 +51,6 @@ DualScreenUiPresentationBase_ApplyVisibilityMask: ; 0x02025c20
     add r0, r6, #0x4
     bl DualScreenUiPresentationBase_SetEmbeddedEnabled
     add r0, r6, #0x4
-    bl func_020269f8
+    bl DualScreenUiGridState_Update
     ldmia sp!, {r4, r5, r6, pc}
     .size DualScreenUiPresentationBase_ApplyVisibilityMask, . - DualScreenUiPresentationBase_ApplyVisibilityMask

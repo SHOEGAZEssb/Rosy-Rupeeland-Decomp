@@ -5,9 +5,9 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 
-    .global func_020263a0
-    .type func_020263a0, @function
-func_020263a0: ; 0x020263a0
+    .global DualScreenUiIndexedIconPresentation_RefreshResources
+    .type DualScreenUiIndexedIconPresentation_RefreshResources, @function
+DualScreenUiIndexedIconPresentation_RefreshResources: ; 0x020263a0
     stmdb sp!, {r4, lr}
     ldr r1, .L_020263d0
     mov r4, r0
@@ -21,4 +21,4 @@ func_020263a0: ; 0x020263a0
     bl DebugSpriteText_DrawCentered
     ldmia sp!, {r4, pc}
 .L_020263d0: .word gDebugFont
-    .size func_020263a0, . - func_020263a0
+    .size DualScreenUiIndexedIconPresentation_RefreshResources, . - DualScreenUiIndexedIconPresentation_RefreshResources

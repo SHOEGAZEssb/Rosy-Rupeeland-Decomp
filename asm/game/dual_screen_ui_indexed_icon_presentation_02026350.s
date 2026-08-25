@@ -6,9 +6,9 @@
 .extern DebugSpriteText_Destroy
 .extern DualScreenUiPresentationBase_DestroyAlternateEntry
 
-    .global func_02026350
-    .type func_02026350, @function
-func_02026350: ; 0x02026350
+    .global DualScreenUiIndexedIconPresentation_DestroyAndFree
+    .type DualScreenUiIndexedIconPresentation_DestroyAndFree, @function
+DualScreenUiIndexedIconPresentation_DestroyAndFree: ; 0x02026350
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_0202639c
     mov r5, r0
@@ -30,4 +30,4 @@ func_02026350: ; 0x02026350
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_0202639c: .word data_020d6b20
-    .size func_02026350, . - func_02026350
+    .size DualScreenUiIndexedIconPresentation_DestroyAndFree, . - DualScreenUiIndexedIconPresentation_DestroyAndFree

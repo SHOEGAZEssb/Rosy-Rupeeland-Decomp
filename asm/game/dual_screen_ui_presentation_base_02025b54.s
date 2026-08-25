@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_presentation_base.c.
 .text
 .extern data_020d6b3c
-.extern func_02026514
+.extern DualScreenUiGridState_Destroy
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
@@ -20,7 +20,7 @@ DualScreenUiPresentationBase_Destroy: ; 0x02025b54
     add r0, r4, #0xb8
     bl AnimationResourceState_Destroy
     add r0, r4, #0x4
-    bl func_02026514
+    bl DualScreenUiGridState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02025b8c: .word data_020d6b3c

@@ -5,7 +5,7 @@
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern GamePhaseState_GetConfiguration
 .extern GamePhaseAreaScene_SetEnabled
-.extern func_02026174
+.extern DualScreenUiStandardPresentation_BindSource
 .global GamePhaseActorScriptVm_PrepareRuntimeScene
 GamePhaseActorScriptVm_PrepareRuntimeScene:
     stmdb sp!, {r4, lr}
@@ -17,7 +17,7 @@ GamePhaseActorScriptVm_PrepareRuntimeScene:
     bl GamePhaseState_GetConfiguration
     mov r1, r0
     mov r0, r4
-    bl func_02026174
+    bl DualScreenUiStandardPresentation_BindSource
     ldr r0, L_0201a12c
     mov r1, #0x1
     ldr r0, [r0, #0x0]

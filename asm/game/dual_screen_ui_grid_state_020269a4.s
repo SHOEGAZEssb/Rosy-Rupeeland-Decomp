@@ -2,9 +2,9 @@
 .text
 .extern Type7Actor_GetStateCode
 
-    .global func_020269a4
-    .type func_020269a4, @function
-func_020269a4: ; 0x020269a4
+    .global DualScreenUiGridState_IsRuntimeEligible
+    .type DualScreenUiGridState_IsRuntimeEligible, @function
+DualScreenUiGridState_IsRuntimeEligible: ; 0x020269a4
     stmdb sp!, {r4, lr}
     ldr r1, [r0, #0x29c]
     mov r4, #0x0
@@ -28,4 +28,4 @@ func_020269a4: ; 0x020269a4
 .L_020269f0:
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_020269a4, . - func_020269a4
+    .size DualScreenUiGridState_IsRuntimeEligible, . - DualScreenUiGridState_IsRuntimeEligible
