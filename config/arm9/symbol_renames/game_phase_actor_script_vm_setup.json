@@ -1,0 +1,10 @@
+{
+  "GamePhaseActorScriptVm_SetPositionFromCoordinates3D": "GamePhaseActorScriptVm_SetPositionFromCoordinates3D",
+  "GamePhaseActorScriptVm_DispatchIndexedActorValueCommand": "GamePhaseActorScriptVm_DispatchIndexedActorValueCommand",
+  "GamePhaseActorScriptVm_SetAttachmentAnimation": "GamePhaseActorScriptVm_SetAttachmentAnimation",
+  "GamePhaseActorScriptVm_ConfigureAttachmentFlagsForEnabledState": "GamePhaseActorScriptVm_ConfigureAttachmentFlagsForEnabledState",
+  "GamePhaseActorScriptVm_SetWaitCountdown": "GamePhaseActorScriptVm_SetWaitCountdown",
+  "GamePhaseActorScriptVm_WaitForCountdown": "GamePhaseActorScriptVm_WaitForCountdown",
+  "GamePhaseActorScriptVm_SetAttachmentEnabledIfPresent": "GamePhaseActorScriptVm_SetAttachmentEnabledIfPresent",
+  "GamePhaseActorScriptVm_SetActorFlag20": "GamePhaseActorScriptVm_SetActorFlag20"
+}

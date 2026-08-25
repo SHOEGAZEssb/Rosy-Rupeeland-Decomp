@@ -22,7 +22,7 @@ extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
 typedef void (*ActorValueMethod)(void *actor, u32 value);
 
 /* Invoke the address-derived actor virtual method at the supplied byte offset. */
-static void callActorValueMethod(void *actor, u32 offset, u32 value)
+static void callActorValueVirtualMethod(void *actor, u32 offset, u32 value)
 {
     ActorValueMethod *vtable = *(ActorValueMethod **)actor;
     vtable[offset / sizeof(void *)](actor, value);
@@ -67,22 +67,22 @@ s32 GamePhaseActorScriptVm_DispatchIndexedActorValueCommand(GamePhaseActorScript
     if (*((u8 *)target + 0x4d) == 1) {
         u8 *runtimeCollection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         target = *(void **)(runtimeCollection + 0x2e7c);
-        callActorValueMethod(target, 0x74, value);
+        callActorValueVirtualMethod(target, 0x74, value);
         Actor_SetActive(target, 1);
         return 0;
     }
 
     if (target == self->actor) {
-        callActorValueMethod(target, 0x70, value);
+        callActorValueVirtualMethod(target, 0x70, value);
         return 0;
     }
 
     if (value != 0) {
         if (ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) &&
             *(void **)(gActorRuntimeCollection + 4) == target)
-            callActorValueMethod(target, 0x70, value);
+            callActorValueVirtualMethod(target, 0x70, value);
         else
-            callActorValueMethod(target, 0x74, value);
+            callActorValueVirtualMethod(target, 0x74, value);
     }
     if (ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection))
         Actor_SetActive(target, 1);
@@ -138,14 +138,14 @@ s32 GamePhaseActorScriptVm_WaitForCountdown(GamePhaseActorScriptVm *self)
 
 /*
  * Pop a value and send it through Actor_SetAttachmentEnabled when the bound
- * actor's pointer
- * at offset 0x54 is non-null. Returns zero whether or not the pointer exists.
+ * actor's attachment pointer at offset 0x54 is non-null. Returns zero whether
+ * or not the attachment exists.
  */
 s32 GamePhaseActorScriptVm_SetAttachmentEnabledIfPresent(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)self->actor + 0x54);
-    if (object != 0)
+    void *attachment = *(void **)((u8 *)self->actor + 0x54);
+    if (attachment != 0)
         Actor_SetAttachmentEnabled(self->actor, value);
     return 0;
 }
