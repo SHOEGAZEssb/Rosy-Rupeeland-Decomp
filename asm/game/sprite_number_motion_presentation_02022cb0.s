@@ -13,10 +13,10 @@
 .extern VecFx32_Subtract
 .extern FieldEffect_Init
 .extern FieldEffect_DestroyBase
-.extern func_0202293c
-.extern func_02022b70
-.extern func_02022c30
-.extern func_02022c80
+.extern SpriteNumberGroup_Init
+.extern SpriteNumberGroup_Destroy
+.extern SpriteNumberGroup_SetPosition
+.extern SpriteNumberGroup_SetVisible
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
 .extern VecFx32Object_InitPlanarProjection
@@ -58,7 +58,7 @@ func_02022cb0: ; 0x02022cb0
     mov r1, r0
     mov r0, r5
     mov r2, r6
-    bl func_0202293c
+    bl SpriteNumberGroup_Init
     mov r5, r0
 .L_02022d3c:
     str r5, [r4, #0x3c]
@@ -66,7 +66,7 @@ func_02022cb0: ; 0x02022cb0
     bne .L_02022d54
     ldr r0, [r4, #0x3c]
     mov r1, #0x0
-    bl func_02022c80
+    bl SpriteNumberGroup_SetVisible
 .L_02022d54:
     ldr r2, [r4, #0x8]
     add r0, sp, #0x40
@@ -82,7 +82,7 @@ func_02022cb0: ; 0x02022cb0
     ldr r0, [r4, #0x3c]
     mov r1, r1, asr #0xc
     mov r2, r2, asr #0xc
-    bl func_02022c30
+    bl SpriteNumberGroup_SetPosition
     ldr r0, [sp, #0x58]
     mov r1, #0x0
     mov r0, r0, asr #0xc
@@ -142,4 +142,3 @@ func_02022cb0: ; 0x02022cb0
 .L_02022e68: .word gHeapContext
 .L_02022e6c: .word gSpriteNumberGroupAllocationTag
     .size func_02022cb0, .-func_02022cb0
-

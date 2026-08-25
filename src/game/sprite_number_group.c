@@ -31,9 +31,9 @@ extern s32 func_020befec(s32,s32);
 }
 #endif
 
-SpriteNodeList *func_02022a88(SpriteNodeList *);
+SpriteNodeList *SpriteNodeList_Init(SpriteNodeList *);
 void SpriteNodeList_Clear(SpriteNodeList *);
-SpriteNode *func_02022b08(SpriteNodeList *,u8 *);
+SpriteNode *SpriteNodeList_AppendSprite(SpriteNodeList *,u8 *);
 void SpriteNodeList_RemoveNode(SpriteNodeList *,SpriteNode *);
 
 /*
@@ -44,29 +44,29 @@ void SpriteNodeList_RemoveNode(SpriteNodeList *,SpriteNode *);
  * trailing frame-0 sprite. Store width (digit count + 1)*10 + 8 and return self.
  * func_020befec provides quotient in r0 and remainder in r1 at this SDK boundary.
  */
-SpriteNumberGroup *func_0202293c(SpriteNumberGroup *self,void *spriteOwner,s32 value)
+SpriteNumberGroup *SpriteNumberGroup_Init(SpriteNumberGroup *self,void *spriteOwner,s32 value)
 {
     s32 remaining=value<0?-value:value,digits=0,base=value<0?13:2;
-    self->spriteOwner00=spriteOwner; func_02022a88(&self->nodes04);
+    self->spriteOwner00=spriteOwner; SpriteNodeList_Init(&self->nodes04);
     AnimationResourceState_InitEmbedded(self->resource18);
     func_02071ee0(self->resource18,data_020f4e18,0x1717,0x1001,0x1718);
     while(remaining>0) {
         u8 *sprite=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2);
         s32 quotient=remaining/10,remainder=remaining%10;
-        GraphicsSpriteState_SetAnimationIndex(sprite,base+remainder); func_02022b08(&self->nodes04,sprite);
+        GraphicsSpriteState_SetAnimationIndex(sprite,base+remainder); SpriteNodeList_AppendSprite(&self->nodes04,sprite);
         remaining=quotient; digits++;
     }
-    { u8 *s=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,value<0?12:1); func_02022b08(&self->nodes04,s); }
-    { u8 *s=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,0); func_02022b08(&self->nodes04,s); }
+    { u8 *s=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,value<0?12:1); SpriteNodeList_AppendSprite(&self->nodes04,s); }
+    { u8 *s=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,0); SpriteNodeList_AppendSprite(&self->nodes04,s); }
     self->width14=(s16)((digits+1)*10+8); return self;
 }
 
 /* Install the node-list vtable and clear tail, head, and count. */
-SpriteNodeList *func_02022a88(SpriteNodeList *self)
+SpriteNodeList *SpriteNodeList_Init(SpriteNodeList *self)
 { self->vtable=(void **)data_020d660c; self->tail04=0; self->head08=0; self->count0c=0; return self; }
 
 /* Install the list vtable, free all nodes, and return self. */
-SpriteNodeList *func_02022aa8(SpriteNodeList *self)
+SpriteNodeList *SpriteNodeList_Destroy(SpriteNodeList *self)
 { self->vtable=(void **)data_020d660c; SpriteNodeList_Clear(self); return self; }
 
 /* Free all linked nodes and clear both ends and count; sprite payloads are not released here. */
@@ -77,7 +77,7 @@ void SpriteNodeList_Clear(SpriteNodeList *self)
 }
 
 /* Allocate a node for sprite, append it at the list's tail-side end, increment count, and return the new tail. */
-SpriteNode *func_02022b08(SpriteNodeList *self,u8 *sprite)
+SpriteNode *SpriteNodeList_AppendSprite(SpriteNodeList *self,u8 *sprite)
 {
     SpriteNode *n=(SpriteNode *)Heap_Alloc(0x0c,gSpriteNumberGroupNodeAllocationTag,4,&gHeapContext);
     if(n){n->next00=0;n->previous04=0;n->sprite08=sprite;}
@@ -90,7 +90,7 @@ SpriteNode *func_02022b08(SpriteNodeList *self,u8 *sprite)
  * resource/list state, and return self. Cache the successor before deletion so
  * portable hosts do not read node storage after Heap_Free invalidates it.
  */
-SpriteNumberGroup *func_02022b70(SpriteNumberGroup *self)
+SpriteNumberGroup *SpriteNumberGroup_Destroy(SpriteNumberGroup *self)
 {
     SpriteNode *n=self->nodes04.tail04;
     while(n){SpriteNode *next=n->next00;GraphicsSpriteGroup_ReleaseState(self->spriteOwner00,n->sprite08);SpriteNodeList_RemoveNode(&self->nodes04,n);n=next;}
@@ -106,7 +106,7 @@ void SpriteNodeList_RemoveNode(SpriteNodeList *self,SpriteNode *node)
 }
 
 /* Center the group around x, clamp it to 0..256-width, and place each sprite ten pixels apart at y. */
-void func_02022c30(SpriteNumberGroup *self,s32 x,s32 y)
+void SpriteNumberGroup_SetPosition(SpriteNumberGroup *self,s32 x,s32 y)
 {
     s32 px=x-(self->width14/2);SpriteNode *n=self->nodes04.head08;
     if(px<0)px=0;if(px+self->width14>=0x100)px=0x100-self->width14;
@@ -114,7 +114,7 @@ void func_02022c30(SpriteNumberGroup *self,s32 x,s32 y)
 }
 
 /* Show sprites by clearing flag bit 2 when visible is nonzero, or hide them by setting it when zero. */
-void func_02022c80(SpriteNumberGroup *self,s32 visible)
+void SpriteNumberGroup_SetVisible(SpriteNumberGroup *self,s32 visible)
 {
     SpriteNode *n=self->nodes04.head08;while(n){u16 *f=(u16 *)(n->sprite08+0x24);if(visible)*f&=(u16)~4;else *f|=4;n=n->next00;}
 }

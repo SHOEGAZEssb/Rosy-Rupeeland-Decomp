@@ -5,9 +5,9 @@
 .extern gSpriteNumberGroupNodeAllocationTag
 .extern data_020d660c
 .extern data_020f4e18
-.extern func_02022a88
+.extern SpriteNodeList_Init
 .extern SpriteNodeList_Clear
-.extern func_02022b08
+.extern SpriteNodeList_AppendSprite
 .extern SpriteNodeList_RemoveNode
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
@@ -18,9 +18,9 @@
 .extern func_020befec
 .extern gHeapContext
 
-.global func_02022a88
-    .type func_02022a88, @function
-func_02022a88: ; 0x02022a88
+.global SpriteNodeList_Init
+    .type SpriteNodeList_Init, @function
+SpriteNodeList_Init: ; 0x02022a88
     ldr r2, .L_02022aa4
     mov r1, #0x0
     str r2, [r0, #0x0]
@@ -29,5 +29,4 @@ func_02022a88: ; 0x02022a88
     str r1, [r0, #0xc]
     bx lr
 .L_02022aa4: .word data_020d660c
-    .size func_02022a88, .-func_02022a88
-
+    .size SpriteNodeList_Init, .-SpriteNodeList_Init

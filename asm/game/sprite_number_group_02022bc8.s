@@ -5,9 +5,9 @@
 .extern gSpriteNumberGroupNodeAllocationTag
 .extern data_020d660c
 .extern data_020f4e18
-.extern func_02022a88
+.extern SpriteNodeList_Init
 .extern SpriteNodeList_Clear
-.extern func_02022b08
+.extern SpriteNodeList_AppendSprite
 .extern SpriteNodeList_RemoveNode
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_Destroy
@@ -49,4 +49,3 @@ SpriteNodeList_RemoveNode: ; 0x02022bc8
     bl SpriteNodeList_Clear
     ldmia sp!, {r4, pc}
     .size SpriteNodeList_RemoveNode, .-SpriteNodeList_RemoveNode
-

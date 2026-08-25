@@ -31,10 +31,10 @@ extern void VecFx32_Subtract(void *,const void *,s32);
 extern void VecFx32Object_InitPlanarProjection(void *,const void *);
 extern void *Actor_GetOwningCollection(void *);
 extern void *ActorCollection_GetSpriteGroup(void *);
-extern void *func_0202293c(void *,void *,s32);
-extern void func_02022b70(void *);
-extern void func_02022c30(void *,s32,s32);
-extern void func_02022c80(void *,s32);
+extern void *SpriteNumberGroup_Init(void *,void *,s32);
+extern void SpriteNumberGroup_Destroy(void *);
+extern void SpriteNumberGroup_SetPosition(void *,s32,s32);
+extern void SpriteNumberGroup_SetVisible(void *,s32);
 #ifdef __cplusplus
 }
 #endif
@@ -58,11 +58,11 @@ SpriteNumberMotionPresentation *func_02022cb0(
     VecFx32Object_Init(&self->firstOffset1c);VecFx32Object_Init(&self->secondOffset2c);
     *(s32 *)&self->track0c.bytes[0x0c]+=0x10000;
     group=Heap_Alloc(0x24,gSpriteNumberGroupAllocationTag,4,&gHeapContext);
-    if(group){owner=ActorCollection_GetSpriteGroup(Actor_GetOwningCollection((void *)config));func_0202293c(group,owner,value);}
-    self->numberGroup3c=group;if(value==0)func_02022c80(group,0);
+    if(group){owner=ActorCollection_GetSpriteGroup(Actor_GetOwningCollection((void *)config));SpriteNumberGroup_Init(group,owner,value);}
+    self->numberGroup3c=group;if(value==0)SpriteNumberGroup_SetVisible(group,0);
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
     VecFx32Object_InitPlanarProjection(&position,&sampled);VecFx32Object_Destroy(&sampled);
-    func_02022c30(group,*(s32 *)&position.bytes[4]>>12,*(s32 *)&position.bytes[8]>>12);
+    SpriteNumberGroup_SetPosition(group,*(s32 *)&position.bytes[4]>>12,*(s32 *)&position.bytes[8]>>12);
     if((*(s32 *)&position.bytes[8]>>12)>0x40) {
         VecFx32Object_InitComponents(&temp,0,0,firstOffset);VecFx32Object_Assign(&self->firstOffset1c,&temp);VecFx32Object_Destroy(&temp);
         VecFx32Object_InitComponents(&temp,0,0,secondOffset);VecFx32Object_Assign(&self->secondOffset2c,&temp);VecFx32Object_Destroy(&temp);
@@ -76,7 +76,7 @@ SpriteNumberMotionPresentation *func_02022cb0(
 static SpriteNumberMotionPresentation *teardown_number_motion(SpriteNumberMotionPresentation *self)
 {
     self->vtable=(void **)data_020d6658;
-    if(self->numberGroup3c){func_02022b70(self->numberGroup3c);Heap_Free(self->numberGroup3c);}
+    if(self->numberGroup3c){SpriteNumberGroup_Destroy(self->numberGroup3c);Heap_Free(self->numberGroup3c);}
     VecFx32Object_Destroy(&self->secondOffset2c);VecFx32Object_Destroy(&self->firstOffset1c);
     VecFx32Object_Destroy(&self->track0c);FieldEffect_DestroyBase(self);return self;
 }
@@ -99,7 +99,7 @@ s32 func_02022f28(SpriteNumberMotionPresentation *self)
     TrackValue sampled,position;
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
     VecFx32Object_InitPlanarProjection(&position,&sampled);VecFx32Object_Destroy(&sampled);
-    func_02022c30(self->numberGroup3c,*(s32 *)&position.bytes[4]>>12,*(s32 *)&position.bytes[8]>>12);
+    SpriteNumberGroup_SetPosition(self->numberGroup3c,*(s32 *)&position.bytes[4]>>12,*(s32 *)&position.bytes[8]>>12);
     VecFx32Object_Add(&self->track0c,&self->firstOffset1c);
     VecFx32Object_Add(&self->firstOffset1c,&self->secondOffset2c);
     self->timer40++;VecFx32Object_Destroy(&position);return self->timer40>=60;

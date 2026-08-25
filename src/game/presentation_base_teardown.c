@@ -9,9 +9,9 @@
  */
 
 /* Tear down the FieldEffect base, free self, and return its old address. */
-void *func_0202290c(void *self)
+void *DisplayFadePresentation_DestroyAndFree(void *self)
 { FieldEffect_DestroyBase(self); Heap_Free(self); return self; }
 
 /* Tear down the FieldEffect base without freeing storage and return self. */
-void *func_02022928(void *self)
+void *DisplayFadePresentation_Destroy(void *self)
 { FieldEffect_DestroyBase(self); return self; }

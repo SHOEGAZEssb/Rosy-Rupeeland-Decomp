@@ -1,0 +1,9 @@
+{
+  "func_0202293c": "SpriteNumberGroup_Init",
+  "func_02022a88": "SpriteNodeList_Init",
+  "func_02022aa8": "SpriteNodeList_Destroy",
+  "func_02022b08": "SpriteNodeList_AppendSprite",
+  "func_02022b70": "SpriteNumberGroup_Destroy",
+  "func_02022c30": "SpriteNumberGroup_SetPosition",
+  "func_02022c80": "SpriteNumberGroup_SetVisible"
+}

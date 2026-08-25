@@ -2,9 +2,9 @@
 .text
 .extern Heap_Free
 .extern FieldEffect_DestroyBase
-.global func_0202290c
-    .type func_0202290c, @function
-func_0202290c:
+.global DisplayFadePresentation_DestroyAndFree
+    .type DisplayFadePresentation_DestroyAndFree, @function
+DisplayFadePresentation_DestroyAndFree:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl FieldEffect_DestroyBase
@@ -12,4 +12,4 @@ func_0202290c:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202290c, .-func_0202290c
+    .size DisplayFadePresentation_DestroyAndFree, .-DisplayFadePresentation_DestroyAndFree

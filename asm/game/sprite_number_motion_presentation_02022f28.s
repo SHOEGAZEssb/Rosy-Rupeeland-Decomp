@@ -13,10 +13,10 @@
 .extern VecFx32_Subtract
 .extern FieldEffect_Init
 .extern FieldEffect_DestroyBase
-.extern func_0202293c
-.extern func_02022b70
-.extern func_02022c30
-.extern func_02022c80
+.extern SpriteNumberGroup_Init
+.extern SpriteNumberGroup_Destroy
+.extern SpriteNumberGroup_SetPosition
+.extern SpriteNumberGroup_SetVisible
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
 .extern VecFx32Object_InitPlanarProjection
@@ -42,7 +42,7 @@ func_02022f28: ; 0x02022f28
     ldr r0, [r4, #0x3c]
     mov r1, r1, asr #0xc
     mov r2, r2, asr #0xc
-    bl func_02022c30
+    bl SpriteNumberGroup_SetPosition
     add r0, r4, #0xc
     add r1, r4, #0x1c
     bl VecFx32Object_Add
@@ -65,4 +65,3 @@ func_02022f28: ; 0x02022f28
     add sp, sp, #0x20
     ldmia sp!, {r4, pc}
     .size func_02022f28, .-func_02022f28
-

@@ -8794,32 +8794,32 @@ build build/reports/presentation_base_teardown_0202290c.json: objdiff build/deco
   base_object = build/decomp/asm/game/presentation_base_teardown_0202290c.o
 build build/reports/presentation_base_teardown_0202290c.txt: match_report build/reports/presentation_base_teardown_0202290c.json | tools/report_objdiff.py
   report_json = build/reports/presentation_base_teardown_0202290c.json
-  report_args = --section .text --function func_0202290c --require-exact
+  report_args = --section .text --function DisplayFadePresentation_DestroyAndFree --require-exact
 build build/reports/presentation_base_teardown_02022928.json: objdiff build/decomp/delinks/asm/game/presentation_base_teardown_02022928.o | build/decomp/asm/game/presentation_base_teardown_02022928.o
   target_object = build/decomp/delinks/asm/game/presentation_base_teardown_02022928.o
   base_object = build/decomp/asm/game/presentation_base_teardown_02022928.o
 build build/reports/presentation_base_teardown_02022928.txt: match_report build/reports/presentation_base_teardown_02022928.json | tools/report_objdiff.py
   report_json = build/reports/presentation_base_teardown_02022928.json
-  report_args = --section .text --function func_02022928 --require-exact
+  report_args = --section .text --function DisplayFadePresentation_Destroy --require-exact
 build build/reports/presentation_base_teardown.txt: phony build/reports/presentation_base_teardown_0202290c.txt build/reports/presentation_base_teardown_02022928.txt
 build build/reports/sprite_number_group_0202293c.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_0202293c.o | build/decomp/asm/game/sprite_number_group_0202293c.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_0202293c.o
   base_object = build/decomp/asm/game/sprite_number_group_0202293c.o
 build build/reports/sprite_number_group_0202293c.txt: match_report build/reports/sprite_number_group_0202293c.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_0202293c.json
-  report_args = --section .text --function func_0202293c --require-exact
+  report_args = --section .text --function SpriteNumberGroup_Init --require-exact
 build build/reports/sprite_number_group_02022a88.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_02022a88.o | build/decomp/asm/game/sprite_number_group_02022a88.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_02022a88.o
   base_object = build/decomp/asm/game/sprite_number_group_02022a88.o
 build build/reports/sprite_number_group_02022a88.txt: match_report build/reports/sprite_number_group_02022a88.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_02022a88.json
-  report_args = --section .text --function func_02022a88 --require-exact
+  report_args = --section .text --function SpriteNodeList_Init --require-exact
 build build/reports/sprite_number_group_02022aa8.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_02022aa8.o | build/decomp/asm/game/sprite_number_group_02022aa8.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_02022aa8.o
   base_object = build/decomp/asm/game/sprite_number_group_02022aa8.o
 build build/reports/sprite_number_group_02022aa8.txt: match_report build/reports/sprite_number_group_02022aa8.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_02022aa8.json
-  report_args = --section .text --function func_02022aa8 --require-exact
+  report_args = --section .text --function SpriteNodeList_Destroy --require-exact
 build build/reports/sprite_number_group_02022ac8.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_02022ac8.o | build/decomp/asm/game/sprite_number_group_02022ac8.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_02022ac8.o
   base_object = build/decomp/asm/game/sprite_number_group_02022ac8.o
@@ -8831,13 +8831,13 @@ build build/reports/sprite_number_group_02022b08.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/sprite_number_group_02022b08.o
 build build/reports/sprite_number_group_02022b08.txt: match_report build/reports/sprite_number_group_02022b08.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_02022b08.json
-  report_args = --section .text --function func_02022b08 --require-exact
+  report_args = --section .text --function SpriteNodeList_AppendSprite --require-exact
 build build/reports/sprite_number_group_02022b70.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_02022b70.o | build/decomp/asm/game/sprite_number_group_02022b70.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_02022b70.o
   base_object = build/decomp/asm/game/sprite_number_group_02022b70.o
 build build/reports/sprite_number_group_02022b70.txt: match_report build/reports/sprite_number_group_02022b70.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_02022b70.json
-  report_args = --section .text --function func_02022b70 --require-exact
+  report_args = --section .text --function SpriteNumberGroup_Destroy --require-exact
 build build/reports/sprite_number_group_02022bc8.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_02022bc8.o | build/decomp/asm/game/sprite_number_group_02022bc8.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_02022bc8.o
   base_object = build/decomp/asm/game/sprite_number_group_02022bc8.o
@@ -8849,13 +8849,13 @@ build build/reports/sprite_number_group_02022c30.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/sprite_number_group_02022c30.o
 build build/reports/sprite_number_group_02022c30.txt: match_report build/reports/sprite_number_group_02022c30.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_02022c30.json
-  report_args = --section .text --function func_02022c30 --require-exact
+  report_args = --section .text --function SpriteNumberGroup_SetPosition --require-exact
 build build/reports/sprite_number_group_02022c80.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_02022c80.o | build/decomp/asm/game/sprite_number_group_02022c80.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_02022c80.o
   base_object = build/decomp/asm/game/sprite_number_group_02022c80.o
 build build/reports/sprite_number_group_02022c80.txt: match_report build/reports/sprite_number_group_02022c80.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_02022c80.json
-  report_args = --section .text --function func_02022c80 --require-exact
+  report_args = --section .text --function SpriteNumberGroup_SetVisible --require-exact
 build build/reports/sprite_number_group.txt: phony build/reports/sprite_number_group_0202293c.txt build/reports/sprite_number_group_02022a88.txt build/reports/sprite_number_group_02022aa8.txt build/reports/sprite_number_group_02022ac8.txt build/reports/sprite_number_group_02022b08.txt build/reports/sprite_number_group_02022b70.txt build/reports/sprite_number_group_02022bc8.txt build/reports/sprite_number_group_02022c30.txt build/reports/sprite_number_group_02022c80.txt
 build build/reports/sprite_number_motion_presentation_02022cb0.json: objdiff build/decomp/delinks/asm/game/sprite_number_motion_presentation_02022cb0.o | build/decomp/asm/game/sprite_number_motion_presentation_02022cb0.o
   target_object = build/decomp/delinks/asm/game/sprite_number_motion_presentation_02022cb0.o
