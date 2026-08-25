@@ -1,0 +1,13 @@
+{
+  "GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80": "GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80",
+  "GamePhaseActorScriptVm_GetActorField4e": "GamePhaseActorScriptVm_GetActorField4e",
+  "GamePhaseActorScriptVm_MaskValueByBit": "GamePhaseActorScriptVm_MaskValueByBit",
+  "GamePhaseActorScriptVm_SetActorFlag8": "GamePhaseActorScriptVm_SetActorFlag8",
+  "GamePhaseActorScriptVm_SetActorFlag200000Inverse": "GamePhaseActorScriptVm_SetActorFlag200000Inverse",
+  "Actor_SetFlag200000Inverse": "Actor_SetFlag200000Inverse",
+  "GamePhaseActorScriptVm_SetTileMapCell": "GamePhaseActorScriptVm_SetTileMapCell",
+  "GamePhaseActorScriptVm_QueryTerrainHeight": "GamePhaseActorScriptVm_QueryTerrainHeight",
+  "GamePhaseActorScriptVm_DiscardValue": "GamePhaseActorScriptVm_DiscardValue",
+  "GamePhaseActorScriptVm_SavePrimaryAttachmentState": "GamePhaseActorScriptVm_SavePrimaryAttachmentState",
+  "GamePhaseActorScriptVm_RestorePrimaryAttachmentState": "GamePhaseActorScriptVm_RestorePrimaryAttachmentState"
+}

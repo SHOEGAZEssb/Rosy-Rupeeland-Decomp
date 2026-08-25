@@ -6,8 +6,8 @@
 extern "C" {
 #endif
 extern void *gGamePhaseRuntime;
-extern void ByteTileMapOwner_SetCell(void *object, u32 first, u32 second, u32 third);
-extern u32 Actor_QueryTerrainHeight(void *actor, u32 first, u32 second);
+extern void ByteTileMapOwner_SetCell(void *tileMapOwner, s32 x, s32 y, s8 value);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 gridX, s32 gridY);
 extern void Actor_SavePrimaryAttachmentState(void *actor);
 extern void Actor_RestorePrimaryAttachmentState(void *actor);
 #ifdef __cplusplus
@@ -15,25 +15,26 @@ extern void Actor_RestorePrimaryAttachmentState(void *actor);
 #endif
 
 /*
- * Pop third, second, and first operands, dispatch them to ByteTileMapOwner_SetCell on the
- * global runtime object at offset 0x2ed4, and return zero.
+ * Pop a cell value and coordinates, then update the global runtime tile map at
+ * offset 0x2ed4. Returns zero.
  */
 s32 GamePhaseActorScriptVm_SetTileMapCell(GamePhaseActorScriptVm *self)
 {
-    u32 third = GamePhaseScriptVm_Pop(&self->base);
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
-    ByteTileMapOwner_SetCell(object, first, second, third);
+    s8 value = (s8)GamePhaseScriptVm_Pop(&self->base);
+    s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
+    void *tileMapOwner = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
+    ByteTileMapOwner_SetCell(tileMapOwner, x, y, value);
     return 0;
 }
 
 /* Pop X/Y, store Actor_QueryTerrainHeight for the bound actor as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_QueryTerrainHeight(GamePhaseActorScriptVm *self)
 {
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, Actor_QueryTerrainHeight(self->actor, first, second));
+    s32 gridY = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 gridX = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
+        &self->base, Actor_QueryTerrainHeight(self->actor, gridX, gridY));
     return 0;
 }
 

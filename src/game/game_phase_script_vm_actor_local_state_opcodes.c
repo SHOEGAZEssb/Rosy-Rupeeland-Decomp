@@ -14,11 +14,11 @@ s32 GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80(GamePhaseActorScri
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
     if (selector == 0) {
-        u8 *first = *(u8 **)(actor + 0x54);
-        u8 *second = *(u8 **)(actor + 0x58);
-        first[0x3a] = (u8)value;
-        if (second != 0)
-            second[0x3a] = (u8)value;
+        u8 *primaryAttachment = *(u8 **)(actor + 0x54);
+        u8 *secondaryAttachment = *(u8 **)(actor + 0x58);
+        primaryAttachment[0x3a] = (u8)value;
+        if (secondaryAttachment != 0)
+            secondaryAttachment[0x3a] = (u8)value;
         *(u32 *)(actor + 0x14) |= 0x80;
     } else if (selector == 1) {
         *(u32 *)(actor + 0x14) &= ~0x80u;
@@ -36,9 +36,10 @@ s32 GamePhaseActorScriptVm_GetActorField4e(GamePhaseActorScriptVm *self)
 /* Pop a bit index and value, store value masked by that single bit as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_MaskValueByBit(GamePhaseActorScriptVm *self)
 {
-    u32 bit = GamePhaseScriptVm_Pop(&self->base);
+    u32 bitIndex = GamePhaseScriptVm_Pop(&self->base);
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value & (1u << bit));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
+        &self->base, value & (1u << bitIndex));
     return 0;
 }
 
@@ -46,11 +47,11 @@ s32 GamePhaseActorScriptVm_MaskValueByBit(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_SetActorFlag8(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
+    u32 *actorFlags = (u32 *)((u8 *)self->actor + 0x14);
     if (enabled != 0)
-        *flags |= 8;
+        *actorFlags |= 8;
     else
-        *flags &= ~8u;
+        *actorFlags &= ~8u;
     return 0;
 }
 
@@ -68,9 +69,9 @@ s32 GamePhaseActorScriptVm_SetActorFlag200000Inverse(GamePhaseActorScriptVm *sel
  */
 void Actor_SetFlag200000Inverse(void *actor, s32 enabled)
 {
-    u32 *flags = (u32 *)((u8 *)actor + 0x14);
+    u32 *actorFlags = (u32 *)((u8 *)actor + 0x14);
     if (enabled != 0)
-        *flags &= ~0x200000u;
+        *actorFlags &= ~0x200000u;
     else
-        *flags |= 0x200000;
+        *actorFlags |= 0x200000;
 }
