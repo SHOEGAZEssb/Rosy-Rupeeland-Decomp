@@ -26,8 +26,11 @@ s32 GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount(GamePhaseActo
 /* Pop a one-based record index, store its signed byte at offset 0x4c as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c(GamePhaseActorScriptVm *self)
 {
-    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base) - 1;
-    s8 value = *(s8 *)((u8 *)GamePhaseMetadata_GetByIndex(index) + 0x4c);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)value);
+    s32 oneBasedIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 recordIndex = oneBasedIndex - 1;
+    s8 recordValue =
+        *(s8 *)((u8 *)GamePhaseMetadata_GetByIndex(recordIndex) + 0x4c);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
+                                                    (u32)recordValue);
     return 0;
 }
