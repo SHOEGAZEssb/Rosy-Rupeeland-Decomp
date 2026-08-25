@@ -38,7 +38,7 @@ s32 GraphicsSubBackground_Configure256ColorText(s32 background,
 {
     s32 mappedCharBase;
     s32 mappedScreenSize;
-    volatile u16 *control;
+    volatile u16 *backgroundControl;
 
     switch (screenSize) {
     case 0: mappedScreenSize = 0; break;
@@ -72,8 +72,8 @@ s32 GraphicsSubBackground_Configure256ColorText(s32 background,
         else
             GraphicsSubBackground_WriteBg3Control(mappedScreenSize, 1, 0x1e,
                                                    mappedCharBase);
-        control = subBgControlRegister(background);
-        *control = (u16)((*control & ~3) | priority);
+        backgroundControl = subBgControlRegister(background);
+        *backgroundControl = (u16)((*backgroundControl & ~3) | priority);
     }
     return 0;
 }

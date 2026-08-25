@@ -27,7 +27,7 @@ s32 GraphicsMainBackground_LoadResources(s32 background, u32 resource0Id,
                                          u16 parameter, s32 uploadGraphics)
 {
     GraphicsResourceSet resources;
-    s32 destination;
+    s32 characterDataDestination;
 
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18,
@@ -49,9 +49,10 @@ s32 GraphicsMainBackground_LoadResources(s32 background, u32 resource0Id,
     case 1:
         if (uploadGraphics) {
             func_02070638(resources.resource0, 1, 0);
-            destination = GraphicsResource_GetFormat(resources.resource0)
-                        ? 0x2000 : parameter << 5;
-            func_02070b50(resources.resource1, destination);
+            characterDataDestination =
+                GraphicsResource_GetFormat(resources.resource0)
+                    ? 0x2000 : parameter << 5;
+            func_02070b50(resources.resource1, characterDataDestination);
         }
         GraphicsBgMapResource_UploadToMainBg(
             (GraphicsBgMapResource *)resources.resource2, 1, 0U);
@@ -59,18 +60,20 @@ s32 GraphicsMainBackground_LoadResources(s32 background, u32 resource0Id,
     case 2:
         if (uploadGraphics)
             func_02070638(resources.resource0, 2, 0);
-        destination = GraphicsResource_GetFormat(resources.resource0)
-                    ? 0x4000 : parameter << 5;
-        func_02070b50(resources.resource1, destination);
+        characterDataDestination =
+            GraphicsResource_GetFormat(resources.resource0)
+                ? 0x4000 : parameter << 5;
+        func_02070b50(resources.resource1, characterDataDestination);
         GraphicsBgMapResource_UploadToMainBg(
             (GraphicsBgMapResource *)resources.resource2, 2, 0U);
         break;
     case 3:
         if (uploadGraphics) {
             func_02070638(resources.resource0, 3, 0);
-            destination = GraphicsResource_GetFormat(resources.resource0)
-                        ? 0x6000 : parameter << 5;
-            func_02070b50(resources.resource1, destination);
+            characterDataDestination =
+                GraphicsResource_GetFormat(resources.resource0)
+                    ? 0x6000 : parameter << 5;
+            func_02070b50(resources.resource1, characterDataDestination);
         }
         GraphicsBgMapResource_UploadToMainBg(
             (GraphicsBgMapResource *)resources.resource2, 3, 0U);

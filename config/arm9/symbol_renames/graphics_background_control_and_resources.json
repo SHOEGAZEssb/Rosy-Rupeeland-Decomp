@@ -1,0 +1,17 @@
+{
+  "GraphicsSubBackground_Configure256ColorText": "GraphicsSubBackground_Configure256ColorText",
+  "GraphicsSubBackground_WriteBg0Control": "GraphicsSubBackground_WriteBg0Control",
+  "GraphicsSubBackground_WriteBg1Control": "GraphicsSubBackground_WriteBg1Control",
+  "GraphicsSubBackground_WriteBg2Control": "GraphicsSubBackground_WriteBg2Control",
+  "GraphicsSubBackground_WriteBg3Control": "GraphicsSubBackground_WriteBg3Control",
+  "GraphicsSubBackground_Configure16ColorText": "GraphicsSubBackground_Configure16ColorText",
+  "GraphicsSubBackground_SetScroll": "GraphicsSubBackground_SetScroll",
+  "GraphicsSubBackground_SetVisible": "GraphicsSubBackground_SetVisible",
+  "GraphicsMainBackground_Configure16ColorText": "GraphicsMainBackground_Configure16ColorText",
+  "GraphicsMainBackground_LoadResources": "GraphicsMainBackground_LoadResources",
+  "GraphicsMainBackground_SetScroll": "GraphicsMainBackground_SetScroll",
+  "GraphicsMainBackground_SetVisible": "GraphicsMainBackground_SetVisible",
+  "GraphicsSubBackground_LoadResources": "GraphicsSubBackground_LoadResources",
+  "GraphicsMainBackground_ConfigureAlphaBlend": "GraphicsMainBackground_ConfigureAlphaBlend",
+  "GraphicsSubBackground_ConfigureAlphaBlend": "GraphicsSubBackground_ConfigureAlphaBlend"
+}

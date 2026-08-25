@@ -30,7 +30,7 @@ s32 GraphicsSubBackground_Configure16ColorText(s32 background, s32 screenSize,
     GraphicsResourceSet resources;
     s32 mappedCharBase;
     s32 mappedScreenSize;
-    volatile u16 *control;
+    volatile u16 *backgroundControl;
 
     switch (screenSize) {
     case 0: mappedScreenSize = 0; break;
@@ -64,8 +64,9 @@ s32 GraphicsSubBackground_Configure16ColorText(s32 background, s32 screenSize,
         else
             GraphicsSubBackground_WriteBg3Control(mappedScreenSize, 0, 0x1e,
                                                    mappedCharBase);
-        control = (volatile u16 *)(0x04001008 + background * 2);
-        *control = (u16)((*control & ~3) | priority);
+        backgroundControl = (volatile u16 *)(0x04001008 + background * 2);
+        *backgroundControl =
+            (u16)((*backgroundControl & ~3) | priority);
     }
     GraphicsResourceSet_Destroy(&resources);
     return 0;

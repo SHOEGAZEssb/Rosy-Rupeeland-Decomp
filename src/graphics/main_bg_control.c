@@ -22,7 +22,7 @@ s32 GraphicsMainBackground_Configure16ColorText(s32 background, s32 screenSize,
 {
     s32 mappedCharBase;
     s32 mappedScreenSize;
-    volatile u16 *control;
+    volatile u16 *backgroundControl;
 
     switch (screenSize) {
     case 0: mappedScreenSize = 0; break;
@@ -43,11 +43,13 @@ s32 GraphicsMainBackground_Configure16ColorText(s32 background, s32 screenSize,
 
     *(volatile u16 *)0x04000050 = 0;
     if ((u32)background <= 3) {
-        control = (volatile u16 *)(0x04000008 + background * 2);
-        *control = (u16)((*control & 0x43) | (mappedScreenSize << 14)
-                         | ((0x18 + background * 2) << 8)
-                         | (mappedCharBase << 2));
-        *control = (u16)((*control & ~3) | priority);
+        backgroundControl = (volatile u16 *)(0x04000008 + background * 2);
+        *backgroundControl =
+            (u16)((*backgroundControl & 0x43) | (mappedScreenSize << 14)
+                  | ((0x18 + background * 2) << 8)
+                  | (mappedCharBase << 2));
+        *backgroundControl =
+            (u16)((*backgroundControl & ~3) | priority);
     }
     return 0;
 }
