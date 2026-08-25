@@ -4,15 +4,15 @@
 /* Specialize the timed sprite presentation with copied tracks and orientation. */
 
 typedef struct Track { u8 bytes[0x10]; } Track;
-typedef struct TimedSprite { void *vtable; u8 *sprite; Track first08; Track second18; s32 remaining28; } TimedSprite;
+typedef struct OrientedTimedSprite { void *vtable; u8 *sprite; Track first08; Track second18; s32 remaining28; } OrientedTimedSprite;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 extern void *data_020d605c;
-extern TimedSprite *TimedSpritePresentation_Init(TimedSprite *self,u8 *config);
-extern TimedSprite *TimedSpritePresentation_DestroyBase(TimedSprite *self);
-extern void TimedSpritePresentation_SetVisible(TimedSprite *self,s32 enabled);
+extern OrientedTimedSprite *TimedSpritePresentation_Init(OrientedTimedSprite *self,u8 *config);
+extern OrientedTimedSprite *TimedSpritePresentation_DestroyBase(OrientedTimedSprite *self);
+extern void TimedSpritePresentation_SetVisible(OrientedTimedSprite *self,s32 enabled);
 extern void VecFx32Object_Assign(Track *destination,const void *source);
 extern void VecFx32Object_Add(Track *first,Track *second);
 extern u16 func_020ae024(s32 x,s32 y);
@@ -28,7 +28,8 @@ extern void GraphicsSpriteState_SetWorldPositionFromOrigin(void *sprite,s32 argu
  * lifetime, enable sprite flag 2, derive/store orientation from track values,
  * set sprite value zero, and return self.
  */
-TimedSprite *func_0201e454(TimedSprite *self,u8 *config)
+OrientedTimedSprite *OrientedTimedSprite_Init(
+    OrientedTimedSprite *self, u8 *config)
 {
     u16 angle;
     TimedSpritePresentation_Init(self,config);
@@ -45,17 +46,17 @@ TimedSprite *func_0201e454(TimedSprite *self,u8 *config)
 }
 
 /* Run the shared non-freeing teardown and return self. */
-TimedSprite *func_0201e4d0(TimedSprite *self){TimedSpritePresentation_DestroyBase(self);return self;}
+OrientedTimedSprite *OrientedTimedSprite_Destroy(OrientedTimedSprite *self){TimedSpritePresentation_DestroyBase(self);return self;}
 
 /* Run the shared teardown, free self, and return its old address. */
-TimedSprite *func_0201e4e4(TimedSprite *self){TimedSpritePresentation_DestroyBase(self);Heap_Free(self);return self;}
+OrientedTimedSprite *OrientedTimedSprite_DestroyAndFree(OrientedTimedSprite *self){TimedSpritePresentation_DestroyBase(self);Heap_Free(self);return self;}
 
 /*
  * Decrement lifetime and hide/finish when negative.  Otherwise advance the
  * tracks, update the sprite through GraphicsSpriteState_SetWorldPositionFromOrigin with recovered constant 8,
  * and return whether sprite status flag 8 is set.
  */
-s32 func_0201e500(TimedSprite *self,s32 argument)
+s32 OrientedTimedSprite_Update(OrientedTimedSprite *self,s32 argument)
 {
     self->remaining28--;
     if(self->remaining28<0){TimedSpritePresentation_SetVisible(self,0);return 1;}

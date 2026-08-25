@@ -17,7 +17,7 @@
 .extern ActorMotion_GetPosition
 .extern FieldEffect_Init
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e454
+.extern OrientedTimedSprite_Init
 .extern TimedSpriteBurstManager_Init
 .extern OwnedPointerArray_Destroy
 .extern OwnedPointerArray_Clear
@@ -53,4 +53,3 @@ OwnedPointerArray_Clear: ; 0x0201f0d0
     str r0, [r4, #0x4]
     ldmia sp!, {r4, pc}
     .size OwnedPointerArray_Clear, .-OwnedPointerArray_Clear
-

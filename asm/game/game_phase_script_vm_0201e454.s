@@ -10,8 +10,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteState_SetWorldPositionFromOrigin
 .extern data_020d605c
-.global func_0201e454
-func_0201e454: ; 0x0201e454
+.global OrientedTimedSprite_Init
+OrientedTimedSprite_Init: ; 0x0201e454
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
@@ -45,4 +45,4 @@ func_0201e454: ; 0x0201e454
 L_0201e4cc: .word data_020d605c
 
 
-.size func_0201e454, . - func_0201e454
+.size OrientedTimedSprite_Init, . - OrientedTimedSprite_Init

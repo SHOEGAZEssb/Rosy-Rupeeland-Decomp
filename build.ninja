@@ -8087,28 +8087,28 @@ build build/reports/game_phase_script_vm_0201e454.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e454.o
 build build/reports/game_phase_script_vm_0201e454.txt: match_report build/reports/game_phase_script_vm_0201e454.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e454.json
-  report_args = --section .text --function func_0201e454 --require-exact
+  report_args = --section .text --function OrientedTimedSprite_Init --require-exact
 
 build build/reports/game_phase_script_vm_0201e4d0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e4d0.o | build/decomp/asm/game/game_phase_script_vm_0201e4d0.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e4d0.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e4d0.o
 build build/reports/game_phase_script_vm_0201e4d0.txt: match_report build/reports/game_phase_script_vm_0201e4d0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e4d0.json
-  report_args = --section .text --function func_0201e4d0 --require-exact
+  report_args = --section .text --function OrientedTimedSprite_Destroy --require-exact
 
 build build/reports/game_phase_script_vm_0201e4e4.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e4e4.o | build/decomp/asm/game/game_phase_script_vm_0201e4e4.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e4e4.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e4e4.o
 build build/reports/game_phase_script_vm_0201e4e4.txt: match_report build/reports/game_phase_script_vm_0201e4e4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e4e4.json
-  report_args = --section .text --function func_0201e4e4 --require-exact
+  report_args = --section .text --function OrientedTimedSprite_DestroyAndFree --require-exact
 
 build build/reports/game_phase_script_vm_0201e500.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e500.o | build/decomp/asm/game/game_phase_script_vm_0201e500.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e500.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e500.o
 build build/reports/game_phase_script_vm_0201e500.txt: match_report build/reports/game_phase_script_vm_0201e500.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e500.json
-  report_args = --section .text --function func_0201e500 --require-exact
+  report_args = --section .text --function OrientedTimedSprite_Update --require-exact
 
 build build/reports/timed_sprite_oriented_variant.txt: phony build/reports/game_phase_script_vm_0201e454.txt build/reports/game_phase_script_vm_0201e4d0.txt build/reports/game_phase_script_vm_0201e4e4.txt build/reports/game_phase_script_vm_0201e500.txt
 build build/reports/game_phase_script_vm_0201e584.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e584.o | build/decomp/asm/game/game_phase_script_vm_0201e584.o

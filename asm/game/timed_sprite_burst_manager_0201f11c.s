@@ -17,7 +17,7 @@
 .extern ActorMotion_GetPosition
 .extern FieldEffect_Init
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e454
+.extern OrientedTimedSprite_Init
 .extern TimedSpriteBurstManager_Init
 .extern OwnedPointerArray_Destroy
 .extern OwnedPointerArray_Clear
@@ -58,4 +58,3 @@ OwnedPointerArray_Resize: ; 0x0201f11c
 .L_0201f154: .word gTimedSpritePointerArrayAllocationTag
 .L_0201f158: .word gHeapContext
     .size OwnedPointerArray_Resize, .-OwnedPointerArray_Resize
-

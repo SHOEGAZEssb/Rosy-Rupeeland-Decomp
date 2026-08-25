@@ -17,7 +17,7 @@
 .extern ActorMotion_GetPosition
 .extern FieldEffect_Init
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e454
+.extern OrientedTimedSprite_Init
 .extern TimedSpriteBurstManager_Init
 .extern OwnedPointerArray_Destroy
 .extern OwnedPointerArray_Clear
@@ -86,4 +86,3 @@ TimedSpriteBurstManager_Destroy: ; 0x0201f15c
 .L_0201f1fc: .word gDebugFont
 .L_0201f200: .word data_020f4e18
     .size TimedSpriteBurstManager_Destroy, .-TimedSpriteBurstManager_Destroy
-

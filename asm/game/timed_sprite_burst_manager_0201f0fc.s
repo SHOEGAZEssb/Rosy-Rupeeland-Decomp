@@ -17,7 +17,7 @@
 .extern ActorMotion_GetPosition
 .extern FieldEffect_Init
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e454
+.extern OrientedTimedSprite_Init
 .extern TimedSpriteBurstManager_Init
 .extern OwnedPointerArray_Destroy
 .extern OwnedPointerArray_Clear
@@ -49,4 +49,3 @@ TimedSpriteConfig_InitTracks: ; 0x0201f0fc
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size TimedSpriteConfig_InitTracks, .-TimedSpriteConfig_InitTracks
-

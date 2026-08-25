@@ -17,7 +17,7 @@
 .extern ActorMotion_GetPosition
 .extern FieldEffect_Init
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e454
+.extern OrientedTimedSprite_Init
 .extern TimedSpriteBurstManager_Init
 .extern OwnedPointerArray_Destroy
 .extern OwnedPointerArray_Clear
@@ -96,4 +96,3 @@ TimedSpriteBurstManager_Update: ; 0x0201f2b4
     ldmia sp!, {r4, r5, r6, pc}
 .L_0201f374: .word gGamePhaseRuntime
     .size TimedSpriteBurstManager_Update, .-TimedSpriteBurstManager_Update
-

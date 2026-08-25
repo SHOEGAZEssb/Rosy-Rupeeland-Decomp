@@ -10,8 +10,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteState_SetWorldPositionFromOrigin
 .extern data_020d605c
-.global func_0201e500
-func_0201e500: ; 0x0201e500
+.global OrientedTimedSprite_Update
+OrientedTimedSprite_Update: ; 0x0201e500
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r5, r0
@@ -49,4 +49,4 @@ L_0201e57c:
     ldmia sp!, {r3, r4, r5, pc}
 
 
-.size func_0201e500, . - func_0201e500
+.size OrientedTimedSprite_Update, . - OrientedTimedSprite_Update

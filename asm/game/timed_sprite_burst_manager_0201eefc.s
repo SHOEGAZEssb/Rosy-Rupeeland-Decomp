@@ -17,7 +17,7 @@
 .extern ActorMotion_GetPosition
 .extern FieldEffect_Init
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e454
+.extern OrientedTimedSprite_Init
 .extern TimedSpriteBurstManager_Init
 .extern OwnedPointerArray_Destroy
 .extern OwnedPointerArray_Clear
@@ -125,7 +125,7 @@ TimedSpriteBurstManager_Init: ; 0x0201eefc
     cmp r0, #0x0
     beq .L_0201f050
     mov r1, r11
-    bl func_0201e454
+    bl OrientedTimedSprite_Init
 .L_0201f050:
     ldr r2, [r10, #0x8]
     mov r1, #0x1
@@ -153,4 +153,3 @@ TimedSpriteBurstManager_Init: ; 0x0201eefc
 .L_0201f0a8: .word gTimedSpritePresentationAllocationTag
 .L_0201f0ac: .word gHeapContext
     .size TimedSpriteBurstManager_Init, .-TimedSpriteBurstManager_Init
-

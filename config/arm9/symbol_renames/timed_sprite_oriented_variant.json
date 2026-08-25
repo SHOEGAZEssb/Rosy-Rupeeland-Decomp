@@ -1,0 +1,6 @@
+{
+  "func_0201e454": "OrientedTimedSprite_Init",
+  "func_0201e4d0": "OrientedTimedSprite_Destroy",
+  "func_0201e4e4": "OrientedTimedSprite_DestroyAndFree",
+  "func_0201e500": "OrientedTimedSprite_Update"
+}

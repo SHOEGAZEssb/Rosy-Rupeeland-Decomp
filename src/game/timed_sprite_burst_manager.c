@@ -77,7 +77,7 @@ extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
 extern void func_02003e38(void *allocation);
 extern void *ActorMotion_GetPosition(void *source);
 
-extern void *func_0201e454(void *self, BurstSpriteConfig *config);
+extern void *OrientedTimedSprite_Init(void *self, BurstSpriteConfig *config);
 extern void TimedSpritePresentation_SetVisible(void *sprite, s32 enabled);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *font, void *spriteGroup);
@@ -147,7 +147,7 @@ TimedSpriteBurstManager *TimedSpriteBurstManager_Init(
         *(s32 *)&config.first10.bytes[8] = center.y + velocityY;
         sprite = Heap_Alloc(0x2c, gTimedSpritePresentationAllocationTag, 4, &gHeapContext);
         if (sprite != 0) {
-            func_0201e454(sprite, &config);
+            OrientedTimedSprite_Init(sprite, &config);
         }
         self->sprites08.items[index] = sprite;
         TimedSpritePresentation_SetVisible(sprite, 1);
