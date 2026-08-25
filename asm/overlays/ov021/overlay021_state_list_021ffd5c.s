@@ -27,7 +27,7 @@
     .extern Overlay021_List_UpdateSelectionDisplay
     .extern Overlay021_List_HitTestRow
     .extern Overlay021_List_UpdateVisibleRows
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
     .extern func_ov021_021ff274
@@ -163,7 +163,7 @@ L_021fff14:
     ldr r1, L_022000e4
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_022000d4
 L_021fff38:
     cmp r6, #0x0
@@ -265,7 +265,7 @@ L_02200044:
     ldr r1, L_022000ec
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_022000d4
 L_022000b8:
     ldr r0, [r5, #0x8]

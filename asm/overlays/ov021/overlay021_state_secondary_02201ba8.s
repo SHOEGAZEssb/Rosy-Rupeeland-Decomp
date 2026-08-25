@@ -27,7 +27,7 @@
     .extern func_ov001_021fcb60
     .extern func_ov001_021fcbf0
     .extern func_ov001_021fcc44
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021feae4
     .extern func_ov021_021feea4
     .extern func_ov021_021ff274
@@ -115,7 +115,7 @@ L_02201c40:
     ldr r1, L_02201f80
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201f70
 L_02201cd4:
     cmp r5, #0x0
@@ -148,7 +148,7 @@ L_02201d14:
     ldr r1, L_02201f84
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201f70
 L_02201d50:
     ldr r0, [r4, #0x358]
@@ -168,7 +168,7 @@ L_02201d50:
     ldr r1, L_02201f88
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201f70
 L_02201d9c:
     mov r0, r4
@@ -227,7 +227,7 @@ L_02201dac:
     ldr r1, L_02201f8c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201f70
 L_02201e80:
     ldr r0, [r4, #0x2bc]
@@ -237,13 +237,13 @@ L_02201e80:
     ldr r1, L_02201f90
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201f70
 L_02201ea4:
     ldr r1, L_02201f94
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201f70
 L_02201eb8:
     mov r0, r4

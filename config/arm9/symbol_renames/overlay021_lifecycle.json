@@ -1,0 +1,9 @@
+{
+  "func_ov021_021fd790": "Overlay021_Controller_DestroyNoOp",
+  "func_ov021_021fd794": "Overlay021_Snapshot_Init",
+  "func_ov021_021fd7a8": "Overlay021_Dialog_SetLayout",
+  "func_ov021_021fd7c0": "Overlay021_SetTransition",
+  "func_ov021_021fd7e8": "Overlay021_Scene_Init",
+  "func_ov021_021fdb80": "Overlay021_Scene_Deinit",
+  "func_ov021_021fdd34": "Overlay021_Scene_Delete"
+}

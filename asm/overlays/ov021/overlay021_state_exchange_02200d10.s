@@ -22,7 +22,7 @@
     .extern Overlay021_List_Show
     .extern Overlay021_List_RenderVisibleRows
     .extern Overlay021_List_UpdateSelectionDisplay
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe6b0
     .extern Overlay021_DestroyAuxiliaryPanel
@@ -91,7 +91,7 @@ L_02200d8c:
     str r0, [r4, #0x2c8]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201168
 L_02200dd8:
     mov r0, #0x3
@@ -99,7 +99,7 @@ L_02200dd8:
     str r0, [r4, #0x2c8]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201168
 L_02200df4:
     ldr r0, [r4, #0x2bc]
@@ -162,7 +162,7 @@ L_02200eb0:
     ldr r1, L_02201184
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201168
 L_02200ee0:
     ldr r0, [r4, #0x3ec]
@@ -203,7 +203,7 @@ L_02200f48:
     ldr r1, L_02201188
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201168
 L_02200f78:
     bl DisplayBrightness_IsMainTransitionComplete
@@ -212,7 +212,7 @@ L_02200f78:
     ldr r1, L_0220118c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201168
 L_02200f98:
     ldr r0, L_02201180
@@ -275,7 +275,7 @@ L_02201024:
     ldr r1, L_02201190
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201168
 L_02201088:
     ldr r0, [r4, #0x380]
@@ -291,7 +291,7 @@ L_02201088:
     ldr r1, L_02201194
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201168
 L_022010c4:
     mov r0, r4
@@ -316,7 +316,7 @@ L_022010c4:
     ldr r1, L_02201198
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201168
 L_02201124:
     ldr r0, [r4, #0x2bc]
@@ -335,7 +335,7 @@ L_02201124:
     ldr r1, L_022011a0
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_02201168:
     mov r0, r4
     bl func_ov021_021feea4

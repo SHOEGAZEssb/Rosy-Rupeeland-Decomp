@@ -52,7 +52,7 @@ extern s32 func_ov000_021fc298(void *, void *);
 extern s32 func_ov000_021fcca8(void *, void *);
 extern s32 func_ov000_021fcc18(void *, void *);
 extern s32 func_ov000_021fccfc(void *, void *);
-extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void Overlay021_SetTransition(void *, u32, u32);
 extern void Overlay021_RefreshSelectionBackground(void *);
 extern void func_ov021_021fea68(void *);
 extern s32 Overlay021_IsAuxiliaryRecordAvailable(void *);
@@ -73,7 +73,7 @@ extern s32 func_ov045_0220b9b8(void *);
 
 static void change_state(void *state, const u32 *next)
 {
-    func_ov021_021fd7c0(state, next[0], next[1]);
+    Overlay021_SetTransition(state, next[0], next[1]);
 }
 
 /*

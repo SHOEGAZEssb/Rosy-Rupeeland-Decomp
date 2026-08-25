@@ -15,7 +15,7 @@
     .extern Overlay001_Grid_UpdateTransition
     .extern func_ov001_021fc348
     .extern Overlay021_List_UpdateVisibleRows
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
     .extern func_ov021_021ff274
@@ -170,7 +170,7 @@ L_022002e8:
     ldr r1, L_02200354
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02200344
 L_02200314:
     ldr r0, [r5, #0x358]
@@ -179,13 +179,13 @@ L_02200314:
     ldr r1, L_02200358
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02200344
 L_02200334:
     ldr r1, L_0220035c
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_02200344:
     mov r0, r5
     bl func_ov021_021feea4

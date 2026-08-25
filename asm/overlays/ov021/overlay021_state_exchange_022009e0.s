@@ -15,7 +15,7 @@
     .extern func_ov002_021fbd98
     .extern func_ov002_021fbdb0
     .extern Overlay021_Descriptor_GetCategory
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021feea4
     .extern func_ov021_021ff1d0
     .extern func_ov021_021ff274
@@ -162,7 +162,7 @@ L_02200bb0:
     ldr r1, L_02200d04
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02200ce8
 L_02200be0:
     mov r0, r4
@@ -203,7 +203,7 @@ L_02200c5c:
     ldr r1, L_02200d08
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02200ce8
 L_02200c78:
     ldr r0, [r4, #0x390]
@@ -235,7 +235,7 @@ L_02200cc0:
     ldr r1, L_02200d0c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_02200ce8:
     mov r0, r4
     bl func_ov021_021feea4

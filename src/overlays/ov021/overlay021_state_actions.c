@@ -37,7 +37,7 @@ extern u32 Overlay021_Descriptor_GetCategory(const void *);
 extern void Overlay021_List_Hide(void *);
 extern void Overlay021_List_RenderVisibleRows(void *);
 extern void Overlay021_List_UpdateSelectionDisplay(void *);
-extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void Overlay021_SetTransition(void *, u32, u32);
 extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe29c(void *);
 extern void func_ov021_021fe520(void *);
@@ -93,7 +93,7 @@ extern "C" s32 func_ov021_02200360(void *state)
             const u8 *record = FIELD(const u8 *, descriptor, 4);
             RecordCategory_PublishById(data_021f5128[FIELD(s32, state, 0x54)],
                           FIELD(u16, record, 0));
-            func_ov021_021fd7c0(state, data_ov021_02202ed0[0],
+            Overlay021_SetTransition(state, data_ov021_02202ed0[0],
                                 data_ov021_02202ed0[1]);
         }
         break;
@@ -159,7 +159,7 @@ extern "C" s32 func_ov021_0220044c(void *state)
             }
             RecordCategory_PublishById(data_021f5128[FIELD(s32, state, 0x54)],
                           FIELD(u16, record, 0));
-            func_ov021_021fd7c0(state, data_ov021_02202ec8[0],
+            Overlay021_SetTransition(state, data_ov021_02202ec8[0],
                                 data_ov021_02202ec8[1]);
         }
         break;
@@ -200,7 +200,7 @@ extern "C" s32 func_ov021_02200630(void *state)
         if (FIELD(s32, state, 0x3d8) != 0) {
             FIELD(s32, state, 0x48) = 0;
             TitlePalette_SetMainBackdrop(0);
-            func_ov021_021fd7c0(state, data_ov021_02202ec0[0],
+            Overlay021_SetTransition(state, data_ov021_02202ec0[0],
                                 data_ov021_02202ec0[1]);
             break;
         }
@@ -217,15 +217,15 @@ extern "C" s32 func_ov021_02200630(void *state)
             FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
             FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
             DisplayBrightness_StartMaskedTransitions(1, 0);
-            func_ov021_021fd7c0(state, data_ov021_02202eb8[0],
+            Overlay021_SetTransition(state, data_ov021_02202eb8[0],
                                 data_ov021_02202eb8[1]);
         } else if (FIELD(s32, state, 0x37c) != 0) {
             FIELD(s32, state, 0x37c) = 0;
-            func_ov021_021fd7c0(state, data_ov021_02202eb0[0],
+            Overlay021_SetTransition(state, data_ov021_02202eb0[0],
                                 data_ov021_02202eb0[1]);
         } else if (FIELD(s32, state, 0x380) != 0) {
             FIELD(s32, state, 0x380) = 0;
-            func_ov021_021fd7c0(state, data_ov021_02202ea8[0],
+            Overlay021_SetTransition(state, data_ov021_02202ea8[0],
                                 data_ov021_02202ea8[1]);
         } else {
             DisplayBrightness_StartMaskedTransitions(1, 0);
@@ -241,7 +241,7 @@ extern "C" s32 func_ov021_02200630(void *state)
     }
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete() != 0)
-            func_ov021_021fd7c0(state, data_ov021_02202ea0[0],
+            Overlay021_SetTransition(state, data_ov021_02202ea0[0],
                                 data_ov021_02202ea0[1]);
         break;
     }
@@ -302,7 +302,7 @@ extern "C" s32 func_ov021_02200840(void *state)
             DisplayBrightness_IsMainTransitionComplete() != 0) {
             SceneSound_PlayPackedEffect(state, 0x3c84);
             FIELD(s32, state, 0x3fc) = 0;
-            func_ov021_021fd7c0(state, data_ov021_02202e98[0],
+            Overlay021_SetTransition(state, data_ov021_02202e98[0],
                                 data_ov021_02202e98[1]);
         } else {
             FIELD(s32, state, 0x3fc) =

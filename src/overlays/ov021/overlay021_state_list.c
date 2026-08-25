@@ -46,7 +46,7 @@ extern void Overlay021_List_Hide(void *);
 extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern s32 Overlay021_List_HitTestRow(void *, const void *);
 extern s32 Overlay021_List_UpdateVisibleRows(void *);
-extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void Overlay021_SetTransition(void *, u32, u32);
 extern void func_ov021_021feea4(void *);
 extern void func_ov021_021fee54(void *);
 extern s32 func_ov021_021ff274(void *);
@@ -115,7 +115,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                         SceneSound_PlayPackedEffect(state, 0x16);
                 } else if (InventoryScroll_TestMarkerHit(controller,
                                          (u8 *)state + 0x30) != 0) {
-                    func_ov021_021fd7c0(state,
+                    Overlay021_SetTransition(state,
                                         data_ov021_02202ef8[0],
                                         data_ov021_02202ef8[1]);
                     break;
@@ -166,7 +166,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
             FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
             Overlay021_List_Hide(list);
             DisplayBrightness_StartMaskedTransitions(1, 0);
-            func_ov021_021fd7c0(state, data_ov021_02202ef0[0],
+            Overlay021_SetTransition(state, data_ov021_02202ef0[0],
                                 data_ov021_02202ef0[1]);
         }
         break;
@@ -255,13 +255,13 @@ extern "C" s32 func_ov021_022000f0(void *state)
         } else {
             InventoryScroll_EndMarkerDrag(controller, 6);
             if (primary != 0)
-                func_ov021_021fd7c0(state, data_ov021_02202ee8[0],
+                Overlay021_SetTransition(state, data_ov021_02202ee8[0],
                                     data_ov021_02202ee8[1]);
             else if (secondary != 0)
-                func_ov021_021fd7c0(state, data_ov021_02202ee0[0],
+                Overlay021_SetTransition(state, data_ov021_02202ee0[0],
                                     data_ov021_02202ee0[1]);
             else
-                func_ov021_021fd7c0(state, data_ov021_02202ed8[0],
+                Overlay021_SetTransition(state, data_ov021_02202ed8[0],
                                     data_ov021_02202ed8[1]);
         }
         break;

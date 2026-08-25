@@ -6,7 +6,7 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern DisplayBrightness_StartMaskedTransitions
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021fe390
     .extern Overlay021_RefreshSelectionBackground
     .extern func_ov021_021fe8e8
@@ -98,13 +98,13 @@ L_02202398:
     ldr r1, L_022023e8
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_022023d4
 L_022023c4:
     ldr r1, L_022023ec
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_022023d4:
     mov r0, r4
     bl func_ov021_021feea4

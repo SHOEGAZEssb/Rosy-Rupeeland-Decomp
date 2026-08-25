@@ -11,7 +11,7 @@
     .extern func_ov002_021fbe60
     .extern Overlay021_Descriptor_GetCategory
     .extern Overlay021_List_Hide
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021fe29c
     .extern func_ov021_021fe8a8
     .extern func_ov021_021fea68
@@ -125,7 +125,7 @@ L_02200970:
     str r0, [r4, #0x3fc]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_022009c4
 L_022009b4:
     ldr r0, [r4, #0x390]

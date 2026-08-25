@@ -27799,16 +27799,16 @@ build build/reports/overlay021_controller_helpers_021fd7c0.json: objdiff build/d
   base_object = build/decomp/asm/overlays/ov021/overlay021_controller_helpers_021fd7c0.o
 build build/reports/overlay021_controller_helpers_021fd790.txt: match_report build/reports/overlay021_controller_helpers_021fd790.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_controller_helpers_021fd790.json
-  report_args = --section .text --function func_ov021_021fd790 --require-exact
+  report_args = --section .text --function Overlay021_Controller_DestroyNoOp --require-exact
 build build/reports/overlay021_controller_helpers_021fd794.txt: match_report build/reports/overlay021_controller_helpers_021fd794.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_controller_helpers_021fd794.json
-  report_args = --section .text --function func_ov021_021fd794 --require-exact
+  report_args = --section .text --function Overlay021_Snapshot_Init --require-exact
 build build/reports/overlay021_controller_helpers_021fd7a8.txt: match_report build/reports/overlay021_controller_helpers_021fd7a8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_controller_helpers_021fd7a8.json
-  report_args = --section .text --function func_ov021_021fd7a8 --require-exact
+  report_args = --section .text --function Overlay021_Dialog_SetLayout --require-exact
 build build/reports/overlay021_controller_helpers_021fd7c0.txt: match_report build/reports/overlay021_controller_helpers_021fd7c0.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_controller_helpers_021fd7c0.json
-  report_args = --section .text --function func_ov021_021fd7c0 --require-exact
+  report_args = --section .text --function Overlay021_SetTransition --require-exact
 build overlay021_controller_helpers: phony build/decomp/src/overlays/ov021/overlay021_controller_helpers.o build/decomp/asm/overlays/ov021/overlay021_controller_helpers_021fd790.o build/decomp/asm/overlays/ov021/overlay021_controller_helpers_021fd794.o build/decomp/asm/overlays/ov021/overlay021_controller_helpers_021fd7a8.o build/decomp/asm/overlays/ov021/overlay021_controller_helpers_021fd7c0.o build/reports/overlay021_controller_helpers_021fd790.txt build/reports/overlay021_controller_helpers_021fd794.txt build/reports/overlay021_controller_helpers_021fd7a8.txt build/reports/overlay021_controller_helpers_021fd7c0.txt
 
 overlay021_list_runtime_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -28457,7 +28457,7 @@ build build/reports/overlay021_scene_lifecycle_021fd7e8.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fd7e8.o
 build build/reports/overlay021_scene_lifecycle_021fd7e8.txt: match_report build/reports/overlay021_scene_lifecycle_021fd7e8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_scene_lifecycle_021fd7e8.json
-  report_args = --section .text --function func_ov021_021fd7e8 --require-exact
+  report_args = --section .text --function Overlay021_Scene_Init --require-exact
 build build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fdb80.o: mwasmarm asm/overlays/ov021/overlay021_scene_lifecycle_021fdb80.s
 build build/decomp/delinks/asm/overlays/ov021/overlay021_scene_lifecycle_021fdb80.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov021/delinks.txt config/arm9/overlays/ov021/symbols.txt config/arm9/overlays/ov021/relocs.txt
 build build/reports/overlay021_scene_lifecycle_021fdb80.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_scene_lifecycle_021fdb80.o | build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fdb80.o
@@ -28465,7 +28465,7 @@ build build/reports/overlay021_scene_lifecycle_021fdb80.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fdb80.o
 build build/reports/overlay021_scene_lifecycle_021fdb80.txt: match_report build/reports/overlay021_scene_lifecycle_021fdb80.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_scene_lifecycle_021fdb80.json
-  report_args = --section .text --function func_ov021_021fdb80 --require-exact
+  report_args = --section .text --function Overlay021_Scene_Deinit --require-exact
 build build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fdd34.o: mwasmarm asm/overlays/ov021/overlay021_scene_lifecycle_021fdd34.s
 build build/decomp/delinks/asm/overlays/ov021/overlay021_scene_lifecycle_021fdd34.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov021/delinks.txt config/arm9/overlays/ov021/symbols.txt config/arm9/overlays/ov021/relocs.txt
 build build/reports/overlay021_scene_lifecycle_021fdd34.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_scene_lifecycle_021fdd34.o | build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fdd34.o
@@ -28473,7 +28473,7 @@ build build/reports/overlay021_scene_lifecycle_021fdd34.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fdd34.o
 build build/reports/overlay021_scene_lifecycle_021fdd34.txt: match_report build/reports/overlay021_scene_lifecycle_021fdd34.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_scene_lifecycle_021fdd34.json
-  report_args = --section .text --function func_ov021_021fdd34 --require-exact
+  report_args = --section .text --function Overlay021_Scene_Delete --require-exact
 build overlay021_scene_lifecycle: phony build/decomp/src/overlays/ov021/overlay021_scene_lifecycle.o build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fd7e8.o build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fdb80.o build/decomp/asm/overlays/ov021/overlay021_scene_lifecycle_021fdd34.o build/reports/overlay021_scene_lifecycle_021fd7e8.txt build/reports/overlay021_scene_lifecycle_021fdb80.txt build/reports/overlay021_scene_lifecycle_021fdd34.txt
 build overlay021_partial: phony overlay021_list_helpers overlay021_controller_helpers overlay021_list_runtime overlay021_graphics_setup overlay021_widget_helpers overlay021_auxiliary_helpers overlay021_selection_display overlay021_action_helpers overlay021_scene_widgets overlay021_panel_runtime overlay021_dialog_runtime overlay021_state_entry overlay021_state_list overlay021_state_actions overlay021_state_exchange overlay021_state_primary overlay021_state_secondary overlay021_state_transaction overlay021_scene_lifecycle
 overlay022_core_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

@@ -49,7 +49,7 @@ extern s32 func_ov001_021fcbf0(void *, void *);
 extern s32 func_ov001_021fc0ac(void *, void *);
 extern s32 func_ov001_021fcb60(void *, void *);
 extern s32 func_ov001_021fcc44(void *, void *);
-extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void Overlay021_SetTransition(void *, u32, u32);
 extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe390(void *);
 extern void Overlay021_RefreshSelectionBackground(void *);
@@ -74,7 +74,7 @@ extern s32 func_ov045_0220b9b8(void *);
 
 static void change_state(void *state, const u32 *next)
 {
-    func_ov021_021fd7c0(state, next[0], next[1]);
+    Overlay021_SetTransition(state, next[0], next[1]);
 }
 
 /*

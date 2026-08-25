@@ -5,7 +5,7 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021feea4
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
@@ -66,13 +66,13 @@ L_02202c74:
     ldr r1, L_02202cc8
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02202cb8
 L_02202ca8:
     ldr r1, L_02202ccc
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_02202cb8:
     mov r0, r4
     bl func_ov021_021feea4

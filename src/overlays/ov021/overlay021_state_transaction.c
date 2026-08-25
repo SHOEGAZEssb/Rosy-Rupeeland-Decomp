@@ -40,7 +40,7 @@ extern void func_ov002_021fbe68(void *);
 extern void Overlay021_List_Show(void *);
 extern void Overlay021_List_RenderVisibleRows(void *);
 extern void Overlay021_List_UpdateSelectionDisplay(void *);
-extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void Overlay021_SetTransition(void *, u32, u32);
 extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe6b0(void *);
 extern void func_ov021_021feea4(void *);
@@ -70,7 +70,7 @@ extern void func_ov045_0220bdf0(void *);
 
 static void change_state(void *state, const u32 *next)
 {
-    func_ov021_021fd7c0(state, next[0], next[1]);
+    Overlay021_SetTransition(state, next[0], next[1]);
 }
 
 static void advance(void *state)

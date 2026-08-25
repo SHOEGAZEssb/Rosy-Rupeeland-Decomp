@@ -15,7 +15,7 @@ extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern u32 Overlay021_Descriptor_GetCategory(const void *);
-extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void Overlay021_SetTransition(void *, u32, u32);
 extern void *Overlay021_List_GetSelectedRow(void *);
 extern void func_ov021_021feea4(void *);
 #ifdef __cplusplus
@@ -62,11 +62,11 @@ extern "C" void func_ov021_021ffcb4(void *state)
         FIELD(u16, record, 4) >= 2) {
         FIELD(s32, state, 0x3e0) = 1;
         FIELD(s32, state, 0x3dc) = RecordDescriptor_IsDiscovered(descriptor) != 0;
-        func_ov021_021fd7c0(state, data_ov021_02202f08[0],
+        Overlay021_SetTransition(state, data_ov021_02202f08[0],
                             data_ov021_02202f08[1]);
     } else {
         DisplayBrightness_StartMaskedTransitions(1, -16);
-        func_ov021_021fd7c0(state, data_ov021_02202f00[0],
+        Overlay021_SetTransition(state, data_ov021_02202f00[0],
                             data_ov021_02202f00[1]);
     }
 }

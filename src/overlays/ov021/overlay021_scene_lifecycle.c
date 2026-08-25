@@ -49,10 +49,10 @@ extern u32 genrand_int32(void);
 extern void func_ov002_021fb9c4(void *);
 extern void Overlay021_List_Deinit(void *);
 extern s32 Overlay021_List_FindSpecialRow(void *);
-extern void func_ov021_021fd790(void *);
-extern void func_ov021_021fd794(void *);
-extern void func_ov021_021fd7a8(void *, s32, s32, s32, s32);
-extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void Overlay021_Controller_DestroyNoOp(void *);
+extern void Overlay021_Snapshot_Init(void *);
+extern void Overlay021_Dialog_SetLayout(void *, s32, s32, s32, s32);
+extern void Overlay021_SetTransition(void *, u32, u32);
 extern void func_ov021_021fdf88(void *);
 extern void func_ov021_021fe098(void *);
 extern void Overlay021_SetupMainBackground(void *);
@@ -111,8 +111,8 @@ static void destroy_scene_members(void *state)
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     OverlaySlot_Destroy((u8 *)state + 0x41c);
-    __destroy_arr((u8 *)state + 0x14c, 2, 0xac, func_ov021_021fd790);
-    func_ov021_021fd790((u8 *)state + 0xa0);
+    __destroy_arr((u8 *)state + 0x14c, 2, 0xac, Overlay021_Controller_DestroyNoOp);
+    Overlay021_Controller_DestroyNoOp((u8 *)state + 0xa0);
     AnimationResourceState_Destroy((u8 *)state + 0x88);
     AnimationResourceState_Destroy((u8 *)state + 0x7c);
     TitleCharacterResourceCollection_Destroy((u8 *)state + 0x58);
@@ -127,7 +127,7 @@ static void destroy_scene_members(void *state)
  * initial state descriptor 0x02202E10. Heap allocations and graphics/SDK state
  * change. The initialized scene pointer is returned.
  */
-extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
+extern "C" void *Overlay021_Scene_Init(void *state, s32 mode)
 {
     SceneInputBase_Init(state);
     FIELD(const void *, state, 0) = data_ov021_02202f64;
@@ -136,10 +136,10 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     AnimationResourceState_InitEmbedded((u8 *)state + 0x88);
     SpriteMotionController_Init((u8 *)state + 0xa0);
     __construct_array((u8 *)state + 0x14c, 2, 0xac,
-                      SpriteMotionController_Init, func_ov021_021fd790);
+                      SpriteMotionController_Init, Overlay021_Controller_DestroyNoOp);
     FIELD(s32, state, 0x2cc) = 0;
-    func_ov021_021fd794((u8 *)state + 0x35c);
-    func_ov021_021fd794((u8 *)state + 0x368);
+    Overlay021_Snapshot_Init((u8 *)state + 0x35c);
+    Overlay021_Snapshot_Init((u8 *)state + 0x368);
     TitleScrollValue_Init((u8 *)state + 0x404);
     OverlaySlot_Init((u8 *)state + 0x41c);
 
@@ -205,7 +205,7 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
         TitleDialog_Init(dialog, data_020f4e14,
                       FIELD(void *, state, 0x58));
     FIELD(void *, state, 0x388) = dialog;
-    func_ov021_021fd7a8(dialog, 0x50, 0x28, 0xa8, 0x84);
+    Overlay021_Dialog_SetLayout(dialog, 0x50, 0x28, 0xa8, 0x84);
     FIELD(s32, dialog, 0xbc) = -2;
     FIELD(s32, dialog, 0xd0) = 13;
     FIELD(s32, dialog, 0xd4) = 0;
@@ -217,7 +217,7 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
         func_ov045_0220b83c(currency_anim);
     FIELD(void *, state, 0x3ec) = currency_anim;
     FIELD(u32, state, 0x20) |= 0x400;
-    func_ov021_021fd7c0(state, data_ov021_02202e10[0],
+    Overlay021_SetTransition(state, data_ov021_02202e10[0],
                         data_ov021_02202e10[1]);
     return state;
 }
@@ -229,7 +229,7 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
  * releases graphics/font/controller resources; and clears both blend-control
  * registers. The input scene storage remains allocated and is returned.
  */
-extern "C" void *func_ov021_021fdb80(void *state)
+extern "C" void *Overlay021_Scene_Deinit(void *state)
 {
     FIELD(const void *, state, 0) = data_ov021_02202f64;
     FIELD(u32, state, 0x20) &= ~0x400U;
@@ -243,7 +243,7 @@ extern "C" void *func_ov021_021fdb80(void *state)
  * scene allocation itself. The original pointer is returned for ABI parity but
  * must not be dereferenced after the call.
  */
-extern "C" void *func_ov021_021fdd34(void *state)
+extern "C" void *Overlay021_Scene_Delete(void *state)
 {
     FIELD(const void *, state, 0) = data_ov021_02202f64;
     FIELD(u32, state, 0x20) &= ~0x400U;

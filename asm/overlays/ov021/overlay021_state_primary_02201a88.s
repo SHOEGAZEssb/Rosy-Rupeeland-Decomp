@@ -6,7 +6,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern DisplayBrightness_StartMaskedTransitions
     .extern SpriteMotionController_Hide
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern Overlay021_RefreshSelectionBackground
     .extern func_ov021_021feb60
     .extern func_ov021_021feea4
@@ -86,7 +86,7 @@ L_02201b6c:
     ldr r1, L_02201ba4
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_02201b88:
     mov r0, r4
     bl func_ov021_021feea4

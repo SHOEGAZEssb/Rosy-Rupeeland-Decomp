@@ -8,7 +8,7 @@
     .extern TitleDialog_ClearTextRect
     .extern Overlay021_Descriptor_GetCategory
     .extern Overlay021_List_GetSelectedRow
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
 
 .global func_ov021_021ffcb4
 func_ov021_021ffcb4:
@@ -42,7 +42,7 @@ func_ov021_021ffcb4:
     ldr r1, L_021ffd54
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     ldmia sp!, {r4, pc}
 L_021ffd34:
     mov r0, #0x1
@@ -51,7 +51,7 @@ L_021ffd34:
     ldr r1, L_021ffd58
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     ldmia sp!, {r4, pc}
 L_021ffd54: .word data_ov021_02202f08
 L_021ffd58: .word data_ov021_02202f00

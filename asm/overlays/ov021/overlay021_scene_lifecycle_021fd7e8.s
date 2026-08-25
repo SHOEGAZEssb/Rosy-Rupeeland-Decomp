@@ -26,10 +26,10 @@
     .extern TitleDialog_SetExternalTextRow
     .extern SpriteMotionController_Init
     .extern Overlay021_List_FindSpecialRow
-    .extern func_ov021_021fd790
-    .extern func_ov021_021fd794
-    .extern func_ov021_021fd7a8
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_Controller_DestroyNoOp
+    .extern Overlay021_Snapshot_Init
+    .extern Overlay021_Dialog_SetLayout
+    .extern Overlay021_SetTransition
     .extern func_ov021_021fdf88
     .extern func_ov021_021fe098
     .extern Overlay021_SetupMainBackground
@@ -43,8 +43,8 @@
     .extern Heap_Alloc
     .extern MIi_CpuCopy16
 
-.global func_ov021_021fd7e8
-func_ov021_021fd7e8:
+.global Overlay021_Scene_Init
+Overlay021_Scene_Init:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -69,9 +69,9 @@ func_ov021_021fd7e8:
     mov r0, #0x0
     str r0, [r5, #0x2cc]
     add r0, r5, #0x35c
-    bl func_ov021_021fd794
+    bl Overlay021_Snapshot_Init
     add r0, r5, #0x368
-    bl func_ov021_021fd794
+    bl Overlay021_Snapshot_Init
     add r0, r5, #0x4
     add r0, r0, #0x400
     bl TitleScrollValue_Init
@@ -226,7 +226,7 @@ L_021fda90:
     mov r1, #0x50
     mov r2, #0x28
     mov r3, #0xa8
-    bl func_ov021_021fd7a8
+    bl Overlay021_Dialog_SetLayout
     ldr r0, [r5, #0x388]
     mvn r1, #0x1
     str r1, [r0, #0xbc]
@@ -259,11 +259,11 @@ L_021fdb10:
     str r0, [r5, #0x20]
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdb38: .word data_ov021_02202f64
-L_021fdb3c: .word func_ov021_021fd790
+L_021fdb3c: .word Overlay021_Controller_DestroyNoOp
 L_021fdb40: .word SpriteMotionController_Init
 L_021fdb44: .word data_021e9ac0
 L_021fdb48: .word data_021f3ecc
@@ -280,4 +280,4 @@ L_021fdb70: .word gHeapContext
 L_021fdb74: .word gDebugFont
 L_021fdb78: .word data_ov021_02202f90
 L_021fdb7c: .word data_ov021_02202e10
-.size func_ov021_021fd7e8, . - func_ov021_021fd7e8
+.size Overlay021_Scene_Init, . - Overlay021_Scene_Init

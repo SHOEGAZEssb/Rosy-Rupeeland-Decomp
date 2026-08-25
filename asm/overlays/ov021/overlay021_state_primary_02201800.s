@@ -11,7 +11,7 @@
     .extern TitleDialog_ClearTextRect
     .extern Overlay000_Grid_Render
     .extern Overlay000_GetActiveMetadata
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021fea68
     .extern func_ov021_021feea4
     .extern func_ov021_021ff0e0
@@ -131,7 +131,7 @@ L_02201970:
     ldr r1, L_02201a80
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02201a64
 L_02201998:
     bl DisplayBrightness_IsMainTransitionComplete
@@ -187,7 +187,7 @@ L_02201a2c:
     ldr r1, L_02201a84
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_02201a64:
     mov r0, r4
     bl func_ov021_021feea4

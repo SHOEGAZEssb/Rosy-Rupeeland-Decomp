@@ -27,7 +27,7 @@
     .extern Overlay021_List_Show
     .extern Overlay021_List_RenderVisibleRows
     .extern Overlay021_List_UpdateSelectionDisplay
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe6b0
     .extern Overlay021_DestroyAuxiliaryPanel
@@ -472,7 +472,7 @@ L_02202998:
     ldr r1, L_02202bcc
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02202ba8
 L_022029fc:
     ldr r0, [r4, #0x380]
@@ -488,7 +488,7 @@ L_022029fc:
     ldr r1, L_02202bd0
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02202ba8
 L_02202a38:
     mov r0, r4
@@ -517,7 +517,7 @@ L_02202a38:
     ldr r1, L_02202bd8
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_02202ba8
 L_02202aa8:
     ldr r0, [r4, #0x3ec]
@@ -586,7 +586,7 @@ L_02202b84:
     ldr r1, L_02202bdc
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_02202ba8:
     mov r0, r4
     bl func_ov021_021feea4

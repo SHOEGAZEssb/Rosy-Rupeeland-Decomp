@@ -9,7 +9,7 @@
     .extern RecordDescriptor_GetMessage
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021feea4
     .extern func_ov021_021ff1d0
     .extern func_ov021_021ff274
@@ -136,7 +136,7 @@ L_022005d4:
     ldr r1, L_0220062c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_02200604:
     mov r0, r4
     bl func_ov021_021feea4

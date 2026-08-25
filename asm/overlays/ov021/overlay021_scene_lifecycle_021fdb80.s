@@ -12,14 +12,14 @@
     .extern TitleCharacterResourceCollection_Destroy
     .extern func_ov002_021fb9c4
     .extern Overlay021_List_Deinit
-    .extern func_ov021_021fd790
+    .extern Overlay021_Controller_DestroyNoOp
     .extern func_ov045_0220b8cc
     .extern func_ov045_0220d2d8
     .extern gDebugFont
     .extern Heap_Free
 
-.global func_ov021_021fdb80
-func_ov021_021fdb80:
+.global Overlay021_Scene_Deinit
+Overlay021_Scene_Deinit:
     stmdb sp!, {r4, r5, r6, lr}
     ldr r1, L_021fdd1c
     mov r4, r0
@@ -124,7 +124,7 @@ L_021fdc84:
     ldr r3, L_021fdd30
     bl __destroy_arr
     add r0, r4, #0xa0
-    bl func_ov021_021fd790
+    bl Overlay021_Controller_DestroyNoOp
     add r0, r4, #0x88
     bl AnimationResourceState_Destroy
     add r0, r4, #0x7c
@@ -138,5 +138,5 @@ L_021fdd20: .word data_020f4e18
 L_021fdd24: .word 0x4000050
 L_021fdd28: .word data_020f4e14
 L_021fdd2c: .word gDebugFont
-L_021fdd30: .word func_ov021_021fd790
-.size func_ov021_021fdb80, . - func_ov021_021fdb80
+L_021fdd30: .word Overlay021_Controller_DestroyNoOp
+.size Overlay021_Scene_Deinit, . - Overlay021_Scene_Deinit

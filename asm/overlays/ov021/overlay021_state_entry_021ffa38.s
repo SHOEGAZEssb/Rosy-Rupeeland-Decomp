@@ -13,7 +13,7 @@
     .extern Overlay021_List_Show
     .extern Overlay021_List_RenderVisibleRows
     .extern Overlay021_List_UpdateSelectionDisplay
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern Overlay021_IsAuxiliaryRecordAvailable
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
@@ -88,7 +88,7 @@ L_021ffadc:
     ldr r1, L_021ffca4
     mov r0, r8
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_021ffc94
 L_021ffb30:
     mov r7, #0x0
@@ -129,13 +129,13 @@ L_021ffb4c:
     ldr r1, L_021ffca8
     mov r0, r8
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_021ffc94
 L_021ffbcc:
     ldr r1, L_021ffcac
     mov r0, r8
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_021ffc94
 L_021ffbe0:
     mov r1, #0x3
@@ -187,7 +187,7 @@ L_021ffc78:
     ldr r1, L_021ffcb0
     mov r0, r8
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_021ffc94:
     mov r0, r8
     bl func_ov021_021feea4

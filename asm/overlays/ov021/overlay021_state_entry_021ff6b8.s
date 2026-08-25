@@ -13,7 +13,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern RecordDescriptor_GetMessage
     .extern SpriteMotionController_Hide
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021feea4
     .extern func_ov021_021ff0e0
     .extern func_ov045_0220c128
@@ -76,7 +76,7 @@ L_021ff77c:
     ldr r1, L_021ff82c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_021ff7f4
 L_021ff790:
     ldr r0, L_021ff814
@@ -105,7 +105,7 @@ L_021ff7e4:
     ldr r1, L_021ff830
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_021ff7f4:
     ldr r0, [r4, #0x20]
     bic r0, r0, #0x1

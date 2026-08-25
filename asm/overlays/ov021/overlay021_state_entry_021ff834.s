@@ -13,7 +13,7 @@
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_UpdateTextPage
     .extern TitleDialog_ClearTextRect
-    .extern func_ov021_021fd7c0
+    .extern Overlay021_SetTransition
     .extern func_ov021_021fe520
     .extern func_ov021_021fe63c
     .extern func_ov021_021fe84c
@@ -130,7 +130,7 @@ L_021ff98c:
     ldr r1, L_021ffa08
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
     b L_021ff9e8
 L_021ff9c4:
     mov r0, #0x1
@@ -141,7 +141,7 @@ L_021ff9c4:
     str r0, [r4, #0x3e4]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov021_021fd7c0
+    bl Overlay021_SetTransition
 L_021ff9e8:
     mov r0, r4
     bl func_ov021_021feea4

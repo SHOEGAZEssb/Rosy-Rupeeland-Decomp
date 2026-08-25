@@ -41,7 +41,7 @@ extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void Overlay021_List_Show(void *);
 extern void Overlay021_List_RenderVisibleRows(void *);
 extern void Overlay021_List_UpdateSelectionDisplay(void *);
-extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void Overlay021_SetTransition(void *, u32, u32);
 extern void func_ov021_021fe520(void *);
 extern void func_ov021_021fe63c(void *);
 extern void func_ov021_021fe84c(void *);
@@ -96,7 +96,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
             const u16 *record = (const u16 *)RecordDescriptor_GetMessage(descriptor, 0);
             if (record[0] == 0xee0e)
                 func_ov045_0220c128(FIELD(void *, state, 0x38c), record[1]);
-            func_ov021_021fd7c0(state, data_ov021_02202e50[0],
+            Overlay021_SetTransition(state, data_ov021_02202e50[0],
                                 data_ov021_02202e50[1]);
         } else {
             if (GameWork_TestFlag(gGameWork, 0x3b2) != 0) {
@@ -107,7 +107,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
             } else {
                 func_ov021_021ff0e0(state, 0);
             }
-            func_ov021_021fd7c0(state, data_ov021_02202d28[0],
+            Overlay021_SetTransition(state, data_ov021_02202d28[0],
                                 data_ov021_02202d28[1]);
         }
         FIELD(u32, state, 0x20) |= 1;
@@ -177,12 +177,12 @@ extern "C" s32 func_ov021_021ff834(void *state)
         if (FIELD(s32, state, 0x3d8) != 0) {
             FIELD(s32, state, 0x48) = 0;
             TitlePalette_SetMainBackdrop(0);
-            func_ov021_021fd7c0(state, data_ov021_02202f38[0],
+            Overlay021_SetTransition(state, data_ov021_02202f38[0],
                                 data_ov021_02202f38[1]);
         } else {
             DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 0x3e4) = -1;
-            func_ov021_021fd7c0(state, data_ov021_02202f30[0],
+            Overlay021_SetTransition(state, data_ov021_02202f30[0],
                                 data_ov021_02202f30[1]);
         }
         break;
@@ -228,7 +228,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
                               (u8 *)state + 0x30, 0, 4) != 0) {
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 SceneSound_PlayPackedEffect(state, 3);
-                func_ov021_021fd7c0(state, data_ov021_02202f28[0],
+                Overlay021_SetTransition(state, data_ov021_02202f28[0],
                                     data_ov021_02202f28[1]);
                 break;
             }
@@ -247,11 +247,11 @@ extern "C" s32 func_ov021_021ffa38(void *state)
                 DisplayBrightness_StartMaskedTransitions(1, -16);
                 if (channel == 1) {
                     if (Overlay021_IsAuxiliaryRecordAvailable(state) != 0)
-                        func_ov021_021fd7c0(
+                        Overlay021_SetTransition(
                             state, data_ov021_02202f20[0],
                             data_ov021_02202f20[1]);
                     else
-                        func_ov021_021fd7c0(
+                        Overlay021_SetTransition(
                             state, data_ov021_02202f18[0],
                             data_ov021_02202f18[1]);
                 } else {
@@ -277,7 +277,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
         break;
     case 4:
         if (DisplayBrightness_IsMainTransitionComplete() != 0)
-            func_ov021_021fd7c0(state, data_ov021_02202f10[0],
+            Overlay021_SetTransition(state, data_ov021_02202f10[0],
                                 data_ov021_02202f10[1]);
         break;
     }
