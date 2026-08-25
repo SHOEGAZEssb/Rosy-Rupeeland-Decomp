@@ -10,7 +10,7 @@ extern "C" {
 extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void ActorRuntimeScene_DeactivateNonType1Actors(ActorRuntimeScene *self);
-extern void func_02030b58(void *context, s32 value);
+extern void ActorCollection_SetFlagBit1(void *context, s32 value);
 extern void Actor_SetActive(void *object, s32 value);
 extern void *Actor_GetOwningCollection(void *object);
 extern void ActorCollection_UnregisterAndDestroyActor(void *result, void *object);
@@ -62,7 +62,7 @@ ActorRuntimeScene *ActorRuntimeScene_Destroy(ActorRuntimeScene *self)
     if (object[0x4d] == 3 && *(u16 *)(object + 0x4e) == 2)
         ActorCollection_UnregisterAndDestroyActor(Actor_GetOwningCollection(object), object);
     context = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
-    func_02030b58(context, 1);
+    ActorCollection_SetFlagBit1(context, 1);
     Scene_Destroy(&self->base);
     return self;
 }

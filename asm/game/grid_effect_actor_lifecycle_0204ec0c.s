@@ -3,7 +3,7 @@
 .extern gGridEffectActorVtable
 .extern SelfLinkedSpriteConfig_Init
 .extern ActorRuntimeBase_Init
-.extern func_0203130c
+.extern RuntimeActor_DestroyAlternateEntry
 .extern Actor_ReleaseSecondaryRenderAttachment
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .extern GridEffectActorRegistry_Unregister
@@ -63,7 +63,7 @@ GridEffectActor_Destroy: ; 0x0204ec74
     mov r0, r4
     bl GridEffectActorRegistry_Unregister
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204ecd0: .word gGridEffectActorVtable
@@ -93,7 +93,7 @@ GridEffectActor_DestroyAndFree: ; 0x0204ecd4
     mov r0, r4
     bl GridEffectActorRegistry_Unregister
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4

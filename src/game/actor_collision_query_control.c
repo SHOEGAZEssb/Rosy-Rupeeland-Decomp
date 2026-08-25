@@ -21,7 +21,7 @@ extern u32 Actor_TestQueryPoint(void *self, const void *query);
  * then clear the two three-component motion vectors at +0x3c and +0x8c.
  * Returns no value; the virtual callback may update actor or presentation state.
  */
-void func_020338e4(void *self)
+void Actor_ResetMotionForCollisionQuery(void *self)
 {
     u8 *actor = (u8 *)self;
     void (*callback)(void *, s32);
@@ -38,7 +38,7 @@ void func_020338e4(void *self)
 }
 
 /* Empty recovered lifecycle hook; ignores self and returns no value. */
-void func_02033928(void *self)
+void ActorCollisionQuery_NoOpHook(void *self)
 {
     (void)self;
 }

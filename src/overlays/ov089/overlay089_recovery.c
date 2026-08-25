@@ -131,7 +131,7 @@ extern "C" void func_02001944(void *, s32);
 extern "C" void func_0200199c(void *, s32);
 extern "C" void func_0201f864(void *, const void *, void *, s32, s32, s32, s32, s32, s32);
 extern "C" void func_0203292c(void *);
-extern "C" void func_02033b38(void *);
+extern "C" void Actor_DebugDrawState(void *);
 
 extern "C" void func_ov089_02217890(void *);
 extern "C" void func_ov089_02218c9c(void *, const void *);
@@ -982,7 +982,7 @@ extern "C" void func_ov089_022195c4(void) {}
 /* Forward the actor to the shared base collision/state helper. */
 extern "C" void func_ov089_022195c8(void *actor)
 {
-    func_02033b38(actor);
+    Actor_DebugDrawState(actor);
 }
 
 /* Free actor storage and return the original pointer. */

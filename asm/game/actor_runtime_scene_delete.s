@@ -10,7 +10,7 @@
 .extern GameWork_ClearFlag
 .extern Actor_GetOwningCollection
 .extern ActorCollection_UnregisterAndDestroyActor
-.extern func_02030b58
+.extern ActorCollection_SetFlagBit1
 .extern Scene_Destroy
 .extern Heap_Free
 .extern gActorRuntimeSceneVTable
@@ -95,7 +95,7 @@ L_0200b680:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x1
-    bl func_02030b58
+    bl ActorCollection_SetFlagBit1
     mov r0, r5
     bl Scene_Destroy
     mov r0, r5

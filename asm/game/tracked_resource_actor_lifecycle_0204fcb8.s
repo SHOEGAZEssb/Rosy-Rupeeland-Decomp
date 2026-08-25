@@ -2,7 +2,7 @@
 .extern Heap_Free
 .extern gTrackedResourceActorVtable
 .extern ActorRuntimeBase_Init
-.extern func_0203130c
+.extern RuntimeActor_DestroyAlternateEntry
 .extern Actor_ReleaseSecondaryRenderAttachment
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .text
@@ -53,7 +53,7 @@ TrackedResourceActor_DestroyComplete: ; 0x0204fd08
     blx r1
 .L_0204fd4c:
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204fd5c: .word gTrackedResourceActorVtable
@@ -81,7 +81,7 @@ TrackedResourceActor_DestroyAndFree: ; 0x0204fd60
     blx r1
 .L_0204fda4:
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4
@@ -111,7 +111,7 @@ TrackedResourceActor_Destroy: ; 0x0204fdc0
     blx r1
 .L_0204fe04:
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204fe14: .word gTrackedResourceActorVtable

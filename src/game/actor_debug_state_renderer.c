@@ -52,7 +52,7 @@ static u32 actorTypeLabelIndex(u8 type)
  * reports the inverse state of actor flag 0x80000000. Returns no value; writes
  * only through the debug-font renderer and reads the actor's collection.
  */
-void func_02033b38(void *self, s32 column)
+void Actor_DebugDrawState(void *self, s32 column)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);

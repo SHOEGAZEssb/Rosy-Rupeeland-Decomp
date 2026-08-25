@@ -10,7 +10,7 @@ extern void *data_020df61c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033b38(void *actor, s32 column);
+extern void Actor_DebugDrawState(void *actor, s32 column);
 extern void *ActorDerivedRuntime_Init(void *actor, const void *descriptor);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 extern void VecFx32Object_Init(void *vector);
@@ -22,10 +22,10 @@ extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 }
 #endif
 
-/* Forward actor and debug column to func_02033b38; return no value. */
+/* Forward actor and debug column to Actor_DebugDrawState; return no value. */
 void ActorMotionProbe_DrawDebugInfo(void *actor, s32 column)
 {
-    func_02033b38(actor, column);
+    Actor_DebugDrawState(actor, column);
 }
 
 /*

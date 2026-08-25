@@ -14,7 +14,7 @@ extern "C" {
 extern void Heap_Free(void *allocation);
 extern void SelfLinkedSpriteConfig_Init(void *subobject);
 extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
-extern void func_0203130c(void *actor);
+extern void RuntimeActor_DestroyAlternateEntry(void *actor);
 extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 extern void GridEffectActorRegistry_Unregister(void *actor);
@@ -66,7 +66,7 @@ void *GridEffectActor_Destroy(void *self)
         owned_vtable[1](owned);
     }
     GridEffectActorRegistry_Unregister(self);
-    func_0203130c(self);
+    RuntimeActor_DestroyAlternateEntry(self);
     return self;
 }
 

@@ -5,9 +5,9 @@
 .extern Sound_StopOwnerEffects
 .extern gSoundContext
 
-    .global func_02030d70
-    .type func_02030d70, @function
-func_02030d70: ; 0x02030d70
+    .global ActorBaseGeometry_Destroy
+    .type ActorBaseGeometry_Destroy, @function
+ActorBaseGeometry_Destroy: ; 0x02030d70
     stmdb sp!, {r4, lr}
     ldr r1, .L_02030db0
     mov r4, r0
@@ -26,5 +26,5 @@ func_02030d70: ; 0x02030d70
     ldmia sp!, {r4, pc}
 .L_02030db0: .word data_020def7c
 .L_02030db4: .word gSoundContext
-    .size func_02030d70, . - func_02030d70
+    .size ActorBaseGeometry_Destroy, . - ActorBaseGeometry_Destroy
 

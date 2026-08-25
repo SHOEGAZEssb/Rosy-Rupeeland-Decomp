@@ -28,8 +28,8 @@ extern "C" {
 #endif
 extern void ActorCollection_AppendToCategory(ActorCollectionMotionCategories *,
                                              s32, MotionCategoryActor *);
-extern s32 func_0202ddac(const MotionCategoryActor *);
-extern s32 func_0202ddc4(const MotionCategoryActor *);
+extern s32 Actor_GetCategorizationWidth(const MotionCategoryActor *);
+extern s32 Actor_GetCategorizationHeight(const MotionCategoryActor *);
 #ifdef __cplusplus
 }
 #endif
@@ -61,7 +61,7 @@ void ActorCollection_RebuildMotionCategories(ActorCollectionMotionCategories *se
             continue;
         if (actor->flags_14 & 0x200000)
             continue;
-        if (func_0202ddac(actor) || func_0202ddc4(actor)) {
+        if (Actor_GetCategorizationWidth(actor) || Actor_GetCategorizationHeight(actor)) {
             if (!actor->field_54 || !(actor->flags_14 & 0x10000000) ||
                 (actor->flags_14 & 8))
                 selected = 1;

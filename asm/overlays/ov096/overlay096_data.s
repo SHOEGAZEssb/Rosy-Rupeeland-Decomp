@@ -15,7 +15,7 @@
 .extern ActorExtendedType2_ApplyContactResponse
 .extern ActorDerivedRuntime_HandlePairEnded
 .extern Actor_TryStartStepUpTransition
-.extern func_0203213c
+.extern ActorStepTransition_DefaultQueryReturnZero
 .extern Actor_UpdatePositionTransition
 .extern Actor_ConfigureStepUpTransition
 .extern Actor_EndPositionTransition
@@ -206,7 +206,7 @@ data_ov096_02218b98:
     .word ActorExtendedType2_ApplyContactResponse
     .word ActorDerivedRuntime_HandlePairEnded
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition
@@ -353,7 +353,7 @@ data_ov096_02218de8:
     .word ActorExtendedType2_ApplyContactResponse
     .word ActorDerivedRuntime_HandlePairEnded
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition

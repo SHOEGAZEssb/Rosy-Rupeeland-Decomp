@@ -1,0 +1,19 @@
+{
+  "func_0202ddac": "Actor_GetCategorizationWidth",
+  "func_0202ddc4": "Actor_GetCategorizationHeight",
+  "func_02030b58": "ActorCollection_SetFlagBit1",
+  "func_02030b7c": "ActorCollection_GetFlagBit1",
+  "func_02030d70": "ActorBaseGeometry_Destroy",
+  "func_02030e08": "ActorBaseGeometry_DestroyAlternateEntry",
+  "func_02030f7c": "Actor_DefaultQueryReturnZero",
+  "func_020311bc": "RuntimeActor_Destroy",
+  "func_02031260": "RuntimeActor_DestroyAndFree",
+  "func_0203130c": "RuntimeActor_DestroyAlternateEntry",
+  "func_0203213c": "ActorStepTransition_DefaultQueryReturnZero",
+  "func_020324c8": "Actor_TestGroundHeightFlag40",
+  "func_02033734": "S8BoundsCenter_NoOpHook",
+  "func_020338e4": "Actor_ResetMotionForCollisionQuery",
+  "func_02033928": "ActorCollisionQuery_NoOpHook",
+  "func_02033b38": "Actor_DebugDrawState",
+  "func_02034e44": "Actor_DefaultSecondaryQueryReturnZero"
+}

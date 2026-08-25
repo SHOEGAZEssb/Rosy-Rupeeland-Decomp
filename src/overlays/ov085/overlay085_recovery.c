@@ -40,7 +40,7 @@ extern "C" void Actor_SynchronizeStatePresentation(void*); extern "C" void Actor
 extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C" void Actor_RefreshCachedTerrainHeight(void*);
 extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void Actor_UpdatePresentation(void*,void*,s32);
 extern "C" void Actor_TurnTowardVector(void*,s32,s32,s32); extern "C" void Actor_TurnTowardTargetPosition(void*,void*,s32);
-extern "C" void func_02033b38(void); extern "C" void Sound_PlayOwnedEffect(void*,s32,s32,void*,s32,s32);
+extern "C" void Actor_DebugDrawState(void); extern "C" void Sound_PlayOwnedEffect(void*,s32,s32,void*,s32,s32);
 extern "C" void func_02071ee0(void*,const void*,s32,s32,s32); extern "C" s32 func_0209189c(void*,s32,s32);
 extern "C" s32 Fx32Vector2_Magnitude(s32,s32); extern "C" s32 func_020adc90(s32,s32);
 extern "C" s32 func_020adcac(const void*,const void*); extern "C" void func_020adfbc(const void*,const void*,void*);
@@ -188,7 +188,7 @@ extern "C" s32 func_ov085_022142e0(void){return 0;}
 /* No-op notification callback. */
 extern "C" void func_ov085_022142e8(void){}
 /* Forward to the resident actor helper. */
-extern "C" void func_ov085_022142ec(void){func_02033b38();}
+extern "C" void func_ov085_022142ec(void){Actor_DebugDrawState();}
 /* Report no additional descriptor flags. */
 extern "C" s32 func_ov085_022142f8(void){return 0;}
 /* Hide the owned marker through its visibility adapter. */

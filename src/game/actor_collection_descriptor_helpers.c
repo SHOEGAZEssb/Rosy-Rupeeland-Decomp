@@ -105,7 +105,7 @@ void ActorCollection_SetActorScale(DescriptorActorCollection *self, s32 scale)
  * Replace bit one of collection word 0x2e78 with the low bit of value. Return
  * the previous bit sign-expanded as zero or -1; no other bits are changed.
  */
-s32 func_02030b58(DescriptorActorCollection *self, s32 value)
+s32 ActorCollection_SetFlagBit1(DescriptorActorCollection *self, s32 value)
 {
     u32 old = self->flags_2e78;
     self->flags_2e78 = (old & ~2) | ((value & 1) << 1);
@@ -113,7 +113,7 @@ s32 func_02030b58(DescriptorActorCollection *self, s32 value)
 }
 
 /* Return bit one of collection word 0x2e78 sign-expanded as zero or -1. */
-s32 func_02030b7c(DescriptorActorCollection *self)
+s32 ActorCollection_GetFlagBit1(DescriptorActorCollection *self)
 {
     return (self->flags_2e78 & 2) ? -1 : 0;
 }

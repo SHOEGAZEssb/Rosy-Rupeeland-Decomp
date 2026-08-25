@@ -39,7 +39,7 @@ static ActorBaseGeometryLifecycle *destroyGeometry(
  * values at 0x38, 0x28, and 0x18 in that order, and return self without
  * freeing it. Helpers own any sound/SDK effects.
  */
-ActorBaseGeometryLifecycle *func_02030d70(ActorBaseGeometryLifecycle *self)
+ActorBaseGeometryLifecycle *ActorBaseGeometry_Destroy(ActorBaseGeometryLifecycle *self)
 {
     return destroyGeometry(self);
 }
@@ -60,7 +60,7 @@ ActorBaseGeometryLifecycle *ActorBaseGeometry_DestroyAndFree(
  * Restore the vtable, detach sound state, and destroy the three vector values.
  * This address-derived destructor variant returns self without freeing it.
  */
-ActorBaseGeometryLifecycle *func_02030e08(ActorBaseGeometryLifecycle *self)
+ActorBaseGeometryLifecycle *ActorBaseGeometry_DestroyAlternateEntry(ActorBaseGeometryLifecycle *self)
 {
     return destroyGeometry(self);
 }

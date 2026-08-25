@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
 extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
-extern void func_0203130c(void *actor);
+extern void RuntimeActor_DestroyAlternateEntry(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -60,23 +60,23 @@ void *func_0204d284(void *self, const void *descriptor)
 
 /*
  * Input is a runtime actor variant. Invoke non-deleting base destructor
- * func_0203130c and return self. Base-owned state may change; the heap and
+ * RuntimeActor_DestroyAlternateEntry and return self. Base-owned state may change; the heap and
  * hardware are untouched directly.
  */
 void *func_0204d2c4(void *self)
 {
-    func_0203130c(self);
+    RuntimeActor_DestroyAlternateEntry(self);
     return self;
 }
 
 /*
- * Input is a runtime actor variant. Invoke func_0203130c, release self through
+ * Input is a runtime actor variant. Invoke RuntimeActor_DestroyAlternateEntry, release self through
  * Heap_Free, and return the original address as in retail code. Base and heap
  * state change; there are no direct hardware effects.
  */
 void *func_0204d2d8(void *self)
 {
-    func_0203130c(self);
+    RuntimeActor_DestroyAlternateEntry(self);
     Heap_Free(self);
     return self;
 }
@@ -88,6 +88,6 @@ void *func_0204d2d8(void *self)
  */
 void *func_0204d2f4(void *self)
 {
-    func_0203130c(self);
+    RuntimeActor_DestroyAlternateEntry(self);
     return self;
 }

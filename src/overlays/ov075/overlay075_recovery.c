@@ -103,7 +103,7 @@ EXT(Actor_TurnTowardTargetPosition);
 EXT(func_020064b8);
 EXT(func_0201f864);
 EXT(SpriteNumberMotionPresentation_Init);
-EXT(func_02033b38);
+EXT(Actor_DebugDrawState);
 EXT(func_02032a64);
 EXT(Actor_GetCachedTerrainHeight);
 EXT(Actor_PlayHorizontalSpatialSound);
@@ -1500,7 +1500,7 @@ extern "C" s32 func_ov075_02215030(void)
 /* Forwards the actor's standard presentation update. */
 extern "C" void func_ov075_02215038(void *actor)
 {
-    func_02033b38(actor);
+    Actor_DebugDrawState(actor);
 }
 
 /* Copies a four-short interaction extent record. */

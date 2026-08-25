@@ -10,4 +10,4 @@ Actor_PrepareForAuxiliaryInteraction: ; 0x02034e34
     bx lr
     .size Actor_PrepareForAuxiliaryInteraction, . - Actor_PrepareForAuxiliaryInteraction
 
-    .global func_02034e44
+    .global Actor_DefaultSecondaryQueryReturnZero

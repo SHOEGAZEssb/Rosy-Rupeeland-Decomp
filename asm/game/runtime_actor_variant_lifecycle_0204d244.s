@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/runtime_actor_variant_lifecycle.c.
 .extern ActorRuntimeBase_Init
-.extern func_0203130c
+.extern RuntimeActor_DestroyAlternateEntry
 .extern Heap_Free
 .extern data_020e2028
 .text
@@ -50,7 +50,7 @@ func_0204d284: ; 0x0204d284
 func_0204d2c4: ; 0x0204d2c4
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_0204d2c4, . - func_0204d2c4
@@ -59,7 +59,7 @@ func_0204d2c4: ; 0x0204d2c4
 func_0204d2d8: ; 0x0204d2d8
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4
@@ -70,7 +70,7 @@ func_0204d2d8: ; 0x0204d2d8
 func_0204d2f4: ; 0x0204d2f4
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_0204d2f4, . - func_0204d2f4

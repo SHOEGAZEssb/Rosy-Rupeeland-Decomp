@@ -4,7 +4,7 @@
 .extern data_020df294
 .extern data_020df4ac
 .extern data_020df4b8
-.extern func_02033b38
+.extern Actor_DebugDrawState
 .extern Actor_QueryTerrainCell
 .extern gDebugFont
 
@@ -15,7 +15,7 @@ ActorDerivedType1_DrawDebugInfo: ; 0x020389ec
     sub sp, sp, #0x18
     mov r5, r0
     mov r4, r1
-    bl func_02033b38
+    bl Actor_DebugDrawState
     ldr r0, .L_02038a9c
     ldr r1, .L_02038aa0
     str r0, [sp, #0x0]

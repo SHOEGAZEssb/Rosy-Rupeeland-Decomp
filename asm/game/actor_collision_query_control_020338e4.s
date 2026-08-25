@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collision_query_control.c.
 .text
 
-    .global func_020338e4
-    .type func_020338e4, @function
-func_020338e4: ; 0x020338e4
+    .global Actor_ResetMotionForCollisionQuery
+    .type Actor_ResetMotionForCollisionQuery, @function
+Actor_ResetMotionForCollisionQuery: ; 0x020338e4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0xd0]
@@ -21,7 +21,7 @@ func_020338e4: ; 0x020338e4
     str r0, [r4, #0x90]
     str r0, [r4, #0x8c]
     ldmia sp!, {r4, pc}
-    .size func_020338e4, . - func_020338e4
+    .size Actor_ResetMotionForCollisionQuery, . - Actor_ResetMotionForCollisionQuery
 
-    .global func_02033928
+    .global ActorCollisionQuery_NoOpHook
 

@@ -8,7 +8,7 @@ extern void *data_020df510[];
 extern "C" {
 #endif
 extern void *ActorRuntimeBase_Init(void *self, const void *descriptor);
-extern void *func_0203130c(void *self);
+extern void *RuntimeActor_DestroyAlternateEntry(void *self);
 extern void Actor_ReleaseSecondaryRenderAttachment(void *self);
 extern void *AnimationResource_InitEmpty(void *embedded);
 extern void *AnimationResource_Destroy(void *embedded);
@@ -56,7 +56,7 @@ static void *destroyDerivedRuntimeObject(void *self)
     (*(void (**)(void *))(*(u8 **)object + 0xbc))(object);
     Actor_ReleaseSecondaryRenderAttachment(object);
     AnimationResource_Destroy(object + 0x1ec);
-    func_0203130c(object);
+    RuntimeActor_DestroyAlternateEntry(object);
     return object;
 }
 

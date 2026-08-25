@@ -122,7 +122,7 @@ extern void DebugText_Printf(void *, s32, s32, s32, const char *, ...);
 extern void Actor_UpdatePresentation(void *, void *, s32);
 extern void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern void Actor_TurnTowardTargetPosition(void *, const void *, s32);
-extern void func_02033b38(void *);
+extern void Actor_DebugDrawState(void *);
 extern s32 Fx32Vector2_Magnitude(s32, s32);
 #ifdef __MWERKS__
 /* These two exact ARM callers leave the tested icon pointer in r0. */
@@ -884,7 +884,7 @@ void func_ov081_02213c60(void *actor, s32 column)
     const char *stateName = 0;
     s16 state;
 
-    func_02033b38(actor);
+    Actor_DebugDrawState(actor);
     if ((FIELD(u32, actor, 0x10) & 0x1000000) != 0) {
         DebugText_Printf(gDebugFont, 1, 8, column, data_ov081_02215798);
         DebugText_Printf(gDebugFont, 1, 9, column, data_ov081_022157a8);

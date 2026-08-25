@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
-extern void func_02030b58(void *context, s32 value);
+extern void ActorCollection_SetFlagBit1(void *context, s32 value);
 extern void ActorDerivedType1_ClearStateVectorTimers(void *object);
 extern void Type7Actor_EnterSpecialPresentationState(void *object);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 index);
@@ -62,7 +62,7 @@ ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
         Type7Actor_EnterSpecialPresentationState(context);
     ActorRuntimeScene_ActivateFlaggedNonType1Actors(self);
     context = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
-    func_02030b58(context, 0);
+    ActorCollection_SetFlagBit1(context, 0);
     GameWork_TestFlag(gGameWork, 0x410);
     return self;
 }

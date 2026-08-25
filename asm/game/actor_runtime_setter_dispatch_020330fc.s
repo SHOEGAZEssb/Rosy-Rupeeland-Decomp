@@ -452,4 +452,4 @@ Actor_SetRuntimeProperty: ; 0x020330fc
     ldmia sp!, {r3, r4, r5, r6, pc}
     .size Actor_SetRuntimeProperty, . - Actor_SetRuntimeProperty
 
-    .global func_02033734
+    .global S8BoundsCenter_NoOpHook

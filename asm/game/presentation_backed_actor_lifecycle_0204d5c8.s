@@ -2,7 +2,7 @@
 .extern ActorRuntimeBase_Init
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .extern Actor_ReleaseSecondaryRenderAttachment
-.extern func_0203130c
+.extern RuntimeActor_DestroyAlternateEntry
 .extern Heap_Free
 .extern data_020e238c
 .extern gPresentationBackedActorRuntimeState
@@ -79,7 +79,7 @@ PresentationBackedActor_DestroyComplete:
     subeq r1, r1, #0x1
     streq r1, [r0, #0x4]
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204d6cc: .word data_020e238c
@@ -106,7 +106,7 @@ PresentationBackedActor_DestroyAndFree:
     subeq r1, r1, #0x1
     streq r1, [r0, #0x4]
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4
@@ -135,7 +135,7 @@ PresentationBackedActor_Destroy:
     subeq r1, r1, #0x1
     streq r1, [r0, #0x4]
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204d78c: .word data_020e238c

@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_collection_motion_category_build.c.
 .text
 .extern ActorCollection_AppendToCategory
-.extern func_0202ddac
-.extern func_0202ddc4
+.extern Actor_GetCategorizationWidth
+.extern Actor_GetCategorizationHeight
 
     .global ActorCollection_RebuildMotionCategories
     .type ActorCollection_RebuildMotionCategories, @function
@@ -41,11 +41,11 @@ ActorCollection_RebuildMotionCategories: ; 0x0202de90
     cmp r0, #0x0
     beq .L_0202dfd4
     mov r0, r9
-    bl func_0202ddac
+    bl Actor_GetCategorizationWidth
     cmp r0, #0x0
     bne .L_0202df2c
     mov r0, r9
-    bl func_0202ddc4
+    bl Actor_GetCategorizationHeight
     cmp r0, #0x0
     beq .L_0202df68
 .L_0202df2c:

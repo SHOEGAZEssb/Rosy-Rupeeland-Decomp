@@ -6,15 +6,15 @@
 .extern VecFx32Stepper_Destroy
 .extern GamePhaseActorScriptVm_Destroy
 .extern ActorCollection_GetSpriteGroup
-.extern func_02030e08
+.extern ActorBaseGeometry_DestroyAlternateEntry
 .extern Actor_ReleaseSecondaryRenderAttachment
 .extern Actor_GetOwningCollection
 .extern ActorInteractionIcon_Destroy
 .extern GraphicsSpriteGroup_ReleaseState
 
-    .global func_02031260
-    .type func_02031260, @function
-func_02031260: ; 0x02031260
+    .global RuntimeActor_DestroyAndFree
+    .type RuntimeActor_DestroyAndFree, @function
+RuntimeActor_DestroyAndFree: ; 0x02031260
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_02031308
     mov r5, r0
@@ -54,11 +54,11 @@ func_02031260: ; 0x02031260
     add r0, r5, #0x78
     bl VecFx32Object_Destroy
     mov r0, r5
-    bl func_02030e08
+    bl ActorBaseGeometry_DestroyAlternateEntry
     mov r0, r5
     bl Heap_Free
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_02031308: .word data_020df040
-    .size func_02031260, . - func_02031260
+    .size RuntimeActor_DestroyAndFree, . - RuntimeActor_DestroyAndFree
 

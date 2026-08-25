@@ -11,7 +11,7 @@ extern "C" {
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
-extern void func_020338e4(void *actor);
+extern void Actor_ResetMotionForCollisionQuery(void *actor);
 extern void Sound_StopAllManagedPlayers(void *soundContext);
 extern void Type1Actor_EnterFailureState(void *actor);
 #ifdef __cplusplus
@@ -41,14 +41,14 @@ void Type1Actor_TryEnterFailureState(void *self)
 }
 
 /*
- * Call func_020338e4, set actor word +0x248 to 0x46, set GameWork flag 0x3f5,
+ * Call Actor_ResetMotionForCollisionQuery, set actor word +0x248 to 0x46, set GameWork flag 0x3f5,
  * and pass the sound context to Sound_StopAllManagedPlayers. Returns no value; the helpers
  * alter actor collision/control state, persistent GameWork, and audio state.
  */
 void Type1Actor_EnterFailureState(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_020338e4(actor);
+    Actor_ResetMotionForCollisionQuery(actor);
     *(u32 *)(actor + 0x248) = 0x46;
     GameWork_SetFlag(gGameWork, 0x3f5);
     Sound_StopAllManagedPlayers(gSoundContext);

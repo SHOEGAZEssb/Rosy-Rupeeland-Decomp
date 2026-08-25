@@ -18,7 +18,7 @@ extern s32 ActorBounds_GetHeight(const s8 *bounds);
 #endif
 
 /* Empty recovered lifecycle hook; ignores self and returns no value. */
-void func_02033734(void *self)
+void S8BoundsCenter_NoOpHook(void *self)
 {
     (void)self;
 }

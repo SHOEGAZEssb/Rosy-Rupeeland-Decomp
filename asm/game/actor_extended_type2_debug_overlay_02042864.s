@@ -56,7 +56,7 @@
 .extern data_020e0204
 .extern data_020e0214
 .extern DebugText_Printf
-.extern func_02033b38
+.extern Actor_DebugDrawState
 .extern func_020befec
 .extern gDebugFont
 .global ActorExtendedType2_DrawDebugOverlay
@@ -66,7 +66,7 @@ ActorExtendedType2_DrawDebugOverlay: ; 0x02042864
     sub sp, sp, #0xc
     mov r5, r0
     mov r4, r1
-    bl func_02033b38
+    bl Actor_DebugDrawState
     ldr r0, .L_02042f7c
     ldr r3, [r5, #0x218]
     ldr r1, [r0, #0xd8]

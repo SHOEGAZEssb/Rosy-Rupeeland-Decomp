@@ -12,7 +12,7 @@ extern s32 SignedAbsoluteValue(s32);
 #endif
 
 /* Return one when actor word 0xd0 has flag 0x40 set, otherwise zero. */
-s32 func_020324c8(const void *self)
+s32 Actor_TestGroundHeightFlag40(const void *self)
 {
     return (*(const u32 *)((const u8 *)self + 0xd0) & 0x40) != 0;
 }

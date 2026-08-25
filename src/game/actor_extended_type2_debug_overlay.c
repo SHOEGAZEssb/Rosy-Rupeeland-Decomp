@@ -29,7 +29,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033b38(void *actor, s32 row);
+extern void Actor_DebugDrawState(void *actor, s32 row);
 extern void DebugText_Printf(void *font, s32 x, s32 y, s32 row,
                              const char *format, ...);
 #ifdef __cplusplus
@@ -53,7 +53,7 @@ static s32 callback_pair_matches(u32 first, u32 second,
 }
 
 /*
- * Invoke base debug routine func_02033b38(actor,row), identify actor callback
+ * Invoke base debug routine Actor_DebugDrawState(actor,row), identify actor callback
  * pair +0x218/+0x21c against 16 known global member-function representations,
  * and print its name at debug line 12 when recognized. Identify +0x220/+0x224
  * against five representations and print line 13. Lines 14..21 then print the
@@ -95,7 +95,7 @@ void ActorExtendedType2_DrawDebugOverlay(void *self, s32 row)
         {0x128, data_020dfb10, data_020e00e4}
     };
 
-    func_02033b38(actor, row);
+    Actor_DebugDrawState(actor, row);
     for (i = 0; i < (s32)(sizeof(primary) / sizeof(primary[0])); ++i) {
         if (callback_pair_matches(*(u32 *)(actor + 0x218),
                                   *(u32 *)(actor + 0x21c), &primary[i])) {

@@ -27,4 +27,4 @@ Actor_SetAttachmentEnabled: ; 0x02033ae8
     bx lr
     .size Actor_SetAttachmentEnabled, . - Actor_SetAttachmentEnabled
 
-    .global func_02033b38
+    .global Actor_DebugDrawState

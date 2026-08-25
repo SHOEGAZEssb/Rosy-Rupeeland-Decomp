@@ -4,7 +4,7 @@
 .extern data_020df61c
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
-.extern func_02033b38
+.extern Actor_DebugDrawState
 .extern ActorDerivedRuntime_Init
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Actor_InitializeFromDescriptor
@@ -14,7 +14,7 @@
 ActorMotionProbe_DrawDebugInfo: ; 0x0203c134
     ldr ip, .L_0203c13c
     bx ip
-.L_0203c13c: .word func_02033b38
+.L_0203c13c: .word Actor_DebugDrawState
     .size ActorMotionProbe_DrawDebugInfo, . - ActorMotionProbe_DrawDebugInfo
 
     .global ActorMotionProbe_Init

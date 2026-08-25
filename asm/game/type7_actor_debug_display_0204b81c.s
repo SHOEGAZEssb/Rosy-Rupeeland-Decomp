@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_debug_display.c.
 .extern DebugText_Printf
-.extern func_02033b38
+.extern Actor_DebugDrawState
 .extern data_020e1d14
 .extern gDebugFont
 .extern data_020e1d24
@@ -63,7 +63,7 @@ Type7Actor_PrintDebugState: ; 0x0204b81c
     sub sp, sp, #0xc
     mov r5, r0
     mov r4, r1
-    bl func_02033b38
+    bl Actor_DebugDrawState
     ldr r0, [r5, #0x10]
     tst r0, #0x1000000
     beq .L_0204b8a0

@@ -30,7 +30,7 @@ extern ActorInteractionIcon *ActorInteractionIcon_Destroy(ActorInteractionIcon *
 extern void VecFx32Stepper_Destroy(void *);
 extern void GamePhaseActorScriptVm_Destroy(void *);
 extern void VecFx32Object_Destroy(void *);
-extern void *func_02030e08(void *);
+extern void *ActorBaseGeometry_DestroyAlternateEntry(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -59,7 +59,7 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
     VecFx32Object_Destroy((u8 *)self + 0x98);
     VecFx32Object_Destroy((u8 *)self + 0x88);
     VecFx32Object_Destroy((u8 *)self + 0x78);
-    func_02030e08(self);
+    ActorBaseGeometry_DestroyAlternateEntry(self);
     return self;
 }
 
@@ -69,7 +69,7 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
  * interaction icon +0x1e0, then destroy resources +0x198/+0xec, vectors
  * +0xb0/+0x98/+0x88/+0x78, and the common base. Return self without freeing it.
  */
-RuntimeActorLifecycle *func_020311bc(RuntimeActorLifecycle *self)
+RuntimeActorLifecycle *RuntimeActor_Destroy(RuntimeActorLifecycle *self)
 {
     return destroyRuntimeActor(self);
 }
@@ -78,7 +78,7 @@ RuntimeActorLifecycle *func_020311bc(RuntimeActorLifecycle *self)
  * Perform the full derived/base teardown, free self through Heap_Free, and
  * return its former address. The returned pointer no longer owns live storage.
  */
-RuntimeActorLifecycle *func_02031260(RuntimeActorLifecycle *self)
+RuntimeActorLifecycle *RuntimeActor_DestroyAndFree(RuntimeActorLifecycle *self)
 {
     destroyRuntimeActor(self);
     Heap_Free(self);
@@ -86,10 +86,10 @@ RuntimeActorLifecycle *func_02031260(RuntimeActorLifecycle *self)
 }
 
 /*
- * Perform the same non-freeing teardown as func_020311bc. This separate
+ * Perform the same non-freeing teardown as RuntimeActor_Destroy. This separate
  * address-derived entry point returns self and preserves retail dispatch use.
  */
-RuntimeActorLifecycle *func_0203130c(RuntimeActorLifecycle *self)
+RuntimeActorLifecycle *RuntimeActor_DestroyAlternateEntry(RuntimeActorLifecycle *self)
 {
     return destroyRuntimeActor(self);
 }

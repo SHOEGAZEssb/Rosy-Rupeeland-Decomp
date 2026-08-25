@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
 extern void *ActorRuntimeBase_Init(void *actor);
-extern void func_0203130c(void *actor);
+extern void RuntimeActor_DestroyAlternateEntry(void *actor);
 extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 #ifdef __cplusplus
@@ -59,7 +59,7 @@ void *TrackedResourceActor_DestroyComplete(void *self)
         void (**owned_vtable)(void *) = *(void (***)(void *))owned;
         owned_vtable[1](owned);
     }
-    func_0203130c(self);
+    RuntimeActor_DestroyAlternateEntry(self);
     return self;
 }
 

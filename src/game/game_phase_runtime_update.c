@@ -52,7 +52,7 @@ extern s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s3
 extern s32 RuntimePresentationManager_UpdatePresentations(
     void *manager, s32 graphicsUpdateArgument);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
-extern void func_020338e4(void *object);
+extern void Actor_ResetMotionForCollisionQuery(void *object);
 extern void Type7Actor_ClearTarget(void *object);
 extern void *SceneManager_GetCurrent(void *manager);
 extern s32 Actor_TrySpawnTerrainGateObject(void);
@@ -171,7 +171,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
 
     GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     if (restricted) {
-        func_020338e4(*(void **)(b + 0x2ea4));
+        Actor_ResetMotionForCollisionQuery(*(void **)(b + 0x2ea4));
         object = *(void **)(b + 0x2ea8);
         if (object != 0 && (*(u32 *)((u8 *)object + 0x268) & 0x10))
             Type7Actor_ClearTarget(object);

@@ -59,4 +59,4 @@ Actor_RefreshCachedTerrainHeight: ; 0x02033828
 .L_020338e0: .word gGamePhaseRuntime
     .size Actor_RefreshCachedTerrainHeight, . - Actor_RefreshCachedTerrainHeight
 
-    .global func_020338e4
+    .global Actor_ResetMotionForCollisionQuery

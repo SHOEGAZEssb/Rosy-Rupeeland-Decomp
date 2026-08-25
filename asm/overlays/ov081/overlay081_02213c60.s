@@ -27,7 +27,7 @@
 .extern data_ov081_02215824
 .extern data_ov081_02215830
 .extern data_ov081_0221583c
-.extern func_02033b38
+.extern Actor_DebugDrawState
 .extern gDebugFont
 
 .global func_ov081_02213c60
@@ -36,7 +36,7 @@ func_ov081_02213c60:
     sub sp, sp, #0xc
     mov r5, r0
     mov r4, r1
-    bl func_02033b38
+    bl Actor_DebugDrawState
     ldr r0, [r5, #0x10]
     tst r0, #0x1000000
     beq .L_02213ce4

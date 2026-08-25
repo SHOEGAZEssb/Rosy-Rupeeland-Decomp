@@ -47,7 +47,7 @@ void Actor_PrepareForAuxiliaryInteraction(void *actor)
 }
 
 /* Ignore self and return zero as a second default query result. */
-s32 func_02034e44(void *self)
+s32 Actor_DefaultSecondaryQueryReturnZero(void *self)
 {
     (void)self;
     return 0;

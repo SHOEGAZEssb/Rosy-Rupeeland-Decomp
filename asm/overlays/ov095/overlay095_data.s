@@ -15,7 +15,7 @@
 .extern func_ov095_02218124
 .extern ActorDerivedRuntime_HandlePairEnded
 .extern Actor_TryStartStepUpTransition
-.extern func_0203213c
+.extern ActorStepTransition_DefaultQueryReturnZero
 .extern Actor_UpdatePositionTransition
 .extern Actor_ConfigureStepUpTransition
 .extern Actor_EndPositionTransition
@@ -182,7 +182,7 @@
 .extern func_ov095_0221c6dc
 .extern func_ov095_0221c6cc
 .extern Actor_SetPosition
-.extern func_02033b38
+.extern Actor_DebugDrawState
 .extern func_ov095_0221c6c8
 .extern func_ov095_0221c6c4
 .extern Actor_ApplyMotionImpulse
@@ -322,7 +322,7 @@ data_ov095_0221cca0:
     .word func_ov095_02218124
     .word ActorDerivedRuntime_HandlePairEnded
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition
@@ -486,7 +486,7 @@ data_ov095_0221cf4c:
     .word ActorExtendedType2_ApplyContactResponse
     .word ActorDerivedRuntime_HandlePairEnded
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Overlay095Actor_UpdateHopPositionTransition
     .word Overlay095Actor_StartHopPositionTransition
     .word Actor_EndPositionTransition
@@ -631,7 +631,7 @@ data_ov095_0221d1a4:
     .word TrackedResourceActor_HandleInteractionCallback
     .word ActorContactState_RemoveContact
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition
@@ -651,7 +651,7 @@ data_ov095_0221d1a4:
     .word Actor_SelectScriptVariant
     .word func_ov095_0221c6cc
     .word Actor_SetPosition
-    .word func_02033b38
+    .word Actor_DebugDrawState
     .word Actor_RefreshCachedTerrainHeightIfEnabled
     .word func_ov095_0221c6c8
     .word Actor_ConvergeToTargetHeight
@@ -710,7 +710,7 @@ data_ov095_0221d2e8:
     .word TrackedResourceActor_HandleInteractionCallback
     .word ActorContactState_RemoveContact
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition
@@ -730,7 +730,7 @@ data_ov095_0221d2e8:
     .word Actor_SelectScriptVariant
     .word func_ov095_0221c6cc
     .word Actor_SetPosition
-    .word func_02033b38
+    .word Actor_DebugDrawState
     .word Actor_RefreshCachedTerrainHeightIfEnabled
     .word func_ov095_0221c6c8
     .word Actor_ConvergeToTargetHeight

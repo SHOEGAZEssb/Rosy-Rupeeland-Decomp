@@ -4,7 +4,7 @@
 extern u16 gActorInteractionDirectionIndex[2];
 
 /* Ignore the implied actor input and return zero without changing state. */
-s32 func_02030f7c(void)
+s32 Actor_DefaultQueryReturnZero(void)
 {
     return 0;
 }

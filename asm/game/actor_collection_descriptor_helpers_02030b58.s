@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_descriptor_helpers.c.
 .text
 
-    .global func_02030b58
-    .type func_02030b58, @function
-func_02030b58: ; 0x02030b58
+    .global ActorCollection_SetFlagBit1
+    .type ActorCollection_SetFlagBit1, @function
+ActorCollection_SetFlagBit1: ; 0x02030b58
     add r0, r0, #0x2000
     ldr r3, [r0, #0xe78]
     mov r1, r1, lsl #0x1f
@@ -13,5 +13,5 @@ func_02030b58: ; 0x02030b58
     str r1, [r0, #0xe78]
     mov r0, r3, asr #0x1f
     bx lr
-    .size func_02030b58, . - func_02030b58
+    .size ActorCollection_SetFlagBit1, . - ActorCollection_SetFlagBit1
 

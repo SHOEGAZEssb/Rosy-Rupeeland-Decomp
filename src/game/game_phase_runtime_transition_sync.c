@@ -8,7 +8,7 @@ extern void *gGamePhaseCurrencyHud;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02030b58(void *actor, s32 value);
+extern s32 ActorCollection_SetFlagBit1(void *actor, s32 value);
 extern void ActorCollection_UpdateFlag800Actors(void *actor);
 extern s32 RuntimePresentationManager_UpdatePresentations(
     void *manager, s32 graphicsUpdateArgument);
@@ -27,7 +27,7 @@ extern void GamePhaseCurrencyHud_Update(void *context);
 void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 mode)
 {
     u8 *b = (u8 *)self;
-    s32 previous = func_02030b58(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), 0);
+    s32 previous = ActorCollection_SetFlagBit1(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), 0);
 
     ActorCollection_UpdateFlag800Actors(b + 0x28);
     if (mode == 0 || mode == 2)
@@ -35,7 +35,7 @@ void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 m
     if ((u32)(mode - 1) <= 1)
         GamePhaseRuntime_SynchronizeActorPlacement(self, 1);
     GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
-    func_02030b58(GamePhaseRuntime_GetActorCollection(self, 1), previous);
+    ActorCollection_SetFlagBit1(GamePhaseRuntime_GetActorCollection(self, 1), previous);
     RuntimePresentationManager_UpdatePresentations(b + 0x2f7c, 1);
     GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     {

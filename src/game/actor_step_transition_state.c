@@ -17,7 +17,7 @@ void Actor_ConfigureStepUpTransition(Actor *self, s32 stepHeight)
 }
 
 /* Ignore the implied actor input and return zero without changing state. */
-s32 func_0203213c(void)
+s32 ActorStepTransition_DefaultQueryReturnZero(void)
 {
     return 0;
 }

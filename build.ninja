@@ -14243,13 +14243,13 @@ build build/reports/actor_collection_category_build_0202ddac.json: objdiff build
   base_object = build/decomp/asm/game/actor_collection_category_build_0202ddac.o
 build build/reports/actor_collection_category_build_0202ddac.txt: match_report build/reports/actor_collection_category_build_0202ddac.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_category_build_0202ddac.json
-  report_args = --section .text --function func_0202ddac --require-exact
+  report_args = --section .text --function Actor_GetCategorizationWidth --require-exact
 build build/reports/actor_collection_category_build_0202ddc4.json: objdiff build/decomp/delinks/asm/game/actor_collection_category_build_0202ddc4.o | build/decomp/asm/game/actor_collection_category_build_0202ddc4.o
   target_object = build/decomp/delinks/asm/game/actor_collection_category_build_0202ddc4.o
   base_object = build/decomp/asm/game/actor_collection_category_build_0202ddc4.o
 build build/reports/actor_collection_category_build_0202ddc4.txt: match_report build/reports/actor_collection_category_build_0202ddc4.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_category_build_0202ddc4.json
-  report_args = --section .text --function func_0202ddc4 --require-exact
+  report_args = --section .text --function Actor_GetCategorizationHeight --require-exact
 build build/reports/actor_collection_category_build.txt: phony build/reports/actor_collection_category_build_0202dbe0.txt build/reports/actor_collection_category_build_0202dd80.txt build/reports/actor_collection_category_build_0202ddac.txt build/reports/actor_collection_category_build_0202ddc4.txt
 
 build actor_collection_category_build: phony build/decomp/src/game/actor_collection_category_build.o build/decomp/asm/game/actor_collection_category_build_0202dbe0.o build/decomp/asm/game/actor_collection_category_build_0202dd80.o build/decomp/asm/game/actor_collection_category_build_0202ddac.o build/decomp/asm/game/actor_collection_category_build_0202ddc4.o build/reports/actor_collection_category_build.txt
@@ -14485,13 +14485,13 @@ build build/reports/actor_collection_descriptor_helpers_02030b58.json: objdiff b
   base_object = build/decomp/asm/game/actor_collection_descriptor_helpers_02030b58.o
 build build/reports/actor_collection_descriptor_helpers_02030b58.txt: match_report build/reports/actor_collection_descriptor_helpers_02030b58.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_descriptor_helpers_02030b58.json
-  report_args = --section .text --function func_02030b58 --require-exact
+  report_args = --section .text --function ActorCollection_SetFlagBit1 --require-exact
 build build/reports/actor_collection_descriptor_helpers_02030b7c.json: objdiff build/decomp/delinks/asm/game/actor_collection_descriptor_helpers_02030b7c.o | build/decomp/asm/game/actor_collection_descriptor_helpers_02030b7c.o
   target_object = build/decomp/delinks/asm/game/actor_collection_descriptor_helpers_02030b7c.o
   base_object = build/decomp/asm/game/actor_collection_descriptor_helpers_02030b7c.o
 build build/reports/actor_collection_descriptor_helpers_02030b7c.txt: match_report build/reports/actor_collection_descriptor_helpers_02030b7c.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_descriptor_helpers_02030b7c.json
-  report_args = --section .text --function func_02030b7c --require-exact
+  report_args = --section .text --function ActorCollection_GetFlagBit1 --require-exact
 build build/reports/actor_collection_descriptor_helpers.txt: phony build/reports/actor_collection_descriptor_helpers_02030a80.txt build/reports/actor_collection_descriptor_helpers_02030acc.txt build/reports/actor_collection_descriptor_helpers_02030ad4.txt build/reports/actor_collection_descriptor_helpers_02030b18.txt build/reports/actor_collection_descriptor_helpers_02030b58.txt build/reports/actor_collection_descriptor_helpers_02030b7c.txt
 
 build actor_collection_descriptor_helpers: phony build/decomp/src/game/actor_collection_descriptor_helpers.o build/decomp/asm/game/actor_collection_descriptor_helpers_02030a80.o build/decomp/asm/game/actor_collection_descriptor_helpers_02030acc.o build/decomp/asm/game/actor_collection_descriptor_helpers_02030ad4.o build/decomp/asm/game/actor_collection_descriptor_helpers_02030b18.o build/decomp/asm/game/actor_collection_descriptor_helpers_02030b58.o build/decomp/asm/game/actor_collection_descriptor_helpers_02030b7c.o build/reports/actor_collection_descriptor_helpers.txt
@@ -14555,7 +14555,7 @@ build build/reports/actor_base_geometry_lifecycle_02030d70.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_base_geometry_lifecycle_02030d70.o
 build build/reports/actor_base_geometry_lifecycle_02030d70.txt: match_report build/reports/actor_base_geometry_lifecycle_02030d70.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_geometry_lifecycle_02030d70.json
-  report_args = --section .text --function func_02030d70 --require-exact
+  report_args = --section .text --function ActorBaseGeometry_Destroy --require-exact
 build build/reports/actor_base_geometry_lifecycle_02030db8.json: objdiff build/decomp/delinks/asm/game/actor_base_geometry_lifecycle_02030db8.o | build/decomp/asm/game/actor_base_geometry_lifecycle_02030db8.o
   target_object = build/decomp/delinks/asm/game/actor_base_geometry_lifecycle_02030db8.o
   base_object = build/decomp/asm/game/actor_base_geometry_lifecycle_02030db8.o
@@ -14567,7 +14567,7 @@ build build/reports/actor_base_geometry_lifecycle_02030e08.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_base_geometry_lifecycle_02030e08.o
 build build/reports/actor_base_geometry_lifecycle_02030e08.txt: match_report build/reports/actor_base_geometry_lifecycle_02030e08.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_geometry_lifecycle_02030e08.json
-  report_args = --section .text --function func_02030e08 --require-exact
+  report_args = --section .text --function ActorBaseGeometry_DestroyAlternateEntry --require-exact
 build build/reports/actor_base_geometry_lifecycle_02030e50.json: objdiff build/decomp/delinks/asm/game/actor_base_geometry_lifecycle_02030e50.o | build/decomp/asm/game/actor_base_geometry_lifecycle_02030e50.o
   target_object = build/decomp/delinks/asm/game/actor_base_geometry_lifecycle_02030e50.o
   base_object = build/decomp/asm/game/actor_base_geometry_lifecycle_02030e50.o
@@ -14617,7 +14617,7 @@ build build/reports/actor_base_defaults_02030f7c.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/actor_base_defaults_02030f7c.o
 build build/reports/actor_base_defaults_02030f7c.txt: match_report build/reports/actor_base_defaults_02030f7c.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_defaults_02030f7c.json
-  report_args = --section .text --function func_02030f7c --require-exact
+  report_args = --section .text --function Actor_DefaultQueryReturnZero --require-exact
 build build/reports/actor_base_defaults_02030f84.json: objdiff build/decomp/delinks/asm/game/actor_base_defaults_02030f84.o | build/decomp/asm/game/actor_base_defaults_02030f84.o
   target_object = build/decomp/delinks/asm/game/actor_base_defaults_02030f84.o
   base_object = build/decomp/asm/game/actor_base_defaults_02030f84.o
@@ -14663,19 +14663,19 @@ build build/reports/actor_runtime_base_lifecycle_020311bc.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_runtime_base_lifecycle_020311bc.o
 build build/reports/actor_runtime_base_lifecycle_020311bc.txt: match_report build/reports/actor_runtime_base_lifecycle_020311bc.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_base_lifecycle_020311bc.json
-  report_args = --section .text --function func_020311bc --require-exact
+  report_args = --section .text --function RuntimeActor_Destroy --require-exact
 build build/reports/actor_runtime_base_lifecycle_02031260.json: objdiff build/decomp/delinks/asm/game/actor_runtime_base_lifecycle_02031260.o | build/decomp/asm/game/actor_runtime_base_lifecycle_02031260.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_base_lifecycle_02031260.o
   base_object = build/decomp/asm/game/actor_runtime_base_lifecycle_02031260.o
 build build/reports/actor_runtime_base_lifecycle_02031260.txt: match_report build/reports/actor_runtime_base_lifecycle_02031260.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_base_lifecycle_02031260.json
-  report_args = --section .text --function func_02031260 --require-exact
+  report_args = --section .text --function RuntimeActor_DestroyAndFree --require-exact
 build build/reports/actor_runtime_base_lifecycle_0203130c.json: objdiff build/decomp/delinks/asm/game/actor_runtime_base_lifecycle_0203130c.o | build/decomp/asm/game/actor_runtime_base_lifecycle_0203130c.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_base_lifecycle_0203130c.o
   base_object = build/decomp/asm/game/actor_runtime_base_lifecycle_0203130c.o
 build build/reports/actor_runtime_base_lifecycle_0203130c.txt: match_report build/reports/actor_runtime_base_lifecycle_0203130c.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_base_lifecycle_0203130c.json
-  report_args = --section .text --function func_0203130c --require-exact
+  report_args = --section .text --function RuntimeActor_DestroyAlternateEntry --require-exact
 build build/reports/actor_runtime_base_lifecycle_020313b0.json: objdiff build/decomp/delinks/asm/game/actor_runtime_base_lifecycle_020313b0.o | build/decomp/asm/game/actor_runtime_base_lifecycle_020313b0.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_base_lifecycle_020313b0.o
   base_object = build/decomp/asm/game/actor_runtime_base_lifecycle_020313b0.o
@@ -14857,7 +14857,7 @@ build build/reports/actor_step_transition_state_0203213c.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_step_transition_state_0203213c.o
 build build/reports/actor_step_transition_state_0203213c.txt: match_report build/reports/actor_step_transition_state_0203213c.json | tools/report_objdiff.py
   report_json = build/reports/actor_step_transition_state_0203213c.json
-  report_args = --section .text --function func_0203213c --require-exact
+  report_args = --section .text --function ActorStepTransition_DefaultQueryReturnZero --require-exact
 build build/reports/actor_step_transition_state.txt: phony build/reports/actor_step_transition_state_020320fc.txt build/reports/actor_step_transition_state_0203213c.txt
 
 build actor_step_transition_state: phony build/decomp/src/game/actor_step_transition_state.o build/decomp/asm/game/actor_step_transition_state_020320fc.o build/decomp/asm/game/actor_step_transition_state_0203213c.o build/reports/actor_step_transition_state.txt
@@ -14952,7 +14952,7 @@ build build/reports/actor_ground_height_state_020324c8.json: objdiff build/decom
   base_object = build/decomp/asm/game/actor_ground_height_state_020324c8.o
 build build/reports/actor_ground_height_state_020324c8.txt: match_report build/reports/actor_ground_height_state_020324c8.json | tools/report_objdiff.py
   report_json = build/reports/actor_ground_height_state_020324c8.json
-  report_args = --section .text --function func_020324c8 --require-exact
+  report_args = --section .text --function Actor_TestGroundHeightFlag40 --require-exact
 build build/reports/actor_ground_height_state_020324dc.json: objdiff build/decomp/delinks/asm/game/actor_ground_height_state_020324dc.o | build/decomp/asm/game/actor_ground_height_state_020324dc.o
   target_object = build/decomp/delinks/asm/game/actor_ground_height_state_020324dc.o
   base_object = build/decomp/asm/game/actor_ground_height_state_020324dc.o
@@ -15274,7 +15274,7 @@ build build/reports/actor_bounds_center_helpers_02033734.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_bounds_center_helpers_02033734.o
 build build/reports/actor_bounds_center_helpers_02033734.txt: match_report build/reports/actor_bounds_center_helpers_02033734.json | tools/report_objdiff.py
   report_json = build/reports/actor_bounds_center_helpers_02033734.json
-  report_args = --section .text --function func_02033734 --require-exact
+  report_args = --section .text --function S8BoundsCenter_NoOpHook --require-exact
 build build/decomp/asm/game/actor_bounds_center_helpers_02033738.o: mwasmarm asm/game/actor_bounds_center_helpers_02033738.s
 build build/decomp/delinks/asm/game/actor_bounds_center_helpers_02033738.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_bounds_center_helpers_02033738.json: objdiff build/decomp/delinks/asm/game/actor_bounds_center_helpers_02033738.o | build/decomp/asm/game/actor_bounds_center_helpers_02033738.o
@@ -15348,7 +15348,7 @@ build build/reports/actor_collision_query_control_020338e4.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_collision_query_control_020338e4.o
 build build/reports/actor_collision_query_control_020338e4.txt: match_report build/reports/actor_collision_query_control_020338e4.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_query_control_020338e4.json
-  report_args = --section .text --function func_020338e4 --require-exact
+  report_args = --section .text --function Actor_ResetMotionForCollisionQuery --require-exact
 build build/decomp/asm/game/actor_collision_query_control_02033928.o: mwasmarm asm/game/actor_collision_query_control_02033928.s
 build build/decomp/delinks/asm/game/actor_collision_query_control_02033928.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_collision_query_control_02033928.json: objdiff build/decomp/delinks/asm/game/actor_collision_query_control_02033928.o | build/decomp/asm/game/actor_collision_query_control_02033928.o
@@ -15356,7 +15356,7 @@ build build/reports/actor_collision_query_control_02033928.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_collision_query_control_02033928.o
 build build/reports/actor_collision_query_control_02033928.txt: match_report build/reports/actor_collision_query_control_02033928.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_query_control_02033928.json
-  report_args = --section .text --function func_02033928 --require-exact
+  report_args = --section .text --function ActorCollisionQuery_NoOpHook --require-exact
 build build/decomp/asm/game/actor_collision_query_control_0203392c.o: mwasmarm asm/game/actor_collision_query_control_0203392c.s
 build build/decomp/delinks/asm/game/actor_collision_query_control_0203392c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_collision_query_control_0203392c.json: objdiff build/decomp/delinks/asm/game/actor_collision_query_control_0203392c.o | build/decomp/asm/game/actor_collision_query_control_0203392c.o
@@ -15430,7 +15430,7 @@ build build/reports/actor_debug_state_renderer_02033b38.json: objdiff build/deco
   base_object = build/decomp/asm/game/actor_debug_state_renderer_02033b38.o
 build build/reports/actor_debug_state_renderer_02033b38.txt: match_report build/reports/actor_debug_state_renderer_02033b38.json | tools/report_objdiff.py
   report_json = build/reports/actor_debug_state_renderer_02033b38.json
-  report_args = --section .text --function func_02033b38 --require-exact
+  report_args = --section .text --function Actor_DebugDrawState --require-exact
 build build/reports/actor_debug_state_renderer.txt: phony build/reports/actor_debug_state_renderer_02033b38.txt
 
 build actor_debug_state_renderer: phony build/decomp/src/game/actor_debug_state_renderer.o build/decomp/asm/game/actor_debug_state_renderer_02033b38.o build/reports/actor_debug_state_renderer.txt
@@ -15878,7 +15878,7 @@ build build/reports/actor_virtual_default_helpers_02034e44.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_virtual_default_helpers_02034e44.o
 build build/reports/actor_virtual_default_helpers_02034e44.txt: match_report build/reports/actor_virtual_default_helpers_02034e44.json | tools/report_objdiff.py
   report_json = build/reports/actor_virtual_default_helpers_02034e44.json
-  report_args = --section .text --function func_02034e44 --require-exact
+  report_args = --section .text --function Actor_DefaultSecondaryQueryReturnZero --require-exact
 build build/decomp/asm/game/actor_virtual_default_helpers_02034e4c.o: mwasmarm asm/game/actor_virtual_default_helpers_02034e4c.s
 build build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e4c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_virtual_default_helpers_02034e4c.json: objdiff build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e4c.o | build/decomp/asm/game/actor_virtual_default_helpers_02034e4c.o

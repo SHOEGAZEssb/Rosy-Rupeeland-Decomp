@@ -10,7 +10,7 @@
 .extern Type7Actor_EnterSpecialPresentationState
 .extern ActorRuntimeScene_ActivateFlaggedNonType1Actors
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02030b58
+.extern ActorCollection_SetFlagBit1
 .extern gActorRuntimeSceneVTable
 .extern gGamePhaseRuntime
 .extern gGameWork
@@ -89,7 +89,7 @@ L_0200b3d0:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x0
-    bl func_02030b58
+    bl ActorCollection_SetFlagBit1
     ldr r0, L_0200b410
     mov r1, #0x410
     ldr r0, [r0, #0x0]

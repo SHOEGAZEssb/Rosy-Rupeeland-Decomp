@@ -70,7 +70,7 @@ extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
 extern const s16 gFx32CosSinTable[];
 extern void GraphicsSpriteGroup_Clear(void *group);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *group);
-extern void *func_0203130c(void *actor);
+extern void *RuntimeActor_DestroyAlternateEntry(void *actor);
 extern void Heap_Free(void *allocation);
 extern s32 ActorKind8_UpdateDelayedGridEffect(void *object);
 extern void ActorKind8_UpdateIdlePresentation(void *state);
@@ -793,7 +793,7 @@ static void *destroyKind8Actor(void *self, s32 releaseAllocation)
             func_020575a0(actor + 0x1fc + index * 0x24);
     }
     AnimationResourceState_Destroy(actor + 0x1f0);
-    func_0203130c(actor);
+    RuntimeActor_DestroyAlternateEntry(actor);
     if (releaseAllocation != 0)
         Heap_Free(actor);
     return actor;

@@ -34,8 +34,8 @@ extern "C" {
 #endif
 extern void ActorCollection_AppendToCategory(ActorCollectionCategories *, s32,
                                              CategorizedActor *);
-extern s32 func_0202ddac(const CategorizedActor *);
-extern s32 func_0202ddc4(const CategorizedActor *);
+extern s32 Actor_GetCategorizationWidth(const CategorizedActor *);
+extern s32 Actor_GetCategorizationHeight(const CategorizedActor *);
 #ifdef __cplusplus
 }
 #endif
@@ -67,7 +67,7 @@ void ActorCollection_RebuildCategories(ActorCollectionCategories *self)
             actor->type_4d == 6 || (actor->flags_10 & 0x100)) {
             ActorCollection_AppendToCategory(self, 0, actor);
             if (!(actor->flags_14 & 0x200000)) {
-                if (func_0202ddac(actor) || func_0202ddc4(actor)) {
+                if (Actor_GetCategorizationWidth(actor) || Actor_GetCategorizationHeight(actor)) {
                     if (!actor->field_54 || !(actor->flags_14 & 0x10000000) ||
                         (actor->flags_14 & 8))
                         selected = 1;
@@ -100,13 +100,13 @@ void ActorCollection_AppendToCategory(ActorCollectionCategories *self,
 }
 
 /* Return x1_0a minus x0_08 truncated back to a signed eight-bit value. */
-s32 func_0202ddac(const CategorizedActor *actor)
+s32 Actor_GetCategorizationWidth(const CategorizedActor *actor)
 {
     return (s8)(actor->x1_0a - actor->x0_08);
 }
 
 /* Return y1_0b minus y0_09 truncated back to a signed eight-bit value. */
-s32 func_0202ddc4(const CategorizedActor *actor)
+s32 Actor_GetCategorizationHeight(const CategorizedActor *actor)
 {
     return (s8)(actor->y1_0b - actor->y0_09);
 }

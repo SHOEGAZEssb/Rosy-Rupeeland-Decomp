@@ -9,7 +9,7 @@ extern const char data_020df4b8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033b38(void *actor, s32 line);
+extern void Actor_DebugDrawState(void *actor, s32 line);
 extern s32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 extern void DebugText_Printf(void *font, s32 screen, s32 row, s32 column,
                             const char *format, ...);
@@ -29,7 +29,7 @@ void ActorDerivedType1_DrawDebugInfo(void *self, s32 line)
     u8 *actor = (u8 *)self;
     s32 packed;
 
-    func_02033b38(actor, line);
+    Actor_DebugDrawState(actor, line);
     DebugText_Printf(gDebugFont, 1, 0xb, line, data_020df4ac,
                      data_020df294[*(s16 *)(actor + 0xd6)]);
     packed = Actor_QueryTerrainCell(actor, *(s32 *)(actor + 0x1c) >> 16,

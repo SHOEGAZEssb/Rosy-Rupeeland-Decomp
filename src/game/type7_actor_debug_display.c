@@ -70,7 +70,7 @@ DECLARE_TEXT(data_020e1e48);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033b38(void *actor, s32 displayArgument);
+extern void Actor_DebugDrawState(void *actor, s32 displayArgument);
 extern void DebugText_Printf(void *font, s32 column, s32 row,
                              s32 displayArgument, const char *format, ...);
 #ifdef __cplusplus
@@ -85,7 +85,7 @@ typedef struct Type7DebugDescriptor {
 
 /*
  * Input is a type-seven actor plus an opaque value forwarded to every debug
- * text call. First invoke func_02033b38. If actor +0x10 bit 0x01000000 is set,
+ * text call. First invoke Actor_DebugDrawState. If actor +0x10 bit 0x01000000 is set,
  * print the three compact strings at rows 8..10. Otherwise compare actor words
  * +0x208/+0x20c, in retail priority order, against 22 recovered descriptor
  * pairs. A match optionally prints its label at row 11; rows 12..15 then show
@@ -130,7 +130,7 @@ void Type7Actor_PrintDebugState(void *self, s32 displayArgument)
     u32 second;
     u32 i;
 
-    func_02033b38(actor, displayArgument);
+    Actor_DebugDrawState(actor, displayArgument);
     if ((*(u32 *)(actor + 0x10) & 0x01000000) != 0) {
         DebugText_Printf(gDebugFont, 1, 8, displayArgument, data_020e1d14);
         DebugText_Printf(gDebugFont, 1, 9, displayArgument, data_020e1d24);

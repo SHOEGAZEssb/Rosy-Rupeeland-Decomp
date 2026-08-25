@@ -2,7 +2,7 @@
 .extern Heap_Free
 .extern data_020e2560
 .extern ActorRuntimeBase_Init
-.extern func_0203130c
+.extern RuntimeActor_DestroyAlternateEntry
 .extern Actor_ReleaseSecondaryRenderAttachment
 .text
 
@@ -34,7 +34,7 @@ func_0204e970: ; 0x0204e970
     mov r0, r4
     bl Actor_ReleaseSecondaryRenderAttachment
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204e9a4: .word data_020e2560
@@ -53,7 +53,7 @@ func_0204e9a8: ; 0x0204e9a8
     mov r0, r4
     bl Actor_ReleaseSecondaryRenderAttachment
     mov r0, r4
-    bl func_0203130c
+    bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4

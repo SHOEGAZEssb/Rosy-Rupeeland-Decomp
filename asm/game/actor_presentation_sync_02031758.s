@@ -3,7 +3,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern RectS32_Set
-.extern func_02030b7c
+.extern ActorCollection_GetFlagBit1
 .extern Actor_GetCollisionCenter
 .extern Actor_BuildCollisionRect
 .extern Actor_GetOwningCollection
@@ -197,7 +197,7 @@ Actor_UpdatePresentation: ; 0x02031758
     bne .L_02031af4
     mov r0, r5
     bl Actor_GetOwningCollection
-    bl func_02030b7c
+    bl ActorCollection_GetFlagBit1
     cmp r0, #0x0
     beq .L_02031ad8
     add r0, sp, #0x50
@@ -244,7 +244,7 @@ Actor_UpdatePresentation: ; 0x02031758
 .L_02031aa8:
     mov r0, r5
     bl Actor_GetOwningCollection
-    bl func_02030b7c
+    bl ActorCollection_GetFlagBit1
     mov r1, r0
     ldr r0, [r5, #0x1e0]
     and r1, r1, #0x1

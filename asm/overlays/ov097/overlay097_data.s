@@ -15,7 +15,7 @@
 .extern func_ov097_02217cec
 .extern ActorDerivedRuntime_HandlePairEnded
 .extern Actor_TryStartStepUpTransition
-.extern func_0203213c
+.extern ActorStepTransition_DefaultQueryReturnZero
 .extern Actor_UpdatePositionTransition
 .extern Actor_ConfigureStepUpTransition
 .extern Actor_EndPositionTransition
@@ -177,7 +177,7 @@
 .extern func_ov097_0221a470
 .extern func_ov097_0221a460
 .extern Actor_SetPosition
-.extern func_02033b38
+.extern Actor_DebugDrawState
 .extern func_ov097_0221a45c
 .extern func_ov097_0221a458
 .extern func_ov097_0221a450
@@ -297,7 +297,7 @@ data_ov097_0221a5f4:
     .word func_ov097_02217cec
     .word ActorDerivedRuntime_HandlePairEnded
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition
@@ -432,7 +432,7 @@ data_ov097_0221a80c:
     .word func_ov078_0221361c
     .word ActorDerivedRuntime_HandlePairEnded
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition
@@ -593,7 +593,7 @@ data_ov097_0221aaa4:
     .word TrackedResourceActor_HandleInteractionCallback
     .word ActorContactState_RemoveContact
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition
@@ -613,7 +613,7 @@ data_ov097_0221aaa4:
     .word Actor_SelectScriptVariant
     .word func_ov097_0221a460
     .word Actor_SetPosition
-    .word func_02033b38
+    .word Actor_DebugDrawState
     .word Actor_RefreshCachedTerrainHeightIfEnabled
     .word func_ov097_0221a45c
     .word Actor_ConvergeToTargetHeight

@@ -38,7 +38,7 @@ extern void VecFx32Object_InitComponents(...), VecFx32Object_Assign(...);
 extern void VecFx32Object_Add(...), VecFx32Object_Subtract(...), VecFx32Object_Destroy(...);
 extern s32 Fx32Vector2_Magnitude(...), func_020adc90(...), func_020befec(...);
 extern void *ActorMotionAreaFollower_GetPosition(...), *SceneManager_GetCurrent(...);
-extern void func_ov062_0220fe78(...), func_02033b38(...);
+extern void func_ov062_0220fe78(...), Actor_DebugDrawState(...);
 #ifdef __cplusplus
 }
 #endif
@@ -535,5 +535,5 @@ s32 func_ov087_02218960(void) { return 0; }
 /* Intentional presentation callback no-op. */
 void func_ov087_02218968(void) {}
 
-/* Forward the inherited actor callback implemented at func_02033b38. */
-void func_ov087_0221896c(void) { func_02033b38(); }
+/* Forward the inherited actor callback implemented at Actor_DebugDrawState. */
+void func_ov087_0221896c(void) { Actor_DebugDrawState(); }

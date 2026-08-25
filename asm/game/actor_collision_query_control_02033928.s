@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/actor_collision_query_control.c.
 .text
 
-    .global func_02033928
-    .type func_02033928, @function
-func_02033928: ; 0x02033928
+    .global ActorCollisionQuery_NoOpHook
+    .type ActorCollisionQuery_NoOpHook, @function
+ActorCollisionQuery_NoOpHook: ; 0x02033928
     bx lr
-    .size func_02033928, . - func_02033928
+    .size ActorCollisionQuery_NoOpHook, . - ActorCollisionQuery_NoOpHook
 
     .global Actor_SetInteractionFlag2000
 

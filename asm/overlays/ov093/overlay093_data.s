@@ -8,7 +8,7 @@
 .extern Actor_ClearTransientContactState
 .extern Actor_TryStartStepUpTransition
 .extern Actor_ConfigureStepUpTransition
-.extern func_0203213c
+.extern ActorStepTransition_DefaultQueryReturnZero
 .extern Actor_UpdatePositionTransition
 .extern Actor_EndPositionTransition
 .extern Actor_ConvergeToTargetHeight
@@ -22,7 +22,7 @@
 .extern Actor_SetInteractionFlag2000
 .extern Actor_ClearInteractionFlag2000
 .extern Actor_TestQueryPointAndClearFlag2000
-.extern func_02033b38
+.extern Actor_DebugDrawState
 .extern Actor_RefreshCachedTerrainHeightIfEnabled
 .extern Actor_GetGravityAcceleration
 .extern Actor_ApplyMotionImpulse
@@ -137,7 +137,7 @@ data_ov093_022188f0:
     .word func_0204d3e4
     .word ActorContactState_RemoveContact
     .word Actor_TryStartStepUpTransition
-    .word func_0203213c
+    .word ActorStepTransition_DefaultQueryReturnZero
     .word Actor_UpdatePositionTransition
     .word Actor_ConfigureStepUpTransition
     .word Actor_EndPositionTransition
@@ -157,7 +157,7 @@ data_ov093_022188f0:
     .word Actor_SelectScriptVariant
     .word func_ov093_02218778
     .word Actor_SetPosition
-    .word func_02033b38
+    .word Actor_DebugDrawState
     .word Actor_RefreshCachedTerrainHeightIfEnabled
     .word func_ov093_02218774
     .word Actor_ConvergeToTargetHeight

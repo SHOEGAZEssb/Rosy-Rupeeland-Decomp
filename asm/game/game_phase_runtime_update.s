@@ -25,7 +25,7 @@
 .extern RuntimePresentationManager_UpdatePresentations
 .extern GamePhaseProgressController_Update
 .extern GamePhaseProgress_GetOrCreateGlobal
-.extern func_020338e4
+.extern Actor_ResetMotionForCollisionQuery
 .extern Actor_TrySpawnTerrainGateObject
 .extern Type7Actor_ClearTarget
 .extern func_0206ec68
@@ -259,7 +259,7 @@ L_02007720:
     beq L_020077ac
     add r0, r4, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_020338e4
+    bl Actor_ResetMotionForCollisionQuery
     add r0, r4, #0x2000
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0

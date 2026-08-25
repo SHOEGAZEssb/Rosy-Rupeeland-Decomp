@@ -20,9 +20,9 @@
 .extern func_020adcac
 .extern gDebugFont
 
-    .global func_02033b38
-    .type func_02033b38, @function
-func_02033b38: ; 0x02033b38
+    .global Actor_DebugDrawState
+    .type Actor_DebugDrawState, @function
+Actor_DebugDrawState: ; 0x02033b38
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x14
     mov r5, r0
@@ -265,7 +265,7 @@ func_02033b38: ; 0x02033b38
 .L_02033ec4: .word data_020df1f0
 .L_02033ec8: .word data_020df1f8
 .L_02033ecc: .word data_020defd0
-    .size func_02033b38, . - func_02033b38
+    .size Actor_DebugDrawState, . - Actor_DebugDrawState
 
     .global Actor_SaveAndForceFlags
 

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_failure_state.c.
 .text
 .extern GameWork_SetFlag
-.extern func_020338e4
+.extern Actor_ResetMotionForCollisionQuery
 .extern Sound_StopAllManagedPlayers
 .extern gGameWork
 .extern gSoundContext
@@ -11,7 +11,7 @@
 Type1Actor_EnterFailureState: ; 0x02039bfc
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020338e4
+    bl Actor_ResetMotionForCollisionQuery
     mov r1, #0x46
     ldr r0, .L_02039c30
     str r1, [r4, #0x248]
