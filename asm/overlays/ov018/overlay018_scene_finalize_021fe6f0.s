@@ -12,14 +12,14 @@
     .extern func_020b1ff0
     .extern Overlay003_CreateTilemap
     .extern func_ov018_021fcf40
-    .extern func_ov018_021fd788
-    .extern func_ov018_021fd90c
-    .extern func_ov018_021fdb7c
+    .extern Overlay018_UpdateFrameUi
+    .extern Overlay018_CreateDialog
+    .extern Overlay018_SetPathSpriteAnimation
     .extern gDebugFont
     .extern gGamePhaseCurrencyHud
 
-.global func_ov018_021fe6f0
-func_ov018_021fe6f0:
+.global Overlay018_UpdateSceneFinalization
+Overlay018_UpdateSceneFinalization:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -86,12 +86,12 @@ L_021fe7b0:
     mov r1, #0x0
     bic r2, r2, #0x1
     strh r2, [r3, #0x24]
-    bl func_ov018_021fdb7c
+    bl Overlay018_SetPathSpriteAnimation
     ldr r0, [r4, #0x54]
     cmp r0, #0x1
     bne L_021fe81c
     mov r0, r4
-    bl func_ov018_021fd90c
+    bl Overlay018_CreateDialog
     ldr r1, L_021fe84c
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -104,7 +104,7 @@ L_021fe81c:
     bl func_ov018_021fcf40
 L_021fe82c:
     mov r0, r4
-    bl func_ov018_021fd788
+    bl Overlay018_UpdateFrameUi
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe83c: .word gGamePhaseCurrencyHud
@@ -113,4 +113,4 @@ L_021fe844: .word gDebugFont
 L_021fe848: .word gGamePhaseRuntime
 L_021fe84c: .word data_ov018_021ffc30
 L_021fe850: .word data_ov018_021ffc08
-    .size func_ov018_021fe6f0, . - func_ov018_021fe6f0
+    .size Overlay018_UpdateSceneFinalization, . - Overlay018_UpdateSceneFinalization

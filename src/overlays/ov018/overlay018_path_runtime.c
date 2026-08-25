@@ -17,19 +17,19 @@ extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void SceneSound_SetPackedEffectValue(void *, s32, s32);
 extern u32 func_020ae024(s32, s32);
 extern void Overlay003_RasterizeLine(void *, s32, s32, s32, s32, u32, u32);
-extern void func_ov018_021fdb7c(void *, s32);
+extern void Overlay018_SetPathSpriteAnimation(void *, s32);
 extern void func_ov018_021fdbac(void *);
 extern void func_ov018_021fdbd4(void *);
 extern void func_ov018_021fdbfc(void *);
 extern s32 func_ov018_021fdc64(void *);
-extern void func_ov018_021fe184(void *, const void *);
-extern s32 func_ov018_021fe214(void *);
+extern void Overlay018_CopyCoordinates(void *, const void *);
+extern s32 Overlay018_ClassifyPath(void *);
 extern void func_ov018_021ff3cc(void *);
 extern s32 func_ov018_021ff408(void *);
 extern s32 func_ov018_021ff420(void *);
 extern void func_ov018_021ff434(void *, u16, u16);
-extern s32 func_ov018_021ff770(void *);
-extern void func_ov018_021ff964(void *);
+extern s32 Overlay018_DetectPathIntersection(void *);
+extern void Overlay018_TrimSelectedPathRange(void *);
 extern s32 func_ov018_021ff984(void *);
 extern void func_ov018_021ffbb0(void *, s32);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ extern void func_ov018_021ffbb0(void *, s32);
  * brush values remain address-confirmed constants whose higher-level meanings
  * are not yet established.
  */
-extern "C" void func_ov018_021fdce4(void *state)
+extern "C" void Overlay018_UpdatePathInput(void *state)
 {
     void *buffer = FIELD(void *, state, 0x58);
 
@@ -69,7 +69,7 @@ extern "C" void func_ov018_021fdce4(void *state)
             FIELD(s32, state, 0x404) = 1;
             Overlay003_RasterizeLine(FIELD(void *, state, 0x190),
                                 x, y, x, y, 2, 1);
-            func_ov018_021fe184((u8 *)state + 0x64, (u8 *)state + 0x30);
+            Overlay018_CopyCoordinates((u8 *)state + 0x64, (u8 *)state + 0x30);
             func_ov018_021fdbfc(state);
             SceneSound_PlayPackedEffect(state, 0x4b);
             func_ov018_021ff434(buffer,
@@ -80,7 +80,7 @@ extern "C" void func_ov018_021fdce4(void *state)
         if (func_ov018_021fdc64(state) && FIELD(s32, state, 0x408)) {
             if (FIELD(s32, state, 0x404) == 0) {
                 FIELD(s32, state, 0x404) = 1;
-                func_ov018_021fe184((u8 *)state + 0x64,
+                Overlay018_CopyCoordinates((u8 *)state + 0x64,
                                     (u8 *)state + 0x30);
             }
             Overlay003_RasterizeLine(FIELD(void *, state, 0x190),
@@ -88,12 +88,12 @@ extern "C" void func_ov018_021fdce4(void *state)
                                 FIELD(s32, state, 0x6c),
                                 FIELD(s32, state, 0x34),
                                 FIELD(s32, state, 0x38), 2, 1);
-            func_ov018_021fe184((u8 *)state + 0x64, (u8 *)state + 0x30);
+            Overlay018_CopyCoordinates((u8 *)state + 0x64, (u8 *)state + 0x30);
             func_ov018_021fdbfc(state);
-            func_ov018_021fdb7c(state, 1);
+            Overlay018_SetPathSpriteAnimation(state, 1);
             SceneSound_SetPackedEffectValue(state, 0x4c, 0x7f);
         } else {
-            func_ov018_021fdb7c(state, 0);
+            Overlay018_SetPathSpriteAnimation(state, 0);
             SceneSound_SetPackedEffectValue(state, 0x4c, 0);
             if (!func_ov018_021ff420(buffer)) {
                 FIELD(s32, state, 0x404) = 0;
@@ -101,7 +101,7 @@ extern "C" void func_ov018_021fdce4(void *state)
             }
         }
     } else {
-        func_ov018_021fdb7c(state, 0);
+        Overlay018_SetPathSpriteAnimation(state, 0);
         SceneSound_SetPackedEffectValue(state, 0x4c, 0);
     }
 
@@ -132,12 +132,12 @@ extern "C" void func_ov018_021fdce4(void *state)
         }
 
         if (FIELD(s32, buffer, 0x24) == 0 &&
-            func_ov018_021ff770(buffer)) {
+            Overlay018_DetectPathIntersection(buffer)) {
             s32 area = func_ov018_021ff984(buffer);
             if (area > 0x100 && area < 0x8000) {
                 s32 brush = 3;
-                func_ov018_021ff964(buffer);
-                if (func_ov018_021fe214(state)) {
+                Overlay018_TrimSelectedPathRange(buffer);
+                if (Overlay018_ClassifyPath(state)) {
                     SceneSound_PlayPackedEffect(state, 0x1e);
                     FIELD(s32, state, 0x3c8) = 1;
                     brush = 4;

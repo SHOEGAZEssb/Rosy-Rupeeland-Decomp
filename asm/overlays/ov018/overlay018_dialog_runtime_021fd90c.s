@@ -7,12 +7,12 @@
     .extern GamePhaseRuntime_GetActorCollection
     .extern ActorCollection_FindActorByRuntimeId
     .extern TitleDialog_Init
-    .extern func_ov018_021fd9f8
+    .extern Overlay018_SetDialogLayout
     .extern gGameWork
     .extern gHeapContext
     .extern gSystemState
-.global func_ov018_021fd90c
-func_ov018_021fd90c:
+.global Overlay018_CreateDialog
+Overlay018_CreateDialog:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -42,13 +42,13 @@ L_021fd950:
     ldr r0, [r4, #0x418]
     mov r1, #0x20
     mov r3, #0xc0
-    bl func_ov018_021fd9f8
+    bl Overlay018_SetDialogLayout
     b L_021fd994
 L_021fd984:
     ldr r0, [r4, #0x418]
     mov r1, #0x10
     mov r3, #0xe0
-    bl func_ov018_021fd9f8
+    bl Overlay018_SetDialogLayout
 L_021fd994:
     ldr r2, [r4, #0x418]
     mov r1, #0xc
@@ -75,4 +75,4 @@ L_021fd9e8: .word data_020f4e14
 L_021fd9ec: .word gSystemState
 L_021fd9f0: .word gGamePhaseRuntime
 L_021fd9f4: .word gGameWork
-    .size func_ov018_021fd90c, . - func_ov018_021fd90c
+    .size Overlay018_CreateDialog, . - Overlay018_CreateDialog

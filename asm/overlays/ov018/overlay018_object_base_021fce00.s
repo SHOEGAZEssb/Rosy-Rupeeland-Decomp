@@ -12,8 +12,8 @@
     .extern PresentationList_DeleteAll
     .extern SpritePresentation_InitVariant
     .extern SpritePresentation_Destroy
-.global func_ov018_021fce00
-func_ov018_021fce00:
+.global Overlay018_ObjectBase_Init
+Overlay018_ObjectBase_Init:
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0xc
     mov r7, r1
@@ -58,7 +58,7 @@ func_ov018_021fce00:
     ldmia sp!, {r4, r5, r6, r7, pc}
 L_021fcea8: .word data_ov018_021ffd20
 L_021fceac: .word data_020f4e18
-    .size func_ov018_021fce00, . - func_ov018_021fce00
+    .size Overlay018_ObjectBase_Init, . - Overlay018_ObjectBase_Init
 
     .global func_ov018_021fceb0
 func_ov018_021fceb0:

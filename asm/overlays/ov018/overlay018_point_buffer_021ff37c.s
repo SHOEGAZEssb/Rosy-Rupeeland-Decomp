@@ -3,8 +3,8 @@
     .extern Heap_Free
     .extern data_ov018_021ffd8c
     .extern Heap_FreeAlternateEntry
-.global func_ov018_021ff37c
-func_ov018_021ff37c:
+.global Overlay018_PointBuffer_Destroy
+Overlay018_PointBuffer_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, L_021ff39c
     mov r4, r0
@@ -14,7 +14,7 @@ func_ov018_021ff37c:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021ff39c: .word data_ov018_021ffd8c
-    .size func_ov018_021ff37c, . - func_ov018_021ff37c
+    .size Overlay018_PointBuffer_Destroy, . - Overlay018_PointBuffer_Destroy
 
     .global func_ov018_021ff3a0
 func_ov018_021ff3a0:

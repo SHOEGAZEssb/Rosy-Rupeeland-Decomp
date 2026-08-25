@@ -22,14 +22,14 @@
     .extern func_020afd0c
     .extern func_020befec
     .extern func_ov003_021fb7ec
-    .extern func_ov018_021fce00
+    .extern Overlay018_ObjectBase_Init
     .extern func_ov018_021fcf40
-    .extern func_ov018_021fd788
+    .extern Overlay018_UpdateFrameUi
     .extern func_ov018_021fda10
     .extern func_ov018_021fda60
     .extern func_ov018_021fe19c
     .extern func_ov018_021fe1d8
-    .extern func_ov018_021fe46c
+    .extern Overlay018_DrawResultText
     .extern func_ov018_021fe644
     .extern func_ov018_021ff3cc
     .extern gDebugFont
@@ -37,8 +37,8 @@
     .extern gSoundContext
     .extern genrand_int32
 
-.global func_ov018_021fea1c
-func_ov018_021fea1c:
+.global Overlay018_UpdateResultSequence
+Overlay018_UpdateResultSequence:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -113,7 +113,7 @@ L_021feaa4:
     ldr r2, [r4, #0x194]
     mov r0, r6
     mov r3, r5
-    bl func_ov018_021fce00
+    bl Overlay018_ObjectBase_Init
     mov r6, r0
 L_021feb40:
     mov r1, r6
@@ -167,7 +167,7 @@ L_021febbc:
     str r5, [sp, #0x0]
     bl TitleInterpolatedValue_Configure
     mov r0, r4
-    bl func_ov018_021fe46c
+    bl Overlay018_DrawResultText
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -365,7 +365,7 @@ L_021feecc:
     bl func_ov018_021fcf40
 L_021feef4:
     mov r0, r4
-    bl func_ov018_021fd788
+    bl Overlay018_UpdateFrameUi
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
@@ -378,4 +378,4 @@ L_021fef1c: .word gSoundContext
 L_021fef20: .word gDebugFont
 L_021fef24: .word data_ov018_021ffbf8
 L_021fef28: .word data_ov018_021ffbf0
-    .size func_ov018_021fea1c, . - func_ov018_021fea1c
+    .size Overlay018_UpdateResultSequence, . - Overlay018_UpdateResultSequence

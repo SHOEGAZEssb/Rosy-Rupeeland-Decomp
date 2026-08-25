@@ -6,15 +6,15 @@
     .extern LanguageLookupDatabase_GetResourceById
     .extern TitleDialog_SetText
     .extern TitleDialog_UpdateTextPage
-.global func_ov018_021fd9f8
-func_ov018_021fd9f8:
+.global Overlay018_SetDialogLayout
+Overlay018_SetDialogLayout:
     str r1, [r0, #0xa4]
     str r2, [r0, #0xa8]
     ldr r1, [sp, #0x0]
     str r3, [r0, #0xac]
     str r1, [r0, #0xb0]
     bx lr
-    .size func_ov018_021fd9f8, . - func_ov018_021fd9f8
+    .size Overlay018_SetDialogLayout, . - Overlay018_SetDialogLayout
 
     .global func_ov018_021fda10
 func_ov018_021fda10:

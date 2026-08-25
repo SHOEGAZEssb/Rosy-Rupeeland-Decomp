@@ -10,15 +10,15 @@
     .extern SpriteMotionController_BeginHitResponse
     .extern func_ov003_021fb7ec
     .extern func_ov018_021fcf40
-    .extern func_ov018_021fd788
-    .extern func_ov018_021fdb7c
+    .extern Overlay018_UpdateFrameUi
+    .extern Overlay018_SetPathSpriteAnimation
     .extern func_ov018_021fdbd4
-    .extern func_ov018_021fdce4
-    .extern func_ov018_021fe184
+    .extern Overlay018_UpdatePathInput
+    .extern Overlay018_CopyCoordinates
     .extern func_ov018_021ff3cc
 
-.global func_ov018_021fe854
-func_ov018_021fe854:
+.global Overlay018_UpdateInteractionState
+Overlay018_UpdateInteractionState:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -65,11 +65,11 @@ L_021fe89c:
 L_021fe8f4:
     add r0, r4, #0x64
     add r1, r4, #0x30
-    bl func_ov018_021fe184
+    bl Overlay018_CopyCoordinates
     b L_021fea00
 L_021fe904:
     mov r0, r4
-    bl func_ov018_021fdce4
+    bl Overlay018_UpdatePathInput
     ldr r0, [r4, #0x58]
     ldr r0, [r0, #0x24]
     sub r0, r0, #0x2
@@ -77,7 +77,7 @@ L_021fe904:
     bhi L_021fea00
     mov r0, r4
     mov r1, #0x0
-    bl func_ov018_021fdb7c
+    bl Overlay018_SetPathSpriteAnimation
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x0
@@ -136,10 +136,10 @@ L_021fe9ac:
     str r0, [r4, #0x8]
 L_021fea00:
     mov r0, r4
-    bl func_ov018_021fd788
+    bl Overlay018_UpdateFrameUi
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021fea10: .word 0x4001052
 L_021fea14: .word data_ov018_021ffbc8
 L_021fea18: .word data_ov018_021ffc18
-    .size func_ov018_021fe854, . - func_ov018_021fe854
+    .size Overlay018_UpdateInteractionState, . - Overlay018_UpdateInteractionState

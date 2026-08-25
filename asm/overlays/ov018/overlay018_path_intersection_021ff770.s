@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_path_intersection.c. */
     .extern func_020befec
 
-.global func_ov018_021ff770
-func_ov018_021ff770:
+.global Overlay018_DetectPathIntersection
+Overlay018_DetectPathIntersection:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r5, r0
@@ -137,4 +137,4 @@ L_021ff950:
 L_021ff95c:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_ov018_021ff770, . - func_ov018_021ff770
+    .size Overlay018_DetectPathIntersection, . - Overlay018_DetectPathIntersection

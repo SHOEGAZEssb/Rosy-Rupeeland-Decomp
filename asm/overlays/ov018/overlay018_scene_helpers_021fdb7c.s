@@ -8,8 +8,8 @@
     .extern SceneSound_StopPackedEffect
     .extern func_020ae024
     .extern func_020befec
-.global func_ov018_021fdb7c
-func_ov018_021fdb7c:
+.global Overlay018_SetPathSpriteAnimation
+Overlay018_SetPathSpriteAnimation:
     stmdb sp!, {r3, lr}
     cmp r1, #0x0
     ldr r1, [r0, #0x188]
@@ -22,7 +22,7 @@ func_ov018_021fdb7c:
     and r1, r2, #0xff
     bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, pc}
-    .size func_ov018_021fdb7c, . - func_ov018_021fdb7c
+    .size Overlay018_SetPathSpriteAnimation, . - Overlay018_SetPathSpriteAnimation
 
     .global func_ov018_021fdbac
 func_ov018_021fdbac:

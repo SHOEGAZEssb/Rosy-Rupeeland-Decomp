@@ -17,12 +17,12 @@ extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov003_021fb7ec(void *);
 extern void func_ov018_021fcf40(void *, s32, s32, s32);
-extern void func_ov018_021fd788(void *);
+extern void Overlay018_UpdateFrameUi(void *);
 extern void func_ov018_021fda10(void *, u16);
 extern s32 func_ov018_021fda60(void *);
-extern void func_ov018_021fdb7c(void *, s32);
+extern void Overlay018_SetPathSpriteAnimation(void *, s32);
 extern void func_ov018_021fdbd4(void *);
-extern void func_ov018_021fdce4(void *);
+extern void Overlay018_UpdatePathInput(void *);
 extern void func_ov018_021ff3cc(void *);
 #ifdef __cplusplus
 }
@@ -41,7 +41,7 @@ extern void func_ov018_021ff3cc(void *);
  * path, raster, transition, and fade state change; Nintendo DS master-brightness
  * register 0x04001052 is written directly.
  */
-extern "C" s32 func_ov018_021fef2c(void *state)
+extern "C" s32 Overlay018_UpdateDialogInteraction(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -64,10 +64,10 @@ extern "C" s32 func_ov018_021fef2c(void *state)
         FIELD(s32, state, 8) = 0;
         /* Confirmed fallthrough into path collection. */
     case 3: {
-        func_ov018_021fdce4(state);
+        Overlay018_UpdatePathInput(state);
         u32 latch = FIELD(u32, FIELD(void *, state, 0x58), 0x24);
         if (latch >= 2 && latch <= 3) {
-            func_ov018_021fdb7c(state, 0);
+            Overlay018_SetPathSpriteAnimation(state, 0);
             SceneSound_SetPackedEffectValue(state, 0x4c, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -116,6 +116,6 @@ extern "C" s32 func_ov018_021fef2c(void *state)
         }
         break;
     }
-    func_ov018_021fd788(state);
+    Overlay018_UpdateFrameUi(state);
     return 0;
 }

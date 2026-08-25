@@ -10,8 +10,8 @@
     .extern func_ov018_021ffa14
     .extern gGameWork
 
-.global func_ov018_021fe214
-func_ov018_021fe214:
+.global Overlay018_ClassifyPath
+Overlay018_ClassifyPath:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x18
     mov r10, r0
@@ -168,4 +168,4 @@ L_021fe45c: .word data_020d7a48
 L_021fe460: .word gGameWork
 L_021fe464: .word 0x3ae
 L_021fe468: .word 0x3ca
-    .size func_ov018_021fe214, . - func_ov018_021fe214
+    .size Overlay018_ClassifyPath, . - Overlay018_ClassifyPath

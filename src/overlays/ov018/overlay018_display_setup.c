@@ -33,7 +33,7 @@ extern void func_ov056_0220f0ac(void *, void *, s32, s32);
  * 0x160 strides). Finish with 0x021FE5F8. Returns void. Graphics SDK and direct
  * sub-engine MMIO state change; caller state is read.
  */
-extern "C" void func_ov018_021fd5d0(void *state)
+extern "C" void Overlay018_SetupDisplay(void *state)
 {
     s32 matrix[4] = {0x1000, 0, 0, 0x1000};
     struct {

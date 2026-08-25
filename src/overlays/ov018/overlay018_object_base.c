@@ -32,7 +32,7 @@ extern void SpritePresentation_Destroy(void *);
  * values 2/0/4, then set sprite halfword +0x2A to one. Returns state. Object,
  * resource, and sprite SDK state change; no direct hardware access occurs.
  */
-extern "C" void *func_ov018_021fce00(void *state, void *renderer,
+extern "C" void *Overlay018_ObjectBase_Init(void *state, void *renderer,
                                       const void *descriptor, s32 x, s32 y)
 {
     void *sprite;

@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_geometry_helpers.c (hardware and copy helpers). */
 
-.global func_ov018_021ff738
-func_ov018_021ff738:
+.global Overlay018_WaitForSquareRoot
+Overlay018_WaitForSquareRoot:
     ldr r1, L_021ff754
 L_021ff73c:
     ldrh r0, [r1, #0x0]
@@ -13,7 +13,7 @@ L_021ff73c:
     bx lr
 L_021ff754: .word 0x40002b0
 L_021ff758: .word 0x40002b4
-    .size func_ov018_021ff738, . - func_ov018_021ff738
+    .size Overlay018_WaitForSquareRoot, . - Overlay018_WaitForSquareRoot
 
     .global func_ov018_021ff75c
 func_ov018_021ff75c:

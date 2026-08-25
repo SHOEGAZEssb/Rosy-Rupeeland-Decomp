@@ -50,13 +50,13 @@ extern void func_ov001_021fb7d4(void *);
 extern void func_ov018_021fcefc(void *);
 extern void *func_ov018_021fcf00(void *);
 extern void func_ov018_021fcf40(void *, s32, s32, s32);
-extern void func_ov018_021fd5d0(void *);
+extern void Overlay018_SetupDisplay(void *);
 extern void func_ov018_021fd6c0(void *);
 extern void func_ov018_021fd740(void *);
 extern void func_ov018_021fdbd4(void *);
 extern void func_ov018_021fe5ac(void *);
 extern void func_ov018_021fe644(void *);
-extern void *func_ov018_021ff330(void *, s32);
+extern void *Overlay018_PointBuffer_Init(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -65,7 +65,7 @@ extern void *func_ov018_021ff330(void *, s32);
  * Install vtable data_ov018_021FFCF0 and clear words +4/+8. Returns state;
  * only caller-owned memory changes and no SDK or hardware effects occur.
  */
-extern "C" void *func_ov018_021fd36c(void *state)
+extern "C" void *Overlay018_InitSceneHelper(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov018_021ffcf0;
     FIELD(s32, state, 4) = 0;
@@ -85,7 +85,7 @@ extern "C" void *func_ov018_021fd36c(void *state)
  * GameWork, PRNG, actor, graphics/resource, and UI state change; setup helpers
  * perform Nintendo DS display/MMIO writes.
  */
-extern "C" void *func_ov018_021fcf68(void *state, void *context)
+extern "C" void *Overlay018_Scene_Init(void *state, void *context)
 {
     void *descriptor;
     void *global;
@@ -95,7 +95,7 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
 
     SceneInputBase_Init(state);
     FIELD(const u32 *, state, 0) = data_ov018_021ffd3c;
-    func_ov018_021fd36c((u8 *)state + 0x64);
+    Overlay018_InitSceneHelper((u8 *)state + 0x64);
     TitleCharacterResourceCollection_Init((u8 *)state + 0x70);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x94);
     AnimationResourceState_InitEmbedded((u8 *)state + 0xa0);
@@ -111,7 +111,7 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
 
     descriptor = Heap_Alloc(0x2c, data_ov018_021ffd50, 4, gHeapContext);
     if (descriptor != 0)
-        descriptor = func_ov018_021ff330(descriptor, 0x80);
+        descriptor = Overlay018_PointBuffer_Init(descriptor, 0x80);
     FIELD(void *, state, 0x58) = descriptor;
     FIELD(s32, state, 0x3c8) = 0;
     FIELD(void *, state, 0x418) = 0;
@@ -165,7 +165,7 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
     SpriteMotionController_Hide((u8 *)state + 0xd8);
     TitleCharacterResourceCollection_Append((u8 *)state + 0x70, 0x7007);
     func_ov018_021fd740(state);
-    func_ov018_021fd5d0(state);
+    Overlay018_SetupDisplay(state);
     func_ov018_021fd6c0(state);
 
     FIELD(s32, state, 0x188) = 0;

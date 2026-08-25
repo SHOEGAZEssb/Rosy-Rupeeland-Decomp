@@ -1,15 +1,15 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_coordinate_helpers.c. */
     .extern GamePhaseMetadata_GetByIndex
-.global func_ov018_021fe184
-func_ov018_021fe184:
+.global Overlay018_CopyCoordinates
+Overlay018_CopyCoordinates:
     cmp r1, r0
     ldrne r2, [r1, #0x4]
     strne r2, [r0, #0x4]
     ldrne r1, [r1, #0x8]
     strne r1, [r0, #0x8]
     bx lr
-    .size func_ov018_021fe184, . - func_ov018_021fe184
+    .size Overlay018_CopyCoordinates, . - Overlay018_CopyCoordinates
 
     .global func_ov018_021fe19c
 func_ov018_021fe19c:

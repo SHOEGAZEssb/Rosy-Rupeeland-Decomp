@@ -22,7 +22,7 @@ extern void func_ov018_021ff3cc(void *);
 #endif
 
 /* Free the caller object and return its former address; heap state changes and the result is invalid. */
-extern "C" void *func_ov018_021ff2cc(void *state)
+extern "C" void *Overlay018_PointBuffer_Free(void *state)
 {
     Heap_Free(state);
     return state;
@@ -61,7 +61,7 @@ extern "C" void *func_ov018_021ff308(void *state)
  * reset all counters/defaults through 0x021FF3CC. Return state. Heap and object
  * state change; no direct hardware access occurs.
  */
-extern "C" void *func_ov018_021ff330(void *state, s32 capacity)
+extern "C" void *Overlay018_PointBuffer_Init(void *state, s32 capacity)
 {
     FIELD(const u32 *, state, 0) = data_ov018_021ffd8c;
     FIELD(s32, state, 0xc) = capacity;
@@ -76,7 +76,7 @@ extern "C" void *func_ov018_021ff330(void *state, s32 capacity)
  * 0x02003E38, and return state without freeing it. Heap/object state changes;
  * no direct hardware access occurs.
  */
-extern "C" void *func_ov018_021ff37c(void *state)
+extern "C" void *Overlay018_PointBuffer_Destroy(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov018_021ffd8c;
     Heap_FreeAlternateEntry(FIELD(void *, state, 4));

@@ -9,16 +9,16 @@
     .extern TitleDialog_ClearTextRect
     .extern func_ov003_021fb7ec
     .extern func_ov018_021fcf40
-    .extern func_ov018_021fd788
+    .extern Overlay018_UpdateFrameUi
     .extern func_ov018_021fda10
     .extern func_ov018_021fda60
-    .extern func_ov018_021fdb7c
+    .extern Overlay018_SetPathSpriteAnimation
     .extern func_ov018_021fdbd4
-    .extern func_ov018_021fdce4
+    .extern Overlay018_UpdatePathInput
     .extern func_ov018_021ff3cc
 
-.global func_ov018_021fef2c
-func_ov018_021fef2c:
+.global Overlay018_UpdateDialogInteraction
+Overlay018_UpdateDialogInteraction:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -73,7 +73,7 @@ L_021fefcc:
     str r0, [r4, #0x8]
 L_021fefec:
     mov r0, r4
-    bl func_ov018_021fdce4
+    bl Overlay018_UpdatePathInput
     ldr r0, [r4, #0x58]
     ldr r0, [r0, #0x24]
     sub r0, r0, #0x2
@@ -81,7 +81,7 @@ L_021fefec:
     bhi L_021ff194
     mov r0, r4
     mov r1, #0x0
-    bl func_ov018_021fdb7c
+    bl Overlay018_SetPathSpriteAnimation
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x0
@@ -188,7 +188,7 @@ L_021ff144:
     str r0, [r4, #0x8]
 L_021ff194:
     mov r0, r4
-    bl func_ov018_021fd788
+    bl Overlay018_UpdateFrameUi
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021ff1a4: .word 0x1ea
@@ -196,4 +196,4 @@ L_021ff1a8: .word 0x4001052
 L_021ff1ac: .word data_ov018_021ffc00
 L_021ff1b0: .word 0x1eb
 L_021ff1b4: .word 0x20b
-    .size func_ov018_021fef2c, . - func_ov018_021fef2c
+    .size Overlay018_UpdateDialogInteraction, . - Overlay018_UpdateDialogInteraction

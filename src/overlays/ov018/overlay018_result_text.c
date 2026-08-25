@@ -38,7 +38,7 @@ typedef struct Overlay018TemporaryText {
  * Draw constants 13/11, 8, and -2 are confirmed but their style semantics are
  * not yet known.
  */
-extern "C" void func_ov018_021fe46c(void *state)
+extern "C" void Overlay018_DrawResultText(void *state)
 {
     void *descriptor = FIELD(void *, state, 0x194);
     s32 y = 0x90;

@@ -7,10 +7,10 @@
     .extern ActorCollection_GetSpriteGroup
     .extern func_02091b98
     .extern gGameWork
-.global func_ov018_021fe5a8
-func_ov018_021fe5a8:
+.global Overlay018_ActorVisibility_NoOp
+Overlay018_ActorVisibility_NoOp:
     bx lr
-    .size func_ov018_021fe5a8, . - func_ov018_021fe5a8
+    .size Overlay018_ActorVisibility_NoOp, . - Overlay018_ActorVisibility_NoOp
 
     .global func_ov018_021fe5ac
 func_ov018_021fe5ac:

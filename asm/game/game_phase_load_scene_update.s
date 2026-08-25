@@ -62,8 +62,8 @@
 .extern Overlay013_Scene_Init
 .extern Overlay016_Scene_Init
 .extern Overlay017_Effect_Delete
-.extern func_ov018_021fcf68
-.extern func_ov018_021fd9f8
+.extern Overlay018_Scene_Init
+.extern Overlay018_SetDialogLayout
 .extern func_ov019_021fce28
 .extern func_ov020_021fd844
 .extern func_ov021_021fd7e8
@@ -452,7 +452,7 @@ L_0200d540:
     cmp r0, #0x0
     beq L_0200d5d0
     ldr r1, [r5, #0x30]
-    bl func_ov018_021fcf68
+    bl Overlay018_Scene_Init
 L_0200d5d0:
     str r0, [r5, #0x24]
     b L_0200dbd4
@@ -607,7 +607,7 @@ L_0200d7c4:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d7fc
-    bl func_ov018_021fd9f8 ; func_ov023_021fd9f8
+    bl Overlay018_SetDialogLayout ; func_ov023_021fd9f8
 L_0200d7fc:
     str r0, [r5, #0x24]
     b L_0200dbd4

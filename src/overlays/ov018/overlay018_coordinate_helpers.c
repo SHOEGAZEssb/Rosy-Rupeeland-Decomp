@@ -17,7 +17,7 @@ extern void *GamePhaseMetadata_GetByIndex(s32);
  * +4/+8. Equal pointers are left untouched. Returns void; only destination
  * memory may change and no SDK or hardware effects occur.
  */
-extern "C" void func_ov018_021fe184(void *destination, const void *source)
+extern "C" void Overlay018_CopyCoordinates(void *destination, const void *source)
 {
     if (destination != source) {
         FIELD(s32, destination, 4) = FIELD(s32, source, 4);

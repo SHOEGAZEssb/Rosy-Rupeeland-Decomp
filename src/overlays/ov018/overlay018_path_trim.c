@@ -13,7 +13,7 @@ typedef struct Overlay018Point {
 extern "C" {
 #endif
 extern s32 func_020befec(s32, s32);
-extern u32 func_ov018_021ff738(void);
+extern u32 Overlay018_WaitForSquareRoot(void);
 extern void func_ov018_021ff75c(void *, const void *);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ extern void func_ov018_021ff75c(void *, const void *);
  * local array is the recovered fixed scratch capacity; callers must keep the
  * selected inclusive range within it.
  */
-extern "C" void func_ov018_021ff474(void *state, s32 start, s32 end,
+extern "C" void Overlay018_TrimPathRange(void *state, s32 start, s32 end,
                                      s32 distance)
 {
     Overlay018Point scratch[128];
@@ -52,7 +52,7 @@ extern "C" void func_ov018_021ff474(void *state, s32 start, s32 end,
         *(volatile u16 *)(sqrt + 0) = 1; /* 64-bit square-root operand mode. */
         *(volatile u32 *)(sqrt + 8) = squaredLength;
         *(volatile s32 *)(sqrt + 0xc) = squaredLength >> 31;
-        segmentLength = func_ov018_021ff738();
+        segmentLength = Overlay018_WaitForSquareRoot();
         if (accumulated + segmentLength >= distance) {
             s32 remainder = distance - accumulated;
             points[start].x =
@@ -82,7 +82,7 @@ extern "C" void func_ov018_021ff474(void *state, s32 start, s32 end,
         *(volatile u16 *)(sqrt + 0) = 1; /* 64-bit square-root operand mode. */
         *(volatile u32 *)(sqrt + 8) = squaredLength;
         *(volatile s32 *)(sqrt + 0xc) = squaredLength >> 31;
-        segmentLength = func_ov018_021ff738();
+        segmentLength = Overlay018_WaitForSquareRoot();
         if (accumulated + segmentLength >= distance) {
             s32 remainder = distance - accumulated;
             points[end].x =

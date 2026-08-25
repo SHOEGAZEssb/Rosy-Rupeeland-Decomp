@@ -27,18 +27,18 @@
     .extern func_ov000_021fb6e0
     .extern func_ov018_021fcf00
     .extern func_ov018_021fcf40
-    .extern func_ov018_021fd36c
-    .extern func_ov018_021fd5d0
+    .extern Overlay018_InitSceneHelper
+    .extern Overlay018_SetupDisplay
     .extern func_ov018_021fd6c0
     .extern func_ov018_021fd740
     .extern func_ov018_021fe644
-    .extern func_ov018_021ff330
+    .extern Overlay018_PointBuffer_Init
     .extern gDebugFont
     .extern gGameWork
     .extern gHeapContext
     .extern genrand_int32
-.global func_ov018_021fcf68
-func_ov018_021fcf68:
+.global Overlay018_Scene_Init
+Overlay018_Scene_Init:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -47,7 +47,7 @@ func_ov018_021fcf68:
     ldr r1, L_021fd31c
     add r0, r4, #0x64
     str r1, [r4, #0x0]
-    bl func_ov018_021fd36c
+    bl Overlay018_InitSceneHelper
     add r0, r4, #0x70
     bl TitleCharacterResourceCollection_Init
     add r0, r4, #0x94
@@ -81,7 +81,7 @@ func_ov018_021fcf68:
     cmp r0, #0x0
     beq L_021fd014
     mov r1, #0x80
-    bl func_ov018_021ff330
+    bl Overlay018_PointBuffer_Init
 L_021fd014:
     str r0, [r4, #0x58]
     mov r0, #0x0
@@ -221,7 +221,7 @@ L_021fd06c:
     mov r0, r4
     bl func_ov018_021fd740
     mov r0, r4
-    bl func_ov018_021fd5d0
+    bl Overlay018_SetupDisplay
     mov r0, r4
     bl func_ov018_021fd6c0
     mov r1, #0x0
@@ -298,4 +298,4 @@ L_021fd35c: .word data_020f4e14
 L_021fd360: .word gDebugFont
 L_021fd364: .word 0x7007
 L_021fd368: .word data_ov018_021ffc10
-    .size func_ov018_021fcf68, . - func_ov018_021fcf68
+    .size Overlay018_Scene_Init, . - Overlay018_Scene_Init

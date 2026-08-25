@@ -3,14 +3,14 @@
     .extern Heap_Free
     .extern data_ov018_021ffd00
     .extern PresentationList_DeleteAll
-.global func_ov018_021ff2cc
-func_ov018_021ff2cc:
+.global Overlay018_PointBuffer_Free
+Overlay018_PointBuffer_Free:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_ov018_021ff2cc, . - func_ov018_021ff2cc
+    .size Overlay018_PointBuffer_Free, . - Overlay018_PointBuffer_Free
 
     .global func_ov018_021ff2e0
 func_ov018_021ff2e0:

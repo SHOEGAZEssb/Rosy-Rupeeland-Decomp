@@ -29,7 +29,7 @@ extern s32 func_020befec(s32, s32);
  * hardware is accessed directly. Products intentionally retain recovered
  * signed 32-bit arithmetic, including its original overflow behavior.
  */
-extern "C" s32 func_ov018_021ff770(void *state)
+extern "C" s32 Overlay018_DetectPathIntersection(void *state)
 {
     Overlay018Point *points;
     s32 count;

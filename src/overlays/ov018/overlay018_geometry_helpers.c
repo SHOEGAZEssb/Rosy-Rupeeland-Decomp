@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov018_021ff474(void *, s32, s32, s32);
+extern void Overlay018_TrimPathRange(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -19,7 +19,7 @@ extern void func_ov018_021ff474(void *, s32, s32, s32);
  * return the low result word at 0x040002B4. No caller memory or SDK state
  * changes; this directly reads Nintendo DS math-coprocessor MMIO.
  */
-extern "C" u32 func_ov018_021ff738(void)
+extern "C" u32 Overlay018_WaitForSquareRoot(void)
 {
     while (*(volatile u16 *)0x040002b0 & 0x8000) {
     }
@@ -41,10 +41,10 @@ extern "C" void func_ov018_021ff75c(void *destination, const void *source)
  * +0x14/+0x18 and fixed fourth argument 8; otherwise do nothing. Returns void.
  * The callee may update point-buffer traversal state; no direct MMIO occurs.
  */
-extern "C" void func_ov018_021ff964(void *state)
+extern "C" void Overlay018_TrimSelectedPathRange(void *state)
 {
     if (FIELD(s32, state, 0x14) >= 0)
-        func_ov018_021ff474(state, FIELD(s32, state, 0x14),
+        Overlay018_TrimPathRange(state, FIELD(s32, state, 0x14),
                             FIELD(s32, state, 0x18), 8);
 }
 

@@ -14,8 +14,8 @@
     .extern SpriteMotionController_Show
     .extern SpriteMotionController_Hide
     .extern gDebugFont
-.global func_ov018_021fd788
-func_ov018_021fd788:
+.global Overlay018_UpdateFrameUi
+Overlay018_UpdateFrameUi:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -118,4 +118,4 @@ L_021fd8fc: .word gGamePhaseRuntime
 L_021fd900: .word gDebugFont
 L_021fd904: .word data_021f3ecc
 L_021fd908: .word 0x319
-    .size func_ov018_021fd788, . - func_ov018_021fd788
+    .size Overlay018_UpdateFrameUi, . - Overlay018_UpdateFrameUi

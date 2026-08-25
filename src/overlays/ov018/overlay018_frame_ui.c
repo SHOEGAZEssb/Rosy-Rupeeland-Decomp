@@ -37,7 +37,7 @@ extern void SpriteMotionController_Hide(void *);
  * the alternate debug-font helper. Returns void. UI, actor-sprite, renderer,
  * timer, and debug-font SDK state change; no direct MMIO occurs.
  */
-extern "C" void func_ov018_021fd788(void *state)
+extern "C" void Overlay018_UpdateFrameUi(void *state)
 {
     if (FIELD(s32, state, 0x54) != 1) {
         if (FIELD(s32, state, 0x414) < 0x10) {

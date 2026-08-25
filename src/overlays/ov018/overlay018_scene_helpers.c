@@ -25,7 +25,7 @@ extern s32 func_020befec(s32, s32);
  * for sprite +0xD0. Skip the SDK call when its current byte +0x38 already
  * matches. Returns void; sprite animation state may change, with no MMIO.
  */
-extern "C" void func_ov018_021fdb7c(void *state, s32 alternate)
+extern "C" void Overlay018_SetPathSpriteAnimation(void *state, s32 alternate)
 {
     void *sprite = FIELD(void *, state, 0xd0);
     s32 animation = FIELD(s32, state, 0x188) + (alternate ? 0x19 : 0xa);

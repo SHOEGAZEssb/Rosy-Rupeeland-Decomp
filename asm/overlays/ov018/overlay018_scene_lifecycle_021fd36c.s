@@ -16,8 +16,8 @@
     .extern func_ov018_021fe5ac
     .extern gDebugFont
     .extern gGameWork
-.global func_ov018_021fd36c
-func_ov018_021fd36c:
+.global Overlay018_InitSceneHelper
+Overlay018_InitSceneHelper:
     ldr r2, L_021fd384
     mov r1, #0x0
     str r2, [r0, #0x0]
@@ -25,7 +25,7 @@ func_ov018_021fd36c:
     str r1, [r0, #0x8]
     bx lr
 L_021fd384: .word data_ov018_021ffcf0
-    .size func_ov018_021fd36c, . - func_ov018_021fd36c
+    .size Overlay018_InitSceneHelper, . - Overlay018_InitSceneHelper
 
     .global func_ov018_021fd388
 func_ov018_021fd388:

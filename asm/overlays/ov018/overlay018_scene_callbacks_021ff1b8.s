@@ -5,9 +5,9 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_020b198c
     .extern func_020b4554
-    .extern func_ov018_021fd788
-.global func_ov018_021ff1b8
-func_ov018_021ff1b8:
+    .extern Overlay018_UpdateFrameUi
+.global Overlay018_UpdateSpriteGate
+Overlay018_UpdateSpriteGate:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -49,10 +49,10 @@ L_021ff240:
     ldmia sp!, {r4, pc}
 L_021ff248:
     mov r0, r4
-    bl func_ov018_021fd788
+    bl Overlay018_UpdateFrameUi
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_ov018_021ff1b8, . - func_ov018_021ff1b8
+    .size Overlay018_UpdateSpriteGate, . - Overlay018_UpdateSpriteGate
 
     .global func_ov018_021ff258
 func_ov018_021ff258:

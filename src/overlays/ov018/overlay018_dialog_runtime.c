@@ -24,7 +24,7 @@ extern void *LanguageLookupDatabase_GetResourceById(void *, u16);
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void TitleDialog_SetText(void *, void *, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, void *);
-extern void func_ov018_021fd9f8(void *, s32, s32, s32, s32);
+extern void Overlay018_SetDialogLayout(void *, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -38,7 +38,7 @@ extern void func_ov018_021fd9f8(void *, s32, s32, s32, s32);
  * +0x3F4. Returns void. Heap, dialog, global SDK, and caller state change; no
  * direct hardware access occurs.
  */
-extern "C" void func_ov018_021fd90c(void *state)
+extern "C" void Overlay018_CreateDialog(void *state)
 {
     void *dialog;
     void *handle;
@@ -51,9 +51,9 @@ extern "C" void func_ov018_021fd90c(void *state)
                                (u8 *)state + 0x70);
     FIELD(void *, state, 0x418) = dialog;
     if (FIELD(u8, gSystemState, 0x5f) == 0)
-        func_ov018_021fd9f8(dialog, 0x20, 0x83, 0xc0, 0x2d);
+        Overlay018_SetDialogLayout(dialog, 0x20, 0x83, 0xc0, 0x2d);
     else
-        func_ov018_021fd9f8(dialog, 0x10, 0x83, 0xe0, 0x2d);
+        Overlay018_SetDialogLayout(dialog, 0x10, 0x83, 0xe0, 0x2d);
     FIELD(s32, dialog, 0xd0) = 0xc;
     FIELD(s32, dialog, 0xd4) = 0;
     FIELD(s32, dialog, 0xbc) = -2;
@@ -66,7 +66,7 @@ extern "C" void func_ov018_021fd90c(void *state)
  * Store four caller layout words at dialog +0xA4/+0xA8/+0xAC/+0xB0. Returns
  * void; only dialog memory changes and no SDK or hardware effects occur.
  */
-extern "C" void func_ov018_021fd9f8(void *dialog, s32 valueA4, s32 valueA8,
+extern "C" void Overlay018_SetDialogLayout(void *dialog, s32 valueA4, s32 valueA8,
                                      s32 valueAC, s32 valueB0)
 {
     FIELD(s32, dialog, 0xa4) = valueA4;

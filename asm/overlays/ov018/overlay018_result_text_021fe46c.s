@@ -10,8 +10,8 @@
     .extern func_ov018_021fe1d8
     .extern gDebugFont
 
-.global func_ov018_021fe46c
-func_ov018_021fe46c:
+.global Overlay018_DrawResultText
+Overlay018_DrawResultText:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x1c
     mov r5, r0
@@ -91,4 +91,4 @@ L_021fe598: .word data_ov018_021ffce0
 L_021fe59c: .word gDebugFont
 L_021fe5a0: .word data_021f3ecc
 L_021fe5a4: .word 0x2f6
-    .size func_ov018_021fe46c, . - func_ov018_021fe46c
+    .size Overlay018_DrawResultText, . - Overlay018_DrawResultText

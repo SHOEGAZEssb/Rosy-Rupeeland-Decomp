@@ -20,7 +20,7 @@ extern void func_02091b98(void *, s32);
 #endif
 
 /* No-op visibility callback: accepts state, changes nothing, and returns void without SDK or hardware effects. */
-extern "C" void func_ov018_021fe5a8(void *state)
+extern "C" void Overlay018_ActorVisibility_NoOp(void *state)
 {
     (void)state;
 }

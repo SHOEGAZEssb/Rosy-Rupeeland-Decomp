@@ -5,8 +5,8 @@
     .extern Heap_AllocAlternateEntry
     .extern func_ov018_021ff3cc
     .extern gHeapContext
-.global func_ov018_021ff330
-func_ov018_021ff330:
+.global Overlay018_PointBuffer_Init
+Overlay018_PointBuffer_Init:
     stmdb sp!, {r4, lr}
     ldr r2, L_021ff370
     mov r4, r0
@@ -26,4 +26,4 @@ func_ov018_021ff330:
 L_021ff370: .word data_ov018_021ffd8c
 L_021ff374: .word data_ov018_021ffd94
 L_021ff378: .word gHeapContext
-    .size func_ov018_021ff330, . - func_ov018_021ff330
+    .size Overlay018_PointBuffer_Init, . - Overlay018_PointBuffer_Init

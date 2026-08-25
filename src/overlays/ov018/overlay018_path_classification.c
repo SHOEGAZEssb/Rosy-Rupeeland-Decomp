@@ -35,7 +35,7 @@ extern s32 func_ov018_021ffa14(void *, s32, s32);
  * no direct hardware access occurs. The semantic names of the descriptor flags
  * and classification values remain inferred from this control flow.
  */
-extern "C" s32 func_ov018_021fe214(void *state)
+extern "C" s32 Overlay018_ClassifyPath(void *state)
 {
     void *buffer = FIELD(void *, state, 0x58);
     s32 descriptorCount = data_020c37e4;

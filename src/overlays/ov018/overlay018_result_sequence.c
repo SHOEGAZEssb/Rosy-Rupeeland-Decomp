@@ -34,14 +34,14 @@ extern void SpritePresentation_Show(void *);
 extern void func_020afd0c(volatile u16 *, s32, s32, s32, s32);
 extern s32 func_020befec(s32, s32);
 extern void func_ov003_021fb7ec(void *);
-extern void *func_ov018_021fce00(void *, void *, const void *, s32, s32);
+extern void *Overlay018_ObjectBase_Init(void *, void *, const void *, s32, s32);
 extern void func_ov018_021fcf40(void *, s32, s32, s32);
-extern void func_ov018_021fd788(void *);
+extern void Overlay018_UpdateFrameUi(void *);
 extern void func_ov018_021fda10(void *, u16);
 extern s32 func_ov018_021fda60(void *);
 extern s32 func_ov018_021fe19c(void *, const void *);
 extern s32 func_ov018_021fe1d8(void *, const void *);
-extern void func_ov018_021fe46c(void *);
+extern void Overlay018_DrawResultText(void *);
 extern void func_ov018_021fe644(void *);
 extern void func_ov018_021ff3cc(void *);
 #ifdef __cplusplus
@@ -77,7 +77,7 @@ static void destroyVirtual(void *object)
  * 0x04001052/0x04001050 are written directly. Unnamed constants preserve the
  * recovered SDK protocol and are not assigned speculative meanings.
  */
-extern "C" s32 func_ov018_021fea1c(void *state)
+extern "C" s32 Overlay018_UpdateResultSequence(void *state)
 {
     FIELD(s32, state, 0x414) = 0;
     switch (FIELD(s32, state, 4)) {
@@ -105,7 +105,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
                 state, FIELD(void *, state, 0x194));
             s32 y = func_ov018_021fe1d8(
                 state, FIELD(void *, state, 0x194));
-            result = func_ov018_021fce00(
+            result = Overlay018_ObjectBase_Init(
                 result, FIELD(void *, state, 0xcc),
                 FIELD(void *, state, 0x194), x, y);
         }
@@ -127,7 +127,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
             func_02091c7c((u8 *)state + 0x1a8, 1) | 0x1000;
         if (func_02091cf0((u8 *)state + 0x1a8)) {
             TitleInterpolatedValue_Configure((u8 *)state + 0x1a8, 1, 0x10, 0, 0x3c);
-            func_ov018_021fe46c(state);
+            Overlay018_DrawResultText(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
             break;
@@ -212,6 +212,6 @@ extern "C" s32 func_ov018_021fea1c(void *state)
         }
         break;
     }
-    func_ov018_021fd788(state);
+    Overlay018_UpdateFrameUi(state);
     return 0;
 }

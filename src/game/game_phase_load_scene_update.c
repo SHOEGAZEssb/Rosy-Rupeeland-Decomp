@@ -82,12 +82,12 @@ extern void *Overlay013_Scene_Init(void *object);
 extern void *InventoryScene_Init(void *object);
 extern void *func_ov044_0220be60(void *object);
 extern void *func_ov043_0220b76c(void *object);
-extern void *func_ov018_021fcf68(void *object, s32 argument);
+extern void *Overlay018_Scene_Init(void *object, s32 argument);
 extern void *func_ov022_021fdd44(void *object);
 extern void *func_ov021_021fd7e8(void *object, s32 argument);
 extern void *func_ov020_021fd844(void *object);
 extern void *Overlay016_Scene_Init(void *object, s32 mode, s32 argument);
-extern void *func_ov018_021fd9f8(void *object);
+extern void *Overlay018_SetDialogLayout(void *object);
 extern void *func_ov025_021ff27c(void *scene);
 extern void *Overlay004_VariantController_Init(void *object, s32 argument);
 extern void *func_ov028_021fdb00(void *object);
@@ -645,7 +645,7 @@ code_r0x0200d3bc:
     GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
     object = Heap_Alloc(UNK_0200e144,OVERLAY018_KIND8_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov018_021fcf68(object,self->sceneArgument);
+      object = Overlay018_Scene_Init(object,self->sceneArgument);
     }
     self->loadedScene = object;
     break;
@@ -705,7 +705,7 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e198);
     object = Heap_Alloc(UNK_0200e19c,OVERLAY018_KIND15_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov018_021fd9f8(object);
+      object = Overlay018_SetDialogLayout(object);
     }
     self->loadedScene = object;
     break;

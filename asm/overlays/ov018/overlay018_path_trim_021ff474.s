@@ -1,11 +1,11 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_path_trim.c. */
     .extern func_020befec
-    .extern func_ov018_021ff738
+    .extern Overlay018_WaitForSquareRoot
     .extern func_ov018_021ff75c
 
-.global func_ov018_021ff474
-func_ov018_021ff474:
+.global Overlay018_TrimPathRange
+Overlay018_TrimPathRange:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x220
     mov r10, r0
@@ -36,7 +36,7 @@ L_021ff49c:
     str r2, [r0, #0x8]
     mov r1, r2, asr #0x1f
     str r1, [r0, #0xc]
-    bl func_ov018_021ff738
+    bl Overlay018_WaitForSquareRoot
     str r0, [sp, #0x18]
     add r0, r4, r0
     cmp r0, r7
@@ -92,7 +92,7 @@ L_021ff56c:
     str r2, [r0, #0x8]
     mov r1, r2, asr #0x1f
     str r1, [r0, #0xc]
-    bl func_ov018_021ff738
+    bl Overlay018_WaitForSquareRoot
     str r0, [sp, #0x1c]
     add r0, r4, r0
     cmp r0, r7
@@ -196,4 +196,4 @@ L_021ff724:
     add sp, sp, #0x220
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021ff734: .word 0x40002b0
-    .size func_ov018_021ff474, . - func_ov018_021ff474
+    .size Overlay018_TrimPathRange, . - Overlay018_TrimPathRange

@@ -13,7 +13,7 @@ extern void GamePhaseState_UpdateRenderHelpers(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020b198c(void *, s32, s32);
 extern void func_020b4554(void *, s32);
-extern void func_ov018_021fd788(void *);
+extern void Overlay018_UpdateFrameUi(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ extern void func_ov018_021fd788(void *);
  * one immediately. All other paths run frame/UI synchronizer 0x021FD788 and
  * return zero. Scene/sprite/UI SDK state may change; no direct MMIO occurs.
  */
-extern "C" s32 func_ov018_021ff1b8(void *state)
+extern "C" s32 Overlay018_UpdateSpriteGate(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -43,7 +43,7 @@ extern "C" s32 func_ov018_021ff1b8(void *state)
     case 2:
         return 1;
     }
-    func_ov018_021fd788(state);
+    Overlay018_UpdateFrameUi(state);
     return 0;
 }
 

@@ -1,17 +1,17 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_geometry_helpers.c (point-buffer predicates). */
-    .extern func_ov018_021ff474
-.global func_ov018_021ff964
-func_ov018_021ff964:
+    .extern Overlay018_TrimPathRange
+.global Overlay018_TrimSelectedPathRange
+Overlay018_TrimSelectedPathRange:
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x14]
     cmp r1, #0x0
     ldmltia sp!, {r3, pc}
     ldr r2, [r0, #0x18]
     mov r3, #0x8
-    bl func_ov018_021ff474
+    bl Overlay018_TrimPathRange
     ldmia sp!, {r3, pc}
-    .size func_ov018_021ff964, . - func_ov018_021ff964
+    .size Overlay018_TrimSelectedPathRange, . - Overlay018_TrimSelectedPathRange
 
     .global func_ov018_021ff984
 func_ov018_021ff984:

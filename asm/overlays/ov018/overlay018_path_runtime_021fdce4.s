@@ -4,24 +4,24 @@
     .extern SceneSound_SetPackedEffectValue
     .extern func_020ae024
     .extern Overlay003_RasterizeLine
-    .extern func_ov018_021fdb7c
+    .extern Overlay018_SetPathSpriteAnimation
     .extern func_ov018_021fdbac
     .extern func_ov018_021fdbd4
     .extern func_ov018_021fdbfc
     .extern func_ov018_021fdc64
-    .extern func_ov018_021fe184
-    .extern func_ov018_021fe214
+    .extern Overlay018_CopyCoordinates
+    .extern Overlay018_ClassifyPath
     .extern func_ov018_021ff3cc
     .extern func_ov018_021ff408
     .extern func_ov018_021ff420
     .extern func_ov018_021ff434
-    .extern func_ov018_021ff770
-    .extern func_ov018_021ff964
+    .extern Overlay018_DetectPathIntersection
+    .extern Overlay018_TrimSelectedPathRange
     .extern func_ov018_021ff984
     .extern func_ov018_021ffbb0
 
-.global func_ov018_021fdce4
-func_ov018_021fdce4:
+.global Overlay018_UpdatePathInput
+Overlay018_UpdatePathInput:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -60,7 +60,7 @@ L_021fdd1c:
     bl Overlay003_RasterizeLine
     add r0, r4, #0x64
     add r1, r4, #0x30
-    bl func_ov018_021fe184
+    bl Overlay018_CopyCoordinates
     mov r0, r4
     bl func_ov018_021fdbfc
     mov r0, r4
@@ -92,7 +92,7 @@ L_021fddb0:
     add r0, r4, #0x64
     add r1, r4, #0x30
     str r2, [r4, #0x404]
-    bl func_ov018_021fe184
+    bl Overlay018_CopyCoordinates
 L_021fddf4:
     ldr r1, [r4, #0x38]
     mov r0, #0x2
@@ -107,12 +107,12 @@ L_021fddf4:
     bl Overlay003_RasterizeLine
     add r0, r4, #0x64
     add r1, r4, #0x30
-    bl func_ov018_021fe184
+    bl Overlay018_CopyCoordinates
     mov r0, r4
     bl func_ov018_021fdbfc
     mov r0, r4
     mov r1, #0x1
-    bl func_ov018_021fdb7c
+    bl Overlay018_SetPathSpriteAnimation
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x7f
@@ -121,7 +121,7 @@ L_021fddf4:
 L_021fde54:
     mov r0, r4
     mov r1, #0x0
-    bl func_ov018_021fdb7c
+    bl Overlay018_SetPathSpriteAnimation
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x0
@@ -138,7 +138,7 @@ L_021fde54:
     b L_021fdeb0
 L_021fde98:
     mov r1, #0x0
-    bl func_ov018_021fdb7c
+    bl Overlay018_SetPathSpriteAnimation
     mov r0, r4
     mov r1, #0x4c
     mov r2, #0x0
@@ -222,7 +222,7 @@ L_021fdfd4:
     ldr r1, [r0, #0x24]
     cmp r1, #0x0
     bne L_021fe17c
-    bl func_ov018_021ff770
+    bl Overlay018_DetectPathIntersection
     cmp r0, #0x0
     beq L_021fe17c
     ldr r0, [r4, #0x58]
@@ -232,10 +232,10 @@ L_021fdfd4:
     cmp r0, #0x8000
     bge L_021fe100
     ldr r0, [r4, #0x58]
-    bl func_ov018_021ff964
+    bl Overlay018_TrimSelectedPathRange
     mov r0, r4
     mov r6, #0x3
-    bl func_ov018_021fe214
+    bl Overlay018_ClassifyPath
     cmp r0, #0x0
     beq L_021fe040
     mov r0, r4
@@ -336,4 +336,4 @@ L_021fe168:
 L_021fe17c:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
-    .size func_ov018_021fdce4, . - func_ov018_021fdce4
+    .size Overlay018_UpdatePathInput, . - Overlay018_UpdatePathInput

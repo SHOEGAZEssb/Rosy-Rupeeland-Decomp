@@ -12,8 +12,8 @@
     .extern func_020afd28
     .extern func_ov018_021fe5f8
     .extern func_ov056_0220f0ac
-.global func_ov018_021fd5d0
-func_ov018_021fd5d0:
+.global Overlay018_SetupDisplay
+Overlay018_SetupDisplay:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x24
     mov r2, #0x0
@@ -73,7 +73,7 @@ L_021fd6ac: .word 0x4001020
 L_021fd6b0: .word 0x400100c
 L_021fd6b4: .word gGamePhaseRuntime
 L_021fd6b8: .word data_ov018_021ffcd0
-    .size func_ov018_021fd5d0, . - func_ov018_021fd5d0
+    .size Overlay018_SetupDisplay, . - Overlay018_SetupDisplay
 
     .global func_ov018_021fd6bc
 func_ov018_021fd6bc:
