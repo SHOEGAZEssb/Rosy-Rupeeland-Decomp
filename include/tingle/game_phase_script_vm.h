@@ -308,7 +308,7 @@ s32 GamePhaseActorScriptVm_GetActiveEntityPositionZ(GamePhaseActorScriptVm *self
 s32 GamePhaseActorScriptVm_SetPlacementModeAndSynchronize(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_QueryGlobalContextByIndex(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_CalculateScaledRuntimeValue(GamePhaseActorScriptVm *self);
-s32 func_0201b040(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetDepartingOrFinishedGridEffectActorCount(GamePhaseActorScriptVm *self);

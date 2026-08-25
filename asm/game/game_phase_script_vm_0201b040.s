@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorDescriptorState_CountInactiveKind1Subtype1
 .extern data_021e9ac0
-.global func_0201b040
-func_0201b040: ; 0x0201b040
+.global GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount
+GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount: ; 0x0201b040
     stmdb sp!, {r4, lr}
     ldr r1, L_0201b06c
     mov r4, r0
@@ -17,4 +17,4 @@ func_0201b040: ; 0x0201b040
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201b06c: .word data_021e9ac0
-.size func_0201b040, . - func_0201b040
+.size GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount, . - GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount

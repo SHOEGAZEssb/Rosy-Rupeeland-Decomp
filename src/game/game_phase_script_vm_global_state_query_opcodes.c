@@ -13,10 +13,13 @@ extern void *GamePhaseMetadata_GetByIndex(s32 index);
 #endif
 
 /* Query the subobject at global-context offset 0x34, store its result as the VM result, and return zero. */
-s32 func_0201b040(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount(GamePhaseActorScriptVm *self)
 {
+    void *descriptorState = (u8 *)data_021e9ac0 + 0x34;
+    s32 inactiveDescriptorCount =
+        ActorDescriptorState_CountInactiveKind1Subtype1(descriptorState);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
-                  (u32)ActorDescriptorState_CountInactiveKind1Subtype1((u8 *)data_021e9ac0 + 0x34));
+                                                    (u32)inactiveDescriptorCount);
     return 0;
 }
 

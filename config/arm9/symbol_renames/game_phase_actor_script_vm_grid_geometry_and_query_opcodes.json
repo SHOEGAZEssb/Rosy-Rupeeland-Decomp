@@ -1,0 +1,12 @@
+{
+  "GamePhaseActorScriptVm_GetPackedBitGridMask": "GamePhaseActorScriptVm_GetPackedBitGridMask",
+  "GamePhaseActorScriptVm_SetPackedBitGridBit": "GamePhaseActorScriptVm_SetPackedBitGridBit",
+  "GamePhaseActorScriptVm_IsPointInRectangle": "GamePhaseActorScriptVm_IsPointInRectangle",
+  "GamePhaseActorScriptVm_GetActiveEntityPositionX": "GamePhaseActorScriptVm_GetActiveEntityPositionX",
+  "GamePhaseActorScriptVm_GetActiveEntityPositionY": "GamePhaseActorScriptVm_GetActiveEntityPositionY",
+  "GamePhaseActorScriptVm_GetActiveEntityPositionZ": "GamePhaseActorScriptVm_GetActiveEntityPositionZ",
+  "GamePhaseActorScriptVm_SetPlacementModeAndSynchronize": "GamePhaseActorScriptVm_SetPlacementModeAndSynchronize",
+  "GamePhaseActorScriptVm_QueryGlobalContextByIndex": "GamePhaseActorScriptVm_QueryGlobalContextByIndex",
+  "GamePhaseActorScriptVm_CalculateScaledRuntimeValue": "GamePhaseActorScriptVm_CalculateScaledRuntimeValue",
+  "func_0201b040": "GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount"
+}

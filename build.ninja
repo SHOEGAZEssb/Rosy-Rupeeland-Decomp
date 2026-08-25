@@ -7020,7 +7020,7 @@ build build/reports/game_phase_script_vm_0201b040.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b040.o
 build build/reports/game_phase_script_vm_0201b040.txt: match_report build/reports/game_phase_script_vm_0201b040.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b040.json
-  report_args = --section .text --function func_0201b040 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_GetInactiveKind1Subtype1DescriptorCount --require-exact
 
 build build/reports/game_phase_script_vm_0201b070.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201b070.o | build/decomp/asm/game/game_phase_script_vm_0201b070.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201b070.o

@@ -3,9 +3,9 @@
 /* Query and set bits in the runtime's row-strided packed-byte grid. */
 
 typedef struct PackedBitGrid {
-    u8 *bytes_00;
-    u32 field_04;
-    s32 stride_08;
+    u8 *packedBits;
+    u32 reserved04;
+    s32 rowStrideBits;
 } PackedBitGrid;
 
 #ifdef __cplusplus
@@ -26,10 +26,10 @@ s32 GamePhaseActorScriptVm_GetPackedBitGridMask(GamePhaseActorScriptVm *self)
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 column = (s32)GamePhaseScriptVm_Pop(&self->base);
     PackedBitGrid *grid = func_020275b0();
-    s32 index = row * grid->stride_08 + column;
+    s32 bitIndex = row * grid->rowStrideBits + column;
 
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
-                  grid->bytes_00[index / 8] & (1 << (index % 8)));
+                  grid->packedBits[bitIndex / 8] & (1 << (bitIndex % 8)));
     return 0;
 }
 
@@ -39,8 +39,8 @@ s32 GamePhaseActorScriptVm_SetPackedBitGridBit(GamePhaseActorScriptVm *self)
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 column = (s32)GamePhaseScriptVm_Pop(&self->base);
     PackedBitGrid *grid = func_020275b0();
-    s32 index = row * grid->stride_08 + column;
+    s32 bitIndex = row * grid->rowStrideBits + column;
 
-    grid->bytes_00[index / 8] |= (u8)(1 << (index % 8));
+    grid->packedBits[bitIndex / 8] |= (u8)(1 << (bitIndex % 8));
     return 0;
 }
