@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov033/overlay033_entrance_state.c for documented portable C. */
 
     .extern DisplayBrightness_StartMaskedTransitions
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
     .extern func_ov033_021fd04c
@@ -32,21 +32,21 @@ L_021fd648:
     add r3, r2, #0x40000
     mov r1, #0x2
     str ip, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov ip, #0x5a
     add r0, r4, #0x68
     mov r1, #0x2
     mov r2, #0x2000
     mov r3, #0x0
     str ip, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, #0x5a
     str r0, [sp, #0x0]
     mov r1, #0x1
     add r0, r4, #0x84
     sub r2, r1, #0x9
     mov r3, #0x0
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r0, [r4, #0xd0]
     add r0, r0, #0x1
     str r0, [r4, #0xd0]

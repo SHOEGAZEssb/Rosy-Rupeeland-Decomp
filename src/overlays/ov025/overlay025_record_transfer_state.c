@@ -22,15 +22,15 @@ extern "C" {
 #endif
 extern s32 RetailSaveContext_PollOperation(void *);
 extern void RetailSaveContext_BeginRecordCopy(void *, s32, s32, s32);
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov025_021fd9e4(void *, s32);
 extern void func_ov025_021fdb18(void *, s32);
@@ -78,11 +78,11 @@ extern "C" s32 func_ov025_02201494(void *scene)
         }
         func_ov025_02200534(scene);
         func_ov025_022001f4(scene);
-        func_02095928((u8 *)scene + 0x19c);
+        SpriteMotionController_Show((u8 *)scene + 0x19c);
         if (FIELD(s32, scene, 0x54) == 2) {
-            func_02095820((u8 *)scene + 0x19c, 0xe4, 0x18);
+            SpriteMotionController_SetPosition((u8 *)scene + 0x19c, 0xe4, 0x18);
         } else {
-            func_02095820((u8 *)scene + 0x19c, 0xe4, 0xa0);
+            SpriteMotionController_SetPosition((u8 *)scene + 0x19c, 0xe4, 0xa0);
         }
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
@@ -101,14 +101,14 @@ extern "C" s32 func_ov025_02201494(void *scene)
                 i != FIELD(s32, scene, 0x54)) {
                 FIELD(s32, scene, 0x58) = i;
                 handled = 1;
-                func_02095940((u8 *)scene + 0x19c);
+                SpriteMotionController_Hide((u8 *)scene + 0x19c);
                 ++FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
                 break;
             }
         }
         if (!handled &&
-            func_02095860((u8 *)scene + 0x19c,
+            SpriteMotionController_BeginHitResponse((u8 *)scene + 0x19c,
                           (u8 *)scene + 0x30, 0, 4)) {
             func_02092260(scene, 3);
             FIELD(s32, scene, 4) = 20;
@@ -117,7 +117,7 @@ extern "C" s32 func_ov025_02201494(void *scene)
         break;
     }
     case 2:
-        func_02091bac((u8 *)scene + 0x5fc, 3, 0, 4, 6);
+        TitleInterpolatedValue_Configure((u8 *)scene + 0x5fc, 3, 0, 4, 6);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* Animation setup intentionally falls through to its update. */
@@ -255,7 +255,7 @@ extern "C" s32 func_ov025_02201494(void *scene)
             }
             func_ov025_02200498(scene, FIELD(s32, scene, 0x54));
             func_ov025_022001f4(scene);
-            func_02095940((u8 *)scene + 0x19c);
+            SpriteMotionController_Hide((u8 *)scene + 0x19c);
             func_ov025_021ff254(scene,
                 *(const TransitionPair *)data_ov025_02202e30);
         }

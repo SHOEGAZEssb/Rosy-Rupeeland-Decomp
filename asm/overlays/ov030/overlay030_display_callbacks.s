@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov030/overlay030_display_callbacks.c for documented portable C. */
-.extern func_020929f4
+.extern TitleScrollValue_Advance
 .extern GraphicsAffineScanlineWave_Apply
 
 
@@ -32,7 +32,7 @@ func_ov030_021fe218:
     add r0, r0, #0x364
     and r2, r2, r3, lsl #0x10
     str r2, [r1, #0x14]
-    bl func_020929f4
+    bl TitleScrollValue_Advance
 L_021fe280:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

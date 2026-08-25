@@ -17,8 +17,8 @@
     .extern GraphicsBankStateSnapshot_Destroy
     .extern GraphicsBankStateSnapshot_Restore
     .extern TitleDisplay_SetMainBgPriorities
-    .extern func_020926f8
-    .extern func_020927b8
+    .extern TitleScreenResourceCollection_Destroy
+    .extern TitleCharacterResourceCollection_Destroy
     .extern PresentationList_DeleteAll
     .extern func_ov017_021fd780
     .extern func_ov017_021fd948
@@ -135,9 +135,9 @@ L_021ff458:
     add r0, r4, #0x248
     bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0x1fc
-    bl func_020926f8
+    bl TitleScreenResourceCollection_Destroy
     add r0, r4, #0x1d8
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x12c
     bl func_ov017_021fd948
     add r0, r4, #0x80

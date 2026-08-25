@@ -34,16 +34,16 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(void *, s32, s32);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void SceneInputBase_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void PresentationList_DeleteAll(void *);
-extern void func_020957bc(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Init(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Hide(void *);
 extern void func_020b4554(void *, s32);
 extern void *func_ov000_021fb6e0(void *);
 extern void func_ov001_021fb7d4(void *);
@@ -101,11 +101,11 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
     AnimationResourceState_InitEmbedded((u8 *)state + 0xa0);
     AnimationResourceState_InitEmbedded((u8 *)state + 0xac);
     AnimationResourceState_InitEmbedded((u8 *)state + 0xb8);
-    func_020957bc((u8 *)state + 0xd8);
-    func_02091b6c((u8 *)state + 0x1a8);
+    SpriteMotionController_Init((u8 *)state + 0xd8);
+    TitleInterpolatedValue_Init((u8 *)state + 0x1a8);
     func_ov018_021fcf00((u8 *)state + 0x3cc);
     FIELD(s32, state, 0x3dc) = 0;
-    func_02091b6c((u8 *)state + 0x3e0);
+    TitleInterpolatedValue_Init((u8 *)state + 0x3e0);
     GameWork_SetFlag(gGameWork, 0x418);
     FIELD(void *, state, 0x54) = context;
 
@@ -160,10 +160,10 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
 
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc8),
                            (u8 *)state + 0x94, 1);
-    func_020957f0((u8 *)state + 0xd8, sprite, 6, 0, 0);
-    func_02095820((u8 *)state + 0xd8, 0xe8, 0xb4);
-    func_02095940((u8 *)state + 0xd8);
-    func_02092814((u8 *)state + 0x70, 0x7007);
+    SpriteMotionController_BindSprite((u8 *)state + 0xd8, sprite, 6, 0, 0);
+    SpriteMotionController_SetPosition((u8 *)state + 0xd8, 0xe8, 0xb4);
+    SpriteMotionController_Hide((u8 *)state + 0xd8);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x70, 0x7007);
     func_ov018_021fd740(state);
     func_ov018_021fd5d0(state);
     func_ov018_021fd6c0(state);
@@ -247,7 +247,7 @@ static void destroyScene(void *state)
     AnimationResourceState_Destroy((u8 *)state + 0xac);
     AnimationResourceState_Destroy((u8 *)state + 0xa0);
     AnimationResourceState_Destroy((u8 *)state + 0x94);
-    func_020927b8((u8 *)state + 0x70);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x70);
 }
 
 /*

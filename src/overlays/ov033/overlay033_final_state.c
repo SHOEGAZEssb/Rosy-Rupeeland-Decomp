@@ -22,7 +22,7 @@ extern void VecFx32Object_Add(void *destination, void *source);
 extern s32 func_02091c7c(void *interpolator, s32 advance);
 extern void Sound_LoadGroup(void *sound, s32 id);
 extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
-extern void func_02091bac(void *interpolator, s32 mode, s32 start,
+extern void TitleInterpolatedValue_Configure(void *interpolator, s32 mode, s32 start,
                          s32 end, s32 duration);
 extern s32 func_02091cf0(void *interpolator);
 extern void func_ov033_021fce04(void *group, s32 index);
@@ -84,7 +84,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
         if (func_02091c7c((u8 *)scene + 0x84, 2) != 0) {
             Sound_LoadGroup(gSoundContext, 0x1f4);
             Sound_PlayDirectSequence(gSoundContext, 0x67, 0x7f);
-            func_02091bac((u8 *)scene + 0x84, 1, 0, 0x800, 0x78);
+            TitleInterpolatedValue_Configure((u8 *)scene + 0x84, 1, 0, 0x800, 0x78);
             func_02091b98((u8 *)scene + 0x68, 0x14);
             FIELD(s32, scene, 0xd0) = 3;
         }
@@ -112,7 +112,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
             if (secondary != 0)
                 FIELD(Overlay033ActorMethod, FIELD(void *, secondary, 0),
                       0x54)(secondary, 1);
-            func_02091bac((u8 *)scene + 0x84, 5, 0, -0xa0, 0x1e);
+            TitleInterpolatedValue_Configure((u8 *)scene + 0x84, 5, 0, -0xa0, 0x1e);
             FIELD(s32, scene, 0xd0) = 4;
         } else if (func_02091c7c((u8 *)scene + 0x68, 2) != 0) {
             func_02091b98((u8 *)scene + 0x68, 0x14);

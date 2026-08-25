@@ -15,7 +15,7 @@
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
 .extern TitleCharacterResourceCollection_Init
-.extern func_02092814
+.extern TitleCharacterResourceCollection_Append
 .extern func_ov058_0220e400
 .extern func_ov058_0220e5fc
 .extern func_ov058_0220f11c
@@ -44,10 +44,10 @@ func_ov058_0220e840:
     bl TitleCharacterResourceCollection_Init
     ldr r1, .L_0220ea38
     add r0, r4, #0x84
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r4, #0x84
     ldr r1, .L_0220ea3c
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, .L_0220ea40
     ldr r0, .L_0220ea44
     ldr r2, [r1, #0x0]

@@ -20,12 +20,12 @@
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToSubBg
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern func_02091b98
-.extern func_02091bac
+.extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
-.extern func_020929b0
-.extern func_020929f4
+.extern TitleScrollValue_Init
+.extern TitleScrollValue_Advance
 .extern func_02092b0c
 .extern func_02092b34
 .extern func_02092b60
@@ -49,9 +49,9 @@ DisplayFadePresentation_Init: ; 0x02020e84
     ldr r1, .L_020210f0
     add r0, r6, #0x14
     str r1, [r6, #0x0]
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r6, #0x3c
-    bl func_020929b0
+    bl TitleScrollValue_Init
     str r5, [r6, #0x30]
     str r7, [r6, #0x34]
     mov r0, #0x0

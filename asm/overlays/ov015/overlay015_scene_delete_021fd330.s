@@ -5,8 +5,8 @@
     .extern Sound_ReleaseGroup
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
-    .extern func_020926f8
-    .extern func_020927b8
+    .extern TitleScreenResourceCollection_Destroy
+    .extern TitleCharacterResourceCollection_Destroy
     .extern func_ov001_021fb7d4
     .extern func_ov015_021fce14
     .extern gSoundContext
@@ -63,9 +63,9 @@ L_021fd3c0:
     mov r2, #0xac
     bl __destroy_arr
     add r0, r4, #0x98
-    bl func_020926f8
+    bl TitleScreenResourceCollection_Destroy
     add r0, r4, #0x74
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x64
     bl AnimationResourceState_Destroy
     add r0, r4, #0x58

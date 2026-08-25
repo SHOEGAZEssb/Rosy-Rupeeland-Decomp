@@ -17,7 +17,7 @@ extern "C" void PresentationList_DeleteAll(void *object);
 extern "C" void PresentationList_UpdateAndDeleteCompleted(void *object);
 extern "C" void AnimationResourceState_InitEmbedded(void *owner);
 extern "C" void AnimationResourceState_Destroy(void *owner);
-extern "C" void func_02091b6c(void *track);
+extern "C" void TitleInterpolatedValue_Init(void *track);
 extern "C" u32 genrand_int32(void);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archive, s32 first,
@@ -25,7 +25,7 @@ extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archi
 extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
 extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" s32 Presentation_InterpolateLinear(s32 minimum, s32 maximum, s32 seed, s32 span);
-extern "C" void func_02091bac(void *track, s32 mode, s32 start, s32 end,
+extern "C" void TitleInterpolatedValue_Configure(void *track, s32 mode, s32 start, s32 end,
                                s32 duration);
 extern "C" void func_02091b98(void *track, s32 value);
 
@@ -64,8 +64,8 @@ extern "C" void *func_ov045_0220b81c(void *object)
 extern "C" void *func_ov045_0220b83c(void *object)
 {
     AnimationResourceState_InitEmbedded((u8 *)object + 4);
-    func_02091b6c((u8 *)object + 0x10);
-    func_02091b6c((u8 *)object + 0x2c);
+    TitleInterpolatedValue_Init((u8 *)object + 0x10);
+    TitleInterpolatedValue_Init((u8 *)object + 0x2c);
     func_ov045_0220b7fc((u8 *)object + 0x48);
     FIELD(u32, object, 0x64) = 0;
     FIELD(u32, object, 0x64) = genrand_int32();
@@ -116,7 +116,7 @@ extern "C" s32 func_ov045_0220b924(void *object, s32 value, s32 span,
     s32 duration = Presentation_InterpolateLinear(0x14, 0xc8, value, span);
     if (duration > span * 4)
         duration = span * 4;
-    func_02091bac((u8 *)object + 0x10, 1, 0, span, duration);
+    TitleInterpolatedValue_Configure((u8 *)object + 0x10, 1, 0, span, duration);
     FIELD(s32, object, 0x58) = 0;
     FIELD(s32, object, 0x5c) = 0;
     FIELD(s32, object, 0x60) = variant;

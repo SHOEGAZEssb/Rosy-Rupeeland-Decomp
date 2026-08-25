@@ -14,7 +14,7 @@
 .extern func_02091b98
 .extern func_02091c7c
 .extern func_020922f0
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern func_02095dd4
 .extern func_ov025_021fd5dc
 .extern func_ov025_021ff254
@@ -264,7 +264,7 @@ L_02200d00:
     ldr r0, [r5, #0xc]
     bl GraphicsSpriteGroup_Destroy
     add r0, r5, #0x30
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r5
     bl AnimationResourceState_Destroy
     mov r0, r5

@@ -9,7 +9,7 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern GraphicsSpriteRenderer_SetTextGridObjectMode
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern func_ov030_021fcf18
 .extern func_ov030_021fd27c
 .extern func_ov045_0220b8cc
@@ -100,7 +100,7 @@ L_021fe018:
     add r0, r4, #0x7c
     bl AnimationResourceState_Destroy
     add r0, r4, #0x54
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe0b0: .word data_ov030_021ff8b0
@@ -191,7 +191,7 @@ L_021fe164:
     add r0, r4, #0x7c
     bl AnimationResourceState_Destroy
     add r0, r4, #0x54
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

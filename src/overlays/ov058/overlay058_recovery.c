@@ -42,8 +42,8 @@ extern s32 GraphicsSpriteRenderer_MeasureText(void *, const u16 *, s32, s32);
 extern s32 GraphicsSpriteRenderer_DrawCharacter(void *, u32, s32, s32, s32);
 extern s32 Presentation_InterpolateQuadraticPulse(s32, s32, s32, s32);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
@@ -211,8 +211,8 @@ void *func_ov058_0220e840(void *scene, void *owner)
                       GraphicsResourceSet_Init, GraphicsResourceSet_Destroy);
     FIELD(s32, scene, 0x50) = 0;
     TitleCharacterResourceCollection_Init((u8 *)scene + 0x84);
-    func_02092814((u8 *)scene + 0x84, 0x7001);
-    func_02092814((u8 *)scene + 0x84, 0x7009);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0x84, 0x7001);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0x84, 0x7009);
     FIELD(const u16 *, scene, 0xa8) = data_ov058_0220fd0c;
     GraphicsSpriteRenderer_ConfigureTextGridPriority(data_020f4e14[0], 2, 0x10);
     GraphicsSpriteRenderer_ConfigureTextGridPriority(gDebugFont[0], 2, 0x10);
@@ -273,7 +273,7 @@ static void Overlay058_DestroySceneMembers(void *scene)
     GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0xc));
     GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0x10));
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 1);
-    func_020927b8((u8 *)scene + 0x84);
+    TitleCharacterResourceCollection_Destroy((u8 *)scene + 0x84);
     __destroy_arr((u8 *)scene + 0x18, 4, 0xc, GraphicsResourceSet_Destroy);
     FieldEffect_DestroyBase(scene);
 }

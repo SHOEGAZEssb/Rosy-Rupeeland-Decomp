@@ -3,9 +3,9 @@
 .extern TitleCharacterResourceCollection_Init
 .extern TitleScreenResourceCollection_Init
 .extern AnimationResourceState_InitEmbedded
-.extern func_020957bc
-.extern func_02092814
-.extern func_02092754
+.extern SpriteMotionController_Init
+.extern TitleCharacterResourceCollection_Append
+.extern TitleScreenResourceCollection_Append
 .extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov044_0220c610
@@ -40,25 +40,25 @@ func_ov044_0220be60:
     add r0, r4, #0xc0
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xd0
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x17c
-    bl func_020957bc
+    bl SpriteMotionController_Init
     mov r0, #0x0
     str r0, [r4, #0x23c]
     str r0, [r4, #0x228]
     str r0, [r4, #0x238]
     add r0, r4, #0x54
     ldr r1, .L_0220bfa8
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r4, #0x54
     ldr r1, .L_0220bfac
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r4, #0x78
     ldr r1, .L_0220bfb0
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     add r0, r4, #0x78
     ldr r1, .L_0220bfb4
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     mov r0, #0xf
     str r0, [sp, #0x0]
     add r0, r4, #0xc0

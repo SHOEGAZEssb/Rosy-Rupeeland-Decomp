@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_menu_collection.c. */
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
     .extern CxxArray_DestroyAndFree
     .extern func_ov022_021fda78
 
@@ -24,7 +24,7 @@ L_021fda48:
     bl CxxArray_DestroyAndFree
 L_021fda64:
     mov r0, r4
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fda74: .word func_ov022_021fda78

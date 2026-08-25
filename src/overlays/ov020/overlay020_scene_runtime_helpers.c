@@ -30,7 +30,7 @@ extern void TitleDisplay_ResetMainBgScroll(void);
 extern void TitleDisplay_ResetSubBgScroll(void);
 extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_020b44e8(void);
 extern void func_ov020_021fcfd4(void *);
@@ -60,7 +60,7 @@ static void destroySceneContents(void *state)
         func_ov020_021fcfd4(list);
         Heap_Free(list);
     }
-    func_020927b8((u8 *)state + 0x1b8);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x1b8);
     func_ov020_021fd818((u8 *)state + 0x70);
     AnimationResourceState_Destroy((u8 *)state + 0x60);
     AnimationResourceState_Destroy((u8 *)state + 0x54);

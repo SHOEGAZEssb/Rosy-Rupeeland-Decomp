@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_helpers.c. */
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
 
 .global func_ov020_021fd404
 func_ov020_021fd404:
@@ -18,7 +18,7 @@ L_021fd424:
     ldr r0, [r4, #0xc]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x28
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x1c
     bl AnimationResourceState_Destroy
     add r0, r4, #0x10

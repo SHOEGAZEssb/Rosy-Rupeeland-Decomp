@@ -14,7 +14,7 @@ extern "C" {
 extern void AreaInfoPanelPresentation_Destroy(void *label);
 extern void func_ov046_0220ba80(void *panel);
 extern void GraphicsSpriteGroup_Destroy(void *resourceOwner);
-extern void func_020927b8(void *transform);
+extern void TitleCharacterResourceCollection_Destroy(void *transform);
 extern void func_ov038_021fce00(void *list);
 extern void AnimationResourceState_Destroy(void *resource);
 extern void Heap_Free(void *allocation);
@@ -41,7 +41,7 @@ static void releasePresentationContents(void *presentation)
         Overlay038DeleteFn *vtable = FIELD(Overlay038DeleteFn *, model, 0);
         vtable[1](model);
     }
-    func_020927b8((u8 *)presentation + 0x318);
+    TitleCharacterResourceCollection_Destroy((u8 *)presentation + 0x318);
     func_ov038_021fce00((u8 *)presentation + 0x64);
     AnimationResourceState_Destroy((u8 *)presentation + 0x54);
 }

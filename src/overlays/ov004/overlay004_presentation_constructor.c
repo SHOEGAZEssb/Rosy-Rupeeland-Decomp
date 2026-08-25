@@ -39,12 +39,12 @@ extern const s32 data_ov004_021fcd30[2];
 extern void SceneInputBase_Init(void *state);
 extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void Presentation_InitVariant(void *controller);
-extern void func_02091b6c(void *animation);
+extern void TitleInterpolatedValue_Init(void *animation);
 extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first, s32 second,
                           s32 third);
 extern void func_020708c4(void *resourceMember);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
-extern void func_02091bac(void *animation, s32 mode, s32 value, s32 target,
+extern void TitleInterpolatedValue_Configure(void *animation, s32 mode, s32 value, s32 target,
                           s32 duration);
 extern void func_ov004_021fbf40(Overlay004PresentationState *state);
 extern void func_ov004_021fb968(Overlay004PresentationState *state);
@@ -77,8 +77,8 @@ Overlay004PresentationState *func_ov004_021fb70c(
     state->descriptor_000 = 0x021fcda0;
     AnimationResourceState_InitEmbedded(state->resource_054);
     Presentation_InitVariant(state->controller_06c);
-    func_02091b6c(state->animation_114);
-    func_02091b6c(state->animation_130);
+    TitleInterpolatedValue_Init(state->animation_114);
+    TitleInterpolatedValue_Init(state->animation_130);
     state->argument1_150 = argument1;
     state->argument2_14c = argument2;
     state->field_068 = 0;
@@ -92,8 +92,8 @@ Overlay004PresentationState *func_ov004_021fb70c(
     state->width_108 = 0x100;
     state->height_10c = 0xe0;
     state->field_154 = -1;
-    func_02091bac(state->animation_114, 2, 0x6000, 0x119a, 0xf0);
-    func_02091bac(state->animation_130, 4, 0x4000, 0x466, 0x50);
+    TitleInterpolatedValue_Configure(state->animation_114, 2, 0x6000, 0x119a, 0xf0);
+    TitleInterpolatedValue_Configure(state->animation_130, 4, 0x4000, 0x466, 0x50);
     func_ov004_021fb968(state);
     func_ov004_021fba28(state);
     func_ov004_021fc24c(state);

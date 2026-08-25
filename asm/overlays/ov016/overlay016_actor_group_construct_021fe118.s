@@ -7,10 +7,10 @@
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_020957bc
-    .extern func_020957f0
-    .extern func_02095820
-    .extern func_02095940
+    .extern SpriteMotionController_Init
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
+    .extern SpriteMotionController_Hide
     .extern Overlay016SmallBase_Init
 
 /* Exact fallbacks for actor-group construction; see src/overlays/ov016/overlay016_actor_group.c. */
@@ -25,7 +25,7 @@ func_ov016_021fe118:
     add r0, r4, #0xc
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x20
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0xd0
     bl Overlay016SmallBase_Init
     add r0, r5, #0x1
@@ -66,13 +66,13 @@ func_ov016_021fe118:
     add r0, r4, #0x20
     mov r2, #0x1
     mov r3, r2
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x20
     mov r1, #0x80
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0x20
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r4, #0x18]
     add r1, r4, #0xc
     mov r2, #0x2

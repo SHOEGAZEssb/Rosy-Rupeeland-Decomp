@@ -25,8 +25,8 @@ extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
 extern void *RecordDescriptor_GetMessage(void *);
 extern void SceneInputBase_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_02092814(void *, s32);
-extern void func_020929b0(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
+extern void TitleScrollValue_Init(void *);
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_02092f88(void *, s32, void *);
 extern void func_020afd0c(void *, s32, s32, s32);
@@ -61,7 +61,7 @@ extern "C" void *func_ov029_021fce74(void *state, void *argument)
     FIELD(const void *, state, 0) = data_ov029_021fecfc;
     TitleCharacterResourceCollection_Init((u8 *)state + 0x78);
     FIELD(u32, state, 0xe4) = 0;
-    func_020929b0((u8 *)state + 0xec);
+    TitleScrollValue_Init((u8 *)state + 0xec);
     RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 1);
     FIELD(u32, state, 0xe4) = genrand_int32();
     GameWork_ClearFlag(gGameWork, 0x38a);
@@ -95,8 +95,8 @@ extern "C" void *func_ov029_021fce74(void *state, void *argument)
     }
 
     FIELD(void *, state, 0xe8) = GraphicsArchive_AcquirePaletteResource(data_020f4e18[0], 0xc007);
-    func_02092814((u8 *)state + 0x78, 0x7007);
-    func_02092814((u8 *)state + 0x78, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x78, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x78, 0x7005);
     func_ov029_021fd464(state);
     func_ov029_021fd578(state);
     void *external = func_ov045_0220c48c(

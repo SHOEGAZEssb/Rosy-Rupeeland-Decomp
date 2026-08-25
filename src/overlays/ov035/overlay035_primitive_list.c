@@ -10,7 +10,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091b6c(void *state);
+extern void TitleInterpolatedValue_Init(void *state);
 extern void func_02091b98(void *state, void *argument);
 extern s32 func_02091c7c(void *state, s32 mode);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
@@ -31,7 +31,7 @@ extern "C" void *func_ov035_021fd460(void *node, void *argument, s32 value4,
                                       s32 value8, s32 valueC, s32 value10,
                                       s32 value14)
 {
-    func_02091b6c((u8 *)node + 0x18);
+    TitleInterpolatedValue_Init((u8 *)node + 0x18);
     FIELD(void *, node, 0) = 0;
     FIELD(s32, node, 4) = value4;
     FIELD(s32, node, 8) = value8;

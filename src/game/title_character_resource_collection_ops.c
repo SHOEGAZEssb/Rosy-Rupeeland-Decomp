@@ -11,7 +11,7 @@ extern void GraphicsArchive_ReleaseResourceE4(void *archive, void *resource);
 extern void *GraphicsArchive_AcquireVfdResource(void *archive, u32 resourceId);
 
 /* Release every live character resource and reset the collection. */
-void func_020927cc(TitleCharacterResourceCollection *collection)
+void TitleCharacterResourceCollection_ReleaseAll(TitleCharacterResourceCollection *collection)
 {
     s32 index;
 
@@ -23,7 +23,7 @@ void func_020927cc(TitleCharacterResourceCollection *collection)
 }
 
 /* Load and append one resource unless the fixed collection is full. */
-void func_02092814(TitleCharacterResourceCollection *collection,
+void TitleCharacterResourceCollection_Append(TitleCharacterResourceCollection *collection,
                    u32 resourceId)
 {
     if (collection->count >= 8)

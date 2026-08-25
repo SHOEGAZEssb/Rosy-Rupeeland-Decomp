@@ -20,11 +20,11 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern SceneInputBase_Init
     .extern TitleScreenResourceCollection_Init
-    .extern func_02092754
+    .extern TitleScreenResourceCollection_Append
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
-    .extern func_020957bc
-    .extern func_020957f0
+    .extern TitleCharacterResourceCollection_Append
+    .extern SpriteMotionController_Init
+    .extern SpriteMotionController_BindSprite
     .extern func_020afd0c
     .extern func_ov001_021fb6f8
     .extern func_ov001_021fbabc
@@ -78,22 +78,22 @@ func_ov015_021fce58:
     bl func_ov015_021fd41c
     add r0, r10, #0x98
     ldr r1, L_021fd1f4
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     add r0, r10, #0x98
     ldr r1, L_021fd1f8
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     add r0, r10, #0x98
     ldr r1, L_021fd1fc
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     add r0, r10, #0x74
     ldr r1, L_021fd200
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r10, #0x74
     ldr r1, L_021fd204
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r10, #0x74
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0x48
     ldr r1, L_021fd208
     mov r2, #0x4
@@ -240,7 +240,7 @@ L_021fd108:
     mov r2, r7
     str r7, [sp, #0x0]
     mov r3, r5
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r9, r9, #0x1
     cmp r9, #0x3
     blt L_021fd108
@@ -289,7 +289,7 @@ L_021fd108:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fd1e8: .word data_ov015_021fec74
 L_021fd1ec: .word func_ov015_021fce14
-L_021fd1f0: .word func_020957bc
+L_021fd1f0: .word SpriteMotionController_Init
 L_021fd1f4: .word 0x8010
 L_021fd1f8: .word 0x8011
 L_021fd1fc: .word 0x800b

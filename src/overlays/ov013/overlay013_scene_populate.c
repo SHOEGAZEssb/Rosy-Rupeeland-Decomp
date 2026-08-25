@@ -25,15 +25,15 @@ extern "C" {
 extern void GameWork_SetFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void SpritePresentation_Hide(void *);
-extern void func_02095940(void *);
-extern void func_020958d8(void *);
-extern void func_02095988(void *, s32);
+extern void SpriteMotionController_Hide(void *);
+extern void SpriteMotionController_Update(void *);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void GamePhaseMetadata_IsAreaBehaviorPermitted(void *);
 extern void func_ov013_021fda28(void *, s32);
 extern void func_ov013_021fdb50(void *, s32);
@@ -93,8 +93,8 @@ void func_ov013_021fd310(void *state)
                                        (u8 *)state + 0x54, 2);
         void *associated;
 
-        func_020957f0(record, selected, FIELD(s32, descriptor, 0), 3, 8);
-        func_02095820(record, FIELD(s32, descriptor, 8),
+        SpriteMotionController_BindSprite(record, selected, FIELD(s32, descriptor, 0), 3, 8);
+        SpriteMotionController_SetPosition(record, FIELD(s32, descriptor, 8),
                      FIELD(s32, descriptor, 0x0c));
         associated = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                    (u8 *)state + 0x54, 2);
@@ -125,14 +125,14 @@ void func_ov013_021fd310(void *state)
             else
                 FIELD(u16, associated, 0x24) |= 4;
         } else {
-            func_02095940(record);
+            SpriteMotionController_Hide(record);
         }
-        func_020958d8(record);
+        SpriteMotionController_Update(record);
     }
 
     if (FIELD(s32, state, 0x97c) != 0) {
         func_ov013_021fdb50(state, 3);
-        func_02095988((u8 *)state + 0x138, 7);
+        SpriteMotionController_SetAnimation((u8 *)state + 0x138, 7);
         FIELD(u32, state, 0x20) |= 0x400;
     }
 
@@ -140,8 +140,8 @@ void func_ov013_021fd310(void *state)
         u8 *record = (u8 *)state + 0x89c;
         void *selected = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                        (u8 *)state + 0x6c, 2);
-        func_020957f0(record, selected, 0, 3, 8);
-        func_02095820(record, 0x80, 0x92);
+        SpriteMotionController_BindSprite(record, selected, 0, 3, 8);
+        SpriteMotionController_SetPosition(record, 0x80, 0x92);
         FIELD(void *, state, 0x94c) = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, state, 0x84), (u8 *)state + 0x6c, 2);
         GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x94c), 2, 0x80, 0xb2,
@@ -152,8 +152,8 @@ void func_ov013_021fd310(void *state)
             u8 *record = (u8 *)state + 0x540 + i * 0xac;
             void *selected = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                            (u8 *)state + 0x60, 2);
-            func_020957f0(record, selected, FIELD(s32, descriptor, 0), 3, 8);
-            func_02095820(record, FIELD(s32, descriptor, 8), 0x9c);
+            SpriteMotionController_BindSprite(record, selected, FIELD(s32, descriptor, 0), 3, 8);
+            SpriteMotionController_SetPosition(record, FIELD(s32, descriptor, 8), 0x9c);
             if (FIELD(u16, descriptor, 0x10) != 0 &&
                 GameWork_TestFlag(gGameWork,
                                   FIELD(u16, descriptor, 0x10))) {
@@ -166,7 +166,7 @@ void func_ov013_021fd310(void *state)
                 func_ov013_021fda28(record, 0x78);
                 SpritePresentation_Hide(FIELD(void *, state, 0x948));
             } else {
-                func_02095940(record);
+                SpriteMotionController_Hide(record);
             }
         }
         FIELD(void *, state, 0x94c) = GraphicsSpriteGroup_CreateStateFromSource(

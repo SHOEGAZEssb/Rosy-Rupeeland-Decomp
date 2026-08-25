@@ -20,7 +20,7 @@ extern void AnimationResourceState_InitEmbedded(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_ov031_021fce00(void *, s32, s32);
 extern u32 genrand_int32(void);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_ov031_021fd91c(void *, s32, s32, s32, s32);
@@ -71,7 +71,7 @@ extern "C" void *func_ov031_021fd95c(void *scene, void *owner)
     func_ov031_021fce00((u8 *)scene + 0xa4, 0, 8);
     FIELD(u32, scene, 0x54c) = 0;
     FIELD(u32, scene, 0x54c) = genrand_int32();
-    func_02092814((u8 *)scene + 0x70, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0x70, 0x7007);
 
     void *dialog = Heap_Alloc(0xec, data_ov031_021fe798, 4, gHeapContext);
     if (dialog != 0)

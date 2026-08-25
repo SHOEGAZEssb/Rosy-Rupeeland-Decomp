@@ -34,12 +34,12 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void SceneInputBase_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
-extern void func_020929b0(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
+extern void TitleScrollValue_Init(void *);
 extern void *TitleDialog_Init(void *, void *, s32);
 extern void func_02092f88(void *, s32, void *);
-extern void func_020957bc(void *);
+extern void SpriteMotionController_Init(void *);
 extern u32 genrand_int32(void);
 extern void func_ov022_021fcf08(void *);
 extern void *func_ov022_021fcf98(void *);
@@ -106,7 +106,7 @@ static void destroy_scene_members(void *scene)
     AnimationResourceState_Destroy((u8 *)scene + 0x90);
     AnimationResourceState_Destroy((u8 *)scene + 0x84);
     AnimationResourceState_Destroy((u8 *)scene + 0x78);
-    func_020927b8((u8 *)scene + 0x54);
+    TitleCharacterResourceCollection_Destroy((u8 *)scene + 0x54);
 }
 
 /*
@@ -128,10 +128,10 @@ extern "C" void *func_ov022_021fdd44(void *scene)
     AnimationResourceState_InitEmbedded((u8 *)scene + 0x78);
     AnimationResourceState_InitEmbedded((u8 *)scene + 0x84);
     AnimationResourceState_InitEmbedded((u8 *)scene + 0x90);
-    func_020957bc((u8 *)scene + 0xa8);
+    SpriteMotionController_Init((u8 *)scene + 0xa8);
     __construct_array((u8 *)scene + 0x154, 2, 0xac,
-                      func_020957bc, func_ov022_021fdd00);
-    func_020929b0((u8 *)scene + 0x378);
+                      SpriteMotionController_Init, func_ov022_021fdd00);
+    TitleScrollValue_Init((u8 *)scene + 0x378);
     FIELD(s32, scene, 0x390) = 0;
     FIELD(void *, scene, 0x2c0) = 0;
     FIELD(void *, scene, 0x2b4) = 0;
@@ -144,9 +144,9 @@ extern "C" void *func_ov022_021fdd44(void *scene)
     FIELD(s32, scene, 0x2b0) = 0;
 
     FIELD(void *, scene, 0x374) = GraphicsArchive_AcquirePaletteResource(data_020f4e18, 0xc007);
-    func_02092814((u8 *)scene + 0x54, 0x7007);
-    func_02092814((u8 *)scene + 0x54, 0x7005);
-    func_02092814((u8 *)scene + 0x54, 0x7001);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0x54, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0x54, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0x54, 0x7001);
     AnimationResourceState_ReplaceResources((u8 *)scene + 0x78, data_020f4e18,
                   0x3d, 0x3e, 0x3f);
     AnimationResourceState_ReplaceResources((u8 *)scene + 0x84, data_020f4e18,

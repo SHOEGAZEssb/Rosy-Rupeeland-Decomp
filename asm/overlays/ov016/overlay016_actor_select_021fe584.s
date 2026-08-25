@@ -2,7 +2,7 @@
     .extern GraphicsSpriteState_TestTouchPoint
     .extern PresentationScalar_TransitionBy
     .extern PresentationList_Remove
-    .extern func_02095940
+    .extern SpriteMotionController_Hide
     .extern func_ov016_021fe2b0
 
 /* Exact fallbacks for actor selection and removal; see src/overlays/ov016/overlay016_actor_runtime.c. */
@@ -42,7 +42,7 @@ L_021fe59c:
     cmp r0, #0x0
     bne L_021fe618
     add r0, r4, #0x20
-    bl func_02095940
+    bl SpriteMotionController_Hide
     b L_021fe618
 L_021fe60c:
     ldr r5, [r5, #0x8]

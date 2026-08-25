@@ -3,13 +3,13 @@
 /* Exact fallback; see src/overlays/ov033/overlay033_scene_constructor.c for documented portable C. */
 
     .extern VecFx32Object_Init
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern TitleCharacterResourceCollection_Init
     .extern Type7Actor_EnterFlag40000State
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern Heap_Alloc
     .extern func_ov033_021fce1c
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern TitleDialog_Init
     .extern func_ov033_021fd034
     .extern func_ov033_021fd04c
@@ -30,11 +30,11 @@ func_ov033_021fd070:
     add r0, r4, #0x24
     bl VecFx32Object_Init
     add r0, r4, #0x4c
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0x68
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0x84
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0xa0
     bl TitleCharacterResourceCollection_Init
     mov r1, #0x0
@@ -106,7 +106,7 @@ L_021fd194:
     ldr r1, L_021fd254
     add r0, r4, #0xa0
     str r3, [r2, #0x20]
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, L_021fd258
     ldr r3, L_021fd250
     mov r0, #0xec

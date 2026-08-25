@@ -27,7 +27,7 @@ extern void GraphicsArchiveResource_Init(void *self, void *archive, const void *
 #ifdef __cplusplus
 extern "C"
 #endif
-GraphicsArchiveScreenResource *func_02070d88(
+GraphicsArchiveScreenResource *GraphicsArchiveScreenResource_Init(
     GraphicsArchiveScreenResource *self, void *archive, const u32 *source,
     u32 sourceSize, u32 resourceId)
 {

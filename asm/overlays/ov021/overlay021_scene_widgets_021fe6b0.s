@@ -2,9 +2,9 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_scene_widgets.c. */
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_020957f0
-    .extern func_02095820
-    .extern func_02095940
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
+    .extern SpriteMotionController_Hide
 
 .global func_ov021_021fe6b0
 func_ov021_021fe6b0:
@@ -34,12 +34,12 @@ L_021fe6d0:
     add r0, r7, r6
     mov r3, #0x1
     str r5, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     mul r2, r8, r11
     add r0, r7, r6
     mov r1, r4
     add r2, r2, #0x40
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r8, r8, #0x1
     cmp r8, #0x2
     blt L_021fe6d0
@@ -51,21 +51,21 @@ L_021fe6d0:
     bhi L_021fe76c
 L_021fe750:
     add r0, r10, #0x14c
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add r0, r10, #0x1f8
     mvn r1, #0x3f
     mov r2, #0x60
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     b L_021fe78c
 L_021fe76c:
     cmp r1, #0x11
     bne L_021fe78c
     add r0, r10, #0x1f8
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add r0, r10, #0x14c
     mvn r1, #0x3f
     mov r2, #0x60
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
 L_021fe78c:
     ldr r0, [r10, #0x94]
     add r1, r10, #0x7c
@@ -93,11 +93,11 @@ L_021fe78c:
     add r0, r10, #0xa0
     mov r2, #0x2
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0xa0
     mov r1, #0xe4
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, [r10, #0x94]
     add r1, r10, #0x88
     mov r2, #0x1

@@ -20,9 +20,9 @@ extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
 extern void PresentationList_Append(void *, void *);
 extern void PresentationList_Remove(void *, void *);
 extern void SpritePresentation_SyncPosition(void *);
-extern void func_020958d8(void *);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Update(void *);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
 extern void *func_ov016_021fe004(void *, void *, void *);
 extern void func_ov016_021fe2b0(void *);
 extern s32 func_ov016_021fe728(void *);
@@ -59,7 +59,7 @@ extern "C" s32 func_ov016_021fe4d0(void *state, void *target)
                   0);
     SpritePresentation_SyncPosition(actor);
     func_ov016_021fe2b0(state);
-    func_02095928((u8 *)state + 0x20);
+    SpriteMotionController_Show((u8 *)state + 0x20);
     return 1;
 }
 
@@ -87,7 +87,7 @@ extern "C" void *func_ov016_021fe584(void *state, void *key, s32 remove)
             FIELD(s32, actor, 0x7c) = 0x10;
             FIELD(s32, actor, 0x80) = 0;
             if (FIELD(s32, state, 0xdc) == 0) {
-                func_02095940((u8 *)state + 0x20);
+                SpriteMotionController_Hide((u8 *)state + 0x20);
             }
             break;
         }
@@ -113,7 +113,7 @@ extern "C" void func_ov016_021fe63c(void *state)
     typedef void (*DeleteFunction)(void *);
     void *actor;
 
-    func_020958d8((u8 *)state + 0x20);
+    SpriteMotionController_Update((u8 *)state + 0x20);
     GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x1c),
                   (FIELD(s32, state, 0xe4) + FIELD(s32, state, 0xdc)) & 0xff);
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x18));

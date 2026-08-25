@@ -28,7 +28,7 @@ extern void AnimationResourceState_ReplaceResources(void *resource, void *manage
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern u8 *RetailTextTable_FindRecordById(void *table, u16 resourceId);
 extern void TitleCharacterResourceCollection_Init(void *state);
-extern void func_02092814(void *state, s32 resourceId);
+extern void TitleCharacterResourceCollection_Append(void *state, s32 resourceId);
 extern void *TitleDialog_Init(void *object, void *owner, void *resource);
 extern void func_ov000_021fb710(void *owner, s32 valueA, s32 valueB,
                                 s32 valueC, s32 valueD);
@@ -61,9 +61,9 @@ Overlay000PresentationState *func_ov000_021fb728(
     TitleCharacterResourceCollection_Init(state->rendererState_20);
     state->owner_00 = owner;
     state->spriteOwner_04 = GraphicsSpriteGroupOwner_CreateGroup(owner);
-    func_02092814(state->rendererState_20, 0x7000);
-    func_02092814(state->rendererState_20, 0x7005);
-    func_02092814(state->rendererState_20, 0x7001);
+    TitleCharacterResourceCollection_Append(state->rendererState_20, 0x7000);
+    TitleCharacterResourceCollection_Append(state->rendererState_20, 0x7005);
+    TitleCharacterResourceCollection_Append(state->rendererState_20, 0x7001);
 
     presentation = Heap_Alloc(0xec, data_ov000_021fcd4c, 4, &gHeapContext);
     if (presentation != 0) {

@@ -14,12 +14,12 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern SceneInputBase_Init
     .extern Presentation_SetScript
     .extern SpritePresentation_Init
     .extern SpritePresentation_SyncPosition
-    .extern func_020957bc
+    .extern SpriteMotionController_Init
     .extern func_ov013_021fce00
     .extern func_ov013_021fce04
     .extern gHeapContext
@@ -59,12 +59,12 @@ func_ov013_021fce2c:
     bl __construct_array
     add r0, r4, #0x9c
     add r0, r0, #0x800
-    bl func_020957bc
+    bl SpriteMotionController_Init
     mov r0, #0x0
     str r0, [r4, #0x978]
     add r0, r4, #0x188
     add r0, r0, #0x800
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     ldr r0, L_021fd070
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -176,7 +176,7 @@ L_021fd038:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd064: .word data_ov013_021fed6c
 L_021fd068: .word func_ov013_021fce00
-L_021fd06c: .word func_020957bc
+L_021fd06c: .word SpriteMotionController_Init
 L_021fd070: .word gGamePhaseRuntime
 L_021fd074: .word 0x329a
 L_021fd078: .word data_020f4e18

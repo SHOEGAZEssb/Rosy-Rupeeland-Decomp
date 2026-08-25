@@ -6,7 +6,7 @@
     .extern Heap_AllocAlternateEntry
     .extern GraphicsSpriteGroup_ReleaseIndexedEntries
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern func_02094154
     .extern InventoryScroll_SetSpritePriority
     .extern InventoryScroll_UpdatePresentation
@@ -104,12 +104,12 @@ L_021fd9b0:
     beq L_021fd9f0
     ldr r1, L_021fda20
     mov r0, r4
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     b L_021fd9fc
 L_021fd9f0:
     ldr r1, L_021fda24
     mov r0, r4
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
 L_021fd9fc:
     mov r0, r4
     add sp, sp, #0xc

@@ -24,8 +24,8 @@ extern void SceneInputBase_Init(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_020957bc(void *);
-extern void func_02091b6c(void *);
+extern void SpriteMotionController_Init(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void RuntimePresentationManager_BroadcastSlot1C(void *, s32);
 extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -84,12 +84,12 @@ void *func_ov013_021fce2c(void *state)
     AnimationResourceState_InitEmbedded((u8 *)state + 0x6c);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x78);
     for (i = 0; i < 7; ++i)
-        func_020957bc((u8 *)state + 0x8c + i * 0xac);
+        SpriteMotionController_Init((u8 *)state + 0x8c + i * 0xac);
     for (i = 0; i < 5; ++i)
-        func_020957bc((u8 *)state + 0x540 + i * 0xac);
-    func_020957bc((u8 *)state + 0x89c);
+        SpriteMotionController_Init((u8 *)state + 0x540 + i * 0xac);
+    SpriteMotionController_Init((u8 *)state + 0x89c);
     FIELD(s32, state, 0x978) = 0;
-    func_02091b6c((u8 *)state + 0x988);
+    TitleInterpolatedValue_Init((u8 *)state + 0x988);
 
     RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 1);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x54, data_020f4e18,

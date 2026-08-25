@@ -17,9 +17,9 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern SceneInputBase_Init
     .extern TitleCharacterResourceCollection_Init
-    .extern func_020957bc
-    .extern func_020957f0
-    .extern func_02095820
+    .extern SpriteMotionController_Init
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
     .extern func_ov020_021fce18
     .extern func_ov020_021fd038
     .extern func_ov020_021fd0a0
@@ -44,7 +44,7 @@ func_ov020_021fd844:
     add r0, r4, #0x60
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x70
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x1b8
     bl TitleCharacterResourceCollection_Init
     mov r0, #0x0
@@ -78,11 +78,11 @@ func_ov020_021fd844:
     add r0, r4, #0x70
     mov r2, #0x6
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x70
     mov r1, #0xe8
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, [r4, #0x6c]
     add r1, r4, #0x54
     mov r2, #0x1

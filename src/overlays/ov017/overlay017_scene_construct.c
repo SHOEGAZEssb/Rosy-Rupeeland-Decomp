@@ -53,16 +53,16 @@ extern void SceneInputBase_Init(void *);
 extern void GraphicsBankStateSnapshot_Init(void *);
 extern void GraphicsBankStateSnapshot_Capture(void *);
 extern void TitleScreenResourceCollection_Init(void *);
-extern void func_02092754(void *, s32);
+extern void TitleScreenResourceCollection_Append(void *, s32);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void *SpritePresentation_Init(void *, void *);
 extern void SpritePresentation_Hide(void *);
 extern void SpritePresentation_SyncPosition(void *);
-extern void func_020957bc(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Init(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Hide(void *);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void Sound_LoadGroup(void *, s32);
 extern void func_020ae778(void);
@@ -113,8 +113,8 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     AnimationResourceState_InitEmbedded((u8 *)state + 0x5c);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x68);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x74);
-    func_020957bc((u8 *)state + 0x80);
-    func_020957bc((u8 *)state + 0x12c);
+    SpriteMotionController_Init((u8 *)state + 0x80);
+    SpriteMotionController_Init((u8 *)state + 0x12c);
     TitleCharacterResourceCollection_Init((u8 *)state + 0x1d8);
     TitleScreenResourceCollection_Init((u8 *)state + 0x1fc);
     GraphicsResourceSetVariant_Init((u8 *)state + 0x248);
@@ -147,25 +147,25 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
         object = Graphics3DResourceOwner_Init(object, 1, 1);
     FIELD(void *, state, 0x240) = object;
     FIELD(void *, state, 0x244) = Graphics3DResourceOwner_CreateManager(object);
-    func_02092814((u8 *)state + 0x1d8, 0x7006);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x1d8, 0x7006);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x5c, data_020f4e18[0], 0xd, 0xe, 0xf);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x68, data_020f4e18[0], 0x10, 0x11, 0x12);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x74, data_020f4e18[0], 0x13, 0x14, 0x15);
     GraphicsResourceSetVariant_Load((u8 *)state + 0x248, data_020f4e18[0],
                   0x601b, 0x601c, 0x601d);
     Graphics3DResourceOwner_PrepareResources(FIELD(void *, state, 0x240), (u8 *)state + 0x248);
-    func_02092754((u8 *)state + 0x1fc, 0x8002);
-    func_02092754((u8 *)state + 0x1fc, 0x8003);
+    TitleScreenResourceCollection_Append((u8 *)state + 0x1fc, 0x8002);
+    TitleScreenResourceCollection_Append((u8 *)state + 0x1fc, 0x8003);
 
     FIELD(void *, state, 0x58) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     object = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x58), (u8 *)state + 0x5c, 1);
-    func_020957f0((u8 *)state + 0x12c, object, 5, 2, 0);
-    func_02095820((u8 *)state + 0x12c, 0x50, 0xa0);
-    func_02095940((u8 *)state + 0x12c);
+    SpriteMotionController_BindSprite((u8 *)state + 0x12c, object, 5, 2, 0);
+    SpriteMotionController_SetPosition((u8 *)state + 0x12c, 0x50, 0xa0);
+    SpriteMotionController_Hide((u8 *)state + 0x12c);
     object = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x58), (u8 *)state + 0x5c, 1);
-    func_020957f0((u8 *)state + 0x80, object, 3, 2, 0);
-    func_02095820((u8 *)state + 0x80, 0xb0, 0xa0);
-    func_02095940((u8 *)state + 0x80);
+    SpriteMotionController_BindSprite((u8 *)state + 0x80, object, 3, 2, 0);
+    SpriteMotionController_SetPosition((u8 *)state + 0x80, 0xb0, 0xa0);
+    SpriteMotionController_Hide((u8 *)state + 0x80);
 
     object = Heap_Alloc(0xa0, data_ov017_0220168c, 4, &gHeapContext);
     if (object != 0) {

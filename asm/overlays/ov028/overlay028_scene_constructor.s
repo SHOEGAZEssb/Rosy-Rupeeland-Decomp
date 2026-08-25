@@ -19,15 +19,15 @@
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern SceneInputBase_Init
 .extern TitleCharacterResourceCollection_Init
-.extern func_02092814
+.extern TitleCharacterResourceCollection_Append
 .extern IndexedSelectionController_Init
 .extern Presentation_SetPosition
 .extern PresentationList_Append
 .extern SpritePresentation_Init
 .extern SpritePresentation_Hide
-.extern func_020957bc
-.extern func_020957f0
-.extern func_02095820
+.extern SpriteMotionController_Init
+.extern SpriteMotionController_BindSprite
+.extern SpriteMotionController_SetPosition
 .extern func_ov028_021fce00
 .extern func_ov028_021fd680
 .extern func_ov028_021fda98
@@ -56,9 +56,9 @@ func_ov028_021fdb00:
     add r0, r10, #0x74
     bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x98
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r10, #0x144
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r10, #0x1fc
     bl TitleCharacterResourceCollection_Init
     add r0, r10, #0x228
@@ -80,10 +80,10 @@ func_ov028_021fdb00:
     bl func_ov028_021fe1b0
     add r0, r10, #0x1fc
     ldr r1, L_021fdf60
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r10, #0x1fc
     ldr r1, L_021fdf64
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0x5f
     str r0, [sp, #0x0]
     add r0, r10, #0x5c
@@ -145,11 +145,11 @@ func_ov028_021fdb00:
     add r0, r10, #0x98
     mov r2, #0x1
     mov r3, r2
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0x98
     mov r1, #0x80
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, [r10, #0x54]
     add r1, r10, #0x5c
     mov r2, #0x1
@@ -159,11 +159,11 @@ func_ov028_021fdb00:
     str r2, [sp, #0x0]
     add r0, r10, #0x144
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0x144
     mov r1, #0xe8
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     mov r0, #0xa0
     ldr r1, L_021fdf7c
     mov r2, #0x4

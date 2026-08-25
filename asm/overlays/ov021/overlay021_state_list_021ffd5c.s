@@ -22,7 +22,7 @@
     .extern InventoryScroll_TestMarkerHit
     .extern InventoryScroll_UpdateSelectionMovement
     .extern InventoryScroll_ResetPresentationState
-    .extern func_02095860
+    .extern SpriteMotionController_BeginHitResponse
     .extern func_ov021_021fd224
     .extern func_ov021_021fd490
     .extern func_ov021_021fd678
@@ -197,7 +197,7 @@ L_021fff90:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021fffc4
     mov r0, r5
@@ -208,7 +208,7 @@ L_021fffc4:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02200010
     mov r0, r5

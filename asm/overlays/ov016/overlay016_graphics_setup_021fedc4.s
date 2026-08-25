@@ -17,8 +17,8 @@
     .extern TitleDisplay_SetMainBgPriorities
     .extern TitleDisplay_SetSubBgPriorities
     .extern TitleScreenResourceCollection_Init
-    .extern func_020926f8
-    .extern func_02092754
+    .extern TitleScreenResourceCollection_Destroy
+    .extern TitleScreenResourceCollection_Append
     .extern TitleScreenResourceCollection_Get
     .extern func_020afd0c
     .extern func_020b44e8
@@ -121,15 +121,15 @@ func_ov016_021fedc4:
     add r0, sp, #0x10
     bne L_021fef44
     ldr r1, L_021ff030
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     b L_021fef4c
 L_021fef44:
     ldr r1, L_021ff034
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
 L_021fef4c:
     ldr r1, L_021ff038
     add r0, sp, #0x10
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     bl func_020b44e8
     add r0, sp, #0x4
     mov r1, #0x2
@@ -174,7 +174,7 @@ L_021fef4c:
     str r3, [sp, #0x0]
     bl func_020afd0c
     add r0, sp, #0x10
-    bl func_020926f8
+    bl TitleScreenResourceCollection_Destroy
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x54

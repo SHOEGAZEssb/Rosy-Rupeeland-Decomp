@@ -18,7 +18,7 @@ extern void AnimationResourceState_Destroy(void *);
 extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void Presentation_AdvanceTransitions(void *);
 extern void PresentationList_DeleteAll(void *);
 extern void SpritePresentation_InitVariant(void *, void *);
@@ -130,8 +130,8 @@ extern "C" void *func_ov022_021fcee8(void *controller)
 extern "C" void *func_ov022_021fcf08(void *emitter)
 {
     AnimationResourceState_InitEmbedded((u8 *)emitter + 4);
-    func_02091b6c((u8 *)emitter + 0x10);
-    func_02091b6c((u8 *)emitter + 0x2c);
+    TitleInterpolatedValue_Init((u8 *)emitter + 0x10);
+    TitleInterpolatedValue_Init((u8 *)emitter + 0x2c);
     func_ov022_021fcec8((u8 *)emitter + 0x48);
     FIELD(u32, emitter, 0x64) = 0;
     FIELD(u32, emitter, 0x64) = genrand_int32();

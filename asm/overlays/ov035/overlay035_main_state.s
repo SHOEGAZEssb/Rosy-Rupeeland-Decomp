@@ -8,7 +8,7 @@
     .extern func_ov035_021fe20c
     .extern func_02091dac
     .extern func_020956fc
-    .extern func_02091bd0
+    .extern TitleInterpolatedValue_Evaluate
     .extern Sound_Play
     .extern PresentationScalar_TransitionBy
     .extern PresentationScalar_TransitionTo
@@ -139,7 +139,7 @@ L_021fe4a0:
     mov r2, r1
     add r0, r4, #0xa4
     mov r3, #0x1f
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     ldr r1, [r4, #0xd8]
     ldr r1, [r1, #0x9c]
     strb r0, [r1, #0x5b]

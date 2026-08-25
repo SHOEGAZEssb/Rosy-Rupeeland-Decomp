@@ -23,9 +23,9 @@ extern s32 func_ov045_0220b924(void *, s32, s32, s32);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern s32 func_ov045_0220b9b8(void *);
 extern s32 func_ov045_0220bc34(void *);
-extern void func_02095928(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void SpriteMotionController_Show(void *);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern void func_ov030_021fda14(void *, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
@@ -144,9 +144,9 @@ extern "C" s32 func_ov030_021ff038(void *scene)
     case 2:
         if (func_ov045_0220b9b8(FIELD(void *, scene, 0x2c8)) != 0 &&
             func_ov045_0220bc34(FIELD(void *, scene, 0x2c8)) == 0) {
-            func_02095928((u8 *)board + 0x104);
+            SpriteMotionController_Show((u8 *)board + 0x104);
             if (FIELD(s32, board, 0x1b4) != 0)
-                func_02095928((u8 *)board + 0x58);
+                SpriteMotionController_Show((u8 *)board + 0x58);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
@@ -155,15 +155,15 @@ extern "C" s32 func_ov030_021ff038(void *scene)
         break;
     case 3:
         if ((FIELD(u32, scene, 0x20) & 0x20) != 0) {
-            if (func_02095860((u8 *)board + 0x58,
+            if (SpriteMotionController_BeginHitResponse((u8 *)board + 0x58,
                               (u8 *)scene + 0x30, 0, 4) != 0) {
                 func_02092260(scene, 0xb);
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2bc));
                 func_ov030_021fe954(scene, 0x1fa);
-                func_02091bac((u8 *)scene + 0x340, 2, 0, 0xa8, 0x10);
+                TitleInterpolatedValue_Configure((u8 *)scene + 0x340, 2, 0, 0xa8, 0x10);
                 ++FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
-            } else if (func_02095860((u8 *)board + 0x104,
+            } else if (SpriteMotionController_BeginHitResponse((u8 *)board + 0x104,
                                      (u8 *)scene + 0x30, 0, 4) != 0) {
                 func_02092260(scene, 3);
                 func_ov030_021fda14(scene, data_ov030_021ff778[0],
@@ -182,7 +182,7 @@ extern "C" s32 func_ov030_021ff038(void *scene)
         FIELD(s32, scene, 0x338) = scroll;
         FIELD(s32, board, 0x1c4) = scroll;
         if (func_02091cf0((u8 *)scene + 0x340) != 0) {
-            func_02091bac((u8 *)scene + 0x340, 2, 0xa8, 0, 0x10);
+            TitleInterpolatedValue_Configure((u8 *)scene + 0x340, 2, 0xa8, 0, 0x10);
             func_ov030_021fd434(board);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;

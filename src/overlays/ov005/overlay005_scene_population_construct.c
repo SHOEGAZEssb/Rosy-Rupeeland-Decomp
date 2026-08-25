@@ -25,7 +25,7 @@ extern void AnimationResourceState_Destroy(void *resource);
 extern void *__construct_array(void *array, s32 count, s32 elementSize,
                                void (*constructor)(void *),
                                void (*destructor)(void *));
-extern void func_02091b6c(void *animation);
+extern void TitleInterpolatedValue_Init(void *animation);
 extern void *func_ov005_021fb82c(void *state);
 extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
@@ -34,7 +34,7 @@ extern void AnimationResourceState_ReplaceResources(void *resource, void *manage
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 mode);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *drawObject, s32 mode, s32 x, s32 y,
                           s32 first, s32 second, s32 third);
-extern void func_02091bac(void *animation, s32 mode, s32 value, s32 scale,
+extern void TitleInterpolatedValue_Configure(void *animation, s32 mode, s32 value, s32 scale,
                           s32 duration);
 #ifdef __cplusplus
 }
@@ -83,8 +83,8 @@ func_ov005_021fb86c(Overlay005ScenePopulation *state, void *owner,
     __construct_array((u8 *)state + 0xa4, 3, 0x0c, AnimationResourceState_InitEmbedded,
                       AnimationResourceState_Destroy);
     FIELD(u32, state, 0x10c) = 0;
-    func_02091b6c((u8 *)state + 0x110);
-    func_02091b6c((u8 *)state + 0x12c);
+    TitleInterpolatedValue_Init((u8 *)state + 0x110);
+    TitleInterpolatedValue_Init((u8 *)state + 0x12c);
     func_ov005_021fb82c((u8 *)state + 0x148);
     FIELD(u32, state, 0x10c) = genrand_int32();
     FIELD(void *, state, 0x000) = owner;
@@ -136,7 +136,7 @@ func_ov005_021fb86c(Overlay005ScenePopulation *state, void *owner,
     }
 
     FIELD(s32, state, 0x158) = 0;
-    func_02091bac((u8 *)state + 0x110, 2, 0, 0xa000, 30);
+    TitleInterpolatedValue_Configure((u8 *)state + 0x110, 2, 0, 0xa000, 30);
     return state;
 }
 

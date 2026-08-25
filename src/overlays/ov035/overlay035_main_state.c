@@ -14,7 +14,7 @@ extern void Sound_StopDirectSequence(void *sound, s32 id, s32 value);
 extern void Sound_Play(void *sound, s32 id, s32 parameter);
 extern void func_02091b98(void *state, s32 value);
 extern s32 func_02091c7c(void *state, s32 mode);
-extern s32 func_02091bd0(void *state, s32 first, s32 second, s32 maximum);
+extern s32 TitleInterpolatedValue_Evaluate(void *state, s32 first, s32 second, s32 maximum);
 extern void func_ov035_021fe20c(void *scene, s32 direction);
 extern void func_02091dac(void *state);
 extern void func_020956fc(void *object);
@@ -85,7 +85,7 @@ extern "C" s32 func_ov035_021fe2f8(void *scene)
             break;
         }
         FIELD(u8, FIELD(void *, FIELD(void *, scene, 0xd8), 0x9c), 0x5b) =
-            (u8)func_02091bd0((u8 *)scene + 0xa4, 1, 1, 0x1f);
+            (u8)TitleInterpolatedValue_Evaluate((u8 *)scene + 0xa4, 1, 1, 0x1f);
         func_ov035_021fe20c(scene, FIELD(s32, scene, 0x138));
         func_02091dac((u8 *)scene + 0x138);
         break;

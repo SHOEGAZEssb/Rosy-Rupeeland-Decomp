@@ -4,7 +4,7 @@
 .extern data_ov025_022033b4
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern func_ov025_021fd5dc
 .extern gHeapContext
 .extern Heap_Alloc
@@ -23,7 +23,7 @@ func_ov025_02200794:
     ldr r0, [r5, #0xc]
     bl GraphicsSpriteGroup_Destroy
     add r0, r5, #0x30
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r5
     bl AnimationResourceState_Destroy
     mov r0, r5

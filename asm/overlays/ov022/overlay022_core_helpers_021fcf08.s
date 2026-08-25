@@ -4,7 +4,7 @@
     .extern AnimationResourceState_InitEmbedded
     .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern func_ov022_021fcec8
     .extern gDebugFont
     .extern genrand_int32
@@ -17,9 +17,9 @@ func_ov022_021fcf08:
     add r0, r4, #0x4
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x10
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0x2c
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0x48
     bl func_ov022_021fcec8
     mov r0, #0x0

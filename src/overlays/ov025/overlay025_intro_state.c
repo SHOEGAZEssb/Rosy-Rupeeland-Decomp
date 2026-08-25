@@ -31,7 +31,7 @@ extern void RetailSaveContext_BeginRecordDelete(void *, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void func_020922f0(void *, s32);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void *func_ov025_021fd5dc(void *, s32);
 extern void func_ov025_021ff254(void *, TransitionPair);
@@ -155,7 +155,7 @@ extern "C" s32 func_ov025_022009d8(void *scene)
             void *row = FIELD(void *, entry, 0xe4);
             if (row) {
                 GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
-                func_020927b8((u8 *)row + 0x30);
+                TitleCharacterResourceCollection_Destroy((u8 *)row + 0x30);
                 AnimationResourceState_Destroy(row);
                 Heap_Free(row);
             }

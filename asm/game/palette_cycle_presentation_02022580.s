@@ -13,9 +13,9 @@
 .extern FieldEffect_DestroyBase
 .extern PaletteCyclePresentation_AdvancePalette
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern func_02091b98
-.extern func_02091bd0
+.extern TitleInterpolatedValue_Evaluate
 .extern func_02091c7c
 .extern func_02091d08
 .extern func_02091d24
@@ -40,7 +40,7 @@ PaletteCyclePresentation_Init: ; 0x02022580
     bl func_02091d08
     add r0, r4, #0x28
     add r0, r0, #0x400
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     mov r0, #0x0
     str r0, [r4, #0x444]
     mov r0, #0x1

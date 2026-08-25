@@ -17,7 +17,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteGroup_ReplaceStateResources(void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void PresentationList_DeleteAll(void *);
 extern void func_ov028_021fd1a8(void *);
 extern void func_ov028_021fd790(void *);
@@ -68,7 +68,7 @@ extern "C" void *func_ov028_021fdfa8(void *state)
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     FIELD(const void *, state, 0x264) = data_ov028_021ff29c;
     PresentationList_DeleteAll((u8 *)state + 0x264);
-    func_020927b8((u8 *)state + 0x1fc);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x1fc);
     func_ov028_021fda94((u8 *)state + 0x144);
     func_ov028_021fda94((u8 *)state + 0x98);
     AnimationResourceState_Destroy((u8 *)state + 0x74);

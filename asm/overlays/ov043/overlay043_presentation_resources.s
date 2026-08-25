@@ -2,10 +2,10 @@
 .extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteGroup_CreateStateFromSource
-.extern func_020957f0
+.extern SpriteMotionController_BindSprite
 .extern GraphicsSpriteGroup_Destroy
 .extern AnimationResourceState_ReleaseResources
-.extern func_020958d8
+.extern SpriteMotionController_Update
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern data_020f4e18
 .extern data_020f4e14
@@ -35,7 +35,7 @@ func_ov043_0220bc2c:
     str r2, [sp, #0x0]
     add r0, r4, #0x13c
     mov r3, #0x2
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     ldr r0, [r4, #0x8c]
     add r1, r4, #0x80
     mov r2, #0x1
@@ -46,7 +46,7 @@ func_ov043_0220bc2c:
     add r0, r4, #0x1e8
     mov r2, #0x1
     mov r3, #0x2
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     ldr r0, [r4, #0x8c]
     add r1, r4, #0x80
     mov r2, #0x1
@@ -57,7 +57,7 @@ func_ov043_0220bc2c:
     mov r1, r0
     add r0, r4, #0x90
     mov r3, r2
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
 .L_0220bcec: .word data_020f4e18
@@ -85,11 +85,11 @@ Overlay043_UpdatePresentationResources:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x13c
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x1e8
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x90
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r4, #0x8c]
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}

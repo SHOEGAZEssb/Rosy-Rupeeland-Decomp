@@ -19,7 +19,7 @@ extern void Sound_StopDirectSequence(void *context, s32 id, s32 value);
 extern void Sound_Play(void *context, s32 id, s32 variant);
 extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
-extern void func_02091bac(void *timer, s32 mode, s32 first,
+extern void TitleInterpolatedValue_Configure(void *timer, s32 mode, s32 first,
                           s32 second, s32 duration);
 extern void func_02091d24(void *cursor, s32 first, s32 second,
                           s32 third, s32 fourth);
@@ -103,7 +103,7 @@ extern "C" s32 func_ov036_02200bb0(void *controller)
             func_02095710(FIELD(void *, controller, 0x104));
             func_020956fc(FIELD(void *, controller, 0x108));
             func_020956fc(FIELD(void *, controller, 0xd8));
-            func_02091bac((u8 *)controller + 0xa4, 1, 1, 0x1f, 0x1e);
+            TitleInterpolatedValue_Configure((u8 *)controller + 0xa4, 1, 1, 0x1f, 0x1e);
             Sound_Play(gSoundContext, 0x1af, 0);
             func_ov036_02200b38(controller,
                                 FIELD(void *, controller, 0x108),

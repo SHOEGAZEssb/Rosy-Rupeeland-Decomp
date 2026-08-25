@@ -23,8 +23,8 @@ extern void TitleDisplay_ResetSubBgScroll(void);
 extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void TitleScreenResourceCollection_Init(void *);
-extern void func_020926f8(void *);
-extern void func_02092754(void *, s32);
+extern void TitleScreenResourceCollection_Destroy(void *);
+extern void TitleScreenResourceCollection_Append(void *, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void TitlePalette_SetMainBackdrop(s32);
 extern void TitlePalette_SetSubBackdrop(s32);
@@ -54,7 +54,7 @@ extern "C" void Overlay019_SetupGraphics(void *state)
     TitleScreenResourceCollection_Init(manager);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0xa06d, 0xa06e, 0xa06f);
-    func_02092754(manager, 0xa070);
+    TitleScreenResourceCollection_Append(manager, 0xa070);
     func_020b44e8();
 
     if (FIELD(void *, state, 0x58) == 0) {
@@ -83,6 +83,6 @@ extern "C" void Overlay019_SetupGraphics(void *state)
         GraphicsBgMapResource_UploadToSubBg(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
         TitlePalette_SetSubBackdrop(0);
     }
-    func_020926f8(manager);
+    TitleScreenResourceCollection_Destroy(manager);
     GraphicsResourceSet_Destroy(resources);
 }

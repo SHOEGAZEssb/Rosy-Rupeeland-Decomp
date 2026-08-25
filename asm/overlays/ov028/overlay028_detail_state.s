@@ -22,9 +22,9 @@
 .extern PresentationScalar_TransitionTo
 .extern SpritePresentation_Show
 .extern SpritePresentation_Hide
-.extern func_02095860
-.extern func_02095928
-.extern func_02095940
+.extern SpriteMotionController_BeginHitResponse
+.extern SpriteMotionController_Show
+.extern SpriteMotionController_Hide
 .extern func_ov028_021fce28
 .extern func_ov028_021fd274
 .extern func_ov028_021fd2c4
@@ -86,7 +86,7 @@ L_021fec44:
     ldrh r1, [r2, #0x24]
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_02095940
+    bl SpriteMotionController_Hide
     mov r0, #0x1d
     str r0, [r4, #0x48]
     ldr r0, [r4, #0x220]
@@ -220,7 +220,7 @@ L_021fee54:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021fee8c
     mov r0, r4
@@ -349,7 +349,7 @@ L_021fefd4:
     mov r0, r4
     bl func_ov028_021fe6bc
     add r0, r4, #0x98
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r4, #0x280
     bl func_ov028_021fce28
     mov r0, #0x1e

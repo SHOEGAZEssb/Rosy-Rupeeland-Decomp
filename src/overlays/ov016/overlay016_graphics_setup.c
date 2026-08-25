@@ -27,8 +27,8 @@ extern void TitleDisplay_ResetSubBgScroll(void);
 extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void TitleScreenResourceCollection_Init(void *);
-extern void func_020926f8(void *);
-extern void func_02092754(void *, s32);
+extern void TitleScreenResourceCollection_Destroy(void *);
+extern void TitleScreenResourceCollection_Append(void *, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020b44e8(void);
@@ -85,8 +85,8 @@ extern "C" void func_ov016_021fedc4(void *state)
     func_020b44e8();
     GraphicsResourceSet_Apply(&resources, 3, 0x100);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8012, 0x8013, 0x8018);
-    func_02092754(&manager, FIELD(s32, state, 0x54) == 2 ? 0x801e : 0x8014);
-    func_02092754(&manager, 0x8015);
+    TitleScreenResourceCollection_Append(&manager, FIELD(s32, state, 0x54) == 2 ? 0x801e : 0x8014);
+    TitleScreenResourceCollection_Append(&manager, 0x8015);
     func_020b44e8();
     GraphicsResourceSet_Apply(&resources, 2, 0);
     handle = TitleScreenResourceCollection_Get(&manager, 0);
@@ -106,6 +106,6 @@ extern "C" void func_ov016_021fedc4(void *state)
     FIELD(u16, mainFont, 0xc) = FIELD(u16, mainFont, 0x1e);
     func_020afd0c((void *)0x04001050, 0, 0xc, 8, 8);
 
-    func_020926f8(&manager);
+    TitleScreenResourceCollection_Destroy(&manager);
     GraphicsResourceSet_Destroy(&resources);
 }

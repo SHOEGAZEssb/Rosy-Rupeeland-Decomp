@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void func_02092314(void *, s32, s32);
-extern void func_020929f4(void *);
+extern void TitleScrollValue_Advance(void *);
 extern void GraphicsAffineScanlineWave_Apply(void *, s32);
 #ifdef __cplusplus
 }
@@ -46,7 +46,7 @@ extern "C" s32 func_ov025_02202b88(void *scene)
         if (!FIELD(void *, scene, 0x598))
             *(volatile u32 *)0x0400001c = 0;
         else
-            func_020929f4((u8 *)scene + 0x5a0);
+            TitleScrollValue_Advance((u8 *)scene + 0x5a0);
     }
     return 0;
 }

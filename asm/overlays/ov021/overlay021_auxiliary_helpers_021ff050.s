@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_auxiliary_helpers.c. */
-    .extern func_02095820
+    .extern SpriteMotionController_SetPosition
 
 .global func_ov021_021ff050
 func_ov021_021ff050:
@@ -23,7 +23,7 @@ L_021ff07c:
     mla r0, r4, r6, r9
     mov r1, r8
     add r2, r2, #0x40
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
 L_021ff09c:
     add r4, r4, #0x1
     cmp r4, #0x2
@@ -34,7 +34,7 @@ L_021ff09c:
     mla r0, r1, r0, r2
     mov r1, #0x80
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
     .size func_ov021_021ff050, . - func_ov021_021ff050
 

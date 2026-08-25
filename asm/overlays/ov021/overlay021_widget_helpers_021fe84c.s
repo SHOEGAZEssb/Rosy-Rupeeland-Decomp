@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_widget_helpers.c. */
-    .extern func_02095988
+    .extern SpriteMotionController_SetAnimation
 
 .global func_ov021_021fe84c
 func_ov021_021fe84c:
@@ -18,13 +18,13 @@ L_021fe864:
     mla r0, r4, r7, r8
     mov r1, r4, lsl #0x1
     add r1, r1, #0x16
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     b L_021fe898
 L_021fe888:
     mla r0, r4, r6, r8
     mov r1, r4, lsl #0x1
     add r1, r1, #0x17
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
 L_021fe898:
     add r4, r4, #0x1
     cmp r4, #0x2

@@ -22,7 +22,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -138,8 +138,8 @@ extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
         FIELD(s32, widget, 0x74) = 0;
         GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, widget, 0x10), 0, 0, 0, 1, 16, 0);
     }
-    func_02092814((u8 *)widget + 0x30, 0x7001);
-    func_02092814((u8 *)widget + 0x30, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)widget + 0x30, 0x7001);
+    TitleCharacterResourceCollection_Append((u8 *)widget + 0x30, 0x7005);
     GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, widget, 0xc));
     return widget;
 }

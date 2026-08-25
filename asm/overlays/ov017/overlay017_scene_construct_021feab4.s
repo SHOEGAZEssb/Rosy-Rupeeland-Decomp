@@ -42,17 +42,17 @@
     .extern GraphicsBankStateSnapshot_Init
     .extern GraphicsBankStateSnapshot_Capture
     .extern TitleScreenResourceCollection_Init
-    .extern func_02092754
+    .extern TitleScreenResourceCollection_Append
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern Presentation_SetPosition
     .extern SpritePresentation_Init
     .extern SpritePresentation_Hide
     .extern SpritePresentation_SyncPosition
-    .extern func_020957bc
-    .extern func_020957f0
-    .extern func_02095820
-    .extern func_02095940
+    .extern SpriteMotionController_Init
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
+    .extern SpriteMotionController_Hide
     .extern func_020ae778
     .extern func_020ae7b0
     .extern func_ov017_021fce00
@@ -92,9 +92,9 @@ func_ov017_021feab4:
     add r0, r10, #0x74
     bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x80
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r10, #0x12c
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r10, #0x1d8
     bl TitleCharacterResourceCollection_Init
     add r0, r10, #0x1fc
@@ -159,7 +159,7 @@ L_021febe8:
     str r0, [r10, #0x244]
     ldr r1, L_021ff100
     add r0, r10, #0x1d8
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0xf
     str r0, [sp, #0x0]
     ldr r1, L_021ff104
@@ -197,10 +197,10 @@ L_021febe8:
     bl Graphics3DResourceOwner_PrepareResources
     ldr r1, L_021ff10c
     add r0, r10, #0x1fc
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     ldr r1, L_021ff110
     add r0, r10, #0x1fc
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     ldr r0, L_021ff0f0
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup
@@ -214,13 +214,13 @@ L_021febe8:
     add r0, r10, #0x12c
     mov r2, #0x5
     mov r3, #0x2
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0x12c
     mov r1, #0x50
     mov r2, #0xa0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, #0x12c
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r10, #0x58]
     add r1, r10, #0x5c
     mov r2, #0x1
@@ -231,13 +231,13 @@ L_021febe8:
     add r0, r10, #0x80
     mov r2, #0x3
     mov r3, #0x2
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0x80
     mov r1, #0xb0
     mov r2, #0xa0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, #0x80
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r1, L_021ff114
     ldr r3, L_021ff0fc
     mov r0, #0xa0

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov038/overlay038_selection_update.c for documented portable C. */
 
-    .extern func_020958d8
+    .extern SpriteMotionController_Update
     .extern InventoryScroll_UpdatePresentation
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_ov046_0220c1a4
@@ -24,7 +24,7 @@ func_ov038_021fd37c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x64
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r4, #0x314]
     cmp r0, #0x0
     beq L_021fd39c

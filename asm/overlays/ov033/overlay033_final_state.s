@@ -13,7 +13,7 @@
     .extern func_02091c7c
     .extern Sound_LoadGroup
     .extern Sound_PlayDirectSequence
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_02091cf0
     .extern func_ov033_021fce04
     .extern GraphicsSpriteGroup_ReplaceStateResources
@@ -104,7 +104,7 @@ L_021fda6c:
     mov r2, #0x0
     mov r3, #0x800
     str r4, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     add r0, r5, #0x68
     mov r1, #0x14
     bl func_02091b98
@@ -170,7 +170,7 @@ L_021fdba4:
     add r0, r5, #0x84
     sub r3, r2, #0xa0
     mov r1, #0x5
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r0, [r5, #0xd0]
     add r0, r0, #0x1
     str r0, [r5, #0xd0]

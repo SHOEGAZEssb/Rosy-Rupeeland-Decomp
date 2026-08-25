@@ -22,7 +22,7 @@ extern s32 Presentation_InterpolateEaseOutQuadratic(s32 start, s32 end, s32 dura
 extern s32 Presentation_InterpolateEaseInQuadratic(s32 start, s32 end, s32 duration, s32 elapsed);
 
 /* Construct a stopped interpolator with the retail virtual table. */
-void *func_02091b6c(TitleInterpolatedValue *value)
+void *TitleInterpolatedValue_Init(TitleInterpolatedValue *value)
 {
     value->vtable = data_020f2580;
     value->mode = 0;
@@ -43,7 +43,7 @@ void func_02091b98(TitleInterpolatedValue *value, s32 duration)
 }
 
 /* Configure a new interpolation and reset its elapsed tick count. */
-void func_02091bac(TitleInterpolatedValue *value, s32 mode, s32 start,
+void TitleInterpolatedValue_Configure(TitleInterpolatedValue *value, s32 mode, s32 start,
                    s32 end, s32 duration)
 {
     value->mode = mode;
@@ -55,7 +55,7 @@ void func_02091bac(TitleInterpolatedValue *value, s32 mode, s32 start,
 }
 
 /* Evaluate one interpolation mode using the object's timing state. */
-s32 func_02091bd0(TitleInterpolatedValue *value, s32 mode, s32 start, s32 end)
+s32 TitleInterpolatedValue_Evaluate(TitleInterpolatedValue *value, s32 mode, s32 start, s32 end)
 {
     switch (mode) {
     case 1:

@@ -15,14 +15,14 @@
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern SceneInputBase_Init
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
-    .extern func_020957bc
-    .extern func_020957f0
-    .extern func_02095820
-    .extern func_02095940
+    .extern TitleCharacterResourceCollection_Append
+    .extern SpriteMotionController_Init
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
+    .extern SpriteMotionController_Hide
     .extern func_020b4554
     .extern func_ov000_021fb6e0
     .extern func_ov018_021fcf00
@@ -59,15 +59,15 @@ func_ov018_021fcf68:
     add r0, r4, #0xb8
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xd8
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x1a8
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0x3cc
     bl func_ov018_021fcf00
     mov r0, #0x0
     str r0, [r4, #0x3dc]
     add r0, r4, #0x3e0
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     ldr r0, L_021fd320
     ldr r1, L_021fd324
     ldr r0, [r0, #0x0]
@@ -208,16 +208,16 @@ L_021fd06c:
     add r0, r4, #0xd8
     mov r2, #0x6
     str r3, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0xd8
     mov r1, #0xe8
     mov r2, #0xb4
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0xd8
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r1, L_021fd364
     add r0, r4, #0x70
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r4
     bl func_ov018_021fd740
     mov r0, r4

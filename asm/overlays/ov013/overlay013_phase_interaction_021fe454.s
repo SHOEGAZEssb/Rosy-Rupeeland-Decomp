@@ -4,13 +4,13 @@
     .extern data_ov013_021fed18
     .extern data_ov013_021fed20
     .extern data_ov013_021fed28
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
     .extern SceneInputBase_Update
     .extern func_02092260
     .extern GraphicsSpriteState_TestTouchPoint
-    .extern func_02095988
+    .extern SpriteMotionController_SetAnimation
     .extern func_02095dd4
     .extern func_ov013_021fce04
     .extern func_ov013_021fda9c
@@ -168,7 +168,7 @@ L_021fe624:
     add r0, r0, #0x800
     sub r3, r2, #0x100
     mov r1, #0x2
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -216,7 +216,7 @@ L_021fe6c0:
     mla r0, r5, r1, r0
     ldr r2, L_021fe878
     ldr r1, [r2, r3]
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     ldr r2, [r4, #0x94c]
     mov r0, #0x0
     ldrh r1, [r2, #0x24]
@@ -231,7 +231,7 @@ L_021fe738:
     ldr r2, L_021fe878
     ldr r1, [r2, r3]
     add r1, r1, #0x1
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     b L_021fe85c
 L_021fe754:
     ldr r0, [r4, #0x938]
@@ -248,7 +248,7 @@ L_021fe754:
     add r0, r0, #0x800
     blt L_021fe7b0
     mov r1, #0x0
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     ldr r2, [r4, #0x94c]
     mov r0, #0x0
     ldrh r1, [r2, #0x24]
@@ -259,7 +259,7 @@ L_021fe754:
     b L_021fe85c
 L_021fe7b0:
     mov r1, #0x1
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     b L_021fe85c
 L_021fe7bc:
     ldr r1, [r4, #0x96c]

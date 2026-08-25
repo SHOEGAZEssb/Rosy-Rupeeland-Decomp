@@ -6,9 +6,9 @@
     .extern func_02091b98
     .extern func_02091c7c
     .extern Sound_Play
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern Presentation_SetScript
-    .extern func_02091bd0
+    .extern TitleInterpolatedValue_Evaluate
     .extern func_ov036_021ff778
     .extern Presentation_InterpolateScalar
     .extern func_ov036_021ff7cc
@@ -83,7 +83,7 @@ L_021ffa40:
     mov r1, #0x1
     mov r2, #0x30
     mov r3, #0x40
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r0, [r4, #0xd8]
     ldr r1, L_021ffee8
     mov r2, #0x1
@@ -97,13 +97,13 @@ L_021ffaa4:
     mov r1, #0x2
     mov r2, #0x3c00
     mov r3, #0x1400
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     str r0, [r4, #0x14]
     add r0, r4, #0xa4
     mov r1, #0x2
     mov r2, #0x1400
     mov r3, #0x2800
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     str r0, [r4, #0x18]
     b L_021ffecc
 L_021ffad8:
@@ -166,7 +166,7 @@ L_021ffb4c:
     mov r1, #0x3
     mov r2, #0x0
     mov r3, #0x40
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]

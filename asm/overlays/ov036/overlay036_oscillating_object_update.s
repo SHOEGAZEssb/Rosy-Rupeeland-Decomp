@@ -8,9 +8,9 @@
     .extern func_02091c7c
     .extern GraphicsAnimationInstance_SetAnimation
     .extern Sound_Play
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_ov036_02201d60
-    .extern func_02091bd0
+    .extern TitleInterpolatedValue_Evaluate
     .extern func_02091cf0
     .extern gFx32CosSinTable
     .extern gSoundContext
@@ -155,7 +155,7 @@ L_02202000:
     add r0, r4, #0xd8
     mov r1, #0x1
     mov r3, r1
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r0, [r4, #0xd0]
     add r0, r0, #0x1
     str r0, [r4, #0xd0]
@@ -171,7 +171,7 @@ L_02202070:
     add r0, r4, #0xd8
     mov r1, #0x1
     mov r2, #0x400
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r1, r0
     add r0, r4, #0x6c
     bl PresentationScalar_SetImmediate

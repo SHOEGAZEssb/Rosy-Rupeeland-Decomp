@@ -5,8 +5,8 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern RecordDescriptor_GetMessage
-.extern func_02091bac
-.extern func_02091bd0
+.extern TitleInterpolatedValue_Configure
+.extern TitleInterpolatedValue_Evaluate
 .extern func_02091c7c
 .extern func_02091cf0
 .extern DisplayBrightness_StartMaskedTransitions
@@ -43,7 +43,7 @@ L_021ff938:
     add r0, r0, #0x400
     sub r2, r1, #0x84
     mov r3, #0x0
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -62,7 +62,7 @@ L_021ff978:
     mov r1, #0x1
     mov r2, #0x200
     mov r3, #0x180
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r1, r0
     ldr r0, [r4, #0x4bc]
     bl Overlay045Graphics_SetUniformValue
@@ -106,7 +106,7 @@ L_021ffa14:
     add r0, r0, #0x400
     sub r3, r2, #0x80
     mov r1, #0x5
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -126,7 +126,7 @@ L_021ffa70:
     mov r1, #0x1
     mov r2, #0x180
     mov r3, #0x200
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r1, r0
     ldr r0, [r4, #0x4bc]
     bl Overlay045Graphics_SetUniformValue

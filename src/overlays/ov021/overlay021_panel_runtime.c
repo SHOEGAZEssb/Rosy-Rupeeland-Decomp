@@ -23,7 +23,7 @@ extern void func_0206563c(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
-extern void func_020958d8(void *);
+extern void SpriteMotionController_Update(void *);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(const void *, s32, s32);
 extern void *func_ov000_021fbcc4(void *, void *);
@@ -172,10 +172,10 @@ extern "C" void func_ov021_021feb60(void *state)
 extern "C" void func_ov021_021feea4(void *state)
 {
     GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
-    func_020958d8((u8 *)state + 0xa0);
+    SpriteMotionController_Update((u8 *)state + 0xa0);
     s32 i;
     for (i = 0; i < 2; i++)
-        func_020958d8((u8 *)state + 0x14c + i * 0xac);
+        SpriteMotionController_Update((u8 *)state + 0x14c + i * 0xac);
 
     void *list = FIELD(void *, state, 0x2c0);
     if (list != 0) {

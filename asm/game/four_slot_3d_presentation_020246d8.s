@@ -7,7 +7,7 @@
 .extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern FourSlot3DPresentation_DrawSegmentQuad
-.extern func_02091bac
+.extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_020b0a54
 .extern gGameWork
@@ -71,7 +71,7 @@ FourSlot3DPresentation_Update: ; 0x020246d8
     add r3, r4, r3, lsr #0x18
     mov r2, r1
     mov r3, r3, asr #0x8
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
 .L_020247b0:
     add r8, r8, #0x1
     cmp r8, #0x4

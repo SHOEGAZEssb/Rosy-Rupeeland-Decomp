@@ -8,7 +8,7 @@
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern TitleCharacterResourceCollection_Init
-.extern func_02092814
+.extern TitleCharacterResourceCollection_Append
 
     .global AreaInfoPanelPresentation_Init
     .type AreaInfoPanelPresentation_Init, @function
@@ -26,10 +26,10 @@ AreaInfoPanelPresentation_Init: ; 0x02027fe8
     str r0, [r5, #0x34]
     mov r0, r5
     ldr r1, .L_020280c8
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r5
     ldr r1, .L_020280cc
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r3, .L_020280d0
     add r0, r5, #0x24
     str r3, [sp, #0x0]

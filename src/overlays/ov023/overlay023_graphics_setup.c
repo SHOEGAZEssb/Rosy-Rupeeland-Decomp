@@ -27,7 +27,7 @@ extern void TitleDisplay_ResetMainBgScroll(void);
 extern void TitleDisplay_ResetSubBgScroll(void);
 extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
-extern void func_020929f4(void *);
+extern void TitleScrollValue_Advance(void *);
 extern void GraphicsAffineScanlineWave_Apply(void *, s32);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(void *, s32, s32);
@@ -50,7 +50,7 @@ extern "C" s32 func_ov023_021fe0e0(void *scene)
                         (FIELD(u32, scene, 0x48) << 8);
         *sub_dispcnt = (*sub_dispcnt & ~0x1f00u) |
                        (FIELD(u32, scene, 0x4c) << 8);
-        func_020929f4((u8 *)scene + 0x4c4);
+        TitleScrollValue_Advance((u8 *)scene + 0x4c4);
     }
     return 0;
 }

@@ -22,7 +22,7 @@ extern void GraphicsSpriteRenderer_SetTextGridObjectMode(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_ov030_021fcf18(void *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -74,7 +74,7 @@ static void teardown_main_scene(void *scene)
     AnimationResourceState_Destroy((u8 *)scene + 0x94);
     AnimationResourceState_Destroy((u8 *)scene + 0x88);
     AnimationResourceState_Destroy((u8 *)scene + 0x7c);
-    func_020927b8((u8 *)scene + 0x54);
+    TitleCharacterResourceCollection_Destroy((u8 *)scene + 0x54);
 }
 
 /*

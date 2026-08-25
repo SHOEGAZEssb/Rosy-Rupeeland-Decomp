@@ -15,10 +15,10 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02091e0c
-.extern func_020957bc
-.extern func_020957f0
-.extern func_02095820
-.extern func_02095940
+.extern SpriteMotionController_Init
+.extern SpriteMotionController_BindSprite
+.extern SpriteMotionController_SetPosition
+.extern SpriteMotionController_Hide
 .extern func_ov030_021fd260
 .extern func_ov030_021fd434
 
@@ -38,9 +38,9 @@ func_ov030_021fcf20:
     add r0, r10, #0x1c
     bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x58
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r10, #0x104
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r10, #0x1b8
     bl func_ov030_021fd260
     add r0, r10, #0x1d0
@@ -205,13 +205,13 @@ L_021fd178:
     add r0, r10, #0x58
     mov r2, #0x4
     str r3, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0x58
     mov r1, #0x80
     mov r2, #0xb0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, #0x58
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r10, #0x2c]
     add r1, r10, #0x10
     mov r2, #0x1
@@ -221,13 +221,13 @@ L_021fd178:
     str r3, [sp, #0x0]
     add r0, r10, #0x104
     mov r2, #0x6
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0x104
     mov r1, #0xe4
     mov r2, #0xb0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, #0x104
-    bl func_02095940
+    bl SpriteMotionController_Hide
     mov r0, r10
     bl func_ov030_021fd434
     mov r0, r10

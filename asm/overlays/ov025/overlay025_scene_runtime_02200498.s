@@ -2,9 +2,9 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_scene_runtime.c. */
 .extern data_ov025_02202ccc
-.extern func_02095820
-.extern func_02095928
-.extern func_02095988
+.extern SpriteMotionController_SetPosition
+.extern SpriteMotionController_Show
+.extern SpriteMotionController_SetAnimation
 
 
     .global func_ov025_02200498
@@ -37,13 +37,13 @@ L_022004e8:
     mov r2, r0, lsl #0x10
     add r0, r6, r5
     mov r2, r2, asr #0x10
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     mov r1, r7, lsl #0x1
     add r0, r6, r5
     add r1, r1, #0x20
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     add r0, r6, r5
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r7, r7, #0x1
     cmp r7, #0x3
     blt L_022004e8

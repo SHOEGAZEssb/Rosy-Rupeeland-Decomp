@@ -3,9 +3,9 @@
 /* Exact fallback; see src/overlays/ov016/overlay016_scene_sprites.c. */
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_020957f0
-    .extern func_02095820
-    .extern func_02095940
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
+    .extern SpriteMotionController_Hide
 .global Overlay016_CreateSceneSprite
 Overlay016_CreateSceneSprite:
     stmdb sp!, {r3, r4, lr}
@@ -35,11 +35,11 @@ Overlay016_CreateSceneSprite:
     add r0, r4, #0xe8
     mov r2, #0x7
     mov r3, #0x2
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0xe8
     mov r1, #0x80
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, [r4, #0x54]
     cmp r0, #0x0
     bne L_021ff4a0
@@ -49,7 +49,7 @@ Overlay016_CreateSceneSprite:
     bne L_021ff4a8
 L_021ff4a0:
     add r0, r4, #0xe8
-    bl func_02095940
+    bl SpriteMotionController_Hide
 L_021ff4a8:
     ldr r0, [r4, #0xe0]
     add r1, r4, #0xc8
@@ -61,11 +61,11 @@ L_021ff4a8:
     mov r2, #0x9
     mov r3, #0x2
     str ip, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x194
     mov r1, #0xe8
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}
     .size Overlay016_CreateSceneSprite, . - Overlay016_CreateSceneSprite

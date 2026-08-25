@@ -1,8 +1,8 @@
 .text
 
 /* Exact fallback; see src/overlays/ov022/overlay022_ui_runtime.c. */
-.extern func_02095940
-.extern func_02095988
+.extern SpriteMotionController_Hide
+.extern SpriteMotionController_SetAnimation
 .extern GameWork_TestFlag
 .extern gGameWork
 
@@ -16,11 +16,11 @@ func_ov022_021fef48:
     add r0, r4, #0x154
     beq L_021fef6c
     mov r1, #0x0
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     b L_021fef74
 L_021fef6c:
     mov r1, #0x1
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
 L_021fef74:
     ldr r0, L_021fefd8
     ldr r1, L_021fefdc
@@ -32,7 +32,7 @@ L_021fef74:
     cmp r0, #0x0
     beq L_021fefa4
     add r0, r4, #0x200
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldmia sp!, {r4, pc}
 L_021fefa4:
     ldr r0, [r4, #0x2b8]
@@ -40,15 +40,15 @@ L_021fefa4:
     add r0, r4, #0x200
     beq L_021fefc0
     mov r1, #0x2
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     ldmia sp!, {r4, pc}
 L_021fefc0:
     mov r1, #0x3
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     ldmia sp!, {r4, pc}
 L_021fefcc:
     add r0, r4, #0x200
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldmia sp!, {r4, pc}
 L_021fefd8: .word gGameWork
 L_021fefdc: .word 0x3cb

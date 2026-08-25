@@ -13,9 +13,9 @@ extern void *data_020f4e18;
 extern void AnimationResourceState_InitEmbedded(void *state);
 extern void AnimationResourceState_ReplaceResources(void *state, void *resource, s32 first,
                           s32 second, s32 third);
-extern void func_020957bc(void *state);
+extern void SpriteMotionController_Init(void *state);
 extern void TitleCharacterResourceCollection_Init(void *state);
-extern void func_02092814(void *state, u32 value);
+extern void TitleCharacterResourceCollection_Append(void *state, u32 value);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *TitleDialog_Init(void *storage, void *owner, void *value);
 extern void func_02091080(void *state, void *first, void *second,
@@ -28,10 +28,10 @@ extern void *ModalMessageDatabase_BuildDescriptorById(void *manager,
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group,
                                                        void *source,
                                                        s32 mode);
-extern void func_020957f0(void *state, void *sprite, s32 animation,
+extern void SpriteMotionController_BindSprite(void *state, void *sprite, s32 animation,
                           s32 mode, s32 flags);
-extern void func_02095820(void *state, s32 x, s32 y);
-extern void func_020958d8(void *state);
+extern void SpriteMotionController_SetPosition(void *state, s32 x, s32 y);
+extern void SpriteMotionController_Update(void *state);
 extern void func_02095bec(void *state);
 extern void func_02075598(void *owner, void *resource);
 extern void GraphicsSpriteRenderer_DrawText(void *owner, void *text,
@@ -41,12 +41,12 @@ extern void TitleDialog_SetText(void *state, void *text, s32 mode);
 extern s32 TitleDialog_UpdateTextPage(void *state, s32 mode);
 extern void func_02076428(void *owner, s32 left, s32 top, s32 right,
                           s32 bottom, s32 first, s32 second);
-extern s32 func_02095860(void *state, void *input, s32 first, s32 second);
+extern s32 SpriteMotionController_BeginHitResponse(void *state, void *input, s32 first, s32 second);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 channel, s32 sound_id);
 extern void GraphicsSpriteGroup_Destroy(void *group);
-extern void func_020927b8(void *state);
+extern void TitleCharacterResourceCollection_Destroy(void *state);
 extern void AnimationResourceState_Destroy(void *state);
 extern void Presentation_DestroyNoOp(void *state);
 
@@ -84,20 +84,20 @@ void ModalState_InitResources(void *state, s32 message_id)
     if (layout == 0) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(
             *(void **)(self + 4), self + 8, 1);
-        func_020957f0(self + 0x14, sprite, 0, 0, 0);
-        func_02095820(self + 0x14, 0x80, 0x80);
+        SpriteMotionController_BindSprite(self + 0x14, sprite, 0, 0, 0);
+        SpriteMotionController_SetPosition(self + 0x14, 0x80, 0x80);
     } else if (layout == 1) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(
             *(void **)(self + 4), self + 8, 1);
-        func_020957f0(self + 0xc0, sprite, 2, 0, 0);
-        func_02095820(self + 0xc0, 0x60, 0x80);
+        SpriteMotionController_BindSprite(self + 0xc0, sprite, 2, 0, 0);
+        SpriteMotionController_SetPosition(self + 0xc0, 0x60, 0x80);
         sprite = GraphicsSpriteGroup_CreateStateFromSource(
             *(void **)(self + 4), self + 8, 1);
-        func_020957f0(self + 0x16c, sprite, 4, 0, 0);
-        func_02095820(self + 0x16c, 0xa0, 0x80);
+        SpriteMotionController_BindSprite(self + 0x16c, sprite, 4, 0, 0);
+        SpriteMotionController_SetPosition(self + 0x16c, 0xa0, 0x80);
     }
     for (index = 0; index < 3; ++index)
-        func_020958d8(self + 0x14 + index * 0xac);
+        SpriteMotionController_Update(self + 0x14 + index * 0xac);
     func_02095bec(self);
     if (gSystemState[0x5f] == 3)
         func_02075598(data_020f4e14, *(void **)(self + 0x228));
@@ -148,7 +148,7 @@ s32 func_02095dd4(void *state, void *input, s32 input_enabled)
             for (index = 0; index < 3; ++index) {
                 u8 *choice = self + 0x14 + index * 0xac;
                 if (*(void **)(self + 0xb0 + index * 0xac) != 0 &&
-                    func_02095860(choice, input, 0, 4) != 0) {
+                    SpriteMotionController_BeginHitResponse(choice, input, 0, 4) != 0) {
                     *(u32 *)(self + 0x224) = index;
                     Sound_Play(gSoundContext, 0, 2);
                     ++*(u32 *)(self + 0x220);
@@ -170,7 +170,7 @@ s32 func_02095dd4(void *state, void *input, s32 input_enabled)
         break;
     }
     for (index = 0; index < 3; ++index)
-        func_020958d8(self + 0x14 + index * 0xac);
+        SpriteMotionController_Update(self + 0x14 + index * 0xac);
     GraphicsSpriteGroup_AdvanceAnimations(*(void **)(self + 4));
     return result;
 }
@@ -186,7 +186,7 @@ static void ModalDestroyOwnedState(u8 *self)
         vtable[1](dialog);
     }
     GraphicsSpriteGroup_Destroy(*(void **)(self + 4));
-    func_020927b8(self + 0x228);
+    TitleCharacterResourceCollection_Destroy(self + 0x228);
     for (index = 0; index < 3; ++index)
         Presentation_DestroyNoOp(self + 0x14 + index * 0xac);
     AnimationResourceState_Destroy(self + 8);
@@ -216,7 +216,7 @@ void *func_020959d4(void *storage, s32 first, s32 second)
     *(void **)self = data_020f2754;
     AnimationResourceState_InitEmbedded(self + 8);
     for (index = 0; index < 3; ++index)
-        func_020957bc(self + 0x14 + index * 0xac);
+        SpriteMotionController_Init(self + 0x14 + index * 0xac);
     TitleCharacterResourceCollection_Init(self + 0x228);
     *(s32 *)(self + 0x218) = first;
     *(s32 *)(self + 0x21c) = second;
@@ -228,8 +228,8 @@ void *func_020959d4(void *storage, s32 first, s32 second)
     *(void **)(self + 4) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     *(s32 *)((u8 *)*(void **)(self + 4) + 0x18) = first;
     *(s32 *)((u8 *)*(void **)(self + 4) + 0x1c) = second;
-    func_02092814(self + 0x228, 0x7000);
-    func_02092814(self + 0x228, 0x7001);
+    TitleCharacterResourceCollection_Append(self + 0x228, 0x7000);
+    TitleCharacterResourceCollection_Append(self + 0x228, 0x7001);
 
     dialog = Heap_Alloc(0xec, data_020f276c, 4, &gHeapContext);
     if (dialog != 0)

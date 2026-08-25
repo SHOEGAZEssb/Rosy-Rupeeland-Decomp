@@ -15,7 +15,7 @@ extern void func_ov035_021fd5ac(void *list);
 extern s32 func_02091c7c(void *state, s32 value);
 extern void func_02091b98(void *state, s32 duration);
 extern void func_02091dac(void *state);
-extern s32 func_02091bd0(void *state, s32 mode, s32 start, s32 end);
+extern s32 TitleInterpolatedValue_Evaluate(void *state, s32 mode, s32 start, s32 end);
 extern void func_ov035_02200ec0(void *scene, s32 red, s32 green, s32 blue);
 #ifdef __cplusplus
 }
@@ -55,27 +55,27 @@ extern "C" void func_ov035_02201000(void *scene)
         switch (FIELD(s32, scene, 0x154)) {
         case 0:
             red = 0x1f;
-            blue = func_02091bd0((u8 *)scene + 0xa4, 1, 0x1f, 0);
+            blue = TitleInterpolatedValue_Evaluate((u8 *)scene + 0xa4, 1, 0x1f, 0);
             break;
         case 1:
-            green = func_02091bd0((u8 *)scene + 0xa4, 1, 0, 0x1f);
+            green = TitleInterpolatedValue_Evaluate((u8 *)scene + 0xa4, 1, 0, 0x1f);
             blue = 0x1f;
             break;
         case 2:
-            red = func_02091bd0((u8 *)scene + 0xa4, 1, 0x1f, 0);
+            red = TitleInterpolatedValue_Evaluate((u8 *)scene + 0xa4, 1, 0x1f, 0);
             green = 0x1f;
             break;
         case 3:
             green = 0x1f;
-            blue = func_02091bd0((u8 *)scene + 0xa4, 1, 0, 0x1f);
+            blue = TitleInterpolatedValue_Evaluate((u8 *)scene + 0xa4, 1, 0, 0x1f);
             break;
         case 4:
             red = 0x1f;
-            green = func_02091bd0((u8 *)scene + 0xa4, 1, 0, 0x1f);
+            green = TitleInterpolatedValue_Evaluate((u8 *)scene + 0xa4, 1, 0, 0x1f);
             blue = 0x1f;
             break;
         case 5:
-            red = func_02091bd0((u8 *)scene + 0xa4, 1, 0, 0x1f);
+            red = TitleInterpolatedValue_Evaluate((u8 *)scene + 0xa4, 1, 0, 0x1f);
             blue = 0x1f;
             break;
         }

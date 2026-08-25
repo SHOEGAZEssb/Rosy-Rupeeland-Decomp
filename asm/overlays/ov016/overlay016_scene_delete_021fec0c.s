@@ -5,8 +5,8 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
-    .extern func_020926f8
-    .extern func_020927b8
+    .extern TitleScreenResourceCollection_Destroy
+    .extern TitleCharacterResourceCollection_Destroy
     .extern func_ov000_021fb848
     .extern func_ov016_021fd06c
     .extern func_ov016_021fd97c
@@ -106,9 +106,9 @@ L_021fece0:
     add r0, r4, #0xc8
     bl AnimationResourceState_Destroy
     add r0, r4, #0x84
-    bl func_020926f8
+    bl TitleScreenResourceCollection_Destroy
     add r0, r4, #0x60
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

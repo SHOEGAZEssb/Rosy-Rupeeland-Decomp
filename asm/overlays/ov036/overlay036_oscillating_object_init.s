@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_oscillating_object_lifecycle.c for documented portable C. */
 
     .extern func_ov036_021fcec4
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern PresentationScalar_SetImmediate
     .extern func_ov036_02201d60
     .extern data_ov036_0220600c
@@ -20,7 +20,7 @@ func_ov036_02201d70:
     ldr r1, L_02201de8
     add r0, r4, #0xd8
     str r1, [r4, #0x0]
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     ldr r1, [sp, #0x10]
     mov r0, #0x0
     str r1, [r4, #0xc8]

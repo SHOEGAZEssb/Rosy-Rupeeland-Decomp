@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02091bd0(void *timer, s32 mode, s32 target, s32 parameter);
+extern s32 TitleInterpolatedValue_Evaluate(void *timer, s32 mode, s32 target, s32 parameter);
 extern void func_ov036_021fd128(s32, s32, s32, s32, s32, s32);
 extern void func_ov036_021fd660(s16 first, u16 second, u16 third);
 extern void func_ov036_021fdef0(s32, s32, s32, s32,
@@ -52,7 +52,7 @@ extern "C" void func_ov036_021fdd4c(void *list)
         s16 nextSecondX = FIELD(s16, record, 0xc);
         s16 nextSecondY = FIELD(s16, record, 0x10);
         s16 nextZ = FIELD(s16, record, 0x14);
-        s32 timerValue = func_02091bd0((u8 *)record + 0x18, 1, 0x1f, 1);
+        s32 timerValue = TitleInterpolatedValue_Evaluate((u8 *)record + 0x18, 1, 0x1f, 1);
 
         func_ov036_021fd128(0, 0, 3, 0x11, timerValue, 0);
         REG32(0x04000500) = 1;

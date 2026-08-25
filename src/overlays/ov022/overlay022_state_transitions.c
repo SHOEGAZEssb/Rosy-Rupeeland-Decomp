@@ -19,7 +19,7 @@ extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void Sound_LoadGroup(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Hide(void *);
 extern void Sound_Play(void *, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
 extern void GameWork_SetFlag(void *, u16);
@@ -90,7 +90,7 @@ extern "C" s32 func_ov022_021ff480(void *scene)
         Sound_Play(gSoundContext, 0x122, 0);
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-        func_02095940((u8 *)scene + 0xa8);
+        SpriteMotionController_Hide((u8 *)scene + 0xa8);
         GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
         func_ov022_021ff220(scene, 0);
         func_ov022_021fdd1c(scene, data_ov022_02200508[0],

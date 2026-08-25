@@ -9,7 +9,7 @@ extern const s32 data_ov018_021ffc00[2];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_020922b0(void *, s32, s32);
@@ -100,7 +100,7 @@ extern "C" s32 func_ov018_021fef2c(void *state)
         }
         break;
     case 6:
-        func_02091bac((u8 *)state + 0x1a8, 1, 0x10, 0, 0x14);
+        TitleInterpolatedValue_Configure((u8 *)state + 0x1a8, 1, 0x10, 0, 0x14);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Confirmed fallthrough into the fade update. */

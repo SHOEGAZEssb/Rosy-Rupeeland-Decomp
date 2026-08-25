@@ -9,7 +9,7 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
     .extern func_ov022_021fcf98
     .extern func_ov022_021fd458
     .extern func_ov022_021fda28
@@ -111,7 +111,7 @@ L_021fe0dc:
     add r0, r4, #0x78
     bl AnimationResourceState_Destroy
     add r0, r4, #0x54
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe16c: .word data_ov022_022006a0

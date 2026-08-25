@@ -14,7 +14,7 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void *func_ov025_021fd5dc(void *, s32);
 extern void func_ov025_021fd9e4(void *, s32);
 extern void func_ov025_021fde58(void *);
@@ -38,7 +38,7 @@ extern "C" void func_ov025_022006c4(void *scene)
         (FIELD(s32, scene, 0x54) << 2), 0xe4);
     if (row) {
         GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
-        func_020927b8((u8 *)row + 0x30);
+        TitleCharacterResourceCollection_Destroy((u8 *)row + 0x30);
         AnimationResourceState_Destroy(row);
         Heap_Free(row);
     }
@@ -64,7 +64,7 @@ extern "C" void func_ov025_02200794(void *scene)
         (FIELD(s32, scene, 0x58) << 2), 0xe4);
     if (row) {
         GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
-        func_020927b8((u8 *)row + 0x30);
+        TitleCharacterResourceCollection_Destroy((u8 *)row + 0x30);
         AnimationResourceState_Destroy(row);
         Heap_Free(row);
     }

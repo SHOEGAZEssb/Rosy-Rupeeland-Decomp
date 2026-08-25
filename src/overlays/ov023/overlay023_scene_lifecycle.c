@@ -30,23 +30,23 @@ extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void SceneInputBase_Init(void *);
 extern void TitleScreenResourceCollection_Init(void *);
-extern void func_020926f8(void *);
-extern void func_02092754(void *, s32);
+extern void TitleScreenResourceCollection_Destroy(void *);
+extern void TitleScreenResourceCollection_Append(void *, s32);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
-extern void func_020929b0(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
+extern void TitleScrollValue_Init(void *);
 extern void TitleDialog_Init(void *, void *, void *);
 extern void IndexedSelectionController_Init(void *);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void *SpritePresentation_Init(void *, void *);
 extern void SpritePresentation_SyncPosition(void *);
-extern void func_020957bc(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
+extern void SpriteMotionController_Init(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void *func_ov023_021fcfcc(void *);
 extern void *func_ov023_021fd5d0(void *);
@@ -87,13 +87,13 @@ extern "C" void *func_ov023_021fd9f8(void *scene)
     TitleCharacterResourceCollection_Init((u8 *)scene + 0x54);
     TitleScreenResourceCollection_Init((u8 *)scene + 0x78);
     AnimationResourceState_InitEmbedded((u8 *)scene + 0xbc);
-    func_020957bc((u8 *)scene + 0xd0);
-    func_020957bc((u8 *)scene + 0x17c);
+    SpriteMotionController_Init((u8 *)scene + 0xd0);
+    SpriteMotionController_Init((u8 *)scene + 0x17c);
     __construct_array((u8 *)scene + 0x228, 2, 0xac,
-                      (void *)func_020957bc);
+                      (void *)SpriteMotionController_Init);
     IndexedSelectionController_Init((u8 *)scene + 0x480);
-    func_020929b0((u8 *)scene + 0x4c4);
-    func_02091b6c((u8 *)scene + 0x4dc);
+    TitleScrollValue_Init((u8 *)scene + 0x4c4);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x4dc);
     FIELD(void *, scene, 0x4bc) = 0;
     FIELD(void *, scene, 0x390) = 0;
     for (s32 i = 0; i < 18; ++i) FIELD(void *, scene, 0x430 + i * 4) = 0;
@@ -101,10 +101,10 @@ extern "C" void *func_ov023_021fd9f8(void *scene)
     FIELD(void *, scene, 0x394) = 0;
     FIELD(void *, scene, 0x47c) = 0;
     FIELD(void *, scene, 0x4c0) = GraphicsArchive_AcquirePaletteResource(data_020f4e18, 0xc007);
-    func_02092814((u8 *)scene + 0x54, 0x7007);
-    func_02092814((u8 *)scene + 0x54, 0x7005);
-    func_02092754((u8 *)scene + 0x78, 0x803c);
-    func_02092754((u8 *)scene + 0x78, 0x803b);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0x54, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0x54, 0x7005);
+    TitleScreenResourceCollection_Append((u8 *)scene + 0x78, 0x803c);
+    TitleScreenResourceCollection_Append((u8 *)scene + 0x78, 0x803b);
     AnimationResourceState_ReplaceResources((u8 *)scene + 0xbc, data_020f4e18, 0x3d, 0x3e, 0x3f);
     func_ov023_021fe164(scene);
     func_ov023_021fe270(scene);
@@ -116,18 +116,18 @@ extern "C" void *func_ov023_021fd9f8(void *scene)
     GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xcc), 0x14, 0x86, 0x2d, 1, 0, 6);
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xc8),
                                  (u8 *)scene + 0xbc, 1);
-    func_020957f0((u8 *)scene + 0xd0, sprite, 6, 1, 0);
-    func_02095820((u8 *)scene + 0xd0, 0x80, 0xaa);
+    SpriteMotionController_BindSprite((u8 *)scene + 0xd0, sprite, 6, 1, 0);
+    SpriteMotionController_SetPosition((u8 *)scene + 0xd0, 0x80, 0xaa);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xc8),
                            (u8 *)scene + 0xbc, 1);
-    func_020957f0((u8 *)scene + 0x17c, sprite, 2, 1, 0);
-    func_02095820((u8 *)scene + 0x17c, 0xe4, 0xaa);
+    SpriteMotionController_BindSprite((u8 *)scene + 0x17c, sprite, 2, 1, 0);
+    SpriteMotionController_SetPosition((u8 *)scene + 0x17c, 0xe4, 0xaa);
     for (s32 i = 0; i < 2; ++i) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xc8),
                                (u8 *)scene + 0xbc, 1);
-        func_020957f0((u8 *)scene + 0x228 + i * 0xac,
+        SpriteMotionController_BindSprite((u8 *)scene + 0x228 + i * 0xac,
                       sprite, i + 12, 1, 0);
-        func_02095820((u8 *)scene + 0x228 + i * 0xac,
+        SpriteMotionController_SetPosition((u8 *)scene + 0x228 + i * 0xac,
                       0x94 + i * 0x3c, 0x10);
     }
     for (s32 i = 0; i < 2; ++i) {
@@ -185,8 +185,8 @@ static void cleanup_scene(void *scene)
     func_ov023_021fd9b4((u8 *)scene + 0x17c);
     func_ov023_021fd9b4((u8 *)scene + 0xd0);
     AnimationResourceState_Destroy((u8 *)scene + 0xbc);
-    func_020926f8((u8 *)scene + 0x78);
-    func_020927b8((u8 *)scene + 0x54);
+    TitleScreenResourceCollection_Destroy((u8 *)scene + 0x78);
+    TitleCharacterResourceCollection_Destroy((u8 *)scene + 0x54);
 }
 
 /*

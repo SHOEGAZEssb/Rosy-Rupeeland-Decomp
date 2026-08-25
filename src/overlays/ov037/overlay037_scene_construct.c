@@ -17,7 +17,7 @@ extern void *func_ov037_021fce00(void *scene);
 extern void GraphicsResourceSetVariant_Init(void *state);
 extern void *func_ov037_021fd6d0(void *container);
 extern void Graphics3DLightSet_Init(void *state);
-extern void func_02091b6c(void *timer);
+extern void TitleInterpolatedValue_Init(void *timer);
 extern void GraphicsResourceSetVariant_Load(void *slot, void *archive, s32 id0, s32 id1, s32 id2);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *slot);
 extern void *GraphicsArchive_AcquireOwlvResource(void *archive, s32 resourceId);
@@ -70,9 +70,9 @@ extern "C" void *func_ov037_021fd7e4(void *scene, void *owner)
     func_ov037_021fd6d0((u8 *)scene + 0x12c);
     func_ov037_021fd6d0((u8 *)scene + 0x13c);
     Graphics3DLightSet_Init((u8 *)scene + 0x14c);
-    func_02091b6c((u8 *)scene + 0x18c);
-    func_02091b6c((u8 *)scene + 0x1a8);
-    func_02091b6c((u8 *)scene + 0x1c4);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x18c);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x1a8);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x1c4);
 
     initResourceSlot(scene, owner, 0xc8, 0x604a);
     initResourceSlot(scene, owner, 0xd4, 0x6050);

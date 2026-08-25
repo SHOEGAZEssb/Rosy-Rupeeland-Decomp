@@ -20,7 +20,7 @@
 .extern Graphics3DResourceOwner_CreateManager
 .extern Graphics3DResourceOwner_PrepareResources
 .extern Graphics3DSceneState_Init
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern SceneInputBase_Init
 .extern GraphicsBankStateSnapshot_Init
 .extern GraphicsBankStateSnapshot_Capture
@@ -73,7 +73,7 @@ Overlay027Scene_Init:
     str r0, [r10, #0x5bc]
     add r0, r10, #0x1c4
     add r0, r0, #0x400
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     bl G3X_Init
     mov r0, #0x0
     str r0, [r10, #0x50]

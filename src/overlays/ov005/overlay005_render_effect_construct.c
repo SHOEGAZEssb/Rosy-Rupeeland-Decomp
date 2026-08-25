@@ -24,7 +24,7 @@ extern void *data_020f4e18;
 extern const u8 data_ov005_021fcaf0[];
 extern void Presentation_Init(void *state);
 extern void AnimationResourceState_InitEmbedded(void *resource);
-extern void func_02091b6c(void *animation);
+extern void TitleInterpolatedValue_Init(void *animation);
 extern u32 genrand_int32(void);
 extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
@@ -50,7 +50,7 @@ Overlay005RenderEffect *func_ov005_021fb6e4(Overlay005RenderEffect *state,
     state->vtable_000 = data_ov005_021fcaf0;
     AnimationResourceState_InitEmbedded(state->resource_09c);
     state->random_0ac = 0;
-    func_02091b6c(state->animation_0b0);
+    TitleInterpolatedValue_Init(state->animation_0b0);
     state->random_0ac = genrand_int32();
     AnimationResourceState_ReplaceResources(state->resource_09c, data_020f4e18, 0x4003, 0x4004,
                   0x4005);

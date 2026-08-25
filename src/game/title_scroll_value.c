@@ -16,7 +16,7 @@ typedef struct TitleScrollValue {
 extern u32 genrand_int32(void);
 
 /* Seed randomized limits and clear all counters. */
-void *func_020929b0(TitleScrollValue *value)
+void *TitleScrollValue_Init(TitleScrollValue *value)
 {
     value->firstLimit = genrand_int32() & 0xff;
     value->secondLimit =
@@ -28,7 +28,7 @@ void *func_020929b0(TitleScrollValue *value)
 }
 
 /* Advance a frame and derive signed quarter/eighth countdown values. */
-void *func_020929f4(TitleScrollValue *value)
+void *TitleScrollValue_Advance(TitleScrollValue *value)
 {
     ++value->tick;
     --value->remaining;

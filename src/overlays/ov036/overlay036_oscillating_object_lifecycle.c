@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void *func_ov036_021fcec4(void *object, void *argument,
                                  s32 mode, s32 type);
-extern void func_02091b6c(void *timer);
+extern void TitleInterpolatedValue_Init(void *timer);
 extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void GraphicsAnimationInstance_Destroy(void *resource);
 extern void func_ov036_021fcf30(void *object);
@@ -45,7 +45,7 @@ extern "C" void *func_ov036_02201d70(void *object, void *argument,
 {
     func_ov036_021fcec4(object, argument, 0, 0x16);
     FIELD(const void *, object, 0) = data_ov036_0220600c;
-    func_02091b6c((u8 *)object + 0xd8);
+    TitleInterpolatedValue_Init((u8 *)object + 0xd8);
     FIELD(s32, object, 0xc8) = valueC8;
     FIELD(s32, object, 0xcc) = variant;
     FIELD(void *, object, 0xd4) = resource;

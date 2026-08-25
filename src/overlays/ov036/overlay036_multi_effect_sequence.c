@@ -21,9 +21,9 @@ extern void Sound_StopEffect(void *context, s32 id, s32 value);
 extern void Sound_Play(void *context, s32 id, s32 variant);
 extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
-extern void func_02091bac(void *timer, s32 mode, s32 first,
+extern void TitleInterpolatedValue_Configure(void *timer, s32 mode, s32 first,
                           s32 second, s32 duration);
-extern s32 func_02091bd0(void *timer, s32 mode, s32 first, s32 second);
+extern s32 TitleInterpolatedValue_Evaluate(void *timer, s32 mode, s32 first, s32 second);
 extern void Presentation_SetScript(void *object, const void *data, s32 mode);
 extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 first, s32 second);
 extern s32 func_ov036_021fd28c(void *object);
@@ -69,17 +69,17 @@ extern "C" s32 func_ov036_021ff9d0(void *controller)
     case 1:
         if (func_02091c7c((u8 *)controller + 0xa4, 2) != 0) {
             Sound_Play(gSoundContext, 0x1ae, 0);
-            func_02091bac((u8 *)controller + 0xa4,
+            TitleInterpolatedValue_Configure((u8 *)controller + 0xa4,
                           1, 0x30, 0x40, 0x78);
             Presentation_SetScript(FIELD(void *, controller, 0xd8),
                            data_ov036_02204e9c, 1);
             FIELD(s32, controller, 0xa0)++;
         } else {
             FIELD(s32, controller, 0x14) =
-                func_02091bd0((u8 *)controller + 0xa4,
+                TitleInterpolatedValue_Evaluate((u8 *)controller + 0xa4,
                                2, 0x3c00, 0x1400);
             FIELD(s32, controller, 0x18) =
-                func_02091bd0((u8 *)controller + 0xa4,
+                TitleInterpolatedValue_Evaluate((u8 *)controller + 0xa4,
                                2, 0x1400, 0x2800);
         }
         break;
@@ -108,7 +108,7 @@ extern "C" s32 func_ov036_021ff9d0(void *controller)
                            data_ov036_02205290, 1);
             Presentation_SetScript(FIELD(void *, controller, 0xfc),
                            data_ov036_02205290, 1);
-            func_02091bac((u8 *)controller + 0xa4,
+            TitleInterpolatedValue_Configure((u8 *)controller + 0xa4,
                           3, 0, 0x40, 0x3c);
             FIELD(s32, controller, 0xa0)++;
         }

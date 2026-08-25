@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_sprite_pool_state.c. */
     .extern GraphicsAnimationInstanceManager_Update
     .extern func_0209189c
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
 .global func_ov017_021fe5b0
@@ -34,7 +34,7 @@ L_021fe5e8:
     add r0, r4, #0x38
     mov r1, #0x2
     mov r3, #0x1000
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, #0x2
     str r0, [r4, #0x30]
     mov r0, #0x0
@@ -60,7 +60,7 @@ L_021fe628:
     mov r3, r5
     add r0, r4, #0x38
     mov r1, #0x2
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, #0x2
     str r0, [r4, #0x30]
     mov r0, #0x0

@@ -4,7 +4,7 @@
     .extern data_ov020_021fe504
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
     .extern func_ov020_021fcfd4
     .extern func_ov020_021fd404
     .extern func_ov020_021fd818
@@ -37,7 +37,7 @@ L_021fdbcc:
     bl Heap_Free
 L_021fdbe8:
     add r0, r5, #0x1b8
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r5, #0x70
     bl func_ov020_021fd818
     add r0, r5, #0x60

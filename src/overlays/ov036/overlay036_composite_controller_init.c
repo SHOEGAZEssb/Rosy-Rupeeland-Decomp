@@ -17,7 +17,7 @@ extern "C" {
 extern void *func_ov036_021fce00(void *controller, s32 argument);
 extern void GraphicsResourceSetVariant_Init(void *resourceSet);
 extern void func_ov036_021fe218(void *list);
-extern void func_02091b6c(void *timer);
+extern void TitleInterpolatedValue_Init(void *timer);
 extern void func_02091d08(void *timer);
 extern void Graphics3DLightSet_Init(void *records);
 extern void GraphicsResourceSetVariant_Load(void *resourceSet, void *archive,
@@ -77,7 +77,7 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
     GraphicsResourceSetVariant_Init((u8 *)controller + 0xe8);
     func_ov036_021fe218((u8 *)controller + 0x100);
     func_ov036_021fe218((u8 *)controller + 0x110);
-    func_02091b6c((u8 *)controller + 0x120);
+    TitleInterpolatedValue_Init((u8 *)controller + 0x120);
     func_02091d08((u8 *)controller + 0x13c);
     Graphics3DLightSet_Init((u8 *)controller + 0x160);
 

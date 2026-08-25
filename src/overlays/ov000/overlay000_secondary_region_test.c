@@ -13,14 +13,14 @@ typedef struct Overlay000SecondaryRegionTestState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02095860(void *region, const void *record, s32 first,
+extern s32 SpriteMotionController_BeginHitResponse(void *region, const void *record, s32 first,
                          s32 count);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Forward record to func_02095860 for the secondary embedded region, fixing
+ * Forward record to SpriteMotionController_BeginHitResponse for the secondary embedded region, fixing
  * its final range arguments to 0 and 4, and return the boolean-like result.
  * Any input/presentation effects occur in the callee; hardware is not accessed
  * directly here.
@@ -31,5 +31,5 @@ extern "C"
 s32 func_ov000_021fc5d4(Overlay000SecondaryRegionTestState *state,
                         const void *record)
 {
-    return func_02095860(state->region_0d0, record, 0, 4);
+    return SpriteMotionController_BeginHitResponse(state->region_0d0, record, 0, 4);
 }

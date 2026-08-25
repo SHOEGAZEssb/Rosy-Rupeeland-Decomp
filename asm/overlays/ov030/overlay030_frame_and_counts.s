@@ -6,8 +6,8 @@
 .extern InventoryRecordCollection_FindId
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Presentation_BlendPalette16
-.extern func_020958d8
-.extern func_02095988
+.extern SpriteMotionController_Update
+.extern SpriteMotionController_SetAnimation
 .extern func_020b1ff0
 .extern func_020b2058
 .extern func_020befec
@@ -22,11 +22,11 @@ func_ov030_021fe768:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xb8
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x164
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x210
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, L_021fe800
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_Update
@@ -92,11 +92,11 @@ L_021fe860:
     add r0, r4, #0xb8
     ble L_021fe87c
     mov r1, #0x0
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     b L_021fe884
 L_021fe87c:
     mov r1, #0x1
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
 L_021fe884:
     ldr r2, [r4, #0x388]
     cmp r2, #0x0
@@ -113,11 +113,11 @@ L_021fe8a8:
     add r0, r4, #0x164
     ble L_021fe8c4
     mov r1, #0x2
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     b L_021fe8cc
 L_021fe8c4:
     mov r1, #0x3
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
 L_021fe8cc:
     ldr r5, [r4, #0x384]
     mov r1, #0xa

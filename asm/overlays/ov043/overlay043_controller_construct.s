@@ -2,10 +2,10 @@
 .extern SceneInputBase_Init
 .extern TitleCharacterResourceCollection_Init
 .extern AnimationResourceState_InitEmbedded
-.extern func_020957bc
+.extern SpriteMotionController_Init
 .extern OverlaySlot_Init
-.extern func_02095820
-.extern func_02092814
+.extern SpriteMotionController_SetPosition
+.extern TitleCharacterResourceCollection_Append
 .extern func_ov043_0220ba28
 .extern func_ov043_0220bc2c
 .extern func_ov043_0220b744
@@ -25,11 +25,11 @@ func_ov043_0220b76c:
     add r0, r4, #0x80
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x90
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x13c
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x1e8
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x2dc
     bl OverlaySlot_Init
     add r0, r4, #0x2e8
@@ -48,18 +48,18 @@ func_ov043_0220b76c:
     ldrsh r3, [r2, #0x6]
     mov r2, #0x50
     str r3, [r4, #0x54]
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0x1e8
     mov r1, #0xb8
     mov r2, #0x50
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0x90
     mov r1, #0xe8
     mov r2, #0xa0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0x5c
     ldr r1, .L_0220b85c
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r4
     bl func_ov043_0220ba28
     mov r0, r4

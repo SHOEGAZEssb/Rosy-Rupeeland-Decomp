@@ -11,12 +11,12 @@ extern const s32 data_ov018_021ffc18[2];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
 extern void func_020922b0(void *, s32, s32);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void func_ov003_021fb7ec(void *);
 extern void func_ov018_021fcf40(void *, s32, s32, s32);
 extern void func_ov018_021fd788(void *);
@@ -52,7 +52,7 @@ extern "C" s32 func_ov018_021fe854(void *state)
         /* Confirmed fallthrough into the active interaction phase. */
     case 1:
         if (INPUT_BIT(state, 4) &&
-            func_02095860((u8 *)state + 0xd8, (u8 *)state + 0x30,
+            SpriteMotionController_BeginHitResponse((u8 *)state + 0xd8, (u8 *)state + 0x30,
                           0, 4)) {
             if (INPUT_BIT(state, 5)) {
                 func_02092260(state, 3);
@@ -78,7 +78,7 @@ extern "C" s32 func_ov018_021fe854(void *state)
             func_ov018_021fcf40(state, data_ov018_021ffc18[0],
                                 data_ov018_021ffc18[1], 0);
         } else {
-            func_02091bac((u8 *)state + 0x1a8, 1, 0x10, 0, 0x14);
+            TitleInterpolatedValue_Configure((u8 *)state + 0x1a8, 1, 0x10, 0, 0x14);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }

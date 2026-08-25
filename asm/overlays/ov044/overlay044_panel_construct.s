@@ -9,7 +9,7 @@
 .extern func_02094154
 .extern InventoryScroll_UpdatePresentation
 .extern func_ov044_0220ba18
-.extern func_02092814
+.extern TitleCharacterResourceCollection_Append
 .extern data_020f4e18
 .extern data_ov044_0220d330
 .extern gHeapContext
@@ -115,10 +115,10 @@ func_ov044_0220b740:
     bl func_ov044_0220ba18
     add r0, r5, #0x14
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, .L_0220b8e0
     add r0, r5, #0x14
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r5
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}

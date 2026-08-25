@@ -27,15 +27,15 @@
 .extern func_02092260
 .extern func_020922f0
 .extern func_02092314
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern GraphicsSpriteState_TestTouchPoint
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_SetText
 .extern TitleDialog_UpdateTextPage
-.extern func_02095860
-.extern func_02095928
-.extern func_02095940
-.extern func_02095988
+.extern SpriteMotionController_BeginHitResponse
+.extern SpriteMotionController_Show
+.extern SpriteMotionController_Hide
+.extern SpriteMotionController_SetAnimation
 .extern func_02095dd4
 .extern func_ov025_021fce00
 .extern func_ov025_021fd03c
@@ -182,11 +182,11 @@ L_02202094:
     bl func_ov025_021fd160
     add r0, r5, #0xf0
     mov r1, #0x2d
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     add r0, r5, #0xf0
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r5, #0x248
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, #0x3
     mov r1, #0x0
     bl DisplayBrightness_StartMaskedTransitions
@@ -215,7 +215,7 @@ L_02202104:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_022021e4
     ldr r0, [r5, #0x598]
@@ -270,7 +270,7 @@ L_022021e4:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02202248
     ldr r2, [r5, #0x598]
@@ -604,11 +604,11 @@ L_0220268c:
     add r0, r5, #0xf0
     beq L_022026c4
     mov r1, #0x2c
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     b L_022026cc
 L_022026c4:
     mov r1, #0x2d
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
 L_022026cc:
     ldr r0, [r5, #0x598]
     bl func_ov025_021fd3dc
@@ -744,7 +744,7 @@ L_02202888:
     ldr r0, [r4, #0xc]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x30
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     bl AnimationResourceState_Destroy
     mov r0, r4
@@ -829,9 +829,9 @@ L_022029dc:
     mov r0, r5
     bl func_ov025_022001f4
     add r0, r5, #0xf0
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add r0, r5, #0x248
-    bl func_02095940
+    bl SpriteMotionController_Hide
     mov r0, r5
     bl func_ov025_02200014
     mov r0, #0x3

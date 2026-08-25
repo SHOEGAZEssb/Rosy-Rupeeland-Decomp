@@ -26,7 +26,7 @@ extern void GraphicsResourceSetVariant_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
 extern void GraphicsBankStateSnapshot_Init(void *);
 extern void func_ov043_0220b740(void *);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void G3X_Init(void);
 extern void GraphicsBankStateSnapshot_Capture(void *);
 extern void GraphicsSpriteRenderer_Suspend(void *);
@@ -77,7 +77,7 @@ extern "C" void *Overlay027Scene_Init(void *scene)
     GraphicsBankStateSnapshot_Init((u8 *)scene + 0x164);
     func_ov043_0220b740((u8 *)scene + 0x198);
     FIELD(s32, scene, 0x5bc) = 0;
-    func_02091b6c((u8 *)scene + 0x5c4);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x5c4);
     G3X_Init();
     FIELD(s32, scene, 0x50) = 0;
     GraphicsBankStateSnapshot_Capture((u8 *)scene + 0x164);

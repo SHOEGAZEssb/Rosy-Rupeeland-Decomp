@@ -25,11 +25,11 @@ extern "C" void GraphicsResourceSet_Apply(void *resources, s32 engine, s32 value
 extern "C" void GraphicsBgMapResource_AddPaletteBankOffset(void *resource, s32 value);
 extern "C" void func_020b44e8(void);
 extern "C" void GraphicsResourceSet_ApplyToMainBg(void *resources, s32 engine, s32 value);
-extern "C" void func_02092754(void *transfer, s32 resourceId);
+extern "C" void TitleScreenResourceCollection_Append(void *transfer, s32 resourceId);
 extern "C" void *TitleScreenResourceCollection_Get(void *transfer, s32 engine);
 extern "C" void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 engine, s32 value);
 extern "C" void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *font);
-extern "C" void func_020926f8(void *transfer);
+extern "C" void TitleScreenResourceCollection_Destroy(void *transfer);
 extern "C" void GraphicsResourceSet_Destroy(void *resources);
 
 /*
@@ -76,7 +76,7 @@ extern "C" void func_ov043_0220ba28(void *object)
 
     GraphicsResourceSet_Load(resources, data_020f4e18,
                               0x8012, 0x8013, 0x8014, 0x8014);
-    func_02092754(transfer, 0x8016);
+    TitleScreenResourceCollection_Append(transfer, 0x8016);
     func_020b44e8();
     GraphicsResourceSet_Apply(resources, 0, 0);
     void *resource = TitleScreenResourceCollection_Get(transfer, 0);
@@ -93,6 +93,6 @@ extern "C" void func_ov043_0220ba28(void *object)
     FIELD(u16, debugFont, 0xc) = FIELD(u16, font, 0x1e);
     FIELD(u16, font, 0xc) = FIELD(u16, font, 0x1e);
 
-    func_020926f8(transfer);
+    TitleScreenResourceCollection_Destroy(transfer);
     GraphicsResourceSet_Destroy(resources);
 }

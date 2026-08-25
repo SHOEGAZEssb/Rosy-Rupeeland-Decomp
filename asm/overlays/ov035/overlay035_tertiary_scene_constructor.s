@@ -4,7 +4,7 @@
 
     .extern func_ov035_021fce00
     .extern GraphicsResourceSetVariant_Init
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern func_02091d08
     .extern func_ov035_021fdce8
     .extern GraphicsResourceSetVariant_Load
@@ -49,7 +49,7 @@ func_ov035_021ff478:
     add r0, r5, #0x118
     bl GraphicsResourceSetVariant_Init
     add r0, r5, #0x140
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r5, #0x15c
     bl func_02091d08
     add r0, r5, #0x174

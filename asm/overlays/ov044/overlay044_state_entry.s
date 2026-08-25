@@ -4,7 +4,7 @@
 .extern func_ov044_0220bba4
 .extern func_ov044_0220c700
 .extern func_ov044_0220be38
-.extern func_02095940
+.extern SpriteMotionController_Hide
 .extern func_ov044_0220c8d0
 .extern func_02095dd4
 .extern data_020f4e14
@@ -46,7 +46,7 @@ func_ov044_0220c97c:
     b .L_0220ca48
 .L_0220c9f0:
     add r0, r4, #0xd0
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr ip, [r4, #0xcc]
     mov r0, r4
     ldrh r3, [ip, #0x24]

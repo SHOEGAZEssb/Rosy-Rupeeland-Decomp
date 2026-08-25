@@ -12,8 +12,8 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern TitleCharacterResourceCollection_Init
-.extern func_020927b8
-.extern func_02092814
+.extern TitleCharacterResourceCollection_Destroy
+.extern TitleCharacterResourceCollection_Append
 .extern func_02094154
 .extern InventoryScroll_SetSpritePriority
 .extern InventoryScroll_UpdatePresentation
@@ -124,7 +124,7 @@ L_021fd164:
     bl InventoryScroll_UpdatePresentation
     ldr r1, L_021fd1a4
     add r0, r5, #0x14
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r5
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}
@@ -158,7 +158,7 @@ L_021fd1d0:
     bl CxxArray_DestroyAndFree
 L_021fd1ec:
     add r0, r4, #0x14
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x8
     bl AnimationResourceState_Destroy
     mov r0, r4

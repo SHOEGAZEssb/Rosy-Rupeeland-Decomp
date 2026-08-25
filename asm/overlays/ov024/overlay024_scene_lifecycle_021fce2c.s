@@ -14,16 +14,16 @@
 .extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern func_02091b98
 .extern SceneInputBase_Init
 .extern func_020922f0
 .extern IndexedSelectionController_Init
 .extern IndexedSelectionController_ConfigureRange
-.extern func_020957bc
-.extern func_020957f0
-.extern func_02095820
-.extern func_02095940
+.extern SpriteMotionController_Init
+.extern SpriteMotionController_BindSprite
+.extern SpriteMotionController_SetPosition
+.extern SpriteMotionController_Hide
 .extern func_ov005_021fb86c
 .extern func_ov005_021fbd74
 .extern func_ov024_021fce00
@@ -51,7 +51,7 @@ func_ov024_021fce2c:
     add r0, r4, #0x70
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x80
-    bl func_020957bc
+    bl SpriteMotionController_Init
     ldr r1, L_021fd10c
     ldr r3, L_021fd110
     str r1, [sp, #0x0]
@@ -62,7 +62,7 @@ func_ov024_021fce2c:
     add r0, r4, #0x284
     bl IndexedSelectionController_Init
     add r0, r4, #0x2c8
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     mov r0, #0x0
     str r0, [r4, #0x2e8]
     ldr r1, L_021fd114
@@ -115,11 +115,11 @@ func_ov024_021fce2c:
     add r0, r4, #0x80
     mov r2, #0x6
     str r3, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x80
     mov r1, #0xea
     mov r2, #0xaf
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, [r4, #0x7c]
     add r1, r4, #0x70
     mov r2, #0x1
@@ -129,13 +129,13 @@ func_ov024_021fce2c:
     add r0, r4, #0x12c
     mov r2, #0xa
     str r3, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     mov r1, #0x10
     add r0, r4, #0x12c
     mov r2, r1
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0x12c
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r4, #0x7c]
     add r1, r4, #0x70
     mov r2, #0x1
@@ -145,13 +145,13 @@ func_ov024_021fce2c:
     add r0, r4, #0x1d8
     mov r2, #0xc
     str r3, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x1d8
     mov r1, #0x10
     mov r2, #0xb0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0x1d8
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r1, L_021fd120
     ldr r3, L_021fd124
     mov r0, #0x15c
@@ -228,7 +228,7 @@ L_021fd0c8:
     ldmia sp!, {r3, r4, pc}
 L_021fd108: .word data_ov024_021fe338
 L_021fd10c: .word func_ov024_021fce00
-L_021fd110: .word func_020957bc
+L_021fd110: .word SpriteMotionController_Init
 L_021fd114: .word gGameWork
 L_021fd118: .word data_020f4e18
 L_021fd11c: .word data_020f4e14

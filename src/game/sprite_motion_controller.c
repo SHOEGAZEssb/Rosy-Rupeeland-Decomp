@@ -11,7 +11,7 @@ extern void PresentationScalar_TransitionTo(void *component, s32 mode, s32 targe
 extern s32 Presentation_AdvanceTransitions(void *object);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *sprite, const void *point);
 
-void *func_020957bc(void *object)
+void *SpriteMotionController_Init(void *object)
 {
     u8 *bytes = (u8 *)object;
 
@@ -26,7 +26,7 @@ void *func_020957bc(void *object)
 
 /* Attach a sprite state to the controller and reproduce the retail animation,
  * display-mode, and attribute initialization performed at 0x020957f0. */
-void func_020957f0(void *object, void *sprite, s32 animation,
+void SpriteMotionController_BindSprite(void *object, void *sprite, s32 animation,
                    s32 display_mode, s32 attribute)
 {
     u8 *bytes = (u8 *)object;
@@ -40,7 +40,7 @@ void func_020957f0(void *object, void *sprite, s32 animation,
 
 /* Set the controller's 20.12 fixed-point position and reset its Z component,
  * matching 0x02095820. */
-void func_02095820(void *object, s32 x, s32 y)
+void SpriteMotionController_SetPosition(void *object, s32 x, s32 y)
 {
     u8 *bytes = (u8 *)object;
     s32 fixed_x = x << 12;
@@ -58,7 +58,7 @@ void func_02095820(void *object, s32 x, s32 y)
  * (0x02095860). Offsets are integer pixels converted to 20.12 targets; the
  * six-frame completion counter is reset only on a successful opaque hit.
  */
-s32 func_02095860(void *object, const void *point,
+s32 SpriteMotionController_BeginHitResponse(void *object, const void *point,
                   s32 xOffset, s32 yOffset)
 {
     u8 *bytes = (u8 *)object;
@@ -78,7 +78,7 @@ s32 func_02095860(void *object, const void *point,
 }
 
 /* Retail sprite visibility controls at 0x02095928..0x02095988. */
-void func_02095928(void *object)
+void SpriteMotionController_Show(void *object)
 {
     u8 *sprite = *(u8 **)((u8 *)object + 0x9c);
     if (sprite != 0) {
@@ -86,7 +86,7 @@ void func_02095928(void *object)
     }
 }
 
-void func_02095940(void *object)
+void SpriteMotionController_Hide(void *object)
 {
     u8 *sprite = *(u8 **)((u8 *)object + 0x9c);
     if (sprite != 0) {
@@ -94,7 +94,7 @@ void func_02095940(void *object)
     }
 }
 
-s32 func_02095958(void *object)
+s32 SpriteMotionController_IsVisible(void *object)
 {
     u8 *sprite = *(u8 **)((u8 *)object + 0x9c);
     if (sprite == 0) {
@@ -103,7 +103,7 @@ s32 func_02095958(void *object)
     return (*(u16 *)(sprite + 0x24) & 4u) == 0;
 }
 
-void func_02095988(void *object, s32 animation)
+void SpriteMotionController_SetAnimation(void *object, s32 animation)
 {
     void *sprite = *(void **)((u8 *)object + 0x9c);
     if (sprite != 0) {
@@ -127,7 +127,7 @@ void SpriteMotionController_PublishCoordinates(void *object)
     *(u16 *)(sprite + 0x2e) = (u16)((y + ((y >> 11) < 0 ? 0xfff : 0)) >> 12);
 }
 
-void func_020958d8(void *object)
+void SpriteMotionController_Update(void *object)
 {
     Presentation_AdvanceTransitions(object);
     SpriteMotionController_PublishCoordinates(object);

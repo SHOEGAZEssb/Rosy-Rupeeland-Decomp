@@ -10,9 +10,9 @@
     .extern LanguageLookupDatabase_GetResourceById
     .extern func_02091b98
     .extern func_02091c7c
-    .extern func_020958d8
-    .extern func_02095928
-    .extern func_02095940
+    .extern SpriteMotionController_Update
+    .extern SpriteMotionController_Show
+    .extern SpriteMotionController_Hide
     .extern gDebugFont
 .global func_ov018_021fd788
 func_ov018_021fd788:
@@ -26,16 +26,16 @@ func_ov018_021fd788:
     cmp r0, #0x10
     add r0, r4, #0xd8
     bge L_021fd7c4
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r4, #0x414]
     add r0, r0, #0x1
     str r0, [r4, #0x414]
     b L_021fd7c8
 L_021fd7c4:
-    bl func_02095928
+    bl SpriteMotionController_Show
 L_021fd7c8:
     add r0, r4, #0xd8
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, L_021fd8fc
     mov r1, #0x2
     ldr r0, [r0, #0x0]

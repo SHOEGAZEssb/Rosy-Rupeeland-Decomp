@@ -28,7 +28,7 @@ extern "C" {
 #endif
 extern void AnimationResourceState_Destroy(void *resource);
 extern void GraphicsSpriteGroup_Destroy(void *owner);
-extern void func_020927b8(void *state);
+extern void TitleCharacterResourceCollection_Destroy(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -52,7 +52,7 @@ Overlay001PresentationState *func_ov001_021fb7d4(
         presentation->vtable->destroy_04(presentation);
     }
     GraphicsSpriteGroup_Destroy(state->spriteOwner_04);
-    func_020927b8(state->rendererState_20);
+    TitleCharacterResourceCollection_Destroy(state->rendererState_20);
     AnimationResourceState_Destroy(state->resource_14);
     AnimationResourceState_Destroy(state->resource_08);
     return state;

@@ -30,7 +30,7 @@
 .extern Graphics3DSceneState_Init
 .extern func_0209189c
 .extern TitleRandom_NextBounded
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern SceneInputBase_Init
 .extern GraphicsBankStateSnapshot_Init
 .extern GraphicsBankStateSnapshot_Capture
@@ -105,7 +105,7 @@ func_ov026_021ff8a0:
     str r0, [r7, #0x7a4]
     add r0, r7, #0x3a8
     add r0, r0, #0x400
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     ldr r0, L_021ffff4
     cmp r4, r0
     moveq r0, #0x0

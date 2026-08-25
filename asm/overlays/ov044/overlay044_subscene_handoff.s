@@ -2,7 +2,7 @@
 .extern DisplayBrightness_StartMaskedTransitions
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_ov044_0220bd98
-.extern func_02095940
+.extern SpriteMotionController_Hide
 .extern func_ov044_0220c5c0
 .extern func_ov044_0220c6dc
 .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -58,7 +58,7 @@ func_ov044_0220cf60:
     bl func_ov044_0220bd98
     ldr r5, [r0, #0xc]
     add r0, r4, #0x17c
-    bl func_02095940
+    bl SpriteMotionController_Hide
     mov r0, r4
     bl func_ov044_0220c5c0
     mov r0, r4

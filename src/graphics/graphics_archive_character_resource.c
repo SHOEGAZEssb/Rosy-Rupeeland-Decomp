@@ -28,7 +28,7 @@ extern void GraphicsArchiveResource_Init(void *self, void *archive, const void *
 #ifdef __cplusplus
 extern "C"
 #endif
-GraphicsArchiveCharacterResource *func_020702f4(
+GraphicsArchiveCharacterResource *GraphicsArchiveCharacterResource_Init(
     GraphicsArchiveCharacterResource *self, void *archive, const u32 *source,
     u32 sourceSize, u32 resourceId)
 {

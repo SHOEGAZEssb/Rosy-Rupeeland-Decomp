@@ -6,8 +6,8 @@
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_ov044_0220be34
 .extern AnimationResourceState_Destroy
-.extern func_020926f8
-.extern func_020927b8
+.extern TitleScreenResourceCollection_Destroy
+.extern TitleCharacterResourceCollection_Destroy
 .extern data_ov044_0220d31c
 .extern data_020f4e14
 .extern gDebugFont
@@ -66,9 +66,9 @@ func_ov044_0220bfd4:
     add r0, r4, #0xc0
     bl AnimationResourceState_Destroy
     add r0, r4, #0x78
-    bl func_020926f8
+    bl TitleScreenResourceCollection_Destroy
     add r0, r4, #0x54
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220c0a8: .word data_ov044_0220d31c
@@ -130,9 +130,9 @@ func_ov044_0220c0b4:
     add r0, r4, #0xc0
     bl AnimationResourceState_Destroy
     add r0, r4, #0x78
-    bl func_020926f8
+    bl TitleScreenResourceCollection_Destroy
     add r0, r4, #0x54
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

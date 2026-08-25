@@ -10,9 +10,9 @@ extern "C" {
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Clear(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095940(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Hide(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -34,16 +34,16 @@ extern "C" void Overlay016_CreateSceneSprite(void *state)
     GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0xe4), 0, 0x84, 0x20, 2, 0, 2);
 
     child = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xc8, 1);
-    func_020957f0((u8 *)state + 0xe8, child, 7, 2, 0);
-    func_02095820((u8 *)state + 0xe8, 0x80, 0xaa);
+    SpriteMotionController_BindSprite((u8 *)state + 0xe8, child, 7, 2, 0);
+    SpriteMotionController_SetPosition((u8 *)state + 0xe8, 0x80, 0xaa);
     if (FIELD(s32, state, 0x54) != 0 ||
         FIELD(s32, FIELD(void *, state, 0x444), 0x50) == 0) {
-        func_02095940((u8 *)state + 0xe8);
+        SpriteMotionController_Hide((u8 *)state + 0xe8);
     }
 
     child = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xc8, 1);
-    func_020957f0((u8 *)state + 0x194, child, 9, 2, 0);
-    func_02095820((u8 *)state + 0x194, 0xe8, 0xaa);
+    SpriteMotionController_BindSprite((u8 *)state + 0x194, child, 9, 2, 0);
+    SpriteMotionController_SetPosition((u8 *)state + 0x194, 0xe8, 0xaa);
 }
 
 /*

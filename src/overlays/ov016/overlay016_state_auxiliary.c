@@ -16,7 +16,7 @@ extern const u32 data_ov016_02201498[];
 extern "C" {
 #endif
 extern void func_02092260(void *, s32);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern s32 func_ov000_021fc298(void *, void *);
 extern void func_ov000_021fc3f8(void *);
 extern s32 func_ov000_021fc424(void *);
@@ -121,7 +121,7 @@ extern "C" s32 func_ov016_02200900(void *state)
                                             data_ov016_02201418[1]);
                     }
                     break;
-                } else if (func_02095860(
+                } else if (SpriteMotionController_BeginHitResponse(
                                (u8 *)FIELD(void *, state, 0x470) + 0x20,
                                (u8 *)state + 0x30, 0, 4) != 0) {
                     func_02092260(state, 2);
@@ -135,15 +135,15 @@ extern "C" s32 func_ov016_02200900(void *state)
                         FIELD(s32, state, 8) = 0;
                     }
                     break;
-                } else if (func_02095860((u8 *)state + 0x2ec,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x2ec,
                                           (u8 *)state + 0x30, -4, 0) != 0) {
                     func_02092260(state, 0xb);
                     func_ov016_021ffe3c(state, -1);
-                } else if (func_02095860((u8 *)state + 0x398,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x398,
                                           (u8 *)state + 0x30, 4, 0) != 0) {
                     func_02092260(state, 0xb);
                     func_ov016_021ffe3c(state, 1);
-                } else if (func_02095860((u8 *)state + 0x240,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x240,
                                           (u8 *)state + 0x30, 0, -4) != 0) {
                     func_02092260(state, 0xb);
                     func_ov016_021ffd84(state);

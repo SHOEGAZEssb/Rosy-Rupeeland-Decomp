@@ -5,7 +5,7 @@
     .extern func_ov036_021fce00
     .extern GraphicsResourceSetVariant_Init
     .extern func_ov036_021fe218
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern GraphicsResourceSetVariant_Load
     .extern Graphics3DResourceOwner_PrepareResources
     .extern Graphics3DResourceOwner_CreateManager
@@ -21,7 +21,7 @@
     .extern func_ov036_021fea04
     .extern func_020b0300
     .extern TitlePalette_SetMainBackdrop
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_02091b98
     .extern data_ov036_02206028
     .extern data_020f4e18
@@ -53,9 +53,9 @@ func_ov036_0220102c:
     add r0, r5, #0x158
     bl func_ov036_021fe218
     add r0, r5, #0x168
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r5, #0x184
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     ldr r3, L_02201328
     add r0, r5, #0xdc
     str r3, [sp, #0x0]
@@ -213,7 +213,7 @@ L_02201264:
     mov r1, #0x1
     mov r2, #0x0
     mov r3, #0x1000
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     add r0, r5, #0x184
     mov r1, #0x78
     bl func_02091b98

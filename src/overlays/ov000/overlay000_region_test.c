@@ -13,14 +13,14 @@ typedef struct Overlay000RegionTestState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02095860(void *region, const void *record, s32 first,
+extern s32 SpriteMotionController_BeginHitResponse(void *region, const void *record, s32 first,
                          s32 count);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Forward record to func_02095860 for the embedded region, fixing the final
+ * Forward record to SpriteMotionController_BeginHitResponse for the embedded region, fixing the final
  * range arguments to 0 and 4, and return its result. Cross-overlay callers use
  * the result as a boolean. Any input/presentation effects occur in the callee;
  * no direct hardware access is present here.
@@ -30,5 +30,5 @@ extern "C"
 #endif
 s32 func_ov000_021fc5ac(Overlay000RegionTestState *state, const void *record)
 {
-    return func_02095860(state->region_024, record, 0, 4);
+    return SpriteMotionController_BeginHitResponse(state->region_024, record, 0, 4);
 }

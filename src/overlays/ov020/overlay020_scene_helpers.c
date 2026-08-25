@@ -10,9 +10,9 @@ extern "C" {
 extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void InventoryScroll_UpdatePresentation(void *);
-extern void func_020958d8(void *);
+extern void SpriteMotionController_Update(void *);
 extern s32 func_ov020_021fd44c(void *, void *, void *);
 #ifdef __cplusplus
 }
@@ -65,7 +65,7 @@ extern "C" void *func_ov020_021fd404(void *state)
 {
     destroyVirtual(FIELD(void *, state, 0x4c));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xc));
-    func_020927b8((u8 *)state + 0x28);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x28);
     AnimationResourceState_Destroy((u8 *)state + 0x1c);
     AnimationResourceState_Destroy((u8 *)state + 0x10);
     return state;
@@ -99,7 +99,7 @@ extern "C" void func_ov020_021fd81c(void *state, s32 value24, s32 value28,
  */
 extern "C" void func_ov020_021fde6c(void *state)
 {
-    func_020958d8((u8 *)state + 0x70);
+    SpriteMotionController_Update((u8 *)state + 0x70);
     if (FIELD(void *, state, 0x1dc) != 0)
         InventoryScroll_UpdatePresentation(FIELD(void *, FIELD(void *, state, 0x1dc), 0x44));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x6c));

@@ -29,10 +29,10 @@ extern void MIi_CpuCopy16(const void *, void *, s32);
 extern void func_02091d08(void *);
 extern void func_02091d24(void *, s32, s32, s32, s32);
 extern void func_02091dac(void *);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
-extern s32 func_02091bd0(void *, s32, s32, s32);
+extern s32 TitleInterpolatedValue_Evaluate(void *, s32, s32, s32);
 extern u32 genrand_int32(void);
 extern void func_020b4554(void *, s32);
 extern void func_020b13d4(void);
@@ -56,7 +56,7 @@ PaletteCyclePresentation *PaletteCyclePresentation_Init(PaletteCyclePresentation
 {
     void *resources[3]; s32 i;
     FieldEffect_Init(self); self->vtable=(void **)gPaletteCyclePresentationVtable;
-    func_02091d08(self->generator410); func_02091b6c(self->fade428);
+    func_02091d08(self->generator410); TitleInterpolatedValue_Init(self->fade428);
     self->uploadEnabled444=0; self->firstIndex08=1; self->lastIndex0c=120;
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources,data_020f4e18,0x904b,0x904c,0x904f,0x904f);
@@ -94,12 +94,12 @@ void PaletteCyclePresentation_AdvancePalette(PaletteCyclePresentation *self)
     for(n=0;n<6;n++) {
         s32 r=0,g=0,b=0,state=*(s32 *)self->generator410;
         switch(state) {
-        case 0:r=31;b=func_02091bd0(self->fade428,1,31,0);break;
-        case 1:r=31;g=func_02091bd0(self->fade428,1,0,16);break;
-        case 2:r=31;g=func_02091bd0(self->fade428,1,16,31);break;
-        case 3:r=func_02091bd0(self->fade428,1,31,0);g=31;break;
-        case 4:g=func_02091bd0(self->fade428,1,31,16);b=func_02091bd0(self->fade428,1,0,31);break;
-        case 5:r=func_02091bd0(self->fade428,1,0,31);g=func_02091bd0(self->fade428,1,16,0);b=31;break;
+        case 0:r=31;b=TitleInterpolatedValue_Evaluate(self->fade428,1,31,0);break;
+        case 1:r=31;g=TitleInterpolatedValue_Evaluate(self->fade428,1,0,16);break;
+        case 2:r=31;g=TitleInterpolatedValue_Evaluate(self->fade428,1,16,31);break;
+        case 3:r=TitleInterpolatedValue_Evaluate(self->fade428,1,31,0);g=31;break;
+        case 4:g=TitleInterpolatedValue_Evaluate(self->fade428,1,31,16);b=TitleInterpolatedValue_Evaluate(self->fade428,1,0,31);break;
+        case 5:r=TitleInterpolatedValue_Evaluate(self->fade428,1,0,31);g=TitleInterpolatedValue_Evaluate(self->fade428,1,16,0);b=31;break;
         }
         self->palette10[self->firstIndex08]=(u16)(r|(g<<5)|(b<<10));
     }

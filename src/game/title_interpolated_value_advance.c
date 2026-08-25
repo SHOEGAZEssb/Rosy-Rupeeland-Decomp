@@ -11,7 +11,7 @@ typedef struct TitleInterpolatedValue {
     s32 elapsed;
 } TitleInterpolatedValue;
 
-extern s32 func_02091bd0(TitleInterpolatedValue *value, s32 mode, s32 start,
+extern s32 TitleInterpolatedValue_Evaluate(TitleInterpolatedValue *value, s32 mode, s32 start,
                          s32 end);
 
 /* Advance one tick and return current value, completion, or elapsed time. */
@@ -24,7 +24,7 @@ s32 func_02091c7c(TitleInterpolatedValue *value, s32 query)
     } else {
         ++value->elapsed;
         value->current =
-            func_02091bd0(value, value->mode, value->start, value->end);
+            TitleInterpolatedValue_Evaluate(value, value->mode, value->start, value->end);
     }
 
     switch (query) {

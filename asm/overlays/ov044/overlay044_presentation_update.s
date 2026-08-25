@@ -1,5 +1,5 @@
 .text
-.extern func_02095928
+.extern SpriteMotionController_Show
 .extern func_ov044_0220c80c
 
     .global func_ov044_0220c700
@@ -20,7 +20,7 @@ func_ov044_0220c700:
     strh r0, [r3, #0x2e]
 .L_0220c738:
     add r0, r4, #0x17c
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, r4
     bl func_ov044_0220c80c
     ldmia sp!, {r4, pc}

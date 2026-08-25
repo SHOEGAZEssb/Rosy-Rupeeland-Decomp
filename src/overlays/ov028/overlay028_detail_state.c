@@ -36,9 +36,9 @@ extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void SpritePresentation_Show(void *);
 extern void SpritePresentation_Hide(void *);
-extern s32 func_02095860(void *, const void *, s32, s32);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
+extern s32 SpriteMotionController_BeginHitResponse(void *, const void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
 extern void func_ov028_021fce28(void *);
 extern void func_ov028_021fd274(void *);
 extern void func_ov028_021fd2c4(void *);
@@ -96,7 +96,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
         func_ov028_021fd2c4(list);
         func_ov028_021fd34c(list);
         FIELD(u16, FIELD(void *, state, 0x8c), 0x24) |= 4;
-        func_02095940((u8 *)state + 0x98);
+        SpriteMotionController_Hide((u8 *)state + 0x98);
         FIELD(s32, state, 0x48) = 0x1d;
         {
             s32 selected = FIELD(s32, listController, 0x14);
@@ -145,7 +145,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
                     } else if (rightHit) {
                         IndexedSelectionController_IncrementWrap(choice);
                         FIELD(s32, state, 0x1f8) = 1;
-                    } else if (func_02095860((u8 *)state + 0x144,
+                    } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x144,
                                              point, 0, 4)) {
                         func_02092260(state, 3);
                         FIELD(s32, state, 4) = 10;
@@ -207,7 +207,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
         func_ov028_021fd274(list);
         func_ov028_021fd468(list);
         func_ov028_021fe6bc(state);
-        func_02095928((u8 *)state + 0x98);
+        SpriteMotionController_Show((u8 *)state + 0x98);
         func_ov028_021fce28((u8 *)state + 0x280);
         FIELD(s32, state, 0x48) = 0x1e;
         DisplayBrightness_StartMaskedTransitions(1, 0);

@@ -39,12 +39,12 @@ extern u32 LanguageLookupDatabase_GetResourceSize(const void *, s32);
 extern const void *LanguageLookupDatabase_GetResourceById(const void *, s32);
 extern void SceneInputBase_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
-extern void func_020929b0(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
+extern void TitleScrollValue_Init(void *);
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_02092f88(void *, s32, void *);
-extern void func_020957bc(void *);
+extern void SpriteMotionController_Init(void *);
 extern u32 genrand_int32(void);
 extern void func_ov002_021fb9c4(void *);
 extern void func_ov021_021fd074(void *);
@@ -115,7 +115,7 @@ static void destroy_scene_members(void *state)
     func_ov021_021fd790((u8 *)state + 0xa0);
     AnimationResourceState_Destroy((u8 *)state + 0x88);
     AnimationResourceState_Destroy((u8 *)state + 0x7c);
-    func_020927b8((u8 *)state + 0x58);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x58);
 }
 
 /*
@@ -134,13 +134,13 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     TitleCharacterResourceCollection_Init((u8 *)state + 0x58);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x7c);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x88);
-    func_020957bc((u8 *)state + 0xa0);
+    SpriteMotionController_Init((u8 *)state + 0xa0);
     __construct_array((u8 *)state + 0x14c, 2, 0xac,
-                      func_020957bc, func_ov021_021fd790);
+                      SpriteMotionController_Init, func_ov021_021fd790);
     FIELD(s32, state, 0x2cc) = 0;
     func_ov021_021fd794((u8 *)state + 0x35c);
     func_ov021_021fd794((u8 *)state + 0x368);
-    func_020929b0((u8 *)state + 0x404);
+    TitleScrollValue_Init((u8 *)state + 0x404);
     OverlaySlot_Init((u8 *)state + 0x41c);
 
     FIELD(s32, state, 0x3d8) = 0;
@@ -178,10 +178,10 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
                   (u8 *)state + 0x314, size);
 
     FIELD(void *, state, 0x400) = GraphicsArchive_AcquirePaletteResource(data_020f4e18, 0xc007);
-    func_02092814((u8 *)state + 0x58, 0x7007);
-    func_02092814((u8 *)state + 0x58, 0x7005);
-    func_02092814((u8 *)state + 0x58, 0x7001);
-    func_02092814((u8 *)state + 0x58, 0x7000);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x58, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x58, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x58, 0x7001);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x58, 0x7000);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x7c, data_020f4e18, 0x3d, 0x3e, 0x3f);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x88, data_020f4e18, 0x44, 0x45, 0x46);
     FIELD(void *, state, 0x38c) = func_ov045_0220c48c(mode, 0, 0);

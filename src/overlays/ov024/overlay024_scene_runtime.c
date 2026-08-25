@@ -17,9 +17,9 @@ extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
-extern void func_020958d8(void *);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Update(void *);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
 extern void func_ov005_021fbd64(void *, s32, s32);
 extern void func_ov005_021fbd74(void *, s32);
 extern void func_ov005_021fbbe8(void *);
@@ -42,9 +42,9 @@ extern void func_ov046_0220c46c(void *, s32, s32);
  */
 extern "C" void func_ov024_021fd86c(void *scene)
 {
-    func_020958d8((u8 *)scene + 0x80);
-    func_020958d8((u8 *)scene + 0x12c);
-    func_020958d8((u8 *)scene + 0x1d8);
+    SpriteMotionController_Update((u8 *)scene + 0x80);
+    SpriteMotionController_Update((u8 *)scene + 0x12c);
+    SpriteMotionController_Update((u8 *)scene + 0x1d8);
     func_ov046_0220c1a4(FIELD(void *, scene, 0x2c0));
     func_ov005_021fbbe8(FIELD(void *, scene, 0x2bc));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0x7c));
@@ -70,15 +70,15 @@ extern "C" void func_ov024_021fd8f8(void *scene, s32 selection)
 {
     s32 upper = data_ov024_021fe250[selection * 2];
     if (upper < 0 || upper > FIELD(s32, scene, 0x60))
-        func_02095940((u8 *)scene + 0x12c);
+        SpriteMotionController_Hide((u8 *)scene + 0x12c);
     else
-        func_02095928((u8 *)scene + 0x12c);
+        SpriteMotionController_Show((u8 *)scene + 0x12c);
 
     s32 lower = data_ov024_021fe254[selection * 2];
     if (lower < 0)
-        func_02095940((u8 *)scene + 0x1d8);
+        SpriteMotionController_Hide((u8 *)scene + 0x1d8);
     else
-        func_02095928((u8 *)scene + 0x1d8);
+        SpriteMotionController_Show((u8 *)scene + 0x1d8);
 }
 
 /*

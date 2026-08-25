@@ -13,7 +13,7 @@
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern TitleCharacterResourceCollection_Init
-.extern func_02092814
+.extern TitleCharacterResourceCollection_Append
 .extern func_020befec
 .extern gRuntimeContext
 
@@ -273,10 +273,10 @@ L_021fd960:
 L_021fd994:
     ldr r1, L_021fd9dc
     add r0, r10, #0x30
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, L_021fd9e0
     add r0, r10, #0x30
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r0, [r10, #0xc]
     bl GraphicsSpriteGroup_ReleaseIndexedEntries
     mov r0, r10

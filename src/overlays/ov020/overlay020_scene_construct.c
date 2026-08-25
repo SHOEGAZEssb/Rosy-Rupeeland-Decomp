@@ -28,9 +28,9 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void SceneInputBase_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020957bc(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
+extern void SpriteMotionController_Init(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void *func_ov020_021fce18(void *, void *, s32);
 extern void *func_ov020_021fd038(void *, const void *);
 extern void func_ov020_021fd0a0(void *);
@@ -61,17 +61,17 @@ extern "C" void *func_ov020_021fd844(void *state)
     FIELD(const u32 *, state, 0) = data_ov020_021fe504;
     AnimationResourceState_InitEmbedded((u8 *)state + 0x54);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x60);
-    func_020957bc((u8 *)state + 0x70);
+    SpriteMotionController_Init((u8 *)state + 0x70);
     TitleCharacterResourceCollection_Init((u8 *)state + 0x1b8);
     FIELD(s32, state, 0x1e4) = 0;
     AnimationResourceState_ReplaceResources((u8 *)state + 0x60, data_020f4e18[0], 0x38, 1, 0x39);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x54, data_020f4e18[0], 0x1f, 1, 0x20);
     FIELD(void *, state, 0x6c) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    func_020957f0((u8 *)state + 0x70,
+    SpriteMotionController_BindSprite((u8 *)state + 0x70,
                   GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x6c),
                                  (u8 *)state + 0x60, 2),
                   6, 1, 0);
-    func_02095820((u8 *)state + 0x70, 0xe8, 0xaa);
+    SpriteMotionController_SetPosition((u8 *)state + 0x70, 0xe8, 0xaa);
     FIELD(void *, state, 0x11c) =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x6c), (u8 *)state + 0x54, 1);
     GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x11c), 1, 0x84, 0x1e, 1, 0, 6);

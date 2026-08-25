@@ -22,7 +22,7 @@ extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_02091b98(void *, s32);
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void func_02091cf0(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
@@ -50,7 +50,7 @@ extern "C" s32 func_ov022_021fcfd4(void *emitter, s32 random_arg,
     s32 duration = Presentation_InterpolateLinear(20, 200, random_arg, count);
     if (duration > count * 4)
         duration = count * 4;
-    func_02091bac((u8 *)emitter + 0x10, 1, 0, count, duration);
+    TitleInterpolatedValue_Configure((u8 *)emitter + 0x10, 1, 0, count, duration);
     FIELD(s32, emitter, 0x58) = 0;
     FIELD(s32, emitter, 0x5c) = 0;
     FIELD(s32, emitter, 0x60) = direction;

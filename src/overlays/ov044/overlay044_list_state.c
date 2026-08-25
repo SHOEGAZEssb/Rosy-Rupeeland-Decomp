@@ -30,7 +30,7 @@ extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
 extern "C" void func_02092260(void *object, s32 state);
 extern "C" void InventoryScroll_SetSelectedRow(void *child, s32 index);
 extern "C" void func_ov044_0220caa4(void *object);
-extern "C" s32 func_02095860(void *presentation, void *touch,
+extern "C" s32 SpriteMotionController_BeginHitResponse(void *presentation, void *touch,
                               s32 first, s32 second);
 extern "C" s32 InventoryScroll_UpdateSelectionMovement(void *child);
 extern "C" void func_ov044_0220c880(void *object);
@@ -115,12 +115,12 @@ extern "C" s32 func_ov044_0220cb04(void *object)
                     func_ov044_0220caa4(object);
                     func_ov044_0220c880(object);
                     return 0;
-                } else if (func_02095860((u8 *)object + 0x17c,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)object + 0x17c,
                                          touch, 0, 4)) {
                     func_ov044_0220caa4(object);
                     func_ov044_0220c880(object);
                     return 0;
-                } else if (func_02095860((u8 *)object + 0xd0,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)object + 0xd0,
                                          touch, 0, 4)) {
                     func_02092260(object, 3);
                     func_ov044_0220be38(object,

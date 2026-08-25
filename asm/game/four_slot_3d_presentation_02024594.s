@@ -6,8 +6,8 @@
 .extern data_020d6934
 .extern FieldEffect_Init
 .extern DisplayControlElement_NoOp
-.extern func_02091b6c
-.extern func_02091bac
+.extern TitleInterpolatedValue_Init
+.extern TitleInterpolatedValue_Configure
 .extern gGameWork
 .extern genrand_int32
 
@@ -59,7 +59,7 @@ FourSlot3DPresentation_Init: ; 0x02024594
     mla r0, r9, r0, r4
     mov r2, r1
     mov r3, r3, asr #0x8
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     add r9, r9, #0x1
     cmp r9, #0x4
     blt .L_020245f8
@@ -67,7 +67,7 @@ FourSlot3DPresentation_Init: ; 0x02024594
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202465c: .word data_020d6934
 .L_02024660: .word DisplayControlElement_NoOp
-.L_02024664: .word func_02091b6c
+.L_02024664: .word TitleInterpolatedValue_Init
 .L_02024668: .word data_020d6780
 .L_0202466c: .word gGameWork
     .size FourSlot3DPresentation_Init, . - FourSlot3DPresentation_Init

@@ -4,14 +4,14 @@
 .extern data_ov030_021ff778
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_02091bac
+.extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_02091cf0
 .extern func_02092260
 .extern func_020922f0
 .extern TitleDialog_ClearTextRect
-.extern func_02095860
-.extern func_02095928
+.extern SpriteMotionController_BeginHitResponse
+.extern SpriteMotionController_Show
 .extern func_ov030_021fd434
 .extern func_ov030_021fd694
 .extern func_ov030_021fd720
@@ -211,13 +211,13 @@ L_021ff29c:
     bne L_021ff2f4
     ldr r0, [r4, #0x2c4]
     add r0, r0, #0x104
-    bl func_02095928
+    bl SpriteMotionController_Show
     ldr r1, [r4, #0x2c4]
     ldr r0, [r1, #0x1b4]
     cmp r0, #0x0
     beq L_021ff2e0
     add r0, r1, #0x58
-    bl func_02095928
+    bl SpriteMotionController_Show
 L_021ff2e0:
     ldr r1, [r4, #0x4]
     mov r0, #0x0
@@ -261,7 +261,7 @@ L_021ff354:
     add r0, r0, #0x58
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021ff3d4
     mov r0, r4
@@ -277,7 +277,7 @@ L_021ff354:
     add r0, r4, #0x340
     mov r1, #0x2
     mov r3, #0xa8
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -290,7 +290,7 @@ L_021ff3d4:
     add r0, r0, #0x104
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021ff410
     mov r0, r4
@@ -343,7 +343,7 @@ L_021ff460:
     add r0, r4, #0x340
     mov r1, #0x2
     mov r2, #0xa8
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r0, [r4, #0x2c4]
     bl func_ov030_021fd434
     ldr r1, [r4, #0x4]

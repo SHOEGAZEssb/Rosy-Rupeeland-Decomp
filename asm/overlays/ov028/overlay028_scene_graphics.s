@@ -22,7 +22,7 @@
 .extern InventoryScroll_UpdatePresentation
 .extern PresentationScalar_TransitionTo
 .extern PresentationList_UpdateAndDeleteCompleted
-.extern func_020958d8
+.extern SpriteMotionController_Update
 .extern func_020b2058
 .extern func_020b44e8
 .extern func_ov028_021fcf2c
@@ -262,9 +262,9 @@ L_021fe4e8:
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_Update
     add r0, r4, #0x98
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x144
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r4, #0x54]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x58]

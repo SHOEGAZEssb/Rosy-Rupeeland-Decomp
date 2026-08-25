@@ -34,7 +34,7 @@ extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32,
 extern u32 LanguageLookupDatabase_GetResourceSize(const void *, s32);
 extern const void *LanguageLookupDatabase_GetResourceById(const void *, s32);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern s32 GraphicsSpriteRenderer_DrawDecimal(void *, s32, u32, s32, s32, s32, s32, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
@@ -105,8 +105,8 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
     InventoryScroll_SetSpritePriority(controller, 0);
     InventoryScroll_UpdatePresentation(controller);
     func_ov021_021fd224(state);
-    func_02092814((u8 *)state + 0x28, 0x7007);
-    func_02092814((u8 *)state + 0x28, 0x7000);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x28, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x28, 0x7000);
     return state;
 }
 

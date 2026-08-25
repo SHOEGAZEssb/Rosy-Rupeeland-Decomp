@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02091bd0(void *state, s32 mode, s32 maximum, s32 step);
+extern s32 TitleInterpolatedValue_Evaluate(void *state, s32 mode, s32 maximum, s32 step);
 extern void func_ov035_021fd128(s32 lightMask, s32 polygonMode, s32 cullMode,
                                s32 polygonId, s32 alpha, s32 miscBits);
 extern void func_ov035_021fd28c(s16 s, u16 t, u16 q);
@@ -47,7 +47,7 @@ extern "C" void func_ov035_021fd60c(void *list)
         s16 currentX = FIELD(s16, node, 0x0c);
         s16 currentY = FIELD(s16, node, 0x10);
         s16 currentQ = FIELD(s16, node, 0x14);
-        s32 alpha = func_02091bd0((u8 *)node + 0x18, 1, 0x1f, 1);
+        s32 alpha = TitleInterpolatedValue_Evaluate((u8 *)node + 0x18, 1, 0x1f, 1);
 
         func_ov035_021fd128(0, 0, 3, 0x0e, alpha, 0);
         REG32(0x04000500) = 1;

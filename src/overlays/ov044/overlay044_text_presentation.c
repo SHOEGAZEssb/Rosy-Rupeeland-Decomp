@@ -11,10 +11,10 @@
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *resource, void *descriptor, s32 mode);
 extern "C" void GraphicsSpriteState_ApplyRenderConfig(void *binding, s32 x, s32 y, s32 palette,
                                 s32 mode, s32 flags, s32 finalMode);
-extern "C" void func_020957f0(void *presentation, void *binding, s32 index,
+extern "C" void SpriteMotionController_BindSprite(void *presentation, void *binding, s32 index,
                                 s32 mode, s32 flags);
-extern "C" void func_02095820(void *presentation, s32 x, s32 y);
-extern "C" void func_02095940(void *presentation);
+extern "C" void SpriteMotionController_SetPosition(void *presentation, s32 x, s32 y);
+extern "C" void SpriteMotionController_Hide(void *presentation);
 extern "C" void GraphicsSpriteGroup_Clear(void *resource);
 
 /*
@@ -33,13 +33,13 @@ extern "C" void func_ov044_0220c610(void *object)
     GraphicsSpriteState_ApplyRenderConfig(binding, 0, 0x84, 0x20, 2, 0, 2);
     binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xbc),
                             (u8 *)object + 0xc0, 1);
-    func_020957f0((u8 *)object + 0xd0, binding, 9, 2, 0);
-    func_02095820((u8 *)object + 0xd0, 0xe8, 0xaa);
+    SpriteMotionController_BindSprite((u8 *)object + 0xd0, binding, 9, 2, 0);
+    SpriteMotionController_SetPosition((u8 *)object + 0xd0, 0xe8, 0xaa);
     binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xbc),
                             (u8 *)object + 0xc0, 1);
-    func_020957f0((u8 *)object + 0x17c, binding, 7, 2, 0);
-    func_02095820((u8 *)object + 0x17c, 0x80, 0xaa);
-    func_02095940((u8 *)object + 0x17c);
+    SpriteMotionController_BindSprite((u8 *)object + 0x17c, binding, 7, 2, 0);
+    SpriteMotionController_SetPosition((u8 *)object + 0x17c, 0x80, 0xaa);
+    SpriteMotionController_Hide((u8 *)object + 0x17c);
 }
 
 /*

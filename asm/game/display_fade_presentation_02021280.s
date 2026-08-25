@@ -20,12 +20,12 @@
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToSubBg
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern func_02091b98
-.extern func_02091bac
+.extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
-.extern func_020929b0
-.extern func_020929f4
+.extern TitleScrollValue_Init
+.extern TitleScrollValue_Advance
 .extern func_02092b0c
 .extern func_02092b34
 .extern func_02092b60
@@ -42,6 +42,6 @@ DisplayFadePresentation_GetScrollStatus: ; 0x02021280
     ldr ip, .L_0202128c
     add r0, r0, #0x3c
     bx ip
-.L_0202128c: .word func_020929f4
+.L_0202128c: .word TitleScrollValue_Advance
     .size DisplayFadePresentation_GetScrollStatus, .-DisplayFadePresentation_GetScrollStatus
 

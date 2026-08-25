@@ -13,11 +13,11 @@ extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archi
                                s32 second, s32 third, s32 fourth);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontObject, void *owner, s32 value);
-extern "C" void func_020957f0(void *canvas, void *fontBinding,
+extern "C" void SpriteMotionController_BindSprite(void *canvas, void *fontBinding,
                                s32 engine, s32 mode, s32 flags);
 extern "C" void GraphicsSpriteGroup_Destroy(void *object);
 extern "C" void AnimationResourceState_ReleaseResources(void *owner);
-extern "C" void func_020958d8(void *canvas);
+extern "C" void SpriteMotionController_Update(void *canvas);
 extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *object);
 
 /*
@@ -34,13 +34,13 @@ extern "C" void func_ov043_0220bc2c(void *object)
     FIELD(void *, object, 0x8c) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     void *binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x8c),
                                    (u8 *)object + 0x80, 1);
-    func_020957f0((u8 *)object + 0x13c, binding, 0, 2, 0);
+    SpriteMotionController_BindSprite((u8 *)object + 0x13c, binding, 0, 2, 0);
     binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x8c),
                              (u8 *)object + 0x80, 1);
-    func_020957f0((u8 *)object + 0x1e8, binding, 1, 2, 0);
+    SpriteMotionController_BindSprite((u8 *)object + 0x1e8, binding, 1, 2, 0);
     binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x8c),
                              (u8 *)object + 0x80, 1);
-    func_020957f0((u8 *)object + 0x90, binding, 2, 2, 0);
+    SpriteMotionController_BindSprite((u8 *)object + 0x90, binding, 2, 2, 0);
 }
 
 /*
@@ -65,9 +65,9 @@ extern "C" void func_ov043_0220bcf4(void *object)
  */
 extern "C" void Overlay043_UpdatePresentationResources(void *object)
 {
-    func_020958d8((u8 *)object + 0x13c);
-    func_020958d8((u8 *)object + 0x1e8);
-    func_020958d8((u8 *)object + 0x90);
+    SpriteMotionController_Update((u8 *)object + 0x13c);
+    SpriteMotionController_Update((u8 *)object + 0x1e8);
+    SpriteMotionController_Update((u8 *)object + 0x90);
     if (FIELD(void *, object, 0x8c))
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0x8c));
 }

@@ -7,7 +7,7 @@
     .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern TitleDialog_Init
     .extern func_ov020_021fd308
     .extern gHeapContext
@@ -31,13 +31,13 @@ func_ov020_021fd320:
     str r0, [r5, #0xc]
     add r0, r5, #0x28
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r5, #0x28
     ldr r1, L_021fd3f0
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r5, #0x28
     ldr r1, L_021fd3f4
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0xec
     ldr r1, L_021fd3f8
     mov r2, #0x4

@@ -21,7 +21,7 @@ extern void *Graphics3DResourceOwner_CreateManager(void *);
 extern void Graphics3DResourceOwner_RemoveManager(void *, void *);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern s32 TitleRandom_NextBounded(void *, s32);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void func_ov017_021fe3c4(void *, u32, u32, u32, u32, u8, u32);
 #ifdef __cplusplus
 }
@@ -43,7 +43,7 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
     s32 zero = 0;
 
     GraphicsResourceSetVariant_Init((u8 *)pool + 4);
-    func_02091b6c((u8 *)pool + 0x38);
+    TitleInterpolatedValue_Init((u8 *)pool + 0x38);
     FIELD(u32, pool, 0x54) = 0;
     FIELD(u32, pool, 0x54) = genrand_int32();
     FIELD(void *, pool, 0) = Graphics3DResourceOwner_CreateManager(resourceContext);

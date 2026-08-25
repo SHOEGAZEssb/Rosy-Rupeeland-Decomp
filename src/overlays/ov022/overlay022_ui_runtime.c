@@ -31,11 +31,11 @@ extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void TitleDialog_ClearTextRect(void *);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_020958d8(void *);
-extern void func_02095940(void *);
-extern void func_02095988(void *, s32);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Update(void *);
+extern void SpriteMotionController_Hide(void *);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(void *, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
@@ -61,12 +61,12 @@ extern "C" void func_ov022_021fee3c(void *scene)
 {
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0x9c),
                                  (u8 *)scene + 0x84, 1);
-    func_020957f0((u8 *)scene + 0x154, sprite, 0, 1, 0);
-    func_02095820((u8 *)scene + 0x154, -64, 64);
+    SpriteMotionController_BindSprite((u8 *)scene + 0x154, sprite, 0, 1, 0);
+    SpriteMotionController_SetPosition((u8 *)scene + 0x154, -64, 64);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0x9c),
                            (u8 *)scene + 0x84, 1);
-    func_020957f0((u8 *)scene + 0x200, sprite, 2, 1, 0);
-    func_02095820((u8 *)scene + 0x200, -64, 112);
+    SpriteMotionController_BindSprite((u8 *)scene + 0x200, sprite, 2, 1, 0);
+    SpriteMotionController_SetPosition((u8 *)scene + 0x200, -64, 112);
     func_ov022_021fef48(scene);
 
     FIELD(void *, scene, 0xa4) = GraphicsSpriteGroup_CreateStateFromSource(
@@ -74,8 +74,8 @@ extern "C" void func_ov022_021fee3c(void *scene)
     GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xa4), 0x14, 0x86, 0x1c, 1, 0, 6);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0x9c),
                            (u8 *)scene + 0x78, 1);
-    func_020957f0((u8 *)scene + 0xa8, sprite, 2, 1, 0);
-    func_02095820((u8 *)scene + 0xa8, 0xe4, 0xaa);
+    SpriteMotionController_BindSprite((u8 *)scene + 0xa8, sprite, 2, 1, 0);
+    SpriteMotionController_SetPosition((u8 *)scene + 0xa8, 0xe4, 0xaa);
 }
 
 /*
@@ -87,16 +87,16 @@ extern "C" void func_ov022_021fee3c(void *scene)
  */
 extern "C" void func_ov022_021fef48(void *scene)
 {
-    func_02095988((u8 *)scene + 0x154,
+    SpriteMotionController_SetAnimation((u8 *)scene + 0x154,
                   FIELD(void *, scene, 0x2b4) != 0 ? 0 : 1);
     if (GameWork_TestFlag(gGameWork, 0x3cb)) {
         if (FIELD(s32, scene, 0x2b0) != 0)
-            func_02095940((u8 *)scene + 0x200);
+            SpriteMotionController_Hide((u8 *)scene + 0x200);
         else
-            func_02095988((u8 *)scene + 0x200,
+            SpriteMotionController_SetAnimation((u8 *)scene + 0x200,
                           FIELD(void *, scene, 0x2b8) != 0 ? 2 : 3);
     } else {
-        func_02095940((u8 *)scene + 0x200);
+        SpriteMotionController_Hide((u8 *)scene + 0x200);
     }
 }
 
@@ -152,9 +152,9 @@ extern "C" void func_ov022_021ff048(void *scene)
 extern "C" void func_ov022_021ff0d0(void *scene)
 {
     GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
-    func_020958d8((u8 *)scene + 0xa8);
+    SpriteMotionController_Update((u8 *)scene + 0xa8);
     for (s32 i = 0; i < 2; ++i)
-        func_020958d8((u8 *)scene + 0x154 + i * 0xac);
+        SpriteMotionController_Update((u8 *)scene + 0x154 + i * 0xac);
 
     void *status = FIELD(void *, scene, 0x350);
     if (status != 0) {
@@ -194,7 +194,7 @@ extern "C" void func_ov022_021ff0d0(void *scene)
 extern "C" void func_ov022_021ff1e4(void *scene)
 {
     for (s32 i = 0; i < 2; ++i)
-        func_02095820((u8 *)scene + 0x154 + i * 0xac,
+        SpriteMotionController_SetPosition((u8 *)scene + 0x154 + i * 0xac,
                       0x80, 0x40 + i * 0x30);
 }
 

@@ -8,8 +8,8 @@
     .extern GraphicsSpriteRenderer_MeasureText
     .extern GraphicsSpriteCanvas_FillRect
     .extern GraphicsSpriteRenderer_DrawDecimal
-    .extern func_020958d8
-    .extern func_02095988
+    .extern SpriteMotionController_Update
+    .extern SpriteMotionController_SetAnimation
     .extern func_ov001_021fb81c
     .extern func_ov001_021fb87c
     .extern func_ov001_021fbf7c
@@ -35,7 +35,7 @@ L_021fd6a4:
     mov r4, #0xac
 L_021fd6b0:
     mla r0, r6, r4, r5
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r6, r6, #0x1
     cmp r6, #0x3
     blt L_021fd6b0
@@ -181,7 +181,7 @@ func_ov015_021fd8a8:
     add r3, r4, #0xfc
     mla r0, r2, r0, r3
     and r1, r1, #0xff
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     ldr r0, [r4, #0x300]
     add r0, r0, #0x1
     str r0, [r4, #0x300]

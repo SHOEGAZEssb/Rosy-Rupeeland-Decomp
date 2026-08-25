@@ -25,7 +25,7 @@ extern void func_ov030_021feb0c(void *);
 extern void func_ov030_021fda14(void *, s32, s32);
 extern void func_ov030_021fe768(void *);
 extern s32 func_ov030_021fea00(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void func_02092260(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32, void *);
@@ -100,7 +100,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
     case 2:
         if ((FIELD(u32, scene, 0x20) & 0x20) == 0)
             break;
-        if (func_02095860((u8 *)scene + 0x210,
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x210,
                           (u8 *)scene + 0x30, 0, 4) != 0) {
             TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2bc));
             func_02092260(scene, 3);
@@ -108,7 +108,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
                                 data_ov030_021ff7a0[1]);
             break;
         }
-        if (func_02095860((u8 *)scene + 0xb8,
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xb8,
                           (u8 *)scene + 0x30, 0, 4) != 0) {
             if (FIELD(s32, scene, 0x384) != 0) {
                 func_02092260(scene, 2);
@@ -126,7 +126,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
             }
             break;
         }
-        if (func_02095860((u8 *)scene + 0x164,
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x164,
                           (u8 *)scene + 0x30, 0, 4) != 0) {
             if (FIELD(s32, scene, 0x38c) != 0) {
                 func_02092260(scene, 2);

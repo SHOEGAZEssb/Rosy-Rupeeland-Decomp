@@ -6,7 +6,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern Sound_LoadGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02095940
+.extern SpriteMotionController_Hide
 .extern func_ov022_021fdd1c
 .extern func_ov022_021ff0d0
 .extern func_ov022_021ff220
@@ -39,7 +39,7 @@ func_ov022_021ff480:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r4, #0xa8
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, L_021ff534
     mov r1, #0x1
     ldr r0, [r0, #0x0]

@@ -11,7 +11,7 @@ extern void GraphicsArchive_ReleaseScreenResource(void *archive, void *resource)
 extern void *GraphicsArchive_AcquireScreenResource(void *archive, u32 resourceId);
 
 /* Release every live screen resource and reset the collection. */
-void func_0209270c(TitleScreenResourceCollection *collection)
+void TitleScreenResourceCollection_ReleaseAll(TitleScreenResourceCollection *collection)
 {
     s32 index;
 
@@ -23,7 +23,7 @@ void func_0209270c(TitleScreenResourceCollection *collection)
 }
 
 /* Load and append one resource unless the fixed collection is full. */
-void func_02092754(TitleScreenResourceCollection *collection, u32 resourceId)
+void TitleScreenResourceCollection_Append(TitleScreenResourceCollection *collection, u32 resourceId)
 {
     if (collection->count >= 16)
         return;

@@ -10,12 +10,12 @@
 .extern data_ov025_02202ed8
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02091bac
+.extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_02091cf0
 .extern func_02092260
 .extern GraphicsSpriteState_TestTouchPoint
-.extern func_02095860
+.extern SpriteMotionController_BeginHitResponse
 .extern func_ov025_021fd9e4
 .extern func_ov025_021fdc4c
 .extern func_ov025_021fdea0
@@ -127,7 +127,7 @@ L_02201134:
     mov r2, r8
     mov r3, r7
     add r1, r5, #0x30
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_0220117c
     mov r0, r5
@@ -217,7 +217,7 @@ L_0220126c:
     mov r1, #0x3
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

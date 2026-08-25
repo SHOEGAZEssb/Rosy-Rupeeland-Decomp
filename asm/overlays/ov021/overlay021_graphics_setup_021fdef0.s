@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_graphics_setup.c. */
-    .extern func_020929f4
+    .extern TitleScrollValue_Advance
 
 .global func_ov021_021fdef0
 func_ov021_021fdef0:
@@ -27,7 +27,7 @@ func_ov021_021fdef0:
     and r1, r1, r2, lsl #0x10
     add r0, r0, #0x400
     str r1, [ip, #0x14]
-    bl func_020929f4
+    bl TitleScrollValue_Advance
 L_021fdf50:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

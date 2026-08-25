@@ -7,9 +7,9 @@
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern gSystemState
 
 /* Exact fallback; see src/overlays/ov016/overlay016_panel_lifecycle.c. */
@@ -38,7 +38,7 @@ func_ov016_021fd6c8:
     add r0, r10, #0xd4
     bl TitleCharacterResourceCollection_Init
     add r0, r10, #0xf8
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     str r4, [r10, #0x0]
     mov r0, r4
     bl GraphicsSpriteGroupOwner_CreateGroup
@@ -48,13 +48,13 @@ func_ov016_021fd6c8:
     str r0, [r10, #0x8]
     add r0, r10, #0xd4
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r10, #0xd4
     ldr r1, L_021fd96c
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r10, #0xd4
     ldr r1, L_021fd970
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0x25
     str r0, [sp, #0x0]
     add r0, r10, #0xc

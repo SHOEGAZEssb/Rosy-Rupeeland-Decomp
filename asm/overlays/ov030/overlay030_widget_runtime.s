@@ -11,7 +11,7 @@
 .extern GraphicsSpriteRenderer_QueueStatePaletteUploads
 .extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_02091e1c
-.extern func_020958d8
+.extern SpriteMotionController_Update
 .extern func_020befec
 .extern func_ov030_021fcf18
 .extern Heap_Free
@@ -98,9 +98,9 @@ L_021fd38c:
     blt L_021fd35c
 L_021fd394:
     add r0, r4, #0x58
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x104
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r2, [r4, #0x1c4]
     ldr r0, [r4, #0x28]
     mov r1, #0x0

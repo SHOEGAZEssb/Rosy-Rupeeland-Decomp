@@ -1,5 +1,5 @@
     .text
-    .extern func_02095820
+    .extern SpriteMotionController_SetPosition
     .global func_ov000_021fc340
 func_ov000_021fc340:
     stmdb sp!, {r3, lr}
@@ -25,6 +25,6 @@ func_ov000_021fc340:
     add r0, r0, #0x24
     mov r1, #0xec
     str r12, [r3, #0x1c]
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldmia sp!, {r3, pc}
     .size func_ov000_021fc340, .-func_ov000_021fc340

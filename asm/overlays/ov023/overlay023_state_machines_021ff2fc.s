@@ -27,7 +27,7 @@
 .extern InventoryScroll_ResetPresentationState
 .extern PresentationScalar_SetImmediate
 .extern PresentationScalar_TransitionTo
-.extern func_02095860
+.extern SpriteMotionController_BeginHitResponse
 .extern func_ov023_021fd730
 .extern func_ov023_021fd780
 .extern func_ov023_021fd7a8
@@ -231,7 +231,7 @@ L_021ff58c:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021ff5b4
     mov r0, r5
@@ -242,7 +242,7 @@ L_021ff5b4:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     mov r0, r5
     beq L_021ff5f0

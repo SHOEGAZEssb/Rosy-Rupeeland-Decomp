@@ -8,7 +8,7 @@
 .extern AnimationResourceState_InitEmbedded
 .extern AnimationResourceState_ReplaceResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern func_ov094_02217c34
 .extern gDebugFont
 .extern gGameWork
@@ -24,7 +24,7 @@ func_ov094_02219568:
     mov r1, #0x0
     add r0, r4, #0x18
     str r1, [r4, #0x14]
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0x34
     bl func_ov094_02217c34
     str r6, [r4, #0x44]

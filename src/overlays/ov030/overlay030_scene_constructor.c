@@ -18,10 +18,10 @@ extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s3
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091e0c(void *, s32);
-extern void func_020957bc(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Init(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Hide(void *);
 extern void *ActorDescriptor_GetComponent(void *, s32);
 extern s32 ActorDescriptorComponent_GetCharacterResourceId(void *);
 extern s32 ActorDescriptorComponent_GetPaletteResourceId(void *);
@@ -52,8 +52,8 @@ extern "C" void *func_ov030_021fcf20(void *widget, void *font,
     AnimationResourceState_InitEmbedded((u8 *)widget + 4);
     AnimationResourceState_InitEmbedded((u8 *)widget + 0x10);
     AnimationResourceState_InitEmbedded((u8 *)widget + 0x1c);
-    func_020957bc((u8 *)widget + 0x58);
-    func_020957bc((u8 *)widget + 0x104);
+    SpriteMotionController_Init((u8 *)widget + 0x58);
+    SpriteMotionController_Init((u8 *)widget + 0x104);
     func_ov030_021fd260((u8 *)widget + 0x1b8);
     func_02091e0c((u8 *)widget + 0x1d0, 8);
     func_02091e0c((u8 *)widget + 0x1d8, 8);
@@ -108,14 +108,14 @@ extern "C" void *func_ov030_021fcf20(void *widget, void *font,
 
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x2c),
                                  (u8 *)widget + 0x10, 1);
-    func_020957f0((u8 *)widget + 0x58, sprite, 4, 0, 0);
-    func_02095820((u8 *)widget + 0x58, 0x80, 0xb0);
-    func_02095940((u8 *)widget + 0x58);
+    SpriteMotionController_BindSprite((u8 *)widget + 0x58, sprite, 4, 0, 0);
+    SpriteMotionController_SetPosition((u8 *)widget + 0x58, 0x80, 0xb0);
+    SpriteMotionController_Hide((u8 *)widget + 0x58);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x2c),
                            (u8 *)widget + 0x10, 1);
-    func_020957f0((u8 *)widget + 0x104, sprite, 6, 0, 0);
-    func_02095820((u8 *)widget + 0x104, 0xe4, 0xb0);
-    func_02095940((u8 *)widget + 0x104);
+    SpriteMotionController_BindSprite((u8 *)widget + 0x104, sprite, 6, 0, 0);
+    SpriteMotionController_SetPosition((u8 *)widget + 0x104, 0xe4, 0xb0);
+    SpriteMotionController_Hide((u8 *)widget + 0x104);
     func_ov030_021fd434(widget);
     return widget;
 }

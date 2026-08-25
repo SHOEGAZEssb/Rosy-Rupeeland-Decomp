@@ -1,5 +1,5 @@
     .text
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_02091b98
 
     /* Exact fallback; see the documented portable reconstruction in
@@ -35,7 +35,7 @@ L_021fbda0:
     ldr r2, [r4, #0x120]
     add r0, r4, #0x110
     mov r1, #0x2
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     add r0, r4, #0x12c
     mov r1, #0x1
     bl func_02091b98

@@ -21,8 +21,8 @@ extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void *RecordDescriptor_GetMessage(void *, s32);
 extern void TitleScreenResourceCollection_Init(void *);
-extern void func_020926f8(void *);
-extern void func_02092754(void *, s32);
+extern void TitleScreenResourceCollection_Destroy(void *);
+extern void TitleScreenResourceCollection_Append(void *, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void TitlePalette_SetMainBackdrop(s32);
 extern void Presentation_BlendPalette16(void *, void *, s32);
@@ -59,7 +59,7 @@ extern "C" void func_ov029_021fd644(void *state)
     TitleScreenResourceCollection_Init(auxiliary);
     GraphicsResourceSet_Load(graphics, data_020f4e18[0],
                              0xa06d, 0xa06e, 0xa06f);
-    func_02092754(auxiliary, 0xa070);
+    TitleScreenResourceCollection_Append(auxiliary, 0xa070);
     func_020b44e8();
     GraphicsResourceSet_ApplyToMainBg(graphics, 0, 0);
     void *resource = TitleScreenResourceCollection_Get(auxiliary, 0);
@@ -67,7 +67,7 @@ extern "C" void func_ov029_021fd644(void *state)
     TitlePalette_SetMainBackdrop(0);
     *(volatile u16 *)0x04000050 = 0;
     FIELD(s32, state, 0x48) = 0x13;
-    func_020926f8(auxiliary);
+    TitleScreenResourceCollection_Destroy(auxiliary);
     GraphicsResourceSet_Destroy(graphics);
 }
 

@@ -19,7 +19,7 @@ extern "C" {
 extern void *func_ov035_021fce00(void *object, void *argument);
 extern void GraphicsResourceSetVariant_Init(void *state);
 extern void func_ov035_021fdce8(void *collection);
-extern void func_02091b6c(void *state);
+extern void TitleInterpolatedValue_Init(void *state);
 extern void func_02091d08(void *state);
 extern void GraphicsResourceSetVariant_Load(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
@@ -95,7 +95,7 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
     GraphicsResourceSetVariant_Init((u8 *)scene + 0xe8);
     func_ov035_021fdce8((u8 *)scene + 0x10c);
     func_ov035_021fdce8((u8 *)scene + 0x11c);
-    func_02091b6c((u8 *)scene + 0x12c);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x12c);
     func_02091d08((u8 *)scene + 0x148);
     load_group((u8 *)scene + 0xdc, 0x6011, resourceOwner);
     load_group((u8 *)scene + 0xe8, 0x6014, resourceOwner);

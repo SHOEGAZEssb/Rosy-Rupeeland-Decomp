@@ -22,12 +22,12 @@ extern "C" {
 #endif
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void func_ov025_021fd9e4(void *, s32);
 extern s32 func_ov025_021fdc4c(void *);
 extern void func_ov025_021fdea0(void *, s32);
@@ -90,7 +90,7 @@ extern "C" s32 func_ov025_02200fe4(void *scene)
         if (!handled) {
             for (s32 i = 0; i < 3; ++i) {
                 void *controller = (u8 *)scene + 0x2f4 + i * 0xac;
-                if (func_02095860(controller, (u8 *)scene + 0x30, 0, 4)) {
+                if (SpriteMotionController_BeginHitResponse(controller, (u8 *)scene + 0x30, 0, 4)) {
                     FIELD(s32, scene, 0x5b8) = i;
                     func_02092260(scene, 2);
                     ++FIELD(s32, scene, 4);
@@ -136,7 +136,7 @@ extern "C" s32 func_ov025_02200fe4(void *scene)
         }
         break;
     case 10:
-        func_02091bac((u8 *)scene + 0x5fc, 3, 0, 4, 6);
+        TitleInterpolatedValue_Configure((u8 *)scene + 0x5fc, 3, 0, 4, 6);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* Setup intentionally falls through to the first animation update. */

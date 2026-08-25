@@ -15,16 +15,16 @@
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern SceneInputBase_Init
 .extern TitleCharacterResourceCollection_Init
-.extern func_02092814
-.extern func_020929b0
+.extern TitleCharacterResourceCollection_Append
+.extern TitleScrollValue_Init
 .extern TitleDialog_Init
 .extern func_02092f88
-.extern func_020957bc
-.extern func_020957f0
-.extern func_02095820
+.extern SpriteMotionController_Init
+.extern SpriteMotionController_BindSprite
+.extern SpriteMotionController_SetPosition
 .extern func_ov030_021fd9fc
 .extern func_ov030_021fda14
 .extern func_ov030_021fe2b4
@@ -57,15 +57,15 @@ func_ov030_021fda3c:
     add r0, r4, #0x94
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xb8
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x164
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x210
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x340
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0x364
-    bl func_020929b0
+    bl TitleScrollValue_Init
     ldr r0, L_021fdf3c
     ldr r1, L_021fdf40
     ldr r0, [r0, #0x0]
@@ -100,10 +100,10 @@ func_ov030_021fda3c:
 L_021fdb18:
     ldr r1, L_021fdf54
     add r0, r4, #0x54
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, L_021fdf58
     add r0, r4, #0x54
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r1, #0x43
     ldr r0, L_021fdf3c
     str r1, [sp, #0x0]
@@ -227,7 +227,7 @@ L_021fdc7c:
     add r0, r4, #0xb8
     mov r3, r2
     str r2, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     ldr r0, L_021fdf4c
     ldr r1, L_021fdf50
     ldr r0, [r0, #0x0]
@@ -237,7 +237,7 @@ L_021fdc7c:
     mov r1, #0x80
     beq L_021fde1c
     mov r2, #0x40
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, [r4, #0x78]
     add r1, r4, #0x7c
     mov r2, #0x1
@@ -247,11 +247,11 @@ L_021fdc7c:
     add r0, r4, #0x164
     mov r2, #0x2
     str r3, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x164
     mov r1, #0x80
     mov r2, #0x70
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     mov r1, #0x0
     str r1, [sp, #0x0]
     str r1, [sp, #0x4]
@@ -297,7 +297,7 @@ L_021fddc8:
     b L_021fdea4
 L_021fde1c:
     mov r2, #0x60
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     mov r1, #0x0
     str r1, [sp, #0x0]
     str r1, [sp, #0x4]
@@ -343,11 +343,11 @@ L_021fdea4:
     add r0, r4, #0x210
     mov r2, #0x6
     str r3, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x210
     mov r1, #0xe4
     mov r2, #0xb0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     mov r0, #0x0
     str r0, [r4, #0x2c4]
     mov r0, #0x70

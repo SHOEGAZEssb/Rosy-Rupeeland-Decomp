@@ -14,7 +14,7 @@
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern SceneInputBase_Init
 .extern TitleCharacterResourceCollection_Init
-.extern func_02092814
+.extern TitleCharacterResourceCollection_Append
 .extern TitleDialog_Init
 .extern func_ov031_021fce00
 .extern func_ov031_021fd258
@@ -52,7 +52,7 @@ func_ov031_021fd95c:
     str r0, [r4, #0x54c]
     add r0, r4, #0x70
     ldr r1, L_021fdb3c
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0xec
     ldr r1, L_021fdb40
     mov r2, #0x4

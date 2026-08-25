@@ -17,7 +17,7 @@ extern void *gGameWork;
 extern "C" {
 #endif
 extern void GameWork_SetFlag(void *, s32);
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
@@ -47,7 +47,7 @@ extern "C" s32 func_ov025_02200e54(void *scene)
     case 0: {
         void *sprite = FIELD(void *, scene, 0xbc);
         FIELD(u16, sprite, 0x24) &= ~4;
-        func_02091bac((u8 *)scene + 0x5fc, 1, 0x10, 0x100, 0x10);
+        TitleInterpolatedValue_Configure((u8 *)scene + 0x5fc, 1, 0x10, 0x100, 0x10);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* The initialization frame intentionally also updates the prompt. */

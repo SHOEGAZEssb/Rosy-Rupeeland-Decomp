@@ -4416,21 +4416,21 @@ build build/reports/graphics_archive_character_resource.json: objdiff build/deco
   base_object = build/decomp/src/graphics/graphics_archive_character_resource.o
 build build/reports/graphics_archive_character_resource.txt: match_report build/reports/graphics_archive_character_resource.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_character_resource.json
-  report_args = --section .text --function func_020702f4
+  report_args = --section .text --function GraphicsArchiveCharacterResource_Init
 
 build build/reports/graphics_archive_palette_resource.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_palette_resource.o | build/decomp/src/graphics/graphics_archive_palette_resource.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_palette_resource.o
   base_object = build/decomp/src/graphics/graphics_archive_palette_resource.o
 build build/reports/graphics_archive_palette_resource.txt: match_report build/reports/graphics_archive_palette_resource.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_palette_resource.json
-  report_args = --section .text --function func_02070750
+  report_args = --section .text --function GraphicsArchivePaletteResource_Init
 
 build build/reports/graphics_archive_screen_resource.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_screen_resource.o | build/decomp/src/graphics/graphics_archive_screen_resource.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_screen_resource.o
   base_object = build/decomp/src/graphics/graphics_archive_screen_resource.o
 build build/reports/graphics_archive_screen_resource.txt: match_report build/reports/graphics_archive_screen_resource.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_screen_resource.json
-  report_args = --section .text --function func_02070d88
+  report_args = --section .text --function GraphicsArchiveScreenResource_Init
 
 build build/reports/graphics_archive_loader.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_loader.o | build/decomp/src/graphics/graphics_archive_loader.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_loader.o
@@ -11808,7 +11808,7 @@ build build/reports/title_interpolated_value.json: objdiff build/decomp/delinks/
   base_object = build/decomp/src/game/title_interpolated_value.o
 build build/reports/title_interpolated_value.txt: match_report build/reports/title_interpolated_value.json | tools/report_objdiff.py
   report_json = build/reports/title_interpolated_value.json
-  report_args = --section .text --function func_02091b6c --function func_02091b98 --function func_02091bac --function func_02091bd0 --require-exact
+  report_args = --section .text --function TitleInterpolatedValue_Init --function func_02091b98 --function TitleInterpolatedValue_Configure --function TitleInterpolatedValue_Evaluate --require-exact
 
 build title_interpolated_value: phony build/reports/title_interpolated_value.txt
 build build/reports/title_interpolated_value_advance.json: objdiff build/decomp/delinks/src/game/title_interpolated_value_advance.o | build/decomp/src/game/title_interpolated_value_advance.o
@@ -11840,7 +11840,7 @@ build build/reports/title_screen_resource_collection_destructor.json: objdiff bu
   base_object = build/decomp/src/game/title_screen_resource_collection_destructor.o
 build build/reports/title_screen_resource_collection_destructor.txt: match_report build/reports/title_screen_resource_collection_destructor.json | tools/report_objdiff.py
   report_json = build/reports/title_screen_resource_collection_destructor.json
-  report_args = --section .text --function func_020926f8 --require-exact
+  report_args = --section .text --function TitleScreenResourceCollection_Destroy --require-exact
 
 build title_screen_resource_collection_destructor: phony build/reports/title_screen_resource_collection_destructor.txt
 build build/reports/title_screen_resource_collection_ops.json: objdiff build/decomp/delinks/src/game/title_screen_resource_collection_ops.o | build/decomp/src/game/title_screen_resource_collection_ops.o
@@ -11848,7 +11848,7 @@ build build/reports/title_screen_resource_collection_ops.json: objdiff build/dec
   base_object = build/decomp/src/game/title_screen_resource_collection_ops.o
 build build/reports/title_screen_resource_collection_ops.txt: match_report build/reports/title_screen_resource_collection_ops.json | tools/report_objdiff.py
   report_json = build/reports/title_screen_resource_collection_ops.json
-  report_args = --section .text --function func_0209270c --function func_02092754 --function TitleScreenResourceCollection_Get --require-exact
+  report_args = --section .text --function TitleScreenResourceCollection_ReleaseAll --function TitleScreenResourceCollection_Append --function TitleScreenResourceCollection_Get --require-exact
 
 build title_screen_resource_collection_ops: phony build/reports/title_screen_resource_collection_ops.txt
 build build/reports/title_character_resource_collection.json: objdiff build/decomp/delinks/src/game/title_character_resource_collection.o | build/decomp/src/game/title_character_resource_collection.o
@@ -11864,7 +11864,7 @@ build build/reports/title_character_resource_collection_destructor.json: objdiff
   base_object = build/decomp/src/game/title_character_resource_collection_destructor.o
 build build/reports/title_character_resource_collection_destructor.txt: match_report build/reports/title_character_resource_collection_destructor.json | tools/report_objdiff.py
   report_json = build/reports/title_character_resource_collection_destructor.json
-  report_args = --section .text --function func_020927b8 --require-exact
+  report_args = --section .text --function TitleCharacterResourceCollection_Destroy --require-exact
 
 build title_character_resource_collection_destructor: phony build/reports/title_character_resource_collection_destructor.txt
 build build/reports/title_character_resource_collection_ops.json: objdiff build/decomp/delinks/src/game/title_character_resource_collection_ops.o | build/decomp/src/game/title_character_resource_collection_ops.o
@@ -11872,7 +11872,7 @@ build build/reports/title_character_resource_collection_ops.json: objdiff build/
   base_object = build/decomp/src/game/title_character_resource_collection_ops.o
 build build/reports/title_character_resource_collection_ops.txt: match_report build/reports/title_character_resource_collection_ops.json | tools/report_objdiff.py
   report_json = build/reports/title_character_resource_collection_ops.json
-  report_args = --section .text --function func_020927cc --function func_02092814 --require-exact
+  report_args = --section .text --function TitleCharacterResourceCollection_ReleaseAll --function TitleCharacterResourceCollection_Append --require-exact
 
 build title_character_resource_collection_ops: phony build/reports/title_character_resource_collection_ops.txt
 build build/reports/title_palette_backdrop.json: objdiff build/decomp/delinks/src/graphics/title_palette_backdrop.o | build/decomp/src/graphics/title_palette_backdrop.o
@@ -11888,7 +11888,7 @@ build build/reports/title_scroll_value.json: objdiff build/decomp/delinks/src/ga
   base_object = build/decomp/src/game/title_scroll_value.o
 build build/reports/title_scroll_value.txt: match_report build/reports/title_scroll_value.json | tools/report_objdiff.py
   report_json = build/reports/title_scroll_value.json
-  report_args = --section .text --function func_020929b0 --function func_020929f4 --require-exact
+  report_args = --section .text --function TitleScrollValue_Init --function TitleScrollValue_Advance --require-exact
 
 build title_scroll_value: phony build/reports/title_scroll_value.txt
 build build/reports/game_phase_state_0200e9e0.json: objdiff build/decomp/delinks/asm/game/game_phase_state_0200e9e0.o | build/decomp/asm/game/game_phase_state_0200e9e0.o

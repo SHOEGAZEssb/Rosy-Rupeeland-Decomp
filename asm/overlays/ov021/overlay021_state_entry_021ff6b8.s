@@ -12,7 +12,7 @@
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern RecordDescriptor_GetMessage
-    .extern func_02095940
+    .extern SpriteMotionController_Hide
     .extern func_ov021_021fd7c0
     .extern func_ov021_021feea4
     .extern func_ov021_021ff0e0
@@ -45,7 +45,7 @@ L_021ff6f4:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r4, #0xa0
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, L_021ff824
     mov r1, #0x1
     ldr r0, [r0, #0x0]

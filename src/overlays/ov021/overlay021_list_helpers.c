@@ -22,7 +22,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern s32 func_020befec(s32, s32);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 extern void Overlay021Row_DestroyNoOp(void *);
 extern void func_ov021_021fd2b4(void *, s32);
@@ -64,7 +64,7 @@ extern "C" void *func_ov021_021fd074(void *state)
     if (FIELD(void *, state, 0x4c) != 0)
         CxxArray_DestroyAndFree(FIELD(void *, state, 0x4c), 12, 8,
                       Overlay021Row_DestroyNoOp);
-    func_020927b8((u8 *)state + 0x28);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x28);
     AnimationResourceState_Destroy((u8 *)state + 0x10);
     AnimationResourceState_Destroy((u8 *)state + 4);
     return state;

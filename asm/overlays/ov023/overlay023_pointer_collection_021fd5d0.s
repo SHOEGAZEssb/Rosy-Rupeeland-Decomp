@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_pointer_collection.c. */
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern CxxArray_DestroyAndFree
 .extern func_ov023_021fd630
 
@@ -30,7 +30,7 @@ L_021fd5f8:
     bl CxxArray_DestroyAndFree
 L_021fd614:
     add r0, r4, #0x18
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x8
     bl AnimationResourceState_Destroy
     mov r0, r4

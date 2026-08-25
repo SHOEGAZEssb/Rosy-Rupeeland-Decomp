@@ -8,7 +8,7 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
     .extern PresentationList_DeleteAll
     .extern func_ov001_021fb7d4
     .extern func_ov018_021fcefc
@@ -94,7 +94,7 @@ L_021fd430:
     add r0, r4, #0x94
     bl AnimationResourceState_Destroy
     add r0, r4, #0x70
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd490: .word data_ov018_021ffd3c
@@ -172,7 +172,7 @@ L_021fd550:
     add r0, r4, #0x94
     bl AnimationResourceState_Destroy
     add r0, r4, #0x70
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

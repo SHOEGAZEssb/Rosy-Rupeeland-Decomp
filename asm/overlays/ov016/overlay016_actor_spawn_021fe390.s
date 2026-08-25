@@ -4,7 +4,7 @@
     .extern Presentation_SetPosition
     .extern PresentationList_Append
     .extern SpritePresentation_SyncPosition
-    .extern func_02095928
+    .extern SpriteMotionController_Show
     .extern func_ov016_021fe004
     .extern func_ov016_021fe2b0
     .extern func_ov016_021fe358
@@ -91,7 +91,7 @@ L_021fe480:
     cmp r5, r0
     bne L_021fe4c0
     add r0, r10, #0x20
-    bl func_02095928
+    bl SpriteMotionController_Show
     b L_021fe4c0
 L_021fe4b4:
     add r0, r0, #0x1

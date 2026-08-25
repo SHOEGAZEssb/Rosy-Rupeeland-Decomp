@@ -24,7 +24,7 @@ extern void AnimationResourceState_InitEmbedded(void *resourceSet);
 extern void AnimationResourceState_Destroy(void *resourceSet);
 extern void AnimationResourceState_ReplaceResources(void *resourceSet, void *archive, s32 characterId,
                          s32 paletteId, s32 screenId);
-extern void func_02091b6c(void *randomState);
+extern void TitleInterpolatedValue_Init(void *randomState);
 extern u32 genrand_int32(void);
 extern void func_ov094_02217c34(void *effectList);
 extern void PresentationList_DeleteAll(void *effectList);
@@ -61,7 +61,7 @@ extern "C" void *func_ov094_022185e4(void *object, s32 mode)
     AnimationResourceState_InitEmbedded((u8 *)object + 0x08);
     func_ov094_02217c34((u8 *)object + 0x1c);
     *(s32 *)((u8 *)object + 0x30) = 0;
-    func_02091b6c((u8 *)object + 0x34);
+    TitleInterpolatedValue_Init((u8 *)object + 0x34);
     *(s32 *)object = mode;
     *(s32 *)((u8 *)object + 0x04) = 0;
     *(u32 *)((u8 *)object + 0x30) = genrand_int32();

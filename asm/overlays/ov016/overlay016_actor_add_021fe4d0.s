@@ -4,7 +4,7 @@
     .extern Presentation_SetPosition
     .extern PresentationList_Append
     .extern SpritePresentation_SyncPosition
-    .extern func_02095928
+    .extern SpriteMotionController_Show
     .extern func_ov016_021fe004
     .extern func_ov016_021fe2b0
     .extern gHeapContext
@@ -54,7 +54,7 @@ L_021fe51c:
     mov r0, r5
     bl func_ov016_021fe2b0
     add r0, r5, #0x20
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, pc}
 L_021fe57c: .word data_ov016_02201580

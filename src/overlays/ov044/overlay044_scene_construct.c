@@ -20,9 +20,9 @@ extern "C" void SceneInputBase_Init(void *object);
 extern "C" void TitleCharacterResourceCollection_Init(void *object);
 extern "C" void TitleScreenResourceCollection_Init(void *object);
 extern "C" void AnimationResourceState_InitEmbedded(void *object);
-extern "C" void func_020957bc(void *object);
-extern "C" void func_02092814(void *object, u32 id);
-extern "C" void func_02092754(void *object, u32 id);
+extern "C" void SpriteMotionController_Init(void *object);
+extern "C" void TitleCharacterResourceCollection_Append(void *object, u32 id);
+extern "C" void TitleScreenResourceCollection_Append(void *object, u32 id);
 extern "C" void AnimationResourceState_ReplaceResources(void *object, void *resource, s32 width,
                                 s32 height, s32 palette);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
@@ -51,15 +51,15 @@ extern "C" void *func_ov044_0220be60(void *object)
     TitleCharacterResourceCollection_Init((u8 *)object + 0x54);
     TitleScreenResourceCollection_Init((u8 *)object + 0x78);
     AnimationResourceState_InitEmbedded((u8 *)object + 0xc0);
-    func_020957bc((u8 *)object + 0xd0);
-    func_020957bc((u8 *)object + 0x17c);
+    SpriteMotionController_Init((u8 *)object + 0xd0);
+    SpriteMotionController_Init((u8 *)object + 0x17c);
     FIELD(u32, object, 0x23c) = 0;
     FIELD(u32, object, 0x228) = 0;
     FIELD(u32, object, 0x238) = 0;
-    func_02092814((u8 *)object + 0x54, 0x7001);
-    func_02092814((u8 *)object + 0x54, 0x7005);
-    func_02092754((u8 *)object + 0x78, 0x801b);
-    func_02092754((u8 *)object + 0x78, 0x801c);
+    TitleCharacterResourceCollection_Append((u8 *)object + 0x54, 0x7001);
+    TitleCharacterResourceCollection_Append((u8 *)object + 0x54, 0x7005);
+    TitleScreenResourceCollection_Append((u8 *)object + 0x78, 0x801b);
+    TitleScreenResourceCollection_Append((u8 *)object + 0x78, 0x801c);
     AnimationResourceState_ReplaceResources((u8 *)object + 0xc0, (void *)data_020f4e18,
                   13, 14, 15);
     FIELD(void *, object, 0xbc) = GraphicsSpriteGroupOwner_CreateGroup((void *)data_020f4e14);

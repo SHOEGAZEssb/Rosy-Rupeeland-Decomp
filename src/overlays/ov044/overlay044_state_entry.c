@@ -17,7 +17,7 @@ extern "C" void func_ov044_0220c74c(void *object, u32 messageId);
 extern "C" void func_ov044_0220bba4(void *panel);
 extern "C" void func_ov044_0220c700(void *object);
 extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
-extern "C" void func_02095940(void *presentation);
+extern "C" void SpriteMotionController_Hide(void *presentation);
 extern "C" void func_ov044_0220c8d0(void *object, void *content,
                                      s32 enabled, void *configuration);
 extern "C" s32 func_02095dd4(void *auxiliary, void *position,
@@ -48,7 +48,7 @@ extern "C" s32 func_ov044_0220c97c(void *object)
             func_ov044_0220be38(object, data_ov044_0220d2a8[0],
                                 data_ov044_0220d2a8[1]);
         } else {
-            func_02095940((u8 *)object + 0xd0);
+            SpriteMotionController_Hide((u8 *)object + 0xd0);
             void *binding = FIELD(void *, object, 0xcc);
             FIELD(u16, binding, 0x24) |= 4;
             FIELD(u32, object, 0x48) &= ~4;

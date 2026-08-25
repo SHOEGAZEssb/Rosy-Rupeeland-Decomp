@@ -15,7 +15,7 @@ extern volatile u16 gPadStates;
 extern "C" {
 #endif
 extern void Graphics3DSceneState_Init(void *state);
-extern void func_02091b6c(void *state);
+extern void TitleInterpolatedValue_Init(void *state);
 extern void GraphicsResourceSetVariant_Init(void *state);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ extern "C" void *func_ov035_021fce00(void *controller, void *argument)
 {
     FIELD(const void *, controller, 0) = data_ov035_02203c5c;
     Graphics3DSceneState_Init((u8 *)controller + 0x0c);
-    func_02091b6c((u8 *)controller + 0xa4);
+    TitleInterpolatedValue_Init((u8 *)controller + 0xa4);
     FIELD(s32, controller, 0xc0) = 0;
     GraphicsResourceSetVariant_Init((u8 *)controller + 0xcc);
     FIELD(void *, controller, 4) = argument;

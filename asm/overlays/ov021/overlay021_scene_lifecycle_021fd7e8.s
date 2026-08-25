@@ -20,11 +20,11 @@
     .extern LanguageLookupDatabase_GetResourceById
     .extern SceneInputBase_Init
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
-    .extern func_020929b0
+    .extern TitleCharacterResourceCollection_Append
+    .extern TitleScrollValue_Init
     .extern TitleDialog_Init
     .extern func_02092f88
-    .extern func_020957bc
+    .extern SpriteMotionController_Init
     .extern func_ov021_021fd150
     .extern func_ov021_021fd790
     .extern func_ov021_021fd794
@@ -58,7 +58,7 @@ func_ov021_021fd7e8:
     add r0, r5, #0x88
     bl AnimationResourceState_InitEmbedded
     add r0, r5, #0xa0
-    bl func_020957bc
+    bl SpriteMotionController_Init
     ldr r1, L_021fdb3c
     ldr r3, L_021fdb40
     str r1, [sp, #0x0]
@@ -74,7 +74,7 @@ func_ov021_021fd7e8:
     bl func_ov021_021fd794
     add r0, r5, #0x4
     add r0, r0, #0x400
-    bl func_020929b0
+    bl TitleScrollValue_Init
     add r0, r5, #0x1c
     add r0, r0, #0x400
     bl OverlaySlot_Init
@@ -145,16 +145,16 @@ L_021fd8c4:
     str r0, [r5, #0x400]
     add r0, r5, #0x58
     ldr r1, L_021fdb5c
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r5, #0x58
     ldr r1, L_021fdb60
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r5, #0x58
     ldr r1, L_021fdb64
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r5, #0x58
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0x3f
     str r0, [sp, #0x0]
     add r0, r5, #0x7c
@@ -264,7 +264,7 @@ L_021fdb10:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdb38: .word data_ov021_02202f64
 L_021fdb3c: .word func_ov021_021fd790
-L_021fdb40: .word func_020957bc
+L_021fdb40: .word SpriteMotionController_Init
 L_021fdb44: .word data_021e9ac0
 L_021fdb48: .word data_021f3ecc
 L_021fdb4c: .word 0x2e2

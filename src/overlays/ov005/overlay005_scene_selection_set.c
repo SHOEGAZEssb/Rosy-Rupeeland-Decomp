@@ -20,7 +20,7 @@ typedef struct Overlay005SceneSelectionState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091bac(void *animation, s32 mode, s32 value, s32 target,
+extern void TitleInterpolatedValue_Configure(void *animation, s32 mode, s32 value, s32 target,
                           s32 duration);
 extern void func_02091b98(void *animation, s32 value);
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ void func_ov005_021fbd74(Overlay005SceneSelectionState *state,
         *(u16 *)((u8 *)selected + 0x24) &= ~4;
     }
     state->selectedIndex_100 = selectedIndex;
-    func_02091bac(state->animation_110, 2, state->animationValue_120, 0xa000,
+    TitleInterpolatedValue_Configure(state->animation_110, 2, state->animationValue_120, 0xa000,
                   10);
     func_02091b98(state->animation_12c, 1);
 }

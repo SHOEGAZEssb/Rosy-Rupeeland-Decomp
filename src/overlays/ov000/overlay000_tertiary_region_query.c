@@ -13,13 +13,13 @@ typedef struct Overlay000TertiaryRegionQueryState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02095928(void *region);
+extern s32 SpriteMotionController_Show(void *region);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pass the tertiary embedded region at state+0x17C to func_02095928 and return
+ * Pass the tertiary embedded region at state+0x17C to SpriteMotionController_Show and return
  * its result unchanged. The precise query is not yet confirmed; this wrapper
  * performs no other state change or direct hardware access.
  */
@@ -28,5 +28,5 @@ extern "C"
 #endif
 s32 func_ov000_021fc5ec(Overlay000TertiaryRegionQueryState *state)
 {
-    return func_02095928(state->region_17c);
+    return SpriteMotionController_Show(state->region_17c);
 }

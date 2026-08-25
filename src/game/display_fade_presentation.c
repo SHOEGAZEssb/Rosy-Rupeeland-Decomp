@@ -36,13 +36,13 @@ extern void *data_020d6564;
 extern void *data_020f4e18;
 extern void *gGameWork;
 
-extern void func_02091b6c(void *fade);
+extern void TitleInterpolatedValue_Init(void *fade);
 extern void func_02091b98(void *fade, s32 duration);
 extern s32 func_02091c7c(void *fade, s32 channel);
-extern void func_02091bac(void *fade, s32 first, s32 second, s32 parameter,
+extern void TitleInterpolatedValue_Configure(void *fade, s32 first, s32 second, s32 parameter,
                           s32 duration);
-extern void func_020929b0(void *scroll);
-extern s32 func_020929f4(void *scroll);
+extern void TitleScrollValue_Init(void *scroll);
+extern s32 TitleScrollValue_Advance(void *scroll);
 extern s32 func_02092b0c(void *scroll);
 extern s32 func_02092b34(void *scroll, s32 argument);
 extern s32 func_02092b60(void *scroll);
@@ -95,8 +95,8 @@ DisplayFadePresentation *DisplayFadePresentation_Init(
 
     FieldEffect_Init(self);
     self->vtable = (void **)data_020d6564;
-    func_02091b6c(self->fade14);
-    func_020929b0(self->scroll3c);
+    TitleInterpolatedValue_Init(self->fade14);
+    TitleScrollValue_Init(self->scroll3c);
     self->subEngine30 = subEngine;
     self->fadeParameter34 = fadeParameter;
     self->alpha38 = 0;
@@ -185,7 +185,7 @@ s32 DisplayFadePresentation_UpdateFade(DisplayFadePresentation *self)
     }
     if (self->state10 == 1) {
         if (func_02091c7c(self->fade14, 2) != 0) {
-            func_02091bac(self->fade14, 1, 0, self->fadeParameter34, 0x10);
+            TitleInterpolatedValue_Configure(self->fade14, 1, 0, self->fadeParameter34, 0x10);
             self->state10++;
         }
     } else if (self->state10 == 2) {
@@ -210,10 +210,10 @@ s32 DisplayFadePresentation_ReportComplete(DisplayFadePresentation *self)
     return 1;
 }
 
-/* Return func_020929f4's status for the embedded scroll helper. */
+/* Return TitleScrollValue_Advance's status for the embedded scroll helper. */
 s32 DisplayFadePresentation_GetScrollStatus(DisplayFadePresentation *self)
 {
-    return func_020929f4(self->scroll3c);
+    return TitleScrollValue_Advance(self->scroll3c);
 }
 
 /*

@@ -4,7 +4,7 @@
 .extern data_020f4e14
 .extern data_ov023_021ffb28
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02095928
+.extern SpriteMotionController_Show
 .extern func_ov023_021fd9d0
 .extern func_ov023_021fe77c
 .extern gDebugFont
@@ -24,7 +24,7 @@ func_ov023_021feaf0:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r4, #0x17c
-    bl func_02095928
+    bl SpriteMotionController_Show
     ldr r0, [r4, #0x20]
     ldr r1, L_021feb5c
     bic r0, r0, #0x1

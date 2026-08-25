@@ -4,7 +4,7 @@
     .extern data_ov022_022005b8
     .extern Presentation_InterpolateLinear
     .extern func_02091b98
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
 
 .global func_ov022_021fcfd4
 func_ov022_021fcfd4:
@@ -26,7 +26,7 @@ func_ov022_021fcfd4:
     mov r1, #0x1
     mov r2, #0x0
     str r4, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, #0x0
     str r0, [r5, #0x58]
     cmp r6, #0x0

@@ -9,8 +9,8 @@
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
-.extern func_020926f8
-.extern func_020927b8
+.extern TitleScreenResourceCollection_Destroy
+.extern TitleCharacterResourceCollection_Destroy
 .extern PresentationList_DeleteAll
 .extern func_ov025_021fdec8
 .extern func_ov025_021ff1c8
@@ -63,7 +63,7 @@ L_021ffaec:
     ldr r0, [r6, #0xc]
     bl GraphicsSpriteGroup_Destroy
     add r0, r6, #0x30
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r6
     bl AnimationResourceState_Destroy
     mov r0, r6
@@ -98,9 +98,9 @@ L_021ffb64:
     bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x174
     add r0, r0, #0x400
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x530
-    bl func_020926f8
+    bl TitleScreenResourceCollection_Destroy
     ldr r1, L_021ffc28
     add r0, r4, #0xf8
     str r1, [r4, #0x4f8]

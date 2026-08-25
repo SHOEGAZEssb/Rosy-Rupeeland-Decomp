@@ -33,8 +33,8 @@ extern s32 RecordMode_GetPaletteResourceId(void *);
 extern s32 RecordMode_GetCellResourceId(void *);
 extern s32 RecordMode_GetAnimationIndex(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
@@ -80,9 +80,9 @@ extern "C" void *func_ov023_021fd444(void *collection, void *font, s32 capacity)
     InventoryScroll_SetSpritePriority(ui, 0);
     InventoryScroll_UpdatePresentation(ui);
     func_ov023_021fd780(collection);
-    func_02092814((u8 *)collection + 0x18, 0x7007);
-    func_02092814((u8 *)collection + 0x18, 0x7000);
-    func_02092814((u8 *)collection + 0x18, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)collection + 0x18, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)collection + 0x18, 0x7000);
+    TitleCharacterResourceCollection_Append((u8 *)collection + 0x18, 0x7005);
     return collection;
 }
 
@@ -102,7 +102,7 @@ extern "C" void *func_ov023_021fd5d0(void *collection)
     if (FIELD(void *, collection, 0x3c))
         CxxArray_DestroyAndFree(FIELD(void *, collection, 0x3c), 4, 8,
                       (void *)func_ov023_021fd630);
-    func_020927b8((u8 *)collection + 0x18);
+    TitleCharacterResourceCollection_Destroy((u8 *)collection + 0x18);
     AnimationResourceState_Destroy((u8 *)collection + 8);
     return collection;
 }

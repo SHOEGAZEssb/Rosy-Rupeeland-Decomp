@@ -17,7 +17,7 @@
 .extern IndexedSelectionController_Decrement
 .extern IndexedSelectionController_AdvanceTransition
 .extern IndexedSelectionController_AdvancePacing
-.extern func_02095860
+.extern SpriteMotionController_BeginHitResponse
 .extern func_ov005_021fbdf8
 .extern func_ov024_021fce04
 .extern func_ov024_021fd86c
@@ -100,7 +100,7 @@ L_021fddc0:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021fde30
     mov r0, r4
@@ -125,7 +125,7 @@ L_021fde30:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021fde84
     mov r0, r4
@@ -147,7 +147,7 @@ L_021fde84:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021fded8
     mov r0, r4

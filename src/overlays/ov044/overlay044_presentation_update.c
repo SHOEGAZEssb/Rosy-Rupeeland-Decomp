@@ -8,7 +8,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_02095928(void *presentation);
+extern "C" void SpriteMotionController_Show(void *presentation);
 extern "C" void func_ov044_0220c80c(void *object);
 
 /*
@@ -27,6 +27,6 @@ extern "C" void func_ov044_0220c700(void *object)
         s32 row = FIELD(s32, child, 0x14) - FIELD(s32, child, 0xc);
         FIELD(u16, binding, 0x2e) = (u16)(row * 24 + 0x20);
     }
-    func_02095928((u8 *)object + 0x17c);
+    SpriteMotionController_Show((u8 *)object + 0x17c);
     func_ov044_0220c80c(object);
 }

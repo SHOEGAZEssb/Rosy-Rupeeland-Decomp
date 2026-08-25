@@ -39,7 +39,7 @@ extern void *Graphics3DResourceOwner_CreateManager(void *);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern void Graphics3DLightSet_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void SceneInputBase_Init(void *);
@@ -110,7 +110,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     GraphicsBankStateSnapshot_Init((u8 *)scene + 0x328);
     func_ov043_0220b740((u8 *)scene + 0x370);
     FIELD(s32, scene, 0x7a4) = 0;
-    func_02091b6c((u8 *)scene + 0x7a8);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x7a8);
 
     s32 variant = scene_id == 999 ? 0 : scene_id - 1;
     if (variant < 0 || variant > 9)

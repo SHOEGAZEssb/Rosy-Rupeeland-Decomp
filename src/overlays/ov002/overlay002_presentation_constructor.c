@@ -39,7 +39,7 @@ extern const s32 data_ov002_021fbe80[7];
 extern const Overlay002SpriteTriple data_ov002_021fbea0[14];
 extern void *gSoundContext;
 extern void AnimationResourceState_InitEmbedded(void *resource);
-extern void func_02091b6c(void *animation);
+extern void TitleInterpolatedValue_Init(void *animation);
 extern void AnimationResourceState_ReplaceResources(void *resource, void *manager, s32 first, s32 second,
                           s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
@@ -72,7 +72,7 @@ Overlay002PresentationState *func_ov002_021fb6e0(
     s32 i;
 
     AnimationResourceState_InitEmbedded(state->resource_004);
-    func_02091b6c(state->animation_098);
+    TitleInterpolatedValue_Init(state->animation_098);
     state->owner_000 = owner;
     state->descriptor_084 = 0x98967f;
     state->initialValue_088 = initialValue;

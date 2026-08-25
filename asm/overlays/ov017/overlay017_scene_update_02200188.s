@@ -22,7 +22,7 @@
     .extern PresentationList_Remove
     .extern PresentationList_UpdateAndDeleteCompleted
     .extern AlternateSpritePresentation_Init
-    .extern func_020958d8
+    .extern SpriteMotionController_Update
     .extern func_020befec
     .extern func_ov017_021fcf6c
     .extern func_ov017_021fd6b0
@@ -459,9 +459,9 @@ L_022007d0:
     ldr r0, [r10, #0x254]
     bl func_ov017_021fe5b0
     add r0, r10, #0x12c
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r10, #0x80
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r10, #0x25c]
     bl func_ov017_021fe894
     ldr r0, [r10, #0x244]

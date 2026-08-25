@@ -16,9 +16,9 @@ extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern void GraphicsAnimationInstance_SetAnimation(void *resource, s32 selector);
 extern void Sound_Play(void *sound, s32 id, s32 mode);
-extern void func_02091bac(void *timer, s32 mode, s32 first,
+extern void TitleInterpolatedValue_Configure(void *timer, s32 mode, s32 first,
                           s32 second, s32 duration);
-extern s32 func_02091bd0(void *timer, s32 mode, s32 first, s32 second);
+extern s32 TitleInterpolatedValue_Evaluate(void *timer, s32 mode, s32 first, s32 second);
 extern s32 func_02091cf0(void *timer);
 extern void func_ov036_02201d60(void *object, s32 value);
 #ifdef __cplusplus
@@ -98,14 +98,14 @@ extern "C" s32 func_ov036_02201e50(void *object)
             GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0xd4), 1);
             FIELD(s32, object, 0xa0) = 1;
             PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x400);
-            func_02091bac((u8 *)object + 0xd8, 1, 1, 1, 0x10);
+            TitleInterpolatedValue_Configure((u8 *)object + 0xd8, 1, 1, 1, 0x10);
             ++FIELD(s32, object, 0xd0);
         }
         break;
     case 3: {
         s32 value = func_02091c7c((u8 *)object + 0xd8, 1);
         func_ov036_02201d60(object, value);
-        value = func_02091bd0((u8 *)object + 0xd8, 1, 0x400, 0x666);
+        value = TitleInterpolatedValue_Evaluate((u8 *)object + 0xd8, 1, 0x400, 0x666);
         PresentationScalar_SetImmediate((u8 *)object + 0x6c, value);
         if (func_02091cf0((u8 *)object + 0xd8) != 0) {
             FIELD(u16, object, 0x98) |= 1;

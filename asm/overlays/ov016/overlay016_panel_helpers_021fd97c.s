@@ -5,7 +5,7 @@
     .extern GraphicsSpriteGroup_Clear
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
 
 /* Exact fallbacks; see src/overlays/ov016/overlay016_panel_helpers.c. */
     .global func_ov016_021fd97c
@@ -19,7 +19,7 @@ func_ov016_021fd97c:
     ldr r0, [r4, #0x4]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0xd4
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x78
     bl AnimationResourceState_Destroy
     add r0, r4, #0x6c

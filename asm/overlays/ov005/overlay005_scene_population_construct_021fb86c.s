@@ -1,14 +1,14 @@
     .text
     .extern AnimationResourceState_InitEmbedded
     .extern __construct_array
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern func_ov005_021fb82c
     .extern genrand_int32
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteState_ApplyRenderConfig
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern AnimationResourceState_Destroy
     .extern data_020f4e18
     .extern gGameWork
@@ -46,9 +46,9 @@ func_ov005_021fb86c: ; 0x021fb86c
     mov r0, #0x0
     str r0, [r10, #0x10c]
     add r0, r10, #0x110
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r10, #0x12c
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r10, #0x148
     bl func_ov005_021fb82c
     bl genrand_int32
@@ -202,7 +202,7 @@ L_021fbad4:
     mov r1, #0x2
     mov r3, #0xa000
     str r4, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, r10
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

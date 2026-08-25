@@ -14,11 +14,11 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern SceneInputBase_Init
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
-    .extern func_020929b0
+    .extern TitleCharacterResourceCollection_Append
+    .extern TitleScrollValue_Init
     .extern TitleDialog_Init
     .extern func_02092f88
-    .extern func_020957bc
+    .extern SpriteMotionController_Init
     .extern func_ov022_021fcf08
     .extern func_ov022_021fd370
     .extern func_ov022_021fdd00
@@ -52,7 +52,7 @@ func_ov022_021fdd44:
     add r0, r4, #0x90
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xa8
-    bl func_020957bc
+    bl SpriteMotionController_Init
     ldr r1, L_021fdfd0
     add r0, r4, #0x154
     str r1, [sp, #0x0]
@@ -61,7 +61,7 @@ func_ov022_021fdd44:
     ldr r3, L_021fdfd4
     bl __construct_array
     add r0, r4, #0x378
-    bl func_020929b0
+    bl TitleScrollValue_Init
     mov r0, #0x0
     str r0, [r4, #0x390]
     str r0, [r4, #0x2c0]
@@ -82,13 +82,13 @@ func_ov022_021fdd44:
     str r0, [r4, #0x374]
     add r0, r4, #0x54
     ldr r1, L_021fdfe0
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r4, #0x54
     ldr r1, L_021fdfe4
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r4, #0x54
     ldr r1, L_021fdfe8
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0x3f
     str r0, [sp, #0x0]
     add r0, r4, #0x78
@@ -204,7 +204,7 @@ L_021fdf8c:
     ldmia sp!, {r3, r4, pc}
 L_021fdfcc: .word data_ov022_022006a0
 L_021fdfd0: .word func_ov022_021fdd00
-L_021fdfd4: .word func_020957bc
+L_021fdfd4: .word SpriteMotionController_Init
 L_021fdfd8: .word data_020f4e18
 L_021fdfdc: .word 0xc007
 L_021fdfe0: .word 0x7007

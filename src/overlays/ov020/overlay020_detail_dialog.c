@@ -30,7 +30,7 @@ extern s32 GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, 
 extern const void *LanguageLookupDatabase_GetResourceById(const void *, u16);
 extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, s32, s32);
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void TitleDialog_SetText(void *, const void *, s32);
@@ -56,9 +56,9 @@ extern "C" void *func_ov020_021fd320(void *state, void *font)
     FIELD(s32, state, 0) = -1;
     FIELD(void *, state, 8) = font;
     FIELD(void *, state, 0xc) = GraphicsSpriteGroupOwner_CreateGroup(font);
-    func_02092814((u8 *)state + 0x28, 0x7000);
-    func_02092814((u8 *)state + 0x28, 0x7005);
-    func_02092814((u8 *)state + 0x28, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x28, 0x7000);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x28, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x28, 0x7007);
 
     void *dialog = Heap_Alloc(0xec, data_ov020_021fe528, 4, gHeapContext);
     if (dialog != 0)

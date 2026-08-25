@@ -1,9 +1,9 @@
     .text
 
 /* Exact fallback; see src/overlays/ov016/overlay016_selection_helpers.c. */
-    .extern func_02095928
-    .extern func_02095940
-    .extern func_02095988
+    .extern SpriteMotionController_Show
+    .extern SpriteMotionController_Hide
+    .extern SpriteMotionController_SetAnimation
     .extern func_ov000_021fb890
     .extern func_ov016_021fd9dc
     .extern func_ov016_021fdaa0
@@ -18,11 +18,11 @@ func_ov016_021ffd84:
     mov r1, #0x0
     add r0, r4, #0x240
     str r1, [r4, #0x47c]
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     add r0, r4, #0x2ec
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add r0, r4, #0x398
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r4, #0x448]
     mov r1, #0x1
     bl func_ov016_021fd9dc
@@ -37,11 +37,11 @@ L_021ffddc:
     add r0, r4, #0x240
     mov r1, #0x3
     str r2, [r4, #0x47c]
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     add r0, r4, #0x2ec
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r4, #0x398
-    bl func_02095928
+    bl SpriteMotionController_Show
     ldr r0, [r4, #0x450]
     mov r1, #0x1
     bl func_ov000_021fb890

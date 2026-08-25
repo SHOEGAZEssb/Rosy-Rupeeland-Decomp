@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_primitive_list.c for documented portable C. */
 
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern func_02091b98
 
 
@@ -14,7 +14,7 @@ func_ov035_021fd460:
     mov r4, r1
     mov r7, r2
     mov r6, r3
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     mov r0, #0x0
     stmia r5, {r0, r7}
     ldr r1, [sp, #0x18]

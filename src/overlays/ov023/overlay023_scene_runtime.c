@@ -20,10 +20,10 @@ extern void TitleDialog_SetText(void *, const void *, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void TitleDialog_ClearTextRect(void *);
 extern void InventoryScroll_UpdatePresentation(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_020958d8(void *);
-extern void func_02095928(void *);
-extern void func_02095988(void *, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void SpriteMotionController_Update(void *);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void func_02092260(void *, s32);
 extern void IndexedSelectionController_SetValue(void *, s32);
 extern void func_ov023_021fd9d0(void *, void *, void *);
@@ -75,10 +75,10 @@ extern "C" void func_ov023_021fe6e4(void *scene)
  */
 extern "C" void func_ov023_021fe77c(void *scene)
 {
-    func_020958d8((u8 *)scene + 0x17c);
-    func_020958d8((u8 *)scene + 0xd0);
-    func_020958d8((u8 *)scene + 0x228);
-    func_020958d8((u8 *)scene + 0x2d4);
+    SpriteMotionController_Update((u8 *)scene + 0x17c);
+    SpriteMotionController_Update((u8 *)scene + 0xd0);
+    SpriteMotionController_Update((u8 *)scene + 0x228);
+    SpriteMotionController_Update((u8 *)scene + 0x2d4);
     if (FIELD(void *, scene, 0x4bc))
         func_ov045_0220c18c(FIELD(void *, scene, 0x4bc));
     if (FIELD(void *, scene, 0x390))
@@ -156,14 +156,14 @@ extern "C" void func_ov023_021fe994(void *scene, s32 mode)
 {
     FIELD(s32, scene, 0x388) = mode;
     if (mode == 0) {
-        func_02095988((u8 *)scene + 0x228, 12);
-        func_02095988((u8 *)scene + 0x2d4, 16);
+        SpriteMotionController_SetAnimation((u8 *)scene + 0x228, 12);
+        SpriteMotionController_SetAnimation((u8 *)scene + 0x2d4, 16);
         GraphicsBgMapResource_UploadToMainBg(
             TitleScreenResourceCollection_Get((u8 *)scene + 0x78, 0), 1, 0);
         func_ov023_021fe640(scene, 0);
     } else if (mode == 1) {
-        func_02095988((u8 *)scene + 0x228, 14);
-        func_02095988((u8 *)scene + 0x2d4, 13);
+        SpriteMotionController_SetAnimation((u8 *)scene + 0x228, 14);
+        SpriteMotionController_SetAnimation((u8 *)scene + 0x2d4, 13);
         GraphicsBgMapResource_UploadToMainBg(
             TitleScreenResourceCollection_Get((u8 *)scene + 0x78, 1), 1, 0);
         func_ov023_021fe640(scene, 1);
@@ -174,7 +174,7 @@ extern "C" void func_ov023_021fe994(void *scene, s32 mode)
 extern "C" s32 func_ov023_021fea34(void *scene)
 {
     for (s32 i = 0; i < 2; ++i)
-        if (func_02095860((u8 *)scene + 0x228 + i * 0xac,
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x228 + i * 0xac,
                           (u8 *)scene + 0x30, 0, 2)) return i;
     return -1;
 }
@@ -209,7 +209,7 @@ extern "C" s32 func_ov023_021feaf0(void *scene)
     if (FIELD(s32, scene, 4) == 0) {
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-        func_02095928((u8 *)scene + 0x17c);
+        SpriteMotionController_Show((u8 *)scene + 0x17c);
         FIELD(u32, scene, 0x20) = (FIELD(u32, scene, 0x20) & ~1u) | 1u;
         func_ov023_021fd9d0(scene, data_ov023_021ffb28[0],
                            data_ov023_021ffb28[1]);

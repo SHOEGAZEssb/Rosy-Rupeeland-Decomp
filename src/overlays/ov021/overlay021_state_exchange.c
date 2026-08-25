@@ -41,7 +41,7 @@ extern void RecordDescriptor_SetValue(void *, s32);
 extern void func_02092260(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Hide(void *);
 extern u32 genrand_int32(void);
 extern s32 func_ov002_021fbb68(void *, void *);
 extern s32 func_ov002_021fbc54(void *);
@@ -386,7 +386,7 @@ extern "C" s32 func_ov021_022012f0(void *state)
         /* Deliberate fall-through. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_02095940((u8 *)state + 0xa0);
+            SpriteMotionController_Hide((u8 *)state + 0xa0);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov021_021fe8e8(state);

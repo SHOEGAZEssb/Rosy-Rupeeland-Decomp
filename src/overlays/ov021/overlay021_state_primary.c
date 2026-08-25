@@ -32,8 +32,8 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_02095940(void *);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void SpriteMotionController_Hide(void *);
 extern void func_ov000_021fc3f8(void *);
 extern s32 func_ov000_021fc450(void *);
 extern s32 func_ov000_021fc460(void *);
@@ -143,7 +143,7 @@ extern "C" s32 func_ov021_02201410(void *state)
                 }
                 void *controller = (u8 *)state + 0x14c +
                                    FIELD(s32, state, 0x2c4) * 0xac;
-                if (func_02095860(controller, input, 0, 4) != 0) {
+                if (SpriteMotionController_BeginHitResponse(controller, input, 0, 4) != 0) {
                     void *entry = Overlay000_GetActiveMetadata(widget);
                     if (func_ov021_021ff62c(entry, 1) == 0) {
                         FIELD(void *, state, 0x37c) = FIELD(void *, entry, 0xc);
@@ -296,7 +296,7 @@ extern "C" s32 func_ov021_02201a88(void *state)
         /* Deliberate fall-through. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_02095940((u8 *)state + 0xa0);
+            SpriteMotionController_Hide((u8 *)state + 0xa0);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov021_021feb60(state);

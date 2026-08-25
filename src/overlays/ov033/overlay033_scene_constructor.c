@@ -15,14 +15,14 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void VecFx32Object_Init(void *object);
-extern void func_02091b6c(void *object);
+extern void TitleInterpolatedValue_Init(void *object);
 extern void TitleCharacterResourceCollection_Init(void *object);
 extern void Type7Actor_EnterFlag40000State(void *activeObject);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *fontOrContext);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void *func_ov033_021fce1c(void *group, void *spriteContext);
-extern void func_02092814(void *owner, s32 resourceId, void *object);
+extern void TitleCharacterResourceCollection_Append(void *owner, s32 resourceId, void *object);
 extern void *TitleDialog_Init(void *dialog, void *fontOrContext, void *resource);
 extern void func_ov033_021fd034(void *object, s32 first, s32 second,
                                s32 third, s32 fourth);
@@ -57,9 +57,9 @@ extern "C" void *func_ov033_021fd070(void *scene)
 
     VecFx32Object_Init((u8 *)scene + 0x14);
     VecFx32Object_Init((u8 *)scene + 0x24);
-    func_02091b6c((u8 *)scene + 0x4c);
-    func_02091b6c((u8 *)scene + 0x68);
-    func_02091b6c((u8 *)scene + 0x84);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x4c);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x68);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x84);
     TitleCharacterResourceCollection_Init((u8 *)scene + 0xa0);
     FIELD(s32, scene, 0x10) = 0;
 
@@ -98,7 +98,7 @@ extern "C" void *func_ov033_021fd070(void *scene)
 
     FIELD(s32, primary, 0x1c) = 0x2b0000;
     FIELD(s32, primary, 0x20) = 0x100000;
-    func_02092814((u8 *)scene + 0xa0, 0x7007, primary);
+    TitleCharacterResourceCollection_Append((u8 *)scene + 0xa0, 0x7007, primary);
 
     void *dialog = Heap_Alloc(0xec, data_ov033_021fdeb8, 4, gHeapContext);
     if (dialog != 0)

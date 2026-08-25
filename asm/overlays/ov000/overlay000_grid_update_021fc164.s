@@ -3,17 +3,17 @@
 .extern gFx32CosSinTable
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern InventoryScroll_UpdatePresentation
-.extern func_020958d8
+.extern SpriteMotionController_Update
 .global func_ov000_021fc164
 func_ov000_021fc164: ; 0x021fc164
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     add r0, r4, #0x24
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0xd0
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x17c
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r4, #0x8]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0xc]

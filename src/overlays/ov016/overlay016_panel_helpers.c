@@ -13,7 +13,7 @@ extern void AnimationResourceState_ReleaseResources(void *);
 extern void GraphicsSpriteGroup_Clear(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -28,7 +28,7 @@ extern "C" void *func_ov016_021fd97c(void *state)
 {
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 8));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
-    func_020927b8((u8 *)state + 0xd4);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0xd4);
     AnimationResourceState_Destroy((u8 *)state + 0x78);
     AnimationResourceState_Destroy((u8 *)state + 0x6c);
     __destroy_arr((u8 *)state + 0x24, 6, 0xc, AnimationResourceState_Destroy);

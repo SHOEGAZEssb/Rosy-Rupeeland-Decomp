@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_terminal_helpers.c. */
-.extern func_020929f4
+.extern TitleScrollValue_Advance
 
 
     .global func_ov025_02202b88
@@ -29,7 +29,7 @@ func_ov025_02202b88:
     streq r0, [ip, #0x1c]
     beq L_02202be8
     add r0, r0, #0x5a0
-    bl func_020929f4
+    bl TitleScrollValue_Advance
 L_02202be8:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

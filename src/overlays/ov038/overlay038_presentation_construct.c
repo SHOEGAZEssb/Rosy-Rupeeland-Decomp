@@ -22,23 +22,23 @@ extern "C" {
 #endif
 extern void SceneInputBase_Init(void *presentation, void *argument);
 extern void AnimationResourceState_InitEmbedded(void *resource);
-extern void func_020957bc(void *list);
+extern void SpriteMotionController_Init(void *list);
 extern void TitleCharacterResourceCollection_Init(void *transform);
-extern void func_02091b6c(void *timer);
+extern void TitleInterpolatedValue_Init(void *timer);
 extern void AnimationResourceState_ReplaceResources(void *resource, void *archive, s32 firstId,
                           s32 mode, s32 lastId);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *resource, void *owner, s32 mode);
-extern void func_020957f0(void *list, void *resource, s32 count, s32 mode,
+extern void SpriteMotionController_BindSprite(void *list, void *resource, s32 count, s32 mode,
                           s32 initial);
-extern void func_02095820(void *list, s32 width, s32 height);
+extern void SpriteMotionController_SetPosition(void *list, s32 width, s32 height);
 extern s32 GameWork_TestFlag(void *gameWork, u16 flag);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_02094154(void *object, void *resource, s32 count, s32 mode,
                            s32 width, s32 rowHeight, s32 columns);
 extern void InventoryScroll_SetSpritePriority(void *object, s32 enabled);
 extern void InventoryScroll_UpdatePresentation(void *object);
-extern void func_02092814(void *transform, s32 command);
+extern void TitleCharacterResourceCollection_Append(void *transform, s32 command);
 extern void func_ov038_021fd210(void *presentation);
 extern void func_ov038_021fd28c(void *presentation);
 extern void *func_ov046_0220b7bc(void *object, void *font, s32 mode);
@@ -70,9 +70,9 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
     SceneInputBase_Init(presentation, argument);
     FIELD(const void *, presentation, 0) = data_ov038_021fdd28;
     AnimationResourceState_InitEmbedded((u8 *)presentation + 0x54);
-    func_020957bc((u8 *)presentation + 0x64);
+    SpriteMotionController_Init((u8 *)presentation + 0x64);
     TitleCharacterResourceCollection_Init((u8 *)presentation + 0x318);
-    func_02091b6c((u8 *)presentation + 0x348);
+    TitleInterpolatedValue_Init((u8 *)presentation + 0x348);
     FIELD(s32, presentation, 0x33c) = 0;
 
     AnimationResourceState_ReplaceResources((u8 *)presentation + 0x54, data_020f4e18[0],
@@ -80,8 +80,8 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
     void *owner = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);
     FIELD(void *, presentation, 0x60) = owner;
     void *resource = GraphicsSpriteGroup_CreateStateFromSource((u8 *)presentation + 0x54, owner, 2);
-    func_020957f0((u8 *)presentation + 0x64, resource, 6, 1, 0);
-    func_02095820((u8 *)presentation + 0x64, 0xe8, 0xa0);
+    SpriteMotionController_BindSprite((u8 *)presentation + 0x64, resource, 6, 1, 0);
+    SpriteMotionController_SetPosition((u8 *)presentation + 0x64, 0xe8, 0xa0);
 
     FIELD(s32, presentation, 0x110) = 0;
     for (s32 i = 0; i < data_020c37e4[0]; ++i) {
@@ -102,9 +102,9 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
         FIELD(void *, presentation, 0x314) = model;
         InventoryScroll_SetSpritePriority(model, 1);
         InventoryScroll_UpdatePresentation(model);
-        func_02092814((u8 *)presentation + 0x318, 0x7000);
-        func_02092814((u8 *)presentation + 0x318, 0x7006);
-        func_02092814((u8 *)presentation + 0x318, 0x7005);
+        TitleCharacterResourceCollection_Append((u8 *)presentation + 0x318, 0x7000);
+        TitleCharacterResourceCollection_Append((u8 *)presentation + 0x318, 0x7006);
+        TitleCharacterResourceCollection_Append((u8 *)presentation + 0x318, 0x7005);
         func_ov038_021fd210(presentation);
         func_ov038_021fd28c(presentation);
     } else {

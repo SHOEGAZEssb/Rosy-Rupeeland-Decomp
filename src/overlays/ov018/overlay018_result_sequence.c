@@ -23,7 +23,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void func_02091b98(void *, s32);
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_020922f0(void *, s32);
@@ -83,7 +83,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0:
         func_020922f0(state, 0x8f);
-        func_02091bac((u8 *)state + 0x1a8, 1, 0x10, 0, 0x14);
+        TitleInterpolatedValue_Configure((u8 *)state + 0x1a8, 1, 0x10, 0, 0x14);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Confirmed fallthrough: update the new fade immediately. */
@@ -116,7 +116,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
         break;
     }
     case 2:
-        func_02091bac((u8 *)state + 0x1a8, 1, 0, 0x10, 0x3c);
+        TitleInterpolatedValue_Configure((u8 *)state + 0x1a8, 1, 0, 0x10, 0x3c);
         func_020afd0c((volatile u16 *)0x04001050, 0, 0x24, 0, 0x10);
         SpritePresentation_Show(FIELD(void *, state, 0x1c4));
         FIELD(s32, state, 4)++;
@@ -126,7 +126,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
         *(volatile u16 *)0x04001052 =
             func_02091c7c((u8 *)state + 0x1a8, 1) | 0x1000;
         if (func_02091cf0((u8 *)state + 0x1a8)) {
-            func_02091bac((u8 *)state + 0x1a8, 1, 0x10, 0, 0x3c);
+            TitleInterpolatedValue_Configure((u8 *)state + 0x1a8, 1, 0x10, 0, 0x3c);
             func_ov018_021fe46c(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;

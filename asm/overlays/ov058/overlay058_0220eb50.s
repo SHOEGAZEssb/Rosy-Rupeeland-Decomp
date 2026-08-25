@@ -12,7 +12,7 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern gDebugFont
 
 .global func_ov058_0220eb50
@@ -63,7 +63,7 @@ func_ov058_0220eb50:
     mov r1, #0x1
     bl OverlayManager_UnloadOverlay
     add r0, r4, #0x84
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x18
     mov r1, #0x4
     mov r2, #0xc

@@ -1,7 +1,7 @@
 .text
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov043_0220b744
-.extern func_02095860
+.extern SpriteMotionController_BeginHitResponse
 .extern func_02092260
 .extern Overlay043_UpdatePresentationResources
 .extern data_020f4e14
@@ -64,7 +64,7 @@ func_ov043_0220bdb8:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq .L_0220be3c
     mov r0, r4
@@ -82,7 +82,7 @@ func_ov043_0220bdb8:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq .L_0220be80
     mov r0, r4
@@ -100,7 +100,7 @@ func_ov043_0220bdb8:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq .L_0220beb8
     mov r0, r4

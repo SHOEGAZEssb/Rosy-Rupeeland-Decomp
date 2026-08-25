@@ -1,7 +1,7 @@
     .text
     .extern SceneInputBase_Init
     .extern IndexedSelectionController_Init
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern IndexedSelectionController_ConfigureRange
     .extern Heap_Alloc
     .extern func_ov046_0220b7bc
@@ -32,7 +32,7 @@ func_ov006_021fb708: ; 0x021fb708
     str r1, [r4, #0x0]
     bl IndexedSelectionController_Init
     add r0, r4, #0x98
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     ldr r0, L_021fb830
     mov r1, #0x0
     ldr r0, [r0, #0x0]

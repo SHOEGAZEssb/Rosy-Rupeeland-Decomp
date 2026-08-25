@@ -12,7 +12,7 @@
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern func_02094154
     .extern InventoryScroll_UpdatePresentation
     .extern CxxArray_ConstructWithCookie
@@ -156,10 +156,10 @@ L_021fd018:
     bl func_ov016_021fd1e0
     add r0, r5, #0x28
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, L_021fd068
     add r0, r5, #0x28
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r5
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}

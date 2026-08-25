@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_list_render.c for documented portable C. */
 
     .extern func_ov035_021fd7b0
-    .extern func_02091bd0
+    .extern TitleInterpolatedValue_Evaluate
     .extern func_ov035_021fd128
     .extern func_ov035_021fd28c
 
@@ -68,7 +68,7 @@ L_021fd6a0:
     add r0, r9, #0x18
     mov r2, #0x1f
     mov r3, r1
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     str r0, [sp, #0x0]
     mov r0, #0x0
     mov r1, r0

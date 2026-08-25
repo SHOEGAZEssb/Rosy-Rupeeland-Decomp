@@ -3,7 +3,7 @@
     .extern data_020f4e14
     .extern data_ov014_021fd994
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
     .extern func_ov000_021fb848
     .extern gDebugFont
 
@@ -41,7 +41,7 @@ L_021fcfbc:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x54
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fcfe4: .word data_ov014_021fd994

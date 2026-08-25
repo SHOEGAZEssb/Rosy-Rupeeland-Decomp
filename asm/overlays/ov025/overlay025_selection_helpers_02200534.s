@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
-.extern func_02095988
+.extern SpriteMotionController_SetAnimation
 
 
     .global func_ov025_02200534
@@ -14,7 +14,7 @@ L_02200544:
     mla r0, r6, r4, r5
     mov r1, r6, lsl #0x1
     add r1, r1, #0x21
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     add r6, r6, #0x1
     cmp r6, #0x3
     blt L_02200544

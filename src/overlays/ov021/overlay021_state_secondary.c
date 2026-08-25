@@ -30,8 +30,8 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_02095928(void *);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
 extern void func_ov001_021fc1f0(void *);
 extern s32 func_ov001_021fc214(void *);
 extern s32 func_ov001_021fc240(void *);
@@ -143,7 +143,7 @@ extern "C" s32 func_ov021_02201ba8(void *state)
                 }
                 void *controller = (u8 *)state + 0x14c +
                                    FIELD(s32, state, 0x2c4) * 0xac;
-                if (func_02095860(controller, input, 0, 4) != 0) {
+                if (SpriteMotionController_BeginHitResponse(controller, input, 0, 4) != 0) {
                     void *entry = func_ov001_021fc7e4(widget);
                     if (func_ov021_021ff62c(entry, 1) == 0) {
                         FIELD(void *, state, 0x380) = FIELD(void *, entry, 0xc);
@@ -292,7 +292,7 @@ extern "C" s32 func_ov021_02202194(void *state)
             FIELD(u32, state, 0x48) &= ~2U;
             FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
             FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
-            func_02095928((u8 *)state + 0xa0);
+            SpriteMotionController_Show((u8 *)state + 0xa0);
             func_ov021_021fefcc(state);
             DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;

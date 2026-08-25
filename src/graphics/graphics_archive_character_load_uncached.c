@@ -12,7 +12,7 @@ extern "C" {
 
 extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resourceId, u32 *size);
 extern void *GraphicsArchive_AllocateCachedHandle(u32 size);
-extern void *func_020702f4(void *resource, void *archive, void *source,
+extern void *GraphicsArchiveCharacterResource_Init(void *resource, void *archive, void *source,
                            u32 size, u32 resourceId);
 
 #ifdef __cplusplus
@@ -44,7 +44,7 @@ void *GraphicsArchive_LoadCharacterResourceUncached(void *archive, u32 resourceI
         (source->magic == 0x56434720 || source->magic == 0x56434754)) {
         resource = GraphicsArchive_AllocateCachedHandle(0x2c);
         if (resource != 0)
-            resource = func_020702f4(resource, archive, source, sourceSize,
+            resource = GraphicsArchiveCharacterResource_Init(resource, archive, source, sourceSize,
                                      resourceId);
     }
     return resource;

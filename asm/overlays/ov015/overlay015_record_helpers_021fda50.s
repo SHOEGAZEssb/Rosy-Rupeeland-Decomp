@@ -1,6 +1,6 @@
     .text
-    .extern func_02095860
-    .extern func_02095940
+    .extern SpriteMotionController_BeginHitResponse
+    .extern SpriteMotionController_Hide
 
 /* Exact fallback for record stop and lookup; see src/overlays/ov015/overlay015_record_layout.c. */
     .global func_ov015_021fda50
@@ -13,7 +13,7 @@ func_ov015_021fda50:
     mov r4, #0xac
 L_021fda60:
     mla r0, r6, r4, r5
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add r6, r6, #0x1
     cmp r6, #0x3
     blt L_021fda60
@@ -35,7 +35,7 @@ L_021fda9c:
     mov r1, r8
     mov r2, r5
     mov r3, r4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     movne r0, r7
     ldmneia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}

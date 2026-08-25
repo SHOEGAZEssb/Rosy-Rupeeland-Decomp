@@ -35,9 +35,9 @@ extern void TitlePalette_SetMainBackdrop(s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void TitleDialog_ClearTextRect(void *);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void func_ov021_021fd1cc(void *);
 extern void func_ov021_021fd39c(void *);
 extern void func_ov021_021fd490(void *);
@@ -82,7 +82,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
         }
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-        func_02095940((u8 *)state + 0xa0);
+        SpriteMotionController_Hide((u8 *)state + 0xa0);
         GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
 
         if (FIELD(s32, state, 0x3e4) >= 0) {
@@ -212,7 +212,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
         FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
         FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
         func_ov021_021fefcc(state);
-        func_02095928((u8 *)state + 0xa0);
+        SpriteMotionController_Show((u8 *)state + 0xa0);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through to wait state 1. */
@@ -224,7 +224,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
         break;
     case 2:
         if ((FIELD(u32, state, 0x20) & 0x20) != 0) {
-            if (func_02095860((u8 *)state + 0xa0,
+            if (SpriteMotionController_BeginHitResponse((u8 *)state + 0xa0,
                               (u8 *)state + 0x30, 0, 4) != 0) {
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 func_02092260(state, 3);
@@ -234,7 +234,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
             }
             s32 channel;
             for (channel = 0; channel < 2; channel++) {
-                if (func_02095860((u8 *)state + 0x14c + channel * 0xac,
+                if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x14c + channel * 0xac,
                                   (u8 *)state + 0x30, 0, 4) == 0)
                     continue;
                 if (FIELD(void *, state, 0x2a4 + channel * 4) == 0) {

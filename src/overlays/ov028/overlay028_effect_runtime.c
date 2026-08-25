@@ -25,10 +25,10 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void TitleDialog_ResetAfterClose(void *);
 extern void func_ov028_021fd668(void *, s32, s32, s32, s32);
@@ -51,15 +51,15 @@ extern "C" void *func_ov028_021fd680(void *state, void *font)
     AnimationResourceState_InitEmbedded((u8 *)state + 0x20);
     TitleCharacterResourceCollection_Init((u8 *)state + 0x2c);
     FIELD(u32, state, 0x54) = 0;
-    func_02091b6c((u8 *)state + 0x58);
+    TitleInterpolatedValue_Init((u8 *)state + 0x58);
     FIELD(void *, state, 0) = font;
     FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x14, data_020f4e18[0], 0x60, 0x61, 0x62);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x20, data_020f4e18[0],
                   0x4000, 0x4001, 0x4002);
     FIELD(u32, state, 0x54) = genrand_int32();
-    func_02092814((u8 *)state + 0x2c, 0x7000);
-    func_02092814((u8 *)state + 0x2c, 0x7006);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x2c, 0x7000);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x2c, 0x7006);
     void *controller = Heap_Alloc(0xec, data_ov028_021ff2d0,
                                   4, gHeapContext);
     if (controller != 0)
@@ -83,7 +83,7 @@ extern "C" void *func_ov028_021fd790(void *state)
         FIELD(Destructor *, controller, 0)[1](controller);
     }
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
-    func_020927b8((u8 *)state + 0x2c);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x2c);
     AnimationResourceState_Destroy((u8 *)state + 0x20);
     AnimationResourceState_Destroy((u8 *)state + 0x14);
     AnimationResourceState_Destroy((u8 *)state + 8);

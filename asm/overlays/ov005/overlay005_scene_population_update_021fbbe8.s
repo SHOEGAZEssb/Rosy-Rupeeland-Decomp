@@ -1,6 +1,6 @@
     .text
     .extern func_02091c7c
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_020afca0
     .extern func_02091b98
     .extern Heap_Alloc
@@ -36,13 +36,13 @@ func_ov005_021fbbe8: ; 0x021fbbe8
     mov r2, #0x0
     mov r3, #0xa000
     str ip, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     b L_021fbc40
 L_021fbc30:
     mov r2, #0xa000
     mov r3, #0x0
     str ip, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
 L_021fbc40:
     ldr r2, [r4, #0x120]
     ldr r1, L_021fbd4c

@@ -10,7 +10,7 @@ extern const u8 data_ov031_021fe774[];
 extern "C" {
 #endif
 extern void GraphicsSpriteGroup_Destroy(void *);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void Heap_Free(void *);
 #ifdef __cplusplus
@@ -36,7 +36,7 @@ static void teardown_scene(void *scene)
     invoke_child_slot(FIELD(void *, scene, 0x548), 2);
     invoke_child_slot(FIELD(void *, scene, 0x98), 1);
     GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0x58));
-    func_020927b8((u8 *)scene + 0x70);
+    TitleCharacterResourceCollection_Destroy((u8 *)scene + 0x70);
     AnimationResourceState_Destroy((u8 *)scene + 0x5c);
 }
 

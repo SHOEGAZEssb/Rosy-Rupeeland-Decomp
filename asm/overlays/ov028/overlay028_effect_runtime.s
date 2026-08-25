@@ -15,10 +15,10 @@
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_0209189c
 .extern TitleRandom_NextBounded
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern TitleCharacterResourceCollection_Init
-.extern func_020927b8
-.extern func_02092814
+.extern TitleCharacterResourceCollection_Destroy
+.extern TitleCharacterResourceCollection_Append
 .extern TitleDialog_Init
 .extern TitleDialog_ResetAfterClose
 .extern func_ov028_021fd668
@@ -42,7 +42,7 @@ func_ov028_021fd680:
     mov r0, #0x0
     str r0, [r4, #0x54]
     add r0, r4, #0x58
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     str r5, [r4, #0x0]
     mov r0, r5
     bl GraphicsSpriteGroupOwner_CreateGroup
@@ -67,10 +67,10 @@ func_ov028_021fd680:
     str r0, [r4, #0x54]
     add r0, r4, #0x2c
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r4, #0x2c
     ldr r1, L_021fd784
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0xec
     ldr r1, L_021fd788
     mov r2, #0x4
@@ -113,7 +113,7 @@ L_021fd7b0:
     ldr r0, [r4, #0x4]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x2c
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x20
     bl AnimationResourceState_Destroy
     add r0, r4, #0x14

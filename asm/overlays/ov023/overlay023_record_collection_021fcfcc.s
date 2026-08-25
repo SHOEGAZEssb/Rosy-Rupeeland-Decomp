@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov023/overlay023_record_collection.c. */
 .extern GraphicsSpriteGroup_Destroy
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern CxxArray_DestroyAndFree
 .extern func_ov023_021fce2c
 
@@ -29,7 +29,7 @@ L_021fcff4:
     bl CxxArray_DestroyAndFree
 L_021fd010:
     add r0, r4, #0x8
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fd020: .word func_ov023_021fce2c

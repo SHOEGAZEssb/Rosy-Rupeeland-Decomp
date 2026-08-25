@@ -4,7 +4,7 @@
 .extern OverlaySlot_Destroy
 .extern func_ov043_0220b740
 .extern AnimationResourceState_Destroy
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern Heap_Free
 .extern data_ov043_0220c4bc
 .extern data_020f4e14
@@ -50,7 +50,7 @@ func_ov043_0220b864:
     add r0, r4, #0x80
     bl AnimationResourceState_Destroy
     add r0, r4, #0x5c
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0220b900: .word data_ov043_0220c4bc
@@ -98,7 +98,7 @@ func_ov043_0220b90c:
     add r0, r4, #0x80
     bl AnimationResourceState_Destroy
     add r0, r4, #0x5c
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -27,7 +27,7 @@ extern s32 InventoryScroll_TestLowerArrowHold(void *, const void *);
 extern s32 InventoryScroll_TestMarkerHit(void *, const void *);
 extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
-extern s32 func_02095860(void *, const void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, const void *, s32, s32);
 extern s32 func_ov028_021fd558(void *, const void *);
 extern s32 func_ov028_021fd5e0(void *);
 extern void func_ov028_021fdad8(void *, s32, s32);
@@ -114,11 +114,11 @@ extern "C" s32 func_ov028_021fe77c(void *state)
                         func_02092260(state, 2);
                         Overlay028_SetPair(state, data_ov028_021ff258);
                     }
-                } else if (func_02095860((u8 *)state + 0x98,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x98,
                                          point, 0, 4) != 0) {
                     func_02092260(state, 2);
                     Overlay028_SetPair(state, data_ov028_021ff220);
-                } else if (func_02095860((u8 *)state + 0x144,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x144,
                                          point, 0, 4) != 0) {
                     func_02092260(state, 3);
                     Overlay028_SetPair(state, data_ov028_021ff248);

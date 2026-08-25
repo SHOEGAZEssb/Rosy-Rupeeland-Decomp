@@ -19,7 +19,7 @@ extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *);
 extern void GraphicsSpriteRenderer_SetTextGridPosition(void *, s32, s32);
 extern void func_02091e1c(void *);
-extern void func_020958d8(void *);
+extern void SpriteMotionController_Update(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_ov030_021fcf18(void *);
 #ifdef __cplusplus
@@ -74,8 +74,8 @@ extern "C" void func_ov030_021fd304(void *widget)
             break;
         }
     }
-    func_020958d8((u8 *)widget + 0x58);
-    func_020958d8((u8 *)widget + 0x104);
+    SpriteMotionController_Update((u8 *)widget + 0x58);
+    SpriteMotionController_Update((u8 *)widget + 0x104);
     s32 scroll = FIELD(s32, widget, 0x1c4);
     FIELD(s32, FIELD(void *, widget, 0x28), 0x18) = 0;
     FIELD(s32, FIELD(void *, widget, 0x28), 0x1c) = -scroll;

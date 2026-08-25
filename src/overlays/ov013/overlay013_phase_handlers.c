@@ -43,10 +43,10 @@ extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
 extern void func_02092260(void *, s32);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_02095988(void *, s32);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 #ifdef __cplusplus
 }
@@ -243,7 +243,7 @@ s32 func_ov013_021fe454(void *state)
     case 2:
         index = FIELD(s32, state, 0x96c);
         if (func_ov013_021fdfbc((u8 *)state + 0x8c + index * 0xac)) {
-            func_02091bac(timer, 2, 0, -256, 20);
+            TitleInterpolatedValue_Configure(timer, 2, 0, -256, 20);
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
         }
@@ -265,13 +265,13 @@ s32 func_ov013_021fe454(void *state)
         if ((FIELD(u16, related, 0x24) & 1) == 0)
             break;
         if (++FIELD(s32, state, 8) >= 3) {
-            func_02095988(record,
+            SpriteMotionController_SetAnimation(record,
                 FIELD(s32, data_ov013_021febb4, index * 0x14));
             FIELD(u16, FIELD(void *, state, 0x94c), 0x24) |= 4;
             FIELD(s32, state, 4) = 0;
             FIELD(s32, state, 8) = 0;
         } else {
-            func_02095988(record,
+            SpriteMotionController_SetAnimation(record,
                 FIELD(s32, data_ov013_021febb4, index * 0x14) + 1);
         }
         break;
@@ -282,12 +282,12 @@ s32 func_ov013_021fe454(void *state)
         if ((FIELD(u16, related, 0x24) & 1) == 0)
             break;
         if (++FIELD(s32, state, 8) >= 3) {
-            func_02095988(record, 0);
+            SpriteMotionController_SetAnimation(record, 0);
             FIELD(u16, FIELD(void *, state, 0x94c), 0x24) |= 4;
             FIELD(s32, state, 4) = 0;
             FIELD(s32, state, 8) = 0;
         } else {
-            func_02095988(record, 1);
+            SpriteMotionController_SetAnimation(record, 1);
         }
         break;
     }
@@ -350,7 +350,7 @@ s32 func_ov013_021fe880(void *state)
                            FIELD(void *, state, 0x948), 0x9c),
                            (u8 *)state + 0x30)) {
                 func_02092260(state, 0x0b);
-                func_02091bac(timer, 2, -256, 0, 20);
+                TitleInterpolatedValue_Configure(timer, 2, -256, 0, 20);
                 ++FIELD(s32, state, 4);
                 FIELD(s32, state, 8) = 0;
             }

@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov033/overlay033_scene_lifecycle.c for documented portable C. */
 
     .extern GraphicsSpriteGroup_Destroy
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
     .extern VecFx32Object_Destroy
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_ov033_021fcff4
@@ -39,7 +39,7 @@ L_021fd298:
     ldr r0, [r4, #0x0]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0xa0
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x24
     bl VecFx32Object_Destroy
     add r0, r4, #0x14

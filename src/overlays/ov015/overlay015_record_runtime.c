@@ -19,8 +19,8 @@ extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, s32, s32, s32
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, s32, s32);
-extern void func_020958d8(void *);
-extern void func_02095988(void *, s32);
+extern void SpriteMotionController_Update(void *);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void func_ov001_021fb81c(void *, s32);
 extern void func_ov001_021fb87c(void *, void *, s32);
 extern void func_ov001_021fbf7c(void *);
@@ -43,7 +43,7 @@ extern "C" void Overlay015_UpdateRecords(void *state)
         func_ov001_021fbf7c(FIELD(void *, state, 0xdc));
     }
     for (i = 0; i < 3; i++) {
-        func_020958d8((u8 *)state + 0xfc + i * 0xac);
+        SpriteMotionController_Update((u8 *)state + 0xfc + i * 0xac);
     }
 }
 
@@ -106,6 +106,6 @@ extern "C" void func_ov015_021fd8a8(void *state, s32 value)
     }
     record = (u8 *)state + 0xfc + count * 0xac;
     FIELD(s32, record, 0xa8) = value;
-    func_02095988(record, value & 0xff);
+    SpriteMotionController_SetAnimation(record, value & 0xff);
     FIELD(s32, state, 0x300)++;
 }

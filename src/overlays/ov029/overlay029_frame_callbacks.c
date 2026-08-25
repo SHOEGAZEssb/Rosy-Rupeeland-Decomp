@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020929f4(void *);
+extern void TitleScrollValue_Advance(void *);
 extern void GraphicsAffineScanlineWave_Apply(void *, s32);
 #ifdef __cplusplus
 }
@@ -30,7 +30,7 @@ extern "C" s32 func_ov029_021fd3d4(void *state)
                       ((u32)FIELD(s32, state, 0x4c) << 8);
         *(volatile u32 *)0x04000014 =
             ((u32)FIELD(s32, state, 0xe0) << 16) & 0x01ff0000;
-        func_020929f4((u8 *)state + 0xec);
+        TitleScrollValue_Advance((u8 *)state + 0xec);
     }
     return 0;
 }

@@ -15,8 +15,8 @@ extern void Heap_Free(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern void func_020926f8(void *);
-extern void func_020927b8(void *);
+extern void TitleScreenResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void func_ov000_021fb848(void *);
 extern void func_ov016_021fd06c(void *);
 extern void func_ov016_021fd97c(void *);
@@ -79,8 +79,8 @@ static void overlay016_release_scene(void *state)
     func_ov016_021fe0d4((u8 *)state + 0xe8);
     AnimationResourceState_Destroy((u8 *)state + 0xd4);
     AnimationResourceState_Destroy((u8 *)state + 0xc8);
-    func_020926f8((u8 *)state + 0x84);
-    func_020927b8((u8 *)state + 0x60);
+    TitleScreenResourceCollection_Destroy((u8 *)state + 0x84);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x60);
 }
 
 /*

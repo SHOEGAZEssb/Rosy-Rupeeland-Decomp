@@ -31,8 +31,8 @@ extern u8 gSystemState[];
 extern u8 *gGamePhaseRuntime;
 extern void *data_020f4e18;
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
@@ -66,8 +66,8 @@ AreaInfoPanelPresentation *AreaInfoPanelPresentation_Init(AreaInfoPanelPresentat
     AnimationResourceState_InitEmbedded(self->resources_24);
     self->uiContext_30 = uiContext;
     self->spriteOwner_34 = GraphicsSpriteGroupOwner_CreateGroup(uiContext);
-    func_02092814(self, 0x7005);
-    func_02092814(self, 0x7007);
+    TitleCharacterResourceCollection_Append(self, 0x7005);
+    TitleCharacterResourceCollection_Append(self, 0x7007);
     AnimationResourceState_ReplaceResources(self->resources_24, data_020f4e18,
                   0x3326, 0x3327, 0x3328);
     self->primarySprite_38 =
@@ -84,7 +84,7 @@ AreaInfoPanelPresentation *AreaInfoPanelPresentation_Destroy(AreaInfoPanelPresen
 {
     GraphicsSpriteGroup_Destroy(self->spriteOwner_34);
     AnimationResourceState_Destroy(self->resources_24);
-    func_020927b8(self);
+    TitleCharacterResourceCollection_Destroy(self);
     return self;
 }
 

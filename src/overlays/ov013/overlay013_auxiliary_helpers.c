@@ -21,7 +21,7 @@ extern void *func_020959d4(void *, s32, s32);
 extern void ModalState_CopyAttachmentText(void *, void *);
 extern void ModalState_InitResources(void *, s32);
 extern void func_02095bec(void *);
-extern s32 func_02095958(void *);
+extern s32 SpriteMotionController_IsVisible(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
 }
@@ -103,7 +103,7 @@ void func_ov013_021fdb10(void *state)
 
 /*
  * Set bit 1 in halfword +0x98 of indexed 0xAC-byte record argument two. If
- * func_02095958 reports it active, select value 0x1A on the associated pointer
+ * SpriteMotionController_IsVisible reports it active, select value 0x1A on the associated pointer
  * at state +0x950[index] and clear its halfword flag bit 2 at +0x24. Return
  * void; callees may update graphics/animation state.
  */
@@ -116,7 +116,7 @@ void func_ov013_021fdb50(void *state, s32 index)
     void *associated;
 
     FIELD(u16, record, 0x98) |= 2;
-    if (func_02095958(record) == 0)
+    if (SpriteMotionController_IsVisible(record) == 0)
         return;
     associated = FIELD(void *, state, 0x950 + index * 4);
     GraphicsSpriteState_SetAnimationIndex(associated, 0x1a);

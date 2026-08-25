@@ -10,10 +10,10 @@ extern const s16 data_ov015_021feb88[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095820(void *, s32, s32);
-extern s32 func_02095860(void *, s32, s32, s32);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, s32, s32, s32);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
 extern void func_ov015_021fd8a8(void *, s32);
 extern s32 func_ov015_021fd8ec(void *);
 extern void func_ov015_021fda50(void *);
@@ -40,8 +40,8 @@ extern "C" s32 func_ov015_021fd8ec(void *state)
     if (count == 1) {
         void *record = (u8 *)state + 0xfc;
         FIELD(u16, FIELD(void *, record, 0x9c), 0x2c) = 0x80;
-        func_02095820(record, 0x80, 0xaa);
-        func_02095928(record);
+        SpriteMotionController_SetPosition(record, 0x80, 0xaa);
+        SpriteMotionController_Show(record);
         return 1;
     }
 
@@ -49,8 +49,8 @@ extern "C" s32 func_ov015_021fd8ec(void *state)
     for (i = 0; i < count && i < 3; i++) {
         void *record = (u8 *)state + 0xfc + i * 0xac;
         FIELD(u16, FIELD(void *, record, 0x9c), 0x2c) = positions[i];
-        func_02095820(record, positions[i], 0xaa);
-        func_02095928(record);
+        SpriteMotionController_SetPosition(record, positions[i], 0xaa);
+        SpriteMotionController_Show(record);
     }
     return 1;
 }
@@ -84,7 +84,7 @@ extern "C" void func_ov015_021fda50(void *state)
     s32 i;
 
     for (i = 0; i < 3; i++) {
-        func_02095940((u8 *)state + 0xfc + i * 0xac);
+        SpriteMotionController_Hide((u8 *)state + 0xfc + i * 0xac);
     }
 }
 
@@ -99,7 +99,7 @@ extern "C" s32 func_ov015_021fda78(void *state, s32 value)
     s32 i;
 
     for (i = 0; i < FIELD(s32, state, 0x300); i++) {
-        if (func_02095860((u8 *)state + 0xfc + i * 0xac, value, 0, 4) != 0) {
+        if (SpriteMotionController_BeginHitResponse((u8 *)state + 0xfc + i * 0xac, value, 0, 4) != 0) {
             return i;
         }
     }

@@ -9,7 +9,7 @@
     .extern InventoryRecordCollection_Sort
     .extern SceneInputBase_Init
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern func_ov000_021fb728
     .extern func_ov000_021fbcc4
     .extern func_ov000_021fcae8
@@ -39,7 +39,7 @@ func_ov014_021fce3c:
     bl func_ov014_021fd07c
     add r0, r4, #0x54
     ldr r1, L_021fcf30
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0x68
     ldr r1, L_021fcf34
     mov r2, #0x4

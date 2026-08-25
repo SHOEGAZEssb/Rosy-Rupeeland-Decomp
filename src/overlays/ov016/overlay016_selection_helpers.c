@@ -13,9 +13,9 @@ extern s32 ActorDescriptor_IsInvalid(void *);
 extern void *Overlay000_GetActiveMetadata(void *);
 extern void func_ov000_021fb890(void *, s32);
 extern void Overlay000_PopulatePresentation(void *, void *);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
-extern void func_02095988(void *, s32);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void *func_ov016_021fd628(void *);
 extern void func_ov016_021fd9dc(void *, s32);
 extern void func_ov016_021fdaa0(void *, void *, s32);
@@ -135,9 +135,9 @@ extern "C" void func_ov016_021ffd84(void *state)
 {
     if (FIELD(s32, state, 0x47c) != 0) {
         FIELD(s32, state, 0x47c) = 0;
-        func_02095988((u8 *)state + 0x240, 0);
-        func_02095940((u8 *)state + 0x2ec);
-        func_02095940((u8 *)state + 0x398);
+        SpriteMotionController_SetAnimation((u8 *)state + 0x240, 0);
+        SpriteMotionController_Hide((u8 *)state + 0x2ec);
+        SpriteMotionController_Hide((u8 *)state + 0x398);
         func_ov016_021fd9dc(FIELD(void *, state, 0x448), 1);
         FIELD(u32, state, 0x4c) &= ~4u;
         func_ov016_021ffc2c(state);
@@ -145,9 +145,9 @@ extern "C" void func_ov016_021ffd84(void *state)
         void *descriptor;
 
         FIELD(s32, state, 0x47c) = 1;
-        func_02095988((u8 *)state + 0x240, 3);
-        func_02095928((u8 *)state + 0x2ec);
-        func_02095928((u8 *)state + 0x398);
+        SpriteMotionController_SetAnimation((u8 *)state + 0x240, 3);
+        SpriteMotionController_Show((u8 *)state + 0x2ec);
+        SpriteMotionController_Show((u8 *)state + 0x398);
         func_ov000_021fb890(FIELD(void *, state, 0x450), 1);
         FIELD(u32, state, 0x4c) =
             (FIELD(u32, state, 0x4c) & ~2u) | 4u;

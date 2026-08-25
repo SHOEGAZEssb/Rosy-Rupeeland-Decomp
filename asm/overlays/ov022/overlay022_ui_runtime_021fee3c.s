@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_ui_runtime.c. */
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
-.extern func_020957f0
-.extern func_02095820
+.extern SpriteMotionController_BindSprite
+.extern SpriteMotionController_SetPosition
 .extern func_ov022_021fef48
 
 
@@ -22,11 +22,11 @@ func_ov022_021fee3c:
     add r0, r4, #0x154
     mov r3, #0x1
     str r2, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x154
     mvn r1, #0x3f
     mov r2, #0x40
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, [r4, #0x9c]
     add r1, r4, #0x84
     mov r2, #0x1
@@ -37,11 +37,11 @@ func_ov022_021fee3c:
     add r0, r4, #0x200
     mov r2, #0x2
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x200
     mvn r1, #0x3f
     mov r2, #0x70
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     mov r0, r4
     bl func_ov022_021fef48
     ldr r0, [r4, #0x9c]
@@ -70,11 +70,11 @@ func_ov022_021fee3c:
     add r0, r4, #0xa8
     mov r2, #0x2
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0xa8
     mov r1, #0xe4
     mov r2, #0xaa
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}
 .size func_ov022_021fee3c, .-func_ov022_021fee3c

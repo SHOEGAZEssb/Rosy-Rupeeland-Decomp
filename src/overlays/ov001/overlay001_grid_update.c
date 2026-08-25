@@ -29,7 +29,7 @@ extern "C" {
 extern const s16 gFx32CosSinTable[];
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
 extern void InventoryScroll_UpdatePresentation(void *controller);
-extern void func_020958d8(void *element);
+extern void SpriteMotionController_Update(void *element);
 #ifdef __cplusplus
 }
 #endif
@@ -52,8 +52,8 @@ void func_ov001_021fbf7c(Overlay001GridUpdateState *state)
     u32 phase;
     u32 tableIndex;
 
-    func_020958d8(state->element_028);
-    func_020958d8(state->element_0d4);
+    SpriteMotionController_Update(state->element_028);
+    SpriteMotionController_Update(state->element_0d4);
     GraphicsSpriteGroup_AdvanceAnimations(state->spriteGroup_008);
     GraphicsSpriteGroup_AdvanceAnimations(state->spriteGroup_00c);
     InventoryScroll_UpdatePresentation(state->controller_1bc);

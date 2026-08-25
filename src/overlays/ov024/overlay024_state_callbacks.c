@@ -30,7 +30,7 @@ extern void IndexedSelectionController_Increment(void *);
 extern void IndexedSelectionController_Decrement(void *);
 extern s32 IndexedSelectionController_AdvanceTransition(void *);
 extern s32 IndexedSelectionController_AdvancePacing(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern s32 func_ov005_021fbdf8(void *, s32, void *);
 extern void func_ov024_021fce04(void *, void *, void *);
 extern void func_ov024_021fd86c(void *);
@@ -88,20 +88,20 @@ extern "C" s32 func_ov024_021fdcdc(void *scene)
         } else if ((keys & 0x80) && !(keys & 0x100)) {
             IndexedSelectionController_Decrement((u8 *)scene + 0x284);
         } else if (FIELD(u32, scene, 0x20) & 0x20) {
-            if (func_02095860((u8 *)scene + 0x80,
+            if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x80,
                               (u8 *)scene + 0x30, 0, 4)) {
                 func_02092260(scene, 3);
                 FIELD(s16, gGameWork, 0x1de) = -1;
                 func_02092314(scene, 0x3e, 0x10);
                 install_pair(scene, data_ov024_021fe2c8);
-            } else if (func_02095860((u8 *)scene + 0x12c,
+            } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x12c,
                                      (u8 *)scene + 0x30, 0, 4)) {
                 func_02092260(scene, 0x2e80);
                 s32 current = FIELD(s32, scene, 0x290);
                 func_ov024_021fdab0(scene,
                     data_ov024_021fe250[current * 2], 30);
                 install_pair(scene, data_ov024_021fe308);
-            } else if (func_02095860((u8 *)scene + 0x1d8,
+            } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x1d8,
                                      (u8 *)scene + 0x30, 0, 4)) {
                 func_02092260(scene, 0x2e80);
                 s32 current = FIELD(s32, scene, 0x290);

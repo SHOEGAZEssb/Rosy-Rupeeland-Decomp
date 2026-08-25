@@ -11,7 +11,7 @@
     .extern Graphics3DResourceOwner_CreateManager
     .extern Graphics3DResourceOwner_PrepareResources
     .extern TitleRandom_NextBounded
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern func_ov017_021fe3c4
     .extern genrand_int32
 .global func_ov017_021fe40c
@@ -23,7 +23,7 @@ func_ov017_021fe40c:
     mov r4, r1
     bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x38
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     mov r0, #0x0
     str r0, [r10, #0x54]
     bl genrand_int32

@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_helpers.c. */
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern InventoryScroll_UpdatePresentation
-    .extern func_020958d8
+    .extern SpriteMotionController_Update
     .extern func_ov020_021fd44c
 
 .global func_ov020_021fde6c
@@ -12,7 +12,7 @@ func_ov020_021fde6c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x70
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r4, #0x1dc]
     cmp r0, #0x0
     beq L_021fde90

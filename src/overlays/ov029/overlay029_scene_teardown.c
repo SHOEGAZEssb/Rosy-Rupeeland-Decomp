@@ -17,7 +17,7 @@ extern void Heap_Free(void *);
 extern void RuntimePresentationManager_BroadcastSlot1C(void *, s32);
 extern void GraphicsArchive_ReleasePaletteResource(void *, void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void func_ov002_021fb9c4(void *);
 extern void func_ov045_0220b8cc(void *);
 extern void func_ov045_0220d2d8(s32);
@@ -58,7 +58,7 @@ static void Overlay029_TearDown(void *state)
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 0);
-    func_020927b8((u8 *)state + 0x78);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x78);
 }
 
 /*

@@ -14,7 +14,7 @@ extern void OverlaySlot_UnloadOverlay(void *, s32);
 extern s32 ActorDescriptor_IsInvalid(void *);
 extern void func_02064d90(void *, s32);
 extern void GraphicsSpriteGroup_Clear(void *);
-extern void func_02095988(void *, s32);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void func_ov000_021fcb4c(void *, void *);
 extern void func_ov021_021fd074(void *);
 extern void func_ov021_021feac8(void *, const void *);
@@ -50,7 +50,7 @@ extern "C" void func_ov021_021fe63c(void *state)
 /*
  * For each of two 0xAC-byte input helpers at +0x14C, choose animation
  * 0x16+i*2 when its corresponding list +0x2A4 exists, otherwise 0x17+i*2.
- * Input-helper/UI state changes through func_02095988; returns void, no MMIO.
+ * Input-helper/UI state changes through SpriteMotionController_SetAnimation; returns void, no MMIO.
  */
 extern "C" void func_ov021_021fe84c(void *state)
 {
@@ -58,7 +58,7 @@ extern "C" void func_ov021_021fe84c(void *state)
     for (i = 0; i < 2; i++) {
         s32 animation = i * 2 +
             (FIELD(void *, state, 0x2a4 + i * 4) != 0 ? 0x16 : 0x17);
-        func_02095988((u8 *)state + 0x14c + i * 0xac, animation);
+        SpriteMotionController_SetAnimation((u8 *)state + 0x14c + i * 0xac, animation);
     }
 }
 

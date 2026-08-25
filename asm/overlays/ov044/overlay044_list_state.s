@@ -18,7 +18,7 @@
 .extern func_02092260
 .extern InventoryScroll_SetSelectedRow
 .extern func_ov044_0220caa4
-.extern func_02095860
+.extern SpriteMotionController_BeginHitResponse
 .extern InventoryScroll_UpdateSelectionMovement
 .extern func_ov044_0220c880
 .extern data_ov044_0220d2b8
@@ -184,7 +184,7 @@ func_ov044_0220cb04:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq .L_0220cd5c
     mov r0, r5
@@ -195,7 +195,7 @@ func_ov044_0220cb04:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq .L_0220cd98
     mov r0, r5

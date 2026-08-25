@@ -29,11 +29,11 @@ extern void TitleDisplay_ResetSubBgScroll(void);
 extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void TitleScreenResourceCollection_Init(void *);
-extern void func_020926f8(void *);
-extern void func_02092754(void *, s32);
+extern void TitleScreenResourceCollection_Destroy(void *);
+extern void TitleScreenResourceCollection_Append(void *, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void TitlePalette_SetMainBackdrop(s32);
-extern void func_020929f4(void *);
+extern void TitleScrollValue_Advance(void *);
 extern void GraphicsAffineScanlineWave_Apply(void *, s32);
 extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
@@ -64,7 +64,7 @@ extern "C" s32 func_ov021_021fdef0(void *state)
                       (FIELD(u32, state, 0x4c) << 8);
         *(volatile u32 *)0x04000014 =
             (FIELD(u32, state, 0x3fc) << 16) & 0x01ff0000;
-        func_020929f4((u8 *)state + 0x404);
+        TitleScrollValue_Advance((u8 *)state + 0x404);
     }
     return 0;
 }
@@ -192,14 +192,14 @@ extern "C" void func_ov021_021fe29c(void *state)
     TitleScreenResourceCollection_Init(manager);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0xa06d, 0xa06e, 0xa06f);
-    func_02092754(manager, 0xa070);
+    TitleScreenResourceCollection_Append(manager, 0xa070);
     func_020b44e8();
     GraphicsResourceSet_ApplyToMainBg(resources, 0, 0);
     GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
     FIELD(s32, state, 0x3fc) = 0;
     FIELD(s32, state, 0x48) = 0x13;
     TitlePalette_SetMainBackdrop(0);
-    func_020926f8(manager);
+    TitleScreenResourceCollection_Destroy(manager);
     GraphicsResourceSet_Destroy(resources);
 }
 

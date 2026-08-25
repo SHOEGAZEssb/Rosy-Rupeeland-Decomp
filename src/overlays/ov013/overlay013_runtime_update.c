@@ -20,12 +20,12 @@ extern s32 Presentation_IsScriptSuspended(void *);
 extern s32 Presentation_IsScriptComplete(void *);
 extern void Presentation_SetScript(void *, const void *, s32);
 extern void SpriteMotionController_PublishCoordinates(void *);
-extern void func_020958d8(void *);
+extern void SpriteMotionController_Update(void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void func_02092260(void *, s32);
-extern void func_02095988(void *, s32);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern s32 func_ov013_021fdfbc(void *);
 #ifdef __cplusplus
@@ -94,7 +94,7 @@ void func_ov013_021fdbb0(void *state)
                 void *source;
                 void *target;
 
-                func_020958d8(record);
+                SpriteMotionController_Update(record);
                 source = FIELD(void *, record, 0x9c);
                 target = FIELD(void *, state, 0x950 + i * 4);
                 FIELD(s16, target, 0x2c) = FIELD(s16, source, 0x2c);
@@ -131,7 +131,7 @@ s32 func_ov013_021fdd8c(void *state)
     FIELD(s32, state, 0x96c) = -1;
     for (i = 0; i < 7; ++i) {
         u8 *record = (u8 *)state + 0x8c + i * 0xac;
-        if (func_02095860(record, (u8 *)state + 0x30, 0, 4)) {
+        if (SpriteMotionController_BeginHitResponse(record, (u8 *)state + 0x30, 0, 4)) {
             if ((FIELD(u16, record, 0x98) & 2) == 0) {
                 FIELD(s32, state, 0x96c) = i;
                 return 1;
@@ -160,13 +160,13 @@ s32 func_ov013_021fde18(void *state)
     FIELD(s32, state, 0x970) = -1;
     for (i = 0; i < 5; ++i) {
         u8 *record = (u8 *)state + 0x540 + i * 0xac;
-        if (func_02095860(record, (u8 *)state + 0x30, 0, 0)) {
+        if (SpriteMotionController_BeginHitResponse(record, (u8 *)state + 0x30, 0, 0)) {
             void *target;
             if (FIELD(u16, record, 0x98) & 2) {
                 func_02092260(state, 9);
                 return 0;
             }
-            func_02095988(record, data_ov013_021febb4[i * 5] + 1);
+            SpriteMotionController_SetAnimation(record, data_ov013_021febb4[i * 5] + 1);
             target = FIELD(void *, state, 0x94c);
             GraphicsSpriteState_SetAnimationIndex(target, (i + 15) & 0xff);
             FIELD(u16, target, 0x24) &= (u16)~4;
@@ -187,9 +187,9 @@ extern "C"
 s32 func_ov013_021fdee4(void *state)
 {
     void *target;
-    if (!func_02095860((u8 *)state + 0x89c, (u8 *)state + 0x30, 0, 0))
+    if (!SpriteMotionController_BeginHitResponse((u8 *)state + 0x89c, (u8 *)state + 0x30, 0, 0))
         return 0;
-    func_02095988((u8 *)state + 0x89c, 1);
+    SpriteMotionController_SetAnimation((u8 *)state + 0x89c, 1);
     target = FIELD(void *, state, 0x94c);
     FIELD(u16, target, 0x24) &= (u16)~4;
     return 1;

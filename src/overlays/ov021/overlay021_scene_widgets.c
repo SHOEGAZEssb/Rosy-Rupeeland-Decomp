@@ -18,9 +18,9 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 RecordSelection_HasAvailableEntry(void *, s32);
 extern void InventoryScroll_SetSelectedRow(void *, s32);
 extern void InventoryScroll_SetFirstVisibleRow(void *, s32);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095940(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Hide(void *);
 extern void *func_ov021_021fce18(void *, void *, s32, s32);
 extern void *func_ov021_021fd0e8(void *, const void *);
 extern void Overlay021List_SyncFirstVisibleRow(void *);
@@ -96,16 +96,16 @@ extern "C" void func_ov021_021fe6b0(void *state)
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94),
                                      (u8 *)state + 0x7c, 1);
         void *helper = (u8 *)state + 0x14c + i * 0xac;
-        func_020957f0(helper, sprite, animation, 1, 0);
-        func_02095820(helper, -64, 0x40 + i * 0x30);
+        SpriteMotionController_BindSprite(helper, sprite, animation, 1, 0);
+        SpriteMotionController_SetPosition(helper, -64, 0x40 + i * 0x30);
     }
     s32 mode = FIELD(s32, state, 0x54);
     if (mode == 9 || mode == 12 || mode == 13) {
-        func_02095940((u8 *)state + 0x14c);
-        func_02095820((u8 *)state + 0x1f8, -64, 0x60);
+        SpriteMotionController_Hide((u8 *)state + 0x14c);
+        SpriteMotionController_SetPosition((u8 *)state + 0x1f8, -64, 0x60);
     } else if (mode == 17) {
-        func_02095940((u8 *)state + 0x1f8);
-        func_02095820((u8 *)state + 0x14c, -64, 0x60);
+        SpriteMotionController_Hide((u8 *)state + 0x1f8);
+        SpriteMotionController_SetPosition((u8 *)state + 0x14c, -64, 0x60);
     }
 
     FIELD(void *, state, 0x98) =
@@ -114,8 +114,8 @@ extern "C" void func_ov021_021fe6b0(void *state)
                   1, 0, 6);
     void *inputSprite =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94), (u8 *)state + 0x7c, 1);
-    func_020957f0((u8 *)state + 0xa0, inputSprite, 2, 1, 0);
-    func_02095820((u8 *)state + 0xa0, 0xe4, 0xaa);
+    SpriteMotionController_BindSprite((u8 *)state + 0xa0, inputSprite, 2, 1, 0);
+    SpriteMotionController_SetPosition((u8 *)state + 0xa0, 0xe4, 0xaa);
     FIELD(void *, state, 0x9c) =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94), (u8 *)state + 0x88, 1);
     GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x9c), 0, 0x54, 0xe,

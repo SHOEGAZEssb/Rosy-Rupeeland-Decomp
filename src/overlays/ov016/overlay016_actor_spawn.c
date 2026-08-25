@@ -14,7 +14,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void PresentationList_Append(void *, void *);
 extern void SpritePresentation_SyncPosition(void *);
-extern void func_02095928(void *);
+extern void SpriteMotionController_Show(void *);
 extern void *func_ov016_021fe004(void *, void *, void *);
 extern void func_ov016_021fe2b0(void *);
 extern s32 func_ov016_021fe358(void *, void *);
@@ -70,7 +70,7 @@ extern "C" s32 func_ov016_021fe390(void *state, void *wrapper, void *target)
             }
             func_ov016_021fe2b0(state);
             if (FIELD(s32, state, 0xdc) == func_ov016_021fe358(state, wrapper)) {
-                func_02095928((u8 *)state + 0x20);
+                SpriteMotionController_Show((u8 *)state + 0x20);
             }
             break;
         }

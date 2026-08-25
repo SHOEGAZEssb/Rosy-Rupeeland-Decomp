@@ -26,7 +26,7 @@ extern s32 InventoryScroll_TestLowerArrowHold(void *, void *);
 extern s32 InventoryScroll_TestMarkerHit(void *, void *);
 extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov016_021fd3f8(void *);
 extern s32 func_ov016_021fd5b8(void *, void *);
@@ -120,11 +120,11 @@ extern "C" s32 func_ov016_0220007c(void *state)
                         func_ov016_021fffcc(state);
                     }
                     break;
-                } else if (func_02095860((u8 *)state + 0xe8,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0xe8,
                                           (u8 *)state + 0x30, 0, 4) != 0) {
                     func_ov016_021fffcc(state);
                     break;
-                } else if (func_02095860((u8 *)state + 0x194,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x194,
                                           (u8 *)state + 0x30, 0, 4) != 0) {
                     func_02092260(state, 3);
                     Overlay016ActorValue_Init(state, data_ov016_022013c8[0],

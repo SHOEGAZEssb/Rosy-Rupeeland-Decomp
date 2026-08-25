@@ -4,7 +4,7 @@
 .extern data_ov031_021fe774
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern Heap_Free
 
 
@@ -34,7 +34,7 @@ L_021fdbac:
     ldr r0, [r4, #0x58]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x70
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x5c
     bl AnimationResourceState_Destroy
     mov r0, r4
@@ -67,7 +67,7 @@ L_021fdc1c:
     ldr r0, [r4, #0x58]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x70
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x5c
     bl AnimationResourceState_Destroy
     mov r0, r4

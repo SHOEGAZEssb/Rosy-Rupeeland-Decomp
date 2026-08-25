@@ -19,9 +19,9 @@ extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void *LanguageLookupDatabase_GetResourceById(void *, u16);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
-extern void func_020958d8(void *);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Update(void *);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -41,13 +41,13 @@ extern "C" void func_ov018_021fd788(void *state)
 {
     if (FIELD(s32, state, 0x54) != 1) {
         if (FIELD(s32, state, 0x414) < 0x10) {
-            func_02095940((u8 *)state + 0xd8);
+            SpriteMotionController_Hide((u8 *)state + 0xd8);
             FIELD(s32, state, 0x414)++;
         } else {
-            func_02095928((u8 *)state + 0xd8);
+            SpriteMotionController_Show((u8 *)state + 0xd8);
         }
     }
-    func_020958d8((u8 *)state + 0xd8);
+    SpriteMotionController_Update((u8 *)state + 0xd8);
     GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 2);
 
     {

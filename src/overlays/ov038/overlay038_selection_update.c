@@ -21,7 +21,7 @@ extern "C" {
 extern void *data_020f4e14;
 extern const u8 data_020d7a48[];
 extern const void *data_ov038_021fdd08;
-extern void func_020958d8(void *list);
+extern void SpriteMotionController_Update(void *list);
 extern void InventoryScroll_UpdatePresentation(void *model);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *owner);
 extern void func_ov046_0220c1a4(void *panel);
@@ -50,7 +50,7 @@ extern void GraphicsSpriteRenderer_DrawText(void *renderer, void *text, s32 x, s
  */
 extern "C" void func_ov038_021fd37c(void *presentation)
 {
-    func_020958d8((u8 *)presentation + 0x64);
+    SpriteMotionController_Update((u8 *)presentation + 0x64);
     if (FIELD(void *, presentation, 0x314) != 0) {
         InventoryScroll_UpdatePresentation(FIELD(void *, presentation, 0x314));
     }

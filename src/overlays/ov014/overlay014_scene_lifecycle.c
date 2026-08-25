@@ -21,8 +21,8 @@ extern "C" {
 #endif
 extern void SceneInputBase_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_02092814(void *, s32);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
 extern void Heap_Free(void *);
 extern void *func_ov000_021fb728(void *, void *);
@@ -63,7 +63,7 @@ void *func_ov014_021fce3c(void *state, const void *parameters)
     TitleCharacterResourceCollection_Init((u8 *)state + 0x54);
     func_ov014_021fce00((u8 *)state + 0x7c);
     func_ov014_021fd07c(state);
-    func_02092814((u8 *)state + 0x54, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x54, 0x7005);
     object = Heap_Alloc(0x68, data_ov014_021fd9a8, 4, gHeapContext);
     if (object != 0)
         object = func_ov000_021fb728(object, gDebugFont);
@@ -111,7 +111,7 @@ void *func_ov014_021fcf6c(void *state)
     }
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
-    func_020927b8((u8 *)state + 0x54);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x54);
     return state;
 }
 

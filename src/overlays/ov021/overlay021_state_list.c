@@ -37,7 +37,7 @@ extern s32 InventoryScroll_UpdateMarkerDrag(void *, void *);
 extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern s32 func_ov000_021fc460(void *);
 extern s32 func_ov000_021fc560(void *, void *);
 extern s32 func_ov001_021fc250(void *);
@@ -133,13 +133,13 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                     break;
                 } else {
                     s32 channel = FIELD(s32, state, 0x2c4);
-                    if (func_02095860((u8 *)state + 0x14c +
+                    if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x14c +
                                       channel * 0xac,
                                       (u8 *)state + 0x30, 0, 4) != 0) {
                         func_ov021_021ffcb4(state);
                         break;
                     }
-                    if (func_02095860((u8 *)state + 0xa0,
+                    if (SpriteMotionController_BeginHitResponse((u8 *)state + 0xa0,
                                       (u8 *)state + 0x30, 0, 4) != 0) {
                         func_02092260(state, 3);
                         DisplayBrightness_StartMaskedTransitions(1, -16);

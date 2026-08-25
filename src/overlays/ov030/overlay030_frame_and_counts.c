@@ -10,7 +10,7 @@ extern const u8 data_021f5ee8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020958d8(void *);
+extern void SpriteMotionController_Update(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_ov045_0220c18c(void *);
 extern void func_ov030_021fd304(void *);
@@ -19,7 +19,7 @@ extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void func_020b2058(const void *, s32, s32);
 extern void func_020b1ff0(const void *, s32, s32);
 extern s32 InventoryRecordCollection_FindId(void *, s32);
-extern void func_02095988(void *, s32);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
 }
@@ -35,9 +35,9 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
  */
 extern "C" void func_ov030_021fe768(void *scene)
 {
-    func_020958d8((u8 *)scene + 0xb8);
-    func_020958d8((u8 *)scene + 0x164);
-    func_020958d8((u8 *)scene + 0x210);
+    SpriteMotionController_Update((u8 *)scene + 0xb8);
+    SpriteMotionController_Update((u8 *)scene + 0x164);
+    SpriteMotionController_Update((u8 *)scene + 0x210);
     GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     if (FIELD(void *, scene, 0x2c0) != 0)
         func_ov045_0220c18c(FIELD(void *, scene, 0x2c0));
@@ -79,13 +79,13 @@ extern "C" void func_ov030_021fe808(void *scene)
         firstCount = FIELD(u16, records + firstIndex * 0x24, 4);
     }
     FIELD(s32, scene, 0x384) = firstCount;
-    func_02095988((u8 *)scene + 0xb8, firstCount > 0 ? 0 : 1);
+    SpriteMotionController_SetAnimation((u8 *)scene + 0xb8, firstCount > 0 ? 0 : 1);
     if (secondIndex >= 0) {
         const u8 *records = FIELD(const u8 *, catalog, 8);
         secondCount = FIELD(u16, records + secondIndex * 0x24, 4);
     }
     FIELD(s32, scene, 0x38c) = secondCount;
-    func_02095988((u8 *)scene + 0x164, secondCount > 0 ? 2 : 3);
+    SpriteMotionController_SetAnimation((u8 *)scene + 0x164, secondCount > 0 ? 2 : 3);
 
     GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0xa8), (firstCount / 10 + 8) & 0xff);
     GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0xac), (firstCount % 10 + 8) & 0xff);

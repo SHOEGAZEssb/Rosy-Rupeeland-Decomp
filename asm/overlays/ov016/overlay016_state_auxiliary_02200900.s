@@ -9,7 +9,7 @@
     .extern data_ov016_02201490
     .extern data_ov016_02201498
     .extern func_02092260
-    .extern func_02095860
+    .extern SpriteMotionController_BeginHitResponse
     .extern func_ov000_021fc298
     .extern func_ov000_021fc3f8
     .extern func_ov000_021fc424
@@ -188,7 +188,7 @@ L_02200b24:
     add r0, r0, #0x20
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02200b90
     ldr r0, [r4, #0x54]
@@ -216,7 +216,7 @@ L_02200b90:
     add r1, r4, #0x30
     mvn r2, #0x3
     mov r3, #0x0
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02200bc8
     mov r0, r4
@@ -231,7 +231,7 @@ L_02200bc8:
     add r1, r4, #0x30
     mov r2, #0x4
     mov r3, #0x0
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02200c00
     mov r0, r4
@@ -246,7 +246,7 @@ L_02200c00:
     add r0, r4, #0x240
     add r1, r4, #0x30
     sub r3, r2, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02200c34
     mov r0, r4

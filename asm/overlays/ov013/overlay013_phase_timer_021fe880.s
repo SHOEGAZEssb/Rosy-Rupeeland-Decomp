@@ -1,7 +1,7 @@
     .text
     .extern data_ov013_021fed00
     .extern data_ov013_021fed08
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
     .extern SceneInputBase_Update
@@ -70,7 +70,7 @@ L_021fe900:
     sub r2, r1, #0x114
     mov r1, #0x2
     mov r3, #0x0
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

@@ -6,7 +6,7 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_02091b98
 .extern func_02091c7c
-.extern func_020958d8
+.extern SpriteMotionController_Update
 .extern func_ov005_021fbbe8
 .extern func_ov046_0220c1a4
 
@@ -16,11 +16,11 @@ func_ov024_021fd86c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x80
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x12c
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x1d8
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r4, #0x2c0]
     bl func_ov046_0220c1a4
     ldr r0, [r4, #0x2bc]

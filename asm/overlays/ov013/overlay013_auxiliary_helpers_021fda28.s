@@ -5,7 +5,7 @@
     .extern data_ov013_021fed90
     .extern GamePhaseRuntime_SetPlacementMode
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02095958
+    .extern SpriteMotionController_IsVisible
     .extern func_020959d4
     .extern func_02095bec
     .extern ModalState_InitResources
@@ -126,7 +126,7 @@ func_ov013_021fdb50:
     add r0, r0, r3
     orr r1, r1, #0x2
     strh r1, [r2, r3]
-    bl func_02095958
+    bl SpriteMotionController_IsVisible
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     add r0, r5, r4, lsl #0x2

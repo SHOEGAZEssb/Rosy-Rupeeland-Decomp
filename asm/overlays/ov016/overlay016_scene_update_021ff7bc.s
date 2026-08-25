@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov016/overlay016_scene_update.c. */
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .extern func_020958d8
+    .extern SpriteMotionController_Update
     .extern func_02096304
     .extern func_ov000_021fc164
     .extern func_ov016_021fd358
@@ -13,15 +13,15 @@ func_ov016_021ff7bc:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xe8
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x194
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x240
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x2ec
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r4, #0x398
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r4, #0xe0]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x444]

@@ -22,11 +22,11 @@ extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void PresentationList_DeleteAll(void *);
-extern void func_020957bc(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Init(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
 extern void func_ov016_021fe0d4(void *);
 extern void Overlay016SmallBase_Init(void *);
 #ifdef __cplusplus
@@ -48,7 +48,7 @@ extern "C" void *func_ov016_021fe118(void *state, s32 index)
 
     AnimationResourceState_InitEmbedded(state);
     AnimationResourceState_InitEmbedded((u8 *)state + 0xc);
-    func_020957bc((u8 *)state + 0x20);
+    SpriteMotionController_Init((u8 *)state + 0x20);
     Overlay016SmallBase_Init((u8 *)state + 0xd0);
     FIELD(s32, state, 0xe0) = (index + 1) * 5;
     FIELD(u32, state, 0xe4) = data_ov016_02201394[index];
@@ -58,9 +58,9 @@ extern "C" void *func_ov016_021fe118(void *state, s32 index)
     AnimationResourceState_ReplaceResources(state, data_020f4e18, 0xd, 0xe, 0xf);
     AnimationResourceState_ReplaceResources((u8 *)state + 0xc, data_020f4e18, 0x19, 0x1a, 0x1b);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x18), state, 1);
-    func_020957f0((u8 *)state + 0x20, sprite, 1, 1, 0);
-    func_02095820((u8 *)state + 0x20, 0x80, 0xaa);
-    func_02095940((u8 *)state + 0x20);
+    SpriteMotionController_BindSprite((u8 *)state + 0x20, sprite, 1, 1, 0);
+    SpriteMotionController_SetPosition((u8 *)state + 0x20, 0x80, 0xaa);
+    SpriteMotionController_Hide((u8 *)state + 0x20);
     FIELD(void *, state, 0x1c) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x18),
                                                (u8 *)state + 0xc, 2);
     GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x1c), FIELD(u32, state, 0xe4),

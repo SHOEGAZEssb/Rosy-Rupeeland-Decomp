@@ -43,8 +43,8 @@ extern void *gGameWork;
 extern u8 *gGamePhaseRuntime;
 
 extern void DisplayControlElement_NoOp(DisplayControlElement *);
-extern void func_02091b6c(DisplayControlElement *);
-extern void func_02091bac(DisplayControlElement *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Init(DisplayControlElement *);
+extern void TitleInterpolatedValue_Configure(DisplayControlElement *, s32, s32, s32, s32);
 extern s32 func_02091c7c(DisplayControlElement *, s32);
 extern s32 GameWork_TestFlag(void *, u16);
 extern u32 genrand_int32(void);
@@ -72,14 +72,14 @@ FourSlot3DPresentation *FourSlot3DPresentation_Init(
     FieldEffect_Init(self);
     self->vtable00 = (void **)data_020d6934;
     for (index = 0; index < 4; index++) {
-        func_02091b6c(&self->elements1c[index]);
+        TitleInterpolatedValue_Init(&self->elements1c[index]);
     }
     self->selection08 = selection;
     self->randomSeed8c = genrand_int32();
     for (index = 0; index < 4; index++) {
         self->intensity0c[index] =
             GameWork_TestFlag(gGameWork, data_020d6780[index]) ? 0 : 0x800;
-        func_02091bac(&self->elements1c[index], 3, 3,
+        TitleInterpolatedValue_Configure(&self->elements1c[index], 3, 3,
                       self->intensity0c[index] / 0x100, 6);
     }
     return self;
@@ -135,7 +135,7 @@ s32 FourSlot3DPresentation_Update(FourSlot3DPresentation *self)
             if (self->intensity0c[index] < 0) self->intensity0c[index] = 0;
         }
         if (func_02091c7c(&self->elements1c[index], 2)) {
-            func_02091bac(&self->elements1c[index], 3, 3,
+            TitleInterpolatedValue_Configure(&self->elements1c[index], 3, 3,
                           self->intensity0c[index] / 0x100, 6);
         }
     }

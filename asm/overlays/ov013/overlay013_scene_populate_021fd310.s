@@ -21,11 +21,11 @@
     .extern PresentationScalar_SetImmediate
     .extern PresentationScalar_TransitionTo
     .extern SpritePresentation_Hide
-    .extern func_020957f0
-    .extern func_02095820
-    .extern func_020958d8
-    .extern func_02095940
-    .extern func_02095988
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
+    .extern SpriteMotionController_Update
+    .extern SpriteMotionController_Hide
+    .extern SpriteMotionController_SetAnimation
     .extern func_020b44e8
     .extern func_ov013_021fda28
     .extern func_ov013_021fdb50
@@ -70,14 +70,14 @@ L_021fd34c:
     ldr r2, [r1, r8]
     mov r1, r0
     add r0, r7, r6
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     ldr r0, [r10, #0x8]
     ldr r8, [r10, #0xc]
     str r0, [sp, #0xc]
     ldr r1, [sp, #0xc]
     add r0, r7, r6
     mov r2, r8
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, [r4, #0x84]
     add r1, r4, #0x54
     mov r2, #0x2
@@ -185,10 +185,10 @@ L_021fd52c:
     b L_021fd54c
 L_021fd544:
     add r0, r7, r6
-    bl func_02095940
+    bl SpriteMotionController_Hide
 L_021fd54c:
     add r0, r7, r6
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r9, r9, #0x1
     cmp r9, #0x7
     blt L_021fd34c
@@ -200,7 +200,7 @@ L_021fd54c:
     bl func_ov013_021fdb50
     add r0, r4, #0x138
     mov r1, #0x7
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     ldr r0, [r4, #0x20]
     orr r0, r0, #0x400
     str r0, [r4, #0x20]
@@ -269,12 +269,12 @@ L_021fd640:
     mov r2, #0x0
     mov r3, #0x3
     str r5, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x9c
     add r0, r0, #0x800
     mov r1, #0x80
     mov r2, #0x92
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, L_021fd9f4
     ldr r1, L_021fda08
     ldr r0, [r0, #0x0]
@@ -345,11 +345,11 @@ L_021fd768:
     add r0, r7, r6
     mov r2, r9
     mov r3, #0x3
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     ldr r1, [r8, #0x8]
     add r0, r7, r6
     mov r2, #0x9c
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldrh r1, [r8, #0x10]
     cmp r1, #0x0
     beq L_021fd840
@@ -400,7 +400,7 @@ L_021fd840:
     beq L_021fd8a8
     add r0, r7, r6
     add r1, r9, #0x2
-    bl func_02095988
+    bl SpriteMotionController_SetAnimation
     mov r0, #0xac
     mla r0, r10, r0, r4
     add r0, r0, #0x500
@@ -410,7 +410,7 @@ L_021fd840:
     b L_021fd8a8
 L_021fd8a0:
     add r0, r7, r6
-    bl func_02095940
+    bl SpriteMotionController_Hide
 L_021fd8a8:
     add r10, r10, #0x1
     cmp r10, #0x5

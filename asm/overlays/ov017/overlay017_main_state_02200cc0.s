@@ -19,8 +19,8 @@
     .extern Presentation_SetScript
     .extern SpritePresentation_SetAnimation
     .extern SpritePresentation_Show
-    .extern func_02095860
-    .extern func_02095928
+    .extern SpriteMotionController_BeginHitResponse
+    .extern SpriteMotionController_Show
     .extern func_02095dd4
     .extern func_020befec
     .extern func_ov017_021fea8c
@@ -152,9 +152,9 @@ L_02200e6c:
     ldr r0, L_02201334
     bl func_0206fcec
     add r0, r4, #0x12c
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r4, #0x80
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, #0x28
 L_02200e88:
     str r0, [r4, #0x4]
@@ -286,9 +286,9 @@ L_02201024:
     b L_02201308
 L_02201074:
     add r0, r4, #0x12c
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r4, #0x80
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, #0x28
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -306,9 +306,9 @@ L_02201098:
     mov r0, r4
     bl func_ov017_021ffd74
     add r0, r4, #0x12c
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r4, #0x80
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, #0x28
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -343,9 +343,9 @@ L_022010e4:
     b L_02201308
 L_0220114c:
     add r0, r4, #0x12c
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r4, #0x80
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, #0x28
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -378,9 +378,9 @@ L_022011a8:
     mov r0, r4
     bl func_ov017_021ffd74
     add r0, r4, #0x12c
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r4, #0x80
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, #0x28
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -398,9 +398,9 @@ L_022011f4:
     mov r0, r4
     bl func_ov017_021ffd74
     add r0, r4, #0x12c
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r0, r4, #0x80
-    bl func_02095928
+    bl SpriteMotionController_Show
     mov r0, #0x28
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -415,7 +415,7 @@ L_02201240:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_0220128c
     mov r0, r4
@@ -431,7 +431,7 @@ L_0220128c:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02201308
     mov r0, r4

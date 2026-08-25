@@ -1,7 +1,7 @@
     .text
     .extern Presentation_Init
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern genrand_int32
     .extern AnimationResourceState_ReplaceResources
     .extern data_ov005_021fcaf0
@@ -22,7 +22,7 @@ func_ov005_021fb6e4: ; 0x021fb6e4
     mov r1, #0x0
     add r0, r5, #0xb0
     str r1, [r5, #0xac]
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     bl genrand_int32
     str r0, [r5, #0xac]
     ldr r3, L_021fb754

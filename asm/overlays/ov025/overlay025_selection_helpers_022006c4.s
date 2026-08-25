@@ -4,7 +4,7 @@
 .extern data_ov025_022033b4
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern func_ov025_021fd5dc
 .extern func_ov025_021fd9e4
 .extern func_ov025_021fde58
@@ -31,7 +31,7 @@ func_ov025_022006c4:
     ldr r0, [r4, #0xc]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x30
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     bl AnimationResourceState_Destroy
     mov r0, r4

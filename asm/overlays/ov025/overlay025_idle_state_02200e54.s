@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_idle_state.c. */
 .extern data_ov025_02202e18
 .extern data_ov025_02202e28
-.extern func_02091bac
+.extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_02091cf0
 .extern func_02092260
@@ -39,7 +39,7 @@ L_02200e80:
     str r2, [sp, #0x0]
     mov r1, #0x1
     mov r3, #0x100
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

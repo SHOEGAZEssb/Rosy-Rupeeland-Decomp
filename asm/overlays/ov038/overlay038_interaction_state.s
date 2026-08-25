@@ -26,7 +26,7 @@
     .extern func_ov038_021fd540
     .extern func_ov046_0220bffc
     .extern func_ov038_021fd624
-    .extern func_02095860
+    .extern SpriteMotionController_BeginHitResponse
     .extern InventoryScroll_UpdateSelectionMovement
     .extern func_ov038_021fce04
     .extern func_ov038_021fd37c
@@ -200,7 +200,7 @@ L_021fda4c:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021fda84
     mov r0, r4

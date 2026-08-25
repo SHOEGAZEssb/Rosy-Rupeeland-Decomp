@@ -22,22 +22,22 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern SceneInputBase_Init
 .extern TitleScreenResourceCollection_Init
-.extern func_02092754
+.extern TitleScreenResourceCollection_Append
 .extern TitleCharacterResourceCollection_Init
-.extern func_02092814
-.extern func_020929b0
+.extern TitleCharacterResourceCollection_Append
+.extern TitleScrollValue_Init
 .extern TitleDialog_Init
 .extern func_02092f88
 .extern Presentation_SetScript
 .extern PresentationList_Append
 .extern SpritePresentation_Init
-.extern func_020957bc
-.extern func_020957f0
-.extern func_02095820
-.extern func_02095940
+.extern SpriteMotionController_Init
+.extern SpriteMotionController_BindSprite
+.extern SpriteMotionController_SetPosition
+.extern SpriteMotionController_Hide
 .extern func_ov025_021fdecc
 .extern func_ov025_021ff1c8
 .extern func_ov025_021ff1dc
@@ -79,11 +79,11 @@ func_ov025_021ff27c:
     add r0, r10, #0xa4
     bl AnimationResourceState_InitEmbedded
     add r0, r10, #0xf0
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r10, #0x19c
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r10, #0x248
-    bl func_020957bc
+    bl SpriteMotionController_Init
     ldr r1, L_021ff9e0
     add r0, r10, #0x2f4
     str r1, [sp, #0x0]
@@ -100,18 +100,18 @@ func_ov025_021ff27c:
     add r0, r0, #0x400
     bl TitleCharacterResourceCollection_Init
     add r0, r10, #0x5a0
-    bl func_020929b0
+    bl TitleScrollValue_Init
     add r0, r10, #0x1c4
     add r0, r0, #0x400
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r10, #0x5e0
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r10, #0x1fc
     add r0, r0, #0x400
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r10, #0x218
     add r0, r0, #0x400
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     mov r0, #0x0
     str r0, [r10, #0x634]
     bl genrand_int32
@@ -131,22 +131,22 @@ func_ov025_021ff27c:
     bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r1, L_021ff9f0
     add r0, r10, #0x530
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     ldr r1, L_021ff9f4
     add r0, r10, #0x530
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     add r0, r10, #0x530
     ldr r1, L_021ff9f8
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     add r0, r10, #0x530
     ldr r1, L_021ff9fc
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     add r0, r10, #0x530
     ldr r1, L_021ffa00
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     add r0, r10, #0x530
     ldr r1, L_021ffa04
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     mov r0, r10
     bl func_ov025_021ffdfc
     mov r0, r10
@@ -154,15 +154,15 @@ func_ov025_021ff27c:
     add r0, r10, #0x174
     add r0, r0, #0x400
     ldr r1, L_021ffa08
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r10, #0x174
     add r0, r0, #0x400
     ldr r1, L_021ffa0c
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r10, #0x174
     add r0, r0, #0x400
     ldr r1, L_021ffa10
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0x51
     str r0, [sp, #0x0]
     add r0, r10, #0x5c
@@ -255,13 +255,13 @@ L_021ff55c:
     add r2, r2, #0x20
     mov r3, r11
     str r6, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r5, r9
     mov r1, #0xd4
     mov r2, #0x0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r5, r9
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add r8, r8, #0x1
     cmp r8, #0x3
     blt L_021ff55c
@@ -343,13 +343,13 @@ L_021ff634:
     add r0, r10, #0xf0
     mov r2, #0x2c
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0xf0
     mov r1, #0x94
     mov r2, #0xb3
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, #0xf0
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r10, #0xb0]
     add r1, r10, #0x5c
     mov r2, #0x1
@@ -360,13 +360,13 @@ L_021ff634:
     add r0, r10, #0x19c
     mov r2, #0x26
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0x19c
     mov r1, #0xe4
     mov r2, #0xa0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, #0x19c
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r10, #0xb0]
     add r1, r10, #0x5c
     mov r2, #0x1
@@ -377,13 +377,13 @@ L_021ff634:
     add r0, r10, #0x248
     mov r2, #0x32
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r10, #0x248
     mov r1, #0xe0
     mov r2, #0xb3
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, #0x248
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r1, L_021ffa34
     ldr r3, L_021ffa38
     mov r0, #0xfc
@@ -540,7 +540,7 @@ L_021ff91c:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021ff9dc: .word data_ov025_02203370
 L_021ff9e0: .word func_ov025_021ff1c8
-L_021ff9e4: .word func_020957bc
+L_021ff9e4: .word SpriteMotionController_Init
 L_021ff9e8: .word data_020f4e14
 L_021ff9ec: .word gDebugFont
 L_021ff9f0: .word 0x8032

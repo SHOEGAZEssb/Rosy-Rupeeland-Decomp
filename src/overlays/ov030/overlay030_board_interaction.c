@@ -18,7 +18,7 @@ extern void Heap_Free(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 GraphicsSpriteState_HitTestOpaquePixel(void *, s32, s32);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Hide(void *);
 extern void *func_ov030_021fce00(void *);
 extern void func_ov030_021fd3e8(void *);
 extern void func_ov030_021fd680(void *);
@@ -58,8 +58,8 @@ extern "C" void func_ov030_021fd434(void *board)
                       bounds[2], bounds[3], 1);
     }
     func_ov030_021fd3e8(board);
-    func_02095940((u8 *)board + 0x58);
-    func_02095940((u8 *)board + 0x104);
+    SpriteMotionController_Hide((u8 *)board + 0x58);
+    SpriteMotionController_Hide((u8 *)board + 0x104);
 }
 
 /*

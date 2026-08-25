@@ -6,7 +6,7 @@
     .extern GraphicsResourceSetVariant_Init
     .extern func_ov037_021fd6d0
     .extern Graphics3DLightSet_Init
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern GraphicsResourceSetVariant_Load
     .extern Graphics3DResourceOwner_PrepareResources
     .extern GraphicsArchive_AcquireOwlvResource
@@ -58,11 +58,11 @@ func_ov037_021fd7e4:
     add r0, r5, #0x14c
     bl Graphics3DLightSet_Init
     add r0, r5, #0x18c
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r5, #0x1a8
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r5, #0x1c4
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     ldr r3, L_021fdb7c
     add r0, r5, #0xc8
     str r3, [sp, #0x0]

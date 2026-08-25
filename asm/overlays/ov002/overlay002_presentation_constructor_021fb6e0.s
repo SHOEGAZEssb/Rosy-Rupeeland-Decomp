@@ -1,6 +1,6 @@
     .text
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern data_020f4e18
     .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -21,7 +21,7 @@ func_ov002_021fb6e0: ; 0x021fb6e0
     mov r4, r2
     bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x98
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     mov r3, #0x21c0
     ldr r1, L_021fb9b0
     str r5, [r10, #0x0]

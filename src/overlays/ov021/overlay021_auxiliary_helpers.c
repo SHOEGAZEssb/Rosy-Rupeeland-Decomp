@@ -18,7 +18,7 @@ extern void OverlaySlot_LoadOverlay(void *, s32);
 extern void OverlaySlot_UnloadOverlay(void *, s32);
 extern s32 ActorDescriptor_IsInvalid(void *);
 extern void func_0206563c(void *, s32);
-extern void func_02095820(void *, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
 extern void func_ov001_021fca94(void *, void *);
 extern void *func_ov002_021fb6e0(void *, void *, s32);
@@ -135,13 +135,13 @@ extern "C" void func_ov021_021fefcc(void *state)
 {
     s32 i;
     for (i = 0; i < 2; i++)
-        func_02095820((u8 *)state + 0x14c + i * 0xac,
+        SpriteMotionController_SetPosition((u8 *)state + 0x14c + i * 0xac,
                       0x80, 0x40 + i * 0x30);
     s32 mode = FIELD(s32, state, 0x54);
     if (mode == 9 || mode == 12 || mode == 13)
-        func_02095820((u8 *)state + 0x1f8, 0x80, 0x60);
+        SpriteMotionController_SetPosition((u8 *)state + 0x1f8, 0x80, 0x60);
     else if (mode == 17)
-        func_02095820((u8 *)state + 0x14c, 0x80, 0x60);
+        SpriteMotionController_SetPosition((u8 *)state + 0x14c, 0x80, 0x60);
 }
 
 /*
@@ -158,10 +158,10 @@ extern "C" void func_ov021_021ff050(void *state, s32 index)
     s32 i;
     for (i = 0; i < 2; i++) {
         if (i != index)
-            func_02095820((u8 *)state + 0x14c + i * 0xac,
+            SpriteMotionController_SetPosition((u8 *)state + 0x14c + i * 0xac,
                           -64, 0x40 + i * 0x30);
     }
-    func_02095820((u8 *)state + 0x14c + index * 0xac, 0x80, 0xaa);
+    SpriteMotionController_SetPosition((u8 *)state + 0x14c + index * 0xac, 0x80, 0xaa);
 }
 
 /*

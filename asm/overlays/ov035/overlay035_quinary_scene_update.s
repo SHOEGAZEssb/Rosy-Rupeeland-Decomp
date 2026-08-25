@@ -10,7 +10,7 @@
     .extern func_02091c7c
     .extern func_02091b98
     .extern func_02091dac
-    .extern func_02091bd0
+    .extern TitleInterpolatedValue_Evaluate
     .extern func_ov035_02200ec0
 
     .global func_ov035_02201000
@@ -74,7 +74,7 @@ L_022010c4:
     mov r1, r4
     mov r2, r6
     mov r3, r8
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r8, r0
     b L_02201180
 L_022010e4:
@@ -83,7 +83,7 @@ L_022010e4:
     mov r1, r10
     mov r2, r8
     mov r3, r6
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r7, r0
     b L_02201180
 L_02201104:
@@ -91,7 +91,7 @@ L_02201104:
     mov r1, r11
     mov r2, #0x1f
     mov r3, r6
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r6, r0
     mov r7, #0x1f
     b L_02201180
@@ -101,7 +101,7 @@ L_02201124:
     mov r1, #0x1
     mov r2, r6
     mov r3, r7
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r8, r0
     b L_02201180
 L_02201144:
@@ -109,7 +109,7 @@ L_02201144:
     mov r1, #0x1
     mov r2, #0x1f
     mov r3, r6
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r7, r0
     mov r8, #0x1f
     b L_02201180
@@ -118,7 +118,7 @@ L_02201164:
     mov r1, #0x1
     mov r2, r6
     mov r3, #0x1f
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r6, r0
     mov r8, #0x1f
 L_02201180:

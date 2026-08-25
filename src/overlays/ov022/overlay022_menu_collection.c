@@ -21,8 +21,8 @@ extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
@@ -91,7 +91,7 @@ extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
     InventoryScroll_SetSpritePriority(FIELD(void *, menu, 0x30), 0);
     InventoryScroll_UpdatePresentation(FIELD(void *, menu, 0x30));
     GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, menu, 0x30), 0x50));
-    func_02092814(menu, gSystemState[0x5f] != 0 ? 0x7006 : 0x7007);
+    TitleCharacterResourceCollection_Append(menu, gSystemState[0x5f] != 0 ? 0x7006 : 0x7007);
     return menu;
 }
 
@@ -107,7 +107,7 @@ extern "C" void *func_ov022_021fda28(void *menu)
     if (FIELD(void *, menu, 0x24) != 0)
         CxxArray_DestroyAndFree(FIELD(void *, menu, 0x24),
                       8, 8, func_ov022_021fda78);
-    func_020927b8(menu);
+    TitleCharacterResourceCollection_Destroy(menu);
     return menu;
 }
 

@@ -11,7 +11,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern TitleRandom_NextBounded
     .extern func_02091b98
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
     .extern func_020922f0
@@ -69,7 +69,7 @@ L_021fea6c:
     mov r1, #0x1
     mov r2, #0x10
     mov r3, #0x0
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -132,7 +132,7 @@ L_021feb68:
     mov r1, #0x1
     mov r3, #0x10
     str r5, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r2, #0x10
     mov r1, #0x0
     ldr r0, L_021fef14
@@ -165,7 +165,7 @@ L_021febbc:
     mov r2, #0x10
     mov r3, #0x0
     str r5, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, r4
     bl func_ov018_021fe46c
     ldr r1, [r4, #0x4]

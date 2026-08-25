@@ -17,7 +17,7 @@ typedef struct Overlay000GridScrollState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095820(void *region, s32 width, s32 height);
+extern void SpriteMotionController_SetPosition(void *region, s32 width, s32 height);
 #ifdef __cplusplus
 }
 #endif
@@ -41,5 +41,5 @@ void func_ov000_021fc340(Overlay000GridScrollState *state, s32 scrollY)
     FIELD(s32, FIELD(void *, state, 0x0c), 0x1c) = -state->scrollY_264;
     FIELD(s32, FIELD(void *, state->controller_26c, 0x50), 0x1c) =
         0x2a - state->scrollY_264;
-    func_02095820((u8 *)state + 0x24, 0xec, scrollY + 0xaa);
+    SpriteMotionController_SetPosition((u8 *)state + 0x24, 0xec, scrollY + 0xaa);
 }

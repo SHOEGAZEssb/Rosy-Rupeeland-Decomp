@@ -32,7 +32,7 @@ extern void PresentationList_Append(void *, void *);
 extern void PresentationList_Remove(void *, void *);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void *AlternateSpritePresentation_Init(void *, void *);
-extern void func_020958d8(void *);
+extern void SpriteMotionController_Update(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_ov017_021fcf6c(void *);
 extern void func_ov017_021fd6b0(void *, s32, s32, s32);
@@ -249,8 +249,8 @@ extern "C" void func_ov017_02200188(void *state)
 
     PresentationList_UpdateAndDeleteCompleted((u8 *)state + 0x3d8);
     func_ov017_021fe5b0(FIELD(void *, state, 0x254));
-    func_020958d8((u8 *)state + 0x12c);
-    func_020958d8((u8 *)state + 0x80);
+    SpriteMotionController_Update((u8 *)state + 0x12c);
+    SpriteMotionController_Update((u8 *)state + 0x80);
     func_ov017_021fe894(FIELD(void *, state, 0x25c));
     GraphicsAnimationInstanceManager_Update(FIELD(void *, state, 0x244));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));

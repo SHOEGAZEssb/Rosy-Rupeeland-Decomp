@@ -19,7 +19,7 @@ extern void *GraphicsResourceCache_FindByResourceId(void *cache, u32 resourceId)
 extern void GraphicsResourceCache_Append(void *cache, void *resource);
 extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resourceId, u32 *size);
 extern void *GraphicsArchive_AllocateCachedHandle(u32 size);
-extern void *func_02070d88(void *resource, void *archive, void *source,
+extern void *GraphicsArchiveScreenResource_Init(void *resource, void *archive, void *source,
                            u32 size, u32 resourceId);
 
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ void *GraphicsArchive_AcquireScreenResource(void *archive, u32 resourceId)
         if (source != 0 && source->magic == 0x56534320) {
             resource = (GraphicsArchiveCachedResource *)GraphicsArchive_AllocateCachedHandle(0x28);
             if (resource != 0) {
-                resource = (GraphicsArchiveCachedResource *)func_02070d88(
+                resource = (GraphicsArchiveCachedResource *)GraphicsArchiveScreenResource_Init(
                     resource, archive, source, sourceSize, resourceId);
             }
             resource->referenceCount++;

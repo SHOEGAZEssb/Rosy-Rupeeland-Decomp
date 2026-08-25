@@ -28,8 +28,8 @@ extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
@@ -82,7 +82,7 @@ extern "C" void *func_ov028_021fd00c(void *state, void *font, s32 capacity)
     FIELD(void *, state, 0x44) = controller;
     InventoryScroll_SetSpritePriority(controller, 0);
     InventoryScroll_UpdatePresentation(controller);
-    func_02092814((u8 *)state + 0x14, 0x7006);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x14, 0x7006);
     return state;
 }
 
@@ -102,7 +102,7 @@ extern "C" void *func_ov028_021fd1a8(void *state)
     if (FIELD(void *, state, 0x38) != 0)
         CxxArray_DestroyAndFree(FIELD(void *, state, 0x38), 12, 8,
                       func_ov028_021fd208);
-    func_020927b8((u8 *)state + 0x14);
+    TitleCharacterResourceCollection_Destroy((u8 *)state + 0x14);
     AnimationResourceState_Destroy((u8 *)state + 8);
     return state;
 }

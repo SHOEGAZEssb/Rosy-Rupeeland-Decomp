@@ -39,7 +39,7 @@ extern void func_ov046_0220c46c(void *panel, s32 first, s32 second);
 extern void func_ov046_0220bffc(void *panel, s32 primary, s32 enabled,
                                 u32 secondary);
 extern void func_ov038_021fd624(void *presentation);
-extern s32 func_02095860(void *list, void *input, s32 first, s32 fourth);
+extern s32 SpriteMotionController_BeginHitResponse(void *list, void *input, s32 first, s32 fourth);
 extern s32 InventoryScroll_UpdateSelectionMovement(void *model);
 extern void func_ov038_021fce04(void *node, u32 first, u32 second);
 extern void func_ov038_021fd37c(void *presentation);
@@ -116,7 +116,7 @@ extern "C" s32 func_ov038_021fd7f8(void *presentation)
                         InventoryScroll_SetSelectedRow(model, touched);
                         applySelectedRecord(presentation);
                     }
-                } else if (func_02095860((u8 *)presentation + 0x64,
+                } else if (SpriteMotionController_BeginHitResponse((u8 *)presentation + 0x64,
                                           (u8 *)presentation + 0x30, 0, 4)) {
                     func_02092260(presentation, 3);
                     func_ov038_021fce04(presentation, data_ov038_021fdcb8[0],

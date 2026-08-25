@@ -15,8 +15,8 @@
     .extern TitleDisplay_SetMainBgPriorities
     .extern TitleDisplay_SetSubBgPriorities
     .extern TitleScreenResourceCollection_Init
-    .extern func_020926f8
-    .extern func_02092754
+    .extern TitleScreenResourceCollection_Destroy
+    .extern TitleScreenResourceCollection_Append
     .extern TitleScreenResourceCollection_Get
     .extern TitlePalette_SetMainBackdrop
     .extern TitlePalette_SetSubBackdrop
@@ -43,7 +43,7 @@ Overlay019_SetupGraphics:
     bl GraphicsResourceSet_Load
     ldr r1, L_021fd148
     add r0, sp, #0x10
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     bl func_020b44e8
     ldr r0, [r4, #0x58]
     cmp r0, #0x0
@@ -120,7 +120,7 @@ L_021fd09c:
     bl TitlePalette_SetSubBackdrop
 L_021fd128:
     add r0, sp, #0x10
-    bl func_020926f8
+    bl TitleScreenResourceCollection_Destroy
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x54

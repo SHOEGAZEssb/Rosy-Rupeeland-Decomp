@@ -20,12 +20,12 @@
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToSubBg
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern func_02091b98
-.extern func_02091bac
+.extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
-.extern func_020929b0
-.extern func_020929f4
+.extern TitleScrollValue_Init
+.extern TitleScrollValue_Advance
 .extern func_02092b0c
 .extern func_02092b34
 .extern func_02092b60

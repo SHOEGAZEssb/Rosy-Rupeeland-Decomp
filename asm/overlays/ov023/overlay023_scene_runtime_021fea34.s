@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
-.extern func_02095860
+.extern SpriteMotionController_BeginHitResponse
 
 
     .global func_ov023_021fea34
@@ -19,7 +19,7 @@ L_021fea54:
     mov r2, r6
     mov r3, r5
     add r1, r9, #0x30
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     movne r0, r8
     ldmneia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}

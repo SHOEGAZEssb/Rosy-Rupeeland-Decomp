@@ -3,10 +3,10 @@
     .extern func_020befec
     .extern func_020afce8
     .extern func_02092260
-    .extern func_02091bd0
+    .extern TitleInterpolatedValue_Evaluate
     .extern func_020afca0
     .extern func_02091cf0
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern SpritePresentation_Show
     .extern PresentationScalar_TransitionTo
     .extern Presentation_InterpolateQuadraticPulse
@@ -80,7 +80,7 @@ L_021fc630:
     add r0, r4, #0x130
     sub r2, r1, #0x14
     mov r3, #0x0
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r1, r0
     ldr r0, L_021fc8c4
     bl func_020afca0
@@ -88,7 +88,7 @@ L_021fc630:
     mov r1, #0x4
     sub r2, r1, #0x14
     mov r3, #0x0
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r1, r0
     ldr r0, L_021fc8c8
     bl func_020afca0
@@ -111,14 +111,14 @@ L_021fc630:
     mov r1, #0x1
     mov r3, #0x1000
     str ip, [sp, #0x0]
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, #0x78
     str r0, [sp, #0x0]
     ldr r2, L_021fc8d4
     add r0, r4, #0x130
     mov r1, #0x1
     mov r3, #0x400
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r0, [r4, #0x68]
     bl SpritePresentation_Show
     ldr r0, [r4, #0x68]

@@ -15,7 +15,7 @@
     .extern LanguageLookupDatabase_GetResourceSize
     .extern LanguageLookupDatabase_GetResourceById
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern func_02094154
     .extern InventoryScroll_SetSpritePriority
     .extern InventoryScroll_UpdatePresentation
@@ -166,10 +166,10 @@ L_021fd010:
     bl func_ov021_021fd224
     ldr r1, L_021fd070
     add r0, r7, #0x28
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     add r0, r7, #0x28
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r7
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}

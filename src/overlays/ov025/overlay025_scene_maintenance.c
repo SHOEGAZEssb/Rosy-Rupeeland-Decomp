@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
-extern void func_020958d8(void *);
+extern void SpriteMotionController_Update(void *);
 extern void func_ov025_021fdc60(void *, s32);
 extern void func_ov094_022196e8(void *);
 #ifdef __cplusplus
@@ -26,11 +26,11 @@ extern "C" void func_ov025_02200178(void *scene)
 {
     func_ov094_022196e8(FIELD(void *, scene, 0x5c0));
     PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x4f8);
-    func_020958d8((u8 *)scene + 0xf0);
-    func_020958d8((u8 *)scene + 0x19c);
-    func_020958d8((u8 *)scene + 0x248);
+    SpriteMotionController_Update((u8 *)scene + 0xf0);
+    SpriteMotionController_Update((u8 *)scene + 0x19c);
+    SpriteMotionController_Update((u8 *)scene + 0x248);
     for (s32 i = 0; i < 3; ++i)
-        func_020958d8((u8 *)scene + 0x2f4 + i * 0xac);
+        SpriteMotionController_Update((u8 *)scene + 0x2f4 + i * 0xac);
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0xb0));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0xb4));
     if (FIELD(void *, scene, 0x598))

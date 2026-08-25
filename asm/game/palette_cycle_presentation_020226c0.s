@@ -13,9 +13,9 @@
 .extern FieldEffect_DestroyBase
 .extern PaletteCyclePresentation_AdvancePalette
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02091b6c
+.extern TitleInterpolatedValue_Init
 .extern func_02091b98
-.extern func_02091bd0
+.extern TitleInterpolatedValue_Evaluate
 .extern func_02091c7c
 .extern func_02091d08
 .extern func_02091d24
@@ -85,7 +85,7 @@ PaletteCyclePresentation_AdvancePalette: ; 0x020226c0
     mov r1, r10
     mov r2, r6
     mov r3, r7
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r8, r0
     b .L_02022858
 .L_02022790:
@@ -94,7 +94,7 @@ PaletteCyclePresentation_AdvancePalette: ; 0x020226c0
     mov r2, r7
     mov r3, #0x10
     mov r6, r11
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r7, r0
     b .L_02022858
 .L_020227b0:
@@ -103,7 +103,7 @@ PaletteCyclePresentation_AdvancePalette: ; 0x020226c0
     mov r1, #0x1
     mov r2, #0x10
     mov r3, r6
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r7, r0
     b .L_02022858
 .L_020227d0:
@@ -111,7 +111,7 @@ PaletteCyclePresentation_AdvancePalette: ; 0x020226c0
     mov r1, #0x1
     mov r2, #0x1f
     mov r3, r6
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r6, r0
     mov r7, #0x1f
     b .L_02022858
@@ -120,13 +120,13 @@ PaletteCyclePresentation_AdvancePalette: ; 0x020226c0
     mov r1, #0x1
     mov r2, #0x1f
     mov r3, #0x10
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r7, r0
     add r0, r4, #0x400
     mov r1, #0x1
     mov r2, r6
     mov r3, #0x1f
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r8, r0
     b .L_02022858
 .L_02022824:
@@ -134,13 +134,13 @@ PaletteCyclePresentation_AdvancePalette: ; 0x020226c0
     mov r1, #0x1
     mov r2, r6
     mov r3, #0x1f
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r6, r0
     add r0, r4, #0x400
     mov r1, #0x1
     mov r2, #0x10
     mov r3, r8
-    bl func_02091bd0
+    bl TitleInterpolatedValue_Evaluate
     mov r7, r0
     mov r8, #0x1f
 .L_02022858:

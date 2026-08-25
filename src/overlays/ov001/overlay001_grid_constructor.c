@@ -54,16 +54,16 @@ extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 animation, s
                           s32 enabled, s32 field28, s32 flags);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void TitleCharacterResourceCollection_Init(void *state);
-extern void func_02092814(void *state, s32 resourceId);
+extern void TitleCharacterResourceCollection_Append(void *state, s32 resourceId);
 extern void IndexedSelectionController_Init(void *state);
 extern void IndexedSelectionController_ConfigureRange(void *state, s32 first, s32 second, s32 third);
 extern void *func_02094154(void *object, void *owner, s32 rowCount,
                            s32 columns, s32 width, s32 y, s32 mode);
-extern void func_020957bc(void *element);
-extern void func_020957f0(void *element, void *sprite, s32 animation,
+extern void SpriteMotionController_Init(void *element);
+extern void SpriteMotionController_BindSprite(void *element, void *sprite, s32 animation,
                            s32 mode, s32 flags);
-extern void func_02095820(void *element, s32 width, s32 height);
-extern void func_02095940(void *element);
+extern void SpriteMotionController_SetPosition(void *element, s32 width, s32 height);
+extern void SpriteMotionController_Hide(void *element);
 extern void *CxxArray_ConstructWithCookie(void *array, s32 count, s32 elementSize,
                             s32 alignment, void (*constructor)(void *),
                             void (*destructor)(void *));
@@ -96,8 +96,8 @@ Overlay001GridState *func_ov001_021fbabc(Overlay001GridState *state,
 
     state->vtable_000 = &data_ov001_021fcc80;
     AnimationResourceState_InitEmbedded(state->resource_010);
-    func_020957bc(state->element_028);
-    func_020957bc(state->element_0d4);
+    SpriteMotionController_Init(state->element_028);
+    SpriteMotionController_Init(state->element_0d4);
     TitleCharacterResourceCollection_Init(state->rendererState_180);
     IndexedSelectionController_Init(state->controllerState_1c0);
     state->owner_004 = owner;
@@ -119,14 +119,14 @@ Overlay001GridState *func_ov001_021fbabc(Overlay001GridState *state,
     FIELD(s32, state->spriteGroup_00c, 0x1c) = -state->scrollOffset_1b4;
 
     sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteGroup_00c, state->resource_010, 1);
-    func_020957f0(state->element_028, sprite, 0x3a, 2, 0);
-    func_02095820(state->element_028, 0xec, 0xaa);
-    func_02095940(state->element_028);
+    SpriteMotionController_BindSprite(state->element_028, sprite, 0x3a, 2, 0);
+    SpriteMotionController_SetPosition(state->element_028, 0xec, 0xaa);
+    SpriteMotionController_Hide(state->element_028);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteGroup_00c, state->resource_010, 1);
-    func_020957f0(state->element_0d4, sprite, 0x42, 2, 0);
-    func_02095820(state->element_0d4, 0xdc, 0x10);
-    func_02095940(state->element_0d4);
-    func_02092814(state->rendererState_180, 0x7004);
+    SpriteMotionController_BindSprite(state->element_0d4, sprite, 0x42, 2, 0);
+    SpriteMotionController_SetPosition(state->element_0d4, 0xdc, 0x10);
+    SpriteMotionController_Hide(state->element_0d4);
+    TitleCharacterResourceCollection_Append(state->rendererState_180, 0x7004);
 
     state->originY_1b8 = 0x34 - state->scrollOffset_1b4;
     state->recordTable_204 = (u8 *)data_021e9ac0 + 0x34;

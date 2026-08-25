@@ -24,13 +24,13 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void SceneInputBase_Init(void *);
 extern void TitleScreenResourceCollection_Init(void *);
-extern void func_02092754(void *, s32);
+extern void TitleScreenResourceCollection_Append(void *, s32);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_02092814(void *, s32);
-extern void func_020957bc(void *);
-extern void func_020957f0(void *, void *, s32, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095940(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
+extern void SpriteMotionController_Init(void *);
+extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Hide(void *);
 extern void func_ov016_021fe740(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021fedc4(void *);
@@ -68,11 +68,11 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 cookingMode,
     TitleScreenResourceCollection_Init((u8 *)state + 0x84);
     AnimationResourceState_InitEmbedded((u8 *)state + 0xc8);
     AnimationResourceState_InitEmbedded((u8 *)state + 0xd4);
-    func_020957bc((u8 *)state + 0xe8);
-    func_020957bc((u8 *)state + 0x194);
-    func_020957bc((u8 *)state + 0x240);
-    func_020957bc((u8 *)state + 0x2ec);
-    func_020957bc((u8 *)state + 0x398);
+    SpriteMotionController_Init((u8 *)state + 0xe8);
+    SpriteMotionController_Init((u8 *)state + 0x194);
+    SpriteMotionController_Init((u8 *)state + 0x240);
+    SpriteMotionController_Init((u8 *)state + 0x2ec);
+    SpriteMotionController_Init((u8 *)state + 0x398);
     func_ov016_021fe740((u8 *)state + 0x454);
 
     FIELD(s32, state, 0x54) = cookingMode;
@@ -93,13 +93,13 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 cookingMode,
     FIELD(u32, state, 0x484) = 1;
 
     InventoryRecordCollection_Sort(data_021e9ac0, 0);
-    func_02092754((u8 *)state + 0x84, 0x801b);
-    func_02092754((u8 *)state + 0x84, 0x801c);
-    func_02092754((u8 *)state + 0x84, 0x8010);
-    func_02092754((u8 *)state + 0x84, 0x8011);
-    func_02092754((u8 *)state + 0x84, 0x800b);
-    func_02092814((u8 *)state + 0x60, 0x7005);
-    func_02092814((u8 *)state + 0x60, 0x7001);
+    TitleScreenResourceCollection_Append((u8 *)state + 0x84, 0x801b);
+    TitleScreenResourceCollection_Append((u8 *)state + 0x84, 0x801c);
+    TitleScreenResourceCollection_Append((u8 *)state + 0x84, 0x8010);
+    TitleScreenResourceCollection_Append((u8 *)state + 0x84, 0x8011);
+    TitleScreenResourceCollection_Append((u8 *)state + 0x84, 0x800b);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x60, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0x60, 0x7001);
     AnimationResourceState_ReplaceResources((u8 *)state + 0xc8, data_020f4e18, 0xd, 0xe, 0xf);
     AnimationResourceState_ReplaceResources((u8 *)state + 0xd4, data_020f4e18, 0x1c, 0x1d, 0x1e);
     FIELD(void *, state, 0xe0) =
@@ -117,21 +117,21 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 cookingMode,
         Overlay016_PopulateAuxiliaryList(state);
 
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xd4, 1);
-        func_020957f0((u8 *)state + 0x240, sprite, 0, 1, 0x100);
-        func_02095820((u8 *)state + 0x240, 0x14, 0x10);
+        SpriteMotionController_BindSprite((u8 *)state + 0x240, sprite, 0, 1, 0x100);
+        SpriteMotionController_SetPosition((u8 *)state + 0x240, 0x14, 0x10);
         if (FIELD(s32, data_021e9e00, 4) == 0) {
-            func_02095940((u8 *)state + 0x240);
+            SpriteMotionController_Hide((u8 *)state + 0x240);
         }
 
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xd4, 1);
-        func_020957f0((u8 *)state + 0x2ec, sprite, 5, 1, 0);
-        func_02095820((u8 *)state + 0x2ec, 0x14, 0x3b);
-        func_02095940((u8 *)state + 0x2ec);
+        SpriteMotionController_BindSprite((u8 *)state + 0x2ec, sprite, 5, 1, 0);
+        SpriteMotionController_SetPosition((u8 *)state + 0x2ec, 0x14, 0x3b);
+        SpriteMotionController_Hide((u8 *)state + 0x2ec);
 
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xd4, 1);
-        func_020957f0((u8 *)state + 0x398, sprite, 4, 1, 0);
-        func_02095820((u8 *)state + 0x398, 0x14, 0x25);
-        func_02095940((u8 *)state + 0x398);
+        SpriteMotionController_BindSprite((u8 *)state + 0x398, sprite, 4, 1, 0);
+        SpriteMotionController_SetPosition((u8 *)state + 0x398, 0x14, 0x25);
+        SpriteMotionController_Hide((u8 *)state + 0x398);
         Overlay016ActorValue_Init(state,
                             data_ov016_022013e8[0], data_ov016_022013e8[1]);
     }

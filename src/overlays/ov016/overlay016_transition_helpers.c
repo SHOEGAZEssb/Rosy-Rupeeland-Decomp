@@ -16,7 +16,7 @@ extern "C" {
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern s32 func_02095dd4(void *, void *, s32);
-extern void func_02095940(void *);
+extern void SpriteMotionController_Hide(void *);
 extern void func_ov016_021fd3f8(void *);
 extern void *func_ov016_021fd628(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
@@ -54,7 +54,7 @@ extern "C" s32 func_ov016_021ffe90(void *state)
             Overlay016ActorValue_Init(state, data_ov016_022013d8[0],
                                 data_ov016_022013d8[1]);
         } else {
-            func_02095940((u8 *)state + 0x194);
+            SpriteMotionController_Hide((u8 *)state + 0x194);
             FIELD(u16, FIELD(void *, state, 0xe4), 0x24) |= 4;
             FIELD(u32, state, 0x48) &= ~4u;
             FIELD(u32, state, 0x4c) &= ~4u;

@@ -1,8 +1,8 @@
     .text
     .extern data_ov015_021feb84
     .extern data_ov015_021feb88
-    .extern func_02095820
-    .extern func_02095928
+    .extern SpriteMotionController_SetPosition
+    .extern SpriteMotionController_Show
 
 /* Exact fallback for record layout; see src/overlays/ov015/overlay015_record_layout.c. */
     .global func_ov015_021fd8ec
@@ -27,9 +27,9 @@ L_021fd920:
     add r0, r7, #0xfc
     mov r2, #0xaa
     strh r1, [r3, #0x2c]
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r7, #0xfc
-    bl func_02095928
+    bl SpriteMotionController_Show
     b L_021fd9e0
 L_021fd944:
     ldr r4, L_021fd9e8
@@ -46,9 +46,9 @@ L_021fd958:
     mov r2, r9
     add r0, r10, r5
     strh r1, [r3, #0x2c]
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, r5
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r6, r6, #0x1
     cmp r6, #0x2
     blt L_021fd958
@@ -68,9 +68,9 @@ L_021fd9a8:
     mov r2, r9
     add r0, r10, r5
     strh r1, [r3, #0x2c]
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r10, r5
-    bl func_02095928
+    bl SpriteMotionController_Show
     add r6, r6, #0x1
     cmp r6, #0x3
     blt L_021fd9a8

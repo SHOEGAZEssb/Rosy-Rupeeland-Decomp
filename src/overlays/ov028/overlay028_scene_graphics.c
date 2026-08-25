@@ -35,7 +35,7 @@ extern void TitlePalette_SetMainBackdrop(s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
-extern void func_020958d8(void *);
+extern void SpriteMotionController_Update(void *);
 extern void func_020b2058(void *, s32, s32);
 extern void func_020b44e8(void);
 extern void func_ov028_021fcf2c(const u16 *, const u16 *, s32);
@@ -146,8 +146,8 @@ extern "C" void func_ov028_021fe438(void *state)
                            func_0209189c((u8 *)state + 0x27c, 0x10, 0x20));
     }
     GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
-    func_020958d8((u8 *)state + 0x98);
-    func_020958d8((u8 *)state + 0x144);
+    SpriteMotionController_Update((u8 *)state + 0x98);
+    SpriteMotionController_Update((u8 *)state + 0x144);
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x54));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));
     if (FIELD(void *, state, 0x220) != 0)

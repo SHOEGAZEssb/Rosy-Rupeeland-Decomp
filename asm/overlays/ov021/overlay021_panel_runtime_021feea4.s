@@ -5,7 +5,7 @@
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern Presentation_BlendPalette16
     .extern InventoryScroll_UpdatePresentation
-    .extern func_020958d8
+    .extern SpriteMotionController_Update
     .extern func_020b1ff0
     .extern func_020b2058
     .extern func_ov000_021fc164
@@ -23,13 +23,13 @@ func_ov021_021feea4:
     ldr r0, [r1, #0x0]
     bl GamePhaseCurrencyHud_Update
     add r0, r4, #0xa0
-    bl func_020958d8
+    bl SpriteMotionController_Update
     mov r7, #0x0
     add r6, r4, #0x14c
     mov r5, #0xac
 L_021feecc:
     mla r0, r7, r5, r6
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r7, r7, #0x1
     cmp r7, #0x2
     blt L_021feecc

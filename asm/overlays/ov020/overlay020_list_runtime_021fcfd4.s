@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov020/overlay020_list_runtime.c. */
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
-    .extern func_020927b8
+    .extern TitleCharacterResourceCollection_Destroy
     .extern CxxArray_DestroyAndFree
     .extern func_ov020_021fd034
 
@@ -28,7 +28,7 @@ L_021fcffc:
     bl CxxArray_DestroyAndFree
 L_021fd018:
     add r0, r4, #0x14
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x8
     bl AnimationResourceState_Destroy
     mov r0, r4

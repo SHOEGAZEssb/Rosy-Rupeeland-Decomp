@@ -7,7 +7,7 @@ typedef struct Overlay001SecondaryRegionTestState { u8 field_000[0xd4]; u8 regio
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02095860(void *region, const void *record, s32 first, s32 count);
+extern s32 SpriteMotionController_BeginHitResponse(void *region, const void *record, s32 first, s32 count);
 #ifdef __cplusplus
 }
 #endif
@@ -19,5 +19,5 @@ extern "C"
 s32 func_ov001_021fc3ec(Overlay001SecondaryRegionTestState *state,
                         const void *record)
 {
-    return func_02095860(state->region_0d4, record, 4, 0);
+    return SpriteMotionController_BeginHitResponse(state->region_0d4, record, 4, 0);
 }

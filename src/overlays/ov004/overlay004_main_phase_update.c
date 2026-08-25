@@ -24,10 +24,10 @@ extern const s32 data_ov004_021fcd50[2];
 extern void func_02091c7c(void *animation, s32 channel);
 extern void func_020afce8(volatile void *registers, s32 first, s32 second);
 extern void func_02092260(void *state, s32 soundId);
-extern s32 func_02091bd0(void *animation, s32 first, s32 second, s32 channel);
+extern s32 TitleInterpolatedValue_Evaluate(void *animation, s32 first, s32 second, s32 channel);
 extern void func_020afca0(volatile void *registers, s32 value);
 extern s32 func_02091cf0(void *animation);
-extern void func_02091bac(void *animation, s32 mode, s32 value, s32 scale,
+extern void TitleInterpolatedValue_Configure(void *animation, s32 mode, s32 value, s32 scale,
                           s32 duration);
 extern void SpritePresentation_Show(void *object);
 extern void PresentationScalar_TransitionTo(void *object, s32 mode, s32 value);
@@ -101,16 +101,16 @@ s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
         func_02091c7c(animationA, 0);
         func_02091c7c(animationB, 0);
         func_020afca0((volatile void *)0x04000050,
-                      func_02091bd0(animationB, 4, -16, 0));
+                      TitleInterpolatedValue_Evaluate(animationB, 4, -16, 0));
         func_020afca0((volatile void *)0x04001050,
-                      func_02091bd0(animationB, 4, -16, 0));
+                      TitleInterpolatedValue_Evaluate(animationB, 4, -16, 0));
         if (func_02091cf0(animationA) && func_02091cf0(animationB)) {
             void *child = FIELD(void *, state, 0x068);
 
             *(volatile u16 *)0x04000050 = 0;
             *(volatile u16 *)0x04001050 = 0;
-            func_02091bac(animationA, 1, 0x119a, 0x1000, 0x78);
-            func_02091bac(animationB, 1, 0x0466, 0x0400, 0x78);
+            TitleInterpolatedValue_Configure(animationA, 1, 0x119a, 0x1000, 0x78);
+            TitleInterpolatedValue_Configure(animationB, 1, 0x0466, 0x0400, 0x78);
             SpritePresentation_Show(child);
             PresentationScalar_TransitionTo((u8 *)child + 0x1c, 2, 0x68000);
             FIELD(s32, child, 0x7c) = 60;

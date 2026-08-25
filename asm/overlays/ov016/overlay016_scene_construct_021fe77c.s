@@ -14,13 +14,13 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern SceneInputBase_Init
     .extern TitleScreenResourceCollection_Init
-    .extern func_02092754
+    .extern TitleScreenResourceCollection_Append
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02092814
-    .extern func_020957bc
-    .extern func_020957f0
-    .extern func_02095820
-    .extern func_02095940
+    .extern TitleCharacterResourceCollection_Append
+    .extern SpriteMotionController_Init
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
+    .extern SpriteMotionController_Hide
     .extern func_ov016_021fe740
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021fedc4
@@ -52,15 +52,15 @@ func_ov016_021fe77c:
     add r0, r4, #0xd4
     bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xe8
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x194
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x240
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x2ec
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x398
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r4, #0x54
     add r0, r0, #0x400
     bl func_ov016_021fe740
@@ -89,25 +89,25 @@ func_ov016_021fe77c:
     bl InventoryRecordCollection_Sort
     ldr r1, L_021fea6c
     add r0, r4, #0x84
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     ldr r1, L_021fea70
     add r0, r4, #0x84
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     ldr r1, L_021fea74
     add r0, r4, #0x84
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     ldr r1, L_021fea78
     add r0, r4, #0x84
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     ldr r1, L_021fea7c
     add r0, r4, #0x84
-    bl func_02092754
+    bl TitleScreenResourceCollection_Append
     ldr r1, L_021fea80
     add r0, r4, #0x60
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, L_021fea84
     add r0, r4, #0x60
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, #0xf
     str r0, [sp, #0x0]
     ldr r1, L_021fea88
@@ -164,17 +164,17 @@ L_021fe940:
     add r0, r4, #0x240
     mov r2, #0x0
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x240
     mov r1, #0x14
     mov r2, #0x10
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, L_021fea94
     ldr r0, [r0, #0x4]
     cmp r0, #0x0
     bne L_021fe9a4
     add r0, r4, #0x240
-    bl func_02095940
+    bl SpriteMotionController_Hide
 L_021fe9a4:
     ldr r0, [r4, #0xe0]
     add r1, r4, #0xd4
@@ -186,13 +186,13 @@ L_021fe9a4:
     mov r2, #0x5
     mov r3, #0x1
     str ip, [sp, #0x0]
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x2ec
     mov r1, #0x14
     mov r2, #0x3b
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0x2ec
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r0, [r4, #0xe0]
     add r1, r4, #0xd4
     mov r2, #0x1
@@ -203,13 +203,13 @@ L_021fe9a4:
     add r0, r4, #0x398
     mov r2, #0x4
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r4, #0x398
     mov r1, #0x14
     mov r2, #0x25
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r0, r4, #0x398
-    bl func_02095940
+    bl SpriteMotionController_Hide
     mov r0, r4
     ldr r1, L_021fea98
     ldmia r1, {r1, r2}

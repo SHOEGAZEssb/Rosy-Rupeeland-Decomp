@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void *func_ov035_021fce00(void *object, void *argument);
 extern void GraphicsResourceSetVariant_Init(void *state);
-extern void func_02091b6c(void *state);
+extern void TitleInterpolatedValue_Init(void *state);
 extern void func_02091d08(void *state);
 extern void func_ov035_021fdce8(void *record);
 extern void GraphicsResourceSetVariant_Load(void *state, void *resourceContext, s32 first,
@@ -84,7 +84,7 @@ extern "C" void *func_ov035_021ff478(void *scene, void *resourceOwner,
     GraphicsResourceSetVariant_Init((u8 *)scene + 0x100);
     GraphicsResourceSetVariant_Init((u8 *)scene + 0x10c);
     GraphicsResourceSetVariant_Init((u8 *)scene + 0x118);
-    func_02091b6c((u8 *)scene + 0x140);
+    TitleInterpolatedValue_Init((u8 *)scene + 0x140);
     func_02091d08((u8 *)scene + 0x15c);
     func_ov035_021fdce8((u8 *)scene + 0x174);
     func_ov035_021fdce8((u8 *)scene + 0x184);

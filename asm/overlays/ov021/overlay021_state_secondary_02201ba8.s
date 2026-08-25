@@ -9,7 +9,7 @@
     .extern func_02092260
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
-    .extern func_02095860
+    .extern SpriteMotionController_BeginHitResponse
     .extern func_ov001_021fc0ac
     .extern func_ov001_021fc1f0
     .extern func_ov001_021fc214
@@ -183,7 +183,7 @@ L_02201dac:
     add r1, r4, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02201ec8
     ldr r0, [r4, #0x358]

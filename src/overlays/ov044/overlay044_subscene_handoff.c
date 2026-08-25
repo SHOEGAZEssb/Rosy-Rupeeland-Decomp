@@ -18,7 +18,7 @@ extern "C" u32 data_ov044_0220d2c0[2];
 extern "C" void DisplayBrightness_StartMaskedTransitions(s32 first, s32 second);
 extern "C" s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern "C" void *func_ov044_0220bd98(void *panel);
-extern "C" void func_02095940(void *presentation);
+extern "C" void SpriteMotionController_Hide(void *presentation);
 extern "C" void func_ov044_0220c5c0(void *object);
 extern "C" void func_ov044_0220c6dc(void *object);
 extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
@@ -70,7 +70,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
         if (DisplayBrightness_IsMainTransitionComplete()) {
             void *record = func_ov044_0220bd98(FIELD(void *, object, 0x228));
             void *item = FIELD(void *, record, 0xc);
-            func_02095940((u8 *)object + 0x17c);
+            SpriteMotionController_Hide((u8 *)object + 0x17c);
             func_ov044_0220c5c0(object);
             func_ov044_0220c6dc(object);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);

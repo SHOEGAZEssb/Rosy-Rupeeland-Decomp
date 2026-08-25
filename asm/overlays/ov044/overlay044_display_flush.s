@@ -1,5 +1,5 @@
 .text
-.extern func_020958d8
+.extern SpriteMotionController_Update
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern InventoryScroll_UpdatePresentation
 .extern func_ov001_021fbaa8
@@ -9,9 +9,9 @@ func_ov044_0220c880:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0xd0
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r5, #0x17c
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r5, #0xbc]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r4, [r5, #0x228]

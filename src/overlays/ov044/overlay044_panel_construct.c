@@ -27,7 +27,7 @@ extern "C" void *func_02094154(void *storage, void *font, s32 count,
                                 s32 mode, s32 x, s32 y, s32 spacing);
 extern "C" void InventoryScroll_UpdatePresentation(void *child);
 extern "C" void func_ov044_0220ba18(void *object);
-extern "C" void func_02092814(void *presentation, s32 resourceId);
+extern "C" void TitleCharacterResourceCollection_Append(void *presentation, s32 resourceId);
 extern "C" void InventoryCell_Init(void *record);
 extern "C" void InventoryCell_Destroy(void *record);
 
@@ -79,7 +79,7 @@ extern "C" void *func_ov044_0220b740(void *object, void *font, s32 rowCount)
     }
     InventoryScroll_UpdatePresentation(FIELD(void *, object, 0x44));
     func_ov044_0220ba18(object);
-    func_02092814((u8 *)object + 0x14, 0x7000);
-    func_02092814((u8 *)object + 0x14, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)object + 0x14, 0x7000);
+    TitleCharacterResourceCollection_Append((u8 *)object + 0x14, 0x7005);
     return object;
 }

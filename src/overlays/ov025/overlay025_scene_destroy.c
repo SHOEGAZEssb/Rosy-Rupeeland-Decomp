@@ -18,8 +18,8 @@ extern void Sound_ReleaseGroup(void *, s32);
 extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern void func_020926f8(void *);
-extern void func_020927b8(void *);
+extern void TitleScreenResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void PresentationList_DeleteAll(void *);
 extern void func_ov025_021fdec8(void *);
 extern void func_ov025_021ff1c8(void *);
@@ -61,7 +61,7 @@ extern void func_ov094_022196a4(void *);
             void *widget = FIELD(void *, (u32)scene + (i << 2), 0xe4);        \
             if (widget == 0) continue;                                         \
             GraphicsSpriteGroup_Destroy(FIELD(void *, widget, 0xc));           \
-            func_020927b8((u8 *)widget + 0x30);                                \
+            TitleCharacterResourceCollection_Destroy((u8 *)widget + 0x30);                                \
             AnimationResourceState_Destroy(widget);                                             \
             Heap_Free(widget);                                                 \
         }                                                                      \
@@ -75,8 +75,8 @@ extern void func_ov094_022196a4(void *);
         GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0xb0));               \
         GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0xb4));               \
         GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);             \
-        func_020927b8((u8 *)scene + 0x574);                                    \
-        func_020926f8((u8 *)scene + 0x530);                                    \
+        TitleCharacterResourceCollection_Destroy((u8 *)scene + 0x574);                                    \
+        TitleScreenResourceCollection_Destroy((u8 *)scene + 0x530);                                    \
         FIELD(const void *, scene, 0x4f8) = data_ov025_02203318;               \
         PresentationList_DeleteAll((u8 *)scene + 0x4f8);                                    \
         __destroy_arr((u8 *)scene + 0x2f4, 3, 0xac,                            \

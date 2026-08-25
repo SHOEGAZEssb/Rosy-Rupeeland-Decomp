@@ -15,7 +15,7 @@ extern "C" {
 extern void *func_ov036_021fce00(void *controller, void *argument);
 extern void GraphicsResourceSetVariant_Init(void *resourceSet);
 extern void func_ov036_021fe218(void *list);
-extern void func_02091b6c(void *timer);
+extern void TitleInterpolatedValue_Init(void *timer);
 extern void GraphicsResourceSetVariant_Load(void *resourceSet, void *archive,
                           s32 firstId, s32 secondId, s32 thirdId);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resourceSet);
@@ -34,7 +34,7 @@ extern void func_ov036_021fe9fc(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_021fea04(void *record, s32 x, s32 y, s32 z);
 extern void func_020b0300(s32, s32, s32, s32, s32);
 extern void TitlePalette_SetMainBackdrop(s32 value);
-extern void func_02091bac(void *timer, s32 mode, s32 first,
+extern void TitleInterpolatedValue_Configure(void *timer, s32 mode, s32 first,
                           s32 second, s32 duration);
 extern void func_02091b98(void *timer, s32 duration);
 #ifdef __cplusplus
@@ -66,8 +66,8 @@ extern "C" void *func_ov036_0220102c(void *controller, void *owner,
     GraphicsResourceSetVariant_Init((u8 *)controller + 0x10c);
     func_ov036_021fe218((u8 *)controller + 0x148);
     func_ov036_021fe218((u8 *)controller + 0x158);
-    func_02091b6c((u8 *)controller + 0x168);
-    func_02091b6c((u8 *)controller + 0x184);
+    TitleInterpolatedValue_Init((u8 *)controller + 0x168);
+    TitleInterpolatedValue_Init((u8 *)controller + 0x184);
 
     const s32 ids[][2] = {
         {0xdc, 0x6005}, {0xe8, 0x605f}, {0xf4, 0x6062},
@@ -106,7 +106,7 @@ extern "C" void *func_ov036_0220102c(void *controller, void *owner,
     func_ov036_021fea04((u8 *)controller + 0xc, 0, 0, 0);
     func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
     TitlePalette_SetMainBackdrop(0);
-    func_02091bac((u8 *)controller + 0x168,
+    TitleInterpolatedValue_Configure((u8 *)controller + 0x168,
                   1, 0, 0x1000, 0xf0);
     func_02091b98((u8 *)controller + 0x184, 0x78);
     FIELD(s32, controller, 0x1a0) = 1;

@@ -28,8 +28,8 @@ extern void func_020922f0(void *, s32);
 extern void Presentation_SetScript(void *, void *, s32);
 extern void SpritePresentation_SetAnimation(void *, s32);
 extern void SpritePresentation_Show(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_02095928(void *);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
 extern s32 func_02095dd4(void *, void *, s32);
 extern s32 func_020befec(s32, s32);
 extern void func_ov017_021fea8c(void *, s32, s32, s32);
@@ -97,8 +97,8 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                     FIELD(s32, state, 4) = 10;
                 } else {
                     func_0206fcec(data_021e9e1c);
-                    func_02095928((u8 *)state + 0x12c);
-                    func_02095928((u8 *)state + 0x80);
+                    SpriteMotionController_Show((u8 *)state + 0x12c);
+                    SpriteMotionController_Show((u8 *)state + 0x80);
                     FIELD(s32, state, 4) = 40;
                 }
                 FIELD(s32, state, 8) = 0;
@@ -146,8 +146,8 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                     FIELD(s32, state, 4) = 30;
                     FIELD(s32, state, 8) = 0;
                 } else {
-                    func_02095928((u8 *)state + 0x12c);
-                    func_02095928((u8 *)state + 0x80);
+                    SpriteMotionController_Show((u8 *)state + 0x12c);
+                    SpriteMotionController_Show((u8 *)state + 0x80);
                     FIELD(s32, state, 4) = 40;
                     FIELD(s32, state, 8) = 0;
                 }
@@ -163,8 +163,8 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                            (u8 *)state + 0x30,
                            ((s32)(FIELD(u32, state, 0x20) << 26)) >> 31) >= 0) {
             func_ov017_021ffd74(state);
-            func_02095928((u8 *)state + 0x12c);
-            func_02095928((u8 *)state + 0x80);
+            SpriteMotionController_Show((u8 *)state + 0x12c);
+            SpriteMotionController_Show((u8 *)state + 0x80);
             FIELD(s32, state, 4) = 40;
             FIELD(s32, state, 8) = 0;
         }
@@ -180,8 +180,8 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_02095928((u8 *)state + 0x12c);
-                func_02095928((u8 *)state + 0x80);
+                SpriteMotionController_Show((u8 *)state + 0x12c);
+                SpriteMotionController_Show((u8 *)state + 0x80);
                 FIELD(s32, state, 4) = 40;
                 FIELD(s32, state, 8) = 0;
             }
@@ -198,12 +198,12 @@ extern "C" s32 func_ov017_02200cc0(void *state)
 
     case 40:
         if ((((s32)(FIELD(u32, state, 0x20) << 26)) >> 31) != 0) {
-            if (func_02095860((u8 *)state + 0x80, (u8 *)state + 0x30,
+            if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x80, (u8 *)state + 0x30,
                               0, 4)) {
                 func_02092260(state, 2);
                 func_ov017_021fea8c(state, data_ov017_02201538[0],
                                     data_ov017_02201538[1], 4);
-            } else if (func_02095860((u8 *)state + 0x12c,
+            } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x12c,
                                      (u8 *)state + 0x30, 0, 4)) {
                 u16 result;
                 func_02092260(state, 2);

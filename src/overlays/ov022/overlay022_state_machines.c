@@ -59,11 +59,11 @@ extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
 extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
 extern void PresentationList_DeleteAll(void *);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
-extern void func_02095988(void *, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_020922f0(void *, s32);
@@ -120,7 +120,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
             FIELD(s32, scene, 8) = 0;
             break;
         }
-        func_02095928((u8 *)scene + 0xa8);
+        SpriteMotionController_Show((u8 *)scene + 0xa8);
         ADVANCE(scene);
         /* fall through */
     case 1:
@@ -130,11 +130,11 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
     case 2:
         if (!(FIELD(u32, scene, 0x20) & 0x20))
             break;
-        if (func_02095860((u8 *)scene + 0xa8, (u8 *)scene + 0x30, 0, 4)) {
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xa8, (u8 *)scene + 0x30, 0, 4)) {
             TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
             func_02092260(scene, 3);
             CALLBACK(scene, data_ov022_02200530);
-        } else if (func_02095860((u8 *)scene + 0x154,
+        } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x154,
                                  (u8 *)scene + 0x30, 0, 4)) {
             if (FIELD(void *, scene, 0x2b4)) {
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
@@ -145,7 +145,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
             } else {
                 func_02092260(scene, 9);
             }
-        } else if (func_02095860((u8 *)scene + 0x200,
+        } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x200,
                                  (u8 *)scene + 0x30, 0, 4)) {
             if (FIELD(void *, scene, 0x2b8)) {
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
@@ -163,17 +163,17 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
             break;
         if (FIELD(s32, scene, 0x2c0) == 0) {
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-            func_02095940((u8 *)scene + 0xa8);
-            func_02095820((u8 *)scene + 0x154, -64, 64);
-            func_02095820((u8 *)scene + 0x200, -64, 112);
+            SpriteMotionController_Hide((u8 *)scene + 0xa8);
+            SpriteMotionController_SetPosition((u8 *)scene + 0x154, -64, 64);
+            SpriteMotionController_SetPosition((u8 *)scene + 0x200, -64, 112);
             func_ov022_021fe898(scene);
         } else {
             func_ov022_021fdafc(FIELD(void *, scene, 0x2b8));
             func_ov022_021fdb38(FIELD(void *, scene, 0x2b8));
             func_ov022_021fefe0(scene);
             func_ov022_021ff048(scene);
-            func_02095820((u8 *)scene + 0x154, -64, 64);
-            func_02095820((u8 *)scene + 0x200, 128, 170);
+            SpriteMotionController_SetPosition((u8 *)scene + 0x154, -64, 64);
+            SpriteMotionController_SetPosition((u8 *)scene + 0x200, 128, 170);
         }
         DisplayBrightness_StartMaskedTransitions(1, 0);
         ADVANCE(scene);
@@ -192,15 +192,15 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         if (DisplayBrightness_IsMainTransitionComplete()) {
             FIELD(s32, scene, 0x2b0) = 0;
             func_ov022_021ff2c4(scene, 0x312);
-            func_02095820((u8 *)scene + 0x200, 128, 208);
-            func_02095988((u8 *)scene + 0x200, 2);
+            SpriteMotionController_SetPosition((u8 *)scene + 0x200, 128, 208);
+            SpriteMotionController_SetAnimation((u8 *)scene + 0x200, 2);
             ADVANCE(scene);
         }
         break;
     case 11:
         if (func_ov022_021ff368(scene)) {
             func_02092260(scene, 0x2e);
-            func_02095928((u8 *)scene + 0x200);
+            SpriteMotionController_Show((u8 *)scene + 0x200);
             FIELD(s32, scene, 0x27c) = 30;
             FIELD(s32, scene, 0x280) = 0;
             ADVANCE(scene);
@@ -208,12 +208,12 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         break;
     case 12:
         if (func_ov022_021fceb0((u8 *)scene + 0x200)) {
-            func_02095928((u8 *)scene + 0xa8);
+            SpriteMotionController_Show((u8 *)scene + 0xa8);
             FIELD(s32, scene, 4) = 2;
             FIELD(s32, scene, 8) = 0;
         } else {
             s32 y = Presentation_InterpolateScalar((u8 *)scene + 0x200, 4, 208, 112);
-            func_02095820((u8 *)scene + 0x200, 128, y);
+            SpriteMotionController_SetPosition((u8 *)scene + 0x200, 128, y);
         }
         break;
     }
@@ -400,7 +400,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
                 }
             }
         }
-        if (func_02095860((u8 *)scene + 0x200,
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x200,
                           (u8 *)scene + 0x30, 0, 4)) {
             void *entry = func_ov022_021fdca0(menu);
             if (FIELD(s32, entry, 4)) func_02092260(scene, 9);
@@ -409,7 +409,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
                 func_02092260(scene, 2);
                 CALLBACK(scene, data_ov022_02200560);
             }
-        } else if (func_02095860((u8 *)scene + 0xa8,
+        } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xa8,
                                  (u8 *)scene + 0x30, 0, 4)) {
             func_02092260(scene, 3);
             DisplayBrightness_StartMaskedTransitions(1, -16);

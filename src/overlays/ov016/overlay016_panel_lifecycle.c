@@ -17,9 +17,9 @@ extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s3
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void func_02091b6c(void *);
+extern void TitleInterpolatedValue_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -46,13 +46,13 @@ extern "C" void *func_ov016_021fd6c8(void *state, void *owner)
     AnimationResourceState_InitEmbedded((u8 *)state + 0x6c);
     AnimationResourceState_InitEmbedded((u8 *)state + 0x78);
     TitleCharacterResourceCollection_Init((u8 *)state + 0xd4);
-    func_02091b6c((u8 *)state + 0xf8);
+    TitleInterpolatedValue_Init((u8 *)state + 0xf8);
     FIELD(void *, state, 0) = owner;
     FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(owner);
     FIELD(void *, state, 8) = GraphicsSpriteGroupOwner_CreateGroup(owner);
-    func_02092814((u8 *)state + 0xd4, 0x7000);
-    func_02092814((u8 *)state + 0xd4, 0x7005);
-    func_02092814((u8 *)state + 0xd4, 0x7006);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0xd4, 0x7000);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0xd4, 0x7005);
+    TitleCharacterResourceCollection_Append((u8 *)state + 0xd4, 0x7006);
     AnimationResourceState_ReplaceResources((u8 *)state + 0xc, data_020f4e18, 0x24, 0x22, 0x25);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x6c, data_020f4e18, 0x60, 0x61, 0x62);
     AnimationResourceState_ReplaceResources((u8 *)state + 0x78, data_020f4e18, 0x21, 0x22, 0x23);

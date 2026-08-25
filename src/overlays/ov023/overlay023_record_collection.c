@@ -28,8 +28,8 @@ extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, ...)
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern s32 RecordMode_GetAnimationIndex(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
-extern void func_020927b8(void *);
-extern void func_02092814(void *, s32);
+extern void TitleCharacterResourceCollection_Destroy(void *);
+extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
@@ -80,8 +80,8 @@ extern "C" void *func_ov023_021fce44(void *collection, void *font, s32 capacity)
     InventoryScroll_SetSpritePriority(ui, 0);
     InventoryScroll_UpdatePresentation(ui);
     func_ov023_021fd0dc(collection);
-    func_02092814((u8 *)collection + 8, 0x7007);
-    func_02092814((u8 *)collection + 8, 0x7000);
+    TitleCharacterResourceCollection_Append((u8 *)collection + 8, 0x7007);
+    TitleCharacterResourceCollection_Append((u8 *)collection + 8, 0x7000);
     return collection;
 }
 
@@ -101,7 +101,7 @@ extern "C" void *func_ov023_021fcfcc(void *collection)
     void *entries = FIELD(void *, collection, 0x2c);
     if (entries != 0)
         CxxArray_DestroyAndFree(entries, 0x18, 8, (void *)func_ov023_021fce2c);
-    func_020927b8((u8 *)collection + 8);
+    TitleCharacterResourceCollection_Destroy((u8 *)collection + 8);
     return collection;
 }
 

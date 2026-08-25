@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern s32 func_0209189c(void *, s32, s32);
-extern void func_02091bac(void *, s32, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
 extern void func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void GraphicsAnimationInstanceManager_Update(void *);
@@ -33,7 +33,7 @@ extern "C" void func_ov017_021fe5b0(void *pool)
     switch (FIELD(s32, pool, 0x30)) {
     case 1:
         if (func_02091cf0((u8 *)pool + 0x38)) {
-            func_02091bac((u8 *)pool + 0x38, 2,
+            TitleInterpolatedValue_Configure((u8 *)pool + 0x38, 2,
                           FIELD(s32, pool, 0x48), 0x1000, 8);
             FIELD(s32, pool, 0x30) = 2;
             FIELD(s32, pool, 0x34) = 0;
@@ -43,7 +43,7 @@ extern "C" void func_ov017_021fe5b0(void *pool)
         if (func_02091cf0((u8 *)pool + 0x38)) {
             s32 target = func_0209189c((u8 *)pool + 0x54, 0xe66, 0x119a);
             s32 duration = func_0209189c((u8 *)pool + 0x54, 4, 8);
-            func_02091bac((u8 *)pool + 0x38, 2,
+            TitleInterpolatedValue_Configure((u8 *)pool + 0x38, 2,
                           FIELD(s32, pool, 0x48), target, duration);
             FIELD(s32, pool, 0x30) = 2;
             FIELD(s32, pool, 0x34) = 0;
@@ -72,7 +72,7 @@ extern "C" void func_ov017_021fe5b0(void *pool)
  */
 extern "C" void func_ov017_021fe6dc(void *pool)
 {
-    func_02091bac((u8 *)pool + 0x38, 2, 0, 0x1800, 0x10);
+    TitleInterpolatedValue_Configure((u8 *)pool + 0x38, 2, 0, 0x1800, 0x10);
     FIELD(s32, pool, 0x30) = 1;
     FIELD(s32, pool, 0x34) = 0;
 }
@@ -84,7 +84,7 @@ extern "C" void func_ov017_021fe6dc(void *pool)
  */
 extern "C" void func_ov017_021fe71c(void *pool)
 {
-    func_02091bac((u8 *)pool + 0x38, 2, FIELD(s32, pool, 0x48), 0, 0x10);
+    TitleInterpolatedValue_Configure((u8 *)pool + 0x38, 2, FIELD(s32, pool, 0x48), 0, 0x10);
     FIELD(s32, pool, 0x30) = 3;
     FIELD(s32, pool, 0x34) = 0;
 }

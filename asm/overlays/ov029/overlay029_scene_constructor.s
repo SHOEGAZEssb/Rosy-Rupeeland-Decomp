@@ -12,8 +12,8 @@
 .extern RecordDescriptor_GetMessage
 .extern SceneInputBase_Init
 .extern TitleCharacterResourceCollection_Init
-.extern func_02092814
-.extern func_020929b0
+.extern TitleCharacterResourceCollection_Append
+.extern TitleScrollValue_Init
 .extern TitleDialog_Init
 .extern func_02092f88
 .extern func_020afd0c
@@ -47,7 +47,7 @@ func_ov029_021fce74:
     mov r1, #0x0
     add r0, r5, #0xec
     str r1, [r5, #0xe4]
-    bl func_020929b0
+    bl TitleScrollValue_Init
     ldr r0, L_021fd138
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -116,10 +116,10 @@ L_021fcf88:
     str r0, [r5, #0xe8]
     ldr r1, L_021fd14c
     add r0, r5, #0x78
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, L_021fd150
     add r0, r5, #0x78
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r5
     bl func_ov029_021fd464
     mov r0, r5

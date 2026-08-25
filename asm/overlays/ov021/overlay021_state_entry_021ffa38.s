@@ -8,8 +8,8 @@
     .extern func_02092260
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
-    .extern func_02095860
-    .extern func_02095928
+    .extern SpriteMotionController_BeginHitResponse
+    .extern SpriteMotionController_Show
     .extern func_ov021_021fd1cc
     .extern func_ov021_021fd39c
     .extern func_ov021_021fd490
@@ -52,7 +52,7 @@ L_021ffa68:
     strh r1, [r2, #0x24]
     bl func_ov021_021fefcc
     add r0, r8, #0xa0
-    bl func_02095928
+    bl SpriteMotionController_Show
     ldr r1, [r8, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -77,7 +77,7 @@ L_021ffadc:
     add r1, r8, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021ffb30
     ldr r0, [r8, #0x388]
@@ -103,7 +103,7 @@ L_021ffb4c:
     mov r2, r5
     mov r3, r4
     add r1, r8, #0x30
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_021ffc0c
     add r0, r8, r7, lsl #0x2

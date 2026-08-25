@@ -25,8 +25,8 @@ extern "C" {
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern const void *RecordDescriptor_GetMessage(void *, s32);
-extern void func_02091bac(void *, s32, s32, s32, s32);
-extern s32 func_02091bd0(void *, s32, s32, s32);
+extern void TitleInterpolatedValue_Configure(void *, s32, s32, s32, s32);
+extern s32 TitleInterpolatedValue_Evaluate(void *, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
@@ -57,9 +57,9 @@ extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_02095820(void *, s32, s32);
-extern void func_02095928(void *);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void SpriteMotionController_SetPosition(void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
 extern void func_ov023_021fd08c(void *);
 extern void func_ov023_021fd0dc(void *);
 extern void func_ov023_021fd268(void *);
@@ -143,10 +143,10 @@ extern "C" s32 func_ov023_021febbc(void *scene)
                 break;
             }
         }
-        if (func_02095860((u8 *)scene + 0xd0,
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xd0,
                           (u8 *)scene + 0x30, 0, 4)) {
             func_ov023_021feb60(scene);
-        } else if (func_02095860((u8 *)scene + 0x17c,
+        } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x17c,
                                  (u8 *)scene + 0x30, 0, 4)) {
             func_02092260(scene, 3);
             CALLBACK(scene, data_ov023_021ffb88);
@@ -246,14 +246,14 @@ static s32 detail_machine(void *scene, void *entry, void **next)
     switch (FIELD(s32, scene, 4)) {
     case 0:
         DisplayBrightness_StartMaskedTransitions(1, -8);
-        func_02091bac(transition, 4, -128, 0, 8);
+        TitleInterpolatedValue_Configure(transition, 4, -128, 0, 8);
         ADVANCE(scene);
         /* fall through */
     case 1: {
         func_ov045_0220c274(FIELD(void *, scene, 0x4bc),
                             func_02091c7c(transition, 1));
         Overlay045Graphics_SetUniformValue(FIELD(void *, scene, 0x4bc),
-                            func_02091bd0(transition, 1, 0x200, 0x180));
+                            TitleInterpolatedValue_Evaluate(transition, 1, 0x200, 0x180));
         if (func_02091cf0(transition) && DisplayBrightness_IsMainTransitionComplete()) {
             void *record = FIELD(void *, entry, 0);
             const void *text = RecordDescriptor_GetMessage(
@@ -267,7 +267,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
         if (func_ov023_021fe88c(scene)) {
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             DisplayBrightness_StartMaskedTransitions(1, 0);
-            func_02091bac(transition, 5, 0, -128, 8);
+            TitleInterpolatedValue_Configure(transition, 5, 0, -128, 8);
             ADVANCE(scene);
         }
         break;
@@ -275,7 +275,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
         func_ov045_0220c274(FIELD(void *, scene, 0x4bc),
                             func_02091c7c(transition, 1));
         Overlay045Graphics_SetUniformValue(FIELD(void *, scene, 0x4bc),
-                            func_02091bd0(transition, 1, 0x180, 0x200));
+                            TitleInterpolatedValue_Evaluate(transition, 1, 0x180, 0x200));
         if (func_02091cf0(transition)) {
             void *detail = FIELD(void *, scene, 0x4bc);
             if (detail) {
@@ -364,10 +364,10 @@ extern "C" s32 func_ov023_021ff2fc(void *scene)
                 break;
             }
         }
-        if (func_02095860((u8 *)scene + 0xd0,
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xd0,
                           (u8 *)scene + 0x30, 0, 4)) {
             func_ov023_021ff2a0(scene);
-        } else if (func_02095860((u8 *)scene + 0x17c,
+        } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x17c,
                                  (u8 *)scene + 0x30, 0, 4)) {
             func_02092260(scene, 3);
             CALLBACK(scene, data_ov023_021ffb58);

@@ -3,7 +3,7 @@
     .extern data_ov004_021fcda0
     .extern AnimationResourceState_InitEmbedded
     .extern Presentation_InitVariant
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern data_020f4e18
     .extern AnimationResourceState_ReplaceResources
     .extern func_020708c4
@@ -11,7 +11,7 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern gDebugFont
     .extern func_ov004_021fbf40
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern func_ov004_021fb968
     .extern func_ov004_021fba28
     .extern func_ov004_021fc24c
@@ -32,9 +32,9 @@ func_ov004_021fb70c: ; 0x021fb70c
     add r0, r4, #0x6c
     bl Presentation_InitVariant
     add r0, r4, #0x114
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     add r0, r4, #0x130
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     str r6, [r4, #0x150]
     str r5, [r4, #0x14c]
     mov r0, #0x0
@@ -74,14 +74,14 @@ func_ov004_021fb70c: ; 0x021fb70c
     mov r1, #0x2
     mov r2, #0x6000
     ldr r3, L_021fb85c
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, #0x50
     str r0, [sp, #0x0]
     add r0, r4, #0x130
     mov r1, #0x4
     mov r2, #0x4000
     ldr r3, L_021fb860
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     mov r0, r4
     bl func_ov004_021fb968
     mov r0, r4

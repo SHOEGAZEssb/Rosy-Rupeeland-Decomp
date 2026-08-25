@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov022/overlay022_ui_runtime.c. */
-.extern func_02095820
+.extern SpriteMotionController_SetPosition
 
 
     .global func_ov022_021ff1e4
@@ -17,7 +17,7 @@ L_021ff1fc:
     mla r0, r8, r4, r7
     mov r1, r6
     add r2, r2, #0x40
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     add r8, r8, #0x1
     cmp r8, #0x2
     blt L_021ff1fc

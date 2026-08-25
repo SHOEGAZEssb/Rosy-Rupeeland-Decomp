@@ -5,7 +5,7 @@
 .extern data_ov030_021ff8c4
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteCanvas_FillRect
-.extern func_02095940
+.extern SpriteMotionController_Hide
 .extern func_ov030_021fce00
 .extern func_ov030_021fd3e8
 .extern gHeapContext
@@ -69,9 +69,9 @@ L_021fd494:
     mov r0, r5
     bl func_ov030_021fd3e8
     add r0, r5, #0x58
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add r0, r5, #0x104
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_021fd514: .word data_ov030_021ff8c4

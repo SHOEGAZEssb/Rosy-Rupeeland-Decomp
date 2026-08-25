@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
-extern void func_02091b6c(void *timer);
+extern void TitleInterpolatedValue_Init(void *timer);
 extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ extern "C" void *func_ov036_021fdba0(void *record, s32 duration,
                                       s32 value4, s32 value8, s32 valueC,
                                       s32 value10, s32 value14)
 {
-    func_02091b6c((u8 *)record + 0x18);
+    TitleInterpolatedValue_Init((u8 *)record + 0x18);
     FIELD(void *, record, 0) = 0;
     FIELD(s32, record, 4) = value4;
     FIELD(s32, record, 8) = value8;

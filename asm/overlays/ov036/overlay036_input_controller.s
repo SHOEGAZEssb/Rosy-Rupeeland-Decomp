@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_input_controller.c for documented portable C. */
 
     .extern Graphics3DSceneState_Init
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern GraphicsResourceSetVariant_Init
     .extern data_ov036_02206098
     .extern gTouchPanelManager
@@ -19,7 +19,7 @@ func_ov036_021fce00:
     str r2, [r5, #0x0]
     bl Graphics3DSceneState_Init
     add r0, r5, #0xa4
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     mov r0, #0x0
     str r0, [r5, #0xc0]
     add r0, r5, #0xcc

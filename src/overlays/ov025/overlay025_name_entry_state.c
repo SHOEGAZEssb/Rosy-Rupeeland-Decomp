@@ -58,15 +58,15 @@ extern void RetailSaveContext_BeginNamedRecordWrite(void *, s32, void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_020922f0(void *, s32);
 extern void func_02092314(void *, s32, s32);
-extern void func_020927b8(void *);
+extern void TitleCharacterResourceCollection_Destroy(void *);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_SetText(void *, void *, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
-extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_02095928(void *);
-extern void func_02095940(void *);
-extern void func_02095988(void *, s32);
+extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
+extern void SpriteMotionController_Show(void *);
+extern void SpriteMotionController_Hide(void *);
+extern void SpriteMotionController_SetAnimation(void *, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov094_022198e8(void *, s32);
 extern void *func_ov025_021fce00(void *);
@@ -153,9 +153,9 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                 new_editor = func_ov025_021fce00(new_editor);
             FIELD(void *, scene, 0x598) = new_editor;
             func_ov025_021fd160(new_editor, FIELD(void *, scene, 0x574));
-            func_02095988((u8 *)scene + 0xf0, 0x2d);
-            func_02095928((u8 *)scene + 0xf0);
-            func_02095928((u8 *)scene + 0x248);
+            SpriteMotionController_SetAnimation((u8 *)scene + 0xf0, 0x2d);
+            SpriteMotionController_Show((u8 *)scene + 0xf0);
+            SpriteMotionController_Show((u8 *)scene + 0x248);
             DisplayBrightness_StartMaskedTransitions(3, 0);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
@@ -170,7 +170,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
     case 3:
         if (!((s32)(FIELD(u32, scene, 0x20) << 26) >> 31))
             break;
-        if (func_02095860((u8 *)scene + 0xf0, (u8 *)scene + 0x30, 0, 4)) {
+        if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0xf0, (u8 *)scene + 0x30, 0, 4)) {
             if (func_ov025_021fd450(FIELD(void *, scene, 0x598))) {
                 if (func_ov025_021fd488(
                         FIELD(void *, scene, 0x598),
@@ -194,7 +194,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                 func_02092260(scene, 9);
                 goto maintained_return;
             }
-        } else if (func_02095860((u8 *)scene + 0x248,
+        } else if (SpriteMotionController_BeginHitResponse((u8 *)scene + 0x248,
                                  (u8 *)scene + 0x30, 0, 4)) {
             FIELD(s32, FIELD(void *, scene, 0x598), 0x17c) = 0;
             func_02092260(scene, 3);
@@ -392,9 +392,9 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         u16 completed = FIELD(u16, completion, 0x24) & 1;
         if (completed) {
             if (func_ov025_021fd450(active_editor)) {
-                func_02095988((u8 *)scene + 0xf0, 0x2c);
+                SpriteMotionController_SetAnimation((u8 *)scene + 0xf0, 0x2c);
             } else {
-                func_02095988((u8 *)scene + 0xf0, 0x2d);
+                SpriteMotionController_SetAnimation((u8 *)scene + 0xf0, 0x2d);
             }
             func_ov025_021fd3dc(FIELD(void *, scene, 0x598));
             func_ov025_021fd03c(FIELD(void *, scene, 0x598),
@@ -461,7 +461,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                                   (u8 *)scene + index * 4, 0xe4);
                 if (row) {
                     GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
-                    func_020927b8((u8 *)row + 0x30);
+                    TitleCharacterResourceCollection_Destroy((u8 *)row + 0x30);
                     AnimationResourceState_Destroy(row);
                     Heap_Free(row);
                 }
@@ -510,8 +510,8 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                       0x20) = 1;
             }
             func_ov025_022001f4(scene);
-            func_02095940((u8 *)scene + 0xf0);
-            func_02095940((u8 *)scene + 0x248);
+            SpriteMotionController_Hide((u8 *)scene + 0xf0);
+            SpriteMotionController_Hide((u8 *)scene + 0x248);
             func_ov025_02200014(scene);
             DisplayBrightness_StartMaskedTransitions(3, 0);
             func_020922f0(scene, 0xe2);

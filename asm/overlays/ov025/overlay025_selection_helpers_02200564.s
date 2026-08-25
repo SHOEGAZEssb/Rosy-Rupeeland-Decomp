@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
-.extern func_02095940
+.extern SpriteMotionController_Hide
 
 
     .global func_ov025_02200564
@@ -12,7 +12,7 @@ func_ov025_02200564:
     mov r4, #0xac
 L_02200574:
     mla r0, r6, r4, r5
-    bl func_02095940
+    bl SpriteMotionController_Hide
     add r6, r6, #0x1
     cmp r6, #0x3
     blt L_02200574

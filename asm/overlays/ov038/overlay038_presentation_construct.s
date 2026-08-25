@@ -4,20 +4,20 @@
 
     .extern SceneInputBase_Init
     .extern AnimationResourceState_InitEmbedded
-    .extern func_020957bc
+    .extern SpriteMotionController_Init
     .extern TitleCharacterResourceCollection_Init
-    .extern func_02091b6c
+    .extern TitleInterpolatedValue_Init
     .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_020957f0
-    .extern func_02095820
+    .extern SpriteMotionController_BindSprite
+    .extern SpriteMotionController_SetPosition
     .extern GameWork_TestFlag
     .extern Heap_Alloc
     .extern func_02094154
     .extern InventoryScroll_SetSpritePriority
     .extern InventoryScroll_UpdatePresentation
-    .extern func_02092814
+    .extern TitleCharacterResourceCollection_Append
     .extern func_ov038_021fd210
     .extern func_ov038_021fd28c
     .extern func_ov046_0220b7bc
@@ -51,11 +51,11 @@ func_ov038_021fce2c:
     str r1, [r7, #0x0]
     bl AnimationResourceState_InitEmbedded
     add r0, r7, #0x64
-    bl func_020957bc
+    bl SpriteMotionController_Init
     add r0, r7, #0x318
     bl TitleCharacterResourceCollection_Init
     add r0, r7, #0x348
-    bl func_02091b6c
+    bl TitleInterpolatedValue_Init
     mov r0, #0x0
     str r0, [r7, #0x33c]
     mov r0, #0x39
@@ -79,11 +79,11 @@ func_ov038_021fce2c:
     add r0, r7, #0x64
     mov r2, #0x6
     mov r3, #0x1
-    bl func_020957f0
+    bl SpriteMotionController_BindSprite
     add r0, r7, #0x64
     mov r1, #0xe8
     mov r2, #0xa0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     ldr r0, L_021fd0ac
     mov r5, #0x0
     str r5, [r7, #0x110]
@@ -139,13 +139,13 @@ L_021fcf84:
     bl InventoryScroll_UpdatePresentation
     add r0, r7, #0x318
     mov r1, #0x7000
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, L_021fd0c0
     add r0, r7, #0x318
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     ldr r1, L_021fd0c4
     add r0, r7, #0x318
-    bl func_02092814
+    bl TitleCharacterResourceCollection_Append
     mov r0, r7
     bl func_ov038_021fd210
     mov r0, r7

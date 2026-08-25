@@ -9,15 +9,15 @@
 .extern data_ov025_02202ec0
 .extern RetailSaveContext_PollOperation
 .extern RetailSaveContext_BeginRecordCopy
-.extern func_02091bac
+.extern TitleInterpolatedValue_Configure
 .extern func_02091c7c
 .extern func_02091cf0
 .extern func_02092260
 .extern GraphicsSpriteState_TestTouchPoint
-.extern func_02095820
-.extern func_02095860
-.extern func_02095928
-.extern func_02095940
+.extern SpriteMotionController_SetPosition
+.extern SpriteMotionController_BeginHitResponse
+.extern SpriteMotionController_Show
+.extern SpriteMotionController_Hide
 .extern func_02095dd4
 .extern func_ov025_021fd9e4
 .extern func_ov025_021fdb18
@@ -95,18 +95,18 @@ L_02201534:
     mov r0, r5
     bl func_ov025_022001f4
     add r0, r5, #0x19c
-    bl func_02095928
+    bl SpriteMotionController_Show
     ldr r0, [r5, #0x54]
     mov r1, #0xe4
     cmp r0, #0x2
     add r0, r5, #0x19c
     bne L_02201578
     mov r2, #0x18
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
     b L_02201580
 L_02201578:
     mov r2, #0xa0
-    bl func_02095820
+    bl SpriteMotionController_SetPosition
 L_02201580:
     ldr r1, [r5, #0x4]
     mov r0, #0x0
@@ -137,7 +137,7 @@ L_022015bc:
     str r6, [r5, #0x58]
     add r0, r5, #0x19c
     mov r4, #0x1
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -156,7 +156,7 @@ L_02201614:
     add r1, r5, #0x30
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02095860
+    bl SpriteMotionController_BeginHitResponse
     cmp r0, #0x0
     beq L_02201a8c
     mov r0, r5
@@ -175,7 +175,7 @@ L_02201658:
     mov r1, #0x3
     mov r2, #0x0
     mov r3, #0x4
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -454,7 +454,7 @@ L_02201a54:
     mov r0, r5
     bl func_ov025_022001f4
     add r0, r5, #0x19c
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr r1, L_02201ab8
     mov r0, r5
     ldmia r1, {r1, r2}

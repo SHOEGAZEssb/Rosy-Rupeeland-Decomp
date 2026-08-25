@@ -5,7 +5,7 @@
     .extern data_ov016_022013d8
     .extern data_ov016_02201440
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02095940
+    .extern SpriteMotionController_Hide
     .extern func_02095dd4
     .extern func_ov016_021fd3f8
     .extern Overlay016ActorValue_Init
@@ -54,7 +54,7 @@ L_021ffee0:
     b L_021fff70
 L_021fff18:
     add r0, r4, #0x194
-    bl func_02095940
+    bl SpriteMotionController_Hide
     ldr ip, [r4, #0xe4]
     mov r0, r4
     ldrh r3, [ip, #0x24]

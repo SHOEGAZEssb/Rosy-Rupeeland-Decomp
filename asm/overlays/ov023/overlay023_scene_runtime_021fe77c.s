@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
 .extern InventoryScroll_UpdatePresentation
-.extern func_020958d8
+.extern SpriteMotionController_Update
 .extern func_ov045_0220c18c
 
 
@@ -11,13 +11,13 @@ func_ov023_021fe77c:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0x17c
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r5, #0xd0
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r5, #0x228
-    bl func_020958d8
+    bl SpriteMotionController_Update
     add r0, r5, #0x2d4
-    bl func_020958d8
+    bl SpriteMotionController_Update
     ldr r0, [r5, #0x4bc]
     cmp r0, #0x0
     beq L_021fe7b4

@@ -12,7 +12,7 @@
     .extern func_ov036_02200b38
     .extern func_ov036_021fd28c
     .extern func_02095710
-    .extern func_02091bac
+    .extern TitleInterpolatedValue_Configure
     .extern Sound_Play
     .extern Presentation_SetPosition
     .extern PresentationScalar_TransitionTo
@@ -146,7 +146,7 @@ L_02200d24:
     add r0, r8, #0xa4
     mov r2, r1
     mov r3, #0x1f
-    bl func_02091bac
+    bl TitleInterpolatedValue_Configure
     ldr r0, L_02200f9c
     ldr r1, L_02200fa8
     ldr r0, [r0, #0x0]

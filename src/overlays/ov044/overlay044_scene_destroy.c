@@ -18,8 +18,8 @@ extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
 extern "C" void GraphicsSpriteRenderer_QueuePaletteUploads(void *resource);
 extern "C" void func_ov044_0220be34(void *component);
 extern "C" void AnimationResourceState_Destroy(void *component);
-extern "C" void func_020926f8(void *component);
-extern "C" void func_020927b8(void *component);
+extern "C" void TitleScreenResourceCollection_Destroy(void *component);
+extern "C" void TitleCharacterResourceCollection_Destroy(void *component);
 
 typedef void (*DestroyMethod)(void *object);
 
@@ -60,8 +60,8 @@ extern "C" void *func_ov044_0220bfd4(void *object)
     func_ov044_0220be34((u8 *)object + 0x17c);
     func_ov044_0220be34((u8 *)object + 0xd0);
     AnimationResourceState_Destroy((u8 *)object + 0xc0);
-    func_020926f8((u8 *)object + 0x78);
-    func_020927b8((u8 *)object + 0x54);
+    TitleScreenResourceCollection_Destroy((u8 *)object + 0x78);
+    TitleCharacterResourceCollection_Destroy((u8 *)object + 0x54);
     return object;
 }
 

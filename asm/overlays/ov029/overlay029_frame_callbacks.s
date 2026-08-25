@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov029/overlay029_frame_callbacks.c. */
-.extern func_020929f4
+.extern TitleScrollValue_Advance
 .extern GraphicsAffineScanlineWave_Apply
 
 
@@ -29,7 +29,7 @@ func_ov029_021fd3d4:
     add r0, r0, #0xec
     and r1, r1, r2, lsl #0x10
     str r1, [ip, #0x14]
-    bl func_020929f4
+    bl TitleScrollValue_Advance
 L_021fd430:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

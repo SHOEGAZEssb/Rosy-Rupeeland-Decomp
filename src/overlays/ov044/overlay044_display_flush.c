@@ -8,7 +8,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_020958d8(void *presentation);
+extern "C" void SpriteMotionController_Update(void *presentation);
 extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" void InventoryScroll_UpdatePresentation(void *viewport);
 extern "C" void func_ov001_021fbaa8(void *preview);
@@ -21,8 +21,8 @@ extern "C" void func_ov001_021fbaa8(void *preview);
  */
 extern "C" void func_ov044_0220c880(void *object)
 {
-    func_020958d8((u8 *)object + 0xd0);
-    func_020958d8((u8 *)object + 0x17c);
+    SpriteMotionController_Update((u8 *)object + 0xd0);
+    SpriteMotionController_Update((u8 *)object + 0x17c);
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0xbc));
     void *panel = FIELD(void *, object, 0x228);
     if (panel) {

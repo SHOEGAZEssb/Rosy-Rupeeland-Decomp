@@ -8,7 +8,7 @@
 .extern RuntimePresentationManager_BroadcastSlot1C
 .extern GraphicsArchive_ReleasePaletteResource
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
-.extern func_020927b8
+.extern TitleCharacterResourceCollection_Destroy
 .extern func_ov002_021fb9c4
 .extern func_ov045_0220b8cc
 .extern func_ov045_0220d2d8
@@ -90,7 +90,7 @@ L_021fd224:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_BroadcastSlot1C
     add r0, r4, #0x78
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd288: .word data_ov029_021fecfc
@@ -174,7 +174,7 @@ L_021fd350:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_BroadcastSlot1C
     add r0, r4, #0x78
-    bl func_020927b8
+    bl TitleCharacterResourceCollection_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

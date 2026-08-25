@@ -37,7 +37,7 @@ extern void *data_ov000_021fcd30;
 extern void InventoryCell_Destroy(void *cell);
 extern void AnimationResourceState_Destroy(void *resource);
 extern void GraphicsSpriteGroup_Destroy(void *group);
-extern void func_020927b8(void *state);
+extern void TitleCharacterResourceCollection_Destroy(void *state);
 extern void CxxArray_DestroyAndFree(void *array, s32 elementSize, s32 alignment,
                            void (*destructor)(void *));
 extern void func_ov000_021fbcc0(void *element);
@@ -66,7 +66,7 @@ Overlay000GridState *func_ov000_021fc0d8(Overlay000GridState *state)
     }
     GraphicsSpriteGroup_Destroy(state->spriteGroup_00c);
     GraphicsSpriteGroup_Destroy(state->spriteGroup_008);
-    func_020927b8(state->rendererState_228);
+    TitleCharacterResourceCollection_Destroy(state->rendererState_228);
     func_ov000_021fbcc0(state->element_17c);
     func_ov000_021fbcc0(state->element_0d0);
     func_ov000_021fbcc0(state->element_024);

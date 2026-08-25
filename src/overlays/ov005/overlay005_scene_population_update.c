@@ -19,7 +19,7 @@ extern void *gHeapContext;
 extern const u8 data_ov005_021fcb04[];
 extern const s32 data_ov005_021fc8f0[];
 extern s32 func_02091c7c(void *animation, s32 channel);
-extern void func_02091bac(void *animation, s32 mode, s32 value, s32 target,
+extern void TitleInterpolatedValue_Configure(void *animation, s32 mode, s32 value, s32 target,
                           s32 duration);
 extern void func_020afca0(volatile void *registers, s32 value);
 extern void func_02091b98(void *animation, s32 value);
@@ -63,9 +63,9 @@ s32 func_ov005_021fbbe8(Overlay005ScenePopulation *state)
 
     if (func_02091c7c(animation, 2)) {
         if (FIELD(s32, state, 0x11c) == 0) {
-            func_02091bac(animation, 2, 0, 0xa000, 30);
+            TitleInterpolatedValue_Configure(animation, 2, 0, 0xa000, 30);
         } else {
-            func_02091bac(animation, 2, 0xa000, 0, 30);
+            TitleInterpolatedValue_Configure(animation, 2, 0xa000, 0, 30);
         }
     }
 
