@@ -1,0 +1,8 @@
+{
+  "GamePhaseActorScriptVm_DispatchActorModeCommand": "GamePhaseActorScriptVm_DispatchActorModeCommand",
+  "GamePhaseActorScriptVm_IsActorFlag1Set": "GamePhaseActorScriptVm_IsActorFlag1Set",
+  "GamePhaseActorScriptVm_DispatchCollectionModeCommand": "GamePhaseActorScriptVm_DispatchCollectionModeCommand",
+  "GamePhaseActorScriptVm_GetAttachmentByte38": "GamePhaseActorScriptVm_GetAttachmentByte38",
+  "GamePhaseActorScriptVm_WaitForAttachmentFlag1Set": "GamePhaseActorScriptVm_WaitForAttachmentFlag1Set",
+  "GamePhaseActorScriptVm_SetAttachmentHalfword36": "GamePhaseActorScriptVm_SetAttachmentHalfword36"
+}

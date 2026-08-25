@@ -28,11 +28,11 @@ s32 GamePhaseActorScriptVm_DispatchActorModeCommand(GamePhaseActorScriptVm *self
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     u32 mode = GamePhaseScriptVm_Pop(&self->base);
-    ActorModeMethod method;
+    ActorModeMethod actorModeMethod;
     if (mode < 1 || mode > 3)
         return 0;
-    method = *(ActorModeMethod *)((u8 *)*(void **)self->actor + 0xac);
-    method(self->actor, mode, value);
+    actorModeMethod = *(ActorModeMethod *)((u8 *)*(void **)self->actor + 0xac);
+    actorModeMethod(self->actor, mode, value);
     if (mode == 3) {
         ActorRuntimeCollection_SelectObject(gActorRuntimeCollection, self->actor, value);
         return 1;
@@ -56,19 +56,20 @@ s32 GamePhaseActorScriptVm_IsActorFlag1Set(GamePhaseActorScriptVm *self)
  */
 s32 GamePhaseActorScriptVm_DispatchCollectionModeCommand(GamePhaseActorScriptVm *self)
 {
-    u32 fourth = GamePhaseScriptVm_Pop(&self->base);
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 fifth = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    u32 firstArgument = GamePhaseScriptVm_Pop(&self->base);
+    u32 secondArgument = GamePhaseScriptVm_Pop(&self->base);
+    u32 fourthArgument = GamePhaseScriptVm_Pop(&self->base);
+    u32 thirdArgument = GamePhaseScriptVm_Pop(&self->base);
     u8 *collection = (u8 *)Actor_GetOwningCollection(self->actor);
     u32 mode = *(u32 *)(collection + 0x2e84);
 
     if (mode == 1) {
         u8 *runtime = (u8 *)gGamePhaseRuntime;
-        void *object = *(void **)(runtime + 0x2ed4);
-        RuntimeDispatchMethod method =
-            *(RuntimeDispatchMethod *)((u8 *)*(void **)object + 0x30);
-        method(object, fourth, (u16)second, first, fifth);
+        void *runtimeObject = *(void **)(runtime + 0x2ed4);
+        RuntimeDispatchMethod dispatchMethod =
+            *(RuntimeDispatchMethod *)((u8 *)*(void **)runtimeObject + 0x30);
+        dispatchMethod(runtimeObject, firstArgument, (u16)secondArgument,
+                       thirdArgument, fourthArgument);
     } else if (mode == 2) {
         OS_Halt();
     }
@@ -78,8 +79,8 @@ s32 GamePhaseActorScriptVm_DispatchCollectionModeCommand(GamePhaseActorScriptVm 
 /* Store the byte at actor->0x54->0x38 as the VM result and return zero. */
 s32 GamePhaseActorScriptVm_GetAttachmentByte38(GamePhaseActorScriptVm *self)
 {
-    u8 *object = *(u8 **)((u8 *)self->actor + 0x54);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, object[0x38]);
+    u8 *attachment = *(u8 **)((u8 *)self->actor + 0x54);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, attachment[0x38]);
     return 0;
 }
 
@@ -102,7 +103,7 @@ s32 GamePhaseActorScriptVm_WaitForAttachmentFlag1Set(GamePhaseActorScriptVm *sel
 s32 GamePhaseActorScriptVm_SetAttachmentHalfword36(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    u8 *object = *(u8 **)((u8 *)self->actor + 0x54);
-    *(u16 *)(object + 0x36) = (u16)value;
+    u8 *attachment = *(u8 **)((u8 *)self->actor + 0x54);
+    *(u16 *)(attachment + 0x36) = (u16)value;
     return 0;
 }
