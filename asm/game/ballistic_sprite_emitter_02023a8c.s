@@ -10,7 +10,7 @@
 .extern AnimationResource_Assign
 .extern AnimationResource_InitEmpty
 .extern FieldEffect_Init
-.extern func_02023890
+.extern BallisticSpriteParticle_Init
 .extern func_02023bcc
 .extern func_02023c4c
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -83,7 +83,7 @@ func_02023a8c: ; 0x02023a8c
     ldr r1, [r10, #0x38]
     add r2, r10, #0x18
     add r3, r10, #0x8
-    bl func_02023890
+    bl BallisticSpriteParticle_Init
     mov r1, r0
 .L_02023b8c:
     add r0, r10, #0x3c

@@ -13,9 +13,9 @@
 .extern func_020bf1f8
 .extern genrand_int32
 
-.global func_02023890
-    .type func_02023890, @function
-func_02023890: ; 0x02023890
+.global BallisticSpriteParticle_Init
+    .type BallisticSpriteParticle_Init, @function
+BallisticSpriteParticle_Init: ; 0x02023890
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x24
     mov r6, r1
@@ -104,4 +104,4 @@ func_02023890: ; 0x02023890
     str r1, [r4, #0x30]
     add sp, sp, #0x24
     ldmia sp!, {r3, r4, r5, r6, pc}
-    .size func_02023890, . - func_02023890
+    .size BallisticSpriteParticle_Init, . - BallisticSpriteParticle_Init

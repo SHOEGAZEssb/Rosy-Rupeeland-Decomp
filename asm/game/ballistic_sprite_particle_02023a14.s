@@ -2,9 +2,9 @@
 .text
 .extern VecFx32Object_Add
 
-.global func_02023a14
-    .type func_02023a14, @function
-func_02023a14: ; 0x02023a14
+.global BallisticSpriteParticle_Update
+    .type BallisticSpriteParticle_Update, @function
+BallisticSpriteParticle_Update: ; 0x02023a14
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r1, [r5, #0x28]
@@ -36,4 +36,4 @@ func_02023a14: ; 0x02023a14
 .L_02023a84:
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02023a14, . - func_02023a14
+    .size BallisticSpriteParticle_Update, . - BallisticSpriteParticle_Update

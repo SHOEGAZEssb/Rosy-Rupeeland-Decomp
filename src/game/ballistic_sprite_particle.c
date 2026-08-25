@@ -63,7 +63,7 @@ extern u64 func_020bf1f8(u32 value, u32 divisor);
  * and the opposite rotation sign.  The remainder returned in r1 by
  * func_020bf1f8 chooses randomizedLifetime30 in [15,29].  Return self.
  */
-BallisticSpriteParticle *func_02023890(
+BallisticSpriteParticle *BallisticSpriteParticle_Init(
     BallisticSpriteParticle *self, void *spriteOwner,
     const ParticleSpriteConfig *config, const ParticleVector *position,
     s32 remaining, s32 direction)
@@ -113,7 +113,7 @@ BallisticSpriteParticle *func_02023890(
  * and position values, and return self.  The particle storage remains owned by
  * its containing manager.
  */
-BallisticSpriteParticle *func_020239e8(BallisticSpriteParticle *self)
+BallisticSpriteParticle *BallisticSpriteParticle_Destroy(BallisticSpriteParticle *self)
 {
     GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite20, self->sprite20);
     VecFx32Object_Destroy(&self->velocity10);
@@ -128,7 +128,7 @@ BallisticSpriteParticle *func_020239e8(BallisticSpriteParticle *self)
  * Decrement remaining24 and return one once it becomes negative.  An inactive
  * particle (nonzero field 0x28) is unchanged and returns zero.
  */
-s32 func_02023a14(BallisticSpriteParticle *self)
+s32 BallisticSpriteParticle_Update(BallisticSpriteParticle *self)
 {
     if (self->inactive28 != 0) {
         return 0;

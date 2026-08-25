@@ -67,12 +67,12 @@ extern void AnimationResource_Init(SpriteResourceDescriptor *descriptor, s32 res
 extern void AnimationResource_Destroy(SpriteResourceDescriptor *descriptor);
 extern void AnimationResource_Assign(SpriteResourceDescriptor *destination,
                           const SpriteResourceDescriptor *source);
-extern void *func_02023890(void *particle, void *spriteOwner,
+extern void *BallisticSpriteParticle_Init(void *particle, void *spriteOwner,
                            const SpriteResourceDescriptor *resources,
                            const EmitterVector *position, s32 remaining,
                            s32 direction);
-extern void *func_020239e8(void *particle);
-extern s32 func_02023a14(void *particle);
+extern void *BallisticSpriteParticle_Destroy(void *particle);
+extern s32 BallisticSpriteParticle_Update(void *particle);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *spriteOwner);
 extern u8 *GraphicsSpriteGroup_CreateState(void *owner, s32 resource, s32 palette,
@@ -121,7 +121,7 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
     for (index = 0; index < 6; index++) {
         void *particle = Heap_Alloc(0x34, gBallisticSpriteParticleAllocationTag, 4, &gHeapContext);
         if (particle != 0) {
-            particle = func_02023890(particle, self->spriteOwner38,
+            particle = BallisticSpriteParticle_Init(particle, self->spriteOwner38,
                                      &self->resources18[0], &self->position08,
                                      remaining, direction);
         }
@@ -229,7 +229,7 @@ s32 func_02023d90(BallisticSpriteEmitter *self)
     while (node != 0) {
         void *particle = node->particle08;
         ParticleListNode *next = node->next00;
-        if (func_02023a14(particle)) {
+        if (BallisticSpriteParticle_Update(particle)) {
             if (node == self->particles3c.head04) {
                 self->particles3c.head04 = node->next00;
             } else {
@@ -246,7 +246,7 @@ s32 func_02023d90(BallisticSpriteEmitter *self)
                 func_02023c0c(&self->particles3c);
             }
             if (particle != 0) {
-                func_020239e8(particle);
+                BallisticSpriteParticle_Destroy(particle);
                 Heap_Free(particle);
             }
             Sound_Play(gSoundContext, 0, 15);

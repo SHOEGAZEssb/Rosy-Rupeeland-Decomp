@@ -8958,19 +8958,19 @@ build build/reports/ballistic_sprite_particle_02023890.json: objdiff build/decom
   base_object = build/decomp/asm/game/ballistic_sprite_particle_02023890.o
 build build/reports/ballistic_sprite_particle_02023890.txt: match_report build/reports/ballistic_sprite_particle_02023890.json | tools/report_objdiff.py
   report_json = build/reports/ballistic_sprite_particle_02023890.json
-  report_args = --section .text --function func_02023890 --require-exact
+  report_args = --section .text --function BallisticSpriteParticle_Init --require-exact
 build build/reports/ballistic_sprite_particle_020239e8.json: objdiff build/decomp/delinks/asm/game/ballistic_sprite_particle_020239e8.o | build/decomp/asm/game/ballistic_sprite_particle_020239e8.o
   target_object = build/decomp/delinks/asm/game/ballistic_sprite_particle_020239e8.o
   base_object = build/decomp/asm/game/ballistic_sprite_particle_020239e8.o
 build build/reports/ballistic_sprite_particle_020239e8.txt: match_report build/reports/ballistic_sprite_particle_020239e8.json | tools/report_objdiff.py
   report_json = build/reports/ballistic_sprite_particle_020239e8.json
-  report_args = --section .text --function func_020239e8 --require-exact
+  report_args = --section .text --function BallisticSpriteParticle_Destroy --require-exact
 build build/reports/ballistic_sprite_particle_02023a14.json: objdiff build/decomp/delinks/asm/game/ballistic_sprite_particle_02023a14.o | build/decomp/asm/game/ballistic_sprite_particle_02023a14.o
   target_object = build/decomp/delinks/asm/game/ballistic_sprite_particle_02023a14.o
   base_object = build/decomp/asm/game/ballistic_sprite_particle_02023a14.o
 build build/reports/ballistic_sprite_particle_02023a14.txt: match_report build/reports/ballistic_sprite_particle_02023a14.json | tools/report_objdiff.py
   report_json = build/reports/ballistic_sprite_particle_02023a14.json
-  report_args = --section .text --function func_02023a14 --require-exact
+  report_args = --section .text --function BallisticSpriteParticle_Update --require-exact
 build build/reports/ballistic_sprite_particle.txt: phony build/reports/ballistic_sprite_particle_02023890.txt build/reports/ballistic_sprite_particle_020239e8.txt build/reports/ballistic_sprite_particle_02023a14.txt
 build build/reports/ballistic_sprite_emitter_02023a8c.json: objdiff build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023a8c.o | build/decomp/asm/game/ballistic_sprite_emitter_02023a8c.o
   target_object = build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023a8c.o

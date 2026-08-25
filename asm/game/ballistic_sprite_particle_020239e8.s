@@ -3,9 +3,9 @@
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteGroup_ReleaseState
 
-.global func_020239e8
-    .type func_020239e8, @function
-func_020239e8: ; 0x020239e8
+.global BallisticSpriteParticle_Destroy
+    .type BallisticSpriteParticle_Destroy, @function
+BallisticSpriteParticle_Destroy: ; 0x020239e8
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x20]
@@ -17,4 +17,4 @@ func_020239e8: ; 0x020239e8
     bl VecFx32Object_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_020239e8, . - func_020239e8
+    .size BallisticSpriteParticle_Destroy, . - BallisticSpriteParticle_Destroy

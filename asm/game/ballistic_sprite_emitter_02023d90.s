@@ -2,8 +2,8 @@
 .text
 .extern Heap_Free
 .extern Sound_Play
-.extern func_020239e8
-.extern func_02023a14
+.extern BallisticSpriteParticle_Destroy
+.extern BallisticSpriteParticle_Update
 .extern func_02023c0c
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_AdvanceAnimations
@@ -26,7 +26,7 @@ func_02023d90: ; 0x02023d90
 .L_02023db4:
     ldr r8, [r9, #0x8]
     mov r0, r8
-    bl func_02023a14
+    bl BallisticSpriteParticle_Update
     cmp r0, #0x0
     beq .L_02023e50
     ldr r0, [r10, #0x40]
@@ -57,7 +57,7 @@ func_02023d90: ; 0x02023d90
     cmp r8, #0x0
     beq .L_02023e3c
     mov r0, r8
-    bl func_020239e8
+    bl BallisticSpriteParticle_Destroy
     mov r0, r8
     bl Heap_Free
 .L_02023e3c:

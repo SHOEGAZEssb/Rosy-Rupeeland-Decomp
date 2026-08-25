@@ -1,0 +1,5 @@
+{
+  "func_02023890": "BallisticSpriteParticle_Init",
+  "func_020239e8": "BallisticSpriteParticle_Destroy",
+  "func_02023a14": "BallisticSpriteParticle_Update"
+}
