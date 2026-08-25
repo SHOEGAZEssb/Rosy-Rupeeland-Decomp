@@ -12,7 +12,7 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov011_021fd374(s32 priority, s32 characterBase, s32 screenBase,
+void Overlay011_SetSubBg1Enabled(s32 priority, s32 characterBase, s32 screenBase,
                          s32 size, s32 overflow)
 {
     volatile u16 *bg1cnt = (volatile u16 *)0x0400100a;

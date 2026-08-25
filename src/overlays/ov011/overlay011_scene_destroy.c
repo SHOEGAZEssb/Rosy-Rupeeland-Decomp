@@ -13,4 +13,4 @@ extern const void *data_ov011_021fe578[];extern const void *data_ov011_021fe5ac[
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov011_021fd08c(void *s){s32 i;F(const void *,s,0)=data_ov011_021fe578;F(const void *,s,0x24)=data_ov011_021fe5ac;func_ov011_021fce00(0);GraphicsBankStateSnapshot_Restore((u8 *)s+0x98);for(i=0;i<5;i++)Heap_FreeCore(F(void *,s,0x84+i*4));DebugText_BeginFrame();GraphicsBankStateSnapshot_Destroy((u8 *)s+0x98);GraphicsResourceSet_Destroy((GraphicsResourceSet *)((u8 *)s+0x78));Scene_Destroy(s);return s;}
+void *Overlay011_Scene_Destroy(void *s){s32 i;F(const void *,s,0)=data_ov011_021fe578;F(const void *,s,0x24)=data_ov011_021fe5ac;func_ov011_021fce00(0);GraphicsBankStateSnapshot_Restore((u8 *)s+0x98);for(i=0;i<5;i++)Heap_FreeCore(F(void *,s,0x84+i*4));DebugText_BeginFrame();GraphicsBankStateSnapshot_Destroy((u8 *)s+0x98);GraphicsResourceSet_Destroy((GraphicsResourceSet *)((u8 *)s+0x78));Scene_Destroy(s);return s;}

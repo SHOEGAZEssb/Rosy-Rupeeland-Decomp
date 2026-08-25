@@ -4,4 +4,4 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov010_021fe88c(u32 a,u32 b,u32 c,u32 d,u32 e,u32 f){*(volatile u32 *)0x040004a4=a|(b<<4)|(c<<6)|(d<<24)|(e<<16)|f;}
+void Overlay010_WritePolygonAttributes(u32 a,u32 b,u32 c,u32 d,u32 e,u32 f){*(volatile u32 *)0x040004a4=a|(b<<4)|(c<<6)|(d<<24)|(e<<16)|f;}

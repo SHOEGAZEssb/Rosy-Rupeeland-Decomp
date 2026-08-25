@@ -30,23 +30,23 @@
     .extern Graphics3DResourceBinding_GetTextureHeightClass
     .extern func_020b0300
     .extern func_020b0558
-    .extern func_ov012_021fcef4
+    .extern Overlay012_Transform_Apply
     .extern func_ov012_021fcfd4
-    .extern func_ov012_021fd044
-    .extern func_ov012_021fd148
-    .extern func_ov012_021fd5ac
+    .extern Overlay012_SetDisp3dBit4Enabled
+    .extern Overlay012_InitSceneFields
+    .extern Overlay012_UpdateViewerHelpers
     .extern func_ov012_021fd63c
     .extern func_ov012_021fd668
     .extern func_ov012_021fd6ac
-    .extern func_ov012_021fe348
+    .extern Overlay012_EmitGeometryCommands
     .extern func_ov012_021fe374
     .extern func_ov012_021fe3b4
     .extern gDebugFont
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov012/overlay012_debug_viewer_update.c. */
-    .global func_ov012_021fd73c
-func_ov012_021fd73c: ; 0x021fd73c
+    .global Overlay012_UpdateDebugViewer
+Overlay012_UpdateDebugViewer: ; 0x021fd73c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x70
     mov r9, r0
@@ -54,7 +54,7 @@ func_ov012_021fd73c: ; 0x021fd73c
     ldrh r1, [r1, #0x2]
     tst r1, #0x8
     beq L_021fd75c
-    bl func_ov012_021fd5ac
+    bl Overlay012_UpdateViewerHelpers
 L_021fd75c:
     ldr r1, [r9, #0x50]
     ldrh r0, [r1, #0x0]
@@ -263,7 +263,7 @@ L_021fda30:
     moveq r0, #0x1
     movne r0, #0x0
     str r0, [r9, #0x1b8]
-    bl func_ov012_021fd044
+    bl Overlay012_SetDisp3dBit4Enabled
     b L_021fdaf4
 L_021fda5c:
     mov r0, #0x1
@@ -683,7 +683,7 @@ L_021fe040:
     mov r0, #0x1
     mov r3, #0x8
     str r1, [sp, #0x4]
-    bl func_ov012_021fe348
+    bl Overlay012_EmitGeometryCommands
     mov r0, #0x0
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]
@@ -694,7 +694,7 @@ L_021fe040:
     str r0, [sp, #0xc]
     bl func_ov012_021fe374
     add r0, r9, #0x158
-    bl func_ov012_021fcef4
+    bl Overlay012_Transform_Apply
     ldr r1, [r9, #0x18c]
     add r0, r9, #0x158
     bl func_ov012_021fcfd4
@@ -735,7 +735,7 @@ L_021fe040:
     str r0, [sp, #0x4]
     mov r2, #0x3
     mov r3, #0x3e
-    bl func_ov012_021fe348
+    bl Overlay012_EmitGeometryCommands
     ldr r6, [r9, #0x154]
     mov r0, r6
     bl Graphics3DResourceBinding_GetTextureFormat
@@ -831,7 +831,7 @@ L_021fe284:
     str r2, [sp, #0x30]
     add r0, r9, #0x24
     ldmia r1, {r1, r2}
-    bl func_ov012_021fd148
+    bl Overlay012_InitSceneFields
 L_021fe2d0:
     mov r0, #0x0
     add sp, sp, #0x70
@@ -863,4 +863,4 @@ L_021fe338: .word 0x40004ac
 L_021fe33c: .word 0x4000494
 L_021fe340: .word 0x4000540
 L_021fe344: .word data_ov012_021fe4d0
-    .size func_ov012_021fd73c, . - func_ov012_021fd73c
+    .size Overlay012_UpdateDebugViewer, . - Overlay012_UpdateDebugViewer

@@ -32,12 +32,12 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *manager);
 extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
                           void *heapContext);
 extern void func_020b4554(void *address, s32 size);
-extern void func_ov009_021fd294(void *state);
-extern void func_ov009_021fd360(void *state);
+extern void Overlay009_ResetSceneState(void *state);
+extern void Overlay009_CreateActiveObject(void *state);
 extern void func_ov009_021fce00(u32 select);
 extern void func_ov009_021fce1c(u32, u32, u32, u32);
 extern void func_ov009_021fce48(u32, u32, u32, u32);
-extern void func_ov009_021fce74(void *, s32, s32, s32);
+extern void Overlay009_InitSceneFields(void *, s32, s32, s32);
 extern void GX_DispOn(void);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As);
 extern void GX_SetBankForBG(s32 bank);
@@ -76,7 +76,7 @@ extern void TitlePalette_SetSubBackdrop(s32 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov009_021fce9c(void *state)
+void *Overlay009_Scene_Init(void *state)
 {
     GraphicsResourceSet resources;
     FSFile file;
@@ -125,8 +125,8 @@ void *func_ov009_021fce9c(void *state)
     FIELD(s32, state, 0xe0) = 0;
     FIELD(s32, state, 0xec) = 0;
     FIELD(s32, state, 0x11c) = 0;
-    func_ov009_021fd294(state);
-    func_ov009_021fd360(state);
+    Overlay009_ResetSceneState(state);
+    Overlay009_CreateActiveObject(state);
 
     func_ov009_021fce00(0);
     GX_DispOn();
@@ -154,7 +154,7 @@ void *func_ov009_021fce9c(void *state)
     }
     TitlePalette_SetSubBackdrop(0);
     Scene_SetFlags03(state);
-    func_ov009_021fce74((u8 *)state + 0x24,
+    Overlay009_InitSceneFields((u8 *)state + 0x24,
                          (s32)data_ov009_021feb80[4],
                          (s32)data_ov009_021feb80[5] - 0x48, 0);
     GraphicsResourceSet_Destroy(&resources);

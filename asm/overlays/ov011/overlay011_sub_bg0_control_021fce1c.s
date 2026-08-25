@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov011/overlay011_sub_bg0_control.c. */
-    .global func_ov011_021fce1c
-func_ov011_021fce1c: ; 0x021fce1c
+    .global Overlay011_SetSubBg0Enabled
+Overlay011_SetSubBg0Enabled: ; 0x021fce1c
     stmdb sp!, {r4, lr}
     ldr lr, L_021fce4c
     ldr r4, [sp, #0x8]
@@ -16,4 +16,4 @@ func_ov011_021fce1c: ; 0x021fce1c
     ldmia sp!, {r4, pc}
 L_021fce4c: .word 0x4001008
 
-    .size func_ov011_021fce1c, . - func_ov011_021fce1c
+    .size Overlay011_SetSubBg0Enabled, . - Overlay011_SetSubBg0Enabled

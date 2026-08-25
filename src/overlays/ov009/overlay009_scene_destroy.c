@@ -34,7 +34,7 @@ extern void Scene_Destroy(void *state);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov009_021fd198(void *state)
+void *Overlay009_Scene_Destroy(void *state)
 {
     s32 index;
 

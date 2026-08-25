@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov012_021fe348(u32 field0, u32 field4, u32 field6, u32 field24,
+void Overlay012_EmitGeometryCommands(u32 field0, u32 field4, u32 field6, u32 field24,
                          u32 field16, u32 passthrough)
 {
     volatile u32 *polygonAttr = (volatile u32 *)0x040004a4;

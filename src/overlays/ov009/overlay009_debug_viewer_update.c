@@ -15,10 +15,10 @@ extern void *data_020f4e14;
 extern const void *data_ov009_021feb80[];
 extern s32 func_ov009_021fd414(void *, s32, s32, s32, s32);
 extern s32 func_ov009_021fd458(void *, s32, s32, s32, s32);
-extern void func_ov009_021fd294(void *state);
+extern void Overlay009_ResetSceneState(void *state);
 extern void func_ov009_021fd338(void *state);
-extern void func_ov009_021fd360(void *state);
-extern void func_ov009_021fce74(void *, s32, s32, s32);
+extern void Overlay009_CreateActiveObject(void *state);
+extern void Overlay009_InitSceneFields(void *, s32, s32, s32);
 extern void GraphicsSpriteState_ResetFrame(void *object);
 extern void GraphicsSpriteState_SetAnimationIndex(void *object, s32 value);
 extern void GraphicsSpriteState_SetFrameIndex(void *object, s32 value);
@@ -45,12 +45,12 @@ static void overlay009_apply_scale(void *state)
 static void overlay009_recreate_object(void *state)
 {
     func_ov009_021fd338(state);
-    func_ov009_021fd360(state);
+    Overlay009_CreateActiveObject(state);
 }
 
 /*
  * Read new/repeated/held controller halfwords through state +0x50. Button 8
- * restores func_ov009_021fd294 defaults. Repeated 0x200 cycles +0xEC through
+ * restores Overlay009_ResetSceneState defaults. Repeated 0x200 cycles +0xEC through
  * three main DISPCNT modes (0x1800, 0x1400, 0x1000). While repeated 0x100 is
  * held, directional bits adjust +0xF0 in [0,255] and +0xF4 in [0,191].
  * Otherwise, primary page +0xE0 wraps across 15 rows and edits, respectively:
@@ -80,7 +80,7 @@ static void overlay009_recreate_object(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov009_021fd4e8(void *state)
+s32 Overlay009_UpdateDebugViewer(void *state)
 {
     u8 *input = FIELD(u8 *, state, 0x50);
     u16 repeated = FIELD(u16, input, 0x00);
@@ -90,7 +90,7 @@ s32 func_ov009_021fd4e8(void *state)
     void *object;
 
     if (pressed & 8) {
-        func_ov009_021fd294(state);
+        Overlay009_ResetSceneState(state);
     }
     if (held & 0x200) {
         s32 mode = FIELD(s32, state, 0xec) + 1;
@@ -277,7 +277,7 @@ s32 func_ov009_021fd4e8(void *state)
     }
 
     if (pressed & 2) {
-        func_ov009_021fce74((u8 *)state + 0x24,
+        Overlay009_InitSceneFields((u8 *)state + 0x24,
                              (s32)data_ov009_021feb80[8],
                              (s32)data_ov009_021feb80[9] - 0x48, 0);
     }

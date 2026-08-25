@@ -37,14 +37,14 @@ extern void *Heap_Alloc(s32, const char *, s32, void *);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void);
 extern void *Graphics3DResourceBinding_Init(void *, void *, void *, s32, s32);
-extern void func_ov010_021fd39c(void *);
-extern void func_ov010_021fd45c(void *);
+extern void Overlay010_InitViewerDefaults(void *);
+extern void Overlay010_CreateActiveResource(void *);
 extern void func_ov010_021fce00(u32);
 extern void func_ov010_021fce1c(u32);
-extern void func_ov010_021fce40(s32);
+extern void Overlay010_SetDisp3dEnabled(s32);
 extern void func_ov010_021fce7c(void *, s32, s32, s32);
 extern void func_ov010_021fce84(void *, s32, s32, s32);
-extern void func_ov010_021fce94(void *, s32, s32, s32);
+extern void Overlay010_InitSceneFields(void *, s32, s32, s32);
 extern void GX_DispOn(void);
 extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
@@ -78,7 +78,7 @@ extern void TitlePalette_SetSubBackdrop(s32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov010_021fcebc(void *state)
+void *Overlay010_Scene_Init(void *state)
 {
     FSFile file;
     s32 i;
@@ -126,8 +126,8 @@ void *func_ov010_021fcebc(void *state)
     FIELD(s32, state, 0x14c) = 0;
     FIELD(s32, state, 0x150) = 0;
     FIELD(s32, state, 0x12c) = 0;
-    func_ov010_021fd39c(state);
-    func_ov010_021fd45c(state);
+    Overlay010_InitViewerDefaults(state);
+    Overlay010_CreateActiveResource(state);
     FIELD(s32, state, 0x6c) = 0x11;
     func_ov010_021fce00(0);
     GX_DispOn();
@@ -137,7 +137,7 @@ void *func_ov010_021fcebc(void *state)
     *(volatile u32 *)0x04001000 |= 0x10000;
     func_ov010_021fce1c(0);
     *(volatile u16 *)0x04000060 &= 0xcfef;
-    func_ov010_021fce40(1);
+    Overlay010_SetDisp3dEnabled(1);
     *(volatile u32 *)0x04000540 = 2;
     {
         s32 v = FIELD(s32, state, 0x154);
@@ -149,7 +149,7 @@ void *func_ov010_021fcebc(void *state)
     func_ov010_021fce84((u8 *)state + 0x98, 0, 0, 0);
     TitlePalette_SetSubBackdrop(0);
     Scene_SetFlags03(state);
-    func_ov010_021fce94((u8 *)state + 0x24,
+    Overlay010_InitSceneFields((u8 *)state + 0x24,
                          (s32)data_ov010_021fea38[8],
                          (s32)data_ov010_021fea38[9] - 0x48, 0);
     return state;

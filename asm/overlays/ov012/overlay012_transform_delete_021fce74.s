@@ -4,8 +4,8 @@
     .extern GraphicsArchive_ReleaseOwlvResource
     .extern Heap_Free
 /* Exact register-allocation fallback; see src/overlays/ov012/overlay012_transform_delete.c. */
-    .global func_ov012_021fce74
-func_ov012_021fce74:
+    .global Overlay012_Transform_Delete
+Overlay012_Transform_Delete:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fceac
     mov r4, r0
@@ -25,4 +25,4 @@ L_021fceac:
     .word data_ov012_021fe5f4
 L_021fceb0:
     .word data_020f4e18
-    .size func_ov012_021fce74, . - func_ov012_021fce74
+    .size Overlay012_Transform_Delete, . - Overlay012_Transform_Delete

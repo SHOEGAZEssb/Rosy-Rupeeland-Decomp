@@ -1,12 +1,12 @@
     .text
-    .extern func_ov012_021fd044
-    .extern func_ov012_021fceb4
-    .extern func_ov012_021fd148
+    .extern Overlay012_SetDisp3dBit4Enabled
+    .extern Overlay012_Transform_SetResource
+    .extern Overlay012_InitSceneFields
     .extern func_020b0300
     .extern data_ov012_021fe4d0
 /* Exact grouped fallback; see src/overlays/ov012/overlay012_viewer_helpers.c. */
-    .global func_ov012_021fd5ac
-func_ov012_021fd5ac:
+    .global Overlay012_UpdateViewerHelpers
+Overlay012_UpdateViewerHelpers:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #4
     mov r4, r0
@@ -28,7 +28,7 @@ func_ov012_021fd5ac:
     str r0, [r4, #0x1c0]
     str r1, [r4, #0x1bc]
     ldr r0, [r4, #0x1b8]
-    bl func_ov012_021fd044
+    bl Overlay012_SetDisp3dBit4Enabled
     ldr r1, [r4, #0x194]
     mov ip, #0
     orr r0, r1, r1, lsl #5
@@ -44,7 +44,7 @@ func_ov012_021fd5ac:
     ldmia sp!, {r3, r4, pc}
 L_021fd638:
     .word 0x00007fff
-    .size func_ov012_021fd5ac, . - func_ov012_021fd5ac
+    .size Overlay012_UpdateViewerHelpers, . - Overlay012_UpdateViewerHelpers
 
     .global func_ov012_021fd63c
 func_ov012_021fd63c:
@@ -59,7 +59,7 @@ func_ov012_021fd63c:
     ldr r1, [r2, r1]
     bx ip
 L_021fd664:
-    .word func_ov012_021fceb4
+    .word Overlay012_Transform_SetResource
     .size func_ov012_021fd63c, . - func_ov012_021fd63c
 
     .global func_ov012_021fd668
@@ -124,7 +124,7 @@ func_ov012_021fd6f0:
     str r1, [sp, #4]
     add r0, r0, #0x24
     ldmia r2, {r1, r2}
-    bl func_ov012_021fd148
+    bl Overlay012_InitSceneFields
 L_021fd72c:
     mov r0, #0
     add sp, sp, #8

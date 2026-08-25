@@ -30,7 +30,7 @@ extern const char data_ov011_021fe6a0[];
 extern const char data_ov011_021fe6b0[];
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set);
-extern void func_ov011_021fd188(void *state);
+extern void Overlay011_SetupResources(void *state);
 extern void DebugText_Printf(void *debug, s32 x, s32 y, s32 style, ...);
 extern void GraphicsSpriteRenderer_Printf(void *debug, s32 x, s32 y, const char *format, ...);
 extern void GraphicsSpriteCanvas_DrawLine(void *font, s32 x, s32 y,
@@ -38,7 +38,7 @@ extern void GraphicsSpriteCanvas_DrawLine(void *font, s32 x, s32 y,
 extern s32 GraphicsCharacterResource_GetUploadSize(void *resource);
 extern void *GraphicsPaletteResource_GetUploadSize(void *resource);
 extern s32 func_ov011_021fdae0(void *resource);
-extern void func_ov011_021fce50(void *member, s32 x, s32 y, s32 mode);
+extern void Overlay011_InitSceneFields(void *member, s32 x, s32 y, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -59,7 +59,7 @@ static void overlay011_reload_resources(void *state)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     GraphicsResourceSet_ReleaseHandles((GraphicsResourceSet *)((u8 *)state + 0x78));
-    func_ov011_021fd188(state);
+    Overlay011_SetupResources(state);
 }
 
 /*
@@ -81,7 +81,7 @@ static void overlay011_reload_resources(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov011_021fd450(void *state)
+s32 Overlay011_UpdateDebugController(void *state)
 {
     u8 *input = FIELD(u8 *, state, 0x50);
     u16 held = FIELD(u16, input, 0x00);
@@ -204,7 +204,7 @@ s32 func_ov011_021fd450(void *state)
                                       FIELD(s32, state, 0x58), 0xbf, 2);
     }
     if (pressed & 2)
-        func_ov011_021fce50((u8 *)state + 0x24,
+        Overlay011_InitSceneFields((u8 *)state + 0x24,
                             data_ov011_021fe3b0[0],
                             data_ov011_021fe3b0[1] - 0x48, 0);
     return 0;

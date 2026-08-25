@@ -33,7 +33,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *member
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov009_021fd360(void *state)
+void Overlay009_CreateActiveObject(void *state)
 {
     s32 selection = FIELD(s32, state, 0xa4);
     u8 *record = (u8 *)FIELD(void *, state, 0x8c + selection * 4) +

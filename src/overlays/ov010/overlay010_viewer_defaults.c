@@ -13,7 +13,7 @@ extern void func_020b0300(u16, s32, s32, s32, s32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov010_021fd39c(void *state)
+void Overlay010_InitViewerDefaults(void *state)
 {
     FIELD(s32,state,0x158)=0; FIELD(s32,state,0x15c)=0;
     FIELD(s32,state,0x174)=1; FIELD(s32,state,0x178)=0; FIELD(s32,state,0x17c)=0;

@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 extern const void *data_ov009_021feb80[];
-extern void func_ov009_021fce74(void *member, s32 first, s32 second, s32 unused);
+extern void Overlay009_InitSceneFields(void *member, s32 first, s32 second, s32 unused);
 #ifdef __cplusplus
 }
 #endif
@@ -22,10 +22,10 @@ extern void func_ov009_021fce74(void *member, s32 first, s32 second, s32 unused)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov009_021fd49c(void *state)
+s32 Overlay009_IdleSceneMember(void *state)
 {
     if (*(s32 *)((u8 *)state + 0x28) == 0) {
-        func_ov009_021fce74((u8 *)state + 0x24,
+        Overlay009_InitSceneFields((u8 *)state + 0x24,
                              (s32)data_ov009_021feb80[2],
                              (s32)data_ov009_021feb80[3] - 0x48, 0);
     }

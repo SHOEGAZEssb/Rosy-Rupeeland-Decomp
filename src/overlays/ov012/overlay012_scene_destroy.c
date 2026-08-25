@@ -16,7 +16,7 @@ extern void Graphics3DResourceOwner_Destroy(void *);
 extern void GraphicsBankStateSnapshot_Restore(void *);
 extern void DebugText_BeginFrame(void);
 extern void GraphicsBankStateSnapshot_Destroy(void *);
-extern void func_ov012_021fce3c(void *);
+extern void Overlay012_Transform_Destroy(void *);
 extern void Graphics3DLightSet_Destroy(void *);
 extern void Scene_Destroy(void *);
 #ifdef __cplusplus
@@ -47,7 +47,7 @@ void *func_ov012_021fd468(void *state)
     GraphicsBankStateSnapshot_Restore((u8 *)state + 0x1c4);
     DebugText_BeginFrame();
     GraphicsBankStateSnapshot_Destroy((u8 *)state + 0x1c4);
-    func_ov012_021fce3c((u8 *)state + 0x158);
+    Overlay012_Transform_Destroy((u8 *)state + 0x158);
     Graphics3DLightSet_Destroy((u8 *)state + 0x114);
     Scene_Destroy(state);
     return state;

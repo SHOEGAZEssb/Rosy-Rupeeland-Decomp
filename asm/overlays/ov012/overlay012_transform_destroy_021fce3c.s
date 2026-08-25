@@ -3,8 +3,8 @@
     .extern data_020f4e18
     .extern GraphicsArchive_ReleaseOwlvResource
 /* Exact register-allocation fallback; see src/overlays/ov012/overlay012_transform_destroy.c. */
-    .global func_ov012_021fce3c
-func_ov012_021fce3c:
+    .global Overlay012_Transform_Destroy
+Overlay012_Transform_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fce6c
     mov r4, r0
@@ -22,4 +22,4 @@ L_021fce6c:
     .word data_ov012_021fe5f4
 L_021fce70:
     .word data_020f4e18
-    .size func_ov012_021fce3c, . - func_ov012_021fce3c
+    .size Overlay012_Transform_Destroy, . - Overlay012_Transform_Destroy

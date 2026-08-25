@@ -1,8 +1,8 @@
     .text
     .extern func_020add34
 /* Exact register/control-flow fallback; see src/overlays/ov012/overlay012_draw_slot_configure.c. */
-    .global func_ov012_021fd0d4
-func_ov012_021fd0d4:
+    .global Overlay012_ConfigureDrawSlot
+Overlay012_ConfigureDrawSlot:
     stmdb sp!, {r3, r4, r5, lr}
     movs r4, r1
     mov r5, r0
@@ -33,4 +33,4 @@ L_021fd110:
     orr r0, r0, r2, lsl #0xa
     strh r0, [r1, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov012_021fd0d4, . - func_ov012_021fd0d4
+    .size Overlay012_ConfigureDrawSlot, . - Overlay012_ConfigureDrawSlot

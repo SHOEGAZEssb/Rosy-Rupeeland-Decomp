@@ -32,12 +32,12 @@ extern void GraphicsSpriteCanvas_FillRect(void *renderer, s32 left, s32 top,
                                           s32 right, s32 bottom, ...);
 extern void func_020b44e8(void);
 extern void func_ov011_021fce00(u32 select);
-extern void func_ov011_021fce50(void *member, s32 x, s32 y, s32 mode);
+extern void Overlay011_InitSceneFields(void *member, s32 x, s32 y, s32 mode);
 
 /* Reset the embedded member from descriptor words 4/5 and return zero. */
 s32 func_ov011_021fe02c(void *state)
 {
-    func_ov011_021fce50((u8 *)state + 0x24, data_ov011_021fe3b0[4],
+    Overlay011_InitSceneFields((u8 *)state + 0x24, data_ov011_021fe3b0[4],
                         data_ov011_021fe3b0[5] - 0x48, 0);
     return 0;
 }
@@ -155,7 +155,7 @@ s32 func_ov011_021fe06c(void *state)
                      data_ov011_021fe6fc, FIELD(s32, state, 0xc0));
 
     if (pressed & 2)
-        func_ov011_021fce50((u8 *)state + 0x24,
+        Overlay011_InitSceneFields((u8 *)state + 0x24,
                             data_ov011_021fe3b0[6],
                             data_ov011_021fe3b0[7] - 0x48, 0);
     return 0;

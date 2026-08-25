@@ -6,9 +6,9 @@ extern u32 data_ov012_021fe4d0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov012_021fd044(s32);
-extern void func_ov012_021fceb4(void *, void *);
-extern void func_ov012_021fd148(void *, s32, s32, s32);
+extern void Overlay012_SetDisp3dBit4Enabled(s32);
+extern void Overlay012_Transform_SetResource(void *, void *);
+extern void Overlay012_InitSceneFields(void *, s32, s32, s32);
 extern void func_020b0300(u32, u32, u32, u32, u32);
 #ifdef __cplusplus
 }
@@ -18,7 +18,7 @@ extern void func_020b0300(u32, u32, u32, u32, u32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov012_021fd5ac(void *state)
+void Overlay012_UpdateViewerHelpers(void *state)
 {
     u32 intensity;
     u32 color;
@@ -36,7 +36,7 @@ void func_ov012_021fd5ac(void *state)
     *(s32 *)((u8 *)state + 0x1c0) = 0x1f;
     *(s32 *)((u8 *)state + 0x1bc) = 1;
 
-    func_ov012_021fd044(*(s32 *)((u8 *)state + 0x1b8));
+    Overlay012_SetDisp3dBit4Enabled(*(s32 *)((u8 *)state + 0x1b8));
     intensity = *(u32 *)((u8 *)state + 0x194);
     color = (u16)(intensity | (intensity << 5) | (intensity << 10));
     /* func_020b0300 is the SDK clear-color boundary; the final zero is passed on the stack. */
@@ -57,7 +57,7 @@ void func_ov012_021fd63c(void *state)
     index = *(s32 *)((u8 *)state + 0x188);
     table = *(u8 **)((u8 *)state + 0x7c);
     descriptor = *(void **)(table + index * 0x18);
-    func_ov012_021fceb4((u8 *)state + 0x158, descriptor);
+    Overlay012_Transform_SetResource((u8 *)state + 0x158, descriptor);
 }
 
 /* On held bit 0x10/0x20 at input +0x06, add/subtract step and clamp to [minimum, maximum]; return the bounded value. */
@@ -105,7 +105,7 @@ extern "C"
 s32 func_ov012_021fd6f0(void *state)
 {
     if (*(s32 *)((u8 *)state + 0x28) == 0) {
-        func_ov012_021fd148((u8 *)state + 0x24,
+        Overlay012_InitSceneFields((u8 *)state + 0x24,
                             (s32)data_ov012_021fe4d0[2],
                             (s32)data_ov012_021fe4d0[3] - 0x48,
                             0);

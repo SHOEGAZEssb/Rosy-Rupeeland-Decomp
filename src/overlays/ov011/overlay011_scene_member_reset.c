@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern const s32 data_ov011_021fe3b0[];
-extern void func_ov011_021fce50(void *member, s32 x, s32 y, s32 mode);
+extern void Overlay011_InitSceneFields(void *member, s32 x, s32 y, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -19,9 +19,9 @@ extern void func_ov011_021fce50(void *member, s32 x, s32 y, s32 mode);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov011_021fd410(void *state)
+s32 Overlay011_ResetSceneMember(void *state)
 {
-    func_ov011_021fce50((u8 *)state + 0x24, data_ov011_021fe3b0[10],
+    Overlay011_InitSceneFields((u8 *)state + 0x24, data_ov011_021fe3b0[10],
                         data_ov011_021fe3b0[11] - 0x48, 0);
     return 0;
 }

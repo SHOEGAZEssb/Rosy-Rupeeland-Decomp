@@ -2,8 +2,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov009/overlay009_scroll_apply.c. */
-    .global func_ov009_021fea4c
-func_ov009_021fea4c: ; 0x021fea4c
+    .global Overlay009_ApplyScroll
+Overlay009_ApplyScroll: ; 0x021fea4c
     stmdb sp!, {r3, lr}
     ldr r2, L_021feaa8
     ldr r3, [r0, #0xf0]
@@ -30,4 +30,4 @@ func_ov009_021fea4c: ; 0x021fea4c
 L_021feaa8: .word 0x1ff
 L_021feaac: .word 0x4000018
 
-    .size func_ov009_021fea4c, . - func_ov009_021fea4c
+    .size Overlay009_ApplyScroll, . - Overlay009_ApplyScroll

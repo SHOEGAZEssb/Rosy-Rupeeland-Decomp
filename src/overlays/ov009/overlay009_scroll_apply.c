@@ -13,7 +13,7 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov009_021fea4c(void *state)
+s32 Overlay009_ApplyScroll(void *state)
 {
     volatile u32 *scroll = (volatile u32 *)0x04000018;
     scroll[0] = ((u32)-*(s32 *)((u8 *)state + 0xf0) & 0x1ff) |

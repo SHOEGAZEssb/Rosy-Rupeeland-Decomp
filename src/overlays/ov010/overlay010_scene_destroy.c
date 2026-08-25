@@ -22,7 +22,7 @@ extern void GraphicsResourceSetVariant_Destroy(void *); extern void Scene_Destro
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov010_021fd1e8(void *state)
+void *Overlay010_Scene_Destroy(void *state)
 {
     s32 i; void *p;
     FIELD(const void *, state, 0) = data_ov010_021fec34;

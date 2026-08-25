@@ -14,7 +14,7 @@ extern void GraphicsArchive_ReleaseOwlvResource(void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov012_021fce3c(void *object)
+void *Overlay012_Transform_Destroy(void *object)
 {
     *(u32 **)object = data_ov012_021fe5f4;
     if (*(void **)((u8 *)object + 4) != 0) {

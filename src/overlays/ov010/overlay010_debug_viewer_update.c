@@ -11,16 +11,16 @@
 extern "C" {
 #endif
 extern const void *data_ov010_021fea38[];
-extern void func_ov010_021fd39c(void *); extern void func_ov010_021fd408(void *); extern void func_ov010_021fd45c(void *);
+extern void Overlay010_InitViewerDefaults(void *); extern void Overlay010_ReleaseActiveResource(void *); extern void Overlay010_CreateActiveResource(void *);
 extern s32 func_ov010_021fd520(void *,s32,s32,s32,s32); extern s32 func_ov010_021fd564(void *,s32,s32,s32,s32); extern s32 func_ov010_021fd5a8(void *,s32,s32,s32,s32);
-extern void func_ov010_021fce94(void *,s32,s32,s32); extern void GraphicsAnimationInstance_SetAnimation(void *,s32); extern void GraphicsAnimationInstance_SetFrame(void *,s32);
+extern void Overlay010_InitSceneFields(void *,s32,s32,s32); extern void GraphicsAnimationInstance_SetAnimation(void *,s32); extern void GraphicsAnimationInstance_SetFrame(void *,s32);
 extern void func_020b0300(u16,s32,s32,s32,s32); extern void GraphicsAnimationInstanceManager_Update(void *);
 #ifdef __cplusplus
 }
 #endif
 
 /* Recreate the selected active resource after a file or record change. */
-static void overlay010_recreate(void *state){func_ov010_021fd408(state);func_ov010_021fd45c(state);}
+static void overlay010_recreate(void *state){Overlay010_ReleaseActiveResource(state);Overlay010_CreateActiveResource(state);}
 
 /*
  * Reset defaults on newly pressed bit 8. Repeated bit 0x100 turns the D-pad
@@ -51,10 +51,10 @@ static void overlay010_recreate(void *state){func_ov010_021fd408(state);func_ov0
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov010_021fd638(void *state)
+s32 Overlay010_UpdateDebugViewer(void *state)
 {
     u8 *input=FIELD(u8 *,state,0x50);u16 repeat=FIELD(u16,input,0),pressed=FIELD(u16,input,2),held=FIELD(u16,input,6);void *obj;
-    if(pressed&8)func_ov010_021fd39c(state);
+    if(pressed&8)Overlay010_InitViewerDefaults(state);
     if(repeat&0x100){
         if(repeat&0x20){if(--FIELD(s32,state,0x158)<-128)FIELD(s32,state,0x158)=-128;}else if(repeat&0x10){if(++FIELD(s32,state,0x158)>=128)FIELD(s32,state,0x158)=127;}
         if(repeat&0x80){if(--FIELD(s32,state,0x15c)<-96)FIELD(s32,state,0x15c)=-96;}else if(repeat&0x40){if(++FIELD(s32,state,0x15c)>=96)FIELD(s32,state,0x15c)=95;}
@@ -84,6 +84,6 @@ s32 func_ov010_021fd638(void *state)
     }
     GraphicsAnimationInstanceManager_Update(FIELD(void *,state,0x88));
     if(obj&&(FIELD(u16,obj,0x50)&1)==0)FIELD(s32,state,0x148)=FIELD(u8,obj,0x55);
-    if(pressed&2){FIELD(s32,state,0x6c)=0x10;func_ov010_021fce94((u8 *)state+0x24,(s32)data_ov010_021fea38[12],(s32)data_ov010_021fea38[13]-0x48,0);}
+    if(pressed&2){FIELD(s32,state,0x6c)=0x10;Overlay010_InitSceneFields((u8 *)state+0x24,(s32)data_ov010_021fea38[12],(s32)data_ov010_021fea38[13]-0x48,0);}
     return 0;
 }

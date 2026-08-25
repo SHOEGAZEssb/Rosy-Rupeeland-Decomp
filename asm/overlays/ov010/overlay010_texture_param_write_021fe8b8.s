@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov010/overlay010_texture_param_write.c. */
-    .global func_ov010_021fe8b8
-func_ov010_021fe8b8: ; 0x021fe8b8
+    .global Overlay010_WriteTextureParameters
+Overlay010_WriteTextureParameters: ; 0x021fe8b8
     ldr ip, [sp, #0xc]
     mov r0, r0, lsl #0x1a
     orr r0, r0, ip, lsr #0x3
@@ -19,4 +19,4 @@ func_ov010_021fe8b8: ; 0x021fe8b8
     bx lr
 L_021fe8f4: .word 0x40004a8
 
-    .size func_ov010_021fe8b8, . - func_ov010_021fe8b8
+    .size Overlay010_WriteTextureParameters, . - Overlay010_WriteTextureParameters

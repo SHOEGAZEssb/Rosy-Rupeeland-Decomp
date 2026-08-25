@@ -13,11 +13,11 @@ extern const s32 data_ov012_021fe51c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov012_021fd044(s32);
-extern void func_ov012_021fcef4(void *);
+extern void Overlay012_SetDisp3dBit4Enabled(s32);
+extern void Overlay012_Transform_Apply(void *);
 extern void func_ov012_021fcfd4(void *, s32);
-extern void func_ov012_021fd148(void *, s32, s32, s32);
-extern void func_ov012_021fd5ac(void *);
+extern void Overlay012_InitSceneFields(void *, s32, s32, s32);
+extern void Overlay012_UpdateViewerHelpers(void *);
 extern void func_ov012_021fd63c(void *);
 extern s32 func_ov012_021fd668(void *, s32, s32, s32, s32);
 extern s32 func_ov012_021fd6ac(void *, s32, s32, s32, s32);
@@ -56,7 +56,7 @@ extern void func_020b0300(u32, u32, u32, u32, u32);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov012_021fd73c(void *state)
+s32 Overlay012_UpdateDebugViewer(void *state)
 {
     u8 *input = FIELD(u8 *, state, 0x50);
     u16 repeat = FIELD(u16, input, 0);
@@ -65,7 +65,7 @@ s32 func_ov012_021fd73c(void *state)
     s32 row;
 
     if (pressed & 8) {
-        func_ov012_021fd5ac(state);
+        Overlay012_UpdateViewerHelpers(state);
     }
 
     if (repeat & 0x100) {
@@ -129,7 +129,7 @@ s32 func_ov012_021fd73c(void *state)
         case 4:
             if (held & 0x30) {
                 FIELD(s32, state, 0x1b8) ^= 1;
-                func_ov012_021fd044(FIELD(s32, state, 0x1b8));
+                Overlay012_SetDisp3dBit4Enabled(FIELD(s32, state, 0x1b8));
             }
             break;
         case 5:
@@ -175,12 +175,12 @@ s32 func_ov012_021fd73c(void *state)
     FIELD(s32, state, 0x170) = FIELD(s32, state, 0x16c);
     FIELD(s32, state, 0x174) = FIELD(s32, state, 0x16c);
 
-    func_ov012_021fcef4((u8 *)state + 0x158);
+    Overlay012_Transform_Apply((u8 *)state + 0x158);
     func_ov012_021fcfd4((u8 *)state + 0x158, FIELD(s32, state, 0x18c));
 
     if (pressed & 2) {
         FIELD(s32, state, 0x6c) = 0x10;
-        func_ov012_021fd148((u8 *)state + 0x24,
+        Overlay012_InitSceneFields((u8 *)state + 0x24,
                             (s32)data_ov012_021fe4d0[4],
                             (s32)data_ov012_021fe4d0[5] - 0x48, 0);
     }

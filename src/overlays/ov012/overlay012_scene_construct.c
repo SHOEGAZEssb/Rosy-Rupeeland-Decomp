@@ -34,20 +34,20 @@ extern void *Heap_Alloc(s32, const char *, s32, void *);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceBinding_Init(void *, void *, void *, s32, s32);
 extern void func_ov012_021fce00(void *);
-extern void func_ov012_021fd5ac(void *);
+extern void Overlay012_UpdateViewerHelpers(void *);
 extern void func_ov012_021fd004(u32);
 extern void GX_DispOn(void);
 extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void func_ov012_021fd020(u32);
-extern void func_ov012_021fd044(s32);
-extern void func_ov012_021fd080(s32);
+extern void Overlay012_SetDisp3dBit4Enabled(s32);
+extern void Overlay012_SetDisp3dBit3Enabled(s32);
 extern void func_020b0300(u32, s32, s32, s32, s32);
 extern void func_ov012_021fd0bc(void *, s32, s32, s32);
 extern void func_ov012_021fd0c4(void *, s32, s32, s32);
-extern void func_ov012_021fd0d4(void *, s32, u32, u32, u32, u32, u32, u32);
+extern void Overlay012_ConfigureDrawSlot(void *, s32, u32, u32, u32, u32, u32, u32);
 extern void func_ov012_021fd63c(void *);
-extern void func_ov012_021fd148(void *, s32, s32, s32);
+extern void Overlay012_InitSceneFields(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -63,7 +63,7 @@ extern void func_ov012_021fd148(void *, s32, s32, s32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov012_021fd170(void *state)
+void *Overlay012_Scene_Init(void *state)
 {
     FSFile file;
     s32 sceneFields[2];
@@ -111,7 +111,7 @@ void *func_ov012_021fd170(void *state)
     FIELD(void *, state, 0x154) = allocation;
     FIELD(s32, state, 0x18c) = 0;
     FIELD(s32, state, 0x190) = 0;
-    func_ov012_021fd5ac(state);
+    Overlay012_UpdateViewerHelpers(state);
 
     FIELD(s32, state, 0x6c) = 0x11;
     func_ov012_021fd004(0);
@@ -121,8 +121,8 @@ void *func_ov012_021fd170(void *state)
     FIELD(s32, state, 0x70) = 0x10;
     *(volatile u32 *)0x04001000 |= 0x10000;
     func_ov012_021fd020(0);
-    func_ov012_021fd044(1);
-    func_ov012_021fd080(1);
+    Overlay012_SetDisp3dBit4Enabled(1);
+    Overlay012_SetDisp3dBit3Enabled(1);
     *(volatile u32 *)0x04000540 = 2;
     intensity = FIELD(u32, state, 0x194);
     func_020b0300((u16)(intensity | (intensity << 5) | (intensity << 10)),
@@ -133,12 +133,12 @@ void *func_ov012_021fd170(void *state)
     FIELD(s32, state, 0x80) = 1;
     func_ov012_021fd0bc((u8 *)state + 0x80, 0, 0, 0x4000);
     func_ov012_021fd0c4((u8 *)state + 0x80, 0, 0, 0);
-    func_ov012_021fd0d4((u8 *)state + 0x114, 0, 0x1000, (u32)-0x1000,
+    Overlay012_ConfigureDrawSlot((u8 *)state + 0x114, 0, 0x1000, (u32)-0x1000,
                          (u32)-0x1000, 0x1f, 0x1f, 0x1f);
     func_ov012_021fd63c(state);
     Scene_SetFlags03(state);
     sceneFields[0] = (s32)data_ov012_021fe4d0[0];
     sceneFields[1] = (s32)data_ov012_021fe4d0[1] - 0x48;
-    func_ov012_021fd148((u8 *)state + 0x24, sceneFields[0], sceneFields[1], 0);
+    Overlay012_InitSceneFields((u8 *)state + 0x24, sceneFields[0], sceneFields[1], 0);
     return state;
 }

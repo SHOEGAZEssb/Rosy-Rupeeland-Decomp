@@ -11,8 +11,8 @@
 
     ; Exact matching fallback; see the documented portable reconstruction in
     ; src/overlays/ov011/overlay011_scene_destroy.c.
-    .global func_ov011_021fd08c
-func_ov011_021fd08c:
+    .global Overlay011_Scene_Destroy
+Overlay011_Scene_Destroy:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r2, L_021fd0f4
     mov r5, r0
@@ -42,4 +42,4 @@ L_021fd0b8:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd0f4: .word data_ov011_021fe578
 L_021fd0f8: .word data_ov011_021fe5ac
-    .size func_ov011_021fd08c, . - func_ov011_021fd08c
+    .size Overlay011_Scene_Destroy, . - Overlay011_Scene_Destroy

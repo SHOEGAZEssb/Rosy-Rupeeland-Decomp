@@ -29,7 +29,7 @@ extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
                            void *heapContext);
 extern void func_020b1bfc(void *source, s32 destination, s32 size);
 extern u16 *GraphicsBgResourceData_GetDecoded(void *resource);
-extern void func_ov011_021fd374(s32 priority, s32 charBase, s32 screenBase,
+extern void Overlay011_SetSubBg1Enabled(s32 priority, s32 charBase, s32 screenBase,
                                 s32 size, s32 overflow);
 extern void func_ov011_021fd3a8(void *state);
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ extern void func_ov011_021fd3a8(void *state);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov011_021fd188(void *state)
+void Overlay011_SetupResources(void *state)
 {
     s32 fileIndex = FIELD(s32, state, 0xd0);
     u8 *file = FIELD(u8 *, state, 0x84 + fileIndex * 4);
@@ -76,7 +76,7 @@ void func_ov011_021fd188(void *state)
         s32 paletteDestination = 0;
         u16 *tilemap;
 
-        func_ov011_021fd374(0, layout == 0x10 ? 0 : 1, 0x12, 4, 0);
+        Overlay011_SetSubBg1Enabled(0, layout == 0x10 ? 0 : 1, 0x12, 4, 0);
         count = GraphicsCharacterResource_GetUploadSize(set->resource0) /
                 (layout == 0x100 ? 0x40 : 0x20);
         GraphicsBgCharacterResource_UploadToSubBg(set->resource0, 1, 0);
@@ -101,7 +101,7 @@ void func_ov011_021fd188(void *state)
             quadrant = height > 0x20 ? 3 : 1;
         else
             quadrant = height > 0x20 ? 2 : 0;
-        func_ov011_021fd374(quadrant, layout == 0x10 ? 0 : 1,
+        Overlay011_SetSubBg1Enabled(quadrant, layout == 0x10 ? 0 : 1,
                             0x12, 4, 0);
         GraphicsResourceSet_Apply(set, 1, layout == 0x100 ? 0x2000 : 0);
         *(volatile u16 *)0x05000400 = *GraphicsBgResourceData_GetDecoded(set->resource1);

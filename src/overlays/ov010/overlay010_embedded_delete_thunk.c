@@ -3,7 +3,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_ov010_021fd2b4(void *);
+extern void *Overlay010_Scene_Delete(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -11,4 +11,4 @@ extern void *func_ov010_021fd2b4(void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov010_021fe9a8(void *m){return func_ov010_021fd2b4((u8 *)m-0x24);}
+void *Overlay010_EmbeddedDeleteThunk(void *m){return Overlay010_Scene_Delete((u8 *)m-0x24);}

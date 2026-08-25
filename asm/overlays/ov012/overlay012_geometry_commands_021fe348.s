@@ -1,7 +1,7 @@
     .text
 /* Exact expression-order fallback; see src/overlays/ov012/overlay012_geometry_commands.c. */
-    .global func_ov012_021fe348
-func_ov012_021fe348:
+    .global Overlay012_EmitGeometryCommands
+Overlay012_EmitGeometryCommands:
     orr r0, r0, r1, lsl #4
     ldr r1, [sp, #4]
     orr r0, r0, r2, lsl #6
@@ -14,7 +14,7 @@ func_ov012_021fe348:
     bx lr
 L_021fe370:
     .word 0x040004a4
-    .size func_ov012_021fe348, . - func_ov012_021fe348
+    .size Overlay012_EmitGeometryCommands, . - Overlay012_EmitGeometryCommands
 
     .global func_ov012_021fe374
 func_ov012_021fe374:

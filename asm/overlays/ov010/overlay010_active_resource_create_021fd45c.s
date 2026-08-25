@@ -8,8 +8,8 @@
     .extern gHeapContext
 
 /* Exact fallback; see src/overlays/ov010/overlay010_active_resource_create.c. */
-    .global func_ov010_021fd45c
-func_ov010_021fd45c: ; 0x021fd45c
+    .global Overlay010_CreateActiveResource
+Overlay010_CreateActiveResource: ; 0x021fd45c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r0, #0x0
@@ -62,4 +62,4 @@ L_021fd514: .word data_020f4e18
 L_021fd518: .word data_ov010_021fec8c
 L_021fd51c: .word gHeapContext
 
-    .size func_ov010_021fd45c, . - func_ov010_021fd45c
+    .size Overlay010_CreateActiveResource, . - Overlay010_CreateActiveResource

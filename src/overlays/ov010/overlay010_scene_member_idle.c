@@ -3,7 +3,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const void *data_ov010_021fea38[]; extern void func_ov010_021fce94(void *,s32,s32,s32);
+extern const void *data_ov010_021fea38[]; extern void Overlay010_InitSceneFields(void *,s32,s32,s32);
 #ifdef __cplusplus
 }
 #endif
@@ -11,4 +11,4 @@ extern const void *data_ov010_021fea38[]; extern void func_ov010_021fce94(void *
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov010_021fd5ec(void *s){if(*(s32 *)((u8 *)s+0x28)==0)func_ov010_021fce94((u8 *)s+0x24,(s32)data_ov010_021fea38[10],(s32)data_ov010_021fea38[11]-0x48,0);return 0;}
+s32 Overlay010_IdleSceneMember(void *s){if(*(s32 *)((u8 *)s+0x28)==0)Overlay010_InitSceneFields((u8 *)s+0x24,(s32)data_ov010_021fea38[10],(s32)data_ov010_021fea38[11]-0x48,0);return 0;}

@@ -37,23 +37,23 @@
     .extern Graphics3DResourceBinding_GetTextureHeightClass
     .extern func_020b0300
     .extern func_020b0558
-    .extern func_ov010_021fce94
-    .extern func_ov010_021fd39c
-    .extern func_ov010_021fd408
-    .extern func_ov010_021fd45c
+    .extern Overlay010_InitSceneFields
+    .extern Overlay010_InitViewerDefaults
+    .extern Overlay010_ReleaseActiveResource
+    .extern Overlay010_CreateActiveResource
     .extern func_ov010_021fd520
     .extern func_ov010_021fd564
     .extern func_ov010_021fd5a8
-    .extern func_ov010_021fe88c
-    .extern func_ov010_021fe8b8
-    .extern func_ov010_021fe8f8
-    .extern func_ov010_021fe91c
+    .extern Overlay010_WritePolygonAttributes
+    .extern Overlay010_WriteTextureParameters
+    .extern Overlay010_WriteTexturePaletteBase
+    .extern Overlay010_WriteTextureCoordinates
     .extern gDebugFont
 
 /* Exact fallback; see documented control reconstruction in
  * src/overlays/ov010/overlay010_debug_viewer_update.c. */
-    .global func_ov010_021fd638
-func_ov010_021fd638: ; 0x021fd638
+    .global Overlay010_UpdateDebugViewer
+Overlay010_UpdateDebugViewer: ; 0x021fd638
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x9c
     mov r9, r0
@@ -61,7 +61,7 @@ func_ov010_021fd638: ; 0x021fd638
     ldrh r1, [r1, #0x2]
     tst r1, #0x8
     beq L_021fd658
-    bl func_ov010_021fd39c
+    bl Overlay010_InitViewerDefaults
 L_021fd658:
     ldr r1, [r9, #0x50]
     ldrh r0, [r1, #0x0]
@@ -183,9 +183,9 @@ L_021fd7e0:
     bl func_ov010_021fd5a8
     str r0, [r9, #0x14c]
     mov r0, r9
-    bl func_ov010_021fd408
+    bl Overlay010_ReleaseActiveResource
     mov r0, r9
-    bl func_ov010_021fd45c
+    bl Overlay010_CreateActiveResource
     b L_021fdae0
 L_021fd820:
     ldr r0, [r9, #0x50]
@@ -206,9 +206,9 @@ L_021fd820:
     add r1, r9, r1, lsl #0x2
     str r0, [r1, #0x13c]
     mov r0, r9
-    bl func_ov010_021fd408
+    bl Overlay010_ReleaseActiveResource
     mov r0, r9
-    bl func_ov010_021fd45c
+    bl Overlay010_CreateActiveResource
     b L_021fdae0
 L_021fd878:
     ldr r0, [r9, #0x8c]
@@ -1051,7 +1051,7 @@ L_021fe46c:
     str r0, [sp, #0x4]
     mov r2, #0x3
     mov r3, #0x3e
-    bl func_ov010_021fe88c
+    bl Overlay010_WritePolygonAttributes
     ldr r7, [r9, #0x130]
     mov r0, r7
     bl Graphics3DResourceBinding_GetTextureFormat
@@ -1073,14 +1073,14 @@ L_021fe46c:
     ldr r7, [r7, #0x10]
     ldr r7, [r7, #0xc]
     str r7, [sp, #0xc]
-    bl func_ov010_021fe8b8
+    bl Overlay010_WriteTextureParameters
     ldr r0, [r9, #0x130]
     ldr r1, [r0, #0x14]
     ldr r7, [r1, #0xc]
     bl Graphics3DResourceBinding_GetTextureFormat
     mov r1, r0
     mov r0, r7
-    bl func_ov010_021fe8f8
+    bl Overlay010_WriteTexturePaletteBase
     mov r1, #0x1
     ldr r3, L_021fe87c
     rsb r0, r1, #0x8000
@@ -1096,7 +1096,7 @@ L_021fe46c:
     mov r2, r2, lsr #0x10
     str r0, [r3, #-0x74]!
     str r2, [r3, #0x0]
-    bl func_ov010_021fe91c
+    bl Overlay010_WriteTextureCoordinates
     mov r0, r4, lsl #0x1
     rsb r0, r0, #0x0
     mov r0, r0, lsl #0x10
@@ -1110,7 +1110,7 @@ L_021fe46c:
     mov r0, r7
     mov r1, r6
     str r3, [r2, #0x0]
-    bl func_ov010_021fe91c
+    bl Overlay010_WriteTextureCoordinates
     mov r0, r5, lsl #0x10
     mov r0, r0, asr #0x10
     mov r0, r0, lsl #0x10
@@ -1120,7 +1120,7 @@ L_021fe46c:
     mov r0, r7
     mov r1, #0x0
     str r3, [r2, #0x0]
-    bl func_ov010_021fe91c
+    bl Overlay010_WriteTextureCoordinates
     ldr r1, L_021fe880
     mov r0, #0x0
     str r5, [r1, #0x0]
@@ -1161,7 +1161,7 @@ L_021fe618:
     str r0, [sp, #0x4]
     mov r2, #0x3
     mov r3, #0x3e
-    bl func_ov010_021fe88c
+    bl Overlay010_WritePolygonAttributes
     ldr r6, [r9, #0x12c]
     mov r0, r6
     bl Graphics3DResourceBinding_GetTextureFormat
@@ -1183,14 +1183,14 @@ L_021fe618:
     mov r1, #0x1
     ldr r6, [r6, #0xc]
     str r6, [sp, #0xc]
-    bl func_ov010_021fe8b8
+    bl Overlay010_WriteTextureParameters
     ldr r0, [r9, #0x12c]
     ldr r1, [r0, #0x14]
     ldr r6, [r1, #0xc]
     bl Graphics3DResourceBinding_GetTextureFormat
     mov r1, r0
     mov r0, r6
-    bl func_ov010_021fe8f8
+    bl Overlay010_WriteTexturePaletteBase
     mov r2, #0x1
     ldr r1, L_021fe87c
     rsb r0, r2, #0x8000
@@ -1203,7 +1203,7 @@ L_021fe618:
     str r0, [r2, #0x0]
     mov r1, r6
     str r0, [r2, #0x0]
-    bl func_ov010_021fe91c
+    bl Overlay010_WriteTextureCoordinates
     rsb r0, r4, #0x0
     mov r0, r0, lsl #0x10
     mov r0, r0, asr #0x10
@@ -1215,7 +1215,7 @@ L_021fe618:
     mov r0, r7
     mov r1, r6
     str r3, [r2, #0x0]
-    bl func_ov010_021fe91c
+    bl Overlay010_WriteTextureCoordinates
     mov r0, r5, lsl #0x10
     mov r0, r0, asr #0x10
     mov r0, r0, lsl #0x10
@@ -1225,7 +1225,7 @@ L_021fe618:
     mov r0, r7
     mov r1, #0x0
     str r3, [r2, #0x0]
-    bl func_ov010_021fe91c
+    bl Overlay010_WriteTextureCoordinates
     ldr r1, L_021fe880
     mov r0, #0x0
     str r5, [r1, #0x0]
@@ -1254,7 +1254,7 @@ L_021fe7b8:
     str r2, [sp, #0x40]
     add r0, r9, #0x24
     ldmia r1, {r1, r2}
-    bl func_ov010_021fce94
+    bl Overlay010_InitSceneFields
 L_021fe810:
     mov r0, #0x0
     add sp, sp, #0x9c
@@ -1288,4 +1288,4 @@ L_021fe880: .word 0x4000494
 L_021fe884: .word 0x4000540
 L_021fe888: .word data_ov010_021fea38
 
-    .size func_ov010_021fd638, . - func_ov010_021fd638
+    .size Overlay010_UpdateDebugViewer, . - Overlay010_UpdateDebugViewer

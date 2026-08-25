@@ -3,8 +3,8 @@
     .extern GraphicsArchive_ReleaseOwlvResource
     .extern GraphicsArchive_AcquireOwlvResource
 /* Exact register-order fallback; see src/overlays/ov012/overlay012_transform_resource_set.c. */
-    .global func_ov012_021fceb4
-func_ov012_021fceb4:
+    .global Overlay012_Transform_SetResource
+Overlay012_Transform_SetResource:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -23,4 +23,4 @@ L_021fced8:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fcef0:
     .word data_020f4e18
-    .size func_ov012_021fceb4, . - func_ov012_021fceb4
+    .size Overlay012_Transform_SetResource, . - Overlay012_Transform_SetResource

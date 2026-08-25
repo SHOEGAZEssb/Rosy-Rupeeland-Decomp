@@ -12,7 +12,7 @@ extern void func_020add34(void *, void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov012_021fd0d4(void *state, s32 index, u32 word0, u32 word4,
+void Overlay012_ConfigureDrawSlot(void *state, s32 index, u32 word0, u32 word4,
                          u32 word8, u32 red, u32 green, u32 blue)
 {
     u8 *record;

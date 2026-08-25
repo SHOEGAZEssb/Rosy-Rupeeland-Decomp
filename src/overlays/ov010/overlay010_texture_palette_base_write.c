@@ -4,4 +4,4 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov010_021fe8f8(u32 base,s32 format){*(volatile u32 *)0x040004ac=base>>(format==2?3:4);}
+void Overlay010_WriteTexturePaletteBase(u32 base,s32 format){*(volatile u32 *)0x040004ac=base>>(format==2?3:4);}

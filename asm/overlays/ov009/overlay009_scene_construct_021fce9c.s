@@ -35,15 +35,15 @@
     .extern func_ov009_021fce00
     .extern func_ov009_021fce1c
     .extern func_ov009_021fce48
-    .extern func_ov009_021fce74
-    .extern func_ov009_021fd294
-    .extern func_ov009_021fd360
+    .extern Overlay009_InitSceneFields
+    .extern Overlay009_ResetSceneState
+    .extern Overlay009_CreateActiveObject
     .extern gHeapContext
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov009/overlay009_scene_construct.c. */
-    .global func_ov009_021fce9c
-func_ov009_021fce9c: ; 0x021fce9c
+    .global Overlay009_Scene_Init
+Overlay009_Scene_Init: ; 0x021fce9c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x60
     mov r10, r0
@@ -121,9 +121,9 @@ L_021fcf84:
     str r1, [r10, #0xec]
     mov r0, r10
     str r1, [r10, #0x11c]
-    bl func_ov009_021fd294
+    bl Overlay009_ResetSceneState
     mov r0, r10
-    bl func_ov009_021fd360
+    bl Overlay009_CreateActiveObject
     mov r0, #0x0
     bl func_ov009_021fce00
     bl GX_DispOn
@@ -219,7 +219,7 @@ L_021fcf84:
     str r3, [sp, #0x4]
     str r1, [sp, #0x8]
     ldmia r2, {r1, r2}
-    bl func_ov009_021fce74
+    bl Overlay009_InitSceneFields
     add r0, sp, #0xc
     bl GraphicsResourceSet_Destroy
     mov r0, r10
@@ -238,4 +238,4 @@ L_021fd18c: .word 0xc005
 L_021fd190: .word data_020f4e18
 L_021fd194: .word data_ov009_021feb80
 
-    .size func_ov009_021fce9c, . - func_ov009_021fce9c
+    .size Overlay009_Scene_Init, . - Overlay009_Scene_Init

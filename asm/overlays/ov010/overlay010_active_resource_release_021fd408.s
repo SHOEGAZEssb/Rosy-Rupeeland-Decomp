@@ -5,8 +5,8 @@
     .extern Graphics3DResourceBinding_Destroy
 
 /* Exact fallback; see src/overlays/ov010/overlay010_active_resource_release.c. */
-    .global func_ov010_021fd408
-func_ov010_021fd408: ; 0x021fd408
+    .global Overlay010_ReleaseActiveResource
+Overlay010_ReleaseActiveResource: ; 0x021fd408
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r4, [r5, #0x12c]
@@ -31,4 +31,4 @@ L_021fd43c:
     bl GraphicsResourceSetVariant_ReleaseHandles
     ldmia sp!, {r3, r4, r5, pc}
 
-    .size func_ov010_021fd408, . - func_ov010_021fd408
+    .size Overlay010_ReleaseActiveResource, . - Overlay010_ReleaseActiveResource

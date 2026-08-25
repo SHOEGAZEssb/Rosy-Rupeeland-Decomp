@@ -36,18 +36,18 @@
     .extern func_020b4554
     .extern func_ov010_021fce00
     .extern func_ov010_021fce1c
-    .extern func_ov010_021fce40
+    .extern Overlay010_SetDisp3dEnabled
     .extern func_ov010_021fce7c
     .extern func_ov010_021fce84
-    .extern func_ov010_021fce94
-    .extern func_ov010_021fd39c
-    .extern func_ov010_021fd45c
+    .extern Overlay010_InitSceneFields
+    .extern Overlay010_InitViewerDefaults
+    .extern Overlay010_CreateActiveResource
     .extern gHeapContext
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov010/overlay010_scene_construct.c. */
-    .global func_ov010_021fcebc
-func_ov010_021fcebc: ; 0x021fcebc
+    .global Overlay010_Scene_Init
+Overlay010_Scene_Init: ; 0x021fcebc
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x54
     mov r10, r0
@@ -158,9 +158,9 @@ L_021fd044:
     str r1, [r10, #0x14c]
     mov r0, r10
     str r1, [r10, #0x12c]
-    bl func_ov010_021fd39c
+    bl Overlay010_InitViewerDefaults
     mov r0, r10
-    bl func_ov010_021fd45c
+    bl Overlay010_CreateActiveResource
     mov r1, #0x11
     mov r0, #0x0
     str r1, [r10, #0x6c]
@@ -189,7 +189,7 @@ L_021fd044:
     mov r0, #0x1
     and r1, r2, r1
     strh r1, [r3, #0x0]
-    bl func_ov010_021fce40
+    bl Overlay010_SetDisp3dEnabled
     mov r2, #0x2
     ldr r1, L_021fd1d4
     mov r0, #0x0
@@ -232,7 +232,7 @@ L_021fd044:
     str r0, [sp, #0x8]
     add r0, r10, #0x24
     ldmia r1, {r1, r2}
-    bl func_ov010_021fce94
+    bl Overlay010_InitSceneFields
     mov r0, r10
     add sp, sp, #0x54
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
@@ -256,4 +256,4 @@ L_021fd1dc: .word 0xbfff0000
 L_021fd1e0: .word 0x4000580
 L_021fd1e4: .word data_ov010_021fea38
 
-    .size func_ov010_021fcebc, . - func_ov010_021fcebc
+    .size Overlay010_Scene_Init, . - Overlay010_Scene_Init

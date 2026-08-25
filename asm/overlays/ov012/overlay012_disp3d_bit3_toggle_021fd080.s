@@ -1,7 +1,7 @@
     .text
 /* Exact compiler-resistant fallback; see src/overlays/ov012/overlay012_disp3d_bit3_toggle.c. */
-    .global func_ov012_021fd080
-func_ov012_021fd080:
+    .global Overlay012_SetDisp3dBit3Enabled
+Overlay012_SetDisp3dBit3Enabled:
     cmp r0, #0
     ldreq r2, .Lreg
     ldreq r0, .Ldisable_mask
@@ -19,4 +19,4 @@ func_ov012_021fd080:
     .word 0x04000060
 .Ldisable_mask:
     .word 0x0000cff7
-    .size func_ov012_021fd080, . - func_ov012_021fd080
+    .size Overlay012_SetDisp3dBit3Enabled, . - Overlay012_SetDisp3dBit3Enabled

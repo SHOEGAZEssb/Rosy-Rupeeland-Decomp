@@ -14,8 +14,8 @@
     .extern GraphicsBankStateSnapshot_Restore
 
 /* Exact fallback; see src/overlays/ov010/overlay010_scene_destroy.c. */
-    .global func_ov010_021fd1e8
-func_ov010_021fd1e8: ; 0x021fd1e8
+    .global Overlay010_Scene_Destroy
+Overlay010_Scene_Destroy: ; 0x021fd1e8
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021fd2a8
     mov r4, r0
@@ -72,4 +72,4 @@ L_021fd2a8: .word data_ov010_021fec34
 L_021fd2ac: .word data_ov010_021fec68
 L_021fd2b0: .word data_020f4e14
 
-    .size func_ov010_021fd1e8, . - func_ov010_021fd1e8
+    .size Overlay010_Scene_Destroy, . - Overlay010_Scene_Destroy

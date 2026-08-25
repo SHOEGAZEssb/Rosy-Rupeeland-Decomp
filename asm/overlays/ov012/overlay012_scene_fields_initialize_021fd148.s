@@ -1,7 +1,7 @@
     .text
 /* Exact ABI fallback; see src/overlays/ov012/overlay012_scene_fields_initialize.c. */
-    .global func_ov012_021fd148
-func_ov012_021fd148:
+    .global Overlay012_InitSceneFields
+Overlay012_InitSceneFields:
     stmdb sp!, {r0, r1, r2, r3}
     ldr r2, [sp, #4]
     ldr r1, [sp, #8]
@@ -12,4 +12,4 @@ func_ov012_021fd148:
     str r1, [r0, #8]
     add sp, sp, #0x10
     bx lr
-    .size func_ov012_021fd148, . - func_ov012_021fd148
+    .size Overlay012_InitSceneFields, . - Overlay012_InitSceneFields

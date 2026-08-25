@@ -28,7 +28,7 @@ extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *manager, void 
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov009_021fd294(void *state)
+void Overlay009_ResetSceneState(void *state)
 {
     void *object;
 

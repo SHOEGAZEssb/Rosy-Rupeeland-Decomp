@@ -53,9 +53,9 @@ extern void TitleDisplay_SetSubBgPriorities(s32 a, s32 b, s32 c, s32 d);
 extern void TitlePalette_SetMainBackdrop(u16 color);
 extern void TitlePalette_SetSubBackdrop(u16 color);
 extern void func_ov011_021fce00(u32 select);
-extern void func_ov011_021fce1c(u32 size, u32 depth, u32 screen,
+extern void Overlay011_SetSubBg0Enabled(u32 size, u32 depth, u32 screen,
                                 u32 character, u32 overflow);
-extern void func_ov011_021fce50(void *member, s32 x, s32 y, s32 mode);
+extern void Overlay011_InitSceneFields(void *member, s32 x, s32 y, s32 mode);
 extern void func_ov011_021fdea4(void *state);
 extern s32 func_ov011_021fdae0(void *resource);
 
@@ -115,7 +115,7 @@ void *func_ov011_021fdb6c(void *state)
     GXS_SetGraphicsMode(0);
     GX_SetBankForSubBG(4);
     func_020aea7c(0x80);
-    func_ov011_021fce1c(0, 0, 0x10, 0, 0);
+    Overlay011_SetSubBg0Enabled(0, 0, 0x10, 0, 0);
     TitleDisplay_ResetSubBgScroll();
     TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
 
@@ -132,7 +132,7 @@ void *func_ov011_021fdb6c(void *state)
     TitlePalette_SetMainBackdrop(0x4210);
     TitlePalette_SetSubBackdrop(0x4210);
     func_ov011_021fdea4(state);
-    func_ov011_021fce50((u8 *)state + 0x24, data_ov011_021fe3b0[2],
+    Overlay011_InitSceneFields((u8 *)state + 0x24, data_ov011_021fe3b0[2],
                         data_ov011_021fe3b0[3] - 0x48, 0);
     GraphicsResourceSet_Destroy(&resources);
     return state;

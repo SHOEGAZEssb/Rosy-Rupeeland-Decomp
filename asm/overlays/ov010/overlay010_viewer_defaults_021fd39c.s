@@ -2,8 +2,8 @@
     .extern func_020b0300
 
 /* Exact fallback; see src/overlays/ov010/overlay010_viewer_defaults.c. */
-    .global func_ov010_021fd39c
-func_ov010_021fd39c: ; 0x021fd39c
+    .global Overlay010_InitViewerDefaults
+Overlay010_InitViewerDefaults: ; 0x021fd39c
     stmdb sp!, {r3, lr}
     mov lr, #0x0
     str lr, [r0, #0x158]
@@ -32,4 +32,4 @@ func_ov010_021fd39c: ; 0x021fd39c
     bl func_020b0300
     ldmia sp!, {r3, pc}
 
-    .size func_ov010_021fd39c, . - func_ov010_021fd39c
+    .size Overlay010_InitViewerDefaults, . - Overlay010_InitViewerDefaults

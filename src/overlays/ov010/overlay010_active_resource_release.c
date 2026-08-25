@@ -14,7 +14,7 @@ extern void GraphicsAnimationInstanceManager_DestroyInstance(void *, void *); ex
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov010_021fd408(void *state)
+void Overlay010_ReleaseActiveResource(void *state)
 {
     void *p=FIELD(void *,state,0x12c);
     if(p){Graphics3DResourceBinding_Destroy(p);Heap_Free(p);FIELD(void *,state,0x12c)=0;return;}

@@ -26,13 +26,13 @@
     .extern func_ov012_021fce00
     .extern func_ov012_021fd004
     .extern func_ov012_021fd020
-    .extern func_ov012_021fd044
-    .extern func_ov012_021fd080
+    .extern Overlay012_SetDisp3dBit4Enabled
+    .extern Overlay012_SetDisp3dBit3Enabled
     .extern func_ov012_021fd0bc
     .extern func_ov012_021fd0c4
-    .extern func_ov012_021fd0d4
-    .extern func_ov012_021fd148
-    .extern func_ov012_021fd5ac
+    .extern Overlay012_ConfigureDrawSlot
+    .extern Overlay012_InitSceneFields
+    .extern Overlay012_UpdateViewerHelpers
     .extern func_ov012_021fd63c
     .extern data_ov012_021fe670
     .extern data_ov012_021fe6a4
@@ -45,8 +45,8 @@
     .extern data_020f4e18
     .extern gHeapContext
 /* Exact compiler-order fallback; see src/overlays/ov012/overlay012_scene_construct.c. */
-    .global func_ov012_021fd170
-func_ov012_021fd170:
+    .global Overlay012_Scene_Init
+Overlay012_Scene_Init:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x60
     mov r4, r0
@@ -138,7 +138,7 @@ L_021fd2bc:
     str r1, [r4, #0x18c]
     mov r0, r4
     str r1, [r4, #0x190]
-    bl func_ov012_021fd5ac
+    bl Overlay012_UpdateViewerHelpers
     mov r1, #0x11
     mov r0, #0
     str r1, [r4, #0x6c]
@@ -162,9 +162,9 @@ L_021fd2bc:
     str r1, [r2]
     bl func_ov012_021fd020
     mov r0, #1
-    bl func_ov012_021fd044
+    bl Overlay012_SetDisp3dBit4Enabled
     mov r0, #1
-    bl func_ov012_021fd080
+    bl Overlay012_SetDisp3dBit3Enabled
     mov r2, #2
     ldr r1, L_021fd454
     mov r0, #0
@@ -205,7 +205,7 @@ L_021fd2bc:
     add r0, r4, #0x114
     mov r1, #0
     mov r2, #0x1000
-    bl func_ov012_021fd0d4
+    bl Overlay012_ConfigureDrawSlot
     mov r0, r4
     bl func_ov012_021fd63c
     mov r0, r4
@@ -219,7 +219,7 @@ L_021fd2bc:
     str r0, [sp, #0x14]
     add r0, r4, #0x24
     ldmia r1, {r1, r2}
-    bl func_ov012_021fd148
+    bl Overlay012_InitSceneFields
     mov r0, r4
     add sp, sp, #0x60
     ldmia sp!, {r3, r4, r5, pc}
@@ -257,4 +257,4 @@ L_021fd460:
     .word 0xbfff0000
 L_021fd464:
     .word data_ov012_021fe4d0
-    .size func_ov012_021fd170, . - func_ov012_021fd170
+    .size Overlay012_Scene_Init, . - Overlay012_Scene_Init

@@ -13,7 +13,7 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov009_021fce74(void *state, s32 field24, s32 field28, s32 unused)
+void Overlay009_InitSceneFields(void *state, s32 field24, s32 field28, s32 unused)
 {
     (void)unused;
     *(s32 *)((u8 *)state + 0x24) = field24;

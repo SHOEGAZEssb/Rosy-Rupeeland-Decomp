@@ -5,8 +5,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov009/overlay009_scene_state_reset.c. */
-    .global func_ov009_021fd294
-func_ov009_021fd294: ; 0x021fd294
+    .global Overlay009_ResetSceneState
+Overlay009_ResetSceneState: ; 0x021fd294
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r0, #0x80
@@ -49,4 +49,4 @@ func_ov009_021fd294: ; 0x021fd294
     ldmia sp!, {r4, pc}
 L_021fd334: .word data_020f4e14
 
-    .size func_ov009_021fd294, . - func_ov009_021fd294
+    .size Overlay009_ResetSceneState, . - Overlay009_ResetSceneState

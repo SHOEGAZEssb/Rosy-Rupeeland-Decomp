@@ -10,8 +10,8 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *func_ov011_021fd08c(void *state);
-extern void *func_ov011_021fd0fc(void *state);
+extern void *Overlay011_Scene_Destroy(void *state);
+extern void *Overlay011_Scene_Delete(void *state);
 extern void *func_ov011_021fdde0(void *state);
 extern void *func_ov011_021fde34(void *state);
 extern void SceneInputBase_Update(void *member, s32 active);
@@ -67,13 +67,13 @@ s32 func_ov011_021fe310(void *object)
 /* Adjust an embedded-member pointer back to its first scene and delete it. */
 void *func_ov011_021fe330(void *member)
 {
-    return func_ov011_021fd0fc((u8 *)member - 0x24);
+    return Overlay011_Scene_Delete((u8 *)member - 0x24);
 }
 
 /* Adjust an embedded-member pointer back to its first scene and destroy it. */
 void *func_ov011_021fe340(void *member)
 {
-    return func_ov011_021fd08c((u8 *)member - 0x24);
+    return Overlay011_Scene_Destroy((u8 *)member - 0x24);
 }
 
 /* Adjust an embedded-member pointer back to its second scene and delete it. */

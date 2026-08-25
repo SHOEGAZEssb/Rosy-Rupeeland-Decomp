@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov012_021fd044(s32 enabled)
+void Overlay012_SetDisp3dBit4Enabled(s32 enabled)
 {
     volatile u16 *disp3dcnt = (volatile u16 *)0x04000060;
 

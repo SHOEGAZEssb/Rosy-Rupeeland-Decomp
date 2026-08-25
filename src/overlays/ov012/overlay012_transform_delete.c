@@ -17,7 +17,7 @@ extern void Heap_Free(void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov012_021fce74(void *object)
+void *Overlay012_Transform_Delete(void *object)
 {
     *(u32 **)object = data_ov012_021fe5f4;
     if (*(void **)((u8 *)object + 4) != 0) {

@@ -16,7 +16,7 @@ extern void *GraphicsArchive_AcquireOwlvResource(void *, void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov012_021fceb4(void *object, void *descriptor)
+void Overlay012_Transform_SetResource(void *object, void *descriptor)
 {
     if (*(void **)((u8 *)object + 4) != 0) {
         GraphicsArchive_ReleaseOwlvResource(data_020f4e18);

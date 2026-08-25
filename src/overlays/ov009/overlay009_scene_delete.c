@@ -25,7 +25,7 @@ extern void Heap_Free(void *allocation);
 #endif
 
 /*
- * Perform the same ordered resource teardown as func_ov009_021fd198, then pass
+ * Perform the same ordered resource teardown as Overlay009_Scene_Destroy, then pass
  * state to Heap_Free and return the original (now invalid) pointer as required
  * by the recovered ABI. Allocation, debug, and subsystem effects are delegated;
  * callers must not dereference the returned value. No direct hardware access
@@ -34,7 +34,7 @@ extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov009_021fd208(void *state)
+void *Overlay009_Scene_Delete(void *state)
 {
     s32 index;
 

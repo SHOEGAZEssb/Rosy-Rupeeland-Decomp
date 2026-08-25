@@ -15,7 +15,7 @@ extern void *Heap_Alloc(s32,const char *,s32,void *); extern void *Graphics3DRes
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov010_021fd45c(void *state)
+void Overlay010_CreateActiveResource(void *state)
 {
     s32 s=FIELD(s32,state,0x14c); u8 *r=(u8 *)FIELD(void *,state,0x90+s*4)+FIELD(s32,state,0x13c+s*4)*0x20; void *p;
     FIELD(s32,state,0x144)=0; FIELD(s32,state,0x148)=0;

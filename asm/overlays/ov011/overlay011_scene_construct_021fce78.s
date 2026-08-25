@@ -27,15 +27,15 @@
     .extern func_020aea7c
     .extern func_020b4554
     .extern func_ov011_021fce00
-    .extern func_ov011_021fce1c
-    .extern func_ov011_021fce50
-    .extern func_ov011_021fd188
+    .extern Overlay011_SetSubBg0Enabled
+    .extern Overlay011_InitSceneFields
+    .extern Overlay011_SetupResources
     .extern gDebugFont
     .extern gHeapContext
 
 /* Exact fallback; see src/overlays/ov011/overlay011_scene_construct.c. */
-    .global func_ov011_021fce78
-func_ov011_021fce78: ; 0x021fce78
+    .global Overlay011_Scene_Init
+Overlay011_Scene_Init: ; 0x021fce78
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x54
     mov r10, r0
@@ -134,7 +134,7 @@ L_021fcf6c:
     mov r2, #0x10
     mov r3, r0
     str r0, [sp, #0x0]
-    bl func_ov011_021fce1c
+    bl Overlay011_SetSubBg0Enabled
     bl TitleDisplay_ResetSubBgScroll
     mov r0, #0x0
     mov r1, #0x1
@@ -145,7 +145,7 @@ L_021fcf6c:
     str r0, [r10, #0xfc]
     str r0, [r10, #0x100]
     mov r0, r10
-    bl func_ov011_021fd188
+    bl Overlay011_SetupResources
     mov r0, #0x0
     bl TitlePalette_SetMainBackdrop
     mov r0, r10
@@ -159,7 +159,7 @@ L_021fcf6c:
     str r3, [sp, #0x4]
     str r1, [sp, #0x8]
     ldmia r2, {r1, r2}
-    bl func_ov011_021fce50
+    bl Overlay011_InitSceneFields
     mov r0, r10
     add sp, sp, #0x54
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
@@ -172,4 +172,4 @@ L_021fd080: .word data_ov011_021fe3f0
 L_021fd084: .word gHeapContext
 L_021fd088: .word data_ov011_021fe3b0
 
-    .size func_ov011_021fce78, . - func_ov011_021fce78
+    .size Overlay011_Scene_Init, . - Overlay011_Scene_Init

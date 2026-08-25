@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov010_021fce40(s32 enabled)
+void Overlay010_SetDisp3dEnabled(s32 enabled)
 {
     volatile u16 *reg = (volatile u16 *)0x04000060;
     if (enabled == 0) *reg &= 0xcff7;

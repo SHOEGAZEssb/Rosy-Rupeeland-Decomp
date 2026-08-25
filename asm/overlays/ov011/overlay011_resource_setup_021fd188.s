@@ -1,7 +1,7 @@
     .text
     .extern GraphicsResourceSet_Load
     .extern func_020b44e8
-    .extern func_ov011_021fd374
+    .extern Overlay011_SetSubBg1Enabled
     .extern GraphicsCharacterResource_GetUploadSize
     .extern GraphicsBgCharacterResource_UploadToSubBg
     .extern GraphicsBgPaletteResource_UploadToSubBg
@@ -16,8 +16,8 @@
 
     ; Exact matching fallback; see the documented portable reconstruction in
     ; src/overlays/ov011/overlay011_resource_setup.c.
-    .global func_ov011_021fd188
-func_ov011_021fd188: ; 0x021fd188
+    .global Overlay011_SetupResources
+Overlay011_SetupResources: ; 0x021fd188
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -47,7 +47,7 @@ func_ov011_021fd188: ; 0x021fd188
     mov r0, #0x0
     movne r1, #0x1
     str r0, [sp, #0x0]
-    bl func_ov011_021fd374
+    bl Overlay011_SetSubBg1Enabled
     ldr r0, [r4, #0x78]
     mov r5, #0x0
     bl GraphicsCharacterResource_GetUploadSize
@@ -125,7 +125,7 @@ L_021fd2f0:
     str r2, [sp, #0x0]
     movne r1, #0x1
     mov r2, #0x12
-    bl func_ov011_021fd374
+    bl Overlay011_SetSubBg1Enabled
     ldr r0, [r4, #0x7c]
     mov r2, #0x0
     ldr r0, [r0, #0x20]
@@ -150,4 +150,4 @@ L_021fd368: .word data_ov011_021fe618
 L_021fd36c: .word gHeapContext
 L_021fd370: .word 0x5000400
 
-    .size func_ov011_021fd188, . - func_ov011_021fd188
+    .size Overlay011_SetupResources, . - Overlay011_SetupResources

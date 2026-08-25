@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern OverlaySlot_LoadOverlay
 .extern data_020e55ec
-.extern func_ov012_021fce3c
+.extern Overlay012_Transform_Destroy
 .extern gHeapContext
 
 .global InventoryScene_LoadPrimaryView
@@ -24,7 +24,7 @@ InventoryScene_LoadPrimaryView:
     cmp r0, #0x0
     beq .L_02068674
     add r1, r4, #0x70
-    bl func_ov012_021fce3c
+    bl Overlay012_Transform_Destroy
 .L_02068674:
     str r0, [r4, #0x54]
     ldr r0, [r4, #0x20]

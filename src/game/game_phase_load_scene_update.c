@@ -91,7 +91,7 @@ extern void *func_ov018_021fd9f8(void *object);
 extern void *func_ov025_021ff27c(void *scene);
 extern void *Overlay004_VariantController_Init(void *object, s32 argument);
 extern void *func_ov028_021fdb00(void *object);
-extern void *func_ov009_021fce74(void *object, s32 argument);
+extern void *Overlay009_InitSceneFields(void *object, s32 argument);
 extern void *Overlay027Scene_Init(void *object);
 extern void *func_ov017_021fda3c(void *object);
 extern void *func_ov036_022045d4(void *object, s32 argument);
@@ -748,7 +748,7 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e1cc);
     object = Heap_Alloc(0x104,OVERLAY009_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov009_021fce74(object,self->sceneArgument);
+      object = Overlay009_InitSceneFields(object,self->sceneArgument);
     }
     self->loadedScene = object;
     break;

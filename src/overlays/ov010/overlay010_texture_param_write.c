@@ -4,4 +4,4 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov010_021fe8b8(u32 a,u32 b,u32 c,u32 d,u32 e,u32 f,u32 g,u32 h){*(volatile u32 *)0x040004a8=(a<<26)|(h>>3)|(b<<30)|(c<<20)|(d<<23)|(e<<16)|(f<<18)|(g<<29);}
+void Overlay010_WriteTextureParameters(u32 a,u32 b,u32 c,u32 d,u32 e,u32 f,u32 g,u32 h){*(volatile u32 *)0x040004a8=(a<<26)|(h>>3)|(b<<30)|(c<<20)|(d<<23)|(e<<16)|(f<<18)|(g<<29);}

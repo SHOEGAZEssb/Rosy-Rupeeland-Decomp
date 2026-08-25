@@ -6,8 +6,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov009/overlay009_active_object_create.c. */
-    .global func_ov009_021fd360
-func_ov009_021fd360: ; 0x021fd360
+    .global Overlay009_CreateActiveObject
+Overlay009_CreateActiveObject: ; 0x021fd360
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -54,4 +54,4 @@ func_ov009_021fd360: ; 0x021fd360
     ldmia sp!, {r3, r4, pc}
 L_021fd410: .word data_020f4e18
 
-    .size func_ov009_021fd360, . - func_ov009_021fd360
+    .size Overlay009_CreateActiveObject, . - Overlay009_CreateActiveObject

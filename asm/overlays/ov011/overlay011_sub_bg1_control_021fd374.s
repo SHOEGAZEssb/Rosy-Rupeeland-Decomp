@@ -2,8 +2,8 @@
 
     ; Exact matching fallback; see the documented portable reconstruction in
     ; src/overlays/ov011/overlay011_sub_bg1_control.c.
-    .global func_ov011_021fd374
-func_ov011_021fd374:
+    .global Overlay011_SetSubBg1Enabled
+Overlay011_SetSubBg1Enabled:
     stmdb sp!, {r4, lr}
     ldr lr, L_021fd3a4
     ldr r4, [sp, #0x8]
@@ -17,4 +17,4 @@ func_ov011_021fd374:
     strh r0, [lr, #0x0]
     ldmia sp!, {r4, pc}
 L_021fd3a4: .word 0x400100a
-    .size func_ov011_021fd374, . - func_ov011_021fd374
+    .size Overlay011_SetSubBg1Enabled, . - Overlay011_SetSubBg1Enabled

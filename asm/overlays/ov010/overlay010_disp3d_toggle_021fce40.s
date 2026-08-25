@@ -2,8 +2,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov010/overlay010_disp3d_toggle.c. */
-    .global func_ov010_021fce40
-func_ov010_021fce40: ; 0x021fce40
+    .global Overlay010_SetDisp3dEnabled
+Overlay010_SetDisp3dEnabled: ; 0x021fce40
     cmp r0, #0x0
     ldreq r2, L_021fce74
     ldreq r0, L_021fce78
@@ -20,4 +20,4 @@ func_ov010_021fce40: ; 0x021fce40
 L_021fce74: .word 0x4000060
 L_021fce78: .word 0xcff7
 
-    .size func_ov010_021fce40, . - func_ov010_021fce40
+    .size Overlay010_SetDisp3dEnabled, . - Overlay010_SetDisp3dEnabled

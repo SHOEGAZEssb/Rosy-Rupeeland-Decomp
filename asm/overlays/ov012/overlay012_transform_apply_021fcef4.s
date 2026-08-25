@@ -4,8 +4,8 @@
     .extern func_020b0844
     .extern func_020b0808
 /* Exact expression-order fallback; see src/overlays/ov012/overlay012_transform_apply.c. */
-    .global func_ov012_021fcef4
-func_ov012_021fcef4:
+    .global Overlay012_Transform_Apply
+Overlay012_Transform_Apply:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr ip, [r4, #0x10]
@@ -65,4 +65,4 @@ L_021fcfcc:
     .word gFx32CosSinTable
 L_021fcfd0:
     .word 0x0400046c
-    .size func_ov012_021fcef4, . - func_ov012_021fcef4
+    .size Overlay012_Transform_Apply, . - Overlay012_Transform_Apply

@@ -58,7 +58,7 @@
 .extern GraphicsBankStateSnapshot_Restore
 .extern DisplayBrightness_StartMaskedTransitions
 .extern Overlay004_VariantController_Init
-.extern func_ov009_021fce74
+.extern Overlay009_InitSceneFields
 .extern func_ov013_021fce2c
 .extern func_ov016_021fe77c
 .extern func_ov017_021fda3c
@@ -684,7 +684,7 @@ L_0200d8c8:
     cmp r0, #0x0
     beq L_0200d910
     ldr r1, [r5, #0x30]
-    bl func_ov009_021fce74 ; func_ov012_021fce74, func_ov027_021fce74, func_ov029_021fce74, func_ov040_021fce74
+    bl Overlay009_InitSceneFields ; Overlay012_Transform_Delete, func_ov027_021fce74, func_ov029_021fce74, func_ov040_021fce74
 L_0200d910:
     str r0, [r5, #0x24]
     b L_0200dbd4

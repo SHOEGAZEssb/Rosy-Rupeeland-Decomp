@@ -15,11 +15,11 @@ extern void GraphicsResourceSetVariant_Destroy(void *); extern void Scene_Destro
 }
 #endif
 
-/* Perform func_ov010_021fd1e8's ordered teardown, then free state and return the original invalid pointer for ABI compatibility; callers must not dereference it. */
+/* Perform Overlay010_Scene_Destroy's ordered teardown, then free state and return the original invalid pointer for ABI compatibility; callers must not dereference it. */
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov010_021fd2b4(void *state)
+void *Overlay010_Scene_Delete(void *state)
 {
     s32 i; void *p;
     FIELD(const void *, state, 0) = data_ov010_021fec34;

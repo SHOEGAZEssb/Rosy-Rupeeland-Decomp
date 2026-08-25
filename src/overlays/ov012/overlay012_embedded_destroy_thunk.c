@@ -14,7 +14,7 @@ extern void *func_ov012_021fd468(void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov012_021fe450(void *member)
+void *Overlay012_EmbeddedDestroyThunk(void *member)
 {
     return func_ov012_021fd468((u8 *)member - 0x24);
 }

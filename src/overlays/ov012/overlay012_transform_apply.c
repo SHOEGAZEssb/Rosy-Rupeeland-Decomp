@@ -17,7 +17,7 @@ extern void func_020b0808(s32, s32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov012_021fcef4(void *object)
+void Overlay012_Transform_Apply(void *object)
 {
     volatile s32 *translation = (volatile s32 *)0x04000470;
     volatile s32 *scale = (volatile s32 *)0x0400046c;

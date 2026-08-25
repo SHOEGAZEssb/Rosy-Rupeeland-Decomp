@@ -22,15 +22,15 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_Printf
     .extern GraphicsSpriteCanvas_DrawLine
-    .extern func_ov011_021fce50
-    .extern func_ov011_021fd188
+    .extern Overlay011_InitSceneFields
+    .extern Overlay011_SetupResources
     .extern func_ov011_021fdae0
     .extern gDebugFont
 
     ; Exact matching fallback; see the documented portable reconstruction in
     ; src/overlays/ov011/overlay011_debug_controller.c.
-    .global func_ov011_021fd450
-func_ov011_021fd450: ; 0x021fd450
+    .global Overlay011_UpdateDebugController
+Overlay011_UpdateDebugController: ; 0x021fd450
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x28
     mov r9, r0
@@ -147,7 +147,7 @@ L_021fd5e0:
     add r0, r9, #0x78
     bl GraphicsResourceSet_ReleaseHandles
     mov r0, r9
-    bl func_ov011_021fd188
+    bl Overlay011_SetupResources
     b L_021fd734
 L_021fd600:
     ldr r0, [r9, #0x50]
@@ -191,7 +191,7 @@ L_021fd684:
     add r0, r9, #0x78
     bl GraphicsResourceSet_ReleaseHandles
     mov r0, r9
-    bl func_ov011_021fd188
+    bl Overlay011_SetupResources
     b L_021fd734
 L_021fd6a4:
     ldr r0, [r9, #0x50]
@@ -231,7 +231,7 @@ L_021fd6fc:
     add r0, r9, #0x78
     bl GraphicsResourceSet_ReleaseHandles
     mov r0, r9
-    bl func_ov011_021fd188
+    bl Overlay011_SetupResources
 L_021fd734:
     ldr r0, L_021fdaa0
     ldr r0, [r0, #0x0]
@@ -454,7 +454,7 @@ L_021fda54:
     str r3, [sp, #0x10]
     add r0, r9, #0x24
     ldmia r1, {r1, r2}
-    bl func_ov011_021fce50
+    bl Overlay011_InitSceneFields
 L_021fda8c:
     mov r0, #0x0
     add sp, sp, #0x28
@@ -478,4 +478,4 @@ L_021fdad4: .word data_ov011_021fe6a0
 L_021fdad8: .word data_ov011_021fe6b0
 L_021fdadc: .word data_ov011_021fe3b0
 
-    .size func_ov011_021fd450, . - func_ov011_021fd450
+    .size Overlay011_UpdateDebugController, . - Overlay011_UpdateDebugController

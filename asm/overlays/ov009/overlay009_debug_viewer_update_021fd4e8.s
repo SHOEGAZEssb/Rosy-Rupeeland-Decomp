@@ -36,18 +36,18 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_Printf
     .extern GraphicsSpriteCanvas_DrawRect
-    .extern func_ov009_021fce74
-    .extern func_ov009_021fd294
+    .extern Overlay009_InitSceneFields
+    .extern Overlay009_ResetSceneState
     .extern func_ov009_021fd338
-    .extern func_ov009_021fd360
+    .extern Overlay009_CreateActiveObject
     .extern func_ov009_021fd414
     .extern func_ov009_021fd458
     .extern gDebugFont
 
 /* Exact fallback; see documented portable reconstruction and control map in
  * src/overlays/ov009/overlay009_debug_viewer_update.c. */
-    .global func_ov009_021fd4e8
-func_ov009_021fd4e8: ; 0x021fd4e8
+    .global Overlay009_UpdateDebugViewer
+Overlay009_UpdateDebugViewer: ; 0x021fd4e8
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xd0
     mov r9, r0
@@ -55,7 +55,7 @@ func_ov009_021fd4e8: ; 0x021fd4e8
     ldrh r1, [r1, #0x2]
     tst r1, #0x8
     beq L_021fd508
-    bl func_ov009_021fd294
+    bl Overlay009_ResetSceneState
 L_021fd508:
     ldr r0, [r9, #0x50]
     ldrh r0, [r0, #0x6]
@@ -198,7 +198,7 @@ L_021fd6d4:
     mov r0, r9
     bl func_ov009_021fd338
     mov r0, r9
-    bl func_ov009_021fd360
+    bl Overlay009_CreateActiveObject
     b L_021fdd84
 L_021fd718:
     ldr r1, [r9, #0x50]
@@ -230,7 +230,7 @@ L_021fd740:
     mov r0, r9
     bl func_ov009_021fd338
     mov r0, r9
-    bl func_ov009_021fd360
+    bl Overlay009_CreateActiveObject
     b L_021fdd84
 L_021fd790:
     tst r0, #0x30
@@ -251,7 +251,7 @@ L_021fd790:
     mov r0, r9
     bl func_ov009_021fd338
     mov r0, r9
-    bl func_ov009_021fd360
+    bl Overlay009_CreateActiveObject
     b L_021fdd84
 L_021fd7e0:
     ldr r0, [r9, #0x88]
@@ -397,7 +397,7 @@ L_021fd9c8:
     mov r0, r9
     bl func_ov009_021fd338
     mov r0, r9
-    bl func_ov009_021fd360
+    bl Overlay009_CreateActiveObject
     b L_021fdd84
 L_021fda00:
     ldr r0, [r9, #0x50]
@@ -1473,7 +1473,7 @@ L_021fe984:
     str r3, [sp, #0x50]
     add r0, r9, #0x24
     ldmia r1, {r1, r2}
-    bl func_ov009_021fce74
+    bl Overlay009_InitSceneFields
 L_021fe9bc:
     mov r0, #0x0
     add sp, sp, #0xd0
@@ -1504,4 +1504,4 @@ L_021fea20: .word data_ov009_021fef98
 L_021fea24: .word data_ov009_021fefb4
 L_021fea28: .word data_ov009_021feb80
 
-    .size func_ov009_021fd4e8, . - func_ov009_021fd4e8
+    .size Overlay009_UpdateDebugViewer, . - Overlay009_UpdateDebugViewer

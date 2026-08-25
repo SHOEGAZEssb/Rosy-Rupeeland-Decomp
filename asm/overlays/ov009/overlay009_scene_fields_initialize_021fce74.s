@@ -2,8 +2,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov009/overlay009_scene_fields_initialize.c. */
-    .global func_ov009_021fce74
-func_ov009_021fce74:
+    .global Overlay009_InitSceneFields
+Overlay009_InitSceneFields:
     stmdb sp!, {r0, r1, r2, r3}
     ldr r2, [sp, #0x4]
     ldr r1, [sp, #0x8]
@@ -14,4 +14,4 @@ func_ov009_021fce74:
     str r1, [r0, #0x8]
     add sp, sp, #0x10
     bx lr
-    .size func_ov009_021fce74, . - func_ov009_021fce74
+    .size Overlay009_InitSceneFields, . - Overlay009_InitSceneFields
