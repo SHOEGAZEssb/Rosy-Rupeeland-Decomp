@@ -55,7 +55,7 @@ static void finish_actor(void *actor)
  * routine mutates actor, presentation, scene, and map-related engine state but
  * has no direct hardware register effects and returns nothing.
  */
-void func_0204d858(void *actor)
+void PresentationBackedActor_UpdateStateMachine(void *actor)
 {
     u16 state = FIELD(u16, actor, 0x1ec);
 

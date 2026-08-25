@@ -12,8 +12,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .text
-    .global func_0204d858
-func_0204d858: ; 0x0204d858
+    .global PresentationBackedActor_UpdateStateMachine
+PresentationBackedActor_UpdateStateMachine: ; 0x0204d858
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x8
     mov r6, r0
@@ -397,4 +397,4 @@ func_0204d858: ; 0x0204d858
 .L_0204de0c: .word gSceneManager
 .L_0204de10: .word 0xd9a
 .L_0204de14: .word 0xe66
-.size func_0204d858, . - func_0204d858
+.size PresentationBackedActor_UpdateStateMachine, . - PresentationBackedActor_UpdateStateMachine

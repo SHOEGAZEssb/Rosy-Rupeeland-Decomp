@@ -18,7 +18,7 @@ extern void Actor_InitializeFromDescriptor(void *actor);
  * call actor virtual slot 0x54 with zero. No value is returned. Base and
  * virtual actor state may change; there are no direct SDK or hardware effects.
  */
-void func_0204d220(void *self)
+void SingletonTrackingActor_EnterInitialState(void *self)
 {
     void (**vtable)(void *, s32);
     Actor_InitializeFromDescriptor(self);

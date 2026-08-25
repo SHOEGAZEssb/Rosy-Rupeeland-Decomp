@@ -19,7 +19,7 @@ extern u8 data_020f4e14[];
 extern void *gDebugFont;
 extern void *Actor_GetOwningCollection(void *actor);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
-extern void *func_0204d570(void *self);
+extern void *RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(void *self);
 #ifdef __cplusplus
 }
 #endif
@@ -59,7 +59,7 @@ extern "C" void *func_ov090_02217b70(void *self)
         FIELD(GraphicsSpriteRenderer *, data_020f4e14, 0), 0, 0);
     VecFx32Object_Destroy((VecFx32Object *)((u8 *)self + 0x224));
     VecFx32Object_Destroy((VecFx32Object *)((u8 *)self + 0x20c));
-    func_0204d570(self);
+    RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(self);
     return self;
 }
 
@@ -97,7 +97,7 @@ extern "C" void *func_ov090_02217c6c(void *self)
         FIELD(GraphicsSpriteRenderer *, data_020f4e14, 0), 0, 0);
     VecFx32Object_Destroy((VecFx32Object *)((u8 *)self + 0x224));
     VecFx32Object_Destroy((VecFx32Object *)((u8 *)self + 0x20c));
-    func_0204d570(self);
+    RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(self);
     Heap_Free(self);
     return self;
 }

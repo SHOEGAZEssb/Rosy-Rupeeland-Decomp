@@ -20,9 +20,9 @@
 .extern ActorExtendedTable_InitDuplicate
 .extern ActorExtendedTableCyclic_Init
 .extern Type7Actor_Init
-.extern func_0204d068
-.extern func_0204d284
-.extern func_0204d488
+.extern SingletonTrackingActor_Init
+.extern RuntimeActorScriptVariant_InitAlternate
+.extern IndexedStateActor_Init
 .extern PresentationBackedActor_Init
 .extern EffectHandleActor_Init
 .extern func_0204e944
@@ -1114,7 +1114,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0202fb74
     mov r1, r5
-    bl func_0204d284
+    bl RuntimeActorScriptVariant_InitAlternate
     mov r4, r0
 .L_0202fb74:
     ldr r0, [r4, #0x14]
@@ -1185,7 +1185,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0203015c
     mov r1, r5
-    bl func_0204d068
+    bl SingletonTrackingActor_Init
     mov r4, r0
     b .L_0203015c
 .L_0202fc7c:
@@ -1197,7 +1197,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0203015c
     mov r1, r5
-    bl func_0204d488
+    bl IndexedStateActor_Init
     mov r4, r0
     b .L_0203015c
 .L_0202fca8: .word data_020def5c

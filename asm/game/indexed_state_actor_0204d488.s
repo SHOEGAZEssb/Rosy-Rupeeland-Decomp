@@ -6,8 +6,8 @@
 .extern data_020e212c
 .extern Actor_InitializeFromDescriptor
 .text
-    .global func_0204d488
-func_0204d488: ; 0x0204d488
+    .global IndexedStateActor_Init
+IndexedStateActor_Init: ; 0x0204d488
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -22,19 +22,19 @@ func_0204d488: ; 0x0204d488
     strh r2, [r1, #0xa]
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204d4bc: .word data_020e212c
-.size func_0204d488, . - func_0204d488
+.size IndexedStateActor_Init, . - IndexedStateActor_Init
 
-    .global func_0204d4c0
-func_0204d4c0: ; 0x0204d4c0
+    .global IndexedStateActor_Destroy
+IndexedStateActor_Destroy: ; 0x0204d4c0
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_0204d4c0, . - func_0204d4c0
+.size IndexedStateActor_Destroy, . - IndexedStateActor_Destroy
 
-    .global func_0204d4d4
-func_0204d4d4: ; 0x0204d4d4
+    .global IndexedStateActor_DestroyAndFree
+IndexedStateActor_DestroyAndFree: ; 0x0204d4d4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorDerivedRuntime_DestroyAlternate
@@ -42,17 +42,17 @@ func_0204d4d4: ; 0x0204d4d4
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_0204d4d4, . - func_0204d4d4
+.size IndexedStateActor_DestroyAndFree, . - IndexedStateActor_DestroyAndFree
 
-    .global func_0204d4f0
-func_0204d4f0: ; 0x0204d4f0
+    .global IndexedStateActor_EnterInitialState
+IndexedStateActor_EnterInitialState: ; 0x0204d4f0
     ldr ip, .L_0204d4f8
     bx ip
 .L_0204d4f8: .word Actor_InitializeFromDescriptor
-.size func_0204d4f0, . - func_0204d4f0
+.size IndexedStateActor_EnterInitialState, . - IndexedStateActor_EnterInitialState
 
-    .global func_0204d4fc
-func_0204d4fc: ; 0x0204d4fc
+    .global IndexedStateActor_Update
+IndexedStateActor_Update: ; 0x0204d4fc
     stmdb sp!, {r3, lr}
     add r1, r0, #0x200
     ldrsh r1, [r1, #0x8]
@@ -63,4 +63,4 @@ func_0204d4fc: ; 0x0204d4fc
 .L_0204d518:
     bl ActorDerivedRuntime_UpdateFrame
     ldmia sp!, {r3, pc}
-.size func_0204d4fc, . - func_0204d4fc
+.size IndexedStateActor_Update, . - IndexedStateActor_Update

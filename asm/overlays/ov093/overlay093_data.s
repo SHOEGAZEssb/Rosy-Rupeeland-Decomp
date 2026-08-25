@@ -26,9 +26,9 @@
 .extern Actor_RefreshCachedTerrainHeightIfEnabled
 .extern Actor_GetGravityAcceleration
 .extern Actor_ApplyMotionImpulse
-.extern func_0204d3dc
-.extern func_0204d3e0
-.extern func_0204d3e4
+.extern RuntimeActorScriptVariant_NoOpHook1
+.extern RuntimeActorScriptVariant_NoOpHook2
+.extern RuntimeActorScriptVariant_HandleContact
 .extern func_ov093_02217908
 .extern func_ov093_02217ad8
 .extern func_ov093_02217b90
@@ -133,8 +133,8 @@ data_ov093_022188f0:
     .word Actor_SnapshotTransientState
     .word func_ov093_02217c50
     .word Actor_ClearTransientContactState
-    .word func_0204d3dc
-    .word func_0204d3e4
+    .word RuntimeActorScriptVariant_NoOpHook1
+    .word RuntimeActorScriptVariant_HandleContact
     .word ActorContactState_RemoveContact
     .word Actor_TryStartStepUpTransition
     .word ActorStepTransition_DefaultQueryReturnZero
@@ -145,7 +145,7 @@ data_ov093_022188f0:
     .word Actor_SetInteractionFlag2000
     .word Actor_ClearInteractionFlag2000
     .word Actor_TestQueryPointAndClearFlag2000
-    .word func_0204d3e0
+    .word RuntimeActorScriptVariant_NoOpHook2
     .word func_ov093_02218514
     .word func_ov093_022187a8
     .word func_ov093_022187a0

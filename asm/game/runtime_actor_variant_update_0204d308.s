@@ -12,8 +12,8 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern gActorRuntimeCollection
 .text
-    .global func_0204d308
-func_0204d308: ; 0x0204d308
+    .global RuntimeActorScriptVariant_Update
+RuntimeActorScriptVariant_Update: ; 0x0204d308
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl Actor_MarkFrameUpdateStarted
@@ -68,4 +68,4 @@ func_0204d308: ; 0x0204d308
     bl ActorCollection_QueueActorForRemoval
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204d3d4: .word gActorRuntimeCollection
-.size func_0204d308, . - func_0204d308
+.size RuntimeActorScriptVariant_Update, . - RuntimeActorScriptVariant_Update

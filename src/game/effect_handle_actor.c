@@ -19,7 +19,7 @@ RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
 extern void *PresentationBackedActor_InitBase(void *actor,
                                               const void *descriptor);
 extern void *PresentationBackedActor_Destroy(void *actor);
-extern void func_0204d858(void *actor);
+extern void PresentationBackedActor_UpdateStateMachine(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -80,7 +80,7 @@ void *EffectHandleActor_Delete(void *self)
  * later states create one 40x40 kind-0x46 effect if handle 0x1FE is still -1.
  * Coordinates derive from fixed-point actor position and height, with the
  * recovered 20-pixel offsets and signed-16 truncation on persistent creation.
- * Always run func_0204d858 afterward. Returns nothing; visual and actor state
+ * Always run PresentationBackedActor_UpdateStateMachine afterward. Returns nothing; visual and actor state
  * change, and hardware is not accessed directly.
  */
 void func_0204e82c(void *actor)
@@ -101,5 +101,5 @@ void func_0204e82c(void *actor)
                 manager, 0, (s16)(x - 20), (s16)(y - 20), 40, 40, 0x46);
         }
     }
-    func_0204d858(actor);
+    PresentationBackedActor_UpdateStateMachine(actor);
 }

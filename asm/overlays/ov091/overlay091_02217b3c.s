@@ -11,7 +11,7 @@
 .extern ActorCollection_SpawnDescriptorsBySelector
 .extern Actor_SetActive
 .extern Actor_GetOwningCollection
-.extern func_0204d570
+.extern RuntimeActorScriptVariantSubclass_DestroyAlternateEntry
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern gGameWork
 
@@ -118,7 +118,7 @@ func_ov091_02217b3c:
     add r0, r5, #0x210
     bl VecFx32Object_Destroy
     mov r0, r5
-    bl func_0204d570
+    bl RuntimeActorScriptVariantSubclass_DestroyAlternateEntry
     mov r0, r5
     bl Heap_Free
     mov r0, r5

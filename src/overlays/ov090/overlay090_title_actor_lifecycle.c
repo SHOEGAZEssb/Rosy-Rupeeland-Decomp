@@ -25,9 +25,9 @@ extern void *gDebugFont;
 extern const char data_ov090_0221cc00[];
 extern u8 data_ov090_0221cb10[];
 
-extern void *func_0204d520(void *self);
-extern void func_0204d3d8(void);
-extern void *func_0204d570(void *self);
+extern void *RuntimeActorScriptVariantSubclass_Init(void *self);
+extern void RuntimeActorScriptVariant_NoOpHook0(void);
+extern void *RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(void *self);
 extern void *Actor_GetOwningCollection(void *actor);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
 extern void GXx_SetMasterBrightness_(volatile u16 *reg, s32 brightness);
@@ -47,7 +47,7 @@ extern "C" void *func_ov090_022177e0(void *self)
     s32 index = 0;
     void *primary;
 
-    func_0204d520(self);
+    RuntimeActorScriptVariantSubclass_Init(self);
     FIELD(void *, self, 0x000) = data_ov090_0221cb10;
     FIELD(u8, self, 0x1ec) = 0;
     FIELD(u8, self, 0x1ed) = 0;
@@ -118,7 +118,7 @@ extern "C" void func_ov090_02217a3c(void *self)
     AnimationResource *resource;
     GraphicsSpriteState *sprite;
 
-    func_0204d3d8();
+    RuntimeActorScriptVariant_NoOpHook0();
     func_ov090_0221ad64(self, 0x1026, 0x1027, 0x1028);
 
     resource = (AnimationResource *)Heap_Alloc(0x10, data_ov090_0221cc00, 4,

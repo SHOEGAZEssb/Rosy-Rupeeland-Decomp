@@ -28,7 +28,7 @@ extern void ActorDerivedRuntime_UpdateFrame(void *actor);
  * +0x208/+0x20c/+0x210/+0x214. Return self. Base construction may mutate
  * actor-owned engine state; there are no direct hardware effects.
  */
-void *func_0204d068(void *self, const void *descriptor)
+void *SingletonTrackingActor_Init(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
     ActorDerivedRuntime_Init(actor, descriptor);
@@ -45,7 +45,7 @@ void *func_0204d068(void *self, const void *descriptor)
  * halfword +0x9e, and invoke the non-deleting base destructor ActorDerivedRuntime_DestroyAlternate.
  * Return self. Actor and game-work state change; no hardware effects occur.
  */
-void *func_0204d09c(void *self)
+void *SingletonTrackingActor_Destroy(void *self)
 {
     u8 *actor = (u8 *)self;
     *(const void **)actor = data_020e1f2c;
@@ -56,11 +56,11 @@ void *func_0204d09c(void *self)
 
 /*
  * Input is a tracking actor. Perform the same vtable, game-work, and base
- * teardown as func_0204d09c, then release self through Heap_Free. Return the
+ * teardown as SingletonTrackingActor_Destroy, then release self through Heap_Free. Return the
  * original address. Heap, actor, and game-work state change without direct
  * hardware effects.
  */
-void *func_0204d0d0(void *self)
+void *SingletonTrackingActor_DestroyAndFree(void *self)
 {
     u8 *actor = (u8 *)self;
     *(const void **)actor = data_020e1f2c;
@@ -82,7 +82,7 @@ void *func_0204d0d0(void *self)
  * collection, and game-work state may change; there are no direct hardware
  * effects.
  */
-void func_0204d10c(void *self)
+void SingletonTrackingActor_Update(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *collection;

@@ -47,7 +47,7 @@ extern void GX_HBlankIntr(UNKNOWN_PARAMETERS);
 extern void GX_VBlankIntr(UNKNOWN_PARAMETERS);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(UNKNOWN_PARAMETERS);
 extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
-extern void func_0204d308(UNKNOWN_PARAMETERS);
+extern void RuntimeActorScriptVariant_Update(UNKNOWN_PARAMETERS);
 extern void Sound_StopAllDirectSequences(UNKNOWN_PARAMETERS);
 extern void Sound_PlayDirectSequence(UNKNOWN_PARAMETERS);
 extern void Sound_PlayEffectWithParameters(UNKNOWN_PARAMETERS);
@@ -124,7 +124,7 @@ void func_ov090_02217d70(void *self)
     ActorMotionAreaFollower_BindActor(
         (ActorMotion *)(runtime + 0x2fbc), self);
     ActorMotion_BindActor((ActorMotion *)(runtime + 0x3044), self);
-    func_0204d308(self);
+    RuntimeActorScriptVariant_Update(self);
     primaryActor = FIELD(void *, runtime, 0x2ea4);
     secondaryActor = FIELD(void *, runtime, 0x2ea8);
     scene = SceneManager_GetCurrent(gSceneManager);

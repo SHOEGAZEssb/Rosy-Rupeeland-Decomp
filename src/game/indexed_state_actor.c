@@ -25,7 +25,7 @@ extern void ActorDerivedRuntime_UpdateFrame(void *actor);
  * +0x208, and copy descriptor signed halfword +0x4e to +0x20a. Return self.
  * Base and actor state may change; there are no direct hardware effects.
  */
-void *func_0204d488(void *self, const void *descriptor)
+void *IndexedStateActor_Init(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
     ActorDerivedRuntime_Init(actor, descriptor);
@@ -40,7 +40,7 @@ void *func_0204d488(void *self, const void *descriptor)
  * ActorDerivedRuntime_DestroyAlternate and return self. Base state may change; no direct heap or
  * hardware effect occurs.
  */
-void *func_0204d4c0(void *self)
+void *IndexedStateActor_Destroy(void *self)
 {
     ActorDerivedRuntime_DestroyAlternate(self);
     return self;
@@ -51,7 +51,7 @@ void *func_0204d4c0(void *self)
  * the original address as in retail code. Base and heap state change; there
  * are no direct hardware effects.
  */
-void *func_0204d4d4(void *self)
+void *IndexedStateActor_DestroyAndFree(void *self)
 {
     ActorDerivedRuntime_DestroyAlternate(self);
     Heap_Free(self);
@@ -63,7 +63,7 @@ void *func_0204d4d4(void *self)
  * helper Actor_InitializeFromDescriptor. Its observable state changes and return convention are
  * preserved; there are no direct hardware effects in this wrapper.
  */
-void func_0204d4f0(void *self)
+void IndexedStateActor_EnterInitialState(void *self)
 {
     Actor_InitializeFromDescriptor(self);
 }
@@ -73,7 +73,7 @@ void func_0204d4f0(void *self)
  * while signed halfword +0x208 is zero; all other values return unchanged. No
  * value is returned. Base actor state may change, with no direct hardware effects.
  */
-void func_0204d4fc(void *self)
+void IndexedStateActor_Update(void *self)
 {
     if (*(s16 *)((u8 *)self + 0x208) == 0)
         ActorDerivedRuntime_UpdateFrame(self);

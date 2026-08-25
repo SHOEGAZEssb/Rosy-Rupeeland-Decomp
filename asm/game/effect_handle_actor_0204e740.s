@@ -5,7 +5,7 @@
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern PresentationBackedActor_InitBase
 .extern PresentationBackedActor_Destroy
-.extern func_0204d858
+.extern PresentationBackedActor_UpdateStateMachine
 .extern Graphics3dPresentation_RemoveSpriteEffect
 .extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .extern Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds
@@ -155,7 +155,7 @@ func_0204e82c: ; 0x0204e82c
     strh r0, [r1, #0xfe]
 .L_0204e928:
     mov r0, r4
-    bl func_0204d858
+    bl PresentationBackedActor_UpdateStateMachine
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}
 .L_0204e938: .word gGamePhaseRuntime

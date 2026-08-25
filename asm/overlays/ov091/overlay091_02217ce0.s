@@ -21,7 +21,7 @@
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_SetActive
-.extern func_0204d308
+.extern RuntimeActorScriptVariant_Update
 .extern Sound_PlayDirectSequence
 .extern Sound_StopDirectSequence
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -71,7 +71,7 @@ func_ov091_02217ce0:
     add r0, r0, #0x3000
     bl ActorMotion_BindActor
     mov r0, r4
-    bl func_0204d308
+    bl RuntimeActorScriptVariant_Update
     ldr r1, .L_0221881c
     ldr r0, .L_02218814
     ldr r1, [r1, #0x0]

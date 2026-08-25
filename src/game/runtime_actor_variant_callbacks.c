@@ -19,17 +19,17 @@ extern s32 ActorContactState_AddContact(void *actor, void *other,
 #endif
 
 /* Empty recovered callback: ignore all register inputs and change no state. */
-void func_0204d3d8(void)
+void RuntimeActorScriptVariant_NoOpHook0(void)
 {
 }
 
 /* Empty recovered callback: ignore all register inputs and change no state. */
-void func_0204d3dc(void)
+void RuntimeActorScriptVariant_NoOpHook1(void)
 {
 }
 
 /* Empty recovered callback: ignore all register inputs and change no state. */
-void func_0204d3e0(void)
+void RuntimeActorScriptVariant_NoOpHook2(void)
 {
 }
 
@@ -43,7 +43,7 @@ void func_0204d3e0(void)
  * state two. Return one on every path. Actor/base/vector and virtual state may
  * change; there are no direct hardware effects.
  */
-s32 func_0204d3e4(void *self, void *other, s32 mode)
+s32 RuntimeActorScriptVariant_HandleContact(void *self, void *other, s32 mode)
 {
     u8 *actor = (u8 *)self;
     u8 *otherActor = (u8 *)other;

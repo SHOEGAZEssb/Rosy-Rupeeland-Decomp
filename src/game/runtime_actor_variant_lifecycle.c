@@ -32,7 +32,7 @@ static void assignPrimaryScript(void *self, const s8 *script)
  * Return self. Base construction and optional script assignment change engine state;
  * there are no direct hardware effects.
  */
-void *func_0204d244(void *self, const void *descriptor)
+void *RuntimeActorScriptVariant_Init(void *self, const void *descriptor)
 {
     ActorRuntimeBase_Init(self, descriptor);
     *(const void **)self = data_020e2028;
@@ -43,12 +43,12 @@ void *func_0204d244(void *self, const void *descriptor)
 }
 
 /*
- * Inputs and behavior match func_0204d244: construct the same base, install
+ * Inputs and behavior match RuntimeActorScriptVariant_Init: construct the same base, install
  * data_020e2028, optionally assign descriptor script +0x2c through slot +0x74,
  * and return self. This distinct address is retained because callers select the
  * entry point independently. Engine state may change; no direct hardware effect.
  */
-void *func_0204d284(void *self, const void *descriptor)
+void *RuntimeActorScriptVariant_InitAlternate(void *self, const void *descriptor)
 {
     ActorRuntimeBase_Init(self, descriptor);
     *(const void **)self = data_020e2028;
@@ -63,7 +63,7 @@ void *func_0204d284(void *self, const void *descriptor)
  * RuntimeActor_DestroyAlternateEntry and return self. Base-owned state may change; the heap and
  * hardware are untouched directly.
  */
-void *func_0204d2c4(void *self)
+void *RuntimeActorScriptVariant_Destroy(void *self)
 {
     RuntimeActor_DestroyAlternateEntry(self);
     return self;
@@ -74,7 +74,7 @@ void *func_0204d2c4(void *self)
  * Heap_Free, and return the original address as in retail code. Base and heap
  * state change; there are no direct hardware effects.
  */
-void *func_0204d2d8(void *self)
+void *RuntimeActorScriptVariant_DestroyAndFree(void *self)
 {
     RuntimeActor_DestroyAlternateEntry(self);
     Heap_Free(self);
@@ -83,10 +83,10 @@ void *func_0204d2d8(void *self)
 
 /*
  * Input is a runtime actor variant. Invoke the same non-deleting base teardown
- * as func_0204d2c4 and return self. This separate callback address is preserved;
+ * as RuntimeActorScriptVariant_Destroy and return self. This separate callback address is preserved;
  * base state may change and there are no direct hardware effects.
  */
-void *func_0204d2f4(void *self)
+void *RuntimeActorScriptVariant_DestroyAlternateEntry(void *self)
 {
     RuntimeActor_DestroyAlternateEntry(self);
     return self;

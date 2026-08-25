@@ -6,7 +6,7 @@
 .extern data_ov093_022188f0
 .extern VecFx32Object_Init
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_0204d520
+.extern RuntimeActorScriptVariantSubclass_Init
 .extern func_ov093_022177e0
 .extern gGameWork
 .extern gGamePhaseCurrencyHud
@@ -15,7 +15,7 @@
 func_ov093_022177f0:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0204d520
+    bl RuntimeActorScriptVariantSubclass_Init
     ldr r1, .L_022178f0
     add r0, r4, #0x1ec
     str r1, [r4, #0x0]

@@ -39,7 +39,7 @@ extern void *Actor_GetGlobalCollectionBySlot(void *actor, u32 slot);
  * No value is returned. Base, embedded state, registry, and collection
  * membership may change; there are no direct hardware effects.
  */
-void func_0204d308(void *self)
+void RuntimeActorScriptVariant_Update(void *self)
 {
     u8 *actor = (u8 *)self;
     void *state = actor + 0xec;

@@ -11,7 +11,7 @@
 .extern OverlayManager_GetGlobal
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorDerivedType1_GetActiveRecordId
-.extern func_0204d308
+.extern RuntimeActorScriptVariant_Update
 .extern Sound_StopEffect
 .extern Sound_SetEffectParameters
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -41,7 +41,7 @@ func_ov092_02217ddc:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r5, r0
-    bl func_0204d308
+    bl RuntimeActorScriptVariant_Update
     ldr r1, .L_0221835c
     ldr r0, .L_02218360
     ldr r1, [r1, #0x0]

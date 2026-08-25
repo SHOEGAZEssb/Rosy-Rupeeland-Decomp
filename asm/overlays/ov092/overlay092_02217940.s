@@ -5,7 +5,7 @@
 .extern data_ov092_0221c728
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_TranslateSecondaryBounds
-.extern func_0204d520
+.extern RuntimeActorScriptVariantSubclass_Init
 .extern func_ov092_02217928
 .extern func_ov092_0221792c
 .extern func_ov092_02217930
@@ -15,7 +15,7 @@
 func_ov092_02217940:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
-    bl func_0204d520
+    bl RuntimeActorScriptVariantSubclass_Init
     ldr r0, .L_02217b68
     mov r1, #0x0
     str r0, [r10, #0x0]

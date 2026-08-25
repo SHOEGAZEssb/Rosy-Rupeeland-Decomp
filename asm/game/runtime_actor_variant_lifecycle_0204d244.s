@@ -4,8 +4,8 @@
 .extern Heap_Free
 .extern data_020e2028
 .text
-    .global func_0204d244
-func_0204d244: ; 0x0204d244
+    .global RuntimeActorScriptVariant_Init
+RuntimeActorScriptVariant_Init: ; 0x0204d244
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -23,10 +23,10 @@ func_0204d244: ; 0x0204d244
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204d280: .word data_020e2028
-.size func_0204d244, . - func_0204d244
+.size RuntimeActorScriptVariant_Init, . - RuntimeActorScriptVariant_Init
 
-    .global func_0204d284
-func_0204d284: ; 0x0204d284
+    .global RuntimeActorScriptVariant_InitAlternate
+RuntimeActorScriptVariant_InitAlternate: ; 0x0204d284
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -44,19 +44,19 @@ func_0204d284: ; 0x0204d284
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204d2c0: .word data_020e2028
-.size func_0204d284, . - func_0204d284
+.size RuntimeActorScriptVariant_InitAlternate, . - RuntimeActorScriptVariant_InitAlternate
 
-    .global func_0204d2c4
-func_0204d2c4: ; 0x0204d2c4
+    .global RuntimeActorScriptVariant_Destroy
+RuntimeActorScriptVariant_Destroy: ; 0x0204d2c4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_0204d2c4, . - func_0204d2c4
+.size RuntimeActorScriptVariant_Destroy, . - RuntimeActorScriptVariant_Destroy
 
-    .global func_0204d2d8
-func_0204d2d8: ; 0x0204d2d8
+    .global RuntimeActorScriptVariant_DestroyAndFree
+RuntimeActorScriptVariant_DestroyAndFree: ; 0x0204d2d8
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl RuntimeActor_DestroyAlternateEntry
@@ -64,14 +64,14 @@ func_0204d2d8: ; 0x0204d2d8
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_0204d2d8, . - func_0204d2d8
+.size RuntimeActorScriptVariant_DestroyAndFree, . - RuntimeActorScriptVariant_DestroyAndFree
 
-    .global func_0204d2f4
-func_0204d2f4: ; 0x0204d2f4
+    .global RuntimeActorScriptVariant_DestroyAlternateEntry
+RuntimeActorScriptVariant_DestroyAlternateEntry: ; 0x0204d2f4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl RuntimeActor_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_0204d2f4, . - func_0204d2f4
+.size RuntimeActorScriptVariant_DestroyAlternateEntry, . - RuntimeActorScriptVariant_DestroyAlternateEntry
 

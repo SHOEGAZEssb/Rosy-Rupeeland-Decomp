@@ -6,23 +6,23 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern gActorRuntimeCollection
 .text
-    .global func_0204d3d8
-func_0204d3d8: ; 0x0204d3d8
+    .global RuntimeActorScriptVariant_NoOpHook0
+RuntimeActorScriptVariant_NoOpHook0: ; 0x0204d3d8
     bx lr
-.size func_0204d3d8, . - func_0204d3d8
+.size RuntimeActorScriptVariant_NoOpHook0, . - RuntimeActorScriptVariant_NoOpHook0
 
-    .global func_0204d3dc
-func_0204d3dc: ; 0x0204d3dc
+    .global RuntimeActorScriptVariant_NoOpHook1
+RuntimeActorScriptVariant_NoOpHook1: ; 0x0204d3dc
     bx lr
-.size func_0204d3dc, . - func_0204d3dc
+.size RuntimeActorScriptVariant_NoOpHook1, . - RuntimeActorScriptVariant_NoOpHook1
 
-    .global func_0204d3e0
-func_0204d3e0: ; 0x0204d3e0
+    .global RuntimeActorScriptVariant_NoOpHook2
+RuntimeActorScriptVariant_NoOpHook2: ; 0x0204d3e0
     bx lr
-.size func_0204d3e0, . - func_0204d3e0
+.size RuntimeActorScriptVariant_NoOpHook2, . - RuntimeActorScriptVariant_NoOpHook2
 
-    .global func_0204d3e4
-func_0204d3e4: ; 0x0204d3e4
+    .global RuntimeActorScriptVariant_HandleContact
+RuntimeActorScriptVariant_HandleContact: ; 0x0204d3e4
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r6, r0
@@ -66,5 +66,5 @@ func_0204d3e4: ; 0x0204d3e4
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204d484: .word gActorRuntimeCollection
-.size func_0204d3e4, . - func_0204d3e4
+.size RuntimeActorScriptVariant_HandleContact, . - RuntimeActorScriptVariant_HandleContact
 

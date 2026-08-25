@@ -106,10 +106,10 @@ EXT(func_0203c660);
 EXT(func_0204b078);
 EXT(Fx32Vector2_Magnitude);
 EXT(Fx32Vector2_LimitMagnitude);
-EXT(func_0204d308);
-EXT(func_0204d3d8);
-EXT(func_0204d520);
-EXT(func_0204d570);
+EXT(RuntimeActorScriptVariant_Update);
+EXT(RuntimeActorScriptVariant_NoOpHook0);
+EXT(RuntimeActorScriptVariantSubclass_Init);
+EXT(RuntimeActorScriptVariantSubclass_DestroyAlternateEntry);
 EXT(func_02050078);
 EXT(func_02050260);
 EXT(func_02050560);
@@ -251,7 +251,7 @@ extern "C" void func_ov092_02217930(void *object, s32 x, s32 y, s32 z)
 /* Constructs the encounter scene and binds its eight category-one actors. */
 extern "C" void *func_ov092_02217940(void *scene)
 {
-    func_0204d520(scene);
+    RuntimeActorScriptVariantSubclass_Init(scene);
     F(void *, scene, 0) = data_ov092_0221c728;
     F(u8, scene, 0x1ec) = F(u8, scene, 0x1ed) = 0;
     F(s16, scene, 0x1ee) = 0;
@@ -313,7 +313,7 @@ extern "C" void *func_ov092_02217940(void *scene)
 /* Creates the two scene-owned presentation resources. */
 extern "C" void func_ov092_02217b7c(void *scene)
 {
-    func_0204d3d8(scene);
+    RuntimeActorScriptVariant_NoOpHook0(scene);
     s32 resource = func_02003e14(0x10, data_ov092_0221c818, 4, gHeapContext);
     if (resource != 0)
         resource = func_02005580(resource, 0x32c8, 0x32c9, 0x32ca);
@@ -349,7 +349,7 @@ extern "C" void *func_ov092_02217cac(void *scene)
     if (F(void *, scene, 0x24c) != 0)
         CallMethod(F(void *, scene, 0x24c), 4);
     func_020c0bc8(P(scene, 0x1f0), 5, 12, func_ov092_0221792c);
-    func_0204d570(scene);
+    RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(scene);
     return scene;
 }
 
@@ -1325,7 +1325,7 @@ extern "C" s32 func_ov092_0221a6d4(void *scene)
 /* Runs the top-level encounter progression and primary-actor handoff. */
 extern "C" void func_ov092_02217ddc(void *scene)
 {
-    func_0204d308(scene);
+    RuntimeActorScriptVariant_Update(scene);
     void *primary = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
     void *manager = (void *)func_0200323c(gSceneManager);
     if (F(s32, manager, 4) == 2 || func_ov092_02218380(gGameWork, 0, 1) == 0)

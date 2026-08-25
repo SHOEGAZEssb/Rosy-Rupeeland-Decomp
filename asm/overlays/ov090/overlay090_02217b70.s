@@ -6,7 +6,7 @@
 .extern VecFx32Object_Destroy
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_0204d570
+.extern RuntimeActorScriptVariantSubclass_DestroyAlternateEntry
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteRenderer_SetTextGridPosition
@@ -78,7 +78,7 @@ func_ov090_02217b70:
     add r0, r4, #0x20c
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0204d570
+    bl RuntimeActorScriptVariantSubclass_DestroyAlternateEntry
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02217c60: .word data_ov090_0221cb10

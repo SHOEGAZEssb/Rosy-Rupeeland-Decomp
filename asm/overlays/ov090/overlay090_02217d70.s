@@ -42,7 +42,7 @@
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern Type7Actor_SetMotionTargetWithTimer
 .extern Type7Actor_SetFlag40StateEnabled
-.extern func_0204d308
+.extern RuntimeActorScriptVariant_Update
 .extern Sound_StopAllDirectSequences
 .extern Sound_PlayDirectSequence
 .extern Sound_PlayEffectWithParameters
@@ -102,7 +102,7 @@ func_ov090_02217d70:
     add r0, r0, #0x3000
     bl ActorMotion_BindActor
     mov r0, r4
-    bl func_0204d308
+    bl RuntimeActorScriptVariant_Update
     ldr r1, .L_02218cf0
     ldr r0, .L_02218cf4
     ldr r1, [r1, #0x0]

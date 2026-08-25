@@ -9,8 +9,8 @@
 .extern gGameWork
 .extern gGamePhaseRuntime
 .text
-    .global func_0204d068
-func_0204d068: ; 0x0204d068
+    .global SingletonTrackingActor_Init
+SingletonTrackingActor_Init: ; 0x0204d068
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorDerivedRuntime_Init
@@ -24,10 +24,10 @@ func_0204d068: ; 0x0204d068
     str r1, [r4, #0x214]
     ldmia sp!, {r4, pc}
 .L_0204d098: .word data_020e1f2c
-.size func_0204d068, . - func_0204d068
+.size SingletonTrackingActor_Init, . - SingletonTrackingActor_Init
 
-    .global func_0204d09c
-func_0204d09c: ; 0x0204d09c
+    .global SingletonTrackingActor_Destroy
+SingletonTrackingActor_Destroy: ; 0x0204d09c
     stmdb sp!, {r4, lr}
     ldr r2, .L_0204d0c8
     mov r4, r0
@@ -41,10 +41,10 @@ func_0204d09c: ; 0x0204d09c
     ldmia sp!, {r4, pc}
 .L_0204d0c8: .word data_020e1f2c
 .L_0204d0cc: .word gGameWork
-.size func_0204d09c, . - func_0204d09c
+.size SingletonTrackingActor_Destroy, . - SingletonTrackingActor_Destroy
 
-    .global func_0204d0d0
-func_0204d0d0: ; 0x0204d0d0
+    .global SingletonTrackingActor_DestroyAndFree
+SingletonTrackingActor_DestroyAndFree: ; 0x0204d0d0
     stmdb sp!, {r4, lr}
     ldr r2, .L_0204d104
     mov r4, r0
@@ -60,10 +60,10 @@ func_0204d0d0: ; 0x0204d0d0
     ldmia sp!, {r4, pc}
 .L_0204d104: .word data_020e1f2c
 .L_0204d108: .word gGameWork
-.size func_0204d0d0, . - func_0204d0d0
+.size SingletonTrackingActor_DestroyAndFree, . - SingletonTrackingActor_DestroyAndFree
 
-    .global func_0204d10c
-func_0204d10c: ; 0x0204d10c
+    .global SingletonTrackingActor_Update
+SingletonTrackingActor_Update: ; 0x0204d10c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x10]
@@ -136,5 +136,5 @@ func_0204d10c: ; 0x0204d10c
 .L_0204d214: .word gGamePhaseRuntime
 .L_0204d218: .word gGameWork
 .L_0204d21c: .word 0x405
-.size func_0204d10c, . - func_0204d10c
+.size SingletonTrackingActor_Update, . - SingletonTrackingActor_Update
 

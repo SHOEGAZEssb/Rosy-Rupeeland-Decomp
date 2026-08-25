@@ -8,7 +8,7 @@
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
 .extern Type7Actor_SetActorEnabled
-.extern func_0204d3d8
+.extern RuntimeActorScriptVariant_NoOpHook0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gHeapContext
 
@@ -17,7 +17,7 @@ func_ov092_02217b7c:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     mov r4, r0
-    bl func_0204d3d8
+    bl RuntimeActorScriptVariant_NoOpHook0
     ldr r1, .L_02217c98
     ldr r3, .L_02217c9c
     mov r0, #0x10

@@ -15,10 +15,10 @@ extern "C" u8 data_ov091_02218cd0[];
 extern "C" u8 data_ov091_02218dc0[];
 extern "C" u8 data_ov091_02218dc8[];
 extern "C" u8 data_ov091_02218dd0[];
-extern "C" void *func_0204d520(void *, const void *);
-extern "C" void *func_0204d570(void *);
-extern "C" void func_0204d3d8(void);
-extern "C" void func_0204d308(void *);
+extern "C" void *RuntimeActorScriptVariantSubclass_Init(void *, const void *);
+extern "C" void *RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(void *);
+extern "C" void RuntimeActorScriptVariant_NoOpHook0(void);
+extern "C" void RuntimeActorScriptVariant_Update(void *);
 extern "C" void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern "C" void *Actor_GetOwningCollection(void *);
 extern "C" void *ActorCollection_GetSpriteGroup(void *);
@@ -92,7 +92,7 @@ static s32 clamp_blend(void *actor, s32 increment) {
 
 /* Construct the encounter actor and discover its linked supporting actors. */
 extern "C" void *func_ov091_022177e0(void *actor, const void *descriptor) {
-    func_0204d520(actor, descriptor);
+    RuntimeActorScriptVariantSubclass_Init(actor, descriptor);
     F(void *, actor, 0) = data_ov091_02218cd0;
     F(u8, actor, 0x1ec) = 0;
     F(u8, actor, 0x1ed) = 0;
@@ -125,7 +125,7 @@ extern "C" void *func_ov091_022177e0(void *actor, const void *descriptor) {
 
 /* Allocate the encounter animation resource and its HUD sprite. */
 extern "C" void func_ov091_02217910(void *actor) {
-    func_0204d3d8();
+    RuntimeActorScriptVariant_NoOpHook0();
     void *resource = Heap_Alloc(0x10, data_ov091_02218dc0, 4, gHeapContext);
     if (resource)
         resource = AnimationResource_Init(resource, 0x137b, 0x137c, 0x137d);
@@ -167,7 +167,7 @@ static void destroy_encounter(void *actor, bool release_allocation) {
         Actor_SetActive(F(void *, actor, 0x1f8 + index * 4), 0);
     VecFx32Object_Destroy((u8 *)actor + 0x224);
     VecFx32Object_Destroy((u8 *)actor + 0x210);
-    func_0204d570(actor);
+    RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(actor);
     if (release_allocation)
         Heap_Free(actor);
 }
@@ -237,7 +237,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
         return;
     ActorMotionAreaFollower_BindActor(gGamePhaseRuntime + 0x2fbc, actor);
     ActorMotion_BindActor(gGamePhaseRuntime + 0x3044, actor);
-    func_0204d308(actor);
+    RuntimeActorScriptVariant_Update(actor);
     void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
     scene = (u8 *)SceneManager_GetCurrent(gSceneManager);
     void *effects = RuntimePresentationManager_GetGraphics3dPresentation(gGamePhaseRuntime + 0x2f7c);

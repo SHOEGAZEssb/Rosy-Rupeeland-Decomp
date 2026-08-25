@@ -60,9 +60,9 @@ DECLARE_ACTOR_CTOR(ActorExtendedTransform_InitDuplicate);
 DECLARE_ACTOR_CTOR(ActorExtendedTable_InitDuplicate);
 DECLARE_ACTOR_CTOR(ActorExtendedTableCyclic_Init);
 DECLARE_ACTOR_CTOR(Type7Actor_Init);
-DECLARE_ACTOR_CTOR(func_0204d068);
-DECLARE_ACTOR_CTOR(func_0204d284);
-DECLARE_ACTOR_CTOR(func_0204d488);
+DECLARE_ACTOR_CTOR(SingletonTrackingActor_Init);
+DECLARE_ACTOR_CTOR(RuntimeActorScriptVariant_InitAlternate);
+DECLARE_ACTOR_CTOR(IndexedStateActor_Init);
 DECLARE_ACTOR_CTOR(PresentationBackedActor_Init);
 DECLARE_ACTOR_CTOR(EffectHandleActor_Init);
 DECLARE_ACTOR_CTOR(func_0204e944);
@@ -158,8 +158,8 @@ static const ActorFactorySpec sKind2Specs[36] = {
 
 static const ActorFactorySpec sKind3Specs[25] = {
     SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x258, ActorMotionProbe_Init),
-    SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x218, func_0204d068),
-    SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x20c, func_0204d488),
+    SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x218, SingletonTrackingActor_Init),
+    SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x20c, IndexedStateActor_Init),
     SPEC(0x244, func_ov081_02212c40), SPEC(0x244, func_ov081_02212c40),
     SPEC(0x244, func_ov081_02212c40), SPEC(0x230, func_ov087_022177e0),
     SPEC(0x248, func_ov089_022177e4), SPEC(0x258, func_ov081_02214008),
@@ -231,7 +231,7 @@ static ActorFactorySpec selectFactorySpec(const ActorSpawnDescriptor *descriptor
         case 2: return (ActorFactorySpec)SPEC(0x23c, func_ov087_022177e0);
         case 3: return (ActorFactorySpec)SPEC(0x2a4, func_ov092_02217940);
         case 4: return (ActorFactorySpec)SPEC(0x250, func_ov093_022177f0);
-        default: return (ActorFactorySpec)SPEC(0x1ec, func_0204d284);
+        default: return (ActorFactorySpec)SPEC(0x1ec, RuntimeActorScriptVariant_InitAlternate);
         }
     case 7: return (ActorFactorySpec)SPEC(0x2b8, Type7Actor_Init);
     case 8: return (ActorFactorySpec)SPEC(0x3e0, func_020579b0);

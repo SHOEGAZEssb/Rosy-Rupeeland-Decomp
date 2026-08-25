@@ -5,7 +5,7 @@
 .extern Heap_Free
 .extern __destroy_arr
 .extern data_ov092_0221c728
-.extern func_0204d570
+.extern RuntimeActorScriptVariantSubclass_DestroyAlternateEntry
 .extern func_ov092_0221792c
 .extern gGameWork
 
@@ -43,7 +43,7 @@ func_ov092_02217d40:
     mov r2, #0xc
     bl __destroy_arr
     mov r0, r4
-    bl func_0204d570
+    bl RuntimeActorScriptVariantSubclass_DestroyAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -5,7 +5,7 @@
 .extern Heap_Free
 .extern data_ov093_022188f0
 .extern VecFx32Object_Destroy
-.extern func_0204d570
+.extern RuntimeActorScriptVariantSubclass_DestroyAlternateEntry
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern gGameWork
 
@@ -54,7 +54,7 @@ func_ov093_02217b90:
     add r0, r4, #0x1ec
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0204d570
+    bl RuntimeActorScriptVariantSubclass_DestroyAlternateEntry
     mov r0, r4
     bl Heap_Free
     mov r0, r4

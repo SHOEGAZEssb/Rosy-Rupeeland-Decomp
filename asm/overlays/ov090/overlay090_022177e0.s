@@ -8,14 +8,14 @@
 .extern data_ov090_0221cb10
 .extern VecFx32Object_Init
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0204d520
+.extern RuntimeActorScriptVariantSubclass_Init
 .extern gGameWork
 
 .global func_ov090_022177e0
 func_ov090_022177e0:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
-    bl func_0204d520
+    bl RuntimeActorScriptVariantSubclass_Init
     ldr r0, .L_02217a20
     mov r2, #0x0
     str r0, [r10, #0x0]

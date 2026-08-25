@@ -6,7 +6,7 @@
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_0204d3d8
+.extern RuntimeActorScriptVariant_NoOpHook0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .extern func_ov090_0221ad64
@@ -16,7 +16,7 @@
 func_ov090_02217a3c:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_0204d3d8
+    bl RuntimeActorScriptVariant_NoOpHook0
     ldr r1, .L_02217b58
     mov r0, r4
     add r2, r1, #0x1

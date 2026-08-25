@@ -23,7 +23,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_0204d308
+.extern RuntimeActorScriptVariant_Update
 .extern Sound_PlayEffectWithParameters
 .extern Sound_FadeEffectVolume
 .extern Sound_IsEffectPlaying
@@ -48,7 +48,7 @@ func_ov093_02217c50:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x28
     mov r4, r0
-    bl func_0204d308
+    bl RuntimeActorScriptVariant_Update
     ldr r1, .L_022184c8
     ldr r0, .L_022184cc
     ldr r1, [r1, #0x0]

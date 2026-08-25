@@ -11,10 +11,10 @@
  */
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_0204d520(void *);
-extern "C" void func_0204d570(void *);
-extern "C" void func_0204d3d8(void *);
-extern "C" void func_0204d308(void *);
+extern "C" void RuntimeActorScriptVariantSubclass_Init(void *);
+extern "C" void RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(void *);
+extern "C" void RuntimeActorScriptVariant_NoOpHook0(void *);
+extern "C" void RuntimeActorScriptVariant_Update(void *);
 extern "C" void *Actor_GetOwningCollection(void *);
 extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
@@ -111,7 +111,7 @@ extern "C" void *func_ov093_022177f0(void *actor)
 {
     void *primary;
 
-    func_0204d520(actor);
+    RuntimeActorScriptVariantSubclass_Init(actor);
     FIELD(void *, actor, 0) = data_ov093_022188f0;
     VecFx32Object_Init((u8 *)actor + 0x1ec);
     FIELD(u8, actor, 0x1fc) = 0;
@@ -155,7 +155,7 @@ extern "C" void func_ov093_02217908(void *actor)
     void *resource;
     s32 i;
 
-    func_0204d3d8(actor);
+    RuntimeActorScriptVariant_NoOpHook0(actor);
     resource = allocate_animation(0x23a8, 0x23a9, 0x23aa);
     FIELD(void *, actor, 0x200) = resource;
     owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
@@ -211,7 +211,7 @@ static void destroy_actor(void *actor)
         call_void_method(FIELD(void *, actor, 0x20c), 4);
     }
     VecFx32Object_Destroy((u8 *)actor + 0x1ec);
-    func_0204d570(actor);
+    RuntimeActorScriptVariantSubclass_DestroyAlternateEntry(actor);
 }
 
 /* Tear down every owned presentation object while retaining the actor allocation. */
@@ -249,7 +249,7 @@ extern "C" void func_ov093_02217c50(void *actor)
     u16 timer;
     s32 i;
 
-    func_0204d308(actor);
+    RuntimeActorScriptVariant_Update(actor);
     primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     scene = SceneManager_GetCurrent(gSceneManager);
     if (FIELD(s32, scene, 4) == 2) {
