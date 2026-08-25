@@ -6,14 +6,14 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e6e4
+.extern AttachedTimedSprite_Init
 
 .global func_0201ecbc
 .type func_0201ecbc, @function
 func_0201ecbc: ; 0x0201ecbc
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e6e4
+    bl AttachedTimedSprite_Init
     ldr r1, .L_0201ece8
     ldrsh r0, [sp, #0x8]
     str r1, [r4, #0x0]

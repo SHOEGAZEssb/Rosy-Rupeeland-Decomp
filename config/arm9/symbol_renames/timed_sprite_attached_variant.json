@@ -1,0 +1,9 @@
+{
+  "func_0201e6e4": "AttachedTimedSprite_Init",
+  "func_0201e764": "AttachedTimedSprite_Destroy",
+  "func_0201e778": "AttachedTimedSprite_DestroyAndFree",
+  "func_0201e794": "AttachedTimedSprite_Update",
+  "func_0201e7d0": "AttachedTimedSprite_AdvanceLifetimeAndMotion",
+  "func_0201e840": "AttachedTimedSprite_ApplyOwnerPosition",
+  "func_0201e888": "AttachedTimedSprite_ApplyRadialCorrection"
+}

@@ -8145,7 +8145,7 @@ build build/reports/timed_sprite_attached_variant.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/timed_sprite_attached_variant.o
 build build/reports/timed_sprite_attached_variant.txt: match_report build/reports/timed_sprite_attached_variant.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_attached_variant.json
-  report_args = --section .text --function func_0201e6e4 --function func_0201e764 --function func_0201e778 --function func_0201e794 --function func_0201e7d0 --function func_0201e840 --function func_0201e888 --require-exact
+  report_args = --section .text --function AttachedTimedSprite_Init --function AttachedTimedSprite_Destroy --function AttachedTimedSprite_DestroyAndFree --function AttachedTimedSprite_Update --function AttachedTimedSprite_AdvanceLifetimeAndMotion --function AttachedTimedSprite_ApplyOwnerPosition --function AttachedTimedSprite_ApplyRadialCorrection --require-exact
 build build/reports/timed_sprite_orbit_variant.json: objdiff build/decomp/delinks/asm/game/timed_sprite_orbit_variant.o | build/decomp/asm/game/timed_sprite_orbit_variant.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_orbit_variant.o
   base_object = build/decomp/asm/game/timed_sprite_orbit_variant.o

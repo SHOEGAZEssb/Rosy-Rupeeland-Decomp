@@ -27,7 +27,7 @@ typedef struct OwnerPositionTimedSprite {
 extern "C" {
 #endif
 extern void *data_020d60d8;
-extern OwnerPositionTimedSprite *func_0201e6e4(
+extern OwnerPositionTimedSprite *AttachedTimedSprite_Init(
     OwnerPositionTimedSprite *self, u8 *owner, u8 *config, s32 spriteValue);
 extern OwnerPositionTimedSprite *TimedSpritePresentation_DestroyBase(
     OwnerPositionTimedSprite *self);
@@ -49,7 +49,7 @@ OwnerPositionTimedSprite *func_0201ecbc(OwnerPositionTimedSprite *self,
                                         s32 spriteValue, s16 spriteOffset,
                                         s16 spriteByte)
 {
-    func_0201e6e4(self, owner, config, spriteValue);
+    AttachedTimedSprite_Init(self, owner, config, spriteValue);
     self->vtable = (void **)data_020d60d8;
     self->spriteOffset38 = spriteOffset;
     self->spriteByte3a = spriteByte;

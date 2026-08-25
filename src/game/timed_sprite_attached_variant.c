@@ -59,8 +59,8 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
  * vtable, clear radial offsets, copy both tracks and the lifetime, clear sprite
  * flag 2, apply spriteValue, retain owner, and return self.
  */
-AttachedTimedSprite *func_0201e6e4(AttachedTimedSprite *self, u8 *owner,
-                                   u8 *config, s32 spriteValue)
+AttachedTimedSprite *AttachedTimedSprite_Init(
+    AttachedTimedSprite *self, u8 *owner, u8 *config, s32 spriteValue)
 {
     TimedSpritePresentation_Init(self, config);
     self->vtable = (void **)data_020d6138;
@@ -76,14 +76,15 @@ AttachedTimedSprite *func_0201e6e4(AttachedTimedSprite *self, u8 *owner,
 }
 
 /* Run the shared non-freeing teardown and return self. */
-AttachedTimedSprite *func_0201e764(AttachedTimedSprite *self)
+AttachedTimedSprite *AttachedTimedSprite_Destroy(AttachedTimedSprite *self)
 {
     TimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
-AttachedTimedSprite *func_0201e778(AttachedTimedSprite *self)
+AttachedTimedSprite *AttachedTimedSprite_DestroyAndFree(
+    AttachedTimedSprite *self)
 {
     TimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
@@ -94,7 +95,7 @@ AttachedTimedSprite *func_0201e778(AttachedTimedSprite *self)
  * Call vtable slot 3 with argument and return its nonzero result.  When it
  * returns zero, call slot 4 with the same inputs and return zero.
  */
-s32 func_0201e794(AttachedTimedSprite *self, s32 argument)
+s32 AttachedTimedSprite_Update(AttachedTimedSprite *self, s32 argument)
 {
     s32 result = ((AttachedTimedSpriteGate)self->vtable[3])(self, argument);
     if (result != 0) {
@@ -109,7 +110,7 @@ s32 func_0201e794(AttachedTimedSprite *self, s32 argument)
  * derive the center of owner bounds at offset 0x68, pass owner position 0x18
  * and that center to vtable slot 5, advance both tracks, and return zero.
  */
-s32 func_0201e7d0(AttachedTimedSprite *self)
+s32 AttachedTimedSprite_AdvanceLifetimeAndMotion(AttachedTimedSprite *self)
 {
     CPoint2DS16 center;
 
@@ -129,8 +130,9 @@ s32 func_0201e7d0(AttachedTimedSprite *self)
  * Apply the current track vector plus radialX30 to the sprite at ownerPosition.
  * The final halfword self-assignment is retail-observed and has no value change.
  */
-void func_0201e840(AttachedTimedSprite *self, const void *ownerPosition,
-                   const CPoint2DS16 *unusedCenter)
+void AttachedTimedSprite_ApplyOwnerPosition(
+    AttachedTimedSprite *self, const void *ownerPosition,
+    const CPoint2DS16 *unusedCenter)
 {
     (void)unusedCenter;
     GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(self->sprite, ownerPosition,
@@ -149,8 +151,8 @@ void func_0201e840(AttachedTimedSprite *self, const void *ownerPosition,
  * must replace that hardware boundary with an equivalent integer square root.
  * This function returns no value and destroys the temporary track sample.
  */
-void func_0201e888(AttachedTimedSprite *self, s32 argument,
-                   const CPoint2DS16 *center)
+void AttachedTimedSprite_ApplyRadialCorrection(
+    AttachedTimedSprite *self, s32 argument, const CPoint2DS16 *center)
 {
     s32 sample[4];
     s32 x;

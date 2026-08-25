@@ -37,7 +37,7 @@ extern "C" {
 #endif
 extern u8 data_020d6118[];
 extern const s16 gFx32CosSinTable[];
-extern OrbitTimedSprite *func_0201e6e4(OrbitTimedSprite *self, u8 *owner,
+extern OrbitTimedSprite *AttachedTimedSprite_Init(OrbitTimedSprite *self, u8 *owner,
                                        u8 *config, s32 spriteValue);
 extern OrbitTimedSprite *TimedSpritePresentation_DestroyBase(OrbitTimedSprite *self);
 extern void TimedSpritePresentation_SetVisible(OrbitTimedSprite *self, s32 enabled);
@@ -61,7 +61,7 @@ OrbitTimedSprite *func_0201e9d8(OrbitTimedSprite *self, u8 *owner, u8 *config,
                                 s16 spriteByte)
 {
     u32 random;
-    func_0201e6e4(self, owner, config, spriteValue);
+    AttachedTimedSprite_Init(self, owner, config, spriteValue);
     self->vtable = (void **)data_020d6118;
     self->spriteOffset3c = spriteOffset;
     self->spriteByte3e = spriteByte;
@@ -77,7 +77,7 @@ OrbitTimedSprite *func_0201ea20(OrbitTimedSprite *self, u8 *owner, u8 *config,
                                 s16 spriteByte)
 {
     u32 random;
-    func_0201e6e4(self, owner, config, spriteValue);
+    AttachedTimedSprite_Init(self, owner, config, spriteValue);
     self->vtable = (void **)data_020d6118;
     self->spriteOffset3c = spriteOffset;
     self->spriteByte3e = spriteByte;

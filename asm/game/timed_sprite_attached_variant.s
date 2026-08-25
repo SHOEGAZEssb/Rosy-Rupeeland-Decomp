@@ -15,9 +15,9 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gFx32CosSinTable
 .extern data_020d6138
-.global func_0201e6e4
-.type func_0201e6e4, @function
-func_0201e6e4: ; 0x0201e6e4
+.global AttachedTimedSprite_Init
+.type AttachedTimedSprite_Init, @function
+AttachedTimedSprite_Init: ; 0x0201e6e4
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r2
     mov r4, r1
@@ -50,21 +50,21 @@ func_0201e6e4: ; 0x0201e6e4
     str r4, [r5, #0x2c]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0201e760: .word data_020d6138
-    .size func_0201e6e4, .-func_0201e6e4
+    .size AttachedTimedSprite_Init, .-AttachedTimedSprite_Init
 
-.global func_0201e764
-.type func_0201e764, @function
-func_0201e764: ; 0x0201e764
+.global AttachedTimedSprite_Destroy
+.type AttachedTimedSprite_Destroy, @function
+AttachedTimedSprite_Destroy: ; 0x0201e764
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201e764, .-func_0201e764
+    .size AttachedTimedSprite_Destroy, .-AttachedTimedSprite_Destroy
 
-.global func_0201e778
-.type func_0201e778, @function
-func_0201e778: ; 0x0201e778
+.global AttachedTimedSprite_DestroyAndFree
+.type AttachedTimedSprite_DestroyAndFree, @function
+AttachedTimedSprite_DestroyAndFree: ; 0x0201e778
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TimedSpritePresentation_DestroyBase
@@ -72,11 +72,11 @@ func_0201e778: ; 0x0201e778
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0201e778, .-func_0201e778
+    .size AttachedTimedSprite_DestroyAndFree, .-AttachedTimedSprite_DestroyAndFree
 
-.global func_0201e794
-.type func_0201e794, @function
-func_0201e794: ; 0x0201e794
+.global AttachedTimedSprite_Update
+.type AttachedTimedSprite_Update, @function
+AttachedTimedSprite_Update: ; 0x0201e794
     stmdb sp!, {r3, r4, r5, lr}
     ldr r2, [r0, #0x0]
     mov r5, r0
@@ -92,11 +92,11 @@ func_0201e794: ; 0x0201e794
     blx r2
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0201e794, .-func_0201e794
+    .size AttachedTimedSprite_Update, .-AttachedTimedSprite_Update
 
-.global func_0201e7d0
-.type func_0201e7d0, @function
-func_0201e7d0: ; 0x0201e7d0
+.global AttachedTimedSprite_AdvanceLifetimeAndMotion
+.type AttachedTimedSprite_AdvanceLifetimeAndMotion, @function
+AttachedTimedSprite_AdvanceLifetimeAndMotion: ; 0x0201e7d0
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -127,11 +127,11 @@ func_0201e7d0: ; 0x0201e7d0
 .L_0201e838:
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-    .size func_0201e7d0, .-func_0201e7d0
+    .size AttachedTimedSprite_AdvanceLifetimeAndMotion, .-AttachedTimedSprite_AdvanceLifetimeAndMotion
 
-.global func_0201e840
-.type func_0201e840, @function
-func_0201e840: ; 0x0201e840
+.global AttachedTimedSprite_ApplyOwnerPosition
+.type AttachedTimedSprite_ApplyOwnerPosition, @function
+AttachedTimedSprite_ApplyOwnerPosition: ; 0x0201e840
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -150,11 +150,11 @@ func_0201e840: ; 0x0201e840
     strh r0, [r1, #0x28]
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-    .size func_0201e840, .-func_0201e840
+    .size AttachedTimedSprite_ApplyOwnerPosition, .-AttachedTimedSprite_ApplyOwnerPosition
 
-.global func_0201e888
-.type func_0201e888, @function
-func_0201e888: ; 0x0201e888
+.global AttachedTimedSprite_ApplyRadialCorrection
+.type AttachedTimedSprite_ApplyRadialCorrection, @function
+AttachedTimedSprite_ApplyRadialCorrection: ; 0x0201e888
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -241,4 +241,4 @@ func_0201e888: ; 0x0201e888
 .L_0201e9cc: .word 0x40002b0
 .L_0201e9d0: .word 0x40002b4
 .L_0201e9d4: .word gFx32CosSinTable
-    .size func_0201e888, .-func_0201e888
+    .size AttachedTimedSprite_ApplyRadialCorrection, .-AttachedTimedSprite_ApplyRadialCorrection

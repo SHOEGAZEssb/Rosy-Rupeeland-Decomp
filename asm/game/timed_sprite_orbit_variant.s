@@ -8,7 +8,7 @@
 .extern CPoint2DS16_InitFromRectangle
 .extern TimedSpritePresentation_DestroyBase
 .extern TimedSpritePresentation_SetVisible
-.extern func_0201e6e4
+.extern AttachedTimedSprite_Init
 .extern genrand_int32
 
 .global func_0201e9d8
@@ -16,7 +16,7 @@
 func_0201e9d8: ; 0x0201e9d8
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e6e4
+    bl AttachedTimedSprite_Init
     ldr r0, .L_0201ea1c
     ldrsh r1, [sp, #0x8]
     str r0, [r4, #0x0]
@@ -39,7 +39,7 @@ func_0201e9d8: ; 0x0201e9d8
 func_0201ea20: ; 0x0201ea20
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e6e4
+    bl AttachedTimedSprite_Init
     ldr r0, .L_0201ea64
     ldrsh r1, [sp, #0x8]
     str r0, [r4, #0x0]
