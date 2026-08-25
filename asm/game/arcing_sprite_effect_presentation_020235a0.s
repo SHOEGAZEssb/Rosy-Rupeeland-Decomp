@@ -25,9 +25,9 @@
 .extern gHeapContext
 .extern gSoundContext
 
-.global func_020235a0
-    .type func_020235a0, @function
-func_020235a0: ; 0x020235a0
+.global ArcingSpriteEffectPresentation_Destroy
+    .type ArcingSpriteEffectPresentation_Destroy, @function
+ArcingSpriteEffectPresentation_Destroy: ; 0x020235a0
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_02023618
     mov r5, r0
@@ -62,5 +62,5 @@ func_020235a0: ; 0x020235a0
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_02023618: .word data_020d6740
-    .size func_020235a0, .-func_020235a0
+    .size ArcingSpriteEffectPresentation_Destroy, .-ArcingSpriteEffectPresentation_Destroy
 

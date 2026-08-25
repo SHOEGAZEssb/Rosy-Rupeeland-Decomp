@@ -1,0 +1,6 @@
+{
+  "func_02023434": "ArcingSpriteEffectPresentation_Init",
+  "func_020235a0": "ArcingSpriteEffectPresentation_Destroy",
+  "func_0202361c": "ArcingSpriteEffectPresentation_DestroyAndFree",
+  "func_020236a0": "ArcingSpriteEffectPresentation_Update"
+}

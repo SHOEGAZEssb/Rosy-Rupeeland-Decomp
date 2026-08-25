@@ -25,9 +25,9 @@
 .extern gHeapContext
 .extern gSoundContext
 
-.global func_02023434
-    .type func_02023434, @function
-func_02023434: ; 0x02023434
+.global ArcingSpriteEffectPresentation_Init
+    .type ArcingSpriteEffectPresentation_Init, @function
+ArcingSpriteEffectPresentation_Init: ; 0x02023434
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x3c
     mov r7, r0
@@ -122,5 +122,5 @@ func_02023434: ; 0x02023434
 .L_02023594: .word 0x1625
 .L_02023598: .word 0x4cd
 .L_0202359c: .word 0xb33
-    .size func_02023434, .-func_02023434
+    .size ArcingSpriteEffectPresentation_Init, .-ArcingSpriteEffectPresentation_Init
 

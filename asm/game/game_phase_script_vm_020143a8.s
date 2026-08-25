@@ -29,7 +29,7 @@
 .extern DirectSpriteTrackPresentation_SpawnAndRegister
 .extern SpriteNumberMotionPresentation_Init
 .extern RecordSpriteMotionPresentation_Init
-.extern func_02023434
+.extern ArcingSpriteEffectPresentation_Init
 .extern func_02023ed4
 .extern func_02024b04
 .extern func_02025300
@@ -635,7 +635,7 @@ L_02014b2c:
     mov r0, r4
     add r2, sp, #0x70
     add r3, sp, #0x60
-    bl func_02023434
+    bl ArcingSpriteEffectPresentation_Init
     mov r4, r0
 L_02014bc4:
     ldr r0, L_020154d0
@@ -780,7 +780,7 @@ L_02014d38:
     mov r0, r4
     add r2, sp, #0x50
     add r3, sp, #0x40
-    bl func_02023434
+    bl ArcingSpriteEffectPresentation_Init
     mov r4, r0
 L_02014dd0:
     ldr r0, L_020154d0

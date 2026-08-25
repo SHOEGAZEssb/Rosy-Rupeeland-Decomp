@@ -25,9 +25,9 @@
 .extern gHeapContext
 .extern gSoundContext
 
-.global func_020236a0
-    .type func_020236a0, @function
-func_020236a0: ; 0x020236a0
+.global ArcingSpriteEffectPresentation_Update
+    .type ArcingSpriteEffectPresentation_Update, @function
+ArcingSpriteEffectPresentation_Update: ; 0x020236a0
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x14
     mov r4, r0
@@ -158,5 +158,5 @@ func_020236a0: ; 0x020236a0
 .L_02023884: .word gFx32CosSinTable
 .L_02023888: .word data_02105610
 .L_0202388c: .word gSoundContext
-    .size func_020236a0, .-func_020236a0
+    .size ArcingSpriteEffectPresentation_Update, .-ArcingSpriteEffectPresentation_Update
 

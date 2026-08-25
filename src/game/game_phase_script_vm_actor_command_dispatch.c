@@ -26,7 +26,7 @@ extern void *SpriteNumberMotionPresentation_Init(...);
 extern void *RecordSpriteMotionPresentation_Init(...);
 extern void *AuxiliaryTimedSpritePresentation_Init(...);
 extern void *func_02025300(...);
-extern void *func_02023434(...);
+extern void *ArcingSpriteEffectPresentation_Init(...);
 extern void *func_02024b04(...);
 extern void *OverlayTransitionScene_Init(...);
 extern void *func_ov054_0220e9bc(...);
@@ -223,7 +223,7 @@ s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
         object = Heap_Alloc(0x24, data_020d5b34, 4, &gHeapContext);
         if (object != 0) {
             s16 variant = (s16)(func_020bf1f8(genrand_int32(), 3) + 0x28);
-            object = func_02023434(
+            object = ArcingSpriteEffectPresentation_Init(
                 object, ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
                 &firstVector, &secondVector, variant, selector == 10);
         }

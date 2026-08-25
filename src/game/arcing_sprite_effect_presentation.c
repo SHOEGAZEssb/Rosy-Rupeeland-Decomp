@@ -37,7 +37,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);extern void Sound_
  * path from both inputs and the combined value. Retain duration and switch flag,
  * set amplitude 0x30, destroy temporaries, and return self.
  */
-ArcingSpriteEffectPresentation *func_02023434(
+ArcingSpriteEffectPresentation *ArcingSpriteEffectPresentation_Init(
     ArcingSpriteEffectPresentation *self,void *spriteOwner,const VecValue *first,
     const VecValue *second,s32 duration,s32 switchResource)
 {
@@ -67,11 +67,11 @@ static ArcingSpriteEffectPresentation *teardown_arc(ArcingSpriteEffectPresentati
 }
 
 /* Release sprite, path and both descriptors, tear down base, and return self. */
-ArcingSpriteEffectPresentation *func_020235a0(ArcingSpriteEffectPresentation *self)
+ArcingSpriteEffectPresentation *ArcingSpriteEffectPresentation_Destroy(ArcingSpriteEffectPresentation *self)
 {return teardown_arc(self);}
 
-/* Perform func_020235a0 teardown, free self, and return its old address. */
-ArcingSpriteEffectPresentation *func_0202361c(ArcingSpriteEffectPresentation *self)
+/* Perform ArcingSpriteEffectPresentation_Destroy teardown, free self, and return its old address. */
+ArcingSpriteEffectPresentation *ArcingSpriteEffectPresentation_DestroyAndFree(ArcingSpriteEffectPresentation *self)
 {teardown_arc(self);Heap_Free(self);return self;}
 
 /*
@@ -83,7 +83,7 @@ ArcingSpriteEffectPresentation *func_0202361c(ArcingSpriteEffectPresentation *se
  * applies the path endpoint until sprite completion, then sets flag bit 3 and
  * finishes. Decrement the shared cooldown and return whether state is three.
  */
-s32 func_020236a0(ArcingSpriteEffectPresentation *self)
+s32 ArcingSpriteEffectPresentation_Update(ArcingSpriteEffectPresentation *self)
 {
     VecValue value;s32 progress,index;
     switch(self->state18){
