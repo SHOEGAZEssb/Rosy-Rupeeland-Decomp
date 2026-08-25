@@ -37,7 +37,7 @@ extern void *DisplayFadePresentation_Init(void *object, s32 mode, s32 value,
                                           s32 parameter);
 extern void SceneDisplayResources_Setup(s32 sceneIndex);
 extern void *DualArrayBlendPresentation_Init(void *object, s32 value);
-extern void *func_0202225c(void *object);
+extern void *OverlayPromptPresentation_Init(void *object);
 extern void *PaletteCyclePresentation_Init(void *object);
 extern void *func_02023fa0(void *object);
 extern void *func_020240cc(void *object, s32 value);
@@ -177,7 +177,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 4:
         createdObject = allocateObject(0x24, data_020d5be4);
         if (createdObject)
-            createdObject = func_0202225c(createdObject);
+            createdObject = OverlayPromptPresentation_Init(createdObject);
         RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), createdObject);
         break;
     case 3:

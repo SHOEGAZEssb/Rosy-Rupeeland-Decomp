@@ -23,9 +23,9 @@
 .extern gHeapContext
 .extern gGamePhaseCurrencyHud
 
-.global func_020222dc
-    .type func_020222dc, @function
-func_020222dc: ; 0x020222dc
+.global OverlayPromptPresentation_Destroy
+    .type OverlayPromptPresentation_Destroy, @function
+OverlayPromptPresentation_Destroy: ; 0x020222dc
     stmdb sp!, {r4, lr}
     ldr r1, .L_0202234c
     mov r4, r0
@@ -59,5 +59,4 @@ func_020222dc: ; 0x020222dc
     ldmia sp!, {r4, pc}
 .L_0202234c: .word data_020d653c
 .L_02022350: .word gGamePhaseCurrencyHud
-    .size func_020222dc, .-func_020222dc
-
+    .size OverlayPromptPresentation_Destroy, .-OverlayPromptPresentation_Destroy

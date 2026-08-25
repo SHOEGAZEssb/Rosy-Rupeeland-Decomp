@@ -27,7 +27,7 @@
 .extern DisplayFadePresentation_Init
 .extern SceneDisplayResources_Setup
 .extern DualArrayBlendPresentation_Init
-.extern func_0202225c
+.extern OverlayPromptPresentation_Init
 .extern PaletteCyclePresentation_Init
 .extern func_02023fa0
 .extern func_020240cc
@@ -320,7 +320,7 @@ L_020180e4:
     bl Heap_Alloc
     movs r1, r0
     beq L_02018108
-    bl func_0202225c
+    bl OverlayPromptPresentation_Init
     mov r1, r0
 L_02018108:
     ldr r0, L_020181c4

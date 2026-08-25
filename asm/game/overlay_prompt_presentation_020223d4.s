@@ -23,9 +23,9 @@
 .extern gHeapContext
 .extern gGamePhaseCurrencyHud
 
-.global func_020223d4
-    .type func_020223d4, @function
-func_020223d4: ; 0x020223d4
+.global OverlayPromptPresentation_Update
+    .type OverlayPromptPresentation_Update, @function
+OverlayPromptPresentation_Update: ; 0x020223d4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8]
@@ -121,5 +121,4 @@ func_020223d4: ; 0x020223d4
 .L_02022524: .word gGameWork
 .L_02022528: .word 0x408
 .L_0202252c: .word gDebugFont
-    .size func_020223d4, .-func_020223d4
-
+    .size OverlayPromptPresentation_Update, .-OverlayPromptPresentation_Update

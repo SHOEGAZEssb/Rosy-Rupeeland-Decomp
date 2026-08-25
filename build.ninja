@@ -8720,37 +8720,37 @@ build build/reports/overlay_prompt_presentation_0202225c.json: objdiff build/dec
   base_object = build/decomp/asm/game/overlay_prompt_presentation_0202225c.o
 build build/reports/overlay_prompt_presentation_0202225c.txt: match_report build/reports/overlay_prompt_presentation_0202225c.json | tools/report_objdiff.py
   report_json = build/reports/overlay_prompt_presentation_0202225c.json
-  report_args = --section .text --function func_0202225c --require-exact
+  report_args = --section .text --function OverlayPromptPresentation_Init --require-exact
 build build/reports/overlay_prompt_presentation_020222dc.json: objdiff build/decomp/delinks/asm/game/overlay_prompt_presentation_020222dc.o | build/decomp/asm/game/overlay_prompt_presentation_020222dc.o
   target_object = build/decomp/delinks/asm/game/overlay_prompt_presentation_020222dc.o
   base_object = build/decomp/asm/game/overlay_prompt_presentation_020222dc.o
 build build/reports/overlay_prompt_presentation_020222dc.txt: match_report build/reports/overlay_prompt_presentation_020222dc.json | tools/report_objdiff.py
   report_json = build/reports/overlay_prompt_presentation_020222dc.json
-  report_args = --section .text --function func_020222dc --require-exact
+  report_args = --section .text --function OverlayPromptPresentation_Destroy --require-exact
 build build/reports/overlay_prompt_presentation_02022354.json: objdiff build/decomp/delinks/asm/game/overlay_prompt_presentation_02022354.o | build/decomp/asm/game/overlay_prompt_presentation_02022354.o
   target_object = build/decomp/delinks/asm/game/overlay_prompt_presentation_02022354.o
   base_object = build/decomp/asm/game/overlay_prompt_presentation_02022354.o
 build build/reports/overlay_prompt_presentation_02022354.txt: match_report build/reports/overlay_prompt_presentation_02022354.json | tools/report_objdiff.py
   report_json = build/reports/overlay_prompt_presentation_02022354.json
-  report_args = --section .text --function func_02022354 --require-exact
+  report_args = --section .text --function OverlayPromptPresentation_DestroyAndFree --require-exact
 build build/reports/overlay_prompt_presentation_020223d4.json: objdiff build/decomp/delinks/asm/game/overlay_prompt_presentation_020223d4.o | build/decomp/asm/game/overlay_prompt_presentation_020223d4.o
   target_object = build/decomp/delinks/asm/game/overlay_prompt_presentation_020223d4.o
   base_object = build/decomp/asm/game/overlay_prompt_presentation_020223d4.o
 build build/reports/overlay_prompt_presentation_020223d4.txt: match_report build/reports/overlay_prompt_presentation_020223d4.json | tools/report_objdiff.py
   report_json = build/reports/overlay_prompt_presentation_020223d4.json
-  report_args = --section .text --function func_020223d4 --require-exact
+  report_args = --section .text --function OverlayPromptPresentation_Update --require-exact
 build build/reports/overlay_prompt_presentation_02022530.json: objdiff build/decomp/delinks/asm/game/overlay_prompt_presentation_02022530.o | build/decomp/asm/game/overlay_prompt_presentation_02022530.o
   target_object = build/decomp/delinks/asm/game/overlay_prompt_presentation_02022530.o
   base_object = build/decomp/asm/game/overlay_prompt_presentation_02022530.o
 build build/reports/overlay_prompt_presentation_02022530.txt: match_report build/reports/overlay_prompt_presentation_02022530.json | tools/report_objdiff.py
   report_json = build/reports/overlay_prompt_presentation_02022530.json
-  report_args = --section .text --function func_02022530 --require-exact
+  report_args = --section .text --function OverlayPromptPresentation_InvokeWorkerSlot3IfActive --require-exact
 build build/reports/overlay_prompt_presentation_02022558.json: objdiff build/decomp/delinks/asm/game/overlay_prompt_presentation_02022558.o | build/decomp/asm/game/overlay_prompt_presentation_02022558.o
   target_object = build/decomp/delinks/asm/game/overlay_prompt_presentation_02022558.o
   base_object = build/decomp/asm/game/overlay_prompt_presentation_02022558.o
 build build/reports/overlay_prompt_presentation_02022558.txt: match_report build/reports/overlay_prompt_presentation_02022558.json | tools/report_objdiff.py
   report_json = build/reports/overlay_prompt_presentation_02022558.json
-  report_args = --section .text --function func_02022558 --require-exact
+  report_args = --section .text --function OverlayPromptPresentation_InvokeWorkerSlot4IfActive --require-exact
 build build/reports/overlay_prompt_presentation.txt: phony build/reports/overlay_prompt_presentation_0202225c.txt build/reports/overlay_prompt_presentation_020222dc.txt build/reports/overlay_prompt_presentation_02022354.txt build/reports/overlay_prompt_presentation_020223d4.txt build/reports/overlay_prompt_presentation_02022530.txt build/reports/overlay_prompt_presentation_02022558.txt
 build build/reports/palette_cycle_presentation_02022580.json: objdiff build/decomp/delinks/asm/game/palette_cycle_presentation_02022580.o | build/decomp/asm/game/palette_cycle_presentation_02022580.o
   target_object = build/decomp/delinks/asm/game/palette_cycle_presentation_02022580.o

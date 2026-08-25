@@ -1,0 +1,8 @@
+{
+  "func_0202225c": "OverlayPromptPresentation_Init",
+  "func_020222dc": "OverlayPromptPresentation_Destroy",
+  "func_02022354": "OverlayPromptPresentation_DestroyAndFree",
+  "func_020223d4": "OverlayPromptPresentation_Update",
+  "func_02022530": "OverlayPromptPresentation_InvokeWorkerSlot3IfActive",
+  "func_02022558": "OverlayPromptPresentation_InvokeWorkerSlot4IfActive"
+}

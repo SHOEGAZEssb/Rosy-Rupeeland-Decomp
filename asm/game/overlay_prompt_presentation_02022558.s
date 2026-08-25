@@ -23,9 +23,9 @@
 .extern gHeapContext
 .extern gGamePhaseCurrencyHud
 
-.global func_02022558
-    .type func_02022558, @function
-func_02022558: ; 0x02022558
+.global OverlayPromptPresentation_InvokeWorkerSlot4IfActive
+    .type OverlayPromptPresentation_InvokeWorkerSlot4IfActive, @function
+OverlayPromptPresentation_InvokeWorkerSlot4IfActive: ; 0x02022558
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x20]
     cmp r1, #0x0
@@ -36,5 +36,4 @@ func_02022558: ; 0x02022558
     ldr r1, [r1, #0x10]
     blx r1
     ldmia sp!, {r3, pc}
-    .size func_02022558, .-func_02022558
-
+    .size OverlayPromptPresentation_InvokeWorkerSlot4IfActive, .-OverlayPromptPresentation_InvokeWorkerSlot4IfActive

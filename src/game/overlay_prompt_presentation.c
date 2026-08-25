@@ -44,7 +44,8 @@ extern s32 GameWork_TestFlag(void *, s32);
  * fields, and set restoreMode1c when currency-HUD halfword 0xb0 has bit 0 clear.
  * Enable recovered object flags, clear GameWork flag 0x408, and return self.
  */
-OverlayPromptPresentation *func_0202225c(OverlayPromptPresentation *self)
+OverlayPromptPresentation *OverlayPromptPresentation_Init(
+    OverlayPromptPresentation *self)
 {
     FieldEffect_Init(self);
     self->vtable = (void **)data_020d653c;
@@ -71,11 +72,13 @@ static OverlayPromptPresentation *teardown_prompt(OverlayPromptPresentation *sel
 }
 
 /* Disable callbacks, destroy worker/resource/FieldEffect state, restore currency-HUD mode if needed, and return self. */
-OverlayPromptPresentation *func_020222dc(OverlayPromptPresentation *self)
+OverlayPromptPresentation *OverlayPromptPresentation_Destroy(
+    OverlayPromptPresentation *self)
 { return teardown_prompt(self); }
 
-/* Perform func_020222dc teardown, free self, and return its old address. */
-OverlayPromptPresentation *func_02022354(OverlayPromptPresentation *self)
+/* Perform shared teardown, free self, and return its old address. */
+OverlayPromptPresentation *OverlayPromptPresentation_DestroyAndFree(
+    OverlayPromptPresentation *self)
 { teardown_prompt(self); Heap_Free(self); return self; }
 
 /*
@@ -86,7 +89,7 @@ OverlayPromptPresentation *func_02022354(OverlayPromptPresentation *self)
  * state, destroys the worker, releases the shared resource and advances. State
  * three returns one; all other live paths return zero.
  */
-s32 func_020223d4(OverlayPromptPresentation *self)
+s32 OverlayPromptPresentation_Update(OverlayPromptPresentation *self)
 {
     switch (self->state08) {
     case 0:
@@ -121,9 +124,11 @@ s32 func_020223d4(OverlayPromptPresentation *self)
 }
 
 /* If callbacks are active and worker exists, invoke worker vtable slot 3. */
-void func_02022530(OverlayPromptPresentation *self)
+void OverlayPromptPresentation_InvokeWorkerSlot3IfActive(
+    OverlayPromptPresentation *self)
 { if (self->callbacksActive20 && self->worker0c) ((WorkerMethod)(*(void ***)self->worker0c)[3])(self->worker0c); }
 
 /* If callbacks are active and worker exists, invoke worker vtable slot 4. */
-void func_02022558(OverlayPromptPresentation *self)
+void OverlayPromptPresentation_InvokeWorkerSlot4IfActive(
+    OverlayPromptPresentation *self)
 { if (self->callbacksActive20 && self->worker0c) ((WorkerMethod)(*(void ***)self->worker0c)[4])(self->worker0c); }
