@@ -5,8 +5,8 @@
 .extern GamePhaseRuntime_GetAuxiliaryOverlayObject
 .extern GamePhaseScriptVm_Pop
 .extern func_ov056_0220f054
-.global func_0201a03c
-func_0201a03c:
+.global GamePhaseActorScriptVm_SetAuxiliaryOverlayCameraTarget
+GamePhaseActorScriptVm_SetAuxiliaryOverlayCameraTarget:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r5, r0
@@ -28,4 +28,4 @@ func_0201a03c:
     ldmia sp!, {r4, r5, pc}
 L_0201a088: .word data_020d430c
 L_0201a08c: .word gGamePhaseRuntime
-.size func_0201a03c, . - func_0201a03c
+.size GamePhaseActorScriptVm_SetAuxiliaryOverlayCameraTarget, . - GamePhaseActorScriptVm_SetAuxiliaryOverlayCameraTarget

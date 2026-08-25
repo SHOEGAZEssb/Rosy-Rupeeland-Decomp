@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_misc_runtime_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.global func_0201a00c
-func_0201a00c:
+.global GamePhaseActorScriptVm_SetInteractionIconEnabledFlag
+GamePhaseActorScriptVm_SetInteractionIconEnabledFlag:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -15,4 +15,4 @@ func_0201a00c:
     str r0, [r1, #0x14]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_0201a00c, . - func_0201a00c
+.size GamePhaseActorScriptVm_SetInteractionIconEnabledFlag, . - GamePhaseActorScriptVm_SetInteractionIconEnabledFlag

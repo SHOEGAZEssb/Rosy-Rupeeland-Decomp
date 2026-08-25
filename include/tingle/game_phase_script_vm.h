@@ -280,11 +280,11 @@ s32 GamePhaseActorScriptVm_ReleaseSecondaryRenderAttachmentAndClearFlag1(GamePha
 s32 GamePhaseActorScriptVm_DispatchType1ManagerCommand(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchType1ManagerQuery(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand(GamePhaseActorScriptVm *self);
-s32 func_02019f4c(GamePhaseActorScriptVm *self);
-s32 func_02019f6c(GamePhaseActorScriptVm *self);
-s32 func_02019f8c(GamePhaseActorScriptVm *self);
-s32 func_0201a00c(GamePhaseActorScriptVm *self);
-s32 func_0201a03c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_InsertSelectionHistoryId(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetSelectionHistoryTrailingValue(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchRuntimeObjectValue(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetInteractionIconEnabledFlag(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetAuxiliaryOverlayCameraTarget(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_PrepareRuntimeScene(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchVisualEffectControl(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchOptionalSingletonControl(GamePhaseActorScriptVm *self);

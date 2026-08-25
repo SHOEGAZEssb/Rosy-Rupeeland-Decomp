@@ -9,7 +9,7 @@ extern u8 data_021f5f18[];
 extern void *gGamePhaseRuntime;
 extern const void *data_020d430c;
 extern void RetailSelectionHistory_InsertUniqueId(void *state, s32 value);
-extern void func_020983c0(void *state, s32 value);
+extern void RetailSelectionHistory_SetTrailingValue(void *state, s32 value);
 extern void *GamePhaseRuntime_GetAuxiliaryOverlayObject(void *runtime);
 extern void func_ov056_0220f054(void *state, const void *configuration);
 #ifdef __cplusplus
@@ -17,16 +17,17 @@ extern void func_ov056_0220f054(void *state, const void *configuration);
 #endif
 
 /* Pop a value, pass it to the first recovered global-state operation, return zero. */
-s32 func_02019f4c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_InsertSelectionHistoryId(GamePhaseActorScriptVm *self)
 {
     RetailSelectionHistory_InsertUniqueId(data_021f5f18, (s32)GamePhaseScriptVm_Pop(&self->base));
     return 0;
 }
 
 /* Pop a value, pass it to the second recovered global-state operation, return zero. */
-s32 func_02019f6c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetSelectionHistoryTrailingValue(GamePhaseActorScriptVm *self)
 {
-    func_020983c0(data_021f5f18, (s32)GamePhaseScriptVm_Pop(&self->base));
+    s32 trailingValue = (s32)GamePhaseScriptVm_Pop(&self->base);
+    RetailSelectionHistory_SetTrailingValue(data_021f5f18, trailingValue);
     return 0;
 }
 
@@ -42,20 +43,20 @@ static void invokeRuntimeValue(void *object, s32 value)
  * sends it to the nested object reached through runtime offset 0x2fb8.  Return
  * zero; unsupported modes do nothing.
  */
-s32 func_02019f8c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchRuntimeObjectValue(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 scriptValue = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 targetSelector = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)gGamePhaseRuntime;
-    if (mode == 1)
-        invokeRuntimeValue(*(void **)(runtime + 0x2ed4), value);
-    else if (mode == 2)
-        invokeRuntimeValue(*(void **)(*(u8 **)(runtime + 0x2fb8) + 4), value);
+    if (targetSelector == 1)
+        invokeRuntimeValue(*(void **)(runtime + 0x2ed4), scriptValue);
+    else if (targetSelector == 2)
+        invokeRuntimeValue(*(void **)(*(u8 **)(runtime + 0x2fb8) + 4), scriptValue);
     return 0;
 }
 
 /* Mirror a popped enable value to actor flag bit 0x08000000; return zero. */
-s32 func_0201a00c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetInteractionIconEnabledFlag(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
@@ -70,12 +71,13 @@ s32 func_0201a00c(GamePhaseActorScriptVm *self)
  * Pop second and first configuration values, combine them with the recovered
  * tag, resolve runtime state, invoke the overlay operation, and return zero.
  */
-s32 func_0201a03c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetAuxiliaryOverlayCameraTarget(GamePhaseActorScriptVm *self)
 {
-    struct Configuration { const void *tag; s32 first; s32 second; } config;
-    config.second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    config.first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    config.tag = data_020d430c;
-    func_ov056_0220f054(GamePhaseRuntime_GetAuxiliaryOverlayObject(gGamePhaseRuntime), &config);
+    struct CameraTargetConfiguration { const void *tag; s32 x; s32 y; } cameraTarget;
+    cameraTarget.y = (s32)GamePhaseScriptVm_Pop(&self->base);
+    cameraTarget.x = (s32)GamePhaseScriptVm_Pop(&self->base);
+    cameraTarget.tag = data_020d430c;
+    func_ov056_0220f054(GamePhaseRuntime_GetAuxiliaryOverlayObject(gGamePhaseRuntime),
+                        &cameraTarget);
     return 0;
 }

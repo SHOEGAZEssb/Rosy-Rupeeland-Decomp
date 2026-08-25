@@ -2,8 +2,8 @@
 .text
 .extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
-.global func_02019f8c
-func_02019f8c:
+.global GamePhaseActorScriptVm_DispatchRuntimeObjectValue
+GamePhaseActorScriptVm_DispatchRuntimeObjectValue:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -39,4 +39,4 @@ L_0201a000:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_0201a008: .word gGamePhaseRuntime
-.size func_02019f8c, . - func_02019f8c
+.size GamePhaseActorScriptVm_DispatchRuntimeObjectValue, . - GamePhaseActorScriptVm_DispatchRuntimeObjectValue

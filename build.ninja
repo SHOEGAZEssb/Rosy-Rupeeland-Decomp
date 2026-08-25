@@ -6800,35 +6800,35 @@ build build/reports/game_phase_script_vm_02019f4c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02019f4c.o
 build build/reports/game_phase_script_vm_02019f4c.txt: match_report build/reports/game_phase_script_vm_02019f4c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02019f4c.json
-  report_args = --section .text --function func_02019f4c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_InsertSelectionHistoryId --require-exact
 
 build build/reports/game_phase_script_vm_02019f6c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02019f6c.o | build/decomp/asm/game/game_phase_script_vm_02019f6c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02019f6c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02019f6c.o
 build build/reports/game_phase_script_vm_02019f6c.txt: match_report build/reports/game_phase_script_vm_02019f6c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02019f6c.json
-  report_args = --section .text --function func_02019f6c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetSelectionHistoryTrailingValue --require-exact
 
 build build/reports/game_phase_script_vm_02019f8c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02019f8c.o | build/decomp/asm/game/game_phase_script_vm_02019f8c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02019f8c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02019f8c.o
 build build/reports/game_phase_script_vm_02019f8c.txt: match_report build/reports/game_phase_script_vm_02019f8c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02019f8c.json
-  report_args = --section .text --function func_02019f8c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchRuntimeObjectValue --require-exact
 
 build build/reports/game_phase_script_vm_0201a00c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201a00c.o | build/decomp/asm/game/game_phase_script_vm_0201a00c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201a00c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201a00c.o
 build build/reports/game_phase_script_vm_0201a00c.txt: match_report build/reports/game_phase_script_vm_0201a00c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201a00c.json
-  report_args = --section .text --function func_0201a00c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetInteractionIconEnabledFlag --require-exact
 
 build build/reports/game_phase_script_vm_0201a03c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201a03c.o | build/decomp/asm/game/game_phase_script_vm_0201a03c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201a03c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201a03c.o
 build build/reports/game_phase_script_vm_0201a03c.txt: match_report build/reports/game_phase_script_vm_0201a03c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201a03c.json
-  report_args = --section .text --function func_0201a03c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetAuxiliaryOverlayCameraTarget --require-exact
 
 build build/reports/game_phase_script_vm_misc_runtime_opcodes.txt: phony build/reports/game_phase_script_vm_02019f4c.txt build/reports/game_phase_script_vm_02019f6c.txt build/reports/game_phase_script_vm_02019f8c.txt build/reports/game_phase_script_vm_0201a00c.txt build/reports/game_phase_script_vm_0201a03c.txt
 

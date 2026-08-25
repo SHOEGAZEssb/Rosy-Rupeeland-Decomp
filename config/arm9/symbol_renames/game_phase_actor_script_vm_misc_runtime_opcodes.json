@@ -1,0 +1,8 @@
+{
+  "func_02019f4c": "GamePhaseActorScriptVm_InsertSelectionHistoryId",
+  "func_02019f6c": "GamePhaseActorScriptVm_SetSelectionHistoryTrailingValue",
+  "func_02019f8c": "GamePhaseActorScriptVm_DispatchRuntimeObjectValue",
+  "func_0201a00c": "GamePhaseActorScriptVm_SetInteractionIconEnabledFlag",
+  "func_0201a03c": "GamePhaseActorScriptVm_SetAuxiliaryOverlayCameraTarget",
+  "func_020983c0": "RetailSelectionHistory_SetTrailingValue"
+}

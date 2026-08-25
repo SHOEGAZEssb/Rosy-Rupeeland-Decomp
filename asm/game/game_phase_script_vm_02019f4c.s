@@ -3,8 +3,8 @@
 .extern data_021f5f18
 .extern GamePhaseScriptVm_Pop
 .extern RetailSelectionHistory_InsertUniqueId
-.global func_02019f4c
-func_02019f4c:
+.global GamePhaseActorScriptVm_InsertSelectionHistoryId
+GamePhaseActorScriptVm_InsertSelectionHistoryId:
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     mov r1, r0
@@ -13,4 +13,4 @@ func_02019f4c:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_02019f68: .word data_021f5f18
-.size func_02019f4c, . - func_02019f4c
+.size GamePhaseActorScriptVm_InsertSelectionHistoryId, . - GamePhaseActorScriptVm_InsertSelectionHistoryId

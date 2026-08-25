@@ -2,15 +2,15 @@
 .text
 .extern data_021f5f18
 .extern GamePhaseScriptVm_Pop
-.extern func_020983c0
-.global func_02019f6c
-func_02019f6c:
+.extern RetailSelectionHistory_SetTrailingValue
+.global GamePhaseActorScriptVm_SetSelectionHistoryTrailingValue
+GamePhaseActorScriptVm_SetSelectionHistoryTrailingValue:
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     mov r1, r0
     ldr r0, L_02019f88
-    bl func_020983c0
+    bl RetailSelectionHistory_SetTrailingValue
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_02019f88: .word data_021f5f18
-.size func_02019f6c, . - func_02019f6c
+.size GamePhaseActorScriptVm_SetSelectionHistoryTrailingValue, . - GamePhaseActorScriptVm_SetSelectionHistoryTrailingValue
