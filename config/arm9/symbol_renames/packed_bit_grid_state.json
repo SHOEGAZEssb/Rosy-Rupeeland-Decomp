@@ -1,0 +1,7 @@
+{
+  "func_020274b8": "PackedBitGrid_Init",
+  "func_020274c8": "PackedBitGrid_Clear",
+  "func_020274f4": "PackedBitGrid_Destroy",
+  "func_0202751c": "PackedBitGrid_Configure",
+  "func_020275b0": "PackedBitGrid_GetOrCreateGlobal"
+}

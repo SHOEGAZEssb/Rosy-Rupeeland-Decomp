@@ -2,9 +2,9 @@
 .text
 .extern gGameWork
 
-    .global func_02027a7c
-    .type func_02027a7c, @function
-func_02027a7c: ; 0x02027a7c
+    .global GamePhaseProgressController_Save
+    .type GamePhaseProgressController_Save, @function
+GamePhaseProgressController_Save: ; 0x02027a7c
     stmdb sp!, {r3, lr}
     ldr r1, .L_02027bd0
     ldr ip, [r0, #0x0]
@@ -92,5 +92,5 @@ func_02027a7c: ; 0x02027a7c
     blt .L_02027ba8
     ldmia sp!, {r3, pc}
 .L_02027bd0: .word gGameWork
-    .size func_02027a7c, . - func_02027a7c
+    .size GamePhaseProgressController_Save, . - GamePhaseProgressController_Save
 

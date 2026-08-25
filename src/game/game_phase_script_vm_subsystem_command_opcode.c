@@ -6,18 +6,18 @@
 extern "C" {
 #endif
 extern void *GamePhaseProgress_GetOrCreateGlobal(void);
-extern s32 func_02027818(void *state, s32 value);
-extern s32 func_02027828(void *state, s32 value);
-extern void func_02027864(void *state, s32 value);
-extern void func_020278b4(void *state, s32 value);
-extern void func_02027c34(void *state);
-extern s32 func_02027d14(void *state);
-extern s32 func_02027df0(void *state);
-extern void func_02027e08(void *state, s32 value);
-extern s32 func_02027e8c(void *state);
-extern void func_02027e94(void *state, s32 value);
-extern void func_02027ea4(void *state, s32 value);
-extern s32 func_02027eac(void *state);
+extern s32 GamePhaseProgressController_GetBaseThreshold(void *state, s32 value);
+extern s32 GamePhaseProgressController_GetAdjustedThreshold(void *state, s32 value);
+extern void GamePhaseProgressController_AddCounterFromProgress(void *state, s32 value);
+extern void GamePhaseProgressController_SetCounter(void *state, s32 value);
+extern void GamePhaseProgressController_AdvanceStage(void *state);
+extern s32 GamePhaseProgressController_CanAdvanceStage(void *state);
+extern s32 GamePhaseProgressController_IsBehindComparisonStage(void *state);
+extern void GamePhaseProgressController_AddProgress(void *state, s32 value);
+extern s32 GamePhaseProgressController_GetStage(void *state);
+extern void GamePhaseProgressController_SetStage(void *state, s32 value);
+extern void GamePhaseProgressController_SetComparisonStage(void *state, s32 value);
+extern s32 GamePhaseProgressController_ClassifyProgress(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -35,16 +35,16 @@ s32 GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand(GamePhaseActorScript
     void *progress;
     switch (command) {
     case 1:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)func_02027818(GamePhaseProgress_GetOrCreateGlobal(), value));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)GamePhaseProgressController_GetBaseThreshold(GamePhaseProgress_GetOrCreateGlobal(), value));
         break;
     case 2:
-        func_02027864(GamePhaseProgress_GetOrCreateGlobal(), value);
+        GamePhaseProgressController_AddCounterFromProgress(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 3:
-        func_020278b4(GamePhaseProgress_GetOrCreateGlobal(), value);
+        GamePhaseProgressController_SetCounter(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 4:
-        func_02027e94(GamePhaseProgress_GetOrCreateGlobal(), value);
+        GamePhaseProgressController_SetStage(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 5:
         progress = GamePhaseProgress_GetOrCreateGlobal();
@@ -52,28 +52,28 @@ s32 GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand(GamePhaseActorScript
                                                          *(u32 *)progress);
         break;
     case 6:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)func_02027828(GamePhaseProgress_GetOrCreateGlobal(), value));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)GamePhaseProgressController_GetAdjustedThreshold(GamePhaseProgress_GetOrCreateGlobal(), value));
         break;
     case 7:
-        func_02027e08(GamePhaseProgress_GetOrCreateGlobal(), value);
+        GamePhaseProgressController_AddProgress(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 8:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_02027d14(GamePhaseProgress_GetOrCreateGlobal()) != 0);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, GamePhaseProgressController_CanAdvanceStage(GamePhaseProgress_GetOrCreateGlobal()) != 0);
         break;
     case 9:
-        func_02027c34(GamePhaseProgress_GetOrCreateGlobal());
+        GamePhaseProgressController_AdvanceStage(GamePhaseProgress_GetOrCreateGlobal());
         break;
     case 10:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)func_02027e8c(GamePhaseProgress_GetOrCreateGlobal()));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)GamePhaseProgressController_GetStage(GamePhaseProgress_GetOrCreateGlobal()));
         break;
     case 11:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)func_02027eac(GamePhaseProgress_GetOrCreateGlobal()));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)GamePhaseProgressController_ClassifyProgress(GamePhaseProgress_GetOrCreateGlobal()));
         break;
     case 12:
-        func_02027ea4(GamePhaseProgress_GetOrCreateGlobal(), value);
+        GamePhaseProgressController_SetComparisonStage(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 13:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_02027df0(GamePhaseProgress_GetOrCreateGlobal()) != 0);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, GamePhaseProgressController_IsBehindComparisonStage(GamePhaseProgress_GetOrCreateGlobal()) != 0);
         break;
     }
     return 0;

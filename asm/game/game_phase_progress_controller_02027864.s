@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/game_phase_progress_controller.c.
 .text
-.extern func_020278d4
+.extern GamePhaseProgressController_RefreshWarningState
 .extern func_020bf1f8
 
-    .global func_02027864
-    .type func_02027864, @function
-func_02027864: ; 0x02027864
+    .global GamePhaseProgressController_AddCounterFromProgress
+    .type GamePhaseProgressController_AddCounterFromProgress, @function
+GamePhaseProgressController_AddCounterFromProgress: ; 0x02027864
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r0, r1
@@ -23,8 +23,8 @@ func_02027864: ; 0x02027864
     movge r3, r1
     mov r0, r4
     str r3, [r4, #0x0]
-    bl func_020278d4
+    bl GamePhaseProgressController_RefreshWarningState
     ldmia sp!, {r4, pc}
 .L_020278b0: .word 0x6e002800
-    .size func_02027864, . - func_02027864
+    .size GamePhaseProgressController_AddCounterFromProgress, . - GamePhaseProgressController_AddCounterFromProgress
 

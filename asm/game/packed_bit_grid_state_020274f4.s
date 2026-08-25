@@ -1,19 +1,19 @@
 ; Matching retail form; see src/game/packed_bit_grid_state.c.
 .text
-.extern func_020274c8
+.extern PackedBitGrid_Clear
 
-    .global func_020274f4
-    .type func_020274f4, @function
-func_020274f4: ; 0x020274f4
+    .global PackedBitGrid_Destroy
+    .type PackedBitGrid_Destroy, @function
+PackedBitGrid_Destroy: ; 0x020274f4
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020274c8
+    bl PackedBitGrid_Clear
     ldr r0, [r4, #0x0]
     cmp r0, #0x0
     beq .L_02027514
     mov r0, r4
-    bl func_020274c8
+    bl PackedBitGrid_Clear
 .L_02027514:
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_020274f4, . - func_020274f4
+    .size PackedBitGrid_Destroy, . - PackedBitGrid_Destroy

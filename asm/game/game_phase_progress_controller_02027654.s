@@ -3,13 +3,13 @@
 .extern data_020c37ec
 .extern data_020c37f0
 .extern gActorRuntimeFlags
-.extern func_02027788
-.extern func_02027d7c
+.extern GamePhaseProgressController_QueuePresentationMode
+.extern GamePhaseProgressController_LowerStage
 .extern ActorRuntimeFlags_Test
 
-    .global func_02027654
-    .type func_02027654, @function
-func_02027654: ; 0x02027654
+    .global GamePhaseProgressController_Update
+    .type GamePhaseProgressController_Update, @function
+GamePhaseProgressController_Update: ; 0x02027654
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xc]
@@ -46,11 +46,11 @@ func_02027654: ; 0x02027654
     cmpeq r1, #0x2
     bne .L_020276f4
     mov r0, r4
-    bl func_02027788
+    bl GamePhaseProgressController_QueuePresentationMode
     cmp r0, #0x0
     beq .L_020276f4
     mov r0, r4
-    bl func_02027d7c
+    bl GamePhaseProgressController_LowerStage
     ldmia sp!, {r4, pc}
 .L_020276f4:
     ldr r1, .L_02027780
@@ -64,7 +64,7 @@ func_02027654: ; 0x02027654
     cmp r1, #0x1
     bne .L_02027738
     mov r0, r4
-    bl func_02027788
+    bl GamePhaseProgressController_QueuePresentationMode
     cmp r0, #0x0
     ldrne r0, [r4, #0x10]
     addne r0, r0, #0x1
@@ -82,7 +82,7 @@ func_02027654: ; 0x02027654
     cmp r1, #0x0
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_02027788
+    bl GamePhaseProgressController_QueuePresentationMode
     cmp r0, #0x0
     ldrne r0, [r4, #0x10]
     addne r0, r0, #0x1
@@ -91,5 +91,5 @@ func_02027654: ; 0x02027654
 .L_0202777c: .word gActorRuntimeFlags
 .L_02027780: .word data_020c37ec
 .L_02027784: .word data_020c37f0
-    .size func_02027654, . - func_02027654
+    .size GamePhaseProgressController_Update, . - GamePhaseProgressController_Update
 

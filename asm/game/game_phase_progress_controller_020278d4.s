@@ -3,9 +3,9 @@
 .extern data_020c37ec
 .extern data_020c37f0
 
-    .global func_020278d4
-    .type func_020278d4, @function
-func_020278d4: ; 0x020278d4
+    .global GamePhaseProgressController_RefreshWarningState
+    .type GamePhaseProgressController_RefreshWarningState, @function
+GamePhaseProgressController_RefreshWarningState: ; 0x020278d4
     ldr r1, .L_02027928
     mov r3, #0x0
     ldr r2, [r1, #0x0]
@@ -29,5 +29,5 @@ func_020278d4: ; 0x020278d4
     bx lr
 .L_02027928: .word data_020c37f0
 .L_0202792c: .word data_020c37ec
-    .size func_020278d4, . - func_020278d4
+    .size GamePhaseProgressController_RefreshWarningState, . - GamePhaseProgressController_RefreshWarningState
 

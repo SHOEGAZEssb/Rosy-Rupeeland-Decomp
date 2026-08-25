@@ -38,8 +38,8 @@ extern void GameWork_Deserialize(void *work, const void *buffer, u32 bufferSize)
 extern void RetailSaveContext_RestoreGameSingletons(void);
 extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern s32 GamePhaseProgress_GetCurrentAdjustedThreshold(void *state);
-extern s32 func_02027e8c(void *state);
-extern s32 func_02027e9c(void *state);
+extern s32 GamePhaseProgressController_GetStage(void *state);
+extern s32 GamePhaseProgressController_GetComparisonStage(void *state);
 extern void func_0206392c(void *state, s32 mode);
 extern void RetailRecordManager_SaveState(void *state, s32 mode);
 extern void RetailResourceDescriptorManager_SaveState(void *state, s32 mode);
@@ -60,7 +60,7 @@ extern void func_0206f8c8(void *state);
 extern void Type7Actor_LoadPersistentState(void);
 extern void *PackedTimerArray_GetGlobal(void);
 extern void PackedTimerArray_LoadFromGameWork(void *array);
-extern void func_02027930(void *state);
+extern void GamePhaseProgressController_Load(void *state);
 extern void func_02004458(s32 mode);
 
 static u32 retail_save_crc32(const u8 *bytes, u32 size);
@@ -87,7 +87,7 @@ void RetailSaveContext_RestoreGameSingletons(void)
     Type7Actor_LoadPersistentState();
     PackedTimerArray_LoadFromGameWork(PackedTimerArray_GetGlobal());
     progress = GamePhaseProgress_GetOrCreateGlobal();
-    func_02027930(progress);
+    GamePhaseProgressController_Load(progress);
 }
 
 /* Construct the 0x1c0-byte retail save context at 0x0207F168. */
@@ -795,9 +795,9 @@ s32 RetailSaveContext_WriteRecord(void *context_pointer)
         progress = GamePhaseProgress_GetOrCreateGlobal();
         *(u16 *)(work + 0x0c) = (u16)GamePhaseProgress_GetCurrentAdjustedThreshold(progress);
         progress = GamePhaseProgress_GetOrCreateGlobal();
-        work[0x0e] = (u8)func_02027e8c(progress);
+        work[0x0e] = (u8)GamePhaseProgressController_GetStage(progress);
         progress = GamePhaseProgress_GetOrCreateGlobal();
-        work[0x0f] = (u8)func_02027e9c(progress);
+        work[0x0f] = (u8)GamePhaseProgressController_GetComparisonStage(progress);
         *(u32 *)(work + 0x3c) = *(u32 *)(work + 0x40);
         if (*(u32 *)(context + 0x20) == 1) {
             MI_CpuCopy8(context + 0xd4, work + 0x10, 0x20);

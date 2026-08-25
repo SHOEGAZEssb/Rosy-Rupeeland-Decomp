@@ -4,7 +4,7 @@
 .extern gGamePhaseRuntime
 .extern data_ov055_0220f088
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_02027e8c
+.extern GamePhaseProgressController_GetStage
 .extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_ov055_0220e8b8
 .extern gHeapContext
@@ -23,7 +23,7 @@ func_ov055_0220ef6c:
     ldr r0, [r0, #0x0]
     add r4, r0, #0x3bc
     bl GamePhaseProgress_GetOrCreateGlobal
-    bl func_02027e8c
+    bl GamePhaseProgressController_GetStage
     mov r2, r0
     mov r0, r5
     add r1, r4, #0x2c00

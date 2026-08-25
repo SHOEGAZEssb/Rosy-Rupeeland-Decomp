@@ -2,9 +2,9 @@
 .text
 .extern func_020befec
 
-    .global func_02027f38
-    .type func_02027f38, @function
-func_02027f38: ; 0x02027f38
+    .global GamePhaseProgressController_RefreshCurrentStageAdjustment
+    .type GamePhaseProgressController_RefreshCurrentStageAdjustment, @function
+GamePhaseProgressController_RefreshCurrentStageAdjustment: ; 0x02027f38
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r4, [r5, #0x24]
@@ -30,5 +30,5 @@ func_02027f38: ; 0x02027f38
     add r0, r5, r0
     strb r1, [r0, #0x2c]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02027f38, . - func_02027f38
+    .size GamePhaseProgressController_RefreshCurrentStageAdjustment, . - GamePhaseProgressController_RefreshCurrentStageAdjustment
 

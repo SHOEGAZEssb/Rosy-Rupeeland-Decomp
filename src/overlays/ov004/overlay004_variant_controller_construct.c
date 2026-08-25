@@ -28,7 +28,7 @@ extern const u8 data_ov004_021fcddc[];
 extern const s32 data_ov004_021fcd48[2];
 extern void SceneInputBase_Init(void *state);
 extern void *GamePhaseProgress_GetOrCreateGlobal(void);
-extern void *func_02027828(void *context, s32 index);
+extern void *GamePhaseProgressController_GetAdjustedThreshold(void *context, s32 index);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
 extern void *func_ov026_021ff8a0(void *memory, s32 variant,
@@ -71,9 +71,9 @@ func_ov004_021fc944(Overlay004VariantController *state, s32 variant)
         state->currentResource_060 = 0;
     } else {
         state->previousResource_05c =
-            func_02027828(GamePhaseProgress_GetOrCreateGlobal(), variant - 1);
+            GamePhaseProgressController_GetAdjustedThreshold(GamePhaseProgress_GetOrCreateGlobal(), variant - 1);
         state->currentResource_060 =
-            func_02027828(GamePhaseProgress_GetOrCreateGlobal(), variant);
+            GamePhaseProgressController_GetAdjustedThreshold(GamePhaseProgress_GetOrCreateGlobal(), variant);
     }
 
     memory = Heap_Alloc(0x7c4, data_ov004_021fcddc, 4, gHeapContext);

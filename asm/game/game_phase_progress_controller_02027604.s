@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_progress_controller.c.
 .text
 
-    .global func_02027604
-    .type func_02027604, @function
-func_02027604: ; 0x02027604
+    .global GamePhaseProgressController_Init
+    .type GamePhaseProgressController_Init, @function
+GamePhaseProgressController_Init: ; 0x02027604
     mov r3, #0x0
     str r3, [r0, #0x0]
     str r3, [r0, #0x4]
@@ -24,5 +24,5 @@ func_02027604: ; 0x02027604
     cmp r3, #0xb
     blt .L_02027638
     bx lr
-    .size func_02027604, . - func_02027604
+    .size GamePhaseProgressController_Init, . - GamePhaseProgressController_Init
 

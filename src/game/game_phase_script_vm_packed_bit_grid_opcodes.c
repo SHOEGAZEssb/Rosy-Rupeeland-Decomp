@@ -11,7 +11,7 @@ typedef struct PackedBitGrid {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern PackedBitGrid *func_020275b0(void);
+extern PackedBitGrid *PackedBitGrid_GetOrCreateGlobal(void);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ s32 GamePhaseActorScriptVm_GetPackedBitGridMask(GamePhaseActorScriptVm *self)
 {
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 column = (s32)GamePhaseScriptVm_Pop(&self->base);
-    PackedBitGrid *grid = func_020275b0();
+    PackedBitGrid *grid = PackedBitGrid_GetOrCreateGlobal();
     s32 bitIndex = row * grid->rowStrideBits + column;
 
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
@@ -38,7 +38,7 @@ s32 GamePhaseActorScriptVm_SetPackedBitGridBit(GamePhaseActorScriptVm *self)
 {
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 column = (s32)GamePhaseScriptVm_Pop(&self->base);
-    PackedBitGrid *grid = func_020275b0();
+    PackedBitGrid *grid = PackedBitGrid_GetOrCreateGlobal();
     s32 bitIndex = row * grid->rowStrideBits + column;
 
     grid->packedBits[bitIndex / 8] |= (u8)(1 << (bitIndex % 8));

@@ -58,23 +58,23 @@ extern void ActorRuntimeCollection_QueueValue(void *, void *);
 extern u32 ActorRuntimeFlags_Test(const void *, u32);
 extern s32 func_020befec(s32, s32);
 extern s32 func_020bf1f8(s32, s32);
-void func_02027604(GamePhaseProgressController *);
-void func_02027650(GamePhaseProgressController *);
-void func_02027654(GamePhaseProgressController *);
-s32 func_02027788(GamePhaseProgressController *, s32);
-s32 func_02027828(GamePhaseProgressController *, s32);
-void func_02027864(GamePhaseProgressController *, s32);
-void func_020278b4(GamePhaseProgressController *, s32);
-void func_020278d4(GamePhaseProgressController *);
-void func_02027d7c(GamePhaseProgressController *);
-void func_02027f38(GamePhaseProgressController *);
+void GamePhaseProgressController_Init(GamePhaseProgressController *);
+void GamePhaseProgressController_Destroy(GamePhaseProgressController *);
+void GamePhaseProgressController_Update(GamePhaseProgressController *);
+s32 GamePhaseProgressController_QueuePresentationMode(GamePhaseProgressController *, s32);
+s32 GamePhaseProgressController_GetAdjustedThreshold(GamePhaseProgressController *, s32);
+void GamePhaseProgressController_AddCounterFromProgress(GamePhaseProgressController *, s32);
+void GamePhaseProgressController_SetCounter(GamePhaseProgressController *, s32);
+void GamePhaseProgressController_RefreshWarningState(GamePhaseProgressController *);
+void GamePhaseProgressController_LowerStage(GamePhaseProgressController *);
+void GamePhaseProgressController_RefreshCurrentStageAdjustment(GamePhaseProgressController *);
 GamePhaseProgressController *GamePhaseProgress_GetOrCreateGlobal(void);
 #ifdef __cplusplus
 }
 #endif
 
 /* Initialize counters, stages, progress, adjustments, and the reset latch. */
-void func_02027604(GamePhaseProgressController *self)
+void GamePhaseProgressController_Init(GamePhaseProgressController *self)
 {
     s32 i;
     self->counter_00 = 0;
@@ -92,7 +92,7 @@ void func_02027604(GamePhaseProgressController *self)
 }
 
 /* Global-object shutdown hook; this controller owns no dynamic resources. */
-void func_02027650(GamePhaseProgressController *self)
+void GamePhaseProgressController_Destroy(GamePhaseProgressController *self)
 {
     (void)self;
 }
@@ -102,7 +102,7 @@ void func_02027650(GamePhaseProgressController *self)
  * state one ticks the counter and issues presentation modes as it crosses the
  * two table-derived warning thresholds, then can lower the stage at expiry.
  */
-void func_02027654(GamePhaseProgressController *self)
+void GamePhaseProgressController_Update(GamePhaseProgressController *self)
 {
     if (self->updateState_0c == 0) {
         if (self->stage_14 > 0 && self->transitionRequested_04 == 0) {
@@ -118,19 +118,19 @@ void func_02027654(GamePhaseProgressController *self)
     self->elapsedTicks_28++;
     self->counter_00--;
     if (self->counter_00 == 0 && self->warningState_10 == 2 &&
-        func_02027788(self, self->warningState_10)) {
-        func_02027d7c(self);
+        GamePhaseProgressController_QueuePresentationMode(self, self->warningState_10)) {
+        GamePhaseProgressController_LowerStage(self);
         return;
     }
     if (self->counter_00 < data_020c37ec * 60 &&
         self->warningState_10 == 1 &&
-        func_02027788(self, self->warningState_10)) {
+        GamePhaseProgressController_QueuePresentationMode(self, self->warningState_10)) {
         self->warningState_10++;
         return;
     }
     if (self->counter_00 < data_020c37f0 * 60 &&
         self->warningState_10 == 0 &&
-        func_02027788(self, self->warningState_10))
+        GamePhaseProgressController_QueuePresentationMode(self, self->warningState_10))
         self->warningState_10++;
 }
 
@@ -139,7 +139,7 @@ void func_02027654(GamePhaseProgressController *self)
  * idle, queue the mode, persist it at GameWork offset 0x1e2, and return one.
  * Mode three also sets game flag 0x401 once.
  */
-s32 func_02027788(GamePhaseProgressController *self, s32 mode)
+s32 GamePhaseProgressController_QueuePresentationMode(GamePhaseProgressController *self, s32 mode)
 {
     if (!self->presentationEnabled_08 || ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection))
         return 0;
@@ -151,14 +151,14 @@ s32 func_02027788(GamePhaseProgressController *self, s32 mode)
 }
 
 /* Return the unadjusted progress threshold at the supplied table index. */
-s32 func_02027818(GamePhaseProgressController *self, s32 index)
+s32 GamePhaseProgressController_GetBaseThreshold(GamePhaseProgressController *self, s32 index)
 {
     (void)self;
     return data_020c37f4[index];
 }
 
 /* Return a threshold increased by the indexed per-stage percentage. */
-s32 func_02027828(GamePhaseProgressController *self, s32 index)
+s32 GamePhaseProgressController_GetAdjustedThreshold(GamePhaseProgressController *self, s32 index)
 {
     s32 base = data_020c3820[index];
     return base + func_020befec(base * self->stageAdjustments_2c[index], 100);
@@ -167,34 +167,34 @@ s32 func_02027828(GamePhaseProgressController *self, s32 index)
 /* Return the adjusted threshold for the controller's current stage. */
 s32 GamePhaseProgress_GetCurrentAdjustedThreshold(GamePhaseProgressController *self)
 {
-    return func_02027828(self, self->stage_14);
+    return GamePhaseProgressController_GetAdjustedThreshold(self, self->stage_14);
 }
 
 /*
  * Add the input divided by ten in minute-sized tick units, saturate the
  * counter, and recompute which warning thresholds have already been crossed.
  */
-void func_02027864(GamePhaseProgressController *self, s32 value)
+void GamePhaseProgressController_AddCounterFromProgress(GamePhaseProgressController *self, s32 value)
 {
     s64 total = (s64)self->counter_00 +
                 (s64)func_020bf1f8(value, 10) * TICKS_PER_MINUTE;
     if (total >= COUNTER_CAP)
         total = COUNTER_CAP;
     self->counter_00 = (s32)total;
-    func_020278d4(self);
+    GamePhaseProgressController_RefreshWarningState(self);
 }
 
 /* Set and cap the tick counter, then recompute its warning state. */
-void func_020278b4(GamePhaseProgressController *self, s32 value)
+void GamePhaseProgressController_SetCounter(GamePhaseProgressController *self, s32 value)
 {
     self->counter_00 = value;
     if ((u32)value >= (u32)COUNTER_CAP)
         self->counter_00 = COUNTER_CAP;
-    func_020278d4(self);
+    GamePhaseProgressController_RefreshWarningState(self);
 }
 
 /* Classify the counter as above, at, or below the two warning thresholds. */
-void func_020278d4(GamePhaseProgressController *self)
+void GamePhaseProgressController_RefreshWarningState(GamePhaseProgressController *self)
 {
     self->warningState_10 = 0;
     if (self->counter_00 <= data_020c37f0 * 60)
@@ -207,7 +207,7 @@ void func_020278d4(GamePhaseProgressController *self)
  * Load controller state from GameWork offset 0x5df0, unpack its bit fields,
  * copy eleven adjustment bytes, and mirror selected values to runtime fields.
  */
-void func_02027930(GamePhaseProgressController *self)
+void GamePhaseProgressController_Load(GamePhaseProgressController *self)
 {
     GamePhaseProgressSave *save =
         (GamePhaseProgressSave *)((u8 *)gGameWork + 0x5df0);
@@ -232,7 +232,7 @@ void func_02027930(GamePhaseProgressController *self)
 }
 
 /* Pack the controller fields back into GameWork offset 0x5df0. */
-void func_02027a7c(GamePhaseProgressController *self)
+void GamePhaseProgressController_Save(GamePhaseProgressController *self)
 {
     GamePhaseProgressSave *save =
         (GamePhaseProgressSave *)((u8 *)gGameWork + 0x5df0);
@@ -257,7 +257,7 @@ void func_02027a7c(GamePhaseProgressController *self)
 }
 
 /* Clear all known fields in a supplied 0x20-byte persistence record. */
-void func_02027bd4(GamePhaseProgressController *unused,
+void GamePhaseProgressController_ClearSave(GamePhaseProgressController *unused,
                    GamePhaseProgressSave *save)
 {
     s32 i;
@@ -275,7 +275,7 @@ void func_02027bd4(GamePhaseProgressController *unused,
  * Advance one stage, deduct its full threshold or one fifth when catching up,
  * reset timer/adjustment accounting, and mirror both stage indices.
  */
-void func_02027c34(GamePhaseProgressController *self)
+void GamePhaseProgressController_AdvanceStage(GamePhaseProgressController *self)
 {
     s32 oldStage = self->stage_14;
     s32 newStage = oldStage + 1;
@@ -288,9 +288,9 @@ void func_02027c34(GamePhaseProgressController *self)
     if (self->currentProgress_1c < 0)
         self->currentProgress_1c = 0;
     self->stage_14 = newStage;
-    func_020278b4(self, data_020c37e8 * 60);
-    func_02027864(self, self->currentProgress_1c);
-    func_02027f38(self);
+    GamePhaseProgressController_SetCounter(self, data_020c37e8 * 60);
+    GamePhaseProgressController_AddCounterFromProgress(self, self->currentProgress_1c);
+    GamePhaseProgressController_RefreshCurrentStageAdjustment(self);
     self->adjustmentCount_24 = 0;
     self->elapsedTicks_28 = 0;
     *(u16 *)((u8 *)gGameWork + 0x1ce) = (u16)self->stage_14;
@@ -298,7 +298,7 @@ void func_02027c34(GamePhaseProgressController *self)
 }
 
 /* Return whether current progress is enough to advance a stage. */
-s32 func_02027d14(GamePhaseProgressController *self)
+s32 GamePhaseProgressController_CanAdvanceStage(GamePhaseProgressController *self)
 {
     s32 threshold;
     if (self->stage_14 >= 10)
@@ -310,7 +310,7 @@ s32 func_02027d14(GamePhaseProgressController *self)
 }
 
 /* Lower the stage, reset its timer/progress state, and mirror the new stage. */
-void func_02027d7c(GamePhaseProgressController *self)
+void GamePhaseProgressController_LowerStage(GamePhaseProgressController *self)
 {
     s32 stage = self->stage_14 - 1;
     if (stage <= 0) {
@@ -318,7 +318,7 @@ void func_02027d7c(GamePhaseProgressController *self)
         self->transitionRequested_04 = 0;
         self->updateState_0c = 0;
     } else {
-        func_020278b4(self, data_020c37e8 * 60);
+        GamePhaseProgressController_SetCounter(self, data_020c37e8 * 60);
     }
     self->warningState_10 = 0;
     self->stage_14 = stage;
@@ -329,7 +329,7 @@ void func_02027d7c(GamePhaseProgressController *self)
 }
 
 /* Return one when the current stage trails the comparison stage. */
-s32 func_02027df0(GamePhaseProgressController *self)
+s32 GamePhaseProgressController_IsBehindComparisonStage(GamePhaseProgressController *self)
 {
     return self->stage_14 < self->comparisonStage_18;
 }
@@ -339,7 +339,7 @@ s32 func_02027df0(GamePhaseProgressController *self)
  * after a reset also increments the adjustment count; active stages extend
  * the counter using the same value divided by ten.
  */
-void func_02027e08(GamePhaseProgressController *self, s32 value)
+void GamePhaseProgressController_AddProgress(GamePhaseProgressController *self, s32 value)
 {
     if (self->resetAdjustment_38) {
         self->resetAdjustment_38 = 0;
@@ -352,30 +352,30 @@ void func_02027e08(GamePhaseProgressController *self, s32 value)
     if (self->cumulativeProgress_20 > PROGRESS_CAP)
         self->cumulativeProgress_20 = PROGRESS_CAP;
     if (self->stage_14 > 0)
-        func_02027864(self, value);
+        GamePhaseProgressController_AddCounterFromProgress(self, value);
     *(s32 *)((u8 *)gGameWork + 0x7f8) = self->cumulativeProgress_20;
 }
 
 /* Return the current stage index. */
-s32 func_02027e8c(GamePhaseProgressController *self)
+s32 GamePhaseProgressController_GetStage(GamePhaseProgressController *self)
 {
     return self->stage_14;
 }
 
 /* Set the current stage index without other state changes. */
-void func_02027e94(GamePhaseProgressController *self, s32 stage)
+void GamePhaseProgressController_SetStage(GamePhaseProgressController *self, s32 stage)
 {
     self->stage_14 = stage;
 }
 
 /* Return the comparison-stage index. */
-s32 func_02027e9c(GamePhaseProgressController *self)
+s32 GamePhaseProgressController_GetComparisonStage(GamePhaseProgressController *self)
 {
     return self->comparisonStage_18;
 }
 
 /* Set the comparison-stage index without other state changes. */
-void func_02027ea4(GamePhaseProgressController *self, s32 stage)
+void GamePhaseProgressController_SetComparisonStage(GamePhaseProgressController *self, s32 stage)
 {
     self->comparisonStage_18 = stage;
 }
@@ -384,7 +384,7 @@ void func_02027ea4(GamePhaseProgressController *self, s32 stage)
  * Classify current progress into below 50%, 50..84%, or at least 85% of the
  * applicable stage threshold; catch-up stages use one fifth of the threshold.
  */
-s32 func_02027eac(GamePhaseProgressController *self)
+s32 GamePhaseProgressController_ClassifyProgress(GamePhaseProgressController *self)
 {
     s32 threshold = data_020c37f4[self->stage_14];
     if (self->stage_14 < self->comparisonStage_18)
@@ -396,7 +396,7 @@ s32 func_02027eac(GamePhaseProgressController *self)
 }
 
 /* Arm the next progress addition to increment the adjustment count. */
-void func_02027f2c(GamePhaseProgressController *self)
+void GamePhaseProgressController_ArmAdjustmentIncrement(GamePhaseProgressController *self)
 {
     self->resetAdjustment_38 = 1;
 }
@@ -405,7 +405,7 @@ void func_02027f2c(GamePhaseProgressController *self)
  * Recompute the current stage's adjustment byte from the clamped adjustment
  * count and elapsed whole minutes, then clamp the result to 0..20 percent.
  */
-void func_02027f38(GamePhaseProgressController *self)
+void GamePhaseProgressController_RefreshCurrentStageAdjustment(GamePhaseProgressController *self)
 {
     s32 count = self->adjustmentCount_24;
     s32 adjustment;
@@ -428,9 +428,9 @@ void func_02027f38(GamePhaseProgressController *self)
 GamePhaseProgressController *GamePhaseProgress_GetOrCreateGlobal(void)
 {
     if (!(data_02105634 & 1)) {
-        func_02027604(&data_02105644);
+        GamePhaseProgressController_Init(&data_02105644);
         __register_global_object(&data_02105644,
-                                 (void (*)(void *))func_02027650,
+                                 (void (*)(void *))GamePhaseProgressController_Destroy,
                                  data_02105638);
         data_02105634 |= 1;
     }

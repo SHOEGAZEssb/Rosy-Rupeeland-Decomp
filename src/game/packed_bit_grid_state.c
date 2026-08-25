@@ -26,14 +26,14 @@ extern void __register_global_object(void *, void (*)(void *), void *);
 #endif
 
 /* Initialize an empty grid without allocating storage. */
-void func_020274b8(PackedBitGrid *self)
+void PackedBitGrid_Init(PackedBitGrid *self)
 {
     self->bytes_00 = 0;
     self->byteCount_04 = 0;
 }
 
 /* Free any owned byte array, clear its pointer, and reset its byte count. */
-void func_020274c8(PackedBitGrid *self)
+void PackedBitGrid_Clear(PackedBitGrid *self)
 {
     if (self->bytes_00) {
         func_02003e38(self->bytes_00);
@@ -46,11 +46,11 @@ void func_020274c8(PackedBitGrid *self)
  * Release the grid for shutdown and return it. The second null check is
  * preserved from the recovered control flow even though cleanup clears it.
  */
-PackedBitGrid *func_020274f4(PackedBitGrid *self)
+PackedBitGrid *PackedBitGrid_Destroy(PackedBitGrid *self)
 {
-    func_020274c8(self);
+    PackedBitGrid_Clear(self);
     if (self->bytes_00)
-        func_020274c8(self);
+        PackedBitGrid_Clear(self);
     return self;
 }
 
@@ -58,7 +58,7 @@ PackedBitGrid *func_020274f4(PackedBitGrid *self)
  * Read column/row counts from configuration offset 0x20, replace any prior
  * storage with ceil(columns*rows/8) bytes tagged "ARRY", and clear all bits.
  */
-void func_0202751c(PackedBitGrid *self, const void *configuration)
+void PackedBitGrid_Configure(PackedBitGrid *self, const void *configuration)
 {
     u32 dimensions = *(const u32 *)((const u8 *)configuration + 0x20);
     u32 i;
@@ -66,7 +66,7 @@ void func_0202751c(PackedBitGrid *self, const void *configuration)
     self->stride_08 = dimensions & 0xffff;
     self->rowCount_0c = dimensions >> 16;
     if (self->bytes_00)
-        func_020274c8(self);
+        PackedBitGrid_Clear(self);
     self->byteCount_04 = (self->stride_08 * self->rowCount_0c + 7) / 8;
     self->bytes_00 = (u8 *)func_02003e20(self->byteCount_04,
                                          data_020d8810, 4, &gHeapContext);
@@ -75,12 +75,12 @@ void func_0202751c(PackedBitGrid *self, const void *configuration)
 }
 
 /* Lazily construct/register the global packed-bit grid and return it. */
-PackedBitGrid *func_020275b0(void)
+PackedBitGrid *PackedBitGrid_GetOrCreateGlobal(void)
 {
     if (!(data_02105614 & 1)) {
-        func_020274b8(&data_02105624);
+        PackedBitGrid_Init(&data_02105624);
         __register_global_object(&data_02105624,
-                                 (void (*)(void *))func_020274f4,
+                                 (void (*)(void *))PackedBitGrid_Destroy,
                                  data_02105618);
         data_02105614 |= 1;
     }

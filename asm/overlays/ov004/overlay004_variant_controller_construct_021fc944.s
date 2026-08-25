@@ -1,7 +1,7 @@
     .text
     .extern SceneInputBase_Init
     .extern GamePhaseProgress_GetOrCreateGlobal
-    .extern func_02027828
+    .extern GamePhaseProgressController_GetAdjustedThreshold
     .extern Heap_Alloc
     .extern func_ov026_021ff8a0
     .extern func_ov004_021fb6e4
@@ -29,11 +29,11 @@ func_ov004_021fc944: ; 0x021fc944
     bgt L_021fc994
     bl GamePhaseProgress_GetOrCreateGlobal
     sub r1, r4, #0x1
-    bl func_02027828
+    bl GamePhaseProgressController_GetAdjustedThreshold
     str r0, [r5, #0x5c]
     bl GamePhaseProgress_GetOrCreateGlobal
     ldr r1, [r5, #0x58]
-    bl func_02027828
+    bl GamePhaseProgressController_GetAdjustedThreshold
 L_021fc994:
     str r0, [r5, #0x60]
     ldr r0, L_021fc9f0

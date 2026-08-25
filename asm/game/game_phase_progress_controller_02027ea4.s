@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/game_phase_progress_controller.c.
 .text
 
-    .global func_02027ea4
-    .type func_02027ea4, @function
-func_02027ea4: ; 0x02027ea4
+    .global GamePhaseProgressController_SetComparisonStage
+    .type GamePhaseProgressController_SetComparisonStage, @function
+GamePhaseProgressController_SetComparisonStage: ; 0x02027ea4
     str r1, [r0, #0x18]
     bx lr
-    .size func_02027ea4, . - func_02027ea4
+    .size GamePhaseProgressController_SetComparisonStage, . - GamePhaseProgressController_SetComparisonStage
 

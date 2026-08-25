@@ -39,7 +39,7 @@ extern s32 GameWork_TestFlag(void *work, s32 flag);
 extern void *PackedTimerArray_GetGlobal(void);
 extern void PackedTimerArray_Update(void *array);
 extern void GamePhaseProgress_GetOrCreateGlobal(void);
-extern void func_02027654(void);
+extern void GamePhaseProgressController_Update(void);
 extern s32 FrameCounter_Tick31(void *object);
 extern void RetailResourceDescriptorManager_AdvanceFrame(void *object);
 extern void RetailResourceDescriptorManager_UpdateNextGroup(void *object);
@@ -123,7 +123,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         PackedTimerArray_Update(PackedTimerArray_GetGlobal());
         if (!GameWork_TestFlag(gGameWork, 0x40f)) {
             GamePhaseProgress_GetOrCreateGlobal();
-            func_02027654();
+            GamePhaseProgressController_Update();
         }
         if (FrameCounter_Tick31(b + 0x30f0))
             RetailResourceDescriptorManager_AdvanceFrame(data_021f38fc);

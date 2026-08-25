@@ -3,9 +3,9 @@
 .extern data_020c37f4
 .extern func_020befec
 
-    .global func_02027d14
-    .type func_02027d14, @function
-func_02027d14: ; 0x02027d14
+    .global GamePhaseProgressController_CanAdvanceStage
+    .type GamePhaseProgressController_CanAdvanceStage, @function
+GamePhaseProgressController_CanAdvanceStage: ; 0x02027d14
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x14]
@@ -34,5 +34,5 @@ func_02027d14: ; 0x02027d14
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_02027d78: .word data_020c37f4
-    .size func_02027d14, . - func_02027d14
+    .size GamePhaseProgressController_CanAdvanceStage, . - GamePhaseProgressController_CanAdvanceStage
 

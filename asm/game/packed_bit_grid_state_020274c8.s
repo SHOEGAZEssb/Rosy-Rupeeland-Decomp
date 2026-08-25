@@ -2,9 +2,9 @@
 .text
 .extern func_02003e38
 
-    .global func_020274c8
-    .type func_020274c8, @function
-func_020274c8: ; 0x020274c8
+    .global PackedBitGrid_Clear
+    .type PackedBitGrid_Clear, @function
+PackedBitGrid_Clear: ; 0x020274c8
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x0]
@@ -17,4 +17,4 @@ func_020274c8: ; 0x020274c8
     mov r0, #0x0
     str r0, [r4, #0x4]
     ldmia sp!, {r4, pc}
-    .size func_020274c8, . - func_020274c8
+    .size PackedBitGrid_Clear, . - PackedBitGrid_Clear

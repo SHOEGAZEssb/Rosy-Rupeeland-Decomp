@@ -23,7 +23,7 @@
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_Update
 .extern RuntimePresentationManager_UpdatePresentations
-.extern func_02027654
+.extern GamePhaseProgressController_Update
 .extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_020338e4
 .extern Actor_TrySpawnTerrainGateObject
@@ -150,7 +150,7 @@ L_02007548:
     cmp r0, #0x0
     bne L_020075b4
     bl GamePhaseProgress_GetOrCreateGlobal
-    bl func_02027654
+    bl GamePhaseProgressController_Update
 L_020075b4:
     add r0, r4, #0xf0
     add r0, r0, #0x3000

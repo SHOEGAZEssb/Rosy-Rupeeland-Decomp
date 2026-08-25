@@ -6,9 +6,9 @@
 .extern OverlaySlot_LoadOverlay
 .extern GamePhase_ResetTransientState
 .extern GamePhaseState_CreatePhaseObject
-.extern func_0202751c
-.extern func_020275b0
-.extern func_02027f2c
+.extern PackedBitGrid_Configure
+.extern PackedBitGrid_GetOrCreateGlobal
+.extern GamePhaseProgressController_ArmAdjustmentIncrement
 .extern GamePhaseProgress_GetOrCreateGlobal
 .extern SoundPhaseManager_SetPhase
 .extern gGameWork
@@ -137,7 +137,7 @@ GamePhaseState_ApplyConfiguration: ; 0x0200e780
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
     bl GamePhaseProgress_GetOrCreateGlobal
-    bl func_02027f2c
+    bl GamePhaseProgressController_ArmAdjustmentIncrement
     bl GamePhase_ResetTransientState
     ldr r0, [r4, #0x40]
     mov r0, r0, lsl #0x6
@@ -150,10 +150,10 @@ GamePhaseState_ApplyConfiguration: ; 0x0200e780
     mov r0, #0x3
     strh r1, [r2, #0xcc]
     strh r0, [r2, #0xce]
-    bl func_020275b0
+    bl PackedBitGrid_GetOrCreateGlobal
     add r1, r5, #0x2000
     ldr r1, [r1, #0xeb0]
-    bl func_0202751c
+    bl PackedBitGrid_Configure
     ldmia sp!, {r3, r4, r5, pc}
 L_0200e9a8: .word gSoundContext
 L_0200e9ac: .word gGameWork

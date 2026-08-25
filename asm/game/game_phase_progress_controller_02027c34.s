@@ -2,15 +2,15 @@
 .text
 .extern data_020c37e8
 .extern data_020c37f4
-.extern func_02027864
-.extern func_020278b4
-.extern func_02027f38
+.extern GamePhaseProgressController_AddCounterFromProgress
+.extern GamePhaseProgressController_SetCounter
+.extern GamePhaseProgressController_RefreshCurrentStageAdjustment
 .extern func_020befec
 .extern gGameWork
 
-    .global func_02027c34
-    .type func_02027c34, @function
-func_02027c34: ; 0x02027c34
+    .global GamePhaseProgressController_AdvanceStage
+    .type GamePhaseProgressController_AdvanceStage, @function
+GamePhaseProgressController_AdvanceStage: ; 0x02027c34
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x14]
@@ -47,12 +47,12 @@ func_02027c34: ; 0x02027c34
     ldr r2, [r0, #0x0]
     mov r0, r5
     mul r1, r2, r1
-    bl func_020278b4
+    bl GamePhaseProgressController_SetCounter
     ldr r1, [r5, #0x1c]
     mov r0, r5
-    bl func_02027864
+    bl GamePhaseProgressController_AddCounterFromProgress
     mov r0, r5
-    bl func_02027f38
+    bl GamePhaseProgressController_RefreshCurrentStageAdjustment
     mov r0, #0x0
     str r0, [r5, #0x24]
     str r0, [r5, #0x28]
@@ -69,5 +69,5 @@ func_02027c34: ; 0x02027c34
 .L_02027d08: .word data_020c37f4
 .L_02027d0c: .word data_020c37e8
 .L_02027d10: .word gGameWork
-    .size func_02027c34, . - func_02027c34
+    .size GamePhaseProgressController_AdvanceStage, . - GamePhaseProgressController_AdvanceStage
 

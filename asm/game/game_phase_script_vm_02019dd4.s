@@ -2,18 +2,18 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern func_02027818
-.extern func_02027828
-.extern func_02027864
-.extern func_020278b4
-.extern func_02027c34
-.extern func_02027d14
-.extern func_02027df0
-.extern func_02027e08
-.extern func_02027e8c
-.extern func_02027e94
-.extern func_02027ea4
-.extern func_02027eac
+.extern GamePhaseProgressController_GetBaseThreshold
+.extern GamePhaseProgressController_GetAdjustedThreshold
+.extern GamePhaseProgressController_AddCounterFromProgress
+.extern GamePhaseProgressController_SetCounter
+.extern GamePhaseProgressController_AdvanceStage
+.extern GamePhaseProgressController_CanAdvanceStage
+.extern GamePhaseProgressController_IsBehindComparisonStage
+.extern GamePhaseProgressController_AddProgress
+.extern GamePhaseProgressController_GetStage
+.extern GamePhaseProgressController_SetStage
+.extern GamePhaseProgressController_SetComparisonStage
+.extern GamePhaseProgressController_ClassifyProgress
 .extern GamePhaseProgress_GetOrCreateGlobal
 .global GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand
 GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand:
@@ -44,7 +44,7 @@ L_02019df8: ; jump table
 L_02019e30:
     bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
-    bl func_02027818
+    bl GamePhaseProgressController_GetBaseThreshold
     mov r1, r0
     mov r0, r5
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
@@ -52,12 +52,12 @@ L_02019e30:
 L_02019e4c:
     bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
-    bl func_02027864
+    bl GamePhaseProgressController_AddCounterFromProgress
     b L_02019f44
 L_02019e5c:
     bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
-    bl func_020278b4
+    bl GamePhaseProgressController_SetCounter
     b L_02019f44
 L_02019e6c:
     bl GamePhaseProgress_GetOrCreateGlobal
@@ -68,12 +68,12 @@ L_02019e6c:
 L_02019e80:
     bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
-    bl func_02027e94
+    bl GamePhaseProgressController_SetStage
     b L_02019f44
 L_02019e90:
     bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
-    bl func_02027828
+    bl GamePhaseProgressController_GetAdjustedThreshold
     mov r1, r0
     mov r0, r5
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
@@ -81,11 +81,11 @@ L_02019e90:
 L_02019eac:
     bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
-    bl func_02027e08
+    bl GamePhaseProgressController_AddProgress
     b L_02019f44
 L_02019ebc:
     bl GamePhaseProgress_GetOrCreateGlobal
-    bl func_02027d14
+    bl GamePhaseProgressController_CanAdvanceStage
     cmp r0, #0x0
     movne r1, #0x1
     moveq r1, #0x0
@@ -94,18 +94,18 @@ L_02019ebc:
     b L_02019f44
 L_02019edc:
     bl GamePhaseProgress_GetOrCreateGlobal
-    bl func_02027c34
+    bl GamePhaseProgressController_AdvanceStage
     b L_02019f44
 L_02019ee8:
     bl GamePhaseProgress_GetOrCreateGlobal
-    bl func_02027e8c
+    bl GamePhaseProgressController_GetStage
     mov r1, r0
     mov r0, r5
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019f44
 L_02019f00:
     bl GamePhaseProgress_GetOrCreateGlobal
-    bl func_02027eac
+    bl GamePhaseProgressController_ClassifyProgress
     mov r1, r0
     mov r0, r5
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
@@ -113,11 +113,11 @@ L_02019f00:
 L_02019f18:
     bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
-    bl func_02027ea4
+    bl GamePhaseProgressController_SetComparisonStage
     b L_02019f44
 L_02019f28:
     bl GamePhaseProgress_GetOrCreateGlobal
-    bl func_02027df0
+    bl GamePhaseProgressController_IsBehindComparisonStage
     cmp r0, #0x0
     movne r1, #0x1
     moveq r1, #0x0

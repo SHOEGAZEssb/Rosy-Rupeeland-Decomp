@@ -2,12 +2,12 @@
 .text
 .extern data_020d8810
 .extern func_02003e20
-.extern func_020274c8
+.extern PackedBitGrid_Clear
 .extern gHeapContext
 
-    .global func_0202751c
-    .type func_0202751c, @function
-func_0202751c: ; 0x0202751c
+    .global PackedBitGrid_Configure
+    .type PackedBitGrid_Configure, @function
+PackedBitGrid_Configure: ; 0x0202751c
     stmdb sp!, {r3, r4, r5, lr}
     ldr r2, [r1, #0x20]
     mov r4, r0
@@ -26,7 +26,7 @@ func_0202751c: ; 0x0202751c
     cmp r2, #0x0
     mov r5, r1, asr #0x3
     beq .L_02027568
-    bl func_020274c8
+    bl PackedBitGrid_Clear
 .L_02027568:
     ldr r1, .L_020275a8
     ldr r3, .L_020275ac
@@ -48,4 +48,4 @@ func_0202751c: ; 0x0202751c
     ldmia sp!, {r3, r4, r5, pc}
 .L_020275a8: .word data_020d8810
 .L_020275ac: .word gHeapContext
-    .size func_0202751c, . - func_0202751c
+    .size PackedBitGrid_Configure, . - PackedBitGrid_Configure

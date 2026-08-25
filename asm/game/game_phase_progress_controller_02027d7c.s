@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/game_phase_progress_controller.c.
 .text
 .extern data_020c37e8
-.extern func_020278b4
+.extern GamePhaseProgressController_SetCounter
 .extern gGameWork
 
-    .global func_02027d7c
-    .type func_02027d7c, @function
-func_02027d7c: ; 0x02027d7c
+    .global GamePhaseProgressController_LowerStage
+    .type GamePhaseProgressController_LowerStage, @function
+GamePhaseProgressController_LowerStage: ; 0x02027d7c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x14]
@@ -21,7 +21,7 @@ func_02027d7c: ; 0x02027d7c
     mov r1, #0x3c
     ldr r2, [r2, #0x0]
     mul r1, r2, r1
-    bl func_020278b4
+    bl GamePhaseProgressController_SetCounter
 .L_02027db8:
     mov r0, #0x0
     str r0, [r4, #0x10]
@@ -37,5 +37,5 @@ func_02027d7c: ; 0x02027d7c
     ldmia sp!, {r3, r4, r5, pc}
 .L_02027de8: .word data_020c37e8
 .L_02027dec: .word gGameWork
-    .size func_02027d7c, . - func_02027d7c
+    .size GamePhaseProgressController_LowerStage, . - GamePhaseProgressController_LowerStage
 

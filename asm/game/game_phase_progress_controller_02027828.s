@@ -3,9 +3,9 @@
 .extern data_020c3820
 .extern func_020befec
 
-    .global func_02027828
-    .type func_02027828, @function
-func_02027828: ; 0x02027828
+    .global GamePhaseProgressController_GetAdjustedThreshold
+    .type GamePhaseProgressController_GetAdjustedThreshold, @function
+GamePhaseProgressController_GetAdjustedThreshold: ; 0x02027828
     stmdb sp!, {r4, lr}
     add r0, r0, r1
     ldr r2, .L_02027850
@@ -17,5 +17,5 @@ func_02027828: ; 0x02027828
     add r0, r4, r0
     ldmia sp!, {r4, pc}
 .L_02027850: .word data_020c3820
-    .size func_02027828, . - func_02027828
+    .size GamePhaseProgressController_GetAdjustedThreshold, . - GamePhaseProgressController_GetAdjustedThreshold
 

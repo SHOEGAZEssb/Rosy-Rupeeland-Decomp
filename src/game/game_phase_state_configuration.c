@@ -8,9 +8,9 @@ extern "C" {
 #endif
 extern void *gGamePhaseCurrencyHud;
 extern void *gSoundContext;
-extern void *func_0202751c(void *object, void *phaseObject);
-extern void *func_020275b0(void);
-extern void func_02027f2c(void);
+extern void *PackedBitGrid_Configure(void *object, void *phaseObject);
+extern void *PackedBitGrid_GetOrCreateGlobal(void);
+extern void GamePhaseProgressController_ArmAdjustmentIncrement(void);
 extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern void ActorCollection_SetEnabled(ActorCollection *self, s32 enabled);
 extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *object, s32 enabled);
@@ -127,12 +127,12 @@ void GamePhaseState_ApplyConfiguration(GamePhaseState *self, const void *configu
     *(u16 *)(work + 0x19e) = 0x10;
     *(u16 *)(work + 0x218) = 0;
     GamePhaseProgress_GetOrCreateGlobal();
-    func_02027f2c();
+    GamePhaseProgressController_ArmAdjustmentIncrement();
     GamePhase_ResetTransientState();
     *(s32 *)((u8 *)GamePhaseProgress_GetOrCreateGlobal() + 8) =
         (s32)(config->flags40 << 6) >> 31;
     *(u16 *)(currencyHud + 0xcc) = 0xb4;
     *(u16 *)(currencyHud + 0xce) = 3;
-    helper = func_020275b0();
-    func_0202751c(helper, self->phaseObject);
+    helper = PackedBitGrid_GetOrCreateGlobal();
+    PackedBitGrid_Configure(helper, self->phaseObject);
 }

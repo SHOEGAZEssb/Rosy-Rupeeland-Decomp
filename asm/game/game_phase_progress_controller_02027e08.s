@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/game_phase_progress_controller.c.
 .text
-.extern func_02027864
+.extern GamePhaseProgressController_AddCounterFromProgress
 .extern gGameWork
 
-    .global func_02027e08
-    .type func_02027e08, @function
-func_02027e08: ; 0x02027e08
+    .global GamePhaseProgressController_AddProgress
+    .type GamePhaseProgressController_AddProgress, @function
+GamePhaseProgressController_AddProgress: ; 0x02027e08
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x38]
@@ -31,7 +31,7 @@ func_02027e08: ; 0x02027e08
     cmp r0, #0x0
     ble .L_02027e70
     mov r0, r4
-    bl func_02027864
+    bl GamePhaseProgressController_AddCounterFromProgress
 .L_02027e70:
     ldr r0, .L_02027e88
     ldr r1, [r4, #0x20]
@@ -40,5 +40,5 @@ func_02027e08: ; 0x02027e08
     ldmia sp!, {r4, pc}
 .L_02027e84: .word 0x98967f
 .L_02027e88: .word gGameWork
-    .size func_02027e08, . - func_02027e08
+    .size GamePhaseProgressController_AddProgress, . - GamePhaseProgressController_AddProgress
 

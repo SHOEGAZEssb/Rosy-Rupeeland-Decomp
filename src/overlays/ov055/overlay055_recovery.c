@@ -24,7 +24,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *); extern void Heap_Free(void *);
 extern void *__construct_array(void *, s32, s32, void (*)(void *), void (*)(void *));
 extern void *__destroy_arr(void *, s32, s32, void (*)(void *));
-extern u32 genrand_int32(void); extern void *GamePhaseProgress_GetOrCreateGlobal(void); extern s32 func_02027e8c(void *);
+extern u32 genrand_int32(void); extern void *GamePhaseProgress_GetOrCreateGlobal(void); extern s32 GamePhaseProgressController_GetStage(void *);
 extern void AnimationResourceState_InitEmbedded(void *); extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *VecFx32Object_Init(void *); extern void *VecFx32Object_InitComponents(void *, s32, s32, s32);
@@ -178,7 +178,7 @@ void func_ov055_0220eefc(void *scene, const void *v)
 /* Allocate, construct, and register the scene. */
 void *func_ov055_0220ef6c(void)
 {
-    void *scene=Heap_Alloc(0x30,data_ov055_0220f088,4,gHeapContext); if(scene){u8 *runtime=(u8*)gGamePhaseRuntime; scene=func_ov055_0220e8b8(scene,runtime+0x2fbc,func_02027e8c(GamePhaseProgress_GetOrCreateGlobal()));}
+    void *scene=Heap_Alloc(0x30,data_ov055_0220f088,4,gHeapContext); if(scene){u8 *runtime=(u8*)gGamePhaseRuntime; scene=func_ov055_0220e8b8(scene,runtime+0x2fbc,GamePhaseProgressController_GetStage(GamePhaseProgress_GetOrCreateGlobal()));}
     RuntimePresentationManager_AppendFirstListEffect((u8*)gGamePhaseRuntime+0x2f7c,scene); return scene;
 }
 

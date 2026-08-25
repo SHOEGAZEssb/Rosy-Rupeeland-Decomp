@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_progress_controller.c.
 .text
 
-    .global func_02027bd4
-    .type func_02027bd4, @function
-func_02027bd4: ; 0x02027bd4
+    .global GamePhaseProgressController_ClearSave
+    .type GamePhaseProgressController_ClearSave, @function
+GamePhaseProgressController_ClearSave: ; 0x02027bd4
     mov r3, #0x0
     str r3, [r1, #0x0]
     ldr r0, [r1, #0xc]
@@ -29,5 +29,5 @@ func_02027bd4: ; 0x02027bd4
     blt .L_02027c18
     strb r2, [r1, #0x1f]
     bx lr
-    .size func_02027bd4, . - func_02027bd4
+    .size GamePhaseProgressController_ClearSave, . - GamePhaseProgressController_ClearSave
 

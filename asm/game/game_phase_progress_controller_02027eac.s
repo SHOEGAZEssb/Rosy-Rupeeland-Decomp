@@ -3,9 +3,9 @@
 .extern data_020c37f4
 .extern func_020befec
 
-    .global func_02027eac
-    .type func_02027eac, @function
-func_02027eac: ; 0x02027eac
+    .global GamePhaseProgressController_ClassifyProgress
+    .type GamePhaseProgressController_ClassifyProgress, @function
+GamePhaseProgressController_ClassifyProgress: ; 0x02027eac
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x14]
@@ -39,5 +39,5 @@ func_02027eac: ; 0x02027eac
     movlt r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02027f28: .word data_020c37f4
-    .size func_02027eac, . - func_02027eac
+    .size GamePhaseProgressController_ClassifyProgress, . - GamePhaseProgressController_ClassifyProgress
 

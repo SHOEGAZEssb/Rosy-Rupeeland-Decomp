@@ -2,9 +2,9 @@
 .text
 .extern gGameWork
 
-    .global func_02027930
-    .type func_02027930, @function
-func_02027930: ; 0x02027930
+    .global GamePhaseProgressController_Load
+    .type GamePhaseProgressController_Load, @function
+GamePhaseProgressController_Load: ; 0x02027930
     ldr r1, .L_02027a78
     mov r2, #0x0
     ldr r3, [r1, #0x0]
@@ -89,5 +89,5 @@ func_02027930: ; 0x02027930
     str r1, [r0, #0x7f8]
     bx lr
 .L_02027a78: .word gGameWork
-    .size func_02027930, . - func_02027930
+    .size GamePhaseProgressController_Load, . - GamePhaseProgressController_Load
 

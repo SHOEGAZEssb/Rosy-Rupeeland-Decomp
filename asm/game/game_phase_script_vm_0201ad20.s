@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern func_020275b0
+.extern PackedBitGrid_GetOrCreateGlobal
 .global GamePhaseActorScriptVm_GetPackedBitGridMask
 GamePhaseActorScriptVm_GetPackedBitGridMask: ; 0x0201ad20
     stmdb sp!, {r4, r5, r6, lr}
@@ -12,7 +12,7 @@ GamePhaseActorScriptVm_GetPackedBitGridMask: ; 0x0201ad20
     mov r0, r4
     bl GamePhaseScriptVm_Pop
     mov r5, r0
-    bl func_020275b0
+    bl PackedBitGrid_GetOrCreateGlobal
     ldr r1, [r0, #0x8]
     ldr r3, [r0, #0x0]
     mla ip, r6, r1, r5

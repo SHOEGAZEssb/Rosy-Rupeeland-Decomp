@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_packed_bit_grid_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_020275b0
+.extern PackedBitGrid_GetOrCreateGlobal
 .global GamePhaseActorScriptVm_SetPackedBitGridBit
 GamePhaseActorScriptVm_SetPackedBitGridBit: ; 0x0201ad7c
     stmdb sp!, {r3, r4, r5, lr}
@@ -11,7 +11,7 @@ GamePhaseActorScriptVm_SetPackedBitGridBit: ; 0x0201ad7c
     mov r0, r4
     bl GamePhaseScriptVm_Pop
     mov r4, r0
-    bl func_020275b0
+    bl PackedBitGrid_GetOrCreateGlobal
     ldr r1, [r0, #0x8]
     ldr ip, [r0, #0x0]
     mla r1, r5, r1, r4

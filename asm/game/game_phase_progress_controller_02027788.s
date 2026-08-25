@@ -8,9 +8,9 @@
 .extern ActorRuntimeCollection_GetBusyState
 .extern gGameWork
 
-    .global func_02027788
-    .type func_02027788, @function
-func_02027788: ; 0x02027788
+    .global GamePhaseProgressController_QueuePresentationMode
+    .type GamePhaseProgressController_QueuePresentationMode, @function
+GamePhaseProgressController_QueuePresentationMode: ; 0x02027788
     stmdb sp!, {r4, lr}
     ldr r0, [r0, #0x8]
     mov r4, r1
@@ -49,5 +49,5 @@ func_02027788: ; 0x02027788
 .L_0202780c: .word gGameWork
 .L_02027810: .word 0x401
 .L_02027814: .word data_020d3a59
-    .size func_02027788, . - func_02027788
+    .size GamePhaseProgressController_QueuePresentationMode, . - GamePhaseProgressController_QueuePresentationMode
 

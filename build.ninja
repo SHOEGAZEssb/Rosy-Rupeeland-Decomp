@@ -9636,68 +9636,68 @@ build build/reports/packed_bit_grid_state_020274b8.json: objdiff build/decomp/de
   base_object = build/decomp/asm/game/packed_bit_grid_state_020274b8.o
 build build/reports/packed_bit_grid_state_020274b8.txt: match_report build/reports/packed_bit_grid_state_020274b8.json | tools/report_objdiff.py
   report_json = build/reports/packed_bit_grid_state_020274b8.json
-  report_args = --section .text --function func_020274b8 --require-exact
+  report_args = --section .text --function PackedBitGrid_Init --require-exact
 build build/reports/packed_bit_grid_state_020274c8.json: objdiff build/decomp/delinks/asm/game/packed_bit_grid_state_020274c8.o | build/decomp/asm/game/packed_bit_grid_state_020274c8.o
   target_object = build/decomp/delinks/asm/game/packed_bit_grid_state_020274c8.o
   base_object = build/decomp/asm/game/packed_bit_grid_state_020274c8.o
 build build/reports/packed_bit_grid_state_020274c8.txt: match_report build/reports/packed_bit_grid_state_020274c8.json | tools/report_objdiff.py
   report_json = build/reports/packed_bit_grid_state_020274c8.json
-  report_args = --section .text --function func_020274c8 --require-exact
+  report_args = --section .text --function PackedBitGrid_Clear --require-exact
 build build/reports/packed_bit_grid_state_020274f4.json: objdiff build/decomp/delinks/asm/game/packed_bit_grid_state_020274f4.o | build/decomp/asm/game/packed_bit_grid_state_020274f4.o
   target_object = build/decomp/delinks/asm/game/packed_bit_grid_state_020274f4.o
   base_object = build/decomp/asm/game/packed_bit_grid_state_020274f4.o
 build build/reports/packed_bit_grid_state_020274f4.txt: match_report build/reports/packed_bit_grid_state_020274f4.json | tools/report_objdiff.py
   report_json = build/reports/packed_bit_grid_state_020274f4.json
-  report_args = --section .text --function func_020274f4 --require-exact
+  report_args = --section .text --function PackedBitGrid_Destroy --require-exact
 build build/reports/packed_bit_grid_state_0202751c.json: objdiff build/decomp/delinks/asm/game/packed_bit_grid_state_0202751c.o | build/decomp/asm/game/packed_bit_grid_state_0202751c.o
   target_object = build/decomp/delinks/asm/game/packed_bit_grid_state_0202751c.o
   base_object = build/decomp/asm/game/packed_bit_grid_state_0202751c.o
 build build/reports/packed_bit_grid_state_0202751c.txt: match_report build/reports/packed_bit_grid_state_0202751c.json | tools/report_objdiff.py
   report_json = build/reports/packed_bit_grid_state_0202751c.json
-  report_args = --section .text --function func_0202751c --require-exact
+  report_args = --section .text --function PackedBitGrid_Configure --require-exact
 build build/reports/packed_bit_grid_state_020275b0.json: objdiff build/decomp/delinks/asm/game/packed_bit_grid_state_020275b0.o | build/decomp/asm/game/packed_bit_grid_state_020275b0.o
   target_object = build/decomp/delinks/asm/game/packed_bit_grid_state_020275b0.o
   base_object = build/decomp/asm/game/packed_bit_grid_state_020275b0.o
 build build/reports/packed_bit_grid_state_020275b0.txt: match_report build/reports/packed_bit_grid_state_020275b0.json | tools/report_objdiff.py
   report_json = build/reports/packed_bit_grid_state_020275b0.json
-  report_args = --section .text --function func_020275b0 --require-exact
+  report_args = --section .text --function PackedBitGrid_GetOrCreateGlobal --require-exact
 build build/reports/packed_bit_grid_state.txt: phony build/reports/packed_bit_grid_state_020274b8.txt build/reports/packed_bit_grid_state_020274c8.txt build/reports/packed_bit_grid_state_020274f4.txt build/reports/packed_bit_grid_state_0202751c.txt build/reports/packed_bit_grid_state_020275b0.txt
 build build/reports/game_phase_progress_controller_02027604.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027604.o | build/decomp/asm/game/game_phase_progress_controller_02027604.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027604.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027604.o
 build build/reports/game_phase_progress_controller_02027604.txt: match_report build/reports/game_phase_progress_controller_02027604.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027604.json
-  report_args = --section .text --function func_02027604 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_Init --require-exact
 build build/reports/game_phase_progress_controller_02027650.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027650.o | build/decomp/asm/game/game_phase_progress_controller_02027650.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027650.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027650.o
 build build/reports/game_phase_progress_controller_02027650.txt: match_report build/reports/game_phase_progress_controller_02027650.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027650.json
-  report_args = --section .text --function func_02027650 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_Destroy --require-exact
 build build/reports/game_phase_progress_controller_02027654.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027654.o | build/decomp/asm/game/game_phase_progress_controller_02027654.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027654.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027654.o
 build build/reports/game_phase_progress_controller_02027654.txt: match_report build/reports/game_phase_progress_controller_02027654.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027654.json
-  report_args = --section .text --function func_02027654 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_Update --require-exact
 build build/reports/game_phase_progress_controller_02027788.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027788.o | build/decomp/asm/game/game_phase_progress_controller_02027788.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027788.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027788.o
 build build/reports/game_phase_progress_controller_02027788.txt: match_report build/reports/game_phase_progress_controller_02027788.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027788.json
-  report_args = --section .text --function func_02027788 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_QueuePresentationMode --require-exact
 build build/reports/game_phase_progress_controller_02027818.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027818.o | build/decomp/asm/game/game_phase_progress_controller_02027818.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027818.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027818.o
 build build/reports/game_phase_progress_controller_02027818.txt: match_report build/reports/game_phase_progress_controller_02027818.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027818.json
-  report_args = --section .text --function func_02027818 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_GetBaseThreshold --require-exact
 build build/reports/game_phase_progress_controller_02027828.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027828.o | build/decomp/asm/game/game_phase_progress_controller_02027828.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027828.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027828.o
 build build/reports/game_phase_progress_controller_02027828.txt: match_report build/reports/game_phase_progress_controller_02027828.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027828.json
-  report_args = --section .text --function func_02027828 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_GetAdjustedThreshold --require-exact
 build build/reports/game_phase_progress_controller_02027854.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027854.o | build/decomp/asm/game/game_phase_progress_controller_02027854.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027854.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027854.o
@@ -9709,109 +9709,109 @@ build build/reports/game_phase_progress_controller_02027864.json: objdiff build/
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027864.o
 build build/reports/game_phase_progress_controller_02027864.txt: match_report build/reports/game_phase_progress_controller_02027864.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027864.json
-  report_args = --section .text --function func_02027864 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_AddCounterFromProgress --require-exact
 build build/reports/game_phase_progress_controller_020278b4.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_020278b4.o | build/decomp/asm/game/game_phase_progress_controller_020278b4.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_020278b4.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_020278b4.o
 build build/reports/game_phase_progress_controller_020278b4.txt: match_report build/reports/game_phase_progress_controller_020278b4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_020278b4.json
-  report_args = --section .text --function func_020278b4 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_SetCounter --require-exact
 build build/reports/game_phase_progress_controller_020278d4.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_020278d4.o | build/decomp/asm/game/game_phase_progress_controller_020278d4.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_020278d4.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_020278d4.o
 build build/reports/game_phase_progress_controller_020278d4.txt: match_report build/reports/game_phase_progress_controller_020278d4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_020278d4.json
-  report_args = --section .text --function func_020278d4 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_RefreshWarningState --require-exact
 build build/reports/game_phase_progress_controller_02027930.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027930.o | build/decomp/asm/game/game_phase_progress_controller_02027930.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027930.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027930.o
 build build/reports/game_phase_progress_controller_02027930.txt: match_report build/reports/game_phase_progress_controller_02027930.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027930.json
-  report_args = --section .text --function func_02027930 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_Load --require-exact
 build build/reports/game_phase_progress_controller_02027a7c.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027a7c.o | build/decomp/asm/game/game_phase_progress_controller_02027a7c.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027a7c.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027a7c.o
 build build/reports/game_phase_progress_controller_02027a7c.txt: match_report build/reports/game_phase_progress_controller_02027a7c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027a7c.json
-  report_args = --section .text --function func_02027a7c --require-exact
+  report_args = --section .text --function GamePhaseProgressController_Save --require-exact
 build build/reports/game_phase_progress_controller_02027bd4.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027bd4.o | build/decomp/asm/game/game_phase_progress_controller_02027bd4.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027bd4.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027bd4.o
 build build/reports/game_phase_progress_controller_02027bd4.txt: match_report build/reports/game_phase_progress_controller_02027bd4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027bd4.json
-  report_args = --section .text --function func_02027bd4 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_ClearSave --require-exact
 build build/reports/game_phase_progress_controller_02027c34.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027c34.o | build/decomp/asm/game/game_phase_progress_controller_02027c34.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027c34.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027c34.o
 build build/reports/game_phase_progress_controller_02027c34.txt: match_report build/reports/game_phase_progress_controller_02027c34.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027c34.json
-  report_args = --section .text --function func_02027c34 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_AdvanceStage --require-exact
 build build/reports/game_phase_progress_controller_02027d14.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027d14.o | build/decomp/asm/game/game_phase_progress_controller_02027d14.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027d14.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027d14.o
 build build/reports/game_phase_progress_controller_02027d14.txt: match_report build/reports/game_phase_progress_controller_02027d14.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027d14.json
-  report_args = --section .text --function func_02027d14 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_CanAdvanceStage --require-exact
 build build/reports/game_phase_progress_controller_02027d7c.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027d7c.o | build/decomp/asm/game/game_phase_progress_controller_02027d7c.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027d7c.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027d7c.o
 build build/reports/game_phase_progress_controller_02027d7c.txt: match_report build/reports/game_phase_progress_controller_02027d7c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027d7c.json
-  report_args = --section .text --function func_02027d7c --require-exact
+  report_args = --section .text --function GamePhaseProgressController_LowerStage --require-exact
 build build/reports/game_phase_progress_controller_02027df0.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027df0.o | build/decomp/asm/game/game_phase_progress_controller_02027df0.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027df0.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027df0.o
 build build/reports/game_phase_progress_controller_02027df0.txt: match_report build/reports/game_phase_progress_controller_02027df0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027df0.json
-  report_args = --section .text --function func_02027df0 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_IsBehindComparisonStage --require-exact
 build build/reports/game_phase_progress_controller_02027e08.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027e08.o | build/decomp/asm/game/game_phase_progress_controller_02027e08.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027e08.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027e08.o
 build build/reports/game_phase_progress_controller_02027e08.txt: match_report build/reports/game_phase_progress_controller_02027e08.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027e08.json
-  report_args = --section .text --function func_02027e08 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_AddProgress --require-exact
 build build/reports/game_phase_progress_controller_02027e8c.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027e8c.o | build/decomp/asm/game/game_phase_progress_controller_02027e8c.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027e8c.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027e8c.o
 build build/reports/game_phase_progress_controller_02027e8c.txt: match_report build/reports/game_phase_progress_controller_02027e8c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027e8c.json
-  report_args = --section .text --function func_02027e8c --require-exact
+  report_args = --section .text --function GamePhaseProgressController_GetStage --require-exact
 build build/reports/game_phase_progress_controller_02027e94.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027e94.o | build/decomp/asm/game/game_phase_progress_controller_02027e94.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027e94.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027e94.o
 build build/reports/game_phase_progress_controller_02027e94.txt: match_report build/reports/game_phase_progress_controller_02027e94.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027e94.json
-  report_args = --section .text --function func_02027e94 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_SetStage --require-exact
 build build/reports/game_phase_progress_controller_02027e9c.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027e9c.o | build/decomp/asm/game/game_phase_progress_controller_02027e9c.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027e9c.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027e9c.o
 build build/reports/game_phase_progress_controller_02027e9c.txt: match_report build/reports/game_phase_progress_controller_02027e9c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027e9c.json
-  report_args = --section .text --function func_02027e9c --require-exact
+  report_args = --section .text --function GamePhaseProgressController_GetComparisonStage --require-exact
 build build/reports/game_phase_progress_controller_02027ea4.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027ea4.o | build/decomp/asm/game/game_phase_progress_controller_02027ea4.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027ea4.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027ea4.o
 build build/reports/game_phase_progress_controller_02027ea4.txt: match_report build/reports/game_phase_progress_controller_02027ea4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027ea4.json
-  report_args = --section .text --function func_02027ea4 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_SetComparisonStage --require-exact
 build build/reports/game_phase_progress_controller_02027eac.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027eac.o | build/decomp/asm/game/game_phase_progress_controller_02027eac.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027eac.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027eac.o
 build build/reports/game_phase_progress_controller_02027eac.txt: match_report build/reports/game_phase_progress_controller_02027eac.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027eac.json
-  report_args = --section .text --function func_02027eac --require-exact
+  report_args = --section .text --function GamePhaseProgressController_ClassifyProgress --require-exact
 build build/reports/game_phase_progress_controller_02027f2c.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027f2c.o | build/decomp/asm/game/game_phase_progress_controller_02027f2c.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027f2c.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027f2c.o
 build build/reports/game_phase_progress_controller_02027f2c.txt: match_report build/reports/game_phase_progress_controller_02027f2c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027f2c.json
-  report_args = --section .text --function func_02027f2c --require-exact
+  report_args = --section .text --function GamePhaseProgressController_ArmAdjustmentIncrement --require-exact
 build build/reports/game_phase_progress_controller_02027f38.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027f38.o | build/decomp/asm/game/game_phase_progress_controller_02027f38.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027f38.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027f38.o
 build build/reports/game_phase_progress_controller_02027f38.txt: match_report build/reports/game_phase_progress_controller_02027f38.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027f38.json
-  report_args = --section .text --function func_02027f38 --require-exact
+  report_args = --section .text --function GamePhaseProgressController_RefreshCurrentStageAdjustment --require-exact
 build build/reports/game_phase_progress_controller_02027f94.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027f94.o | build/decomp/asm/game/game_phase_progress_controller_02027f94.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027f94.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027f94.o
