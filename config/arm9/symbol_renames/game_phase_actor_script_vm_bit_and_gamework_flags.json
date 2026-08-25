@@ -1,0 +1,7 @@
+{
+  "GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0": "GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0",
+  "GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0": "GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0",
+  "GamePhaseActorScriptVm_SetGameWorkFlag": "GamePhaseActorScriptVm_SetGameWorkFlag",
+  "GamePhaseActorScriptVm_ClearGameWorkFlag": "GamePhaseActorScriptVm_ClearGameWorkFlag",
+  "GamePhaseActorScriptVm_TestGameWorkFlag": "GamePhaseActorScriptVm_TestGameWorkFlag"
+}

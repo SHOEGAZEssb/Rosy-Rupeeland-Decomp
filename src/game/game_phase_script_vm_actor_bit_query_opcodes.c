@@ -15,7 +15,7 @@ extern void OS_Halt(void);
 #endif
 
 /* Store actor byte 0x169 bit 0 as the VM result. */
-static void storeActorBitResult(GamePhaseActorScriptVm *self, const void *actor)
+static void StoreActorFlag169Bit0Result(GamePhaseActorScriptVm *self, const void *actor)
 {
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, *((const u8 *)actor + 0x169) & 1);
 }
@@ -29,18 +29,20 @@ static void storeActorBitResult(GamePhaseActorScriptVm *self, const void *actor)
  */
 s32 GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0(GamePhaseActorScriptVm *self)
 {
-    s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor;
-    if (selector != 0) {
-        actor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), selector);
+    s32 selectedActorRuntimeId = (s32)GamePhaseScriptVm_Pop(&self->base);
+    u8 *selectedActor;
+    if (selectedActorRuntimeId != 0) {
+        selectedActor = (u8 *)ActorCollection_FindActorByRuntimeId(
+            Actor_GetOwningCollection(self->actor), selectedActorRuntimeId);
     } else if (*(u32 *)((u8 *)Actor_GetOwningCollection(self->actor) + 0x2e84) == 1) {
-        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
-        actor = *(u8 **)(collection + 0x2e7c);
+        u8 *collectionOne = (u8 *)GamePhaseRuntime_GetActorCollection(
+            gGamePhaseRuntime, 1);
+        selectedActor = *(u8 **)(collectionOne + 0x2e7c);
     } else {
-        u8 *owner = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2fb8);
-        actor = *(u8 **)(owner + 0x2ebc);
+        u8 *runtimeOwner = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2fb8);
+        selectedActor = *(u8 **)(runtimeOwner + 0x2ebc);
     }
-    storeActorBitResult(self, actor);
+    StoreActorFlag169Bit0Result(self, selectedActor);
     return 0;
 }
 
@@ -55,26 +57,28 @@ s32 GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0(GamePhaseActorScrip
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)gGamePhaseRuntime;
-    u8 *owner = *(u8 **)(runtime + 0x2fb8);
-    void *first = **(void ***)(runtime + 0x24);
-    void *second = **(void ***)(owner + 0x2eac);
+    u8 *runtimeOwner = *(u8 **)(runtime + 0x2fb8);
+    void *runtimePointer24Target = **(void ***)(runtime + 0x24);
+    void *ownerPointer2eacTarget = **(void ***)(runtimeOwner + 0x2eac);
     u32 mode;
-    u8 *target;
-    if (first != second)
+    u8 *targetActor;
+    if (runtimePointer24Target != ownerPointer2eacTarget)
         return 0;
     mode = *(u32 *)((u8 *)Actor_GetOwningCollection(self->actor) + 0x2e84);
     if (mode == 1)
-        target = (u8 *)ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(runtime, 2), index);
+        targetActor = (u8 *)ActorCollection_FindActorByRuntimeId(
+            GamePhaseRuntime_GetActorCollection(runtime, 2), index);
     else if (mode == 2)
-        target = (u8 *)ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(runtime, 1), index);
+        targetActor = (u8 *)ActorCollection_FindActorByRuntimeId(
+            GamePhaseRuntime_GetActorCollection(runtime, 1), index);
     else {
         OS_Halt();
-        target = 0;
+        targetActor = 0;
     }
-    if (target[0x4d] == 1) {
-        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(runtime, 1);
-        target = *(u8 **)(collection + 0x2e7c);
+    if (targetActor[0x4d] == 1) {
+        u8 *collectionOne = (u8 *)GamePhaseRuntime_GetActorCollection(runtime, 1);
+        targetActor = *(u8 **)(collectionOne + 0x2e7c);
     }
-    storeActorBitResult(self, target);
+    StoreActorFlag169Bit0Result(self, targetActor);
     return 0;
 }
