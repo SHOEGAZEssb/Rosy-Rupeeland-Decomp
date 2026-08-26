@@ -77,6 +77,21 @@ void func_0208b664(void)
     GameWork_SetFlag(gGameWork, 0x73e);
 }
 
+/* Complete the CMM01 payment scenario and its doll-return prerequisite. The
+ * call borrows gGameWork, sets the eight retail flags in callback order, and
+ * has no allocation, timing, or failure behavior. */
+void ProgressionFlags_SetPayCmm01Completion(void)
+{
+    GameWork_SetFlag(gGameWork, 0x77);
+    GameWork_SetFlag(gGameWork, 0x762);
+    GameWork_SetFlag(gGameWork, 0x73e);
+    GameWork_SetFlag(gGameWork, 0x25c);
+    GameWork_SetFlag(gGameWork, 0x761);
+    GameWork_SetFlag(gGameWork, 0x201);
+    GameWork_SetFlag(gGameWork, 0x763);
+    GameWork_SetFlag(gGameWork, 0x758);
+}
+
 /* Satisfy the paired retail gate tested by ProgressionFlags_TestGate396_765.
  * The call borrows gGameWork and sets flags 0x396 and 0x765. */
 void ProgressionFlags_SetGate396And765(void)
