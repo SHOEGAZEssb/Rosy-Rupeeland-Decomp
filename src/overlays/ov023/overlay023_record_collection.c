@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 23 scrollable 24-byte record collection, row sprites, text, and input mapping. */
 
@@ -6,15 +7,12 @@
 
 extern void *data_020f4e14;
 extern void *data_021f5128;
-extern const u8 data_ov023_021ffbd8[];
-extern const u8 data_ov023_021ffbe0[];
-extern void *gHeapContext;
+extern const char data_ov023_021ffbd8[];
+extern const char data_ov023_021ffbe0[];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -34,7 +32,7 @@ extern void *InventoryScroll_Init(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern s32 func_020befec(s32, s32);
-extern void CxxArray_ConstructWithCookie(void *, s32, s32, s32, ...);
+extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, ...);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void *);
 extern void *func_ov023_021fce00(void *);
 extern void *func_ov023_021fce2c(void *);
@@ -66,13 +64,14 @@ extern "C" void *func_ov023_021fce44(void *collection, void *font, s32 capacity)
     void *entries = 0;
     if (capacity != 0) {
         entries = Heap_AllocAlternateEntry(capacity * 0x18 + 8,
-                                data_ov023_021ffbd8, 4, gHeapContext);
+                                data_ov023_021ffbd8, 4, &gHeapContext);
         if (entries != 0)
-            CxxArray_ConstructWithCookie(entries, capacity, 0x18, 8,
-                          func_ov023_021fce00, func_ov023_021fce2c);
+            entries = CxxArray_ConstructWithCookie(
+                entries, capacity, 0x18, 8,
+                func_ov023_021fce00, func_ov023_021fce2c);
     }
     FIELD(void *, collection, 0x2c) = entries;
-    void *ui = Heap_Alloc(0x80, data_ov023_021ffbe0, 4, gHeapContext);
+    void *ui = Heap_Alloc(0x80, data_ov023_021ffbe0, 4, &gHeapContext);
     if (ui != 0)
         ui = InventoryScroll_Init(ui, font, capacity ? capacity : 1,
                           capacity ? 4 : 1, 0xdc, 40, -4);
@@ -208,7 +207,7 @@ extern "C" void func_ov023_021fd220(void *collection, s32 index)
 
 /*
  * Clears the 176-pixel text region and redraws up to four rows beginning at UI
- * scroll +0xC. Each populated record selects its font through record +8 and
+ * scroll +0xC. It selects the collection's first character resource at +8 and
  * draws UTF-16 text at record +4/+0x2C, x=64, y=36+26*row with style 14,
  * palette 8, and final style -2. Font/render state changes; returns void.
  */
@@ -219,7 +218,8 @@ extern "C" void func_ov023_021fd268(void *collection)
         s32 index = row + FIELD(s32, FIELD(void *, collection, 0x38), 0xc);
         if (index >= FIELD(s32, collection, 0x34)) break;
         void *record = FIELD(void *, FIELD(u8 *, collection, 0x2c) + index * 0x18, 0);
-        GraphicsSpriteRenderer_SetFontResource(FIELD(void *, collection, 0), FIELD(void *, record, 8));
+        GraphicsSpriteRenderer_SetFontResource(
+            FIELD(void *, collection, 0), FIELD(void *, collection, 8));
         GraphicsSpriteRenderer_DrawText(FIELD(void *, collection, 0),
                       (u8 *)FIELD(void *, record, 4) + 0x2c,
                       0x40, row * 0x1a + 0x24, 14, 8, -2);

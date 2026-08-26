@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 23 global-record grouping and paired navigation-effect configuration. */
 
@@ -7,14 +8,12 @@
 extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *data_021f5128;
-extern const u8 data_ov023_021ffc00[];
-extern const u8 data_ov023_021ffc08[];
-extern void *gHeapContext;
+extern const char data_ov023_021ffc00[];
+extern const char data_ov023_021ffc08[];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
 extern s32 RecordMode_GetCharacterResourceId(void *);
 extern s32 RecordMode_GetPaletteResourceId(void *);
@@ -47,7 +46,7 @@ extern "C" void func_ov023_021fe39c(void *scene)
     u8 *global = (u8 *)data_021f5128;
     s32 record_count = FIELD(s32, global, 0xcc8);
     void *main_collection = Heap_Alloc(0x40, data_ov023_021ffc00,
-                                       4, gHeapContext);
+                                       4, &gHeapContext);
     if (main_collection)
         main_collection = func_ov023_021fce44(
             main_collection, data_020f4e14, record_count);
@@ -82,7 +81,7 @@ extern "C" void func_ov023_021fe39c(void *scene)
 
     for (s32 i = 0; i < FIELD(s32, scene, 0x398); ++i) {
         void *collection = Heap_Alloc(0x50, data_ov023_021ffc08,
-                                      4, gHeapContext);
+                                      4, &gHeapContext);
         if (collection)
             collection = func_ov023_021fd444(
                 collection, data_020f4e14,

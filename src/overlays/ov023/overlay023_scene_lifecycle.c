@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 23 main 0x524-byte scene construction and owned-resource teardown. */
 
@@ -7,16 +8,14 @@
 extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *data_ov023_021ffb60[];
-extern void *data_ov023_021ffbc4;
-extern const u8 data_ov023_021ffbf0[];
-extern const u8 data_ov023_021ffbf8[];
+extern u8 data_ov023_021ffbc4[];
+extern const char data_ov023_021ffbf0[];
+extern const char data_ov023_021ffbf8[];
 extern void *gDebugFont;
-extern void *gHeapContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern void __construct_array(void *, s32, s32, void *);
 extern void __destroy_arr(void *, s32, s32, void *);
@@ -132,7 +131,7 @@ extern "C" void *func_ov023_021fd9f8(void *scene)
     }
     for (s32 i = 0; i < 2; ++i) {
         void *effect = Heap_Alloc(0xa0, data_ov023_021ffbf0,
-                                  4, gHeapContext);
+                                  4, &gHeapContext);
         if (effect) effect = SpritePresentation_Init(effect,
             GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xc8), (u8 *)scene + 0xbc, 1));
         FIELD(void *, scene, 0x380 + i * 4) = effect;
@@ -146,7 +145,7 @@ extern "C" void *func_ov023_021fd9f8(void *scene)
     func_ov023_021fe994(scene, 0);
     func_020afd0c((void *)0x04000050, 4, 8, 8, 8);
     func_020afd0c((void *)0x04001050, 4, 8, 8, 8);
-    void *dialog = Heap_Alloc(0xec, data_ov023_021ffbf8, 4, gHeapContext);
+    void *dialog = Heap_Alloc(0xec, data_ov023_021ffbf8, 4, &gHeapContext);
     if (dialog) TitleDialog_Init(dialog, gDebugFont,
                               FIELD(void *, scene, 0x54));
     FIELD(void *, scene, 0x4b8) = dialog;

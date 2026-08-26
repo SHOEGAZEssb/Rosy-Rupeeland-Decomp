@@ -87,7 +87,7 @@ extern void *func_ov022_021fdd44(void *object);
 extern void *Overlay021_Scene_Init(void *object, s32 argument);
 extern void *Overlay020_Scene_Init(void *object);
 extern void *Overlay016_Scene_Init(void *object, s32 mode, s32 argument);
-extern void *Overlay018_SetDialogLayout(void *object);
+extern void *func_ov023_021fd9f8(void *object);
 extern void *func_ov025_021ff27c(void *scene);
 extern void *Overlay004_VariantController_Init(void *object, s32 argument);
 extern void *func_ov028_021fdb00(void *object);
@@ -705,7 +705,10 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e198);
     object = Heap_Alloc(UNK_0200e19c,OVERLAY018_KIND15_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = Overlay018_SetDialogLayout(object);
+      /* Overlays 18 and 23 share address 0x021fd9f8. This branch loads overlay
+       * 23, so native linkage must select its scene constructor rather than
+       * overlay 18's unrelated dialog-layout setter at the same DS address. */
+      object = func_ov023_021fd9f8(object);
     }
     self->loadedScene = object;
     break;

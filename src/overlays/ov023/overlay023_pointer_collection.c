@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 23 pointer-backed collection with one shared icon, grouped text, and scrolling input. */
 
@@ -6,16 +7,13 @@
 
 extern void *data_020f4e18;
 extern void *data_021f5128;
-extern const u8 data_ov023_021ffbe0[];
-extern const u8 data_ov023_021ffbe8[];
+extern const char data_ov023_021ffbe0[];
+extern const char data_ov023_021ffbe8[];
 extern u8 gSystemState[];
-extern void *gHeapContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
@@ -39,7 +37,7 @@ extern void *InventoryScroll_Init(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern s32 func_020befec(s32, s32);
-extern void CxxArray_ConstructWithCookie(void *, s32, s32, s32, ...);
+extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, ...);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void *);
 extern void func_ov023_021fd438(void *);
 extern void func_ov023_021fd630(void *);
@@ -68,12 +66,13 @@ extern "C" void *func_ov023_021fd444(void *collection, void *font, s32 capacity)
     void *items = 0;
     if (capacity) {
         items = Heap_AllocAlternateEntry(capacity * 4 + 8,
-                              data_ov023_021ffbe8, 4, gHeapContext);
-        if (items) CxxArray_ConstructWithCookie(items, capacity, 4, 8,
-                                func_ov023_021fd438, 0);
+                              data_ov023_021ffbe8, 4, &gHeapContext);
+        if (items)
+            items = CxxArray_ConstructWithCookie(
+                items, capacity, 4, 8, func_ov023_021fd438, 0);
     }
     FIELD(void *, collection, 0x3c) = items;
-    void *ui = Heap_Alloc(0x80, data_ov023_021ffbe0, 4, gHeapContext);
+    void *ui = Heap_Alloc(0x80, data_ov023_021ffbe0, 4, &gHeapContext);
     if (ui) ui = InventoryScroll_Init(ui, font, capacity ? capacity : 1,
                               capacity ? 4 : 1, 0xdc, 58, -22);
     FIELD(void *, collection, 0x48) = ui;
