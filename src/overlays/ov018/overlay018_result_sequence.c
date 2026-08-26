@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 18 multi-phase result reveal, effects, dialog, and transition sequence. */
 
@@ -9,13 +10,11 @@ extern const s32 data_ov018_021ffbf0[2];
 extern const s32 data_ov018_021ffbf8[2];
 extern const u8 data_ov018_021ffd68[];
 extern void *gDebugFont;
-extern void *gHeapContext;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern u32 genrand_int32(void);
 extern s32 Sound_IsDirectSequencePlaying(void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
@@ -98,8 +97,8 @@ extern "C" s32 Overlay018_UpdateResultSequence(void *state)
         func_ov018_021ff3cc(FIELD(void *, state, 0x58));
         FIELD(s32, state, 0x3c8) = 0;
 
-        void *result = Heap_Alloc(0xac, data_ov018_021ffd68,
-                                  4, gHeapContext);
+        void *result = Heap_Alloc(0xac, (const char *)data_ov018_021ffd68,
+                                  4, &gHeapContext);
         if (result != 0) {
             s32 x = func_ov018_021fe19c(
                 state, FIELD(void *, state, 0x194));

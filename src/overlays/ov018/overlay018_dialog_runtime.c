@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 18 dialog allocation, layout, localized text transfer, and input completion handling. */
 
@@ -6,16 +7,14 @@
 
 extern void *data_020f4e14;
 extern void *gGamePhaseRuntime;
-extern void *data_021f3ecc;
+extern u8 data_021f3ecc[];
 extern const u8 data_ov018_021ffd60[];
 extern void *gGameWork;
-extern void *gHeapContext;
 extern u8 gSystemState[];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void MIi_CpuCopy16(const void *, void *, u32);
 extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern void *ActorCollection_FindActorByRuntimeId(void *, s32);
@@ -45,10 +44,11 @@ extern "C" void Overlay018_CreateDialog(void *state)
 
     FIELD(s32, state, 0x420) = 0;
     FIELD(s32, state, 0x41c) = 0;
-    dialog = Heap_Alloc(0xec, data_ov018_021ffd60, 4, gHeapContext);
+    dialog = Heap_Alloc(0xec, (const char *)data_ov018_021ffd60, 4,
+                        &gHeapContext);
     if (dialog != 0)
         dialog = TitleDialog_Init(dialog, data_020f4e14,
-                               (u8 *)state + 0x70);
+                               FIELD(void *, state, 0x70));
     FIELD(void *, state, 0x418) = dialog;
     if (FIELD(u8, gSystemState, 0x5f) == 0)
         Overlay018_SetDialogLayout(dialog, 0x20, 0x83, 0xc0, 0x2d);

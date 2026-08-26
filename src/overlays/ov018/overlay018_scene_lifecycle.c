@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 18 scene construction and ordered teardown of graphics, UI, actor, and resource state. */
 
@@ -15,15 +16,12 @@ extern const u8 data_ov018_021ffd50[];
 extern const u8 data_ov018_021ffd58[];
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *gHeapContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *, u32);
 extern void GameWork_SetFlag(void *, u32);
-extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void Heap_Free(void *);
 extern u32 genrand_int32(void);
 extern void *GamePhaseState_GetConfiguration(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
@@ -45,8 +43,8 @@ extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void SpriteMotionController_Hide(void *);
 extern void func_020b4554(void *, s32);
-extern void *func_ov000_021fb6e0(void *);
-extern void func_ov001_021fb7d4(void *);
+extern void *Overlay003_PixelBuffer_Init(void *);
+extern void func_ov003_021fb7d4(void *);
 extern void func_ov018_021fcefc(void *);
 extern void *func_ov018_021fcf00(void *);
 extern void func_ov018_021fcf40(void *, s32, s32, s32);
@@ -109,7 +107,8 @@ extern "C" void *Overlay018_Scene_Init(void *state, void *context)
     GameWork_SetFlag(gGameWork, 0x418);
     FIELD(void *, state, 0x54) = context;
 
-    descriptor = Heap_Alloc(0x2c, data_ov018_021ffd50, 4, gHeapContext);
+    descriptor = Heap_Alloc(0x2c, (const char *)data_ov018_021ffd50, 4,
+                            &gHeapContext);
     if (descriptor != 0)
         descriptor = Overlay018_PointBuffer_Init(descriptor, 0x80);
     FIELD(void *, state, 0x58) = descriptor;
@@ -124,9 +123,10 @@ extern "C" void *Overlay018_Scene_Init(void *state, void *context)
     FIELD(s32, state, 0x410) = 0;
     FIELD(s32, state, 0x414) = 0;
 
-    descriptor = Heap_Alloc(0x24, data_ov018_021ffd58, 4, gHeapContext);
+    descriptor = Heap_Alloc(0x24, (const char *)data_ov018_021ffd58, 4,
+                            &gHeapContext);
     if (descriptor != 0)
-        descriptor = func_ov000_021fb6e0(descriptor);
+        descriptor = Overlay003_PixelBuffer_Init(descriptor);
     FIELD(void *, state, 0x190) = descriptor;
     FIELD(u16, descriptor, 4) = 0x3f1b;
     FIELD(u16, descriptor, 6) = 0x2655;
@@ -235,7 +235,7 @@ static void destroyScene(void *state)
     }
     descriptor = FIELD(void *, state, 0x190);
     if (descriptor != 0) {
-        func_ov001_021fb7d4(descriptor);
+        func_ov003_021fb7d4(descriptor);
         Heap_Free(descriptor);
     }
     func_ov018_021fe5ac(state);

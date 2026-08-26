@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /*
  * Overlay 3 tile-map creation. This recovered helper allocates a 32-by-24
@@ -9,9 +10,6 @@
 extern "C" {
 #endif
 extern const char data_ov003_021fbcd8[];
-extern void *gHeapContext;
-extern void *Heap_AllocAlternateEntry(u32 size, const char *tag, s32 alignment,
-                           void *context);
 extern void func_020b4554(void *address, u32 size);
 #ifdef __cplusplus
 }
@@ -34,7 +32,8 @@ u16 *Overlay003_CreateTilemap(void *owner, u16 paletteBank)
     s32 i;
 
     (void)owner;
-    map = (u16 *)Heap_AllocAlternateEntry(0x600, data_ov003_021fbcd8, 4, gHeapContext);
+    map = (u16 *)Heap_AllocAlternateEntry(0x600, data_ov003_021fbcd8, 4,
+                                         &gHeapContext);
     for (i = 0; i < 0x300; i++) {
         map[i] = (u16)((i & 0x3ff) | ((paletteBank & 0xf) << 12));
     }

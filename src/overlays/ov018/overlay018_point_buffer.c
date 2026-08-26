@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 18 heap-backed fixed-capacity point buffer plus small deleting wrappers. */
 
@@ -7,14 +8,10 @@
 extern const u32 data_ov018_021ffd00[];
 extern const u32 data_ov018_021ffd8c[];
 extern const u8 data_ov018_021ffd94[];
-extern void *gHeapContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void Heap_Free(void *);
-extern void *Heap_AllocAlternateEntry(u32, const void *, s32, void *);
-extern void Heap_FreeAlternateEntry(void *);
 extern void PresentationList_DeleteAll(void *);
 extern void func_ov018_021ff3cc(void *);
 #ifdef __cplusplus
@@ -66,7 +63,9 @@ extern "C" void *Overlay018_PointBuffer_Init(void *state, s32 capacity)
     FIELD(const u32 *, state, 0) = data_ov018_021ffd8c;
     FIELD(s32, state, 0xc) = capacity;
     FIELD(void *, state, 4) =
-        Heap_AllocAlternateEntry(capacity * 4, data_ov018_021ffd94, 4, gHeapContext);
+        Heap_AllocAlternateEntry(capacity * 4,
+                                 (const char *)data_ov018_021ffd94, 4,
+                                 &gHeapContext);
     func_ov018_021ff3cc(state);
     return state;
 }
