@@ -27,15 +27,49 @@ extern void SelfLinkedSpriteConfig_Init(void *descriptor);
 extern void ActorDescriptor_InitRange(void *descriptor, u16 id, u16 last_index);
 extern void ActorDescriptor_Init(void *descriptor, u16 id, u16 kind, u16 quantity);
 extern void *InventoryRecord_Assign(void *destination, const void *source);
+extern s32 InventoryRecordCollection_FindId(void *collection, u16 id);
 
 #ifndef MATCHING
 extern void InventoryRecordCollection_Clear(void *collection);
 extern void *InventoryRecordCollection_MergeOrInsert(void *collection, void *incoming);
-extern s32 InventoryRecordCollection_FindId(void *collection, u16 id);
 extern void InventoryRecord_CopyForInsertion(void *destination, const void *source);
 extern void ActorDescriptor_ClearRuntime(void *record);
 extern void ActorDescriptor_SetQuantity(void *record, u16 quantity);
 #endif
+
+/*
+ * Return the largest number of copies that can be produced from the selected
+ * phase record (retail 0x0206FB18). Each required ingredient contributes its
+ * available/required quotient; the minimum positive quotient is the result.
+ * The selected phase and inventory records remain borrowed. Missing or empty
+ * ingredients make the recipe unavailable and return zero.
+ */
+s32 func_0206fb18(void *selection)
+{
+    u8 *phase = *(u8 **)selection;
+    u8 *inventory = *(u8 **)data_021e9ac0;
+    s32 maximum = 0xffff;
+    s32 ingredient;
+
+    for (ingredient = 0; ingredient < *(s32 *)(phase + 0x100); ++ingredient) {
+        u8 *required = phase + 0x28 + ingredient * 0x24;
+        u8 *definition = *(u8 **)(required + 8);
+        s32 index = InventoryRecordCollection_FindId(inventory,
+                                                       *(u16 *)definition);
+        u8 *available;
+        s32 quotient;
+
+        if (index < 0)
+            return 0;
+        available = *(u8 **)(inventory + 8) + index * 0x24;
+        quotient = *(u16 *)(available + 4) / *(u16 *)(required + 4);
+        if (quotient == 0)
+            return 0;
+        if (quotient < maximum)
+            maximum = quotient;
+    }
+    return maximum;
+}
 
 /* Retain one borrowed phase-record pointer in a caller-owned result slot. */
 void RetailPhaseResult_SetRecord(void *destination, void *phase)
@@ -405,5 +439,4 @@ void RetailPhaseDatabase_LoadAll(void)
     RetailPhaseDatabase_BuildPointerView(data_021e9e00);
     ActorRuntimeManager_SortDefaultEntriesByPhaseRank(*(void **)data_021e9ac0);
 }
-
 
