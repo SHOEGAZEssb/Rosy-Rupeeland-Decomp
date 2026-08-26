@@ -39,7 +39,8 @@ void ActorExtendedTransform_UpdateTargetMotion(void *self, const void *targetTra
 {
     u8 *actor = (u8 *)self;
     u8 displacement[0x10];
-    u8 limits[0x10];
+    /* Virtual +0xc8 writes its complete 0x30-byte descriptor record here. */
+    u8 limits[0x30];
     s32 magnitude;
 
     if ((*(s32 (**)(void *, const void *))(*(u8 **)actor + 0x1d4))(
@@ -56,7 +57,7 @@ void ActorExtendedTransform_UpdateTargetMotion(void *self, const void *targetTra
         (*(void (**)(void *, void *))(*(u8 **)actor + 0xc8))(actor, limits);
         if ((*(u32 *)(actor + 0xd0) & 2) != 0) {
             u16 index = *(u16 *)(actor + 0x256) >> 2;
-            u8 *root = *(u8 **)gGamePhaseRuntime;
+            u8 *root = gGamePhaseRuntime;
             u8 *primary = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(root, 1) + 0x2e7c);
             s16 row = ((*(s32 (**)(void *))(*(u8 **)primary + 0xa8))(primary) != 0)
                           ? *(s16 *)(limits + 4) : *(s16 *)(limits + 2);

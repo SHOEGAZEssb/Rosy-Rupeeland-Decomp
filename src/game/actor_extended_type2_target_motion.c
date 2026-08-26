@@ -43,8 +43,9 @@ void ActorExtendedType2_UpdateTargetMotion(void *self,
                                            const void *targetTransform)
 {
     u8 *actor = (u8 *)self;
-    u8 query[0x30];
-    u8 limits[0x10];
+    u8 query[0x10];
+    /* Virtual +0xc8 writes its complete 0x30-byte descriptor record here. */
+    u8 limits[0x30];
     s32 magnitude;
 
     VecFx32Object_Assign(actor + 0x78, targetTransform);
@@ -56,7 +57,7 @@ void ActorExtendedType2_UpdateTargetMotion(void *self,
         (*(void (**)(void *, void *))(*(u8 **)actor + 0xc8))(actor, limits);
         if ((*(u32 *)(actor + 0xd0) & 2) != 0) {
             u16 index = *(u16 *)(actor + 0x256) >> 2;
-            u8 *context = *(u8 **)gGamePhaseRuntime;
+            u8 *context = gGamePhaseRuntime;
             u8 *primary = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(context, 1) + 0x2e7c);
             s16 row = ((*(s32 (**)(void *))(*(u8 **)primary + 0xa8))(primary) != 0)
                           ? *(s16 *)(limits + 4) : *(s16 *)(limits + 2);

@@ -5,6 +5,16 @@
  * 64-bit distance to the Nintendo DS square-root unit and rounds the result.
  */
 
+#ifndef MATCHING
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern u32 TingleNativeMath_Sqrt64(u64 value);
+#ifdef __cplusplus
+}
+#endif
+#endif
+
 /*
  * Inputs are two signed 20.12 fixed-point components. Compute
  * 4*(x*x + y*y), select the DS square-root unit's 64-bit mode through control
@@ -18,6 +28,7 @@
  */
 s32 Fx32Vector2_Magnitude(s32 x, s32 y)
 {
+#ifdef MATCHING
     volatile u16 *sqrtControl = (volatile u16 *)0x040002b0;
     volatile u32 *sqrtResult = (volatile u32 *)0x040002b4;
     volatile u32 *sqrtOperandLow = (volatile u32 *)0x040002b8;
@@ -31,4 +42,9 @@ s32 Fx32Vector2_Magnitude(s32 x, s32 y)
     while ((*sqrtControl & 0x8000) != 0) {
     }
     return ((s32)*sqrtResult + 1) >> 1;
+#else
+    s64 squared = (s64)x * x + (s64)y * y;
+    u32 result = TingleNativeMath_Sqrt64((u64)squared << 2);
+    return ((s32)result + 1) >> 1;
+#endif
 }
