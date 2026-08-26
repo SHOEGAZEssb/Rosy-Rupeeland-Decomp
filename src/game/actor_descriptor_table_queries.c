@@ -8,6 +8,7 @@
 #include "tingle/types.h"
 
 extern void ActorDescriptor_SetRangeEnd(void *records, u16 index);
+extern void RecordCategory_PublishById(void *category, u16 id);
 extern s32 ActorDescriptor_IsInvalid(void *record);
 extern s32 InventoryRecord_HasId(void *record, u16 selector);
 extern void *InventoryRecord_GetMetadata(void *record);
@@ -18,6 +19,8 @@ extern void AnimationResourceState_ReplaceResources(void *resource, void *manage
 extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern u8 data_021e9ad0[];
+extern u8 data_021e9ac0[];
+extern void **data_021f5128;
 extern u8 gLanguageDatabase[];
 extern void func_020b5294(void);
 extern u8 data_020c4424[];
@@ -102,6 +105,47 @@ void func_020628a4(void *self, s32 delta)
     if (delta + quantity < 0)
         delta = 0;
     ActorDescriptor_SetQuantity(self, (u16)(delta + quantity));
+}
+
+/*
+ * Publish and consume one unit from the descriptor at retail 0x02062CA8.
+ * The descriptor's selection at +0x0C identifies a record ID and a low-byte
+ * category index in the global record manager. Kind-one quantities use the
+ * signed quantity helper; other kinds use the range-end setter. On depletion,
+ * retail decrements the corresponding actor-runtime count, releases the
+ * borrowed selection links at +0x0C/+0x20, and performs no allocation.
+ */
+void func_02062ca8(void *self)
+{
+    u8 *record = (u8 *)self;
+    u8 *definition = *(u8 **)(record + 8);
+    u8 *selection = *(u8 **)(record + 0x0c);
+    u8 *published = *(u8 **)(selection + 4);
+    u8 *runtime;
+    u32 category = *(u32 *)(published + 0x0c) & 0xff;
+
+    RecordCategory_PublishById(data_021f5128[category], *(u16 *)published);
+    if (definition[2] == 1) {
+        func_020628a4(record, -1);
+        if (*(u16 *)(record + 4) != 0)
+            return;
+        if (*(u16 *)(record + 6) == 0) {
+            runtime = *(u8 **)data_021e9ac0;
+            *(u32 *)(runtime + 0x44) =
+                (u16)(*(u32 *)(runtime + 0x44) - 1);
+            *(u32 *)(record + 0x20) = 0;
+        }
+        *(u32 *)(record + 0x0c) = 0;
+        return;
+    }
+
+    ActorDescriptor_SetRangeEnd(record, (u16)(*(u16 *)(record + 4) - 1));
+    if (*(u16 *)(record + 4) != 0)
+        return;
+    runtime = *(u8 **)data_021e9ac0;
+    *(u32 *)(runtime + 0x14) = (u16)(*(u32 *)(runtime + 0x14) - 1);
+    *(u32 *)(record + 0x20) = 0;
+    *(u32 *)(record + 0x0c) = 0;
 }
 
 /*
