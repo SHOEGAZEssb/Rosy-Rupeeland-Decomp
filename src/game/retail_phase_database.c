@@ -28,6 +28,8 @@ extern void ActorDescriptor_InitRange(void *descriptor, u16 id, u16 last_index);
 extern void ActorDescriptor_Init(void *descriptor, u16 id, u16 kind, u16 quantity);
 extern void *InventoryRecord_Assign(void *destination, const void *source);
 extern s32 InventoryRecordCollection_FindId(void *collection, u16 id);
+extern s32 InventoryRecordCollection_FindIdAlternate(void *collection, u16 id);
+extern void func_020628a4(void *record, s32 delta);
 
 #ifndef MATCHING
 extern void InventoryRecordCollection_Clear(void *collection);
@@ -69,6 +71,28 @@ s32 func_0206fb18(void *selection)
             maximum = quotient;
     }
     return maximum;
+}
+
+/*
+ * Apply the signed output quantity retained by a phase selection (retail
+ * 0x0206FCEC). A zero result quantity is inert. The result ID selects the
+ * matching record in the global alternate inventory table, whose quantity is
+ * adjusted in place; all selection and inventory storage remains borrowed.
+ */
+void func_0206fcec(void *selection)
+{
+    u8 *result = (u8 *)selection + 0x1c;
+    u8 *inventory;
+    s32 index;
+    u8 *record;
+
+    if (*(u16 *)(result + 4) == 0)
+        return;
+    inventory = *(u8 **)data_021e9ac0;
+    index = InventoryRecordCollection_FindIdAlternate(inventory + 0x1c,
+                                                       *(u16 *)result);
+    record = *(u8 **)(inventory + 0x20) + index * 0x24;
+    func_020628a4(record, *(s16 *)(result + 4));
 }
 
 /* Retain one borrowed phase-record pointer in a caller-owned result slot. */
@@ -439,4 +463,3 @@ void RetailPhaseDatabase_LoadAll(void)
     RetailPhaseDatabase_BuildPointerView(data_021e9e00);
     ActorRuntimeManager_SortDefaultEntriesByPhaseRank(*(void **)data_021e9ac0);
 }
-

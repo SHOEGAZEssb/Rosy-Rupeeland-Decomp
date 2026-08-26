@@ -90,6 +90,21 @@ void ActorDescriptor_SetQuantity(void *self, u16 quantity)
 }
 
 /*
+ * Add a signed quantity delta at retail 0x020628A4. If the requested delta
+ * would cross below zero, retail discards that delta rather than clearing the
+ * record. Otherwise the resulting quantity is passed through the canonical
+ * 99-unit clamp and kind-two status side effect. The descriptor is borrowed.
+ */
+void func_020628a4(void *self, s32 delta)
+{
+    u16 quantity = *(u16 *)((u8 *)self + 4);
+
+    if (delta + quantity < 0)
+        delta = 0;
+    ActorDescriptor_SetQuantity(self, (u16)(delta + quantity));
+}
+
+/*
  * Initialize a single actor descriptor. The actor database definition stored
  * at +8 is borrowed. `kind` is retained at +6 and `quantity` is clamped and
  * applied by ActorDescriptor_SetQuantity, including its kind-two status effect.
@@ -214,6 +229,19 @@ s32 ActorDescriptor_GetSubtype(void *self)
     return *(u16 *)((u8 *)self + 6);
 }
 #endif
+
+/*
+ * Return the kind-zero resource color at retail 0x02062A50. Both descriptor
+ * and definition/resource pointers are borrowed; canonical records always
+ * provide the two links, so retail performs no null or kind validation.
+ */
+u32 func_02062a50(void *self)
+{
+    u8 *definition = *(u8 **)((u8 *)self + 8);
+    u8 *resource = *(u8 **)(definition + 8);
+
+    return *(u16 *)(resource + 6);
+}
 
 #ifndef MATCHING
 /* Return the presentation animation selected by a descriptor. Kind-two
