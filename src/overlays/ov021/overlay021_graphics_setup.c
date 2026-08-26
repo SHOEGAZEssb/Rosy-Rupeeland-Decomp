@@ -140,7 +140,8 @@ extern "C" void Overlay021_LoadSubBackground(void *state)
 }
 
 /*
- * Order main layers 0/1/2/3; configure BG1 through 0x021FE268; load/apply
+ * Order main layers 0/1/2/3; configure BG1 with screen block 0x1C and
+ * character block zero through 0x021FE268; load/apply
  * resources 0x8038..0x803A to layer 1; clear +0x3FC, select display mode 0x1C,
  * and configure main register 0x04000050. Then load 0xC006..0xC008, set the
  * third handle to mode 8, bind first/third handles to mode 2, copy 0x20 bytes
@@ -150,7 +151,7 @@ extern "C" void Overlay021_LoadSubBackground(void *state)
 extern "C" void Overlay021_SetupMainBackground(void *state)
 {
     TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
-    Overlay021_ConfigureMainBg1(0, 0, 0, 0x1c, 1);
+    Overlay021_ConfigureMainBg1(0, 0, 0x1c, 0, 1);
     u8 resources[12];
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
@@ -173,7 +174,8 @@ extern "C" void Overlay021_SetupMainBackground(void *state)
 
 /*
  * Configure the main engine for the A06D..A070 background set: order layers
- * 0/1/2/3, set BG0CNT screen base 0x3C and BG1 through 0x021FE268, load/apply
+ * 0/1/2/3, set BG0CNT screen base 0x1C/extended-palette slot two and BG1
+ * screen block 0x1E with character block zero through 0x021FE268, load/apply
  * resources 0xA06D..0xA06F to layer zero, bind manager item 0xA070, set
  * +0x3FC=0 and display selector +0x48=0x13, then finalize and destroy both
  * temporary resource objects. Graphics resource and Nintendo DS BG MMIO state
@@ -184,7 +186,7 @@ extern "C" void Overlay021_SetupAlternateMainBackground(void *state)
     TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
     volatile u16 *bg0cnt = (volatile u16 *)0x04000008;
     *bg0cnt = (*bg0cnt & 0x43) | 0x3c00;
-    Overlay021_ConfigureMainBg1(0, 0, 0, 0x1e, 1);
+    Overlay021_ConfigureMainBg1(0, 0, 0x1e, 0, 1);
 
     u8 resources[12];
     u8 manager[0x44];
