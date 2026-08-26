@@ -7,7 +7,7 @@
 extern const u8 data_020d7a48[];
 extern const u8 data_ov022_02200674[];
 extern const u8 data_ov022_022006bc[];
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {

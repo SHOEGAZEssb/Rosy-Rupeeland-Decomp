@@ -8,7 +8,7 @@ extern void *data_020f4e14;
 extern const u8 data_020d7834[];
 extern const u8 data_ov022_022006fc[];
 extern void *gGameWork;
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {

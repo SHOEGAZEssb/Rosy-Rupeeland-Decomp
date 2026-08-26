@@ -8,7 +8,7 @@ extern const s16 data_ov022_022004b4[7];
 extern const s32 data_ov022_022005a8[];
 extern const s32 data_ov022_022005b8[];
 extern const u8 data_ov022_022006b4[];
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 extern void *gSoundContext;
 
 #ifdef __cplusplus

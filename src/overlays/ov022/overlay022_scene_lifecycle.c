@@ -13,7 +13,7 @@ extern const u8 data_ov022_022006dc[];
 extern const u8 data_ov022_022006e4[];
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 extern void *gSoundContext;
 
 #ifdef __cplusplus

@@ -9,7 +9,7 @@ extern const u8 data_020d780c[];
 extern const s32 data_020d7830[];
 extern const u8 data_ov022_022006c4[];
 extern const u8 data_ov022_022006cc[];
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 extern void *gGamePhaseCurrencyHud;
 extern u8 gSystemState[];
 
