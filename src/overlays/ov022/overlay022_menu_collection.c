@@ -26,7 +26,8 @@ extern void TitleCharacterResourceCollection_Append(void *, s32);
 extern void *InventoryScroll_Init(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
-extern void CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), void *);
+extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32,
+                                         void (*)(void *), void *);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 #ifdef __cplusplus
 }
@@ -57,11 +58,12 @@ extern "C" void Overlay022_MenuEntry_Init(void *entry)
 /*
  * Constructs a menu presentation object for the requested option capacity.
  * It initializes inherited input state, allocates/constructs an 8-byte option
- * array at +0x24 when capacity is nonzero, allocates an 0x80-byte UI object at
- * +0x30 with count-dependent arguments/placement, initializes and hides its
- * +0x50 child, and loads input resource 0x7006 or 0x7007 according to system
- * state byte +0x5F. Heap, SDK UI, and input-resource state change. The
- * caller-owned menu pointer is returned.
+ * array when capacity is nonzero, stores the helper-returned first-element
+ * pointer at +0x24 with its cookie immediately before it, allocates an
+ * 0x80-byte UI object at +0x30 with count-dependent arguments/placement,
+ * initializes and hides its +0x50 child, and loads input resource 0x7006 or
+ * 0x7007 according to system state byte +0x5F. Heap, SDK UI, and input-resource
+ * state change. The caller-owned menu pointer is returned.
  */
 extern "C" void *Overlay022_Menu_Init(void *menu, s32 capacity)
 {
@@ -72,8 +74,8 @@ extern "C" void *Overlay022_Menu_Init(void *menu, s32 capacity)
         void *entries = Heap_AllocAlternateEntry(capacity * 8 + 8,
                                       data_ov022_022006c4, 4, gHeapContext);
         if (entries != 0)
-            CxxArray_ConstructWithCookie(entries, capacity, 8, 8,
-                          Overlay022_MenuEntry_Init, 0);
+            entries = CxxArray_ConstructWithCookie(
+                entries, capacity, 8, 8, Overlay022_MenuEntry_Init, 0);
         FIELD(void *, menu, 0x24) = entries;
         void *ui = Heap_Alloc(0x80, data_ov022_022006cc, 4, gHeapContext);
         if (ui != 0)

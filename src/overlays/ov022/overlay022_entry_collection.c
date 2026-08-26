@@ -16,7 +16,8 @@ extern void Heap_Free(void *);
 extern void *Heap_AllocAlternateEntry(u32, const void *, u32, void *);
 extern void func_02093a34(void *);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
-extern void CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), void *);
+extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32,
+                                         void (*)(void *), void *);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 #ifdef __cplusplus
 }
@@ -39,9 +40,11 @@ extern "C" void Overlay022_CollectionEntry_Init(void *entry)
  * Constructs a fixed-capacity entry collection in caller-provided storage.
  * It initializes the SDK base, installs vtable 0x02200674, stores capacity at
  * +0x3C and count zero at +0x40, allocates capacity*8+8 bytes when nonempty,
- * constructs each 8-byte element with 0x021FD6FC, and configures the inherited
- * range as 0..capacity-1. Field +0x2C is set to 12. Heap/base state changes and
- * the input pointer is returned.
+ * constructs each 8-byte element with 0x021FD6FC, stores the helper-returned
+ * first-element pointer at +0x38, and configures the inherited range as
+ * 0..capacity-1. The eight-byte cookie remains immediately before that stored
+ * pointer. Field +0x2C is set to 12. Heap/base state changes and the input
+ * pointer is returned.
  */
 extern "C" void *Overlay022_EntryCollection_Init(void *collection, s32 capacity)
 {
@@ -53,8 +56,9 @@ extern "C" void *Overlay022_EntryCollection_Init(void *collection, s32 capacity)
         void *entries = Heap_AllocAlternateEntry(capacity * 8 + 8,
                                       data_ov022_022006bc, 4, gHeapContext);
         if (entries != 0)
-            CxxArray_ConstructWithCookie(entries, capacity, 8, 8,
-                          Overlay022_CollectionEntry_Init, 0);
+            entries = CxxArray_ConstructWithCookie(
+                entries, capacity, 8, 8,
+                Overlay022_CollectionEntry_Init, 0);
         FIELD(void *, collection, 0x38) = entries;
         IndexedSelectionController_ConfigureRange(collection, 0, capacity - 1, 0);
     } else {
