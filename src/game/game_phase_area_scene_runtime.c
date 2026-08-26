@@ -12,7 +12,7 @@ extern void *gGamePhaseRuntime;
 extern void *FourStageCommandPresentation_Init(void *self, void *renderer, s32 left, s32 top,
                            s32 right, s32 bottom);
 extern void *RuntimePresentationManager_AppendFirstListEffect(void *list, void *effect);
-extern void func_ov056_0220ef34(void *object);
+extern void func_ov056_0220ef34(void *object, const void *state);
 extern void func_ov056_0220ed9c(void *object);
 #ifdef __cplusplus
 }
@@ -86,7 +86,7 @@ void GamePhaseAreaScene_ApplyPlacementState(GamePhaseAreaScene *self,
             *(AreaSceneVirtualOne *)(*(u8 **)self->subRenderer + 0x18);
         method(self->subRenderer, state);
     } else if (self->overlayObject) {
-        func_ov056_0220ef34(self->overlayObject);
+        func_ov056_0220ef34(self->overlayObject, state);
     }
 }
 

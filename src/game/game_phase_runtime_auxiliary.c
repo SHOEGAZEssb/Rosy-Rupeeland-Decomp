@@ -17,8 +17,9 @@ extern void GamePhaseAreaScene_SetOverlayObject(void *actor, void *object);
 extern s32 GamePhaseMetadata_IsAreaBehaviorPermitted(void *area);
 extern s32 OverlayManager_GetGlobal(void);
 extern void OverlayManager_LoadOverlay(s32 overlay, s32 mode, s32 mask);
-extern s32 GamePhaseVariant_GetPointerTableEntry(s32 variant);
-extern void *func_ov054_0220e400(void *object, s32 variant, s32 enabled);
+extern const void *GamePhaseVariant_GetPointerTableEntry(s32 variant);
+extern void *func_ov056_0220e400(void *object, const char *directory,
+                                s32 enabled);
 extern void func_ov056_0220f054(void *object, const void *value);
 #ifdef __cplusplus
 }
@@ -36,7 +37,7 @@ void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *a
 {
     u8 *b = (u8 *)self;
     void *object;
-    s32 variant;
+    const char *directory;
     u8 areaValue[12];
 
     GX_VBlankIntr(0);
@@ -54,11 +55,12 @@ void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *a
         u32 mode = (*subDisplay & 0x1f00) >> 8;
         *subDisplay = (*subDisplay & ~0x1f00) | ((mode & ~8) << 8);
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 1, 0x38);
-        variant = GamePhaseVariant_GetPointerTableEntry(*(s8 *)((u8 *)area + 0x4c));
+        directory = (const char *)GamePhaseVariant_GetPointerTableEntry(
+            *(s8 *)((u8 *)area + 0x4c));
         object = Heap_Alloc(0x8ac, (const char *)gGamePhaseAreaAuxiliaryObjectAllocationTag, 4,
                             &gHeapContext);
         if (object != 0)
-            object = func_ov054_0220e400(object, variant, enabled);
+            object = func_ov056_0220e400(object, directory, enabled);
         *(void **)(b + 0x30ec) = object;
         GamePhaseAreaScene_SetOverlayObject(*(void **)(b + 0x2fb8), object);
         GamePhaseRuntime_InitScaledAreaCoordinates(areaValue, self, area);
