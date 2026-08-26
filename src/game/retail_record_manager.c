@@ -530,6 +530,14 @@ void RecordCategory_ApplyCategory5Completion(void *category_pointer, void *slot_
     RecordCategory_CompleteTerminalType1Slot(category_pointer, slot_pointer);
 }
 
+/* Category zero has no category-specific completion side effects. Its virtual
+ * method forwards both borrowed pointers to the common terminal-slot handler. */
+void RecordCategory_ApplyCategory0Completion(void *category_pointer,
+                                             void *slot_pointer)
+{
+    RecordCategory_CompleteTerminalType1Slot(category_pointer, slot_pointer);
+}
+
 static void PopulateRecordCategory(u8 *category, u16 excluded0,
                                    u16 excluded1)
 {
