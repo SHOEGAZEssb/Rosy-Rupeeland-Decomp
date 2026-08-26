@@ -60,6 +60,14 @@ void ProgressionFlags_SetRupeePondCompletion(void)
     GameWork_SetFlag(gGameWork, 0x760);
 }
 
+/* Satisfy the paired retail gate tested by ProgressionFlags_TestGate396_765.
+ * The call borrows gGameWork and sets flags 0x396 and 0x765. */
+void ProgressionFlags_SetGate396And765(void)
+{
+    GameWork_SetFlag(gGameWork, 0x396);
+    GameWork_SetFlag(gGameWork, 0x765);
+}
+
 /*
  * Complete the related progression callback by establishing the shared
  * milestone and setting its three retail completion flags. The only borrowed

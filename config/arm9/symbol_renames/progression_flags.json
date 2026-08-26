@@ -74,6 +74,7 @@
   "func_020895e4": "ProgressionFlags_TestFlag7CC",
   "func_02089610": "ProgressionFlags_TestSecondaryEntry80",
   "func_0208964c": "ProgressionFlags_TestMilestoneBE4WithFlag7D0",
+  "func_0208b780": "ProgressionFlags_SetGate396And765",
   "func_0208c16c": "ProgressionFlags_SetFlag757",
   "func_0208eac0": "ProgressionFlags_SetFlag73A",
   "func_0208eb04": "ProgressionFlags_SetFlag73C",

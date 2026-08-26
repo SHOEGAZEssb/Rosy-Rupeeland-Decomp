@@ -28,7 +28,6 @@ extern const u16 data_020d782c[];
 extern const s16 data_020d7a48[];
 extern u8 data_021f3ecc[];
 extern u8 gSystemState[];
-extern u8 *gGamePhaseRuntime;
 extern void *data_020f4e18;
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void TitleCharacterResourceCollection_Destroy(void *);
@@ -92,7 +91,8 @@ AreaInfoPanelPresentation *AreaInfoPanelPresentation_Destroy(AreaInfoPanelPresen
  * Show and populate the panel for an index. This selects its sprite frame and
  * inherited text slots, draws two localized table strings, then optionally
  * draws either a fixed flag-dependent notice or the percentage of matching
- * 0x24-byte records whose GameWork byte at 0x5e94 is set.
+ * records in the fixed data_020c37e4-entry, 0x24-byte table whose GameWork
+ * byte at 0x5e94 is set.
  */
 void AreaInfoPanelPresentation_ShowIndex(AreaInfoPanelPresentation *self, s32 index)
 {
@@ -125,7 +125,7 @@ void AreaInfoPanelPresentation_ShowIndex(AreaInfoPanelPresentation *self, s32 in
         return;
     }
 
-    for (i = 0; i < *(s32 *)gGamePhaseRuntime; i++) {
+    for (i = 0; i < data_020c37e4; i++) {
         if (index == *(const s16 *)((const u8 *)data_020d7a48 + i * 0x24)) {
             matching++;
             if (i == 0 || *((u8 *)gGameWork + 0x5e94 + i))
