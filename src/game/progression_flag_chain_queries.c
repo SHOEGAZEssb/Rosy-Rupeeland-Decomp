@@ -68,6 +68,15 @@ void func_0208b634(void)
     GameWork_SetFlag(gGameWork, 0x761);
 }
 
+/* Set the three completion flags consumed by the doll-return scenario query.
+ * The call borrows gGameWork and has no allocation or failure path. */
+void func_0208b664(void)
+{
+    GameWork_SetFlag(gGameWork, 0x77);
+    GameWork_SetFlag(gGameWork, 0x762);
+    GameWork_SetFlag(gGameWork, 0x73e);
+}
+
 /* Satisfy the paired retail gate tested by ProgressionFlags_TestGate396_765.
  * The call borrows gGameWork and sets flags 0x396 and 0x765. */
 void ProgressionFlags_SetGate396And765(void)

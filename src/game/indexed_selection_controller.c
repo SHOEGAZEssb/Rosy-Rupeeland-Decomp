@@ -11,6 +11,26 @@ extern const u8 data_020f261c[];
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
+/* Initialize the selection-controller base used by derived modal states. The
+ * caller owns the 0x38-byte state and the installed table is borrowed. */
+void func_02093a34(void *controller)
+{
+    FIELD(const void *, controller, 0x00) = data_020f261c;
+    FIELD(s32, controller, 0x04) = 0;
+    FIELD(s32, controller, 0x08) = 0;
+    FIELD(s32, controller, 0x0c) = 0;
+    FIELD(s32, controller, 0x10) = 0;
+    FIELD(s32, controller, 0x14) = 0;
+    FIELD(s32, controller, 0x18) = 0;
+    FIELD(s32, controller, 0x1c) = 0x10;
+    FIELD(s32, controller, 0x20) = 0;
+    FIELD(s32, controller, 0x24) = 0;
+    FIELD(s32, controller, 0x28) = 0;
+    FIELD(s32, controller, 0x2c) = 6;
+    FIELD(s32, controller, 0x30) = 4;
+    FIELD(s32, controller, 0x34) = 0;
+}
+
 /* Initialize a borrowed controller state to the retail defaults. */
 void IndexedSelectionController_Init(void *controller)
 {

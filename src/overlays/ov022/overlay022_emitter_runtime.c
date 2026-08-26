@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Sound_PlayEffectWithParameters(void *, s32, s32, s32, ...);
-extern void *GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
@@ -98,10 +98,10 @@ extern "C" void Overlay022_Emitter_Update(void *emitter)
             ++frame;
         }
 
-        void *font_resource = GraphicsSpriteGroup_CreateStateFromSource(
+        void *sprite_resource = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, emitter, 0), (u8 *)emitter + 4, 1);
         const s32 *start = FIELD(const s32 *, emitter, 0x68);
-        void *sprite_resource = GraphicsSpriteState_ApplyRenderConfig(font_resource, frame,
+        GraphicsSpriteState_ApplyRenderConfig(sprite_resource, frame,
                                               start[0], start[1], 0, 0, 0);
         void *object = Heap_Alloc(0xa4, data_ov022_022006b4,
                                   4, gHeapContext);
