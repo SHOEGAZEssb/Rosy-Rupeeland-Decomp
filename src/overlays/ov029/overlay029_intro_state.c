@@ -1,3 +1,4 @@
+#include "tingle/heap.h"
 #include "tingle/types.h"
 
 /* Overlay 29 initial transition, selection, and overlay-2 handoff state machine. */
@@ -6,16 +7,14 @@
 
 extern void *data_020f4e14[];
 extern void *gDebugFont;
-extern void *gHeapContext;
 extern void *gGamePhaseCurrencyHud;
-extern const u8 data_ov029_021fed20[];
+extern const char data_ov029_021fed20[];
 extern const s32 data_ov029_021fec70[];
 extern const s32 data_ov029_021fec28[];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
@@ -23,7 +22,7 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
-extern void *func_ov000_021fb6e0(void *, void *, s32);
+extern void *Overlay002_Presentation_Init(void *, void *, s32);
 extern void func_ov002_021fbdc0(void *);
 extern s32 Overlay002_UpdateFooterAnimation(void *);
 extern s32 func_ov002_021fbe60(void *);
@@ -102,9 +101,10 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
             break;
         {
             void *child = Heap_Alloc(0xb4, data_ov029_021fed20,
-                                     4, gHeapContext);
+                                     4, &gHeapContext);
             if (child != 0)
-                child = func_ov000_021fb6e0(child, data_020f4e14[0], 0);
+                child = Overlay002_Presentation_Init(
+                    child, data_020f4e14[0], 0);
             FIELD(void *, state, 0xa8) = child;
         }
         func_ov029_021fd644(state);

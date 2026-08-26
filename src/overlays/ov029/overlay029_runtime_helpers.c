@@ -54,7 +54,7 @@ extern void Overlay045_DrawSelectorPreview(s32, s32);
 extern "C" void func_ov029_021fd644(void *state)
 {
     u32 graphics[3];
-    u8 auxiliary[0x40];
+    u8 auxiliary[0x44];
     GraphicsResourceSet_Init(graphics);
     TitleScreenResourceCollection_Init(auxiliary);
     GraphicsResourceSet_Load(graphics, data_020f4e18[0],
