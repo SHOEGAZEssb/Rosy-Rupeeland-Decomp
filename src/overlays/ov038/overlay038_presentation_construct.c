@@ -28,7 +28,7 @@ extern void TitleInterpolatedValue_Init(void *timer);
 extern void AnimationResourceState_ReplaceResources(void *resource, void *archive, s32 firstId,
                           s32 mode, s32 lastId);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
-extern void *GraphicsSpriteGroup_CreateStateFromSource(void *resource, void *owner, s32 mode);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group, void *source, s32 mode);
 extern void SpriteMotionController_BindSprite(void *list, void *resource, s32 count, s32 mode,
                           s32 initial);
 extern void SpriteMotionController_SetPosition(void *list, s32 width, s32 height);
@@ -79,7 +79,7 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
                   0x38, 1, 0x39);
     void *owner = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);
     FIELD(void *, presentation, 0x60) = owner;
-    void *resource = GraphicsSpriteGroup_CreateStateFromSource((u8 *)presentation + 0x54, owner, 2);
+    void *resource = GraphicsSpriteGroup_CreateStateFromSource(owner, (u8 *)presentation + 0x54, 2);
     SpriteMotionController_BindSprite((u8 *)presentation + 0x64, resource, 6, 1, 0);
     SpriteMotionController_SetPosition((u8 *)presentation + 0x64, 0xe8, 0xa0);
 
