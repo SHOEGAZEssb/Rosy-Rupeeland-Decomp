@@ -163,6 +163,18 @@ s32 InventoryRecordCollection_FindId(void *collection, u16 id)
     return -1;
 }
 
+/* Return the item-kind halfword at +4 for the borrowed record selected by ID.
+ * A missing record produces zero; the collection and record remain owned by
+ * the inventory manager. */
+u32 func_02063670(void *collection, u16 id)
+{
+    s32 index = InventoryRecordCollection_FindId(collection, id);
+
+    if (index < 0)
+        return 0;
+    return FIELD(u16, FIELD(u8 *, collection, 8) + index * 0x24, 4);
+}
+
 #ifndef MATCHING
 /* Find a valid descriptor with the requested ID in the alternate collection
  * layout at retail 0x0206514C. Records and metadata remain collection-owned;

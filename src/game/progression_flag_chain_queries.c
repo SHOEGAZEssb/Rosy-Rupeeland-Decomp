@@ -109,6 +109,23 @@ s32 ProgressionFlags_TestGate2C8_767_74B(void)
     return AllFlags(flags, 3);
 }
 
+/* Test the shared map gate and three save flags that complete battle tutorial
+ * scenario 02. */
+s32 ScenarioCompletion_TestQ026BtlTuto02(void)
+{
+    return ProgressionFlags_TestGate2C8_767_74B() &&
+           GameWork_TestFlag(gGameWork, 0x160) &&
+           GameWork_TestFlag(gGameWork, 0x773) &&
+           GameWork_TestFlag(gGameWork, 0x7be);
+}
+
+/* Extend battle-tutorial completion with the Yrz/Aba scenario flag. */
+s32 ScenarioCompletion_TestQ071YrzAba(void)
+{
+    return ScenarioCompletion_TestQ026BtlTuto02() &&
+           GameWork_TestFlag(gGameWork, 0x7c6);
+}
+
 /* Extend the 0x83d38 prerequisite with flags 0x14d and 0x768. */
 s32 ProgressionFlags_TestGate25B_764_14D_768(void)
 {
@@ -121,6 +138,25 @@ s32 ProgressionFlags_TestGate25C_761(void)
 {
     static const u16 flags[] = {0x25c, 0x761};
     return AllFlags(flags, 2);
+}
+
+/* Test the three save flags that complete the doll-return scenario. */
+s32 ScenarioCompletion_TestQ004DollReturn(void)
+{
+    return GameWork_TestFlag(gGameWork, 0x77) &&
+           GameWork_TestFlag(gGameWork, 0x762) &&
+           GameWork_TestFlag(gGameWork, 0x73e);
+}
+
+/* Extend the doll-return and shared gate prerequisites with the three flags
+ * required by the CMM01 payment scenario. */
+s32 ScenarioCompletion_TestQ005PayCmm01(void)
+{
+    return ScenarioCompletion_TestQ004DollReturn() &&
+           ProgressionFlags_TestGate25C_761() &&
+           GameWork_TestFlag(gGameWork, 0x201) &&
+           GameWork_TestFlag(gGameWork, 0x763) &&
+           GameWork_TestFlag(gGameWork, 0x758);
 }
 
 /* Require the three retail flags used by field-entry availability checks. */
@@ -526,6 +562,14 @@ s32 ProgressionFlags_TestFlag747(void)
 s32 ProgressionFlags_TestFlag73C(void) { return GameWork_TestFlag(gGameWork, 0x73c) != 0; }
 /* Test flag 0x73d and return a normalized result. */
 s32 ProgressionFlags_TestFlag73D(void) { return GameWork_TestFlag(gGameWork, 0x73d) != 0; }
+/* Preserve the callback-table gate that redundantly rechecks flag 0x73e after
+ * the doll-return and shared 0x25c/0x761 prerequisites. */
+s32 func_0208875c(void)
+{
+    return ScenarioCompletion_TestQ004DollReturn() &&
+           ProgressionFlags_TestGate25C_761() &&
+           GameWork_TestFlag(gGameWork, 0x73e);
+}
 /* Test flag 0x73f and return a normalized result. */
 s32 ProgressionFlags_TestFlag73F(void) { return GameWork_TestFlag(gGameWork, 0x73f) != 0; }
 /* Test flag 0x790 and return a normalized result. */
@@ -677,6 +721,13 @@ s32 ProgressionFlags_TestMilestoneBE2WithFlag7AE(void) { return ProgressionFlags
 s32 ProgressionFlags_TestMilestoneBE4WithFlag7B2(void) { return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7b2); }
 /* Extend the 0x8514c chain with flag 0x7bd. */
 s32 ProgressionFlags_TestMilestoneBE4WithFlag7BD(void) { return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7bd); }
+/* Preserve the callback-table variant that redundantly rechecks battle
+ * tutorial flag 0x7be after the complete tutorial predicate. */
+s32 func_020894c8(void)
+{
+    return ScenarioCompletion_TestQ026BtlTuto02() &&
+           GameWork_TestFlag(gGameWork, 0x7be);
+}
 /* Extend the 0x8514c chain with flag 0x7bf. */
 s32 ProgressionFlags_TestMilestoneBE4WithFlag7BF(void) { return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7bf); }
 /* Extend the 0x849f4 chain with flag 0x7c7. */
