@@ -8,7 +8,7 @@ extern void *data_020f4e18[];
 extern void *gGamePhaseRuntime;
 extern void *gGameWork;
 extern void *gDebugFont;
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 extern const u8 data_ov029_021fecfc[];
 extern const u8 data_ov029_021fed10[];
 extern const u8 data_ov029_021fed18[];
@@ -22,7 +22,7 @@ extern void GameWork_ClearFlag(void *, s32);
 extern u32 genrand_int32(void);
 extern void RuntimePresentationManager_BroadcastSlot1C(void *, s32);
 extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
-extern void *RecordDescriptor_GetMessage(void *);
+extern void *RecordDescriptor_GetMessage(void *, s32);
 extern void SceneInputBase_Init(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void TitleCharacterResourceCollection_Append(void *, s32);
@@ -104,7 +104,7 @@ extern "C" void *func_ov029_021fce74(void *state, void *argument)
     FIELD(void *, state, 0xa4) = external;
     if (FIELD(void *, external, 0x30) != 0)
         FIELD(u32, state, 0x4c) |= 2;
-    u16 *identity = (u16 *)RecordDescriptor_GetMessage(temporary);
+    u16 *identity = (u16 *)RecordDescriptor_GetMessage(temporary, 0);
     if (identity[0] == 0xee0e)
         func_ov045_0220c128(external, identity[1]);
 

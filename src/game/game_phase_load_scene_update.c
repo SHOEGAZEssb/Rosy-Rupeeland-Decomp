@@ -91,7 +91,7 @@ extern void *func_ov023_021fd9f8(void *object);
 extern void *func_ov025_021ff27c(void *scene);
 extern void *Overlay004_VariantController_Init(void *object, s32 argument);
 extern void *func_ov028_021fdb00(void *object);
-extern void *Overlay009_InitSceneFields(void *object, s32 argument);
+extern void *func_ov029_021fce74(void *object, void *argument);
 extern void *Overlay027Scene_Init(void *object);
 extern void *Overlay017_Effect_Delete(void *object);
 extern void *func_ov036_022045d4(void *object, s32 argument);
@@ -751,7 +751,12 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e1cc);
     object = Heap_Alloc(0x104,OVERLAY009_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = Overlay009_InitSceneFields(object,self->sceneArgument);
+      /* Overlays 9, 12, 27, 29, and 40 reuse address 0x021fce74. This
+       * branch loads overlay 29, whose function at that address is the scene
+       * constructor; overlay 9's residently linked symbol is an unrelated
+       * four-argument field initializer. */
+      object = func_ov029_021fce74(
+          object, (void *)(u32)self->sceneArgument);
     }
     self->loadedScene = object;
     break;
