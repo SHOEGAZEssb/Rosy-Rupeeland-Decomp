@@ -1,3 +1,4 @@
+#include "tingle/heap.h"
 #include "tingle/types.h"
 
 /* Overlay 29 result-resolution animation and mode-dependent outcome routing. */
@@ -5,8 +6,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *gGameWork;
-extern void *gHeapContext;
-extern const u8 data_ov029_021fed28[];
+extern const char data_ov029_021fed28[];
 extern const u8 data_ov029_021febbc[];
 extern const s32 data_ov029_021fec48[];
 extern const s32 data_ov029_021fec98[];
@@ -20,7 +20,6 @@ extern const s32 data_ov029_021fec68[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GameWork_SetFlag(void *, s32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_0209189c(void *, s32, s32);
@@ -99,7 +98,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
             break;
         SceneSound_StopPackedEffect(state, FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
         SceneSound_PlayPackedEffect(state, 0x6c);
-        result = Heap_Alloc(0xb0, data_ov029_021fed28, 4, gHeapContext);
+        result = Heap_Alloc(0xb0, data_ov029_021fed28, 4, &gHeapContext);
         if (result != 0)
             result = func_ov045_0220bc40(result);
         FIELD(void *, state, 0xa0) = result;

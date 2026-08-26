@@ -24,6 +24,17 @@ extern "C" void *GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 mode);
 extern "C" void Heap_Free(void *allocation);
 
+#ifdef _MSC_VER
+/* Retail's ARM member call and ordinary C callbacks share r0 for the receiver.
+ * MSVC x86 does not, so portable host builds dispatch the raw table explicitly. */
+typedef struct DisplayObjectVTable {
+    void (*slot0)(void *);
+    void (*slot1)(void *);
+    void (*slot2)(void *);
+    void (*slot3)(void *);
+    void (*slot4)(void *);
+} DisplayObjectVTable;
+#else
 class DisplayObjectVirtual {
 public:
     virtual void slot0();
@@ -32,6 +43,7 @@ public:
     virtual void slot3();
     virtual void slot4();
 };
+#endif
 
 /* Return the pointer stored at +0x54 without changing object state. */
 extern "C" void *func_ov045_0220bc34(void *object)
@@ -65,7 +77,11 @@ extern "C" void *func_ov045_0220bc40(void *object)
     FIELD(u16, FIELD(void *, object, 0xac), 0x24) |= 2;
     FIELD(u8, FIELD(void *, object, 0xac), 0x3a) = 1;
     Presentation_SetPosition(object, 0x160, 0x60, 0);
+#ifdef _MSC_VER
+    ((DisplayObjectVTable *)FIELD(void *, object, 0))->slot4(object);
+#else
     ((DisplayObjectVirtual *)object)->slot4();
+#endif
     return object;
 }
 
