@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021e9ac0;
-extern void func_0206370c(void *table, u16 key, u16 value);
+extern s32 func_0206370c(void *table, u16 key, s32 value);
 extern void func_02063724(void *table, u16 key, u16 value);
 extern void func_020638b0(void *table, u16 first, u16 second, u16 third);
 #ifdef __cplusplus

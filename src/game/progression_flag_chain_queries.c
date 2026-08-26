@@ -60,6 +60,14 @@ void ProgressionFlags_SetRupeePondCompletion(void)
     GameWork_SetFlag(gGameWork, 0x760);
 }
 
+/* Set the paired progression flags selected by callback 0x0208B634. The call
+ * borrows gGameWork and only changes flags 0x25c and 0x761. */
+void func_0208b634(void)
+{
+    GameWork_SetFlag(gGameWork, 0x25c);
+    GameWork_SetFlag(gGameWork, 0x761);
+}
+
 /* Satisfy the paired retail gate tested by ProgressionFlags_TestGate396_765.
  * The call borrows gGameWork and sets flags 0x396 and 0x765. */
 void ProgressionFlags_SetGate396And765(void)
