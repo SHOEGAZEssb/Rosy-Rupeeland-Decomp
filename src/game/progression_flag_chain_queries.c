@@ -88,6 +88,12 @@ void ProgressionFlags_SetGate756And794(void)
     GameWork_SetFlag(gGameWork, 0x794);
 }
 
+/* Set the standalone retail progression flag selected by callback 0x0208c16c. */
+void ProgressionFlags_SetFlag757(void)
+{
+    GameWork_SetFlag(gGameWork, 0x757);
+}
+
 /* Require both retail flags used by the bedroom-to-field availability gate. */
 s32 ProgressionFlags_TestGate396_765(void)
 {

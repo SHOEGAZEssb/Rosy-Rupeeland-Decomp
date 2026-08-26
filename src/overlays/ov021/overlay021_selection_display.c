@@ -133,8 +133,8 @@ extern "C" u32 Overlay021_TestNestedFlags(const void *object, u32 mask)
 /*
  * Refresh display from overlay-0 panel +0x354's current entry. Render its
  * nested item through 0x021FF504; if wrapper flag one is set, render the null
- * category line, otherwise render the entry only when it owns a nonnull nested
- * +0x0C member. Panel/font/sprite state changes; returns void, no MMIO.
+ * category line, otherwise render the item's nonnull selection descriptor at
+ * +0x0C. Panel/font/sprite state changes; returns void, no MMIO.
  */
 extern "C" void Overlay021_RefreshPrimarySelectionDisplay(void *state)
 {
@@ -145,13 +145,13 @@ extern "C" void Overlay021_RefreshPrimarySelectionDisplay(void *state)
     if (Overlay021_TestNestedFlags(entry, 1) != 0) {
         Overlay021_RenderSelectionCategory(state, 0);
     } else if (item != 0 && FIELD(void *, item, 0xc) != 0) {
-        Overlay021_RenderSelectionCategory(state, item);
+        Overlay021_RenderSelectionCategory(state, FIELD(void *, item, 0xc));
     }
 }
 
 /*
  * Refresh display from overlay-1 panel +0x358's current entry, using the same
- * item/flag/category rules as 0x021FF5B8. Panel/font/sprite state changes;
+ * item/flag/selection-descriptor rules as 0x021FF5B8. Panel/font/sprite state changes;
  * returns void and performs no direct hardware access.
  */
 extern "C" void Overlay021_RefreshSecondarySelectionDisplay(void *state)
@@ -163,6 +163,6 @@ extern "C" void Overlay021_RefreshSecondarySelectionDisplay(void *state)
     if (Overlay021_TestNestedFlags(entry, 1) != 0) {
         Overlay021_RenderSelectionCategory(state, 0);
     } else if (item != 0 && FIELD(void *, item, 0xc) != 0) {
-        Overlay021_RenderSelectionCategory(state, item);
+        Overlay021_RenderSelectionCategory(state, FIELD(void *, item, 0xc));
     }
 }

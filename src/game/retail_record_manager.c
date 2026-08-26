@@ -538,6 +538,26 @@ void RecordCategory_ApplyCategory0Completion(void *category_pointer,
     RecordCategory_CompleteTerminalType1Slot(category_pointer, slot_pointer);
 }
 
+/* Apply category one's record-specific completion transitions before the
+ * common terminal-slot removal. The borrowed slot identifies the completed
+ * record: 0x3d publishes flag 0xc0, while 0x3e is replaced by record 0x23 and
+ * publishes flag 0xc4. Other records receive only the common handling. */
+void RecordCategory_ApplyCategory1Completion(void *category_pointer,
+                                             void *slot_pointer)
+{
+    u8 *slot = (u8 *)slot_pointer;
+    u16 id = *(u16 *)(*(u8 **)(slot + 4));
+
+    if (id == 0x3d) {
+        GameWork_SetFlag(gGameWork, 0xc0);
+    } else if (id == 0x3e) {
+        RecordCategory_RemoveById(category_pointer, 0x3e);
+        RetailRecordCategory_InsertById(category_pointer, 0x23);
+        GameWork_SetFlag(gGameWork, 0xc4);
+    }
+    RecordCategory_CompleteTerminalType1Slot(category_pointer, slot_pointer);
+}
+
 static void PopulateRecordCategory(u8 *category, u16 excluded0,
                                    u16 excluded1)
 {
