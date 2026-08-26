@@ -46796,3 +46796,19 @@ build build/reports/inventory_scroll_update_arrow_animations.txt: match_report b
 
 build build/reports/inventory_cell_scroll_lifecycle.txt: phony build/reports/inventory_cell_init.txt build/reports/inventory_cell_destroy.txt build/reports/inventory_scroll_init_base.txt build/reports/inventory_scroll_configure_range.txt build/reports/inventory_scroll_construct.txt build/reports/inventory_scroll_destroy.txt build/reports/inventory_scroll_delete.txt build/reports/inventory_scroll_update_arrow_animations.txt
 build inventory_cell_scroll_lifecycle: phony build/reports/inventory_cell_scroll_lifecycle.txt
+
+overlay34_runtime_scene_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
+build build/decomp/src/game/overlay34_runtime_scene.o: mwccarm src/game/overlay34_runtime_scene.c | include/tingle/heap.h include/tingle/overlay_manager.h include/tingle/scene.h include/tingle/types.h
+  source = src/game/overlay34_runtime_scene.c
+  cflags = $overlay34_runtime_scene_cflags
+build build/decomp/asm/game/overlay34_runtime_scene_init.o: mwasmarm asm/game/overlay34_runtime_scene_init.s
+build build/decomp/delinks/asm/game/overlay34_runtime_scene_init.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/overlay34_runtime_scene_init.json: objdiff build/decomp/delinks/asm/game/overlay34_runtime_scene_init.o | build/decomp/asm/game/overlay34_runtime_scene_init.o
+  target_object = build/decomp/delinks/asm/game/overlay34_runtime_scene_init.o
+  base_object = build/decomp/asm/game/overlay34_runtime_scene_init.o
+build build/reports/overlay34_runtime_scene_init.txt: match_report build/reports/overlay34_runtime_scene_init.json | tools/report_objdiff.py
+  report_json = build/reports/overlay34_runtime_scene_init.json
+  report_args = --section .text --function Overlay34RuntimeScene_Init --require-exact
+
+build overlay34_runtime_scene_init: phony build/decomp/src/game/overlay34_runtime_scene.o build/decomp/asm/game/overlay34_runtime_scene_init.o build/reports/overlay34_runtime_scene_init.txt

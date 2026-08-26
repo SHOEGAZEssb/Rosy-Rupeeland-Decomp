@@ -26,7 +26,7 @@
 .extern OverlayWorkerPresentation_Init
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
-.extern func_0206ec68
+.extern Overlay34RuntimeScene_Init
 .extern RuntimeRecordTable_FindByKey
 .extern Overlay032Scene_Init
 .extern func_0209d774
@@ -397,7 +397,7 @@ L_0201670c:
     bl Heap_Alloc
     cmp r0, #0
     beq L_0201672c
-    bl func_0206ec68
+    bl Overlay34RuntimeScene_Init
 L_0201672c:
     mov r0, #0
     b L_020167d4

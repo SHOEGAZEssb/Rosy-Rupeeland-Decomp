@@ -28,7 +28,7 @@
 .extern Actor_ResetMotionForCollisionQuery
 .extern Actor_TrySpawnTerrainGateObject
 .extern Type7Actor_ClearTarget
-.extern func_0206ec68
+.extern Overlay34RuntimeScene_Init
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern RetailResourceDescriptorManager_UpdateNextGroup
 .extern RetailResourceDescriptorManager_AdvanceFrame
@@ -320,7 +320,7 @@ L_020077ac:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02007828
-    bl func_0206ec68
+    bl Overlay34RuntimeScene_Init
 L_02007828:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

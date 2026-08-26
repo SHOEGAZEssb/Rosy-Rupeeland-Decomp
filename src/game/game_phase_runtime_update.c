@@ -32,7 +32,7 @@ typedef struct GamePhaseEffectScene GamePhaseEffectScene;
 extern GamePhaseEffectScene *GamePhaseEffectScene_Init(
     GamePhaseEffectScene *object, s32 mode);
 extern void *func_ov059_0220fd20(void *object, s32 mode, s32 value);
-extern void *func_0206ec68(void *object);
+extern void *Overlay34RuntimeScene_Init(void *object);
 extern s32 OverlayManager_GetGlobal(void);
 extern void OverlayManager_LoadOverlay(s32 value, s32 mode, s32 mask);
 extern s32 GameWork_TestFlag(void *work, s32 flag);
@@ -191,7 +191,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
             (s32)(*(u32 *)((u8 *)object + 0x20) << 30) < 0) {
             object = allocRuntimeObject(0x38);
             if (object != 0)
-                func_0206ec68(object);
+                Overlay34RuntimeScene_Init(object);
             return 0;
         }
     }

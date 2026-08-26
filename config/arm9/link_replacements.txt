@@ -1,5 +1,6 @@
 # Delink object = reconstructed object
 # Paths are repository-relative. Add only byte-exact units to the matching ROM.
+build/decomp/delinks/asm/game/overlay34_runtime_scene_init.o = build/decomp/asm/game/overlay34_runtime_scene_init.o
 build/decomp/delinks/asm/game/InventoryRecord_Assign.o = build/decomp/asm/game/InventoryRecord_Assign.o
 build/decomp/delinks/asm/game/InventoryRecord_AssignPersistentFields.o = build/decomp/asm/game/InventoryRecord_AssignPersistentFields.o
 build/decomp/delinks/asm/game/InventoryRecord_IsEmptyKind1Subtype1.o = build/decomp/asm/game/InventoryRecord_IsEmptyKind1Subtype1.o

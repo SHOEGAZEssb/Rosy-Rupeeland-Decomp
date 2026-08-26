@@ -7,6 +7,10 @@
     .data       start:0x020cdc80 end:0x020f3780 kind:data align:32
     .bss        start:0x020f3780 end:0x021fb6e0 kind:bss align:32
 
+asm/game/overlay34_runtime_scene_init.s:
+    categories: Game code
+    .text       start:0x0206ec68 end:0x0206ed14
+
 src/system/mt19937.c:
     categories: Game code
     .text       start:0x0200234c end:0x02002638
