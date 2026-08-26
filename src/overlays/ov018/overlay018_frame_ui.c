@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *gGamePhaseRuntime;
-extern void *data_021f3ecc;
+extern u8 data_021f3ecc[];
 extern void *gDebugFont;
 
 #ifdef __cplusplus
@@ -70,7 +70,8 @@ extern "C" void Overlay018_UpdateFrameUi(void *state)
             FIELD(s32, state, 0x3fc) = !FIELD(s32, state, 0x3fc);
         }
         if (FIELD(s32, state, 0x3fc) != 0) {
-            GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x70);
+            GraphicsSpriteRenderer_SetFontResource(gDebugFont,
+                          FIELD(void *, state, 0x70));
             GraphicsSpriteRenderer_DrawText(gDebugFont,
                           LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x319),
                           0, 0, 0xb, 8, -2);
