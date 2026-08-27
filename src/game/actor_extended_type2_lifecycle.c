@@ -3,7 +3,7 @@
 
 /* Reset and destroy the extended type-two actor and its copied record array. */
 extern const void *data_020dfee4[];
-extern const void *data_020dfec0;
+extern const void *data_020dfec0[];
 extern u8 data_020df9e8[];
 
 #ifdef __cplusplus

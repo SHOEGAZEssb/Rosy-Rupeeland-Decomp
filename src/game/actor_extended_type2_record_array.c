@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Construct the extended type-two actor's copied array of four-halfword records. */
-extern const void *data_020dfec0;
+extern const void *data_020dfec0[];
 extern const char data_020df9e0[];
 
 #ifdef __cplusplus
