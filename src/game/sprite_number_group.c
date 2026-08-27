@@ -8,7 +8,7 @@
  */
 
 typedef struct SpriteNode { struct SpriteNode *next00,*previous04; u8 *sprite08; } SpriteNode;
-typedef struct SpriteNodeList { void **vtable; SpriteNode *tail04,*head08; s32 count0c; } SpriteNodeList;
+typedef struct SpriteNodeList { void **vtable; SpriteNode *head04,*tail08; s32 count0c; } SpriteNodeList;
 typedef struct SpriteNumberGroup {
     void *spriteOwner00; SpriteNodeList nodes04; s16 width14; s16 pad16;
     u8 resource18[0x0c];
@@ -61,28 +61,28 @@ SpriteNumberGroup *SpriteNumberGroup_Init(SpriteNumberGroup *self,void *spriteOw
     self->width14=(s16)((digits+1)*10+8); return self;
 }
 
-/* Install the node-list vtable and clear tail, head, and count. */
+/* Install the node-list vtable and clear head, tail, and count. */
 SpriteNodeList *SpriteNodeList_Init(SpriteNodeList *self)
-{ self->vtable=(void **)data_020d660c; self->tail04=0; self->head08=0; self->count0c=0; return self; }
+{ self->vtable=(void **)data_020d660c; self->head04=0; self->tail08=0; self->count0c=0; return self; }
 
 /* Install the list vtable, free all nodes, and return self. */
 SpriteNodeList *SpriteNodeList_Destroy(SpriteNodeList *self)
 { self->vtable=(void **)data_020d660c; SpriteNodeList_Clear(self); return self; }
 
-/* Free all linked nodes and clear both ends and count; sprite payloads are not released here. */
+/* Free all linked nodes from head to tail and clear both ends and count; sprite payloads are not released here. */
 void SpriteNodeList_Clear(SpriteNodeList *self)
 {
-    SpriteNode *n=self->tail04; while(n){SpriteNode *next=n->next00;Heap_Free(n);n=next;}
-    self->tail04=0;self->head08=0;self->count0c=0;
+    SpriteNode *n=self->head04; while(n){SpriteNode *next=n->next00;Heap_Free(n);n=next;}
+    self->head04=0;self->tail08=0;self->count0c=0;
 }
 
-/* Allocate a node for sprite, append it at the list's tail-side end, increment count, and return the new tail. */
+/* Allocate a node for sprite, prepend it at the list head, increment count, and return the new head. */
 SpriteNode *SpriteNodeList_AppendSprite(SpriteNodeList *self,u8 *sprite)
 {
     SpriteNode *n=(SpriteNode *)Heap_Alloc(0x0c,gSpriteNumberGroupNodeAllocationTag,4,&gHeapContext);
     if(n){n->next00=0;n->previous04=0;n->sprite08=sprite;}
-    if(self->tail04){self->tail04->previous04=n;n->next00=self->tail04;}else self->head08=n;
-    self->tail04=n;self->count0c++;return self->tail04;
+    if(self->head04){self->head04->previous04=n;n->next00=self->head04;}else self->tail08=n;
+    self->head04=n;self->count0c++;return self->head04;
 }
 
 /*
@@ -92,23 +92,23 @@ SpriteNode *SpriteNodeList_AppendSprite(SpriteNodeList *self,u8 *sprite)
  */
 SpriteNumberGroup *SpriteNumberGroup_Destroy(SpriteNumberGroup *self)
 {
-    SpriteNode *n=self->nodes04.tail04;
+    SpriteNode *n=self->nodes04.head04;
     while(n){SpriteNode *next=n->next00;GraphicsSpriteGroup_ReleaseState(self->spriteOwner00,n->sprite08);SpriteNodeList_RemoveNode(&self->nodes04,n);n=next;}
     AnimationResourceState_Destroy(self->resource18);self->nodes04.vtable=(void **)data_020d660c;SpriteNodeList_Clear(&self->nodes04);return self;
 }
 
-/* Unlink and free node, decrement count, and normalize the empty list when count reaches zero. */
+/* Unlink and free node, repair the head/tail endpoints, decrement count, and normalize the empty list when count reaches zero. */
 void SpriteNodeList_RemoveNode(SpriteNodeList *self,SpriteNode *node)
 {
-    if(node==self->tail04)self->tail04=node->next00;else node->previous04->next00=node->next00;
-    if(node==self->head08)self->head08=node->previous04;else node->next00->previous04=node->previous04;
+    if(node==self->head04)self->head04=node->next00;else node->previous04->next00=node->next00;
+    if(node==self->tail08)self->tail08=node->previous04;else node->next00->previous04=node->previous04;
     if(node)Heap_Free(node);if(--self->count0c==0)SpriteNodeList_Clear(self);
 }
 
 /* Center the group around x, clamp it to 0..256-width, and place each sprite ten pixels apart at y. */
 void SpriteNumberGroup_SetPosition(SpriteNumberGroup *self,s32 x,s32 y)
 {
-    s32 px=x-(self->width14/2);SpriteNode *n=self->nodes04.head08;
+    s32 px=x-(self->width14/2);SpriteNode *n=self->nodes04.head04;
     if(px<0)px=0;if(px+self->width14>=0x100)px=0x100-self->width14;
     while(n){*(s16 *)(n->sprite08+0x2c)=(s16)px;*(s16 *)(n->sprite08+0x2e)=(s16)y;n=n->next00;px+=10;}
 }
@@ -116,5 +116,5 @@ void SpriteNumberGroup_SetPosition(SpriteNumberGroup *self,s32 x,s32 y)
 /* Show sprites by clearing flag bit 2 when visible is nonzero, or hide them by setting it when zero. */
 void SpriteNumberGroup_SetVisible(SpriteNumberGroup *self,s32 visible)
 {
-    SpriteNode *n=self->nodes04.head08;while(n){u16 *f=(u16 *)(n->sprite08+0x24);if(visible)*f&=(u16)~4;else *f|=4;n=n->next00;}
+    SpriteNode *n=self->nodes04.head04;while(n){u16 *f=(u16 *)(n->sprite08+0x24);if(visible)*f&=(u16)~4;else *f|=4;n=n->next00;}
 }
