@@ -86,14 +86,14 @@ void GraphicsImmediateEffectRenderer_SetupProjection(void *context)
 
 /*
  * Submit one textured quadrilateral. Position and scale are borrowed vec-fx32
- * objects; texture bounds and vertex region each contain four s32 values.
+ * objects; vertex bounds and texture region each contain four s32 values.
  * Geometry is culled when its projected depth exceeds 0x200. All G3 writes
  * are synchronous and the final signed parameter supplies vertex depth.
  */
 void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *context, const VecFx32Object *position,
                    const VecFx32Object *scale, u16 angle,
-                   const s32 *textureBounds, u32 resource,
-                   const s32 *region, u16 color, s32 parameter)
+                   const s32 *vertexBounds, u32 resource,
+                   const s32 *textureRegion, u16 color, s32 parameter)
 {
     const u8 *bytes = (const u8 *)context;
     s32 originX = *(const s32 *)(bytes + 0x88);
@@ -131,22 +131,22 @@ void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *context, const VecFx
     TingleNativeG3_Color(color);
 #endif
 
-    G3Command_SubmitTexCoord(textureBounds[0], textureBounds[1]);
-    G3Command_SubmitVertex16((s16)region[0], (s16)region[1], (s16)parameter);
-    G3Command_SubmitTexCoord(textureBounds[0], textureBounds[3]);
-    REG_G3_VTX_XY = PackSignedXY((s16)region[0], (s16)region[3]);
+    G3Command_SubmitTexCoord(textureRegion[0], textureRegion[1]);
+    G3Command_SubmitVertex16((s16)vertexBounds[0], (s16)vertexBounds[1], (s16)parameter);
+    G3Command_SubmitTexCoord(textureRegion[0], textureRegion[3]);
+    REG_G3_VTX_XY = PackSignedXY((s16)vertexBounds[0], (s16)vertexBounds[3]);
 #ifndef MATCHING
-    TingleNativeG3_VertexXY(PackSignedXY((s16)region[0], (s16)region[3]));
+    TingleNativeG3_VertexXY(PackSignedXY((s16)vertexBounds[0], (s16)vertexBounds[3]));
 #endif
-    G3Command_SubmitTexCoord(textureBounds[2], textureBounds[3]);
-    REG_G3_VTX_XY = PackSignedXY((s16)region[2], (s16)region[3]);
+    G3Command_SubmitTexCoord(textureRegion[2], textureRegion[3]);
+    REG_G3_VTX_XY = PackSignedXY((s16)vertexBounds[2], (s16)vertexBounds[3]);
 #ifndef MATCHING
-    TingleNativeG3_VertexXY(PackSignedXY((s16)region[2], (s16)region[3]));
+    TingleNativeG3_VertexXY(PackSignedXY((s16)vertexBounds[2], (s16)vertexBounds[3]));
 #endif
-    G3Command_SubmitTexCoord(textureBounds[2], textureBounds[1]);
-    REG_G3_VTX_XY = PackSignedXY((s16)region[2], (s16)region[1]);
+    G3Command_SubmitTexCoord(textureRegion[2], textureRegion[1]);
+    REG_G3_VTX_XY = PackSignedXY((s16)vertexBounds[2], (s16)vertexBounds[1]);
 #ifndef MATCHING
-    TingleNativeG3_VertexXY(PackSignedXY((s16)region[2], (s16)region[1]));
+    TingleNativeG3_VertexXY(PackSignedXY((s16)vertexBounds[2], (s16)vertexBounds[1]));
 #endif
 
     REG_G3_END_VTXS = 0;
