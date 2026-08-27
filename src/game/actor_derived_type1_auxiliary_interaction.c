@@ -9,6 +9,7 @@ extern void *gSceneManager;
 extern u8 gActorRuntimeCollection[];
 extern u8 gActorRuntimeFlags[];
 extern const char data_020df48c[];
+extern s32 data_020e1964[];
 extern void *gGameWork;
 extern u8 *gGamePhaseRuntime;
 
@@ -32,6 +33,7 @@ extern void ActorAttachmentManager_Destroy(void *manager);
 extern void AuxiliaryInteraction_BuildTerminalVector(
     void *outputPosition, void *interactionPointer);
 extern void GameWork_SetFlag(void *work, u32 flag);
+extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
 extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
@@ -168,6 +170,7 @@ extern void *func_02007f0c(void *scene, s32 value);
 extern void func_0202de90(void *actorCollection);
 extern void ActorAttachmentEventList_InsertByPriority(void *queue, const void *event);
 extern void ActorAttachmentManager_QueueEvent(void *manager, const void *event);
+extern void ActorAttachmentEventQueue_Append(void *queue, const void *event);
 extern void ActorAttachmentRecord_ConfigureHitInterval(void *record, s32 first, s32 second);
 extern void *TimedActorRectanglePresentation_Init(void *effect, void *actor, s32 amount,
                            s32 variant, s32 duration);
@@ -588,6 +591,182 @@ void *ActorAttachmentRecord_InitType7(void *object, void *manager, void *actor, 
     *(s32 *)(self + 8) = 2;
     (*(void (**)(void *))(*(u8 **)self + 0))(self);
     return self;
+}
+
+/*
+ * Initialize the type-seven attachment's health, pacing, and retained
+ * progress state from its actor definition. Health and pacing values are
+ * integer counters; the GameWork halfword and flag are updated exactly once.
+ */
+void func_0206a1b0(void *object)
+{
+    u8 *self = (u8 *)object;
+    u8 *actor = *(u8 **)(self + 0x1d0);
+    u8 *definition = *(u8 **)(actor + 0x29c);
+    s32 progress;
+
+    *(s32 *)(self + 0x1e4) = *(s16 *)(definition + 0);
+    *(s32 *)(self + 0x14) = *(s32 *)(actor + 0x200);
+    *(s32 *)(self + 0x18) = *(s32 *)(actor + 0x1fc);
+    *(s32 *)(self + 0x1c) = *(u16 *)(definition + 0x22);
+    *(s32 *)(self + 0x20) = *(u16 *)(definition + 0x24);
+    progress = *(u16 *)(definition + 0x26) + data_020e1964[1];
+    if (progress > 100)
+        progress = 100;
+    else if (progress < 0)
+        progress = 0;
+    *(s32 *)(self + 0x1e0) = progress;
+    *(s32 *)(actor + 0x1fc) = *(s32 *)(self + 0x18);
+    *(s32 *)(self + 0x1d8) = 0;
+    *(s32 *)(self + 0x1d4) = 0;
+    *(s32 *)(self + 0x1dc) = *(s32 *)(self + 0x18);
+    ActorAttachmentCounter_Init(self + 0x1c8, *(s32 *)(self + 0x20));
+    if (*(u16 *)(actor + 0x4e) == 0x63)
+        *(s32 *)(self + 0x24) = 100;
+    else
+        ActorAttachmentRecord_ConfigureHitInterval(self, 0, 0);
+    *(u16 *)((u8 *)gGameWork + 0x21e) = (u16)*(s32 *)(self + 0x18);
+    GameWork_SetFlag(gGameWork, 0x3f9);
+}
+
+/*
+ * Clamp a signed health delta for a type-seven attachment and mirror the
+ * resulting integer health to its actor. Protected actors retain one health.
+ */
+void func_0206a4b4(void *object, s32 delta)
+{
+    u8 *self = (u8 *)object;
+    u8 *actor = *(u8 **)(self + 0x1d0);
+    s32 current = *(s32 *)(actor + 0x1fc);
+    s32 updated = current + delta;
+
+    *(s32 *)(self + 0x18) = current;
+    if (updated <= 0)
+        *(s32 *)(self + 0x18) = 0;
+    else if (updated >= *(s32 *)(self + 0x14))
+        *(s32 *)(self + 0x18) = *(s32 *)(self + 0x14);
+    else
+        *(s32 *)(self + 0x18) = updated;
+    if ((*(u32 *)(actor + 0xd0) & 0x20000) != 0 &&
+        *(s32 *)(self + 0x18) == 0)
+        *(s32 *)(self + 0x18) = 1;
+    *(s32 *)(actor + 0x1fc) = *(s32 *)(self + 0x18);
+}
+
+/*
+ * Consume one manager damage event for a type-seven attachment. Damage is
+ * scaled by inverse progress percentage and rounded upward; subtype 0x25b
+ * uses retail's terminal 100000-point delta. Returns whether health is zero.
+ */
+s32 func_0206a2a4(void *object, const void *eventObject)
+{
+    u8 *self = (u8 *)object;
+    const s32 *event = (const s32 *)eventObject;
+
+    if ((*(u32 *)(self + 0x10) & 4) != 0)
+        return 0;
+    if (event[0] == 1 && !ActorAttachmentRecord_ConsumeScheduledHit(self) &&
+        event[5] > 0) {
+        if (*(s32 *)(self + 0x1e4) == 0x25b) {
+            func_0206a4b4(self, -100000);
+        } else {
+            s32 product = event[5] * (100 - *(s32 *)(self + 0x1e0));
+            s32 damage = product / 100;
+            if (product % 100 != 0)
+                damage++;
+            func_0206a4b4(self, -damage);
+        }
+    }
+    return *(s32 *)(self + 0x18) == 0;
+}
+
+/*
+ * Queue each paced attack produced by a live type-seven attachment. The event
+ * mask excludes this record and the selected type-one record; damage and
+ * timing remain integer gameplay units owned by the attachment manager.
+ */
+void func_0206a368(void *object)
+{
+    u8 *self = (u8 *)object;
+
+    if ((*(u32 *)(self + 0x10) & 2) != 0 || *(s32 *)(self + 0x18) == 0)
+        return;
+    for (;;) {
+        s32 cursor = ActorAttachmentCounter_Advance(self + 0x1c8);
+        u32 event[6];
+        u32 mask = ~(1u << (*(u32 *)(self + 0x0c) & 0xff));
+        s32 selected = *(s32 *)(*(u8 **)(self + 4) + 0x8c);
+        if (cursor < 0)
+            break;
+        if (selected >= 0)
+            mask &= ~(1u << ((u32)selected & 0xff));
+        event[0] = 1;
+        event[1] = 0;
+        event[2] = (u32)cursor;
+        event[3] = (u32)self;
+        event[4] = mask;
+        event[5] = *(u32 *)(self + 0x1c);
+        ActorAttachmentManager_QueueEvent(*(void **)(self + 4), event);
+    }
+}
+
+/*
+ * Accumulate type-seven health lost since the previous frame and publish one
+ * presentation event every forty live frames. Event amounts and health are
+ * integer units; the manager owns the copied event after append.
+ */
+void func_0206a408(void *object)
+{
+    u8 *self = (u8 *)object;
+    s32 current = *(s32 *)(self + 0x18);
+
+    if (current != 0) {
+        if (current < *(s32 *)(self + 0x1dc))
+            *(s32 *)(self + 0x1d8) += *(s32 *)(self + 0x1dc) - current;
+        *(s32 *)(self + 0x1dc) = current;
+        if (++*(s32 *)(self + 0x1d4) >= 40) {
+            u32 event[3];
+            ActorAttachmentSubtableEntry_Init(event);
+            event[0] = 5;
+            event[1] = *(u32 *)(self + 0x1d8);
+            ActorAttachmentEventQueue_Append(
+                *(void **)(*(u8 **)(self + 4) + 0xc4), event);
+            *(s32 *)(self + 0x1d4) = 0;
+            *(s32 *)(self + 0x1d8) = 0;
+        }
+        *(u16 *)((u8 *)gGameWork + 0x21e) = (u16)current;
+    }
+}
+
+/*
+ * Finalize a type-seven attachment by mirroring retained health and clearing
+ * the GameWork flag installed by its initializer.
+ */
+void func_0206a514(void *object)
+{
+    u8 *self = (u8 *)object;
+    *(s32 *)(*(u8 **)(self + 0x1d0) + 0x1fc) = *(s32 *)(self + 0x18);
+    GameWork_ClearFlag(gGameWork, 0x3f9);
+}
+
+/* Free a type-seven attachment record and return its former address. */
+void *func_0206a540(void *object)
+{
+    Heap_Free(object);
+    return object;
+}
+
+/* Type-seven attachment records do not expose a reward descriptor. */
+void *func_0206a554(void *object)
+{
+    (void)object;
+    return 0;
+}
+
+/* Retail type-seven post-update hook; this variant has no work. */
+void func_0206a55c(void *object)
+{
+    (void)object;
 }
 
 /*
@@ -1312,6 +1491,34 @@ void AuxiliaryInteraction_SelectPresentationVariant(void *object)
 {
     u8 *self = (u8 *)object;
     *(u16 *)(self + 0x24) = (*(u16 *)(self + 0x24) & 0x03c0) | 0x141e;
+}
+
+/*
+ * Admit one actor to an auxiliary interaction's three-entry participant list.
+ * When requested, the attachment manager first creates its actor record. The
+ * admitted actor is prepared through virtual slot 0x7c; selection, sound, and
+ * interaction counters are observable game state. Returns one on admission
+ * and zero when the list is full or the manager rejects the actor.
+ */
+s32 func_0206cc68(void *object, void *actor, s32 admitToManager)
+{
+    u8 *self = (u8 *)object;
+    s16 count = *(s16 *)(self + 0xa6);
+
+    if (count >= 3)
+        return 0;
+    if (admitToManager != 0 &&
+        ActorAttachmentManager_AdmitActor(*(void **)(self + 0x44), actor, -1) == 0)
+        return 0;
+    *(void **)(self + 0x48 + count * 4) = actor;
+    (*(void (**)(void *))(*(u8 **)actor + 0x7c))(actor);
+    *(s16 *)(self + 0xaa) = count;
+    *(s16 *)(self + 0xa6) = count + 1;
+    if (*(u8 *)(*(u8 **)(self + 0x10) + 0x4d) == 1)
+        *(s16 *)(self + 0xac) = 0;
+    AuxiliaryInteraction_SelectPresentationVariant(self);
+    AuxiliaryInteraction_PlaySpatialSound(self, 0x19);
+    return 1;
 }
 
 typedef struct AuxiliaryEffectConfig {
@@ -2298,12 +2505,12 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
 
     if (*(s16 *)(self + 0xa6) != 0 && *(s16 *)(self + 0x1a) < 2 &&
         *(s16 *)(self + 0xa8) == 0 && *(void **)(self + 0x34) == 0) {
-        u8 *descriptor = *(u8 **)(self + 0x48 + *(s16 *)(self + 0xaa) * 4);
+        u8 *actor = *(u8 **)(self + 0x48 + *(s16 *)(self + 0xaa) * 4);
         AuxiliaryEffectConfig config;
         s32 angle = *(u16 *)(self + 0x1e) >> 4;
         void *effect;
         u32 random;
-        initializeEffectConfig(&config, *(void **)(self + 0x0c), descriptor,
+        initializeEffectConfig(&config, *(void **)(self + 0x0c), actor + 0x1ec,
                                owner + 0x18);
         config.first[1] += gFx32CosSinTable[angle * 2 + 1] * 0x10;
         config.first[2] += gFx32CosSinTable[angle * 2] * 0x10 - 0x18000;

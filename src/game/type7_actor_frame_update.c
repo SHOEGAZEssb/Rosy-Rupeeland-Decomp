@@ -76,8 +76,9 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
  * to eight when +0x9c/+0xa0 is nonzero, and choose motion toward +0x284,
  * target +0x210 transform +0x18, +0x224, or current +0x3c/+0x40. Positive
  * +0x246 cancels velocity, decrements, and enters state 15. Target angular
- * separation controls +0x268 bit 0x800000; bit 0x80000 invokes Actor_UpdateGroundContactProbe
- * and vtable +0xa4. Finish Actor_SynchronizeStatePresentation/Type7Actor_UpdateAttachmentControllerAnimation, update signed timer
+ * separation controls +0x268 bit 0x800000; while bit 0x80000 is clear, invoke
+ * Actor_UpdateGroundContactProbe and vtable +0xa4. Finish
+ * Actor_SynchronizeStatePresentation/Type7Actor_UpdateAttachmentControllerAnimation, update signed timer
  * +0x250 with target/callback/motion-dependent penalties and clamping, tick
  * +0x256/+0x25a, move +0x264 toward zero (clearing +0x250), decrement +0x24e
  * and start +0x264 at 90 on expiry, reduce +0x266 by 20 toward zero, decrement
@@ -245,7 +246,7 @@ void Type7Actor_UpdateFrame(void *self)
     } else {
         *(u32 *)(actor + 0x268) &= ~0x800000u;
     }
-    if ((*(u32 *)(actor + 0x268) & 0x80000) != 0) {
+    if ((*(u32 *)(actor + 0x268) & 0x80000) == 0) {
         Actor_UpdateGroundContactProbe(actor);
         (*(void (**)(void *))(*(u8 **)actor + 0xa4))(actor);
     }
