@@ -52,7 +52,7 @@ typedef void (*ObjectCameraUpdate)(void *, const void *);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6a70;
+extern u8 data_020d6a70[];
 extern const char data_020d6a90[];
 extern const char data_020d6a98[];
 extern const char data_020d6aa0[];
