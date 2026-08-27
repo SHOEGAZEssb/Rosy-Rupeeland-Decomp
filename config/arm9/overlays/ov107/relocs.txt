@@ -94,7 +94,6 @@ from:0x0221fc74 kind:load to:0x0222362e module:overlay(107)
 from:0x0221fc80 kind:load to:0x02223672 module:overlay(107)
 from:0x0221fc8c kind:load to:0x02228bee module:overlay(107)
 from:0x0221fc9c kind:load to:0x0221fcb1 module:overlay(107)
-from:0x0221fd18 kind:load to:0x02002700 module:main
 from:0x0221fd3c kind:load to:0x022282b3 module:overlay(107)
 from:0x0221fd50 kind:load to:0x0221fd59 module:overlay(107)
 from:0x0221fd90 kind:load to:0x0221fd99 module:overlay(107)
