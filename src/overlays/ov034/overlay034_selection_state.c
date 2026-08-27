@@ -24,7 +24,7 @@ extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 start, s32
 extern void func_ov034_021fdf98(void *scene);
 extern void func_ov034_021fd978(void *owner);
 extern u32 genrand_int32(void);
-extern s32 func_020bf1f8(u32 value, s32 divisor);
+extern u64 func_020bf1f8(u32 value, u32 divisor);
 extern void func_ov034_021fce00(void *object);
 #ifdef __cplusplus
 }
@@ -136,7 +136,7 @@ extern "C" void func_ov034_021fe668(void *scene)
     s32 choices[10];
     for (s32 i = 0; i < 10; ++i)
         choices[i] = data_ov034_021fe704[i];
-    s32 index = func_020bf1f8(genrand_int32(), 10);
+    s32 index = (s32)(func_020bf1f8(genrand_int32(), 10) >> 32);
     FIELD(s32, scene, 0x1b4) = choices[index];
 }
 
