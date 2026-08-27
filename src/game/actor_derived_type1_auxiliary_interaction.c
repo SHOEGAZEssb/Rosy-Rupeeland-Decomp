@@ -109,8 +109,7 @@ extern void AuxiliaryCoreHistoryRecord_ProjectSprite(void *record);
 extern s32 func_020adc40(s32 value);
 extern const s16 gFx32CosSinTable[];
 extern void *gTouchPanelManager;
-extern void *gSceneTouchInitialData;
-extern void TouchPanelManager_GetPoint(void *point, void *initialData);
+extern void TouchPanelManager_GetPoint(void *point, void *manager);
 extern void AuxiliaryCoreSprite_TrackParent(void *sprite, void *parent);
 extern void AuxiliaryCoreSprite_UpdatePresentation(void *sprite);
 extern s32 AuxiliaryCoreSprite_SelectAnimation(void *core, void *sprite);
@@ -1117,7 +1116,7 @@ void AuxiliaryCore_UpdateMotion(void *object, const void *requestedPosition)
     if (*(s16 *)(self + 0x2de) != 0 &&
         *(s16 *)((u8 *)gTouchPanelManager + 0x44) == 1 &&
         *(s16 *)((u8 *)gTouchPanelManager + 0x3c) != 1) {
-        TouchPanelManager_GetPoint(touch, gSceneTouchInitialData);
+        TouchPanelManager_GetPoint(touch, gTouchPanelManager);
         touch[1] = *(s16 *)(*(u8 **)(*(u8 **)(self + 4) + 0x34) + 0x2c) - touch[1];
         touch[2] = *(s16 *)(*(u8 **)(*(u8 **)(self + 4) + 0x34) + 0x2e) - touch[2];
         if (func_020adc40((touch[1] * touch[1] + touch[2] * touch[2]) * 0x1000) <
