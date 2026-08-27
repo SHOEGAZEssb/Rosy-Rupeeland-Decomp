@@ -201,13 +201,14 @@ void Type7Actor_UpdateFrame(void *self)
         }
         {
             s32 adjustment = *(s32 *)(actor + 0x20c);
+            u8 *object = actor + (adjustment >> 1);
+            void (*callback)(void *);
             if ((adjustment & 1) != 0) {
-                u8 *object = actor + (adjustment >> 1);
                 s32 slot = *(s32 *)(actor + 0x208);
-                (*(void (**)(void *))(*(u8 **)object + slot))(object);
-            } else {
-                ((void (*)(s32))*(u32 *)(actor + 0x208))(adjustment);
-            }
+                callback = *(void (**)(void *))(*(u8 **)object + slot);
+            } else
+                callback = (void (*)(void *))*(u32 *)(actor + 0x208);
+            callback(object);
         }
         if ((*(s32 *)(actor + 0x9c) != 0 || *(s32 *)(actor + 0xa0) != 0)
             && (u16)(*(s16 *)(actor + 0xd6) - 1) <= 1) {
