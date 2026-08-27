@@ -176,7 +176,7 @@ void Type7Actor_UpdateFrame(void *self)
     target = *(u8 **)(actor + 0x280);
     if (target != 0) {
         (*(void (**)(void *, void *, void *))(*(u8 **)target + 0xb4))(
-            target, temporary, actor);
+            temporary, target, actor);
         VecFx32Object_Assign(actor + 0x214, temporary);
         VecFx32Object_Destroy(temporary);
     }
