@@ -1,3 +1,8 @@
 {
-  "func_0206ec68": "Overlay34RuntimeScene_Init"
+  "func_0206ec68": "Overlay34RuntimeScene_Init",
+  "func_0206ed14": "Overlay34RuntimeScene_Destroy",
+  "func_0206ed88": "Overlay34RuntimeScene_Delete",
+  "func_0206ee04": "Overlay34RuntimeScene_Update",
+  "func_0206eee8": "Overlay34RuntimeScene_ForwardMethod0C",
+  "func_0206ef0c": "Overlay34ResultScene_Init"
 }

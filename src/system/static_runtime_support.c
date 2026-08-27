@@ -425,6 +425,18 @@ void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z)
     PresentationScalar_SetImmediate(bytes + 0x2c, z);
 }
 
+/* Set the recovered presentation rotation triplet (retail 0x02094BF0). The
+ * caller retains the presentation; the three angles use the presentation's
+ * native fixed-point/angular units and take effect on its next sync. */
+void func_02094bf0(void *object, s32 x, s32 y, s32 z)
+{
+    u8 *bytes = (u8 *)object;
+
+    PresentationScalar_SetImmediate(bytes + 0x3c, x);
+    PresentationScalar_SetImmediate(bytes + 0x4c, y);
+    PresentationScalar_SetImmediate(bytes + 0x5c, z);
+}
+
 extern s32 Presentation_InterpolateSmoothStep(s32 start, s32 end, s32 duration, s32 elapsed);
 extern s32 Presentation_InterpolateLinear(s32 start, s32 end, s32 duration, s32 elapsed);
 extern s32 Presentation_InterpolateQuadraticPulse(s32 start, s32 end, s32 duration, s32 elapsed);

@@ -30,6 +30,7 @@ extern void func_ov034_021fd6f4(void *owner);
 #endif
 
 typedef void (*Overlay034VoidMethod)(void *object);
+typedef s32 (*Overlay034ResultMethod)(void *object);
 
 /* Calls the deleting virtual at vtable +4 when an owned pointer is non-null. */
 static void destroy_owned(void *object)
@@ -100,19 +101,20 @@ extern "C" void func_ov034_021fde6c(void *scene)
 /*
  * Invokes the two-word callback representation at +0x1C0/+0x1C4. The low bit
  * of +0x1C4 selects a vtable lookup; the remaining bits arithmetically halved
- * adjust `scene`. Returns no explicit value; callback side effects are opaque.
+ * adjust `scene`. Returns the callback's result unchanged; callback side
+ * effects are opaque.
  */
-extern "C" void func_ov034_021fdf6c(void *scene)
+extern "C" s32 func_ov034_021fdf6c(void *scene)
 {
     s32 encoded = FIELD(s32, scene, 0x1c4);
     void *adjusted = (u8 *)scene + (encoded >> 1);
-    Overlay034VoidMethod method;
+    Overlay034ResultMethod method;
     if (encoded & 1)
-        method = FIELD(Overlay034VoidMethod, FIELD(void *, adjusted, 0),
+        method = FIELD(Overlay034ResultMethod, FIELD(void *, adjusted, 0),
                        FIELD(s32, scene, 0x1c0));
     else
-        method = FIELD(Overlay034VoidMethod, scene, 0x1c0);
-    method(adjusted);
+        method = FIELD(Overlay034ResultMethod, scene, 0x1c0);
+    return method(adjusted);
 }
 
 /*
