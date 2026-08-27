@@ -92,6 +92,14 @@ void ProgressionFlags_SetPayCmm01Completion(void)
     GameWork_SetFlag(gGameWork, 0x758);
 }
 
+/* Satisfy the paired retail gate used by the hero-statue entry callback. The
+ * call borrows gGameWork and sets flags 0x25b and 0x764. */
+void ProgressionFlags_SetGate25BAnd764(void)
+{
+    GameWork_SetFlag(gGameWork, 0x25b);
+    GameWork_SetFlag(gGameWork, 0x764);
+}
+
 /* Satisfy the paired retail gate tested by ProgressionFlags_TestGate396_765.
  * The call borrows gGameWork and sets flags 0x396 and 0x765. */
 void ProgressionFlags_SetGate396And765(void)
