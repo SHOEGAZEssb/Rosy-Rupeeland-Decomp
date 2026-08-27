@@ -17,6 +17,14 @@ extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As3D);
 }
 #endif
 
+/* Preserve retail's compiler-specific shift/sign sequence for matching builds;
+ * host MSVC otherwise tests bit 31 instead of the encoded 3D-mode bit 23. */
+#ifdef MATCHING
+#define PHASE_CONFIGURATION_USES_3D(flags) ((s32)((flags) << 8) < 0)
+#else
+#define PHASE_CONFIGURATION_USES_3D(flags) (((flags) & 0x00800000u) != 0)
+#endif
+
 typedef void (*PhaseVirtualMethod)(void *self);
 typedef void (*PhaseVirtualValueMethod)(void *self, s32 value);
 
@@ -105,7 +113,7 @@ void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode)
     const u8 *config = (const u8 *)self->configuration;
     void *render;
     func_020ae9a4(self);
-    if ((s32)(*(u32 *)(config + 0x40) << 8) < 0) {
+    if (PHASE_CONFIGURATION_USES_3D(*(u32 *)(config + 0x40))) {
         GX_SetBankForBG(0x10);
         GX_SetGraphicsMode(6, 0, 1);
     } else {
@@ -114,7 +122,7 @@ void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode)
     }
     *(volatile u32 *)0x04000000 &= ~0x38000000;
     render = RuntimePresentationManager_GetGraphics3dPresentation(&self->presentationManager);
-    if ((s32)(*(u32 *)(config + 0x40) << 8) < 0 && use3dMode)
+    if (PHASE_CONFIGURATION_USES_3D(*(u32 *)(config + 0x40)) && use3dMode)
         Graphics3dPresentation_Enable(render, 1, 1);
     else
         Graphics3dPresentation_Disable(render, 1, 0);

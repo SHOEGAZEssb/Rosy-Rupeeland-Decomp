@@ -14,13 +14,16 @@ typedef struct OverlayWorkerPresentation {
     u32 dispatchState;
     s32 state08;
     u8 *worker0c;
-    u8 sharedResource10[0x34];
+    u8 sharedResource10[0x0c];
 } OverlayWorkerPresentation;
+
+typedef char OverlayWorkerPresentationSizeCheck[
+    sizeof(OverlayWorkerPresentation) == 0x1c ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6304;
+extern u8 data_020d6304[];
 extern const char gOverlayWorkerAllocationTag[];
 extern void *gGameWork;
 extern s32 data_021055cc;
@@ -31,7 +34,7 @@ extern void OverlaySlot_UnloadOverlay(void *resource);
 extern void OverlaySlot_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
-extern void *func_ov043_0220b740(void *worker, s32 first, s32 second,
+extern void *func_ov047_0220b740(void *worker, s32 first, s32 second,
                                 s32 third, s32 fourth);
 extern void func_ov047_0220ba64(void *worker);
 extern void func_ov047_0220baa8(void *worker);
@@ -64,7 +67,7 @@ OverlayWorkerPresentation *OverlayWorkerPresentation_Init(
     }
     worker = (u8 *)Heap_Alloc(0x44, gOverlayWorkerAllocationTag, 4, &gHeapContext);
     if (worker != 0) {
-        func_ov043_0220b740(worker, first, second, third, fourth);
+        func_ov047_0220b740(worker, first, second, third, fourth);
     }
     self->worker0c = worker;
     func_ov047_0220bda8(worker);

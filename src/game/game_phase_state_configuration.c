@@ -37,6 +37,14 @@ typedef struct PhaseConfiguration {
     u32 flags40;
 } PhaseConfiguration;
 
+/* MWCC emits retail's shift/sign test, while MSVC folds that source expression
+ * into a test of bit 31. Use the equivalent explicit bit-23 mask on hosts. */
+#ifdef MATCHING
+#define PHASE_CONFIGURATION_USES_3D(flags) ((s32)((flags) << 8) < 0)
+#else
+#define PHASE_CONFIGURATION_USES_3D(flags) (((flags) & 0x00800000u) != 0)
+#endif
+
 /*
  * Configure the main BG bank and graphics mode according to configuration
  * flag bit 23, reset the phase-state render helpers, then apply the complete
@@ -50,7 +58,7 @@ void GamePhaseState_ConfigureForPhase(GamePhaseState *self, const void *configur
     void *render;
 
     self->configuration = (void *)configuration;
-    if ((s32)(config->flags40 << 8) < 0) {
+    if (PHASE_CONFIGURATION_USES_3D(config->flags40)) {
         GX_SetBankForBG(0x10);
         GX_DisableBankForLCDC();
         GX_SetGraphicsMode(1, 0, 1);

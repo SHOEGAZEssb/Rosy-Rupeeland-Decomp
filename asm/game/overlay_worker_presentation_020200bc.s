@@ -8,7 +8,7 @@
 .extern OverlaySlot_Init
 .extern OverlaySlot_LoadOverlay
 .extern FieldEffect_Init
-.extern func_ov043_0220b740
+.extern func_ov047_0220b740
 .extern func_ov047_0220bda8
 .extern gGameWork
 .extern gHeapContext
@@ -50,7 +50,7 @@ OverlayWorkerPresentation_Init: ; 0x020200bc
     mov r2, r5
     mov r3, r4
     str ip, [sp, #0x0]
-    bl func_ov043_0220b740
+    bl func_ov047_0220b740
 .L_02020144:
     str r0, [r7, #0xc]
     bl func_ov047_0220bda8

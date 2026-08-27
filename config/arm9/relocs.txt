@@ -4844,7 +4844,7 @@ from:0x020200e0 kind:arm_call to:0x02006268 module:main
 from:0x020200f0 kind:arm_call to:0x0200199c module:main
 from:0x0202010c kind:arm_call to:0x020062a0 module:main
 from:0x02020120 kind:arm_call to:0x02003e14 module:main
-from:0x02020140 kind:arm_call to:0x0220b740 module:overlays(43,44,45,46,47,48,49)
+from:0x02020140 kind:arm_call to:0x0220b740 module:overlay(47)
 from:0x02020148 kind:arm_call to:0x0220bda8 module:overlay(47)
 from:0x0202016c kind:load to:0x020d6304 module:main
 from:0x02020170 kind:load to:0x020f3780 module:main
