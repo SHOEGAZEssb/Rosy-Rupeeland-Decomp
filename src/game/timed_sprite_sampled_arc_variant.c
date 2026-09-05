@@ -22,7 +22,8 @@ typedef struct SampledArcTimedSprite {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d60ac;
+/* This symbol is the vtable storage, not a pointer variable. */
+extern u8 data_020d60ac[];
 extern SampledArcTimedSprite *TimedSpritePresentation_Init(SampledArcTimedSprite *self,
                                             u8 *config);
 extern SampledArcTimedSprite *TimedSpritePresentation_DestroyBase(SampledArcTimedSprite *self);

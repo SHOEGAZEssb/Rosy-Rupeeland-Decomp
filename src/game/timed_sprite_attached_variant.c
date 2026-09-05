@@ -33,7 +33,8 @@ struct AttachedTimedSprite {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6138;
+/* This symbol is the vtable storage, not a pointer variable. */
+extern u8 data_020d6138[];
 extern const s16 gFx32CosSinTable[];
 extern AttachedTimedSprite *TimedSpritePresentation_Init(AttachedTimedSprite *self,
                                           u8 *config);

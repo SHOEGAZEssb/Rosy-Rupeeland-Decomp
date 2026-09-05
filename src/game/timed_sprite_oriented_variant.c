@@ -9,7 +9,8 @@ typedef struct OrientedTimedSprite { void *vtable; u8 *sprite; Track first08; Tr
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d605c;
+/* This symbol is the vtable storage, not a pointer variable. */
+extern u8 data_020d605c[];
 extern OrientedTimedSprite *TimedSpritePresentation_Init(OrientedTimedSprite *self,u8 *config);
 extern OrientedTimedSprite *TimedSpritePresentation_DestroyBase(OrientedTimedSprite *self);
 extern void TimedSpritePresentation_SetVisible(OrientedTimedSprite *self,s32 enabled);

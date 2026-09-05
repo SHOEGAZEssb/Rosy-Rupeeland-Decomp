@@ -2383,7 +2383,7 @@ s32 ActorAttachmentManager_Update(void *object)
  * frames, positions are Q12, and all allocation/manager/audio calls retain
  * their retail ownership and observable effects.
  */
-s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
+s32 AuxiliaryInteraction_RunSelectedSequence(void *object)
 {
     u8 *self = (u8 *)object;
     u8 *owner = *(u8 **)(self + 0x10);
@@ -2396,7 +2396,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
     *(u32 *)(self + 0x20) &= ~2u;
     maximum = 0x100;
     if (owner[0x4d] == 1) {
-        selectedIndex = *(s32 *)(manager + 0x90);
+        s32 selectedIndex = *(s32 *)(manager + 0x90);
         if (selectedIndex != -1) {
             *(u16 *)(core + 0x2ee) |= 4;
             maximum = 0x120;

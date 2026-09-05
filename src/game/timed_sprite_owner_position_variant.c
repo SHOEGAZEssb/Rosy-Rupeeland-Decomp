@@ -26,7 +26,8 @@ typedef struct OwnerPositionTimedSprite {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d60d8;
+/* This symbol is the vtable storage, not a pointer variable. */
+extern u8 data_020d60d8[];
 extern OwnerPositionTimedSprite *AttachedTimedSprite_Init(
     OwnerPositionTimedSprite *self, u8 *owner, u8 *config, s32 spriteValue);
 extern OwnerPositionTimedSprite *TimedSpritePresentation_DestroyBase(

@@ -15,7 +15,8 @@ typedef struct TimedSpritePresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6098;
+/* This symbol is the vtable storage, not a pointer variable. */
+extern u8 data_020d6098[];
 extern void VecFx32Object_InitComponents(PresentationTrack *track,s32 first,s32 second,s32 third);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Add(PresentationTrack *first,PresentationTrack *second);

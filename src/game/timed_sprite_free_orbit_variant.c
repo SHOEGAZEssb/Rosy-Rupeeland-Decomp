@@ -36,7 +36,8 @@ struct FreeOrbitTimedSprite {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d60f8;
+/* This symbol is the vtable storage, not a pointer variable. */
+extern u8 data_020d60f8[];
 extern FreeOrbitTimedSprite *OrbitTimedSprite_InitBase(FreeOrbitTimedSprite *self,
                                            u8 *owner, u8 *config,
                                            s32 spriteValue,
