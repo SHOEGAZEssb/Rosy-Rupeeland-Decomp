@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 62 owns three related actor-transition scenes. They share fixed-
  * point vector helpers and animate an actor plus attached sprites before
@@ -18,19 +19,21 @@ extern u8 data_ov062_02211ba4[], data_ov062_02211bd0[];
 extern u8 data_ov062_02211bd8[], data_ov062_02211be8[];
 extern u8 data_ov062_02211bf4[], data_ov062_02211c14[];
 extern u8 data_ov062_02211c40[];
-extern void *gHeapContext, *gSceneManager, *gGamePhaseRuntime;
-extern void *gSoundContext, *gFx32CosSinTable;
-#define data_020f4db0 gHeapContext
+extern void *gSceneManager, *gGamePhaseRuntime;
+extern void *gSoundContext;
+extern const s16 gFx32CosSinTable[];
+/* The retail literal is the heap object address, not its storage field. */
+#define data_020f4db0 (&gHeapContext)
 #define data_020f4e00 gSceneManager
 #define data_02105860 gSoundContext
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void Scene_Init(...), Scene_Destroy(...), Heap_Free(...);
-extern void *SceneManager_GetCurrent(...), *Heap_Alloc(...);
+extern void Scene_Init(...), Scene_Destroy(...);
+extern void *SceneManager_GetCurrent(...);
 extern void Scene_SetFlags03(...), Scene_ClearFlags03(...);
-extern void VecFx32Object_InitComponents(...), VecFx32Object_Destroy(...);
+extern void VecFx32Object_Init(...), VecFx32Object_Destroy(...);
 extern void func_020064b8(...), func_020050a4(...);
 #define VecFx32Object_Lerp func_020064b8
 extern void func_0200634c(...), func_0200637c(...);
@@ -50,6 +53,7 @@ extern void func_02002290(...), func_020030c4(...), func_02003030(...);
 }
 #endif
 
+/* Read a signed word from the overlay constant data. */
 static s32 Ov62_DataWord(const u8 *symbol) { return *(const s32 *)symbol; }
 static void Ov62_Call(void *object, s32 offset) {
   if (object != 0)
@@ -73,28 +77,28 @@ void func_ov062_0220fd30(void *descriptor, s32 hidden) {
 /* Initialize a vector and scale its payload by a 20.12 factor. */
 void func_ov062_0220fd50(void *out, const void *source, s32 scale) {
   s32 i;
-  VecFx32Object_InitComponents(out);
+  VecFx32Object_Init(out);
   for (i = 0; i < 3; i++)
     F(s32, out, 4 + i * 4) =
         (s32)(((s64)F(const s32, source, 4 + i * 4) * scale + 0x800) >> 12);
 }
 
-/* Initialize out and derive its displacement from two nullable vectors. */
+/* Initialize out and add the scaled endpoints to form the curve control point. */
 void func_ov062_0220fdbc(void *out, const void *from, const void *to) {
   s32 i;
-  VecFx32Object_InitComponents(out);
+  VecFx32Object_Init(out);
   for (i = 0; i < 3; i++)
-    F(s32, out, 4 + i * 4) = (to == 0 ? 0 : F(const s32, to, 4 + i * 4)) -
+    F(s32, out, 4 + i * 4) = (to == 0 ? 0 : F(const s32, to, 4 + i * 4)) +
                              (from == 0 ? 0 : F(const s32, from, 4 + i * 4));
 }
 
 /* Construct the 0x30-byte three-vector interpolation resource. */
 void *func_ov062_0220fdf4(void *resource, const void *from, const void *to,
                           const void *delta) {
-  VecFx32Object_InitComponents((u8 *)resource + 0x00);
-  VecFx32Object_InitComponents((u8 *)resource + 0x10);
-  VecFx32Object_InitComponents((u8 *)resource + 0x20);
-  func_0200634c(resource, from, to, delta, delta);
+  VecFx32Object_Init((u8 *)resource + 0x00);
+  VecFx32Object_Init((u8 *)resource + 0x10);
+  VecFx32Object_Init((u8 *)resource + 0x20);
+  func_0200634c(resource, from, to, delta);
   return resource;
 }
 
@@ -111,12 +115,13 @@ s32 func_ov062_0220fe58(const void *actor) {
          F(const void *, actor, 0x24) == F(const void *, actor, 0x1dc);
 }
 
-static void *Ov62_CreateMotion(void *actor, const void *target, const u8 *a,
-                               const u8 *b, const u8 *tag) {
+/* Allocate the three-vector curve using the retail immediate scale factors. */
+static void *Ov62_CreateMotion(void *actor, const void *target, s32 fromScale,
+                               s32 toScale, const char *tag) {
   u8 from[16], to[16], delta[16];
   void *motion;
-  func_ov062_0220fd50(from, (u8 *)actor + 0x18, Ov62_DataWord(a));
-  func_ov062_0220fd50(to, target, Ov62_DataWord(b));
+  func_ov062_0220fd50(from, (u8 *)actor + 0x18, fromScale);
+  func_ov062_0220fd50(to, target, toScale);
   func_ov062_0220fdbc(delta, from, to);
   motion = Heap_Alloc(0x30, tag, 4, data_020f4db0);
   if (motion != 0)
@@ -142,7 +147,7 @@ void *func_ov062_0220fe78(void *scene, const void *target, s32 duration,
   F(s32, scene, 0x40) = amplitude;
   F(void *, scene, 0x44) = callbackOwner;
   F(s32, scene, 4) = 14;
-  actor = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
+  actor = F(void *, gGamePhaseRuntime, 0x2ea4);
   F(void *, scene, 0x24) = actor;
   F(u32, actor, 0x230) = (F(u32, actor, 0x230) & ~4u) | 0x100;
   F(u32, actor, 0x14) |= 2;
@@ -151,16 +156,16 @@ void *func_ov062_0220fe78(void *scene, const void *target, s32 duration,
   func_ov062_0220fd20((u8 *)actor + 0x98, 0, 0, 0);
   func_ov062_0220fd30((u8 *)actor + 0x2a8, 0);
   F(void *, scene, 0x30) =
-      Ov62_CreateMotion(actor, target, data_ov062_02211b00, data_ov062_02211b08,
-                        data_ov062_02211b60);
+      Ov62_CreateMotion(actor, target, 0x266, 0xd9a,
+                        (const char *)data_ov062_02211b60);
   angle = func_ov062_0220fe38(target, (u8 *)actor + 0x18);
   F(void *, scene, 0x2c) = func_02005580(
-      Heap_Alloc(0x10, data_ov062_02211b68, 4, data_020f4db0), 0, 0, 0);
+      Heap_Alloc(0x10, (const char *)data_ov062_02211b68, 4, data_020f4db0), 0, 0, 0);
   F(void *, scene, 0x28) = func_02005c3c(F(void *, F(void *, actor, 0x54), 0),
                                          F(void *, scene, 0x2c), 0, 0, 0, 2, 0);
   func_02072b68(F(void *, scene, 0x28), ((angle + 0x5000) >> 13) + 0x1c);
   if (func_ov062_0220fe58(actor))
-    func_0201f864(Heap_Alloc(0x14, data_ov062_02211b70, 4, data_020f4db0),
+    func_0201f864(Heap_Alloc(0x14, (const char *)data_ov062_02211b70, 4, data_020f4db0),
                   (u8 *)actor + 0x18, F(void *, F(void *, actor, 0x54), 0), 0,
                   1, 2, 0, 0x40, -1, 1);
   func_02059394(data_02105860, 0, 0x61);
@@ -242,13 +247,13 @@ s32 func_ov062_022104d0(void *scene) {
 }
 /* Route variant one through the global runtime callback. */
 s32 func_ov062_02210650(void) {
-  Ov62_Call(F(void *, gGamePhaseRuntime, 0), 0x0c);
+  Ov62_Call(gGamePhaseRuntime, 0x0c);
   return 0;
 }
 
 /* Construct variant two around a supplied actor and target vector. */
 void *func_ov062_02210674(void *scene, void *actor, const void *target,
-                          s32 duration, s32 amplitude, s32 restoreSprite,
+                          s32 amplitude, s32 duration, s32 restoreSprite,
                           void *callbackOwner) {
   Scene_Init(scene);
   F(void *, scene, 0) = data_ov062_02211ba4;
@@ -263,14 +268,14 @@ void *func_ov062_02210674(void *scene, void *actor, const void *target,
   func_ov062_0220fd20((u8 *)actor + 0x88, 0, 0, 0);
   func_ov062_0220fd20((u8 *)actor + 0x98, 0, 0, 0);
   F(void *, scene, 0x28) =
-      Ov62_CreateMotion(actor, target, data_ov062_02211b80, data_ov062_02211b8c,
-                        data_ov062_02211bd0);
+      Ov62_CreateMotion(actor, target, 0x266, 0xd9a,
+                        (const char *)data_ov062_02211bd0);
   if (F(u8, actor, 0xe6) == 1 || F(u8, actor, 0x4d) == 7)
     func_02032d64(actor, F(const s32, target, 4) - F(s32, actor, 0x1c),
                   F(const s32, target, 8) - F(s32, actor, 0x20));
-  func_0201f864(Heap_Alloc(0x14, data_ov062_02211bd8, 4, data_020f4db0),
-                (u8 *)actor + 0x18, F(void *, F(void *, actor, 0x54), 0), 0, 1,
-                2, 0, 4, -1, 1);
+  func_0201f864(Heap_Alloc(0x14, (const char *)data_ov062_02211bd8, 4, data_020f4db0),
+                (u8 *)actor + 0x18, F(void *, F(void *, actor, 0x54), 0), 0x162b, 0x162c,
+                0x162d, 0, 4, -1, 1);
   Scene_SetFlags03(scene);
   return scene;
 }
@@ -308,7 +313,7 @@ s32 func_ov062_022109d4(void *scene) {
 }
 /* Route variant two through the global runtime callback. */
 s32 func_ov062_02210b14(void) {
-  Ov62_Call(F(void *, gGamePhaseRuntime, 0), 0x0c);
+  Ov62_Call(gGamePhaseRuntime, 0x0c);
   return 0;
 }
 
@@ -319,14 +324,14 @@ void *func_ov062_02210b38(void *scene) {
   s32 tileClass, x, y, z, direction, animation;
   Scene_Init(scene);
   F(void *, scene, 0) = data_ov062_02211be8;
-  VecFx32Object_InitComponents((u8 *)scene + 0x24);
-  VecFx32Object_InitComponents((u8 *)scene + 0x34);
-  VecFx32Object_InitComponents((u8 *)scene + 0x44);
+  VecFx32Object_Init((u8 *)scene + 0x24);
+  VecFx32Object_Init((u8 *)scene + 0x34);
+  VecFx32Object_Init((u8 *)scene + 0x44);
   F(s32, scene, 0x70) = F(s32, scene, 0x74) = 0;
   F(s32, scene, 0x78) = 1;
   F(s32, scene, 4) = 12;
   F(s32, scene, 8) = 0;
-  actor = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
+  actor = F(void *, gGamePhaseRuntime, 0x2ea4);
   F(void *, scene, 0x58) = actor;
   F(u32, actor, 0x230) = (F(u32, actor, 0x230) & ~4u) | 0x100;
   F(u32, actor, 0x14) |= 2;
@@ -360,15 +365,15 @@ void *func_ov062_02210b38(void *scene) {
                 : direction == 1 ? 0x1000
                                  : 0);
   F(void *, scene, 0x5c) = func_02005580(
-      Heap_Alloc(0x10, data_ov062_02211bf4, 4, data_020f4db0), 0, 0, 0);
+      Heap_Alloc(0x10, (const char *)data_ov062_02211bf4, 4, data_020f4db0), 0, 0, 0);
   F(void *, scene, 0x60) = func_02005580(
-      Heap_Alloc(0x10, data_ov062_02211bf4, 4, data_020f4db0), 0, 0, 0);
+      Heap_Alloc(0x10, (const char *)data_ov062_02211bf4, 4, data_020f4db0), 0, 0, 0);
   F(void *, scene, 0x64) = func_02005c3c(F(void *, F(void *, actor, 0x54), 0),
                                          F(void *, scene, 0x5c), 0, 0, 0, 2, 0);
   func_02072b68(F(void *, scene, 0x64), animation);
   func_02005afc(F(void *, scene, 0x64), x, y, z, 4);
   F(void *, scene, 0x68) = func_02005580(
-      Heap_Alloc(0x10, data_ov062_02211c14, 4, data_020f4db0), 0, 0, 0);
+      Heap_Alloc(0x10, (const char *)data_ov062_02211c14, 4, data_020f4db0), 0, 0, 0);
   F(void *, scene, 0x6c) = func_02005c3c(F(void *, F(void *, actor, 0x54), 0),
                                          F(void *, scene, 0x68), 0, 0, 0, 4, 2);
   func_0205974c(data_02105860, 0x1b8);
@@ -515,6 +520,6 @@ s32 func_ov062_02211388(void *scene) {
 
 /* Route variant three through the global runtime callback. */
 s32 func_ov062_02211acc(void) {
-  Ov62_Call(F(void *, gGamePhaseRuntime, 0), 0x0c);
+  Ov62_Call(gGamePhaseRuntime, 0x0c);
   return 0;
 }
