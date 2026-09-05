@@ -32,7 +32,8 @@ extern "C" void *func_ov049_0220b780(void *object, void *owner,
     *(s32 *)(state + 0x88) = (mode == 0 || mode == 2) ? 3 : 7;
     const void *const *vtable = *(const void *const **)state;
     Overlay049PlaceMethod place = (Overlay049PlaceMethod)vtable[0];
-    for (s32 index = *(s32 *)(state + 0x88); index >= 0; --index) {
+    /* +0x88 is a count; the secondary sprites share palette 0x3299. */
+    for (s32 index = *(s32 *)(state + 0x88) - 1; index >= 0; --index) {
         s32 x;
         s32 y;
         if (index < 3) {
@@ -52,7 +53,7 @@ extern "C" void *func_ov049_0220b780(void *object, void *owner,
         *(s16 *)(state + 0xac + index * 2) = 0;
 
         void *secondary =
-            func_0209a208(object, 0x3299, 0x329a, 0x329b,
+            func_0209a208(object, 0x32ae, 0x3299, 0x32af,
                           resourceArgument, 2);
         *(void **)(state + 0x68 + index * 4) = secondary;
         place(object, secondary, x, index < 3 ? 0x23a000 : y - 0x1e000,

@@ -91,7 +91,7 @@ extern "C" void func_ov049_0220c0b8(void *object, s32 mode)
 {
     u8 *state = (u8 *)object;
     func_0209a2ac(object, 0, 1);
-    for (s32 index = *(s32 *)(state + 0x88); index >= 0; --index) {
+    for (s32 index = *(s32 *)(state + 0x88) - 1; index >= 0; --index) {
         func_0209a2ac(*(void **)(state + 0x4c + index * 4), mode, 1);
         func_0209a2ac(*(void **)(state + 0x68 + index * 4), mode, 1);
     }

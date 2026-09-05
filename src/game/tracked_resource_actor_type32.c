@@ -7,7 +7,7 @@ extern u8 gActorRuntimeCollection[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *TrackedResourceActor_Init(void *actor);
+extern void *TrackedResourceActor_Init(void *actor, const void *descriptor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
 extern void VecFx32Object_SetComponents(void *value, s32 x, s32 y, s32 z);
@@ -22,10 +22,11 @@ extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *ta
 #endif
 
 /* Construct the tracked-resource base, install the type-32 vtable, and return
- * caller-owned actor storage. Base construction initializes owned resources. */
-void *TrackedResourceActorType32_Init(void *actor)
+ * caller-owned actor storage. Forward the borrowed spawn descriptor so base
+ * geometry retains the effect position; base construction initializes resources. */
+void *TrackedResourceActorType32_Init(void *actor, const void *descriptor)
 {
-    TrackedResourceActor_Init(actor);
+    TrackedResourceActor_Init(actor, descriptor);
     *(u32 **)actor = gTrackedResourceActorType32Vtable;
     return actor;
 }

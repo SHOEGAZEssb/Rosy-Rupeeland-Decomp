@@ -1,11 +1,13 @@
 #include "tingle/types.h"
 
+/* Constructors forward the borrowed spawn descriptor through every base. */
+
 /* Recovered lifecycle wrappers for an impulse-oriented tracked-resource actor variant. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *TrackedResourceActor_Init(void *actor);
+extern void *TrackedResourceActor_Init(void *actor, const void *descriptor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
 extern u32 gTrackedResourceActorImpulseVtable[];
@@ -18,9 +20,9 @@ extern u32 gTrackedResourceActorImpulseVtable[];
  * vtable gTrackedResourceActorImpulseVtable, and returns the same storage. Engine-owned fields may
  * be initialized; no direct hardware access occurs.
  */
-void *TrackedResourceActorImpulse_InitBase(void *actor)
+void *TrackedResourceActorImpulse_InitBase(void *actor, const void *descriptor)
 {
-    TrackedResourceActor_Init(actor);
+    TrackedResourceActor_Init(actor, descriptor);
     *(u32 **)actor = gTrackedResourceActorImpulseVtable;
     return actor;
 }

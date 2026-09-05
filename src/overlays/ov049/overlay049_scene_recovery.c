@@ -21,7 +21,7 @@ extern "C" void VecFx32Object_Init(void *);
 extern "C" void VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern "C" void VecFx32Object_Destroy(void *);
 extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(void *);
-extern "C" void *func_0209b7ec(void *, s32);
+extern "C" void func_0209b7ec(void *, s32);
 extern "C" void func_0209b880(void *, const void *, const void *, const void *,
                                s32, u16, s32);
 extern "C" void GraphicsImmediateEffectRenderer_SetupProjection(void *);
@@ -45,7 +45,8 @@ extern "C" void func_ov049_0220cf94(void *controller)
         {0x10000, 0x10000}, {0x30000, 0x10000},
     };
     u8 *graphicsRoot = (u8 *)gGamePhaseRuntime;
-    void *renderer = func_0209b7ec(RuntimePresentationManager_GetGraphics3dPresentation(graphicsRoot + 0x2f7c), 0);
+    void *renderer = RuntimePresentationManager_GetGraphics3dPresentation(graphicsRoot + 0x2f7c);
+    func_0209b7ec(renderer, 0);
     for (s32 recordIndex = 9; recordIndex >= 0; --recordIndex) {
         s16 status = *(s16 *)(state + 0x644 + recordIndex * 2);
         if (status != 0)
@@ -80,7 +81,7 @@ extern "C" void func_ov049_0220cf94(void *controller)
         {0x40000, 0, 0x60000, 0x20000},
         {0x60000, 0, 0x80000, 0x20000},
     };
-    const s32 shape[2] = {-20, -20};
+    const s32 shape[4] = {-20, -20, 20, 20};
     GraphicsImmediateEffectRenderer_SetupProjection(renderer);
     for (s32 recordIndex = 9; recordIndex >= 0; --recordIndex) {
         s16 status = *(s16 *)(state + 0x644 + recordIndex * 2);

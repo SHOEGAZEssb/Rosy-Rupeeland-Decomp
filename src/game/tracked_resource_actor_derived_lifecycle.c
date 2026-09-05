@@ -1,11 +1,13 @@
 #include "tingle/types.h"
 
+/* Constructors forward the borrowed spawn descriptor through every base. */
+
 /* Recovered construction and destruction wrappers for a tracked-resource actor subclass. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *TrackedResourceActor_Init(void *actor);
+extern void *TrackedResourceActor_Init(void *actor, const void *descriptor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
 extern u32 gTrackedResourceActorType21Vtable[];
@@ -18,9 +20,9 @@ extern u32 gTrackedResourceActorType21Vtable[];
  * vtable gTrackedResourceActorType21Vtable, and returns the same storage. Engine-owned fields may
  * be initialized; no direct hardware access occurs.
  */
-void *TrackedResourceActorType21_InitBase(void *actor)
+void *TrackedResourceActorType21_InitBase(void *actor, const void *descriptor)
 {
-    TrackedResourceActor_Init(actor);
+    TrackedResourceActor_Init(actor, descriptor);
     *(u32 **)actor = gTrackedResourceActorType21Vtable;
     return actor;
 }
@@ -30,9 +32,9 @@ void *TrackedResourceActorType21_InitBase(void *actor)
  * the same base construction and vtable installation as TrackedResourceActorType21_InitBase; the
  * distinct call-site role is not yet known. Returns the supplied storage.
  */
-void *TrackedResourceActorType21_Init(void *actor)
+void *TrackedResourceActorType21_Init(void *actor, const void *descriptor)
 {
-    TrackedResourceActor_Init(actor);
+    TrackedResourceActor_Init(actor, descriptor);
     *(u32 **)actor = gTrackedResourceActorType21Vtable;
     return actor;
 }

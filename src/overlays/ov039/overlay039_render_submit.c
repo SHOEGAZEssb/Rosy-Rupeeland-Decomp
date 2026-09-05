@@ -25,18 +25,18 @@ extern void func_0209a2ac(void *object, void *context, s32 enabled);
 extern void Sound_SetEffectParameters(void *context, s32 soundId, s32 mode, s32 parameter,
                           s32 horizontalPosition, s32 verticalPosition);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
-extern void *GraphicsImmediateEffectRenderer_SetupProjection(void);
+extern void GraphicsImmediateEffectRenderer_SetupProjection(void *);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Init(void *vector);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
-extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *resource, ...);
+extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *, const void *, const void *, u16, const s32 *, u32, const s32 *, u16, s32);
 extern s32 func_020befec(s32 value, s32 divisor);
 extern void func_ov069_0220ff38(void *system, void *position, s32 value,
                                 s32 limit);
 extern void func_ov069_0221070c(void *system, s32 value);
 extern void func_ov049_0220c8a0(void *system, void *position);
-extern void func_ov045_0220c48c(void *system, void *position, s32 width,
+extern void func_ov049_0220c48c(void *system, void *position, s32 width,
                                 s32 height);
 extern void func_ov039_021fda80(void *scene, s32 x, s32 y, s32 z,
                                 s32 field_10);
@@ -70,7 +70,7 @@ static void attachSceneObjects(void *scene, void *context)
  * also pans sound 0x63 from object +0x74, submits each inactive-marked helper
  * record (+0x18 == 0) from the thirty-entry pool, refreshes the +0x454 target
  * bounds from the owner chain, converts every pending trajectory hit into a
- * helper launch, and advances the +0xB50 effect system. When +0x98 is visible
+ * helper launch, and advances the +0xAFC effect system. When +0x98 is visible
  * and count +0x1DB0 is positive, one additional resource effect is submitted.
  * It returns no value; renderer, sound, helper, target, and effect state change.
  *
@@ -89,32 +89,31 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
     attachSceneObjects(scene, context);
 
     void *anchor = FIELD(void *, scene, 0x74);
-    s32 pan = (FIELD(s32, anchor, 0x20) -
-               (FIELD(s32, context, 4) + 0x80000) + 0x800) >> 12;
+    s32 pan = (s32)(((s64)(FIELD(s32, anchor, 0x20) -
+               (FIELD(s32, context, 4) + 0x80000)) * 0x800 + 0x800) >> 12);
     if (pan < -0x80000) pan = -0x80000;
     if (pan > 0x7f000) pan = 0x7f000;
-    Sound_SetEffectParameters(FIELD(void *, gSoundContext, 0), 0x63, 8, 0x64,
+    Sound_SetEffectParameters(gSoundContext, 0x63, 8, 0x64,
                   pan >> 12, 0);
 
-    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
+    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime +
                                    0x2f7c);
-    void *renderer = GraphicsImmediateEffectRenderer_SetupProjection();
+    GraphicsImmediateEffectRenderer_SetupProjection(resource);
     for (s32 i = 29; i >= 0; i--) {
         void *helper = FIELD(void *, scene, 0xa0 + i * 4);
         if (FIELD(s32, helper, 0x18) != 0) continue;
 
         Overlay039RenderVector scale;
         Overlay039RenderVector position;
-        s32 bounds[2] = {-8, -8};
-        s32 packetSize[2] = {8, 8};
+        s32 bounds[4] = {-8, -8, 8, 8};
         VecFx32Object_InitComponents(&scale, 0x1000, 0x1000, 0x1000);
         VecFx32Object_Init(&position);
         position.x_04 = FIELD(s32, helper, 4);
         position.y_08 = FIELD(s32, helper, 8);
         position.z_0c = 0;
         const s32 *selectedSize = sizePairs[FIELD(s32, helper, 0x1c) & 6];
-        GraphicsImmediateEffectRenderer_DrawTexturedQuad(renderer, resource, &position, &scale, 0,
-                      bounds, 0, selectedSize, 0x7fff, 0, packetSize);
+        GraphicsImmediateEffectRenderer_DrawTexturedQuad(resource, &position, &scale, 0,
+                      bounds, 0, selectedSize, 0x7fff, 0);
         VecFx32Object_Destroy(&position);
         VecFx32Object_Destroy(&scale);
     }
@@ -143,7 +142,7 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
     void *owner = FIELD(void *, scene, 0x48);
     func_ov049_0220c8a0((u8 *)scene + 0x454,
         (u8 *)FIELD(void *, FIELD(void *, owner, 8), 0x48) + 0x2c);
-    func_ov045_0220c48c((u8 *)scene + 0x454,
+    func_ov049_0220c48c((u8 *)scene + 0x454,
         (u8 *)FIELD(void *, FIELD(void *, owner, 0x14), 0x98) + 0x1c,
         0x40000, 0x40000);
 
@@ -154,26 +153,25 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
         VecFx32Object_InitCopy(&source,
             (u8 *)FIELD(void *, FIELD(void *, owner, 8), 0x48) + 0x2c);
         func_ov039_021fda80(scene, source.x_04,
-                            source.y_08 - iterator.y_08 - 0x10000,
-                            iterator.z_0c, source.z_0c);
+                            source.y_08 - source.z_0c - 0x10000,
+                            iterator.x_04, iterator.y_08);
         VecFx32Object_Destroy(&source);
     }
     func_ov049_0220cf94((u8 *)scene + 0x454);
     VecFx32Object_Destroy(&iterator);
 
-    func_ov069_0221100c((u8 *)scene + 0xb50, 0);
-    func_ov069_02211274((u8 *)scene + 0xb50);
+    func_ov069_0221100c((u8 *)scene + 0xafc, 0);
+    func_ov069_02211274((u8 *)scene + 0xafc);
 
     if (count > 0 && (FIELD(u16, FIELD(void *, scene, 0x98), 0x42) & 4)) {
         Overlay039RenderVector scale;
         Overlay039RenderVector position;
-        s32 bounds[2] = {-32, -32};
-        s32 packetSize[2] = {32, 32};
+        s32 bounds[4] = {-32, -32, 32, 32};
         s32 size[4] = {0x80000, 0x40000, 0xc0000, 0x80000};
         VecFx32Object_InitComponents(&scale, step, step, step);
         VecFx32Object_InitCopy(&position, (u8 *)scene + 0x1da0);
-        GraphicsImmediateEffectRenderer_DrawTexturedQuad(renderer, resource, &position, &scale, 0,
-                      bounds, 0x1c, size, 0x7fff, 0x190, packetSize);
+        GraphicsImmediateEffectRenderer_DrawTexturedQuad(resource, &position, &scale, 0,
+                      bounds, 0x1c, size, 0x7fff, 0x190);
         VecFx32Object_Destroy(&position);
         VecFx32Object_Destroy(&scale);
     }

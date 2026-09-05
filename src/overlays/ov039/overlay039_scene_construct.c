@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /*
  * Overlay 39 large scene-object construction. The recovered constructor builds
@@ -12,7 +13,6 @@ typedef void (*Overlay039ArrayFn)(void *element);
 
 extern const u8 data_ov039_022083d0[];
 extern const u8 data_ov039_02208404[];
-extern void *gHeapContext;
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,7 +29,6 @@ extern void func_ov039_021fce5c(void);
 extern void VecFx32Object_Init(void *object);
 extern void func_ov039_021fd070(void *scene, void *argument);
 extern void func_ov039_021fd254(void *scene, void *argument);
-extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov039_021fce60(void *object);
 #ifdef __cplusplus
 }
@@ -101,7 +100,7 @@ extern "C" void *func_ov039_021fce84(void *scene, void *owner,
         func_ov039_021fd254(scene, setupArgument);
     }
     for (s32 i = 29; i >= 0; i--) {
-        void *helper = Heap_Alloc(0x20, data_ov039_02208404, 4, gHeapContext);
+        void *helper = Heap_Alloc(0x20, (const char *)data_ov039_02208404, 4, &gHeapContext);
         if (helper != 0) {
             func_ov039_021fce60(helper);
         }

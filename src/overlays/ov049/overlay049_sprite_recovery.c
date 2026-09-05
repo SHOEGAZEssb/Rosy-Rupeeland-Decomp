@@ -8,7 +8,7 @@
  */
 
 /*
- * Search active primary render records from the configured last index toward
+ * Search active primary render records from the configured count minus one toward
  * zero. If one lies within 0x1e000 of `point`, select animation one, seed its
  * 420-frame display timer, and return one; otherwise return zero. Sprite state
  * changes only through the graphics helper.
@@ -24,7 +24,7 @@ static s32 ov049_square_fx(s32 value)
 extern "C" s32 func_ov049_0220bac0(void *object, const void *point)
 {
     u8 *state = (u8 *)object;
-    for (s32 index = *(s32 *)(state + 0x88); index >= 0; --index) {
+    for (s32 index = *(s32 *)(state + 0x88) - 1; index >= 0; --index) {
         void *secondary = *(void **)(state + 0x68 + index * 4);
         if ((*(u16 *)((u8 *)secondary + 0x42) & 4) == 0) {
             u8 *primary = *(u8 **)(state + 0x4c + index * 4);
@@ -52,7 +52,7 @@ extern "C" s32 func_ov049_0220bac0(void *object, const void *point)
 extern "C" s32 func_ov049_0220bb84(void *object)
 {
     u8 *state = (u8 *)object;
-    for (s32 index = *(s32 *)(state + 0x88); index >= 0; --index) {
+    for (s32 index = *(s32 *)(state + 0x88) - 1; index >= 0; --index) {
         void *secondary = *(void **)(state + 0x68 + index * 4);
         if ((*(u16 *)((u8 *)secondary + 0x42) & 4) == 0) {
             u8 *primary = *(u8 **)(state + 0x4c + index * 4);
@@ -78,7 +78,7 @@ extern "C" void func_ov049_0220bee8(void *object)
 {
     u8 *state = (u8 *)object;
     func_ov049_0220be28(object);
-    for (s32 index = *(s32 *)(state + 0x88); index >= 0; --index) {
+    for (s32 index = *(s32 *)(state + 0x88) - 1; index >= 0; --index) {
         s16 *timer = (s16 *)(state + 0xac + index * 2);
         u8 *primary = *(u8 **)(state + 0x4c + index * 4);
         u8 *secondary = *(u8 **)(state + 0x68 + index * 4);

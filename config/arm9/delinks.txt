@@ -7376,3 +7376,255 @@ asm/game/auxiliary_interaction_transfer_02069560.s:
 asm/game/auxiliary_interaction_transfer_0206e3d0.s:
     categories: Game code
     .text start:0x0206e3d0 end:0x0206e4c4
+
+asm/game/modal_screen_controller_020a6320.s:
+    categories: Game code
+    .text start:0x020a6320 end:0x020a6390
+
+asm/game/modal_screen_controller_020a6390.s:
+    categories: Game code
+    .text start:0x020a6390 end:0x020a63d0
+
+asm/game/modal_screen_controller_020a63d0.s:
+    categories: Game code
+    .text start:0x020a63d0 end:0x020a6404
+
+asm/game/modal_screen_controller_020a6404.s:
+    categories: Game code
+    .text start:0x020a6404 end:0x020a6548
+
+asm/game/modal_screen_controller_020a6548.s:
+    categories: Game code
+    .text start:0x020a6548 end:0x020a65a4
+
+asm/game/modal_screen_controller_020a65a4.s:
+    categories: Game code
+    .text start:0x020a65a4 end:0x020a6808
+
+asm/game/modal_screen_controller_020a6808.s:
+    categories: Game code
+    .text start:0x020a6808 end:0x020a6810
+
+asm/game/modal_screen_controller_020a6810.s:
+    categories: Game code
+    .text start:0x020a6810 end:0x020a681c
+
+asm/game/modal_screen_controller_020a681c.s:
+    categories: Game code
+    .text start:0x020a681c end:0x020a68dc
+
+asm/game/modal_screen_controller_020a68dc.s:
+    categories: Game code
+    .text start:0x020a68dc end:0x020a68fc
+
+asm/game/modal_screen_controller_020a68fc.s:
+    categories: Game code
+    .text start:0x020a68fc end:0x020a6940
+
+asm/game/runtime_modal_scene_0209d758.s:
+    categories: Game code
+    .text start:0x0209d758 end:0x0209d774
+
+asm/game/runtime_modal_scene_0209d774.s:
+    categories: Game code
+    .text start:0x0209d774 end:0x0209d918
+
+asm/game/runtime_modal_scene_0209d918.s:
+    categories: Game code
+    .text start:0x0209d918 end:0x0209d9c8
+
+asm/game/runtime_modal_scene_0209d9c8.s:
+    categories: Game code
+    .text start:0x0209d9c8 end:0x0209da80
+
+asm/game/runtime_modal_scene_0209de34.s:
+    categories: Game code
+    .text start:0x0209de34 end:0x0209de44
+
+asm/game/runtime_modal_scene_0209da80.s:
+    categories: Game code
+    .text start:0x0209da80 end:0x0209de34
+
+asm/game/runtime_modal_scene_0209de44.s:
+    categories: Game code
+    .text start:0x0209de44 end:0x0209de7c
+
+asm/game/runtime_modal_scene_0209de7c.s:
+    categories: Game code
+    .text start:0x0209de7c end:0x0209def4
+
+asm/game/runtime_modal_controller_0209def4.s:
+    categories: Game code
+    .text start:0x0209def4 end:0x0209e198
+
+asm/game/runtime_modal_controller_0209e198.s:
+    categories: Game code
+    .text start:0x0209e198 end:0x0209e2f4
+
+asm/game/runtime_modal_controller_0209e2f4.s:
+    categories: Game code
+    .text start:0x0209e2f4 end:0x0209e328
+
+asm/game/runtime_modal_controller_0209e328.s:
+    categories: Game code
+    .text start:0x0209e328 end:0x0209e330
+
+asm/game/runtime_modal_controller_0209e330.s:
+    categories: Game code
+    .text start:0x0209e330 end:0x0209e338
+
+asm/game/runtime_modal_controller_0209e338.s:
+    categories: Game code
+    .text start:0x0209e338 end:0x0209e35c
+
+asm/game/runtime_modal_controller_0209e35c.s:
+    categories: Game code
+    .text start:0x0209e35c end:0x0209e384
+
+asm/game/runtime_modal_controller_0209e384.s:
+    categories: Game code
+    .text start:0x0209e384 end:0x0209e3d4
+
+asm/game/runtime_modal_controller_0209eb24.s:
+    categories: Game code
+    .text start:0x0209eb24 end:0x0209eb34
+
+asm/game/runtime_modal_controller_0209eb34.s:
+    categories: Game code
+    .text start:0x0209eb34 end:0x0209ed08
+
+asm/game/runtime_modal_controller_0209e3d4.s:
+    categories: Game code
+    .text start:0x0209e3d4 end:0x0209eb24
+
+asm/game/runtime_modal_controller_0209ed08.s:
+    categories: Game code
+    .text start:0x0209ed08 end:0x0209eee4
+
+asm/game/modal_sprite_node_02071b94.s:
+    categories: Game code
+    .text start:0x02071b94 end:0x02071bdc
+
+asm/game/modal_sprite_node_0209a00c.s:
+    categories: Game code
+    .text start:0x0209a00c end:0x0209a07c
+
+asm/game/modal_sprite_node_02099edc.s:
+    categories: Game code
+    .text start:0x02099edc end:0x02099f54
+
+asm/game/modal_sprite_node_0209a07c.s:
+    categories: Game code
+    .text start:0x0209a07c end:0x0209a0d8
+
+asm/game/modal_sprite_node_02099f54.s:
+    categories: Game code
+    .text start:0x02099f54 end:0x02099fb0
+
+asm/game/modal_sprite_node_02099fb0.s:
+    categories: Game code
+    .text start:0x02099fb0 end:0x0209a00c
+
+asm/game/modal_sprite_node_0209a0d8.s:
+    categories: Game code
+    .text start:0x0209a0d8 end:0x0209a120
+
+asm/game/modal_sprite_node_0209a120.s:
+    categories: Game code
+    .text start:0x0209a120 end:0x0209a1b4
+
+asm/game/modal_sprite_node_0209a1b4.s:
+    categories: Game code
+    .text start:0x0209a1b4 end:0x0209a208
+
+asm/game/modal_sprite_node_0209a280.s:
+    categories: Game code
+    .text start:0x0209a280 end:0x0209a2a4
+
+asm/game/modal_sprite_node_0209a208.s:
+    categories: Game code
+    .text start:0x0209a208 end:0x0209a280
+
+asm/game/modal_sprite_node_0209a2a4.s:
+    categories: Game code
+    .text start:0x0209a2a4 end:0x0209a2ac
+
+asm/game/modal_sprite_node_0209a2ac.s:
+    categories: Game code
+    .text start:0x0209a2ac end:0x0209a450
+
+asm/game/modal_sprite_effects_0209eee4.s:
+    categories: Game code
+    .text start:0x0209eee4 end:0x0209ef24
+
+asm/game/modal_sprite_effects_0209ef24.s:
+    categories: Game code
+    .text start:0x0209ef24 end:0x0209f088
+
+asm/game/modal_sprite_effects_0209f088.s:
+    categories: Game code
+    .text start:0x0209f088 end:0x0209f09c
+
+asm/game/modal_sprite_effects_0209f148.s:
+    categories: Game code
+    .text start:0x0209f148 end:0x0209f158
+
+asm/game/modal_sprite_effects_0209f09c.s:
+    categories: Game code
+    .text start:0x0209f09c end:0x0209f148
+
+asm/game/modal_sprite_effects_0209f158.s:
+    categories: Game code
+    .text start:0x0209f158 end:0x0209f1ec
+
+asm/game/modal_sprite_effects_0209f1ec.s:
+    categories: Game code
+    .text start:0x0209f1ec end:0x0209f270
+
+asm/game/modal_sprite_effects_0209f270.s:
+    categories: Game code
+    .text start:0x0209f270 end:0x0209f2dc
+
+asm/game/modal_transition_020a6964.s:
+    categories: Game code
+    .text start:0x020a6964 end:0x020a6990
+
+asm/game/modal_transition_020a6940.s:
+    categories: Game code
+    .text start:0x020a6940 end:0x020a6964
+
+asm/game/modal_transition_020a6990.s:
+    categories: Game code
+    .text start:0x020a6990 end:0x020a6aa8
+
+asm/game/modal_transition_020a6aa8.s:
+    categories: Game code
+    .text start:0x020a6aa8 end:0x020a6e98
+
+asm/game/tracked_resource_actor_type35_query_020534c4.s:
+    categories: Game code
+    .text start:0x020534c4 end:0x020534cc
+
+asm/game/modal_geometry_0209b58c.s:
+    categories: Game code
+    .text start:0x0209b58c end:0x0209b5e8
+
+asm/game/modal_geometry_0209b5e8.s:
+    categories: Game code
+    .text start:0x0209b5e8 end:0x0209b668
+
+asm/game/modal_geometry_0209b7ec.s:
+    categories: Game code
+    .text start:0x0209b7ec end:0x0209b880
+
+asm/game/modal_geometry_0209c7e8.s:
+    categories: Game code
+    .text start:0x0209c7e8 end:0x0209c87c
+
+asm/game/modal_geometry_0209b880.s:
+    categories: Game code
+    .text start:0x0209b880 end:0x0209bcb0
+
+asm/game/modal_geometry_0209c87c.s:
+    categories: Game code
+    .text start:0x0209c87c end:0x0209c9d4

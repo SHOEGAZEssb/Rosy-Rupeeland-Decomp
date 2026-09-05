@@ -46082,7 +46082,7 @@ build build/reports/game_phase_script_vm_phase_request_opcode_source.txt: match_
 build title_script_vm_exact: phony build/reports/game_phase_script_vm_stack_source.txt build/reports/game_phase_script_vm_execute_source.txt build/reports/game_phase_script_vm_wait_opcodes_source.txt build/reports/game_phase_script_vm_actor_visibility_flags_source.txt build/reports/game_phase_script_vm_actor_type_field_source.txt build/reports/game_phase_script_vm_gamework_flag_opcodes.txt build/reports/game_phase_script_vm_phase_request_opcode_source.txt
 build title_graphics_replacement_objects: phony build/decomp/src/graphics/graphics_resource_cache.o build/decomp/asm/graphics/graphics_resource_cache_lookup.o build/decomp/src/graphics/graphics_archive_character_resource.o build/decomp/src/graphics/graphics_archive_palette_resource.o build/decomp/src/graphics/graphics_archive_screen_resource.o build/decomp/src/graphics/graphics_archive_loader.o build/decomp/asm/graphics/graphics_archive_loader_0207142c.o build/decomp/src/graphics/graphics_archive_character_palette_release.o build/decomp/src/graphics/graphics_archive_screen_release.o build/decomp/src/graphics/graphics_bg_palette_upload.o build/decomp/src/graphics/graphics_archive_character_load.o build/decomp/src/graphics/graphics_archive_character_load_uncached.o build/decomp/src/graphics/graphics_archive_palette_load.o build/decomp/src/graphics/graphics_archive_palette_load_uncached.o build/decomp/src/graphics/graphics_archive_screen_load.o
 build title_actor_replacement_objects: phony build/decomp/src/game/actor_interaction_runtime_lifecycle_0203aac4.o build/decomp/src/game/actor_descriptor_batch_wrappers_0203b38c.o build/decomp/src/game/game_phase_script_vm_stack.o build/decomp/src/game/game_phase_script_vm_wait_opcodes.o build/decomp/src/game/game_phase_script_vm_phase_request_opcode.o build/decomp/src/overlays/ov025/overlay025_scene_maintenance.o build/decomp/src/overlays/ov025/overlay025_scene_destroy.o build/decomp/src/overlays/ov025/overlay025_callback_helpers.o build/decomp/src/overlays/ov025/overlay025_modal_open.o build/decomp/src/overlays/ov025/overlay025_modal_close.o build/decomp/src/overlays/ov025/overlay025_transient_sprite_setup.o build/decomp/src/overlays/ov025/overlay025_transient_sprite_controls.o build/decomp/src/overlays/ov025/overlay025_choice_row_layout.o build/decomp/src/overlays/ov025/overlay025_intro_state.o build/decomp/src/overlays/ov025/overlay025_idle_state.o build/decomp/src/overlays/ov025/overlay025_record_select_state.o build/decomp/src/overlays/ov025/overlay025_confirmation_state.o build/decomp/src/overlays/ov025/overlay025_record_transfer_state.o build/decomp/src/overlays/ov025/overlay025_record_delete_states.o build/decomp/src/overlays/ov025/overlay025_sprite_owner_ready.o build/decomp/src/overlays/ov025/overlay025_callback_lifecycle_transition.o build/decomp/src/overlays/ov025/overlay025_effect_event_dispatch.o build/decomp/src/overlays/ov025/overlay025_effect_base_noop.o build/decomp/src/overlays/ov025/overlay025_effect_destroy.o build/decomp/src/overlays/ov025/overlay025_effect_delete.o build/decomp/src/overlays/ov025/overlay025_effect_mode_right.o build/decomp/src/overlays/ov025/overlay025_effect_mode_left.o build/decomp/src/overlays/ov025/overlay025_effect_mode_center.o build/decomp/src/overlays/ov025/overlay025_effect_mode_deselect.o build/decomp/src/overlays/ov025/overlay025_effect_followup.o build/decomp/src/overlays/ov025/overlay025_effect_mode_dispatch.o build/decomp/src/overlays/ov025/overlay025_effect_primary_config.o build/decomp/src/overlays/ov025/overlay025_effect_random_mode.o build/decomp/src/overlays/ov025/overlay025_effect_duration.o build/decomp/src/overlays/ov025/overlay025_effect_return_config.o build/decomp/src/overlays/ov025/overlay025_effect_frame_update.o build/decomp/src/overlays/ov025/overlay025_effect_animation_cycle.o build/decomp/src/overlays/ov025/overlay025_effect_duration_query.o build/decomp/src/overlays/ov025/overlay025_name_entry_active_clear.o build/decomp/src/overlays/ov025/overlay025_name_entry_sprite_selection.o build/decomp/src/overlays/ov025/overlay025_name_entry_hit_test.o build/decomp/src/overlays/ov025/overlay025_name_entry_truncate.o build/decomp/src/overlays/ov025/overlay025_name_entry_trailing_space_cleanup.o build/decomp/src/overlays/ov025/overlay025_name_entry_nonspace_count.o build/decomp/src/overlays/ov025/overlay025_record_row_create.o build/decomp/src/overlays/ov025/overlay025_record_row_presentation.o build/decomp/src/overlays/ov025/overlay025_record_row_redraw.o build/decomp/src/overlays/ov025/overlay025_record_row_inactive_query.o build/decomp/src/overlays/ov025/overlay025_record_row_canvas_clear.o build/decomp/src/overlays/ov025/overlay025_record_row_position.o build/decomp/src/overlays/ov025/overlay025_selection_controller_visibility.o build/decomp/src/overlays/ov025/overlay025_edit_display_enter.o build/decomp/src/overlays/ov025/overlay025_edit_display_leave.o build/decomp/src/overlays/ov025/overlay025_record_selection_layout.o build/decomp/src/overlays/ov025/overlay025_record_row_recreate.o build/decomp/src/overlays/ov025/overlay025_selection_event_commit.o build/decomp/src/overlays/ov025/overlay025_halt_state.o build/decomp/src/overlays/ov025/overlay025_terminal_callbacks.o build/decomp/src/overlays/ov025/overlay025_terminal_destructors.o
-build link_replacement_objects: phony link_replacement_objects_00 link_replacement_objects_01 link_replacement_objects_02 link_replacement_objects_03 link_replacement_objects_04 link_replacement_objects_05 link_replacement_objects_06 link_replacement_objects_07 link_replacement_objects_08 link_replacement_objects_09 link_replacement_objects_10 link_replacement_objects_11 link_replacement_objects_12 link_replacement_objects_13 link_replacement_objects_14 link_replacement_objects_15 link_replacement_objects_16 link_replacement_objects_17 link_replacement_objects_18 link_replacement_objects_19 link_replacement_objects_20 link_replacement_objects_21 link_replacement_objects_22 link_replacement_objects_23 link_replacement_objects_24 link_replacement_objects_25 link_replacement_objects_26 link_replacement_objects_27 link_replacement_objects_28 link_replacement_objects_29 link_replacement_objects_30 link_replacement_objects_31 link_replacement_objects_32 link_replacement_objects_33 link_replacement_objects_34 link_replacement_objects_35 link_replacement_objects_36 link_replacement_objects_37 link_replacement_objects_38 link_replacement_objects_39 link_replacement_objects_40 link_replacement_objects_41 link_replacement_objects_42 link_replacement_objects_43 link_replacement_objects_44 link_replacement_objects_45 link_replacement_objects_46 link_replacement_objects_47 link_replacement_objects_48 link_replacement_objects_49 link_replacement_objects_50 link_replacement_objects_51 link_replacement_objects_52 link_replacement_objects_53 link_replacement_objects_54 link_replacement_objects_55 link_replacement_objects_56 link_replacement_objects_57 link_replacement_objects_58 link_replacement_objects_59 link_replacement_objects_60 link_replacement_objects_61 link_replacement_objects_62 link_replacement_objects_63 link_replacement_objects_64 link_replacement_objects_65 link_replacement_objects_66 link_replacement_objects_67 link_replacement_objects_68 link_replacement_objects_69 link_replacement_objects_70 link_replacement_objects_71 link_replacement_objects_72 link_replacement_objects_73 link_replacement_objects_74 link_replacement_objects_75 link_replacement_objects_76 link_replacement_objects_77 link_replacement_objects_78 link_replacement_objects_79 link_replacement_objects_80 link_replacement_objects_81 link_replacement_objects_82 link_replacement_objects_83 link_replacement_objects_84 link_replacement_objects_85 link_replacement_objects_86 link_replacement_objects_87 link_replacement_objects_88 link_replacement_objects_89 link_replacement_objects_90 link_replacement_objects_91 link_replacement_objects_92 link_replacement_objects_93 link_replacement_objects_94 link_replacement_objects_95 link_replacement_objects_96 link_replacement_objects_97 link_replacement_objects_98 link_replacement_objects_99 link_replacement_objects_100 link_replacement_objects_101 link_replacement_objects_131 link_replacement_objects_132 link_replacement_objects_133 link_replacement_objects_134 title_graphics_replacement_objects title_actor_replacement_objects overlay040_complete overlay041_complete overlay042 overlay043 overlay044_complete
+build link_replacement_objects: phony link_replacement_objects_00 link_replacement_objects_01 link_replacement_objects_02 link_replacement_objects_03 link_replacement_objects_04 link_replacement_objects_05 link_replacement_objects_06 link_replacement_objects_07 link_replacement_objects_08 link_replacement_objects_09 link_replacement_objects_10 link_replacement_objects_11 link_replacement_objects_12 link_replacement_objects_13 link_replacement_objects_14 link_replacement_objects_15 link_replacement_objects_16 link_replacement_objects_17 link_replacement_objects_18 link_replacement_objects_19 link_replacement_objects_20 link_replacement_objects_21 link_replacement_objects_22 link_replacement_objects_23 link_replacement_objects_24 link_replacement_objects_25 link_replacement_objects_26 link_replacement_objects_27 link_replacement_objects_28 link_replacement_objects_29 link_replacement_objects_30 link_replacement_objects_31 link_replacement_objects_32 link_replacement_objects_33 link_replacement_objects_34 link_replacement_objects_35 link_replacement_objects_36 link_replacement_objects_37 link_replacement_objects_38 link_replacement_objects_39 link_replacement_objects_40 link_replacement_objects_41 link_replacement_objects_42 link_replacement_objects_43 link_replacement_objects_44 link_replacement_objects_45 link_replacement_objects_46 link_replacement_objects_47 link_replacement_objects_48 link_replacement_objects_49 link_replacement_objects_50 link_replacement_objects_51 link_replacement_objects_52 link_replacement_objects_53 link_replacement_objects_54 link_replacement_objects_55 link_replacement_objects_56 link_replacement_objects_57 link_replacement_objects_58 link_replacement_objects_59 link_replacement_objects_60 link_replacement_objects_61 link_replacement_objects_62 link_replacement_objects_63 link_replacement_objects_64 link_replacement_objects_65 link_replacement_objects_66 link_replacement_objects_67 link_replacement_objects_68 link_replacement_objects_69 link_replacement_objects_70 link_replacement_objects_71 link_replacement_objects_72 link_replacement_objects_73 link_replacement_objects_74 link_replacement_objects_75 link_replacement_objects_76 link_replacement_objects_77 link_replacement_objects_78 link_replacement_objects_79 link_replacement_objects_80 link_replacement_objects_81 link_replacement_objects_82 link_replacement_objects_83 link_replacement_objects_84 link_replacement_objects_85 link_replacement_objects_86 link_replacement_objects_87 link_replacement_objects_88 link_replacement_objects_89 link_replacement_objects_90 link_replacement_objects_91 link_replacement_objects_92 link_replacement_objects_93 link_replacement_objects_94 link_replacement_objects_95 link_replacement_objects_96 link_replacement_objects_97 link_replacement_objects_98 link_replacement_objects_99 link_replacement_objects_100 link_replacement_objects_101 link_replacement_objects_131 link_replacement_objects_132 link_replacement_objects_133 link_replacement_objects_134 title_graphics_replacement_objects title_actor_replacement_objects overlay040_complete overlay041_complete overlay042 overlay043 overlay044_complete modal_runtime_replacement_objects
 
 build build/decomp/src/overlays/ov090/overlay090_title_actor_lifecycle.o: mwccarm src/overlays/ov090/overlay090_title_actor_lifecycle.c | include/tingle/types.h
   source = src/overlays/ov090/overlay090_title_actor_lifecycle.c
@@ -46922,3 +46922,620 @@ build build/reports/auxiliary_interaction_transfer_0206e3d0.txt: match_report bu
 
 build tracked_resource_actor_type32: phony build/decomp/src/game/tracked_resource_actor_type32.o build/reports/tracked_resource_actor_type32_02052978.txt build/reports/tracked_resource_actor_type32_02052998.txt build/reports/tracked_resource_actor_type32_020529ac.txt build/reports/tracked_resource_actor_type32_020529c8.txt build/reports/tracked_resource_actor_type32_020529d8.txt build/reports/tracked_resource_actor_type32_02052a08.txt build/reports/tracked_resource_actor_type32_02052a20.txt
 build auxiliary_interaction_transfer: phony build/decomp/src/game/auxiliary_interaction_transfer.o build/reports/auxiliary_interaction_transfer_02069304.txt build/reports/auxiliary_interaction_transfer_02069480.txt build/reports/auxiliary_interaction_transfer_02069560.txt build/reports/auxiliary_interaction_transfer_0206e3d0.txt
+
+build build/decomp/src/game/modal_screen_controller.o: mwccarm src/game/modal_screen_controller.c | include/tingle/types.h
+  source = src/game/modal_screen_controller.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
+build build/decomp/asm/game/modal_screen_controller_020a6320.o: mwasmarm asm/game/modal_screen_controller_020a6320.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a6320.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a6320.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a6320.o | build/decomp/asm/game/modal_screen_controller_020a6320.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a6320.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a6320.o
+build build/reports/modal_screen_controller_020a6320.txt: match_report build/reports/modal_screen_controller_020a6320.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a6320.json
+  report_args = --section .text --function func_020a6320 --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a6390.o: mwasmarm asm/game/modal_screen_controller_020a6390.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a6390.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a6390.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a6390.o | build/decomp/asm/game/modal_screen_controller_020a6390.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a6390.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a6390.o
+build build/reports/modal_screen_controller_020a6390.txt: match_report build/reports/modal_screen_controller_020a6390.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a6390.json
+  report_args = --section .text --function func_020a6390 --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a63d0.o: mwasmarm asm/game/modal_screen_controller_020a63d0.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a63d0.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a63d0.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a63d0.o | build/decomp/asm/game/modal_screen_controller_020a63d0.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a63d0.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a63d0.o
+build build/reports/modal_screen_controller_020a63d0.txt: match_report build/reports/modal_screen_controller_020a63d0.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a63d0.json
+  report_args = --section .text --function func_020a63d0 --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a6404.o: mwasmarm asm/game/modal_screen_controller_020a6404.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a6404.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a6404.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a6404.o | build/decomp/asm/game/modal_screen_controller_020a6404.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a6404.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a6404.o
+build build/reports/modal_screen_controller_020a6404.txt: match_report build/reports/modal_screen_controller_020a6404.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a6404.json
+  report_args = --section .text --function func_020a6404 --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a6548.o: mwasmarm asm/game/modal_screen_controller_020a6548.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a6548.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a6548.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a6548.o | build/decomp/asm/game/modal_screen_controller_020a6548.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a6548.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a6548.o
+build build/reports/modal_screen_controller_020a6548.txt: match_report build/reports/modal_screen_controller_020a6548.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a6548.json
+  report_args = --section .text --function func_020a6548 --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a65a4.o: mwasmarm asm/game/modal_screen_controller_020a65a4.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a65a4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a65a4.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a65a4.o | build/decomp/asm/game/modal_screen_controller_020a65a4.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a65a4.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a65a4.o
+build build/reports/modal_screen_controller_020a65a4.txt: match_report build/reports/modal_screen_controller_020a65a4.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a65a4.json
+  report_args = --section .text --function func_020a65a4 --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a6808.o: mwasmarm asm/game/modal_screen_controller_020a6808.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a6808.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a6808.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a6808.o | build/decomp/asm/game/modal_screen_controller_020a6808.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a6808.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a6808.o
+build build/reports/modal_screen_controller_020a6808.txt: match_report build/reports/modal_screen_controller_020a6808.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a6808.json
+  report_args = --section .text --function func_020a6808 --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a6810.o: mwasmarm asm/game/modal_screen_controller_020a6810.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a6810.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a6810.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a6810.o | build/decomp/asm/game/modal_screen_controller_020a6810.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a6810.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a6810.o
+build build/reports/modal_screen_controller_020a6810.txt: match_report build/reports/modal_screen_controller_020a6810.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a6810.json
+  report_args = --section .text --function func_020a6810 --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a681c.o: mwasmarm asm/game/modal_screen_controller_020a681c.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a681c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a681c.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a681c.o | build/decomp/asm/game/modal_screen_controller_020a681c.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a681c.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a681c.o
+build build/reports/modal_screen_controller_020a681c.txt: match_report build/reports/modal_screen_controller_020a681c.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a681c.json
+  report_args = --section .text --function func_020a681c --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a68dc.o: mwasmarm asm/game/modal_screen_controller_020a68dc.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a68dc.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a68dc.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a68dc.o | build/decomp/asm/game/modal_screen_controller_020a68dc.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a68dc.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a68dc.o
+build build/reports/modal_screen_controller_020a68dc.txt: match_report build/reports/modal_screen_controller_020a68dc.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a68dc.json
+  report_args = --section .text --function func_020a68dc --require-exact
+
+build build/decomp/asm/game/modal_screen_controller_020a68fc.o: mwasmarm asm/game/modal_screen_controller_020a68fc.s
+build build/decomp/delinks/asm/game/modal_screen_controller_020a68fc.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_screen_controller_020a68fc.json: objdiff build/decomp/delinks/asm/game/modal_screen_controller_020a68fc.o | build/decomp/asm/game/modal_screen_controller_020a68fc.o
+  target_object = build/decomp/delinks/asm/game/modal_screen_controller_020a68fc.o
+  base_object = build/decomp/asm/game/modal_screen_controller_020a68fc.o
+build build/reports/modal_screen_controller_020a68fc.txt: match_report build/reports/modal_screen_controller_020a68fc.json | tools/report_objdiff.py
+  report_json = build/reports/modal_screen_controller_020a68fc.json
+  report_args = --section .text --function func_020a68fc --require-exact
+
+build modal_screen_controller: phony build/decomp/src/game/modal_screen_controller.o build/reports/modal_screen_controller_020a6320.txt build/reports/modal_screen_controller_020a6390.txt build/reports/modal_screen_controller_020a63d0.txt build/reports/modal_screen_controller_020a6404.txt build/reports/modal_screen_controller_020a6548.txt build/reports/modal_screen_controller_020a65a4.txt build/reports/modal_screen_controller_020a6808.txt build/reports/modal_screen_controller_020a6810.txt build/reports/modal_screen_controller_020a681c.txt build/reports/modal_screen_controller_020a68dc.txt build/reports/modal_screen_controller_020a68fc.txt
+
+build build/decomp/src/game/runtime_modal_scene.o: mwccarm src/game/runtime_modal_scene.c | include/tingle/types.h
+  source = src/game/runtime_modal_scene.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
+build build/decomp/asm/game/runtime_modal_scene_0209d758.o: mwasmarm asm/game/runtime_modal_scene_0209d758.s
+build build/decomp/delinks/asm/game/runtime_modal_scene_0209d758.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_scene_0209d758.json: objdiff build/decomp/delinks/asm/game/runtime_modal_scene_0209d758.o | build/decomp/asm/game/runtime_modal_scene_0209d758.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_scene_0209d758.o
+  base_object = build/decomp/asm/game/runtime_modal_scene_0209d758.o
+build build/reports/runtime_modal_scene_0209d758.txt: match_report build/reports/runtime_modal_scene_0209d758.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_scene_0209d758.json
+  report_args = --section .text --function func_0209d758 --require-exact
+
+build build/decomp/asm/game/runtime_modal_scene_0209d774.o: mwasmarm asm/game/runtime_modal_scene_0209d774.s
+build build/decomp/delinks/asm/game/runtime_modal_scene_0209d774.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_scene_0209d774.json: objdiff build/decomp/delinks/asm/game/runtime_modal_scene_0209d774.o | build/decomp/asm/game/runtime_modal_scene_0209d774.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_scene_0209d774.o
+  base_object = build/decomp/asm/game/runtime_modal_scene_0209d774.o
+build build/reports/runtime_modal_scene_0209d774.txt: match_report build/reports/runtime_modal_scene_0209d774.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_scene_0209d774.json
+  report_args = --section .text --function func_0209d774 --require-exact
+
+build build/decomp/asm/game/runtime_modal_scene_0209d918.o: mwasmarm asm/game/runtime_modal_scene_0209d918.s
+build build/decomp/delinks/asm/game/runtime_modal_scene_0209d918.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_scene_0209d918.json: objdiff build/decomp/delinks/asm/game/runtime_modal_scene_0209d918.o | build/decomp/asm/game/runtime_modal_scene_0209d918.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_scene_0209d918.o
+  base_object = build/decomp/asm/game/runtime_modal_scene_0209d918.o
+build build/reports/runtime_modal_scene_0209d918.txt: match_report build/reports/runtime_modal_scene_0209d918.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_scene_0209d918.json
+  report_args = --section .text --function func_0209d918 --require-exact
+
+build build/decomp/asm/game/runtime_modal_scene_0209d9c8.o: mwasmarm asm/game/runtime_modal_scene_0209d9c8.s
+build build/decomp/delinks/asm/game/runtime_modal_scene_0209d9c8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_scene_0209d9c8.json: objdiff build/decomp/delinks/asm/game/runtime_modal_scene_0209d9c8.o | build/decomp/asm/game/runtime_modal_scene_0209d9c8.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_scene_0209d9c8.o
+  base_object = build/decomp/asm/game/runtime_modal_scene_0209d9c8.o
+build build/reports/runtime_modal_scene_0209d9c8.txt: match_report build/reports/runtime_modal_scene_0209d9c8.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_scene_0209d9c8.json
+  report_args = --section .text --function func_0209d9c8 --require-exact
+
+build build/decomp/asm/game/runtime_modal_scene_0209de34.o: mwasmarm asm/game/runtime_modal_scene_0209de34.s
+build build/decomp/delinks/asm/game/runtime_modal_scene_0209de34.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_scene_0209de34.json: objdiff build/decomp/delinks/asm/game/runtime_modal_scene_0209de34.o | build/decomp/asm/game/runtime_modal_scene_0209de34.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_scene_0209de34.o
+  base_object = build/decomp/asm/game/runtime_modal_scene_0209de34.o
+build build/reports/runtime_modal_scene_0209de34.txt: match_report build/reports/runtime_modal_scene_0209de34.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_scene_0209de34.json
+  report_args = --section .text --function func_0209de34 --require-exact
+
+build build/decomp/asm/game/runtime_modal_scene_0209da80.o: mwasmarm asm/game/runtime_modal_scene_0209da80.s
+build build/decomp/delinks/asm/game/runtime_modal_scene_0209da80.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_scene_0209da80.json: objdiff build/decomp/delinks/asm/game/runtime_modal_scene_0209da80.o | build/decomp/asm/game/runtime_modal_scene_0209da80.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_scene_0209da80.o
+  base_object = build/decomp/asm/game/runtime_modal_scene_0209da80.o
+build build/reports/runtime_modal_scene_0209da80.txt: match_report build/reports/runtime_modal_scene_0209da80.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_scene_0209da80.json
+  report_args = --section .text --function func_0209da80 --require-exact
+
+build build/decomp/asm/game/runtime_modal_scene_0209de44.o: mwasmarm asm/game/runtime_modal_scene_0209de44.s
+build build/decomp/delinks/asm/game/runtime_modal_scene_0209de44.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_scene_0209de44.json: objdiff build/decomp/delinks/asm/game/runtime_modal_scene_0209de44.o | build/decomp/asm/game/runtime_modal_scene_0209de44.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_scene_0209de44.o
+  base_object = build/decomp/asm/game/runtime_modal_scene_0209de44.o
+build build/reports/runtime_modal_scene_0209de44.txt: match_report build/reports/runtime_modal_scene_0209de44.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_scene_0209de44.json
+  report_args = --section .text --function func_0209de44 --require-exact
+
+build build/decomp/asm/game/runtime_modal_scene_0209de7c.o: mwasmarm asm/game/runtime_modal_scene_0209de7c.s
+build build/decomp/delinks/asm/game/runtime_modal_scene_0209de7c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_scene_0209de7c.json: objdiff build/decomp/delinks/asm/game/runtime_modal_scene_0209de7c.o | build/decomp/asm/game/runtime_modal_scene_0209de7c.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_scene_0209de7c.o
+  base_object = build/decomp/asm/game/runtime_modal_scene_0209de7c.o
+build build/reports/runtime_modal_scene_0209de7c.txt: match_report build/reports/runtime_modal_scene_0209de7c.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_scene_0209de7c.json
+  report_args = --section .text --function func_0209de7c --require-exact
+
+build runtime_modal_scene: phony build/decomp/src/game/runtime_modal_scene.o build/reports/runtime_modal_scene_0209d758.txt build/reports/runtime_modal_scene_0209d774.txt build/reports/runtime_modal_scene_0209d918.txt build/reports/runtime_modal_scene_0209d9c8.txt build/reports/runtime_modal_scene_0209de34.txt build/reports/runtime_modal_scene_0209da80.txt build/reports/runtime_modal_scene_0209de44.txt build/reports/runtime_modal_scene_0209de7c.txt
+
+build build/decomp/src/game/runtime_modal_controller.o: mwccarm src/game/runtime_modal_controller.c | include/tingle/types.h
+  source = src/game/runtime_modal_controller.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
+build build/decomp/asm/game/runtime_modal_controller_0209def4.o: mwasmarm asm/game/runtime_modal_controller_0209def4.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209def4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209def4.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209def4.o | build/decomp/asm/game/runtime_modal_controller_0209def4.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209def4.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209def4.o
+build build/reports/runtime_modal_controller_0209def4.txt: match_report build/reports/runtime_modal_controller_0209def4.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209def4.json
+  report_args = --section .text --function func_0209def4 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209e198.o: mwasmarm asm/game/runtime_modal_controller_0209e198.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209e198.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209e198.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209e198.o | build/decomp/asm/game/runtime_modal_controller_0209e198.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209e198.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209e198.o
+build build/reports/runtime_modal_controller_0209e198.txt: match_report build/reports/runtime_modal_controller_0209e198.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209e198.json
+  report_args = --section .text --function func_0209e198 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209e2f4.o: mwasmarm asm/game/runtime_modal_controller_0209e2f4.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209e2f4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209e2f4.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209e2f4.o | build/decomp/asm/game/runtime_modal_controller_0209e2f4.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209e2f4.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209e2f4.o
+build build/reports/runtime_modal_controller_0209e2f4.txt: match_report build/reports/runtime_modal_controller_0209e2f4.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209e2f4.json
+  report_args = --section .text --function func_0209e2f4 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209e328.o: mwasmarm asm/game/runtime_modal_controller_0209e328.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209e328.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209e328.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209e328.o | build/decomp/asm/game/runtime_modal_controller_0209e328.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209e328.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209e328.o
+build build/reports/runtime_modal_controller_0209e328.txt: match_report build/reports/runtime_modal_controller_0209e328.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209e328.json
+  report_args = --section .text --function func_0209e328 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209e330.o: mwasmarm asm/game/runtime_modal_controller_0209e330.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209e330.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209e330.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209e330.o | build/decomp/asm/game/runtime_modal_controller_0209e330.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209e330.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209e330.o
+build build/reports/runtime_modal_controller_0209e330.txt: match_report build/reports/runtime_modal_controller_0209e330.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209e330.json
+  report_args = --section .text --function func_0209e330 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209e338.o: mwasmarm asm/game/runtime_modal_controller_0209e338.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209e338.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209e338.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209e338.o | build/decomp/asm/game/runtime_modal_controller_0209e338.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209e338.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209e338.o
+build build/reports/runtime_modal_controller_0209e338.txt: match_report build/reports/runtime_modal_controller_0209e338.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209e338.json
+  report_args = --section .text --function func_0209e338 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209e35c.o: mwasmarm asm/game/runtime_modal_controller_0209e35c.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209e35c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209e35c.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209e35c.o | build/decomp/asm/game/runtime_modal_controller_0209e35c.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209e35c.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209e35c.o
+build build/reports/runtime_modal_controller_0209e35c.txt: match_report build/reports/runtime_modal_controller_0209e35c.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209e35c.json
+  report_args = --section .text --function func_0209e35c --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209e384.o: mwasmarm asm/game/runtime_modal_controller_0209e384.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209e384.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209e384.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209e384.o | build/decomp/asm/game/runtime_modal_controller_0209e384.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209e384.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209e384.o
+build build/reports/runtime_modal_controller_0209e384.txt: match_report build/reports/runtime_modal_controller_0209e384.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209e384.json
+  report_args = --section .text --function func_0209e384 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209eb24.o: mwasmarm asm/game/runtime_modal_controller_0209eb24.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209eb24.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209eb24.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209eb24.o | build/decomp/asm/game/runtime_modal_controller_0209eb24.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209eb24.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209eb24.o
+build build/reports/runtime_modal_controller_0209eb24.txt: match_report build/reports/runtime_modal_controller_0209eb24.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209eb24.json
+  report_args = --section .text --function func_0209eb24 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209eb34.o: mwasmarm asm/game/runtime_modal_controller_0209eb34.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209eb34.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209eb34.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209eb34.o | build/decomp/asm/game/runtime_modal_controller_0209eb34.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209eb34.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209eb34.o
+build build/reports/runtime_modal_controller_0209eb34.txt: match_report build/reports/runtime_modal_controller_0209eb34.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209eb34.json
+  report_args = --section .text --function func_0209eb34 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209e3d4.o: mwasmarm asm/game/runtime_modal_controller_0209e3d4.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209e3d4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209e3d4.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209e3d4.o | build/decomp/asm/game/runtime_modal_controller_0209e3d4.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209e3d4.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209e3d4.o
+build build/reports/runtime_modal_controller_0209e3d4.txt: match_report build/reports/runtime_modal_controller_0209e3d4.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209e3d4.json
+  report_args = --section .text --function func_0209e3d4 --require-exact
+
+build build/decomp/asm/game/runtime_modal_controller_0209ed08.o: mwasmarm asm/game/runtime_modal_controller_0209ed08.s
+build build/decomp/delinks/asm/game/runtime_modal_controller_0209ed08.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/runtime_modal_controller_0209ed08.json: objdiff build/decomp/delinks/asm/game/runtime_modal_controller_0209ed08.o | build/decomp/asm/game/runtime_modal_controller_0209ed08.o
+  target_object = build/decomp/delinks/asm/game/runtime_modal_controller_0209ed08.o
+  base_object = build/decomp/asm/game/runtime_modal_controller_0209ed08.o
+build build/reports/runtime_modal_controller_0209ed08.txt: match_report build/reports/runtime_modal_controller_0209ed08.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_modal_controller_0209ed08.json
+  report_args = --section .text --function func_0209ed08 --require-exact
+
+build runtime_modal_controller: phony build/decomp/src/game/runtime_modal_controller.o build/reports/runtime_modal_controller_0209def4.txt build/reports/runtime_modal_controller_0209e198.txt build/reports/runtime_modal_controller_0209e2f4.txt build/reports/runtime_modal_controller_0209e328.txt build/reports/runtime_modal_controller_0209e330.txt build/reports/runtime_modal_controller_0209e338.txt build/reports/runtime_modal_controller_0209e35c.txt build/reports/runtime_modal_controller_0209e384.txt build/reports/runtime_modal_controller_0209eb24.txt build/reports/runtime_modal_controller_0209eb34.txt build/reports/runtime_modal_controller_0209e3d4.txt build/reports/runtime_modal_controller_0209ed08.txt
+
+build build/decomp/src/game/modal_sprite_node.o: mwccarm src/game/modal_sprite_node.c | include/tingle/types.h
+  source = src/game/modal_sprite_node.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
+build build/decomp/asm/game/modal_sprite_node_02071b94.o: mwasmarm asm/game/modal_sprite_node_02071b94.s
+build build/decomp/delinks/asm/game/modal_sprite_node_02071b94.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_02071b94.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_02071b94.o | build/decomp/asm/game/modal_sprite_node_02071b94.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_02071b94.o
+  base_object = build/decomp/asm/game/modal_sprite_node_02071b94.o
+build build/reports/modal_sprite_node_02071b94.txt: match_report build/reports/modal_sprite_node_02071b94.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_02071b94.json
+  report_args = --section .text --function func_02071b94 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a00c.o: mwasmarm asm/game/modal_sprite_node_0209a00c.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a00c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a00c.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a00c.o | build/decomp/asm/game/modal_sprite_node_0209a00c.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a00c.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a00c.o
+build build/reports/modal_sprite_node_0209a00c.txt: match_report build/reports/modal_sprite_node_0209a00c.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a00c.json
+  report_args = --section .text --function func_0209a00c --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_02099edc.o: mwasmarm asm/game/modal_sprite_node_02099edc.s
+build build/decomp/delinks/asm/game/modal_sprite_node_02099edc.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_02099edc.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_02099edc.o | build/decomp/asm/game/modal_sprite_node_02099edc.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_02099edc.o
+  base_object = build/decomp/asm/game/modal_sprite_node_02099edc.o
+build build/reports/modal_sprite_node_02099edc.txt: match_report build/reports/modal_sprite_node_02099edc.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_02099edc.json
+  report_args = --section .text --function func_02099edc --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a07c.o: mwasmarm asm/game/modal_sprite_node_0209a07c.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a07c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a07c.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a07c.o | build/decomp/asm/game/modal_sprite_node_0209a07c.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a07c.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a07c.o
+build build/reports/modal_sprite_node_0209a07c.txt: match_report build/reports/modal_sprite_node_0209a07c.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a07c.json
+  report_args = --section .text --function func_0209a07c --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_02099f54.o: mwasmarm asm/game/modal_sprite_node_02099f54.s
+build build/decomp/delinks/asm/game/modal_sprite_node_02099f54.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_02099f54.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_02099f54.o | build/decomp/asm/game/modal_sprite_node_02099f54.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_02099f54.o
+  base_object = build/decomp/asm/game/modal_sprite_node_02099f54.o
+build build/reports/modal_sprite_node_02099f54.txt: match_report build/reports/modal_sprite_node_02099f54.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_02099f54.json
+  report_args = --section .text --function func_02099f54 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_02099fb0.o: mwasmarm asm/game/modal_sprite_node_02099fb0.s
+build build/decomp/delinks/asm/game/modal_sprite_node_02099fb0.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_02099fb0.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_02099fb0.o | build/decomp/asm/game/modal_sprite_node_02099fb0.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_02099fb0.o
+  base_object = build/decomp/asm/game/modal_sprite_node_02099fb0.o
+build build/reports/modal_sprite_node_02099fb0.txt: match_report build/reports/modal_sprite_node_02099fb0.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_02099fb0.json
+  report_args = --section .text --function func_02099fb0 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a0d8.o: mwasmarm asm/game/modal_sprite_node_0209a0d8.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a0d8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a0d8.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a0d8.o | build/decomp/asm/game/modal_sprite_node_0209a0d8.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a0d8.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a0d8.o
+build build/reports/modal_sprite_node_0209a0d8.txt: match_report build/reports/modal_sprite_node_0209a0d8.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a0d8.json
+  report_args = --section .text --function func_0209a0d8 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a120.o: mwasmarm asm/game/modal_sprite_node_0209a120.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a120.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a120.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a120.o | build/decomp/asm/game/modal_sprite_node_0209a120.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a120.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a120.o
+build build/reports/modal_sprite_node_0209a120.txt: match_report build/reports/modal_sprite_node_0209a120.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a120.json
+  report_args = --section .text --function func_0209a120 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a1b4.o: mwasmarm asm/game/modal_sprite_node_0209a1b4.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a1b4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a1b4.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a1b4.o | build/decomp/asm/game/modal_sprite_node_0209a1b4.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a1b4.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a1b4.o
+build build/reports/modal_sprite_node_0209a1b4.txt: match_report build/reports/modal_sprite_node_0209a1b4.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a1b4.json
+  report_args = --section .text --function func_0209a1b4 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a280.o: mwasmarm asm/game/modal_sprite_node_0209a280.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a280.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a280.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a280.o | build/decomp/asm/game/modal_sprite_node_0209a280.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a280.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a280.o
+build build/reports/modal_sprite_node_0209a280.txt: match_report build/reports/modal_sprite_node_0209a280.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a280.json
+  report_args = --section .text --function func_0209a280 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a208.o: mwasmarm asm/game/modal_sprite_node_0209a208.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a208.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a208.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a208.o | build/decomp/asm/game/modal_sprite_node_0209a208.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a208.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a208.o
+build build/reports/modal_sprite_node_0209a208.txt: match_report build/reports/modal_sprite_node_0209a208.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a208.json
+  report_args = --section .text --function func_0209a208 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a2a4.o: mwasmarm asm/game/modal_sprite_node_0209a2a4.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a2a4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a2a4.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a2a4.o | build/decomp/asm/game/modal_sprite_node_0209a2a4.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a2a4.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a2a4.o
+build build/reports/modal_sprite_node_0209a2a4.txt: match_report build/reports/modal_sprite_node_0209a2a4.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a2a4.json
+  report_args = --section .text --function func_0209a2a4 --require-exact
+
+build build/decomp/asm/game/modal_sprite_node_0209a2ac.o: mwasmarm asm/game/modal_sprite_node_0209a2ac.s
+build build/decomp/delinks/asm/game/modal_sprite_node_0209a2ac.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_node_0209a2ac.json: objdiff build/decomp/delinks/asm/game/modal_sprite_node_0209a2ac.o | build/decomp/asm/game/modal_sprite_node_0209a2ac.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_node_0209a2ac.o
+  base_object = build/decomp/asm/game/modal_sprite_node_0209a2ac.o
+build build/reports/modal_sprite_node_0209a2ac.txt: match_report build/reports/modal_sprite_node_0209a2ac.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_node_0209a2ac.json
+  report_args = --section .text --function func_0209a2ac --require-exact
+
+build modal_sprite_node: phony build/decomp/src/game/modal_sprite_node.o build/reports/modal_sprite_node_02071b94.txt build/reports/modal_sprite_node_0209a00c.txt build/reports/modal_sprite_node_02099edc.txt build/reports/modal_sprite_node_0209a07c.txt build/reports/modal_sprite_node_02099f54.txt build/reports/modal_sprite_node_02099fb0.txt build/reports/modal_sprite_node_0209a0d8.txt build/reports/modal_sprite_node_0209a120.txt build/reports/modal_sprite_node_0209a1b4.txt build/reports/modal_sprite_node_0209a280.txt build/reports/modal_sprite_node_0209a208.txt build/reports/modal_sprite_node_0209a2a4.txt build/reports/modal_sprite_node_0209a2ac.txt
+
+build build/decomp/src/game/modal_sprite_effects.o: mwccarm src/game/modal_sprite_effects.c | include/tingle/types.h
+  source = src/game/modal_sprite_effects.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
+build build/decomp/asm/game/modal_sprite_effects_0209eee4.o: mwasmarm asm/game/modal_sprite_effects_0209eee4.s
+build build/decomp/delinks/asm/game/modal_sprite_effects_0209eee4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_effects_0209eee4.json: objdiff build/decomp/delinks/asm/game/modal_sprite_effects_0209eee4.o | build/decomp/asm/game/modal_sprite_effects_0209eee4.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_effects_0209eee4.o
+  base_object = build/decomp/asm/game/modal_sprite_effects_0209eee4.o
+build build/reports/modal_sprite_effects_0209eee4.txt: match_report build/reports/modal_sprite_effects_0209eee4.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_effects_0209eee4.json
+  report_args = --section .text --function func_0209eee4 --require-exact
+
+build build/decomp/asm/game/modal_sprite_effects_0209ef24.o: mwasmarm asm/game/modal_sprite_effects_0209ef24.s
+build build/decomp/delinks/asm/game/modal_sprite_effects_0209ef24.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_effects_0209ef24.json: objdiff build/decomp/delinks/asm/game/modal_sprite_effects_0209ef24.o | build/decomp/asm/game/modal_sprite_effects_0209ef24.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_effects_0209ef24.o
+  base_object = build/decomp/asm/game/modal_sprite_effects_0209ef24.o
+build build/reports/modal_sprite_effects_0209ef24.txt: match_report build/reports/modal_sprite_effects_0209ef24.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_effects_0209ef24.json
+  report_args = --section .text --function func_0209ef24 --require-exact
+
+build build/decomp/asm/game/modal_sprite_effects_0209f088.o: mwasmarm asm/game/modal_sprite_effects_0209f088.s
+build build/decomp/delinks/asm/game/modal_sprite_effects_0209f088.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_effects_0209f088.json: objdiff build/decomp/delinks/asm/game/modal_sprite_effects_0209f088.o | build/decomp/asm/game/modal_sprite_effects_0209f088.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_effects_0209f088.o
+  base_object = build/decomp/asm/game/modal_sprite_effects_0209f088.o
+build build/reports/modal_sprite_effects_0209f088.txt: match_report build/reports/modal_sprite_effects_0209f088.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_effects_0209f088.json
+  report_args = --section .text --function func_0209f088 --require-exact
+
+build build/decomp/asm/game/modal_sprite_effects_0209f148.o: mwasmarm asm/game/modal_sprite_effects_0209f148.s
+build build/decomp/delinks/asm/game/modal_sprite_effects_0209f148.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_effects_0209f148.json: objdiff build/decomp/delinks/asm/game/modal_sprite_effects_0209f148.o | build/decomp/asm/game/modal_sprite_effects_0209f148.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_effects_0209f148.o
+  base_object = build/decomp/asm/game/modal_sprite_effects_0209f148.o
+build build/reports/modal_sprite_effects_0209f148.txt: match_report build/reports/modal_sprite_effects_0209f148.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_effects_0209f148.json
+  report_args = --section .text --function func_0209f148 --require-exact
+
+build build/decomp/asm/game/modal_sprite_effects_0209f09c.o: mwasmarm asm/game/modal_sprite_effects_0209f09c.s
+build build/decomp/delinks/asm/game/modal_sprite_effects_0209f09c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_effects_0209f09c.json: objdiff build/decomp/delinks/asm/game/modal_sprite_effects_0209f09c.o | build/decomp/asm/game/modal_sprite_effects_0209f09c.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_effects_0209f09c.o
+  base_object = build/decomp/asm/game/modal_sprite_effects_0209f09c.o
+build build/reports/modal_sprite_effects_0209f09c.txt: match_report build/reports/modal_sprite_effects_0209f09c.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_effects_0209f09c.json
+  report_args = --section .text --function func_0209f09c --require-exact
+
+build build/decomp/asm/game/modal_sprite_effects_0209f158.o: mwasmarm asm/game/modal_sprite_effects_0209f158.s
+build build/decomp/delinks/asm/game/modal_sprite_effects_0209f158.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_effects_0209f158.json: objdiff build/decomp/delinks/asm/game/modal_sprite_effects_0209f158.o | build/decomp/asm/game/modal_sprite_effects_0209f158.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_effects_0209f158.o
+  base_object = build/decomp/asm/game/modal_sprite_effects_0209f158.o
+build build/reports/modal_sprite_effects_0209f158.txt: match_report build/reports/modal_sprite_effects_0209f158.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_effects_0209f158.json
+  report_args = --section .text --function func_0209f158 --require-exact
+
+build build/decomp/asm/game/modal_sprite_effects_0209f1ec.o: mwasmarm asm/game/modal_sprite_effects_0209f1ec.s
+build build/decomp/delinks/asm/game/modal_sprite_effects_0209f1ec.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_effects_0209f1ec.json: objdiff build/decomp/delinks/asm/game/modal_sprite_effects_0209f1ec.o | build/decomp/asm/game/modal_sprite_effects_0209f1ec.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_effects_0209f1ec.o
+  base_object = build/decomp/asm/game/modal_sprite_effects_0209f1ec.o
+build build/reports/modal_sprite_effects_0209f1ec.txt: match_report build/reports/modal_sprite_effects_0209f1ec.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_effects_0209f1ec.json
+  report_args = --section .text --function func_0209f1ec --require-exact
+
+build build/decomp/asm/game/modal_sprite_effects_0209f270.o: mwasmarm asm/game/modal_sprite_effects_0209f270.s
+build build/decomp/delinks/asm/game/modal_sprite_effects_0209f270.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_sprite_effects_0209f270.json: objdiff build/decomp/delinks/asm/game/modal_sprite_effects_0209f270.o | build/decomp/asm/game/modal_sprite_effects_0209f270.o
+  target_object = build/decomp/delinks/asm/game/modal_sprite_effects_0209f270.o
+  base_object = build/decomp/asm/game/modal_sprite_effects_0209f270.o
+build build/reports/modal_sprite_effects_0209f270.txt: match_report build/reports/modal_sprite_effects_0209f270.json | tools/report_objdiff.py
+  report_json = build/reports/modal_sprite_effects_0209f270.json
+  report_args = --section .text --function func_0209f270 --require-exact
+
+build modal_sprite_effects: phony build/decomp/src/game/modal_sprite_effects.o build/reports/modal_sprite_effects_0209eee4.txt build/reports/modal_sprite_effects_0209ef24.txt build/reports/modal_sprite_effects_0209f088.txt build/reports/modal_sprite_effects_0209f148.txt build/reports/modal_sprite_effects_0209f09c.txt build/reports/modal_sprite_effects_0209f158.txt build/reports/modal_sprite_effects_0209f1ec.txt build/reports/modal_sprite_effects_0209f270.txt
+
+build build/decomp/src/game/modal_transition.o: mwccarm src/game/modal_transition.c | include/tingle/types.h
+  source = src/game/modal_transition.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
+build build/decomp/asm/game/modal_transition_020a6964.o: mwasmarm asm/game/modal_transition_020a6964.s
+build build/decomp/delinks/asm/game/modal_transition_020a6964.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_transition_020a6964.json: objdiff build/decomp/delinks/asm/game/modal_transition_020a6964.o | build/decomp/asm/game/modal_transition_020a6964.o
+  target_object = build/decomp/delinks/asm/game/modal_transition_020a6964.o
+  base_object = build/decomp/asm/game/modal_transition_020a6964.o
+build build/reports/modal_transition_020a6964.txt: match_report build/reports/modal_transition_020a6964.json | tools/report_objdiff.py
+  report_json = build/reports/modal_transition_020a6964.json
+  report_args = --section .text --function func_020a6964 --require-exact
+
+build build/decomp/asm/game/modal_transition_020a6940.o: mwasmarm asm/game/modal_transition_020a6940.s
+build build/decomp/delinks/asm/game/modal_transition_020a6940.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_transition_020a6940.json: objdiff build/decomp/delinks/asm/game/modal_transition_020a6940.o | build/decomp/asm/game/modal_transition_020a6940.o
+  target_object = build/decomp/delinks/asm/game/modal_transition_020a6940.o
+  base_object = build/decomp/asm/game/modal_transition_020a6940.o
+build build/reports/modal_transition_020a6940.txt: match_report build/reports/modal_transition_020a6940.json | tools/report_objdiff.py
+  report_json = build/reports/modal_transition_020a6940.json
+  report_args = --section .text --function func_020a6940 --require-exact
+
+build build/decomp/asm/game/modal_transition_020a6990.o: mwasmarm asm/game/modal_transition_020a6990.s
+build build/decomp/delinks/asm/game/modal_transition_020a6990.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_transition_020a6990.json: objdiff build/decomp/delinks/asm/game/modal_transition_020a6990.o | build/decomp/asm/game/modal_transition_020a6990.o
+  target_object = build/decomp/delinks/asm/game/modal_transition_020a6990.o
+  base_object = build/decomp/asm/game/modal_transition_020a6990.o
+build build/reports/modal_transition_020a6990.txt: match_report build/reports/modal_transition_020a6990.json | tools/report_objdiff.py
+  report_json = build/reports/modal_transition_020a6990.json
+  report_args = --section .text --function func_020a6990 --require-exact
+
+build build/decomp/asm/game/modal_transition_020a6aa8.o: mwasmarm asm/game/modal_transition_020a6aa8.s
+build build/decomp/delinks/asm/game/modal_transition_020a6aa8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_transition_020a6aa8.json: objdiff build/decomp/delinks/asm/game/modal_transition_020a6aa8.o | build/decomp/asm/game/modal_transition_020a6aa8.o
+  target_object = build/decomp/delinks/asm/game/modal_transition_020a6aa8.o
+  base_object = build/decomp/asm/game/modal_transition_020a6aa8.o
+build build/reports/modal_transition_020a6aa8.txt: match_report build/reports/modal_transition_020a6aa8.json | tools/report_objdiff.py
+  report_json = build/reports/modal_transition_020a6aa8.json
+  report_args = --section .text --function func_020a6aa8 --require-exact
+
+build modal_transition: phony build/decomp/src/game/modal_transition.o build/reports/modal_transition_020a6964.txt build/reports/modal_transition_020a6940.txt build/reports/modal_transition_020a6990.txt build/reports/modal_transition_020a6aa8.txt
+
+build build/decomp/src/game/tracked_resource_actor_type35_query.o: mwccarm src/game/tracked_resource_actor_type35_query.c | include/tingle/types.h
+  source = src/game/tracked_resource_actor_type35_query.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
+build build/decomp/asm/game/tracked_resource_actor_type35_query_020534c4.o: mwasmarm asm/game/tracked_resource_actor_type35_query_020534c4.s
+build build/decomp/delinks/asm/game/tracked_resource_actor_type35_query_020534c4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/tracked_resource_actor_type35_query_020534c4.json: objdiff build/decomp/delinks/asm/game/tracked_resource_actor_type35_query_020534c4.o | build/decomp/asm/game/tracked_resource_actor_type35_query_020534c4.o
+  target_object = build/decomp/delinks/asm/game/tracked_resource_actor_type35_query_020534c4.o
+  base_object = build/decomp/asm/game/tracked_resource_actor_type35_query_020534c4.o
+build build/reports/tracked_resource_actor_type35_query_020534c4.txt: match_report build/reports/tracked_resource_actor_type35_query_020534c4.json | tools/report_objdiff.py
+  report_json = build/reports/tracked_resource_actor_type35_query_020534c4.json
+  report_args = --section .text --function func_020534c4 --require-exact
+
+build tracked_resource_actor_type35_query: phony build/decomp/src/game/tracked_resource_actor_type35_query.o build/reports/tracked_resource_actor_type35_query_020534c4.txt
+
+build modal_runtime_replacement_objects: phony build/decomp/asm/game/modal_screen_controller_020a6320.o build/decomp/asm/game/modal_screen_controller_020a6390.o build/decomp/asm/game/modal_screen_controller_020a63d0.o build/decomp/asm/game/modal_screen_controller_020a6404.o build/decomp/asm/game/modal_screen_controller_020a6548.o build/decomp/asm/game/modal_screen_controller_020a65a4.o build/decomp/asm/game/modal_screen_controller_020a6808.o build/decomp/asm/game/modal_screen_controller_020a6810.o build/decomp/asm/game/modal_screen_controller_020a681c.o build/decomp/asm/game/modal_screen_controller_020a68dc.o build/decomp/asm/game/modal_screen_controller_020a68fc.o build/decomp/asm/game/runtime_modal_scene_0209d758.o build/decomp/asm/game/runtime_modal_scene_0209d774.o build/decomp/asm/game/runtime_modal_scene_0209d918.o build/decomp/asm/game/runtime_modal_scene_0209d9c8.o build/decomp/asm/game/runtime_modal_scene_0209de34.o build/decomp/asm/game/runtime_modal_scene_0209da80.o build/decomp/asm/game/runtime_modal_scene_0209de44.o build/decomp/asm/game/runtime_modal_scene_0209de7c.o build/decomp/asm/game/runtime_modal_controller_0209def4.o build/decomp/asm/game/runtime_modal_controller_0209e198.o build/decomp/asm/game/runtime_modal_controller_0209e2f4.o build/decomp/asm/game/runtime_modal_controller_0209e328.o build/decomp/asm/game/runtime_modal_controller_0209e330.o build/decomp/asm/game/runtime_modal_controller_0209e338.o build/decomp/asm/game/runtime_modal_controller_0209e35c.o build/decomp/asm/game/runtime_modal_controller_0209e384.o build/decomp/asm/game/runtime_modal_controller_0209eb24.o build/decomp/asm/game/runtime_modal_controller_0209eb34.o build/decomp/asm/game/runtime_modal_controller_0209e3d4.o build/decomp/asm/game/runtime_modal_controller_0209ed08.o build/decomp/asm/game/modal_sprite_node_02071b94.o build/decomp/asm/game/modal_sprite_node_0209a00c.o build/decomp/asm/game/modal_sprite_node_02099edc.o build/decomp/asm/game/modal_sprite_node_0209a07c.o build/decomp/asm/game/modal_sprite_node_02099f54.o build/decomp/asm/game/modal_sprite_node_02099fb0.o build/decomp/asm/game/modal_sprite_node_0209a0d8.o build/decomp/asm/game/modal_sprite_node_0209a120.o build/decomp/asm/game/modal_sprite_node_0209a1b4.o build/decomp/asm/game/modal_sprite_node_0209a280.o build/decomp/asm/game/modal_sprite_node_0209a208.o build/decomp/asm/game/modal_sprite_node_0209a2a4.o build/decomp/asm/game/modal_sprite_node_0209a2ac.o build/decomp/asm/game/modal_sprite_effects_0209eee4.o build/decomp/asm/game/modal_sprite_effects_0209ef24.o build/decomp/asm/game/modal_sprite_effects_0209f088.o build/decomp/asm/game/modal_sprite_effects_0209f148.o build/decomp/asm/game/modal_sprite_effects_0209f09c.o build/decomp/asm/game/modal_sprite_effects_0209f158.o build/decomp/asm/game/modal_sprite_effects_0209f1ec.o build/decomp/asm/game/modal_sprite_effects_0209f270.o build/decomp/asm/game/modal_transition_020a6964.o build/decomp/asm/game/modal_transition_020a6940.o build/decomp/asm/game/modal_transition_020a6990.o build/decomp/asm/game/modal_transition_020a6aa8.o build/decomp/asm/game/tracked_resource_actor_type35_query_020534c4.o build/decomp/asm/game/modal_geometry_0209b58c.o build/decomp/asm/game/modal_geometry_0209b5e8.o build/decomp/asm/game/modal_geometry_0209b7ec.o build/decomp/asm/game/modal_geometry_0209c7e8.o build/decomp/asm/game/modal_geometry_0209b880.o build/decomp/asm/game/modal_geometry_0209c87c.o
+
+build build/decomp/src/game/modal_geometry.o: mwccarm src/game/modal_geometry.c | include/tingle/types.h
+  source = src/game/modal_geometry.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++ -DMATCHING
+
+build build/decomp/asm/game/modal_geometry_0209b58c.o: mwasmarm asm/game/modal_geometry_0209b58c.s
+build build/decomp/delinks/asm/game/modal_geometry_0209b58c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_geometry_0209b58c.json: objdiff build/decomp/delinks/asm/game/modal_geometry_0209b58c.o | build/decomp/asm/game/modal_geometry_0209b58c.o
+  target_object = build/decomp/delinks/asm/game/modal_geometry_0209b58c.o
+  base_object = build/decomp/asm/game/modal_geometry_0209b58c.o
+build build/reports/modal_geometry_0209b58c.txt: match_report build/reports/modal_geometry_0209b58c.json | tools/report_objdiff.py
+  report_json = build/reports/modal_geometry_0209b58c.json
+  report_args = --section .text --function func_0209b58c --require-exact
+
+build build/decomp/asm/game/modal_geometry_0209b5e8.o: mwasmarm asm/game/modal_geometry_0209b5e8.s
+build build/decomp/delinks/asm/game/modal_geometry_0209b5e8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_geometry_0209b5e8.json: objdiff build/decomp/delinks/asm/game/modal_geometry_0209b5e8.o | build/decomp/asm/game/modal_geometry_0209b5e8.o
+  target_object = build/decomp/delinks/asm/game/modal_geometry_0209b5e8.o
+  base_object = build/decomp/asm/game/modal_geometry_0209b5e8.o
+build build/reports/modal_geometry_0209b5e8.txt: match_report build/reports/modal_geometry_0209b5e8.json | tools/report_objdiff.py
+  report_json = build/reports/modal_geometry_0209b5e8.json
+  report_args = --section .text --function func_0209b5e8 --require-exact
+
+build build/decomp/asm/game/modal_geometry_0209b7ec.o: mwasmarm asm/game/modal_geometry_0209b7ec.s
+build build/decomp/delinks/asm/game/modal_geometry_0209b7ec.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_geometry_0209b7ec.json: objdiff build/decomp/delinks/asm/game/modal_geometry_0209b7ec.o | build/decomp/asm/game/modal_geometry_0209b7ec.o
+  target_object = build/decomp/delinks/asm/game/modal_geometry_0209b7ec.o
+  base_object = build/decomp/asm/game/modal_geometry_0209b7ec.o
+build build/reports/modal_geometry_0209b7ec.txt: match_report build/reports/modal_geometry_0209b7ec.json | tools/report_objdiff.py
+  report_json = build/reports/modal_geometry_0209b7ec.json
+  report_args = --section .text --function func_0209b7ec --require-exact
+
+build build/decomp/asm/game/modal_geometry_0209c7e8.o: mwasmarm asm/game/modal_geometry_0209c7e8.s
+build build/decomp/delinks/asm/game/modal_geometry_0209c7e8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_geometry_0209c7e8.json: objdiff build/decomp/delinks/asm/game/modal_geometry_0209c7e8.o | build/decomp/asm/game/modal_geometry_0209c7e8.o
+  target_object = build/decomp/delinks/asm/game/modal_geometry_0209c7e8.o
+  base_object = build/decomp/asm/game/modal_geometry_0209c7e8.o
+build build/reports/modal_geometry_0209c7e8.txt: match_report build/reports/modal_geometry_0209c7e8.json | tools/report_objdiff.py
+  report_json = build/reports/modal_geometry_0209c7e8.json
+  report_args = --section .text --function func_0209c7e8 --require-exact
+
+build build/decomp/asm/game/modal_geometry_0209b880.o: mwasmarm asm/game/modal_geometry_0209b880.s
+build build/decomp/delinks/asm/game/modal_geometry_0209b880.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_geometry_0209b880.json: objdiff build/decomp/delinks/asm/game/modal_geometry_0209b880.o | build/decomp/asm/game/modal_geometry_0209b880.o
+  target_object = build/decomp/delinks/asm/game/modal_geometry_0209b880.o
+  base_object = build/decomp/asm/game/modal_geometry_0209b880.o
+build build/reports/modal_geometry_0209b880.txt: match_report build/reports/modal_geometry_0209b880.json | tools/report_objdiff.py
+  report_json = build/reports/modal_geometry_0209b880.json
+  report_args = --section .text --function func_0209b880 --require-exact
+
+build build/decomp/asm/game/modal_geometry_0209c87c.o: mwasmarm asm/game/modal_geometry_0209c87c.s
+build build/decomp/delinks/asm/game/modal_geometry_0209c87c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/modal_geometry_0209c87c.json: objdiff build/decomp/delinks/asm/game/modal_geometry_0209c87c.o | build/decomp/asm/game/modal_geometry_0209c87c.o
+  target_object = build/decomp/delinks/asm/game/modal_geometry_0209c87c.o
+  base_object = build/decomp/asm/game/modal_geometry_0209c87c.o
+build build/reports/modal_geometry_0209c87c.txt: match_report build/reports/modal_geometry_0209c87c.json | tools/report_objdiff.py
+  report_json = build/reports/modal_geometry_0209c87c.json
+  report_args = --section .text --function func_0209c87c --require-exact
+
+build modal_geometry: phony build/decomp/src/game/modal_geometry.o build/reports/modal_geometry_0209b58c.txt build/reports/modal_geometry_0209b5e8.txt build/reports/modal_geometry_0209b7ec.txt build/reports/modal_geometry_0209c7e8.txt build/reports/modal_geometry_0209b880.txt build/reports/modal_geometry_0209c87c.txt

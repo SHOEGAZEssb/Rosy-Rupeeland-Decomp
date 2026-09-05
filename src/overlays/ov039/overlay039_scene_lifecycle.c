@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /*
  * Overlay 39's second scene type: allocation, model setup, teardown, animation
@@ -7,16 +8,14 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_ov039_02208438;
-extern void *data_ov039_0220846c;
+extern u8 data_ov039_02208438[];
+extern const char data_ov039_0220846c[];
 extern void *gGamePhaseRuntime;
-extern void *gHeapContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *Heap_Alloc(s32 size, void *tag, s32 alignment, void *heap);
 extern void func_ov039_021fce00(void *object);
 extern void func_ov039_021fce40(void *object);
 extern void func_ov039_021fce60(void *object);
@@ -90,12 +89,12 @@ extern "C" void *func_ov039_02200cd8(void *scene, void *owner, s32 variant)
     FIELD(u16, scene, 0x1caa) = FIELD(u16, scene, 0x1ca8) = 0;
     FIELD(u16, scene, 0x42) &= ~4;
     for (s32 i = 9; i >= 0; i--) {
-        void *entry = Heap_Alloc(0x20, data_ov039_0220846c, 4, gHeapContext);
+        void *entry = Heap_Alloc(0x20, (const char *)data_ov039_0220846c, 4, &gHeapContext);
         if (entry) func_ov039_021fce60(entry);
         FIELD(void *, scene, 0x74 + i * 4) = entry;
     }
     for (s32 i = 2; i >= 0; i--) {
-        void *entry = Heap_Alloc(0x148, data_ov039_0220846c, 4, gHeapContext);
+        void *entry = Heap_Alloc(0x148, (const char *)data_ov039_0220846c, 4, &gHeapContext);
         if (entry) func_ov039_02203ef0(entry);
         FIELD(void *, scene, 0x9c + i * 4) = entry;
     }

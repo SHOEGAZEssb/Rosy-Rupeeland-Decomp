@@ -7222,3 +7222,129 @@ build/decomp/delinks/asm/game/auxiliary_interaction_transfer_02069480.o = build/
 build/decomp/delinks/asm/game/auxiliary_interaction_transfer_02069560.o = build/decomp/asm/game/auxiliary_interaction_transfer_02069560.o
 
 build/decomp/delinks/asm/game/auxiliary_interaction_transfer_0206e3d0.o = build/decomp/asm/game/auxiliary_interaction_transfer_0206e3d0.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a6320.o = build/decomp/asm/game/modal_screen_controller_020a6320.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a6390.o = build/decomp/asm/game/modal_screen_controller_020a6390.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a63d0.o = build/decomp/asm/game/modal_screen_controller_020a63d0.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a6404.o = build/decomp/asm/game/modal_screen_controller_020a6404.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a6548.o = build/decomp/asm/game/modal_screen_controller_020a6548.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a65a4.o = build/decomp/asm/game/modal_screen_controller_020a65a4.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a6808.o = build/decomp/asm/game/modal_screen_controller_020a6808.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a6810.o = build/decomp/asm/game/modal_screen_controller_020a6810.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a681c.o = build/decomp/asm/game/modal_screen_controller_020a681c.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a68dc.o = build/decomp/asm/game/modal_screen_controller_020a68dc.o
+
+build/decomp/delinks/asm/game/modal_screen_controller_020a68fc.o = build/decomp/asm/game/modal_screen_controller_020a68fc.o
+
+build/decomp/delinks/asm/game/runtime_modal_scene_0209d758.o = build/decomp/asm/game/runtime_modal_scene_0209d758.o
+
+build/decomp/delinks/asm/game/runtime_modal_scene_0209d774.o = build/decomp/asm/game/runtime_modal_scene_0209d774.o
+
+build/decomp/delinks/asm/game/runtime_modal_scene_0209d918.o = build/decomp/asm/game/runtime_modal_scene_0209d918.o
+
+build/decomp/delinks/asm/game/runtime_modal_scene_0209d9c8.o = build/decomp/asm/game/runtime_modal_scene_0209d9c8.o
+
+build/decomp/delinks/asm/game/runtime_modal_scene_0209de34.o = build/decomp/asm/game/runtime_modal_scene_0209de34.o
+
+build/decomp/delinks/asm/game/runtime_modal_scene_0209da80.o = build/decomp/asm/game/runtime_modal_scene_0209da80.o
+
+build/decomp/delinks/asm/game/runtime_modal_scene_0209de44.o = build/decomp/asm/game/runtime_modal_scene_0209de44.o
+
+build/decomp/delinks/asm/game/runtime_modal_scene_0209de7c.o = build/decomp/asm/game/runtime_modal_scene_0209de7c.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209def4.o = build/decomp/asm/game/runtime_modal_controller_0209def4.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209e198.o = build/decomp/asm/game/runtime_modal_controller_0209e198.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209e2f4.o = build/decomp/asm/game/runtime_modal_controller_0209e2f4.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209e328.o = build/decomp/asm/game/runtime_modal_controller_0209e328.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209e330.o = build/decomp/asm/game/runtime_modal_controller_0209e330.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209e338.o = build/decomp/asm/game/runtime_modal_controller_0209e338.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209e35c.o = build/decomp/asm/game/runtime_modal_controller_0209e35c.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209e384.o = build/decomp/asm/game/runtime_modal_controller_0209e384.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209eb24.o = build/decomp/asm/game/runtime_modal_controller_0209eb24.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209eb34.o = build/decomp/asm/game/runtime_modal_controller_0209eb34.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209e3d4.o = build/decomp/asm/game/runtime_modal_controller_0209e3d4.o
+
+build/decomp/delinks/asm/game/runtime_modal_controller_0209ed08.o = build/decomp/asm/game/runtime_modal_controller_0209ed08.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_02071b94.o = build/decomp/asm/game/modal_sprite_node_02071b94.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a00c.o = build/decomp/asm/game/modal_sprite_node_0209a00c.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_02099edc.o = build/decomp/asm/game/modal_sprite_node_02099edc.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a07c.o = build/decomp/asm/game/modal_sprite_node_0209a07c.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_02099f54.o = build/decomp/asm/game/modal_sprite_node_02099f54.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_02099fb0.o = build/decomp/asm/game/modal_sprite_node_02099fb0.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a0d8.o = build/decomp/asm/game/modal_sprite_node_0209a0d8.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a120.o = build/decomp/asm/game/modal_sprite_node_0209a120.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a1b4.o = build/decomp/asm/game/modal_sprite_node_0209a1b4.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a280.o = build/decomp/asm/game/modal_sprite_node_0209a280.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a208.o = build/decomp/asm/game/modal_sprite_node_0209a208.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a2a4.o = build/decomp/asm/game/modal_sprite_node_0209a2a4.o
+
+build/decomp/delinks/asm/game/modal_sprite_node_0209a2ac.o = build/decomp/asm/game/modal_sprite_node_0209a2ac.o
+
+build/decomp/delinks/asm/game/modal_sprite_effects_0209eee4.o = build/decomp/asm/game/modal_sprite_effects_0209eee4.o
+
+build/decomp/delinks/asm/game/modal_sprite_effects_0209ef24.o = build/decomp/asm/game/modal_sprite_effects_0209ef24.o
+
+build/decomp/delinks/asm/game/modal_sprite_effects_0209f088.o = build/decomp/asm/game/modal_sprite_effects_0209f088.o
+
+build/decomp/delinks/asm/game/modal_sprite_effects_0209f148.o = build/decomp/asm/game/modal_sprite_effects_0209f148.o
+
+build/decomp/delinks/asm/game/modal_sprite_effects_0209f09c.o = build/decomp/asm/game/modal_sprite_effects_0209f09c.o
+
+build/decomp/delinks/asm/game/modal_sprite_effects_0209f158.o = build/decomp/asm/game/modal_sprite_effects_0209f158.o
+
+build/decomp/delinks/asm/game/modal_sprite_effects_0209f1ec.o = build/decomp/asm/game/modal_sprite_effects_0209f1ec.o
+
+build/decomp/delinks/asm/game/modal_sprite_effects_0209f270.o = build/decomp/asm/game/modal_sprite_effects_0209f270.o
+
+build/decomp/delinks/asm/game/modal_transition_020a6964.o = build/decomp/asm/game/modal_transition_020a6964.o
+
+build/decomp/delinks/asm/game/modal_transition_020a6940.o = build/decomp/asm/game/modal_transition_020a6940.o
+
+build/decomp/delinks/asm/game/modal_transition_020a6990.o = build/decomp/asm/game/modal_transition_020a6990.o
+
+build/decomp/delinks/asm/game/modal_transition_020a6aa8.o = build/decomp/asm/game/modal_transition_020a6aa8.o
+
+build/decomp/delinks/asm/game/tracked_resource_actor_type35_query_020534c4.o = build/decomp/asm/game/tracked_resource_actor_type35_query_020534c4.o
+
+build/decomp/delinks/asm/game/modal_geometry_0209b58c.o = build/decomp/asm/game/modal_geometry_0209b58c.o
+
+build/decomp/delinks/asm/game/modal_geometry_0209b5e8.o = build/decomp/asm/game/modal_geometry_0209b5e8.o
+
+build/decomp/delinks/asm/game/modal_geometry_0209b7ec.o = build/decomp/asm/game/modal_geometry_0209b7ec.o
+
+build/decomp/delinks/asm/game/modal_geometry_0209c7e8.o = build/decomp/asm/game/modal_geometry_0209c7e8.o
+
+build/decomp/delinks/asm/game/modal_geometry_0209b880.o = build/decomp/asm/game/modal_geometry_0209b880.o
+
+build/decomp/delinks/asm/game/modal_geometry_0209c87c.o = build/decomp/asm/game/modal_geometry_0209c87c.o

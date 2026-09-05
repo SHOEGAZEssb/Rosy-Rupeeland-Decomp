@@ -12,7 +12,7 @@ extern const u8 gTrackedResourceActorVtable[];
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *ActorRuntimeBase_Init(void *actor);
+extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
 extern void RuntimeActor_DestroyAlternateEntry(void *actor);
 extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
@@ -23,15 +23,16 @@ extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
 /*
- * Input is actor storage. Construct the inherited actor, install
+ * Inputs are actor storage and a borrowed spawn descriptor. Forward the
+ * descriptor to inherited construction so position and actor flags survive; install
  * gTrackedResourceActorVtable, clear pointer 0x1EC, preserve only bit 15 of
  * halfword 0x1F0,
  * clear bit 0 of word 0x1F4, clear halfword 0x1F8 and word 0x1FC, then return
  * self. Parent state may change; no hardware is accessed directly.
  */
-void *TrackedResourceActor_Init(void *self)
+void *TrackedResourceActor_Init(void *self, const void *descriptor)
 {
-    ActorRuntimeBase_Init(self);
+    ActorRuntimeBase_Init(self, descriptor);
     FIELD(const void *, self, 0) = gTrackedResourceActorVtable;
     FIELD(void *, self, 0x1ec) = 0;
     FIELD(u16, self, 0x1f0) &= 0x8000;
