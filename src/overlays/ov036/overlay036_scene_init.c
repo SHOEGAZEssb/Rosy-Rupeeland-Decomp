@@ -10,7 +10,8 @@ extern const u8 data_ov036_022061b0[];
 extern const s32 data_ov036_02205af0[];
 extern void *data_020f4e14;
 extern void *gDebugFont;
-extern void *gHeapContext;
+/* The retail literal names the heap context itself, not its storage pointer. */
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {

@@ -7348,3 +7348,17 @@ build/decomp/delinks/asm/game/modal_geometry_0209c7e8.o = build/decomp/asm/game/
 build/decomp/delinks/asm/game/modal_geometry_0209b880.o = build/decomp/asm/game/modal_geometry_0209b880.o
 
 build/decomp/delinks/asm/game/modal_geometry_0209c87c.o = build/decomp/asm/game/modal_geometry_0209c87c.o
+
+build/decomp/delinks/asm/game/overlay34_result_scene_update.o = build/decomp/asm/game/overlay34_result_scene_update.o
+
+build/decomp/delinks/asm/graphics/graphics_sprite_renderer_suspend.o = build/decomp/asm/graphics/graphics_sprite_renderer_suspend.o
+
+build/decomp/delinks/asm/graphics/graphics_sprite_renderer_resume.o = build/decomp/asm/graphics/graphics_sprite_renderer_resume.o
+
+build/decomp/delinks/asm/graphics/graphics_character_resource_dimension0.o = build/decomp/asm/graphics/graphics_character_resource_dimension0.o
+
+build/decomp/delinks/asm/graphics/graphics_character_resource_dimension1.o = build/decomp/asm/graphics/graphics_character_resource_dimension1.o
+
+build/decomp/delinks/asm/game/overlay34_result_scene_delete.o = build/decomp/asm/game/overlay34_result_scene_delete.o
+
+build/decomp/delinks/asm/game/auxiliary_interaction_finalize_active.o = build/decomp/asm/game/auxiliary_interaction_finalize_active.o

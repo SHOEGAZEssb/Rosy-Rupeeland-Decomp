@@ -5,7 +5,8 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern const u8 data_ov036_02206198[];
-extern void *gHeapContext;
+/* The retail literal names the heap context itself, not its storage pointer. */
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {

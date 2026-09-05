@@ -7628,3 +7628,31 @@ asm/game/modal_geometry_0209b880.s:
 asm/game/modal_geometry_0209c87c.s:
     categories: Game code
     .text start:0x0209c87c end:0x0209c9d4
+
+asm/game/overlay34_result_scene_update.s:
+    categories: Game code
+    .text start:0x0206f184 end:0x0206f204
+
+asm/graphics/graphics_sprite_renderer_suspend.s:
+    categories: Game code
+    .text start:0x02075238 end:0x02075290
+
+asm/graphics/graphics_sprite_renderer_resume.s:
+    categories: Game code
+    .text start:0x02075020 end:0x02075238
+
+asm/graphics/graphics_character_resource_dimension0.s:
+    categories: Game code
+    .text start:0x02070454 end:0x02070464
+
+asm/graphics/graphics_character_resource_dimension1.s:
+    categories: Game code
+    .text start:0x02070464 end:0x02070474
+
+asm/game/overlay34_result_scene_delete.s:
+    categories: Game code
+    .text start:0x0206f058 end:0x0206f184
+
+asm/game/auxiliary_interaction_finalize_active.s:
+    categories: Game code
+    .text start:0x0206e590 end:0x0206e5c8

@@ -6,7 +6,8 @@
 
 extern const u8 data_ov036_02206160[];
 extern const u8 data_ov036_022051f0[];
-extern void *gHeapContext;
+/* The retail literal names the heap context itself, not its storage pointer. */
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {
