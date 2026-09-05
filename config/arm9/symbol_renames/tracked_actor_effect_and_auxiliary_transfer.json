@@ -1,0 +1,14 @@
+{
+  "func_02052978": "TrackedResourceActorType32_Init",
+  "func_02052998": "TrackedResourceActorType32_Destroy",
+  "func_020529ac": "TrackedResourceActorType32_DestroyAndFree",
+  "func_020529c8": "TrackedResourceActorType32_ClearSpriteResources",
+  "func_020529d8": "TrackedResourceActorType32_SetRecord",
+  "func_02052a08": "TrackedResourceActorType32_Update",
+  "func_02052a20": "TrackedResourceActorType32_DispatchEffect",
+  "data_020e2dbc": "gTrackedResourceActorType32Vtable",
+  "func_02069304": "ActorAttachmentManager_AppendExistingRecord",
+  "func_02069480": "ActorAttachmentManager_RemoveRecord",
+  "func_02069560": "ActorAttachmentManager_TransferRecords",
+  "func_0206e3d0": "AuxiliaryInteraction_MergeFrom"
+}

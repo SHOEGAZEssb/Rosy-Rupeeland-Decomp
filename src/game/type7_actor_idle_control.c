@@ -15,7 +15,7 @@ extern u32 data_020e18d0[];
 extern "C" {
 #endif
 extern void Type7Actor_ClearTarget(void *actor);
-extern s32 func_0206e3d0(void *object, void *resource);
+extern s32 AuxiliaryInteraction_MergeFrom(void *object, void *resource);
 extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
@@ -51,7 +51,7 @@ void Type7Actor_DisableTargeting(void *self)
 
 /*
  * Inputs are a type-seven actor and object; null object is ignored. When actor
- * resource +0x234 exists, require func_0206e3d0(object, resource), destroy and
+ * resource +0x234 exists, require AuxiliaryInteraction_MergeFrom(object, resource), destroy and
  * free the resource, clear game-work flag 0x3fd, null +0x234, and install
  * data_020e1788 indefinitely. Without a resource, require
  * func_0206cc68(object, actor, 1) and install data_020e18d0 indefinitely.
@@ -68,7 +68,7 @@ void Type7Actor_HandleResourceInteraction(void *self, void *object)
         return;
     resource = *(void **)(actor + 0x234);
     if (resource != 0) {
-        if (func_0206e3d0(object, resource) == 0)
+        if (AuxiliaryInteraction_MergeFrom(object, resource) == 0)
             return;
         AuxiliaryInteraction_Destroy(resource);
         Heap_Free(resource);

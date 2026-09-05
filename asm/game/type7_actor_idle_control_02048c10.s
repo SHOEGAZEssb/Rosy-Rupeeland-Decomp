@@ -14,7 +14,7 @@
 .extern Type7Actor_ClearTarget
 .extern AuxiliaryInteraction_Destroy
 .extern func_0206cc68
-.extern func_0206e3d0
+.extern AuxiliaryInteraction_MergeFrom
 .extern gGameWork
 .global Type7Actor_DisableTargeting
 .global Type7Actor_HandleResourceInteraction
@@ -44,7 +44,7 @@ Type7Actor_HandleResourceInteraction: ; 0x02048c2c
     cmp r2, #0x0
     beq .L_02048ce4
     mov r1, r2
-    bl func_0206e3d0
+    bl AuxiliaryInteraction_MergeFrom
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     ldr r5, [r4, #0x234]

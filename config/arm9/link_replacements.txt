@@ -7200,3 +7200,25 @@ build/decomp/delinks/src/game/title_character_resource_collection_destructor.o =
 build/decomp/delinks/src/game/title_character_resource_collection_ops.o = build/decomp/src/game/title_character_resource_collection_ops.o
 build/decomp/delinks/src/graphics/title_palette_backdrop.o = build/decomp/src/graphics/title_palette_backdrop.o
 build/decomp/delinks/src/game/title_scroll_value.o = build/decomp/src/game/title_scroll_value.o
+
+build/decomp/delinks/asm/game/tracked_resource_actor_type32_02052978.o = build/decomp/asm/game/tracked_resource_actor_type32_02052978.o
+
+build/decomp/delinks/asm/game/tracked_resource_actor_type32_02052998.o = build/decomp/asm/game/tracked_resource_actor_type32_02052998.o
+
+build/decomp/delinks/asm/game/tracked_resource_actor_type32_020529ac.o = build/decomp/asm/game/tracked_resource_actor_type32_020529ac.o
+
+build/decomp/delinks/asm/game/tracked_resource_actor_type32_020529c8.o = build/decomp/asm/game/tracked_resource_actor_type32_020529c8.o
+
+build/decomp/delinks/asm/game/tracked_resource_actor_type32_020529d8.o = build/decomp/asm/game/tracked_resource_actor_type32_020529d8.o
+
+build/decomp/delinks/asm/game/tracked_resource_actor_type32_02052a08.o = build/decomp/asm/game/tracked_resource_actor_type32_02052a08.o
+
+build/decomp/delinks/asm/game/tracked_resource_actor_type32_02052a20.o = build/decomp/asm/game/tracked_resource_actor_type32_02052a20.o
+
+build/decomp/delinks/asm/game/auxiliary_interaction_transfer_02069304.o = build/decomp/asm/game/auxiliary_interaction_transfer_02069304.o
+
+build/decomp/delinks/asm/game/auxiliary_interaction_transfer_02069480.o = build/decomp/asm/game/auxiliary_interaction_transfer_02069480.o
+
+build/decomp/delinks/asm/game/auxiliary_interaction_transfer_02069560.o = build/decomp/asm/game/auxiliary_interaction_transfer_02069560.o
+
+build/decomp/delinks/asm/game/auxiliary_interaction_transfer_0206e3d0.o = build/decomp/asm/game/auxiliary_interaction_transfer_0206e3d0.o

@@ -7332,3 +7332,47 @@ asm/game/InventoryScroll_Delete.s:
 asm/game/InventoryScroll_UpdateArrowAnimations.s:
     categories: Game code
     .text       start:0x020944f0 end:0x02094550
+
+asm/game/tracked_resource_actor_type32_02052978.s:
+    categories: Game code
+    .text start:0x02052978 end:0x02052998
+
+asm/game/tracked_resource_actor_type32_02052998.s:
+    categories: Game code
+    .text start:0x02052998 end:0x020529ac
+
+asm/game/tracked_resource_actor_type32_020529ac.s:
+    categories: Game code
+    .text start:0x020529ac end:0x020529c8
+
+asm/game/tracked_resource_actor_type32_020529c8.s:
+    categories: Game code
+    .text start:0x020529c8 end:0x020529d8
+
+asm/game/tracked_resource_actor_type32_020529d8.s:
+    categories: Game code
+    .text start:0x020529d8 end:0x02052a08
+
+asm/game/tracked_resource_actor_type32_02052a08.s:
+    categories: Game code
+    .text start:0x02052a08 end:0x02052a20
+
+asm/game/tracked_resource_actor_type32_02052a20.s:
+    categories: Game code
+    .text start:0x02052a20 end:0x02052a70
+
+asm/game/auxiliary_interaction_transfer_02069304.s:
+    categories: Game code
+    .text start:0x02069304 end:0x02069390
+
+asm/game/auxiliary_interaction_transfer_02069480.s:
+    categories: Game code
+    .text start:0x02069480 end:0x02069550
+
+asm/game/auxiliary_interaction_transfer_02069560.s:
+    categories: Game code
+    .text start:0x02069560 end:0x020695f4
+
+asm/game/auxiliary_interaction_transfer_0206e3d0.s:
+    categories: Game code
+    .text start:0x0206e3d0 end:0x0206e4c4
