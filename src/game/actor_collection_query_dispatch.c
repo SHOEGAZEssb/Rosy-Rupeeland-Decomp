@@ -2,8 +2,8 @@
 
 /*
  * Dispatch an opaque query across registered actors. Actors with offset-0x14
- * flag 0x200000 are skipped; eligible actors must also pass Actor_TestQueryPoint
- * before the selected virtual hook is invoked.
+ * flag 0x200000 are skipped. Release queries additionally require a point hit;
+ * held queries reach every enabled actor so a drag can leave its hit bounds.
  */
 typedef struct QueryDispatchCollection {
     void *actors_0000[128];
@@ -49,8 +49,11 @@ s32 ActorCollection_DispatchQueryUntilHandled(QueryDispatchCollection *self,
 }
 
 /*
- * Scan every slot below slotLimit_2e74 and call each eligible actor's vtable
- * offset-0x50 hook with query. No result is collected; predicate and hook
+ * Scan every slot below slotLimit_2e74 and call each enabled actor's vtable
+ * offset-0x50 hook with the held-touch query, including points outside its
+ * bounds. The actor owns drag gating and destination handling; applying the
+ * release path's point test here prevents bodyguard commands onto the field.
+ * Null slots and flag 0x200000 are skipped. No result is collected; hook
  * effects are observable on actor state.
  */
 void ActorCollection_BroadcastQuery(QueryDispatchCollection *self,
@@ -59,7 +62,7 @@ void ActorCollection_BroadcastQuery(QueryDispatchCollection *self,
     s32 i;
     for (i = 0; i < self->slotLimit_2e74; i++) {
         void *actor = self->actors_0000[i];
-        if (actor_is_eligible(actor, query)) {
+        if (actor && !(*(u32 *)((u8 *)actor + 0x14) & 0x200000)) {
             void **vtable = *(void ***)actor;
             ((void (*)(void *, const void *))vtable[0x14])(actor, query);
         }
